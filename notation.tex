@@ -1,0 +1,118 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Basic shortcuts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Matrices and vectors
+\newcommand\bbm[0]{ \begin{bmatrix} }
+\newcommand\ebm[0]{ \end{bmatrix} }
+\newcommand\Vector[1]{ \boldsymbol{\mathbf{#1}} }
+\newcommand\VectorArrow[1]{\underrightarrow{#1}}
+\newcommand\Matrix[1]{ \boldsymbol{\mathbf{#1}} }
+\newcommand\Transpose[1]{ \left.{#1}\right.^T }
+\newcommand\ConjugateTranspose[1]{ \left.{#1}\right.^H }
+\newcommand\Trace[1]{ \mathrm{tr}\left(#1\right) }
+\newcommand\Determinant[1]{ \mathrm{det}\left(#1\right) }
+\newcommand\Norm[1]{\left\Vert#1\right\Vert }
+\newcommand\Diag[1]{ \mathrm{diag} \left\{ #1 \right\} }
+
+%% Calculus
+\newcommand\dd[0]{ \mathop[0]\!\mathrm{d} }
+\newcommand\PartialDerivative[2]{ \dfrac{\partial #1}{\partial #2} }
+\newcommand\OrdinaryDerivative[2]{ \dfrac{\dd #1}{\dd #2} }
+
+%% Optimization
+\newcommand\ArgMax[1]{ \operatorname*{argmax}_{#1} }
+\newcommand\ArgMin[1]{ \operatorname*{argmin}_{#1} }
+
+%% Sets
+\newcommand\Set[1]{ \left\{#1\right\} }
+\newcommand\Real[0]{ \mathbb{R} }
+\newcommand\Complex[0]{ \mathbb{C} }
+
+%% Lie groups and Lie algebras
+\newcommand\LieGroupSO[1]{ \mathrm{SO}(#1) }
+\newcommand\LieAlgebraSO[1]{ \mathfrak{so}(#1) }
+\newcommand\LieGroupSE[1]{ \mathrm{SE}(#1) }
+\newcommand\LieAlgebraSE[1]{ \mathfrak{se}(#1) }
+\newcommand\LieGroupSim[1]{ \mathrm{Sim}(#1) }
+\newcommand\LieAlgebraSim[1]{ \mathfrak{sim}(#1) }
+\newcommand\LieGroupAdjoint[1]{ \mathrm{Ad}\left(#1\right) }
+\newcommand\LieAlgebraAdjoint[1]{ \mathrm{ad}\left(#1\right) }
+
+%% Statistics and stochastic processes
+\newcommand\Expectation[1]{ \mathbb{E}\left[#1\right] }
+\newcommand\NormalDistribution[2]{ \mathcal{N}\left(#1,#2\right) }
+\newcommand\GaussianProcess[2]{ \mathcal{GP}\left(#1,#2\right) }
+
+%% Miscellaneous
+\newcommand\AbsoluteValue[1]{ \left\vert#1\right\vert }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% UTIAS Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Zero and Identity matrices
+\newcommand\ZeroMatrix[0]{ \Matrix{0} }
+\newcommand\IdentityMatrix[0]{ \Matrix{1} }
+
+%% Coordinate frames and transformations
+\newcommand\CoordinateFrame[1]{ \underrightarrow{\Matrix{\mathcal{F}}}_{#1} }
+\newcommand\Rotation[0]{ \Matrix{C} }
+\newcommand\RotationVector[0]{ \Vector{\phi} }
+\newcommand\Transform[0]{ \Matrix{T} }
+\newcommand\TransformVector[0]{ \Vector{\xi} }
+
+%% Variable decorations
+\newcommand\Estimate[1]{\hat{#1}}
+\newcommand\Prior[1]{\check{#1}}
+\newcommand\Mean[1]{\overline{#1}}
+\newcommand\Optimal[1]{{#1}^*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Additional definitions for your document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Deep Predictor
+\newcommand\deltap[0]{\Delta_p}
+\newcommand\TargetVOTransform[0]{\Transform_{i,i+\deltap}}
+\newcommand\EstimatedVOTransform[0]{\Estimate{\Transform}_{i,i+\deltap}}
+\newcommand\EstimatedVOTransformNoSub[0]{\Estimate{\Transform}}
+
+
+
+\newcommand\TargetCorrection[0]{\Transform^*}
+\newcommand\TargetCorrectionIndex[0]{\Transform^*_i}
+
+\newcommand\TargetCorrectionVector[0]{\TransformVector^*}
+\newcommand\TargetCorrectionVectorIndex[0]{\TransformVector^*_i}
+
+\newcommand\TargetCorrectionRotation[0]{\Rotation_*}
+\newcommand\TargetCorrectionRotationVector[0]{\RotationVector_*}
+
+\newcommand\LeftJacobianSE[0]{ \Matrix{\mathcal{J}} }
+\newcommand\LeftJacobianSO[0]{ \Matrix{J} }
+\newcommand\LogMapFunction[1]{g({#1})}
+\newcommand\LogMapFunctionSO[1]{f({#1})}
+
+\newcommand\EstimatedVOTransformCorrected[0]{\EstimatedVOTransform^{\text{corr}}}
+\newcommand\EstimatedVOTransformCorrectedNoSub[0]{\EstimatedVOTransformNoSub^{\mathrm{corr}}}
+
+\newcommand\PredictionVector[0]{\TransformVector}
+\newcommand\PredictionVectorIndex[0]{\TransformVector_i}
+
+\newcommand\TransformCovariance[0]{\Matrix{\Sigma}}
+
+
+\newcommand\CostFunction[0]{\mathcal{L}}
+\newcommand\PoseCostFunction[0]{\mathcal{J}}
+
+\newcommand\MatLn[1]{\text{ln}\left({#1} \right)^{\vee}}
+\newcommand\MatExp[1]{\text{exp}\left({#1}^{\wedge}\right)}
+\newcommand\Inv[1]{{#1}^{-1}}
+
+\newcommand\definedtobe[0]{\triangleq}
+\newcommand\ImageQuad[0]{\Image}
+\newcommand\LogDet[1]{\log{\left|#1\right|}}
+
+
