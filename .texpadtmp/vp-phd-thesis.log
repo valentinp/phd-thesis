@@ -1,0 +1,1186 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  12 JAN 2019 16:55
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**vp-phd-thesis.tex
+(./vp-phd-thesis.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
+(./ut-thesis.cls
+Document Class: ut-thesis 2012/06/01 v2.0 graduate theses at the University of Toronto
+\@thesisfootnotesep=\skip41
+\@thesismarginparpush=\skip42
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip43
+\belowcaptionskip=\skip44
+\bibindent=\dimen102
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count88
+\calc@Bcount=\count89
+\calc@Adimen=\dimen103
+\calc@Bdimen=\dimen104
+\calc@Askip=\skip45
+\calc@Bskip=\skip46
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count90
+\calc@Cskip=\skip47
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+) (/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count91
+\Gm@cntv=\count92
+\c@Gm@tempcnt=\count93
+\Gm@bindingoffset=\dimen105
+\Gm@wd@mp=\dimen106
+\Gm@odd@mp=\dimen107
+\Gm@even@mp=\dimen108
+\Gm@layoutwidth=\dimen109
+\Gm@layoutheight=\dimen110
+\Gm@layouthoffset=\dimen111
+\Gm@layoutvoffset=\dimen112
+\Gm@dimlist=\toks15
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)) (./preamble.tex (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen113
+\captionmargin@=\dimen114
+\captionwidth=\dimen115
+\caption@tempdima=\dimen116
+\caption@indent=\dimen117
+\caption@parindent=\dimen118
+\caption@hangindent=\dimen119
+)
+\c@ContinuedFloat=\count94
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip48
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen120
+)) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen121
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count95
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count96
+\leftroot@=\count97
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count98
+\DOTSCASE@=\count99
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen122
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count100
+\c@MaxMatrixCols=\count101
+\dotsspace@=\muskip10
+\c@parentequation=\count102
+\dspbrk@lvl=\count103
+\tag@help=\toks18
+\row@=\count104
+\column@=\count105
+\maxfields@=\count106
+\andhelp@=\toks19
+\eqnshift@=\dimen123
+\alignsep@=\dimen124
+\tagshift@=\dimen125
+\tagwidth@=\dimen126
+\totwidth@=\dimen127
+\lineht@=\dimen128
+\@envbody=\toks20
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amscd.sty
+Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
+\athelp@=\toks22
+\minaw@=\dimen129
+\bigaw@=\dimen130
+\minCDarrowwidth=\dimen131
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
+ (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+ (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen132
+\Hy@linkcounter=\count107
+\Hy@pagecounter=\count108
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count109
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `draft' set `true' on input line 4374.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4374.
+Package hyperref Info: Hyper figures OFF on input line 4498.
+Package hyperref Info: Link nesting OFF on input line 4503.
+Package hyperref Info: Hyper index ON on input line 4506.
+Package hyperref Info: Plain pages OFF on input line 4513.
+Package hyperref Info: Backreferencing OFF on input line 4518.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4751.
+\c@Hy@tempcnt=\count110
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5104.
+\XeTeXLinkMargin=\dimen133
+\Fld@menulength=\count111
+\Field@Width=\dimen134
+\Fld@charsize=\dimen135
+Package hyperref Info: Hyper figures OFF on input line 6358.
+Package hyperref Info: Link nesting OFF on input line 6363.
+Package hyperref Info: Hyper index ON on input line 6366.
+Package hyperref Info: backreferencing OFF on input line 6373.
+Package hyperref Info: Link coloring ON on input line 6376.
+Package hyperref Info: Link coloring with OCG OFF on input line 6383.
+Package hyperref Info: PDF/A mode OFF on input line 6388.
+LaTeX Info: Redefining \ref on input line 6428.
+LaTeX Info: Redefining \pageref on input line 6432.
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
+)
+
+Package hyperref Message: Driver: hpdftex.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
+\Fld@listcount=\count115
+\c@bookmark@seq@number=\count116
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 282.
+)
+\Hy@SectionHShift=\skip51
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+\Gread@gobject=\count117
+))
+\Gin@req@height=\dimen136
+\Gin@req@width=\dimen137
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen138
+\lightrulewidth=\dimen139
+\cmidrulewidth=\dimen140
+\belowrulesep=\dimen141
+\belowbottomsep=\dimen142
+\aboverulesep=\dimen143
+\abovetopsep=\dimen144
+\cmidrulesep=\dimen145
+\cmidrulekern=\dimen146
+\defaultaddspace=\dimen147
+\@cmidla=\count118
+\@cmidlb=\count119
+\@aboverulesep=\dimen148
+\@belowrulesep=\dimen149
+\@thisruleclass=\count120
+\@lastruleclass=\count121
+\@thisrulewidth=\dimen150
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip52
+\multirow@cntb=\count122
+\multirow@dima=\skip53
+\bigstrutjot=\dimen151
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen152
+\WF@size=\dimen153
+\c@WF@wrappedlines=\count123
+\WF@box=\box28
+\WF@everypar=\toks23
+Package: wrapfig 2003/01/31  v 3.6
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box29
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen154
+\extrarowheight=\dimen155
+\NC@list=\toks24
+\extratabsurround=\skip54
+\backup@length=\skip55
+)
+\TX@col@width=\dimen156
+\TX@old@table=\dimen157
+\TX@old@col=\dimen158
+\TX@target=\dimen159
+\TX@delta=\dimen160
+\TX@cols=\count124
+\TX@ftn=\toks25
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count125
+\c@ALG@rem=\count126
+\c@ALG@nested=\count127
+\ALG@tlm=\skip56
+\ALG@thistlm=\skip57
+\c@ALG@Lnr=\count128
+\c@ALG@blocknr=\count129
+\c@ALG@storecount=\count130
+\c@ALG@tmpcounter=\count131
+\ALG@tmplength=\skip58
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count132
+\float@exts=\toks26
+\float@box=\box30
+\@float@everytoks=\toks27
+\@floatcapt=\box31
+)
+\@float@every@algorithm=\toks28
+\c@algorithm=\count133
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip59
+\bibsep=\skip60
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count134
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2013/12/28 v0.19 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2230.
+LaTeX Info: Redefining \cref on input line 2230.
+LaTeX Info: Redefining \Cref on input line 2230.
+LaTeX Info: Redefining \crefrange on input line 2230.
+LaTeX Info: Redefining \Crefrange on input line 2230.
+LaTeX Info: Redefining \cpageref on input line 2230.
+LaTeX Info: Redefining \Cpageref on input line 2230.
+LaTeX Info: Redefining \cpagerefrange on input line 2230.
+LaTeX Info: Redefining \Cpagerefrange on input line 2230.
+LaTeX Info: Redefining \labelcref on input line 2230.
+LaTeX Info: Redefining \labelcpageref on input line 2230.
+Package cleveref Info: `algorithmicx' support loaded on input line 2939.
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2017/05/13 L3 programming layer (loader) 
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2017/05/13 L3 programming layer (code)
+\c_max_int=\count135
+\l_tmpa_int=\count136
+\l_tmpb_int=\count137
+\g_tmpa_int=\count138
+\g_tmpb_int=\count139
+\g__prg_map_int=\count140
+\c_log_iow=\count141
+\l_iow_line_count_int=\count142
+\l__iow_line_target_int=\count143
+\l__iow_one_indent_int=\count144
+\l__iow_indent_int=\count145
+\c_zero_dim=\dimen161
+\c_max_dim=\dimen162
+\l_tmpa_dim=\dimen163
+\l_tmpb_dim=\dimen164
+\g_tmpa_dim=\dimen165
+\g_tmpb_dim=\dimen166
+\c_zero_skip=\skip61
+\c_max_skip=\skip62
+\l_tmpa_skip=\skip63
+\l_tmpb_skip=\skip64
+\g_tmpa_skip=\skip65
+\g_tmpb_skip=\skip66
+\c_zero_muskip=\muskip12
+\c_max_muskip=\muskip13
+\l_tmpa_muskip=\muskip14
+\l_tmpb_muskip=\muskip15
+\g_tmpa_muskip=\muskip16
+\g_tmpb_muskip=\muskip17
+\l_keys_choice_int=\count146
+\c__fp_leading_shift_int=\count147
+\c__fp_middle_shift_int=\count148
+\c__fp_trailing_shift_int=\count149
+\c__fp_big_leading_shift_int=\count150
+\c__fp_big_middle_shift_int=\count151
+\c__fp_big_trailing_shift_int=\count152
+\c__fp_Bigg_leading_shift_int=\count153
+\c__fp_Bigg_middle_shift_int=\count154
+\c__fp_Bigg_trailing_shift_int=\count155
+\c__fp_rand_size_int=\count156
+\c__fp_rand_four_int=\count157
+\c__fp_rand_eight_int=\count158
+\l__sort_length_int=\count159
+\l__sort_min_int=\count160
+\l__sort_top_int=\count161
+\l__sort_max_int=\count162
+\l__sort_true_max_int=\count163
+\l__sort_block_int=\count164
+\l__sort_begin_int=\count165
+\l__sort_end_int=\count166
+\l__sort_A_int=\count167
+\l__sort_B_int=\count168
+\l__sort_C_int=\count169
+\c_empty_box=\box32
+\l_tmpa_box=\box33
+\l_tmpb_box=\box34
+\g_tmpa_box=\box35
+\g_tmpb_box=\box36
+\l__box_top_dim=\dimen167
+\l__box_bottom_dim=\dimen168
+\l__box_left_dim=\dimen169
+\l__box_right_dim=\dimen170
+\l__box_top_new_dim=\dimen171
+\l__box_bottom_new_dim=\dimen172
+\l__box_left_new_dim=\dimen173
+\l__box_right_new_dim=\dimen174
+\l__box_internal_box=\box37
+\l__coffin_internal_box=\box38
+\l__coffin_internal_dim=\dimen175
+\l__coffin_offset_x_dim=\dimen176
+\l__coffin_offset_y_dim=\dimen177
+\l__coffin_x_dim=\dimen178
+\l__coffin_y_dim=\dimen179
+\l__coffin_x_prime_dim=\dimen180
+\l__coffin_y_prime_dim=\dimen181
+\c_empty_coffin=\box39
+\l__coffin_aligned_coffin=\box40
+\l__coffin_aligned_internal_coffin=\box41
+\l_tmpa_coffin=\box42
+\l_tmpb_coffin=\box43
+\l__coffin_display_coffin=\box44
+\l__coffin_display_coord_coffin=\box45
+\l__coffin_display_pole_coffin=\box46
+\l__coffin_display_offset_dim=\dimen182
+\l__coffin_display_x_dim=\dimen183
+\l__coffin_display_y_dim=\dimen184
+\l__coffin_bounding_shift_dim=\dimen185
+\l__coffin_left_corner_dim=\dimen186
+\l__coffin_right_corner_dim=\dimen187
+\l__coffin_bottom_corner_dim=\dimen188
+\l__coffin_top_corner_dim=\dimen189
+\l__coffin_scaled_total_height_dim=\dimen190
+\l__coffin_scaled_width_dim=\dimen191
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+File: l3pdfmode.def 2017/03/18 v L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count170
+\l__driver_tmp_box=\box47
+))
+Package: xparse 2017/05/13 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count171
+\g__xparse_grabber_int=\count172
+\l__xparse_m_args_int=\count173
+\l__xparse_mandatory_args_int=\count174
+\l__xparse_v_nesting_int=\count175
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip67
+\subfigcapskip=\skip68
+\subfigcaptopadj=\dimen192
+\subfigbottomskip=\skip69
+\subfigcapmargin=\dimen193
+\subfiglabelskip=\skip70
+\c@subfigure=\count176
+\c@lofdepth=\count177
+\c@subtable=\count178
+\c@lotdepth=\count179
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/local/texlive/2017/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip71
+\subfig@bottom=\skip72
+)) (/usr/local/texlive/2017/texmf-dist/tex/latex/nomencl/nomencl.sty
+Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
+\nomlabelwidth=\dimen194
+\nom@tempdim=\dimen195
+\nomitemsep=\skip73
+) (./notation.tex
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \NaturalNumbers with sig. 'oo' on line 57.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Integers with sig. 'oo' on line 66.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \RationalNumbers with sig. 'oo' on line 75.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \RealNumbers with sig. 'oo' on line 84.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ComplexNumbers with sig. 'oo' on line 93.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \HomogeneousNumbers with sig. 'oo' on line 102.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SOg with sig. '' on line 104.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SOa with sig. '' on line 105.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Identity with sig. 'o' on line 125.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \HomogeneousPoint with sig. 'mm' on line 127.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \HomogeneousPointEstimate with sig. 'mm' on line 129.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \VisualLandmark with sig. 'mm' on line 131.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \CameraPose with sig. 'm' on line 135.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ImageLandmark with sig. 'mm' on line 138.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \LinearizedImageLandmark with sig. 'mm' on line 139.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \TargetImageLandmark with sig. 'o' on line 145.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ImageLandmarkCovariance with sig. 'mm' on line 150.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Covariance with sig. '' on line 151.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \TargetImageLandmarkCovariance with sig. '' on line 153.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Predictor with sig. 'mm' on line 159.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \TargetPredictor with sig. '' on line 163.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \TargetTransform with sig. '' on line 167.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ProjectionFunction with sig. '' on line 173.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \NormalDistribution with sig. '' on line 182.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \InverseWishartDistribution with sig. '' on line 196.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \StudentTDistribution with sig. '' on line 211.
+.................................................
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/probe.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/sun-bcnn.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/dpc.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/residual-kalman-filtering.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/conclusion.aux))
+\openout1 = `vp-phd-thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(90.3375pt, 451.68752pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=451.68752pt
+* \textheight=650.43001pt
+* \oddsidemargin=18.0675pt
+* \evensidemargin=0.0pt
+* \topmargin=-36.135pt
+* \headheight=12.0pt
+* \headsep=24.135pt
+* \topskip=10.0pt
+* \footskip=36.135pt
+* \marginparwidth=54.2025pt
+* \marginparsep=9.03374pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: subfigure package is loaded.
+Package caption Info: threeparttable package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box48
+
+Package hyperref Warning: Draft mode on.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+Package hyperref Info: Link coloring ON on input line 118.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+ (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count180
+)
+LaTeX Info: Redefining \ref on input line 118.
+LaTeX Info: Redefining \pageref on input line 118.
+LaTeX Info: Redefining \nameref on input line 118.
+ (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count181
+\scratchdimen=\dimen196
+\scratchbox=\box49
+\nofMPsegments=\count182
+\nofMParguments=\count183
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count184
+\MPscratchDim=\dimen197
+\MPnumerator=\count185
+\makeMPintoPDFobject=\count186
+\everyMPtoPDFconversion=\toks30
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 125.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 125.
+ [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+] [2] [3] [4] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 2.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 2.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [5
+
+])
+\tf@toc=\write3
+\openout3 = `vp-phd-thesis.toc'.
+
+ [6]
+\openout2 = `sections/introduction.aux'.
+
+ (./sections/introduction.tex
+Chapter 1.
+
+Package natbib Warning: Citation `Leutenegger2015-fk' on page 1 undefined on input line 7.
+
+
+Package natbib Warning: Citation `Cvisic2015-mt' on page 1 undefined on input line 7.
+
+
+Package natbib Warning: Citation `Tsotsos2015-qs' on page 1 undefined on input line 7.
+
+
+Package natbib Warning: Citation `Alcantarilla2016-kv' on page 1 undefined on input line 7.
+
+
+Package natbib Warning: Citation `Forster2014-bm' on page 1 undefined on input line 7.
+
+
+Package natbib Warning: Citation `LeCun2015-qf' on page 1 undefined on input line 9.
+
+
+Package natbib Warning: Citation `DeTone2016-ue' on page 1 undefined on input line 9.
+
+
+Package natbib Warning: Citation `Garg2016-ip' on page 1 undefined on input line 9.
+
+
+Package natbib Warning: Citation `Kendall2016-zf' on page 1 undefined on input line 9.
+
+
+Package natbib Warning: Citation `Sunderhauf2015-is' on page 1 undefined on input line 9.
+
+
+Package natbib Warning: Citation `Melekhov2017-dl' on page 1 undefined on input line 9.
+
+
+Package natbib Warning: Citation `Handa2016-hm' on page 1 undefined on input line 9.
+
+
+Package natbib Warning: Citation `Oliveira2017-lt' on page 1 undefined on input line 9.
+
+[1
+
+
+
+]
+
+Package natbib Warning: Citation `Leutenegger2015-fk' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `Cvisic2015-mt' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `Vega-Brown2014-sb' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `Hu2015-uw' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `Alcantarilla2016-kv' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `MacTavish2015-wt' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `Agarwal2013-jq' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `Tsotsos2015-qs' on page 2 undefined on input line 18.
+
+
+Package natbib Warning: Citation `LeCun2015-qf' on page 2 undefined on input line 22.
+
+
+Package natbib Warning: Citation `Gal2015-bf' on page 2 undefined on input line 22.
+
+
+Package natbib Warning: Citation `Kendall2016-zf' on page 2 undefined on input line 22.
+
+
+Package natbib Warning: Citation `McClure2016-ai' on page 2 undefined on input line 22.
+
+
+Package natbib Warning: Citation `Osband2016-jg' on page 2 undefined on input line 22.
+
+
+Package natbib Warning: Citation `Osband_undated-wl' on page 2 undefined on input line 22.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+
+Package natbib Warning: Citation `Costante2016-hb' on page 3 undefined on input line 25.
+
+
+Package natbib Warning: Citation `Kendall2015-kh' on page 3 undefined on input line 25.
+
+
+Package natbib Warning: Citation `Haarnoja2016-ph' on page 3 undefined on input line 25.
+
+
+Package natbib Warning: Citation `Punjani2015-pj' on page 3 undefined on input line 25.
+
+
+Package natbib Warning: Citation `Vega-Brown2014-sb' on page 3 undefined on input line 33.
+
+
+Package natbib Warning: Citation `Peretroukhin2015-em' on page 3 undefined on input line 33.
+
+
+Package natbib Warning: Citation `Peretroukhin2016-om' on page 3 undefined on input line 33.
+
+[3]
+
+Package natbib Warning: Citation `Lambert2012-sn' on page 4 undefined on input line 36.
+
+<figures/introduction/dpc_high_level.pdf, id=40, 578.48874pt x 554.09181pt>
+
+Package natbib Warning: Citation `2018_Peretroukhin_Deep' on page 4 undefined on input line 60.
+
+[4]
+
+Package natbib Warning: Citation `Wilson2016-vy' on page 5 undefined on input line 64.
+
+
+Package natbib Warning: Citation `Haarnoja2016-ph' on page 5 undefined on input line 66.
+
+
+Package natbib Warning: Citation `Hu2015-uw' on page 5 undefined on input line 66.
+
+
+Package natbib Warning: Citation `Agarwal2013-jq' on page 5 undefined on input line 66.
+
+
+Package natbib Warning: Citation `Osband2016-jg' on page 5 undefined on input line 68.
+
+
+Package natbib Warning: Citation `Lee2015-af' on page 5 undefined on input line 68.
+
+
+Package natbib Warning: Citation `Lakshminarayanan2016-zh' on page 5 undefined on input line 68.
+
+) [5]
+\openout2 = `sections/math.aux'.
+
+ (./sections/math.tex)
+\openout2 = `sections/probe.aux'.
+
+ (./sections/probe.tex
+Chapter 2.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6
+
+
+
+
+
+]
+
+Package natbib Warning: Citation `barfoot2014associating' on page 7 undefined on input line 60.
+
+LaTeX Font Info:    Try loading font information for U+euf on input line 61.
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7]
+
+Package natbib Warning: Citation `Fischler:1981cv' on page 8 undefined on input line 121.
+
+[8] <figures/probe/feature_space.pdf, id=71, 563.99232pt x 263.4973pt>
+
+Package natbib Warning: Citation `VegaBrown:ew' on page 9 undefined on input line 133.
+
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 134.
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+
+LaTeX Warning: Reference `eqn:gamma' on page 9 undefined on input line 134.
+
+[9]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 195.
+
+
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 11 undefined on input line 197.
+
+[11]
+
+LaTeX Warning: Reference `fig:tricifix' on page 12 undefined on input line 222.
+
+
+Package natbib Warning: Citation `Furgale:2013dm' on page 12 undefined on input line 223.
+
+
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 12 undefined on input line 224.
+
+<figures/probe/tricifix2.jpg, id=83, 803.0pt x 534.99875pt> <figures/probe/reprojectionError.pdf, id=84, 485.31891pt x 193.12715pt> <figures/probe/trackingError.pdf, id=85, 485.31891pt x 193.12715pt>
+
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 12 undefined on input line 253.
+
+
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 12 undefined on input line 253.
+
+
+Package natbib Warning: Citation `Lucas:1981uw' on page 12 undefined on input line 260.
+
+[12]
+
+LaTeX Warning: Reference `fig:probe_visensor_histograms' on page 13 undefined on input line 262.
+
+
+LaTeX Warning: Reference `fig:flow_variance' on page 13 undefined on input line 277.
+
+
+Package natbib Warning: Citation `Geiger:2013kp' on page 13 undefined on input line 277.
+
+<figures/probe/flowPredictorCombined.png, id=89, 492.84125pt x 162.10562pt>
+
+LaTeX Warning: Reference `fig:high_frequency' on page 13 undefined on input line 291.
+
+
+Package natbib Warning: Citation `Geiger:2013kp' on page 13 undefined on input line 291.
+
+[13] <figures/probe/highFreqPredictor.png, id=95, 492.84125pt x 162.10562pt>
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 316.
+
+Overfull \hbox (174.11916pt too wide) in paragraph at lines 307--332
+ [] |
+ []
+
+<figures/probe/city-res-road.png, id=96, 1003.75pt x 125.46875pt> <figures/probe/husky2.jpg, id=97, 192.72pt x 128.3997pt>
+
+Package natbib Warning: Citation `fischler1981random' on page 14 undefined on input line 351.
+
+
+Package natbib Warning: Citation `kerl2013robust' on page 14 undefined on input line 355.
+
+
+Package natbib Warning: Citation `Burgard:ii' on page 14 undefined on input line 356.
+
+<figures/probe-gk/system_overview.pdf, id=98, 706.76712pt x 548.73396pt> [14] [15]
+
+Package natbib Warning: Citation `peretroukhin2015PROBE' on page 16 undefined on input line 378.
+
+
+Package natbib Warning: Citation `VegaBrown:2013fv' on page 16 undefined on input line 380.
+
+[16]
+
+Package natbib Warning: Citation `fitzgibbon2007learning' on page 17 undefined on input line 413.
+
+
+Package natbib Warning: Citation `vega-brown2014nonparametric' on page 17 undefined on input line 442.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 494.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+Underfull \vbox (badness 3019) has occurred while \output is active []
+
+ [19]
+
+Package natbib Warning: Citation `VegaBrown:2013fv' on page 20 undefined on input line 604.
+
+[20]
+
+Package natbib Warning: Citation `dempster1977maximum' on page 21 undefined on input line 650.
+
+[21] <figures/probe-gk/sim_world.pdf, id=128, 449.68pt x 338.26375pt>
+
+LaTeX Warning: Reference `sec:ssvo' on page 1 undefined on input line 714.
+
+
+Package natbib Warning: Citation `kerl2013robust' on page 22 undefined on input line 714.
+
+<figures/probe-gk/simComparison_sim_rerun.pdf, id=129, 496.85625pt x 396.48125pt> <figures/probe-gk/KittiEnvironments.pdf, id=130, 906.1415pt x 95.33878pt>
+
+Package natbib Warning: Citation `geiger2012kitti' on page 22 undefined on input line 749.
+
+
+Package natbib Warning: Citation `geiger2013vision' on page 22 undefined on input line 749.
+
+[22] [23] <figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf, id=137, 484.81125pt x 393.47pt>
+
+Package natbib Warning: Citation `peretroukhin2015PROBE' on page 24 undefined on input line 769.
+
+<figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf, id=138, 487.8225pt x 393.47pt> <figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf, id=139, 484.81125pt x 393.47pt>
+Underfull \vbox (badness 3417) has occurred while \output is active []
+
+ [24]
+Overfull \hbox (184.8413pt too wide) in paragraph at lines 812--822
+ [][] |
+ []
+
+<figures/probe-gk/experiment_wide_border.pdf, id=143, 610.61609pt x 421.44742pt> <figures/probe-gk/xb3_rtk_fig.pdf, id=144, 490.83376pt x 380.42125pt> [25] [26] <figures/probe-gk/trainingStats.pdf, id=152, 499.8675pt x 402.50375pt>) [27]
+\openout2 = `sections/sun-bcnn.aux'.
+
+ (./sections/sun-bcnn.tex
+Chapter 3.
+
+Package natbib Warning: Citation `Zhang2015-gf' on page 28 undefined on input line 4.
+
+
+Package natbib Warning: Citation `Leutenegger2015-fk' on page 28 undefined on input line 4.
+
+<figures/sun-bcnn/system_overview.pdf, id=156, 686.07072pt x 390.18723pt> <figures/sun-bcnn/all_datasets_gps.pdf, id=157, 1027.7067pt x 375.26689pt>
+
+Package natbib Warning: Citation `Olson2003-ax' on page 28 undefined on input line 25.
+
+
+Package natbib Warning: Citation `Furgale2011-zu' on page 28 undefined on input line 26.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 28 undefined on input line 26.
+
+
+Package natbib Warning: Citation `Eisenman2002-cg' on page 28 undefined on input line 26.
+
+
+Package natbib Warning: Citation `Maimone2007-tc' on page 28 undefined on input line 26.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 28 undefined on input line 27.
+
+
+Underfull \vbox (badness 3271) has occurred while \output is active []
+
+ [28
+
+
+
+] [29]
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 30 undefined on input line 39.
+
+
+Package natbib Warning: Citation `Furgale2012-kk' on page 30 undefined on input line 39.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 30 undefined on input line 45.
+
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 30 undefined on input line 47.
+
+
+Package natbib Warning: Citation `Furgale2012-kk' on page 30 undefined on input line 47.
+
+
+Package natbib Warning: Citation `Maddern2016-ng' on page 30 undefined on input line 48.
+
+) [30] [31]
+\openout2 = `sections/dpc.aux'.
+
+ (./sections/dpc.tex)
+\openout2 = `sections/residual-kalman-filtering.aux'.
+
+ (./sections/residual-kalman-filtering.tex)
+\openout2 = `sections/conclusion.aux'.
+
+ (./sections/conclusion.tex) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bbl
+
+Package natbib Warning: Empty `thebibliography' environment on input line 3.
+
+)
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 222.
+[32
+
+
+
+
+
+
+
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 222.
+ (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/probe.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/sun-bcnn.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/dpc.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/residual-kalman-filtering.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/conclusion.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 222.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 222.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 222.
+ ) 
+Here is how much of TeX's memory you used:
+ 18473 strings out of 492995
+ 330983 string characters out of 6132704
+ 411833 words of memory out of 5000000
+ 21755 multiletter control sequences out of 15000+600000
+ 22943 words of font info for 78 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,15n,43p,10381b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2017/texmf-dist/fo
+nts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (38 pages, 382841 bytes).
+PDF statistics:
+ 268 PDF objects out of 1000 (max. 8388607)
+ 175 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+

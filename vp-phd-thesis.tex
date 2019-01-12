@@ -72,6 +72,8 @@
 %% single, one-and-a-half, or double spaced (see the `setspace' package
 %% for details).
 
+\input{preamble}
+\graphicspath{{figures/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                    %%
@@ -88,7 +90,7 @@
 %% *** Change this example to appropriate values. ***
 \degree{Doctor of Philosophy}
 \department{Institute for Aerospace Studies}
-\gradyear{2018}
+\gradyear{2019}
 \author{Valentin Peretroukhin}
 \title{On learning probabilistic models for state estimation}
 
@@ -132,7 +134,7 @@
 \begin{abstract}
 %% *** Put your Abstract here. ***
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
-This is my abstract.
+The paradigm of learning complex measurement models from training data (rather than crafting these models by hand) has become pervasive in computer vision and robotics. These learned models, however, are often presented in isolation, and it can be unclear to what extent they can be integrated into (or replace) existing high-fidelity geometric and kinematic models. My thesis focuses on ways in which these two modelling efforts can be combined while still preserving the core advantages of both. To this end, I have published work on two Bayesian machine-learning-based techniques that improve on existing measurement models in visual odometry: (1) a fast, kernel-based Bayesian technique that learns a model for measurement covariances of a stereo camera to produce non-stationary robust costs and (2) a deep Bayesian Convolutional Neural Network model that can infer the direction of the Sun from a single RGB image. More recently, I have leveraged both of these two prior efforts to create a framework I call Deep Pose Correction (DPC). DPC relies on a novel loss function, based on matrix Lie groups, that permits a deep network to learn SE(3) corrections to existing visual pose estimators. By pairing a DPC network with a visual localization pipeline, one can combine the proven durability of classical algorithms with the representational power of modern machine learning techniques.   
 \end{abstract}
 
 %% Anything placed between the abstract and table of contents will
@@ -192,12 +194,13 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% *** Include chapter files here. ***
-\include{introduction}
-\include{math}
-\include{probe}
-\include{sun-bcnn}
-\include{dpc}
-\include{conclusion}
+\include{sections/introduction}
+\include{sections/math}
+\include{sections/probe}
+\include{sections/sun-bcnn}
+\include{sections/dpc}
+\include{sections/residual-kalman-filtering}
+\include{sections/conclusion}
 
 
 

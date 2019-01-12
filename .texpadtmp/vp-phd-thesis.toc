@@ -1,0 +1,32 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Measurement Models}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Outstanding Issues}{2}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}The limits of homoscedastic noise models}{2}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Deep, learned models with no uncertainty estimates}{3}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Integration of deep models into state estimation pipelines}{3}{subsection.1.2.3}
+\contentsline {section}{\numberline {1.3}Original Contributions}{3}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Predictive Robust Estimation for Sparse Visual Odometry}{3}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Software Sun Sensor using a Bayesian Convolutional Neural Network}{4}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Deep Pose Corrections (DPC-Net)}{4}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Probabilistic $ \mathrm {SE}(3) $ inference using deep networks}{5}{subsection.1.3.4}
+\contentsline {chapter}{\numberline {2}Predictive Robust Estimation}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Stereo Visual Odometry}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Scalar k-Nearest Neighbours}{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Training}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Evaluation}{10}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Prediction Space}{11}{subsection.2.2.3}
+\contentsline {subsubsection}{Angular velocity and linear acceleration}{11}{section*.8}
+\contentsline {subsubsection}{Local image entropy}{11}{section*.9}
+\contentsline {subsubsection}{Blur}{12}{section*.10}
+\contentsline {subsubsection}{Optical flow variance score}{13}{section*.13}
+\contentsline {subsubsection}{Image frequency composition}{13}{section*.15}
+\contentsline {section}{\numberline {2.3}Generalized Kernels}{14}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Predictive noise models for visual odometry}{16}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Inference without ground truth}{20}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Experiments}{21}{subsection.2.3.3}
+\contentsline {subsubsection}{Synthetic}{21}{section*.22}
+\contentsline {subsection}{\numberline {2.3.4}KITTI}{22}{subsection.2.3.4}
+\contentsline {subsubsection}{UTIAS}{25}{section*.29}
+\contentsline {chapter}{\numberline {3}Sun-BCNN}{28}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{28}{section.3.1}
+\contentsline {chapter}{Bibliography}{32}{Item.6}

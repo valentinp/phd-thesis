@@ -1,3 +1,230 @@
+%%%%%%%
+% OLD TIM-STYLE NOTATION (for PROBE)
+%%%%%%%
+
+%% Basic bold for letters and symbols
+\DeclareMathAlphabet{\mbf}{OT1}{ptm}{b}{n}
+\newcommand{\mbs}[1]{\boldsymbol{#1}}
+\newcommand{\mbsbar}[1]{\overline{\boldsymbol{#1}}}
+\newcommand{\mbshat}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\mbsvec}[1]{\underrightarrow{\boldsymbol{#1}}}
+\newcommand{\mbsdel}[1]{\delta {\boldsymbol{#1}}}
+\newcommand{\mbsDel}[1]{\Delta {\boldsymbol{#1}}}
+\newcommand{\mbsdot}[1]{\dot {\boldsymbol{#1}}}
+\newcommand{\mbsddot}[1]{\ddot {\boldsymbol{#1}}}
+\newcommand{\mbfbar}[1]{\overline{\mbf{#1}}}
+\newcommand{\mbfhat}[1]{\hat{\mbf{#1}}}
+\newcommand{\mbfvec}[1]{\underrightarrow{\mbf{#1}}}
+\newcommand{\mbfdel}[1]{\delta{\mbf{#1}}}
+\newcommand{\mbfDel}[1]{\Delta{\mbf{#1}}}
+\newcommand{\mbfdot}[1]{\dot{\mbf{#1}}}
+\newcommand{\mbfddot}[1]{\ddot{\mbf{#1}}}
+
+%% Zero and Identity matrices
+\newcommand{\Zero}{\mbf{0}}
+\newcommand{\One}{\mbf{1}}
+
+%% Homogeneous coordinates
+\DeclareMathAlphabet{\mbfh}{OML}{cmm}{b}{it}
+\newcommand{\mbfhbar}[1]{\overline{\mbfh{#1}}}
+\newcommand{\mbfhhat}[1]{\hat{\mbfh{#1}}}
+\newcommand{\mbfhdel}[1]{\delta{\mbfh{#1}}}
+\newcommand{\mbfhDel}[1]{\Delta{\mbfh{#1}}}
+\newcommand{\mbfhdot}[1]{\dot{\mbfh{#1}}}
+\newcommand{\mbfhddot}[1]{\ddot{\mbfh{#1}}}
+
+%% Coordinate frames
+\newcommand{\cframe}[1]{\ensuremath \underrightarrow{\mathcal{F}}_{#1}}
+% Table spacing fixes
+\newcommand\T{\rule{0pt}{2.6ex}}        % Top strut
+\newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PROBE-GK NOTATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Common math commands
+
+\NewDocumentCommand\NaturalNumbers{oo}{%
+    \IfNoValueTF{#2}
+    {
+        \IfNoValueTF{#1}
+        {\ensuremath{\mathbb N}}
+        {\ensuremath{\mathbb N^{#1}}}
+    }
+    { \ensuremath{\mathbb N^{#1\times #2}}}
+}
+\NewDocumentCommand\Integers{oo}{%
+    \IfNoValueTF{#2}
+    {
+        \IfNoValueTF{#1}
+        {\ensuremath{\mathbb Z}}
+        {\ensuremath{\mathbb Z^{#1}}}
+    }
+    { \ensuremath{\mathbb Z^{#1\times #2}}}
+}
+\NewDocumentCommand\RationalNumbers{oo}{%
+    \IfNoValueTF{#2}
+    {
+        \IfNoValueTF{#1}
+        {\ensuremath{\mathbb Q}}
+        {\ensuremath{\mathbb Q^{#1}}}
+    }
+    { \ensuremath{\mathbb Q^{#1\times #2}}}
+}
+\NewDocumentCommand\RealNumbers{oo}{%
+    \IfNoValueTF{#2}
+    {
+        \IfNoValueTF{#1}
+        {\ensuremath{\mathbb R}}
+        {\ensuremath{\mathbb R^{#1}}}
+    }
+    { \ensuremath{\mathbb R^{#1\times #2}}}
+}
+\NewDocumentCommand\ComplexNumbers{oo}{%
+    \IfNoValueTF{#2}
+    {
+        \IfNoValueTF{#1}
+        {\ensuremath{\mathbb C}}
+        {\ensuremath{\mathbb C^{#1}}}
+    }
+    { \ensuremath{\mathbb C^{#1\times #2}}}
+}
+\NewDocumentCommand\HomogeneousNumbers{oo}{%
+    \IfNoValueTF{#2}
+    {
+        \IfNoValueTF{#1}
+        {\ensuremath{\mathbb P}}
+        {\ensuremath{\mathbb P^{#1}}}
+    }
+    { \ensuremath{\mathbb P^{#1\times #2}}}
+}
+
+\NewDocumentCommand\SOg{}{\ensuremath{\mathrm{SO}(3)} }
+\NewDocumentCommand\SOa{}{\ensuremath{\mathfrak{so}(3)} }
+
+% VP Additions 
+\newcommand{\bcf}{\;\mbox{\boldmath ${\cal F}$\unboldmath}}
+\def\Vec#1{\!\!\hbox{$#1$\kern-0.38em\lower0.85em\hbox{$\vec{}\,$}}\,}%
+\def\ep{\epsilon}
+\def\la{\lambda}
+\def\om{\omega}
+\newcommand{\qc}[1]{{#1}^+}
+\newcommand{\qo}[1]{{#1}^\oplus}
+\newcommand{\qi}[1]{{#1}^{\scalebox{0.5}{$-1$}}}
+\newcommand\at[2]{\left.#1\right|_{#2}}
+
+
+% Matrices
+
+\NewDocumentCommand\Identity{o}{% 
+    \IfNoValueTF{#1}
+    {\ensuremath{\mathbbm 1}}
+    {\ensuremath{\mathbbm 1_{#1}}}
+}
+% Variables for this document
+\NewDocumentCommand\HomogeneousPoint{mm}{\boldsymbol{p}_{#1,#2}}
+\nomenclature{$\HomogeneousPoint{i}{t}\in\HomogeneousNumbers[3]$}{Location of visual landmark i during frame t in homogeneous coordinates.}%
+ \NewDocumentCommand\HomogeneousPointEstimate{mm}{\bar{\boldsymbol{p}}_{#1,#2}}
+ 
+\NewDocumentCommand\VisualLandmark{mm}{\Vector{z}_{#1,#2}}
+\nomenclature{$\VisualLandmark{i}{t}\in\RealNumbers[3]$}{Location of visual
+  landmark $i$ in the global coordinate frame during image frame $t$}%
+
+\NewDocumentCommand\CameraPose{m}{\Vector{x}_{#1}}
+\nomenclature{$\CameraPose{t}\in\text{SE}(3)$}{Camera pose at frame $t$}%
+
+\NewDocumentCommand\ImageLandmark{mm}{\Vector{y}_{#1,#2}}
+\NewDocumentCommand\LinearizedImageLandmark{mm}{\bar{\Vector{y}}_{#1,#2}}
+
+\NewDocumentCommand\TargetImageLandmark{o}{
+    \IfNoValueTF{#1}
+    {\Vector{y}_{*}}
+    {\Vector{y}_{*,#1}}
+  }
+\nomenclature{$\ImageLandmark{i}{t}\in\RealNumbers[4]$}{Location
+  of visual landmark $i$ during frame $t$ in image coordinates
+  for each stereo camera.}%
+
+\NewDocumentCommand\ImageLandmarkCovariance{mm}{\Matrix{R}_{#1,#2}}
+\NewDocumentCommand\Covariance{}{\Matrix{R}}
+
+\NewDocumentCommand\TargetImageLandmarkCovariance{}{\Matrix{R}_*}
+\nomenclature{$\ImageLandmarkCovariance{i}{t}\in\RealNumbers[4\times
+  4]\succ 0$}{Location
+  of visual landmark $i$ during frame $t$ in image coordinates
+  for each stereo camera.}%
+
+\NewDocumentCommand\Predictor{mm}{\Vector{\phi}_{#1,#2}}
+\nomenclature{$\Predictor{i}{t}$}{Predictor features for image-space
+  landmark $i$ in frame $t$}%
+
+\NewDocumentCommand\TargetPredictor{}{\Vector{\phi}_*}
+\nomenclature{$\Predictor{i}{t}$}{Predictor features for image-space
+  landmark $i$ in frame $t$}%
+
+\NewDocumentCommand\TargetTransform{}{\mathcal{T}_*}
+\nomenclature{$\Transform_t=\Transform(\CameraPose{t})$}{The operator which
+  applies a frame transform to a vector, so that $\Transform_t
+  \VisualLandmark{i}{t}$ is the location of visual landmark $i$ relative to the
+  camera coordinate frame.}
+
+\NewDocumentCommand\ProjectionFunction{}{f}
+\nomenclature{$\ProjectionFunction:
+  \RealNumbers[3]\to\RealNumbers[4]$}{Function mapping a visual landmark in
+  the camera coordinate frame to image coordinates, so that
+  $\ProjectionFunction( \VisualLandmark{i}{t}) =
+  \ImageLandmark{i}{t}$. This function is invertible, so that
+  $\ProjectionFunction^{-1}( \ImageLandmark{i}{t}) =
+  \VisualLandmark{i}{t}$.}%
+
+\NewDocumentCommand\NormalDistribution{}{\mathcal{N}}
+\nomenclature{$\NormalDistribution\left(\Vector{x};
+    \Vector{\mu},\Matrix{\Sigma}\right)$}{A multivariate normal distribution
+  with mean $\Vector{\mu}\in\RealNumbers[d]$ and covariance
+  $\Matrix{\Sigma}\in\RealNumbers[d\times d]\succ\Matrix{0}$: 
+  \begin{equation*}
+    \NormalDistribution\left(\Vector{x};\Vector{\mu},\Matrix{\Sigma}\right)
+    = (2\pi)^{-\frac{d}{2}}\vert\Matrix{\Sigma}\vert^{-\frac{1}{2}}
+    \exp\left( -\frac{1}{2}
+      \Transpose{(\Vector{x}-\Vector{\mu})} \Matrix{\Sigma}^{-1}
+      (\Vector{x}-\Vector{\mu}) \right)
+  \end{equation*}  
+}
+
+\NewDocumentCommand\InverseWishartDistribution{}{\text{IW}}
+\nomenclature{$\InverseWishartDistribution\left(\Matrix{R};
+    \Matrix{\Psi},\nu\right)$}{An inverse Wishart distribution 
+  with scale matrix $\Matrix{\Psi}\in\RealNumbers[d\times d]\succ\Matrix{0}$
+  and degrees of freedom $\nu>d-1$.  
+  \begin{equation*}
+    \InverseWishartDistribution\left(\Matrix{R}; \Matrix{\Psi}, \nu\right)
+    = \frac{\vert\Matrix{\Psi}\vert^{\frac{\nu}{2}}}{2^{\frac{\nu
+          d}{2}}\Gamma_d(\frac{\nu}{2})}
+    \vert\Matrix{R}\vert^{-\frac{\nu+d+1}{2}}
+    \exp\left( -\frac{1}{2}
+      \Trace{\Matrix{\Psi}\Matrix{R}^{-1}}\right)
+  \end{equation*}  
+}
+
+\NewDocumentCommand\StudentTDistribution{}{\text{t}}
+\nomenclature{$\StudentTDistribution_{\nu}\left(\Vector{x}; \Vector{\mu},
+    \Matrix{\Sigma}\right)$}{ A multivariate student's $t$-distributon with mean
+  $\Vector{\mu}\in\RealNumbers[d]$, covariance $\Matrix{\Sigma} \in
+  \RealNumbers[d\times d] \succ\Matrix{0}$, and degrees of freedom $\nu>0$.  
+  \begin{equation*} 
+    \StudentTDistribution_{\nu}\left(\Vector{x}; \Vector{\mu},
+      \Matrix{\Sigma}\right) =
+    \frac{\Gamma(\frac{\nu+d}{2})}{\Gamma(\frac{\nu}{2})}
+    \vert\Matrix{\Sigma}\vert^{-\frac{1}{2}}(\nu\pi)^{-\frac{d}{2}}
+    \left(1+\frac{1}{\nu}
+      \Transpose{(\Vector{x}-\Vector{\mu})} \Matrix{\Sigma}^{-1}
+      (\Vector{x}-\Vector{\mu}) \right)^{-\frac{\nu+d}{2}}
+  \end{equation*}  
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Basic shortcuts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,7 +268,7 @@
 
 %% Statistics and stochastic processes
 \newcommand\Expectation[1]{ \mathbb{E}\left[#1\right] }
-\newcommand\NormalDistribution[2]{ \mathcal{N}\left(#1,#2\right) }
+%\newcommand\NormalDistribution[2]{ \mathcal{N}\left(#1,#2\right) }
 \newcommand\GaussianProcess[2]{ \mathcal{GP}\left(#1,#2\right) }
 
 %% Miscellaneous
