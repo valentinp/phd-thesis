@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  14 JAN 2019 12:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  14 JAN 2019 13:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1050,20 +1050,12 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 62.
 
-[6 <./figures/introduction/dpc_high_level.pdf>]
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
-
-Overfull \hbox (1.63985pt too wide) in paragraph at lines 88--89
-\OT1/cmr/m/n/12 tive ro-bust es-ti-ma-tion for visual-inertial nav-i-ga-tion.  In \OT1/cmr/m/it/12 Pro-ceed-ings of the IEEE/RSJ
- []
-
-[7]) [8]
+[6 <./figures/introduction/dpc_high_level.pdf>]) [7]
 \openout2 = `sections/math.aux'.
 
  (./sections/math.tex
 Chapter 2.
-[9
+[8
 
 
 
@@ -1074,29 +1066,29 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 Underfull \vbox (badness 3250) has occurred while \output is active []
 
- [10]) [11]
+ [9]) [10]
 \openout2 = `sections/probe.aux'.
 
  (./sections/probe.tex
 Chapter 3.
-[12
+[11
 
 
 
 ]
 
-Package natbib Warning: Citation `Fischler:1981cv' on page 13 undefined on input line 38.
+Package natbib Warning: Citation `Fischler:1981cv' on page 12 undefined on input line 38.
 
-<figures/probe/feature_space.pdf, id=693, 563.99232pt x 263.4973pt>
+<figures/probe/feature_space.pdf, id=682, 563.99232pt x 263.4973pt>
 File: figures/probe/feature_space.pdf Graphic file (type pdf)
  <use figures/probe/feature_space.pdf>
 Package pdftex.def Info: figures/probe/feature_space.pdf used on input line 43.
 (pdftex.def)             Requested size: 225.84375pt x 105.51364pt.
 
 
-LaTeX Warning: Reference `eqn:gamma' on page 13 undefined on input line 51.
+LaTeX Warning: Reference `eqn:gamma' on page 12 undefined on input line 51.
 
-[13] [14 <./figures/probe/feature_space.pdf>] [15pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
+[12] [13 <./figures/probe/feature_space.pdf>] [14pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1137,88 +1129,91 @@ l.104 \subsection
                                                   \fi \fi 
 l.104 \subsection
                  {Prediction Space} \label{sec:predictors}]
-
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 16 undefined on input line 114.
-
-[16]
-
-LaTeX Warning: Reference `fig:tricifix' on page 17 undefined on input line 139.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
 
 
-Package natbib Warning: Citation `Furgale:2013dm' on page 17 undefined on input line 140.
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 15 undefined on input line 114.
+
+[15]
+
+LaTeX Warning: Reference `fig:tricifix' on page 16 undefined on input line 139.
 
 
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 17 undefined on input line 141.
+Package natbib Warning: Citation `Furgale:2013dm' on page 16 undefined on input line 140.
 
-<figures/probe/tricifix2.jpg, id=755, 803.0pt x 534.99875pt>
+
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 16 undefined on input line 141.
+
+<figures/probe/tricifix2.jpg, id=743, 803.0pt x 534.99875pt>
 File: figures/probe/tricifix2.jpg Graphic file (type jpg)
  <use figures/probe/tricifix2.jpg>
 Package pdftex.def Info: figures/probe/tricifix2.jpg used on input line 146.
 (pdftex.def)             Requested size: 180.67224pt x 120.36952pt.
- <figures/probe/reprojectionError.pdf, id=756, 485.31891pt x 193.12715pt>
+ <figures/probe/reprojectionError.pdf, id=744, 485.31891pt x 193.12715pt>
 File: figures/probe/reprojectionError.pdf Graphic file (type pdf)
  <use figures/probe/reprojectionError.pdf>
 Package pdftex.def Info: figures/probe/reprojectionError.pdf used on input line 161.
 (pdftex.def)             Requested size: 383.93713pt x 152.78387pt.
- <figures/probe/trackingError.pdf, id=757, 485.31891pt x 193.12715pt>
+ <figures/probe/trackingError.pdf, id=745, 485.31891pt x 193.12715pt>
 File: figures/probe/trackingError.pdf Graphic file (type pdf)
  <use figures/probe/trackingError.pdf>
 Package pdftex.def Info: figures/probe/trackingError.pdf used on input line 168.
 (pdftex.def)             Requested size: 383.93713pt x 152.78387pt.
 
 
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 17 undefined on input line 170.
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 16 undefined on input line 170.
 
 
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 17 undefined on input line 170.
+Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 16 undefined on input line 170.
 
 
-Package natbib Warning: Citation `Lucas:1981uw' on page 17 undefined on input line 177.
+Package natbib Warning: Citation `Lucas:1981uw' on page 16 undefined on input line 177.
 
-[17 <./figures/probe/tricifix2.jpg> <./figures/probe/reprojectionError.pdf>]
+[16 <./figures/probe/tricifix2.jpg> <./figures/probe/reprojectionError.pdf>]
 
-LaTeX Warning: Reference `fig:probe_visensor_histograms' on page 18 undefined on input line 179.
+LaTeX Warning: Reference `fig:probe_visensor_histograms' on page 17 undefined on input line 179.
 
 
 Underfull \vbox (badness 6792) has occurred while \output is active []
 
- [18 <./figures/probe/trackingError.pdf>]
+ [17 <./figures/probe/trackingError.pdf>]
 
-LaTeX Warning: Reference `fig:flow_variance' on page 19 undefined on input line 194.
+LaTeX Warning: Reference `fig:flow_variance' on page 18 undefined on input line 194.
 
 
-Package natbib Warning: Citation `Geiger:2013kp' on page 19 undefined on input line 194.
+Package natbib Warning: Citation `Geiger:2013kp' on page 18 undefined on input line 194.
 
-<figures/probe/flowPredictorCombined.png, id=818, 492.84125pt x 162.10562pt>
+<figures/probe/flowPredictorCombined.png, id=807, 492.84125pt x 162.10562pt>
 File: figures/probe/flowPredictorCombined.png Graphic file (type png)
  <use figures/probe/flowPredictorCombined.png>
 Package pdftex.def Info: figures/probe/flowPredictorCombined.png used on input line 199.
 (pdftex.def)             Requested size: 361.35138pt x 118.8605pt.
 
 
-LaTeX Warning: Reference `fig:high_frequency' on page 19 undefined on input line 208.
+LaTeX Warning: Reference `fig:high_frequency' on page 18 undefined on input line 208.
 
 
-Package natbib Warning: Citation `Geiger:2013kp' on page 19 undefined on input line 208.
+Package natbib Warning: Citation `Geiger:2013kp' on page 18 undefined on input line 208.
 
-<figures/probe/highFreqPredictor.png, id=820, 492.84125pt x 162.10562pt>
+<figures/probe/highFreqPredictor.png, id=809, 492.84125pt x 162.10562pt>
 File: figures/probe/highFreqPredictor.png Graphic file (type png)
  <use figures/probe/highFreqPredictor.png>
 Package pdftex.def Info: figures/probe/highFreqPredictor.png used on input line 213.
 (pdftex.def)             Requested size: 361.35138pt x 118.8605pt.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 250.
- <figures/probe/city-res-road.png, id=821, 1003.75pt x 125.46875pt>
+ <figures/probe/city-res-road.png, id=810, 1003.75pt x 125.46875pt>
 File: figures/probe/city-res-road.png Graphic file (type png)
  <use figures/probe/city-res-road.png>
 Package pdftex.def Info: figures/probe/city-res-road.png used on input line 255.
 (pdftex.def)             Requested size: 451.68752pt x 56.46231pt.
- <figures/probe/husky2.jpg, id=822, 192.72pt x 128.3997pt>
+ <figures/probe/husky2.jpg, id=811, 192.72pt x 128.3997pt>
 File: figures/probe/husky2.jpg Graphic file (type jpg)
  <use figures/probe/husky2.jpg>
 Package pdftex.def Info: figures/probe/husky2.jpg used on input line 262.
 (pdftex.def)             Requested size: 361.35138pt x 240.7508pt.
- [19 <./figures/probe/flowPredictorCombined.png>] [20 <./figures/probe/highFreqPredictor.png> <./figures/probe/city-res-road.png>] <figures/probe-gk/system_overview.pdf, id=849, 706.76712pt x 548.73396pt>
+ [18 <./figures/probe/flowPredictorCombined.png>] [19 <./figures/probe/highFreqPredictor.png> <./figures/probe/city-res-road.png>] <figures/probe-gk/system_overview.pdf, id=838, 706.76712pt x 548.73396pt>
 File: figures/probe-gk/system_overview.pdf Graphic file (type pdf)
  <use figures/probe-gk/system_overview.pdf>
 Package pdftex.def Info: figures/probe-gk/system_overview.pdf used on input line 284.
@@ -1226,13 +1221,13 @@ Package pdftex.def Info: figures/probe-gk/system_overview.pdf used on input line
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21 <./figures/probe/husky2.jpg>] [22 <./figures/probe-gk/system_overview.pdf>]
+ [20 <./figures/probe/husky2.jpg>] [21 <./figures/probe-gk/system_overview.pdf>]
 Underfull \vbox (badness 6978) has occurred while \output is active []
 
- [23]
+ [22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [24]
+ [23]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 413.
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
 <to be read again> 
@@ -1322,10 +1317,10 @@ l.484       \State
 <to be read again> 
                    \relax 
 l.485       \State
-                   $\Matrix{\Psi}_* \gets \Matrix{\Psi}(\TargetPredictor)$ \... [25]
+                   $\Matrix{\Psi}_* \gets \Matrix{\Psi}(\TargetPredictor)$ \... [24]
 Underfull \vbox (badness 1577) has occurred while \output is active []
 
- [26]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
+ [25]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.576     \Function
@@ -1404,7 +1399,7 @@ l.608         \EndFor
                      
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [27] [28] <figures/probe-gk/sim_world.pdf, id=1062, 449.68pt x 338.26375pt>
+ [26] [27] <figures/probe-gk/sim_world.pdf, id=1051, 449.68pt x 338.26375pt>
 File: figures/probe-gk/sim_world.pdf Graphic file (type pdf)
  <use figures/probe-gk/sim_world.pdf>
 Package pdftex.def Info: figures/probe-gk/sim_world.pdf used on input line 626.
@@ -1416,24 +1411,24 @@ LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 
 
 LaTeX Warning: Reference `sec:ssvo' on page 1 undefined on input line 633.
 
-<figures/probe-gk/simComparison_sim_rerun.pdf, id=1066, 496.85625pt x 396.48125pt>
+<figures/probe-gk/simComparison_sim_rerun.pdf, id=1055, 496.85625pt x 396.48125pt>
 File: figures/probe-gk/simComparison_sim_rerun.pdf Graphic file (type pdf)
  <use figures/probe-gk/simComparison_sim_rerun.pdf>
 Package pdftex.def Info: figures/probe-gk/simComparison_sim_rerun.pdf used on input line 641.
 (pdftex.def)             Requested size: 338.76563pt x 270.32965pt.
 
 
-LaTeX Warning: Reference `table:armse_errors' on page 29 undefined on input line 651.
+LaTeX Warning: Reference `table:armse_errors' on page 28 undefined on input line 651.
 
 
-LaTeX Warning: Reference `table:armse_errors' on page 29 undefined on input line 651.
+LaTeX Warning: Reference `table:armse_errors' on page 28 undefined on input line 651.
 
-[29 <./figures/probe-gk/sim_world.pdf>] <figures/probe-gk/KittiEnvironments.pdf, id=1085, 906.1415pt x 95.33878pt>
+[28 <./figures/probe-gk/sim_world.pdf>] <figures/probe-gk/KittiEnvironments.pdf, id=1073, 906.1415pt x 95.33878pt>
 File: figures/probe-gk/KittiEnvironments.pdf Graphic file (type pdf)
  <use figures/probe-gk/KittiEnvironments.pdf>
 Package pdftex.def Info: figures/probe-gk/KittiEnvironments.pdf used on input line 659.
 (pdftex.def)             Requested size: 442.65182pt x 46.57382pt.
- <figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf, id=1090, 484.81125pt x 393.47pt>
+ <figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf, id=1078, 484.81125pt x 393.47pt>
 File: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf Graphic file (type pdf)
  <use figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>
 Package pdftex.def Info: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf used on input line 677.
@@ -1445,7 +1440,7 @@ LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 
 
 LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 678.
 
-[30 <./figures/probe-gk/simComparison_sim_rerun.pdf>] [31 <./figures/probe-gk/KittiEnvironments.pdf> <./figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>] <figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf, id=1143, 487.8225pt x 393.47pt>
+[29 <./figures/probe-gk/simComparison_sim_rerun.pdf>] [30 <./figures/probe-gk/KittiEnvironments.pdf> <./figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>] <figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf, id=1132, 487.8225pt x 393.47pt>
 File: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf Graphic file (type pdf)
  <use figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf>
 Package pdftex.def Info: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf used on input line 694.
@@ -1457,7 +1452,7 @@ LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 
 
 LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 695.
 
-<figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf, id=1144, 484.81125pt x 393.47pt>
+<figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf, id=1133, 484.81125pt x 393.47pt>
 File: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf Graphic file (type pdf)
  <use figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>
 Package pdftex.def Info: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf used on input line 702.
@@ -1481,12 +1476,12 @@ LaTeX Warning: Reference `fig:kitti_comparison1' on page 1 undefined on input li
 
 LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 709.
 
-[32 <./figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf>] <figures/probe-gk/experiment_wide_border.pdf, id=1158, 610.61609pt x 421.44742pt>
+[31 <./figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf>] <figures/probe-gk/experiment_wide_border.pdf, id=1147, 610.61609pt x 421.44742pt>
 File: figures/probe-gk/experiment_wide_border.pdf Graphic file (type pdf)
  <use figures/probe-gk/experiment_wide_border.pdf>
 Package pdftex.def Info: figures/probe-gk/experiment_wide_border.pdf used on input line 749.
 (pdftex.def)             Requested size: 338.76563pt x 233.82248pt.
- <figures/probe-gk/xb3_rtk_fig.pdf, id=1159, 490.83376pt x 380.42125pt>
+ <figures/probe-gk/xb3_rtk_fig.pdf, id=1148, 490.83376pt x 380.42125pt>
 File: figures/probe-gk/xb3_rtk_fig.pdf Graphic file (type pdf)
  <use figures/probe-gk/xb3_rtk_fig.pdf>
 Package pdftex.def Info: figures/probe-gk/xb3_rtk_fig.pdf used on input line 757.
@@ -1494,570 +1489,721 @@ Package pdftex.def Info: figures/probe-gk/xb3_rtk_fig.pdf used on input line 757
 
 Underfull \vbox (badness 1735) has occurred while \output is active []
 
- [33 <./figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>] [34 <./figures/probe-gk/experiment_wide_border.pdf> <./figures/probe-gk/xb3_rtk_fig.pdf>]
+ [32 <./figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>] [33 <./figures/probe-gk/experiment_wide_border.pdf> <./figures/probe-gk/xb3_rtk_fig.pdf>]
 
 LaTeX Warning: Reference `fig:experiments_trainingstats' on page 1 undefined on input line 766.
 
 
 LaTeX Warning: Reference `table:loop_closure_errors' on page 1 undefined on input line 768.
 
-<figures/probe-gk/trainingStats.pdf, id=1229, 499.8675pt x 402.50375pt>
+<figures/probe-gk/trainingStats.pdf, id=1218, 499.8675pt x 402.50375pt>
 File: figures/probe-gk/trainingStats.pdf Graphic file (type pdf)
  <use figures/probe-gk/trainingStats.pdf>
 Package pdftex.def Info: figures/probe-gk/trainingStats.pdf used on input line 789.
 (pdftex.def)             Requested size: 338.76563pt x 272.78995pt.
-) [35] [36 <./figures/probe-gk/trainingStats.pdf>]
+) [34] [35 <./figures/probe-gk/trainingStats.pdf>]
 \openout2 = `sections/sun-bcnn.aux'.
 
  (./sections/sun-bcnn.tex
 Chapter 4.
 
-Package natbib Warning: Citation `Zhang2015-gf' on page 37 undefined on input line 4.
+Package natbib Warning: Citation `Zhang2015-gf' on page 36 undefined on input line 4.
 
-<figures/sun-bcnn/system_overview.pdf, id=1255, 686.07072pt x 390.18723pt>
+<figures/sun-bcnn/system_overview.pdf, id=1244, 686.07072pt x 390.18723pt>
 File: figures/sun-bcnn/system_overview.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/system_overview.pdf>
 Package pdftex.def Info: figures/sun-bcnn/system_overview.pdf used on input line 12.
-(pdftex.def)             Requested size: 451.68752pt x 256.8873pt.
- <figures/sun-bcnn/all_datasets_gps.pdf, id=1256, 1027.7067pt x 375.26689pt>
+(pdftex.def)             Requested size: 338.76563pt x 192.66399pt.
+ <figures/sun-bcnn/all_datasets_gps.pdf, id=1245, 1027.7067pt x 375.26689pt>
 File: figures/sun-bcnn/all_datasets_gps.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/all_datasets_gps.pdf>
 Package pdftex.def Info: figures/sun-bcnn/all_datasets_gps.pdf used on input line 19.
 (pdftex.def)             Requested size: 442.65182pt x 161.63646pt.
 
 
-Package natbib Warning: Citation `Olson2003-ax' on page 37 undefined on input line 25.
+Package natbib Warning: Citation `Olson2003-ax' on page 36 undefined on input line 25.
 
 
-Package natbib Warning: Citation `Furgale2011-zu' on page 37 undefined on input line 26.
+Package natbib Warning: Citation `Furgale2011-zu' on page 36 undefined on input line 26.
 
 
-Package natbib Warning: Citation `Lambert2012-um' on page 37 undefined on input line 26.
+Package natbib Warning: Citation `Lambert2012-um' on page 36 undefined on input line 26.
 
 
-Package natbib Warning: Citation `Eisenman2002-cg' on page 37 undefined on input line 26.
+Package natbib Warning: Citation `Eisenman2002-cg' on page 36 undefined on input line 26.
 
 
-Package natbib Warning: Citation `Maimone2007-tc' on page 37 undefined on input line 26.
+Package natbib Warning: Citation `Maimone2007-tc' on page 36 undefined on input line 26.
 
 
-Package natbib Warning: Citation `Lambert2012-um' on page 37 undefined on input line 27.
+Package natbib Warning: Citation `Lambert2012-um' on page 36 undefined on input line 27.
 
-[37
-
-
-
-] [38 <./figures/sun-bcnn/system_overview.pdf> <./figures/sun-bcnn/all_datasets_gps.pdf>]
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 39 undefined on input line 39.
+[36
 
 
-Package natbib Warning: Citation `Furgale2012-kk' on page 39 undefined on input line 39.
+
+] [37 <./figures/sun-bcnn/system_overview.pdf> <./figures/sun-bcnn/all_datasets_gps.pdf>]
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 38 undefined on input line 39.
 
 
-Package natbib Warning: Citation `Lambert2012-um' on page 39 undefined on input line 45.
+Package natbib Warning: Citation `Furgale2012-kk' on page 38 undefined on input line 39.
 
 
-Package natbib Warning: Citation `Geiger2012-fq' on page 39 undefined on input line 47.
+Package natbib Warning: Citation `Lambert2012-um' on page 38 undefined on input line 45.
 
 
-Package natbib Warning: Citation `Furgale2012-kk' on page 39 undefined on input line 47.
+Package natbib Warning: Citation `Geiger2012-fq' on page 38 undefined on input line 47.
 
 
-Package natbib Warning: Citation `Maddern2016-ng' on page 39 undefined on input line 48.
+Package natbib Warning: Citation `Furgale2012-kk' on page 38 undefined on input line 47.
 
-[39] <figures/sun-bcnn/kitti_activations_horiz.pdf, id=1423, 885.53093pt x 184.6922pt>
+
+Package natbib Warning: Citation `Maddern2016-ng' on page 38 undefined on input line 48.
+
+[38]
+
+Package natbib Warning: Citation `Alcantarilla2016-fs' on page 39 undefined on input line 55.
+
+
+Package natbib Warning: Citation `Engel2015-il' on page 39 undefined on input line 55.
+
+
+Package natbib Warning: Citation `Olson2003-ax' on page 39 undefined on input line 57.
+
+
+Package natbib Warning: Citation `Furgale2011-zu' on page 39 undefined on input line 60.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 39 undefined on input line 60.
+
+
+Package natbib Warning: Citation `Maimone2007-tc' on page 39 undefined on input line 60.
+
+
+Package natbib Warning: Citation `Eisenman2002-cg' on page 39 undefined on input line 60.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 39 undefined on input line 61.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 39 undefined on input line 62.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 39 undefined on input line 62.
+
+
+Package natbib Warning: Citation `kendall2015posenet' on page 39 undefined on input line 65.
+
+[39]
+
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 40 undefined on input line 68.
+
+
+Package natbib Warning: Citation `Gal2016-ny' on page 40 undefined on input line 68.
+
+
+Package natbib Warning: Citation `kendall2015posenet' on page 40 undefined on input line 69.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 71.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 40 undefined on input line 71.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 40 undefined on input line 71.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 40 undefined on input line 72.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 72.
+
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 72.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 74.
+
+
+Package natbib Warning: Citation `Gal2016-ny' on page 40 undefined on input line 75.
+
+<figures/sun-bcnn/kitti_activations_horiz.pdf, id=1453, 885.53093pt x 184.6922pt>
 File: figures/sun-bcnn/kitti_activations_horiz.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti_activations_horiz.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti_activations_horiz.pdf used on input line 57.
+Package pdftex.def Info: figures/sun-bcnn/kitti_activations_horiz.pdf used on input line 83.
 (pdftex.def)             Requested size: 442.65182pt x 92.32332pt.
 
 
-Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 58.
+Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 84.
 
 
-Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 58.
+Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 84.
 
 
-Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 64.
+Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 90.
 
 
-Package natbib Warning: Citation `Lalonde2011-jw' on page 40 undefined on input line 64.
+Package natbib Warning: Citation `Lalonde2011-jw' on page 40 undefined on input line 90.
 
 
-Package natbib Warning: Citation `Szegedy2015-uw' on page 40 undefined on input line 66.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [40]
+
+Package natbib Warning: Citation `Szegedy2015-uw' on page 41 undefined on input line 92.
 
 
-Package natbib Warning: Citation `kendall2015posenet' on page 40 undefined on input line 66.
+Package natbib Warning: Citation `kendall2015posenet' on page 41 undefined on input line 92.
 
 
-Package natbib Warning: Citation `zhou2014MITPlaces' on page 40 undefined on input line 67.
+Package natbib Warning: Citation `zhou2014MITPlaces' on page 41 undefined on input line 93.
 
 
-Package natbib Warning: Citation `deng2009imagenet' on page 40 undefined on input line 67.
+Package natbib Warning: Citation `deng2009imagenet' on page 41 undefined on input line 93.
 
 
-Underfull \vbox (badness 6978) has occurred while \output is active []
-
- [40 <./figures/sun-bcnn/kitti_activations_horiz.pdf>]
-
-Package natbib Warning: Citation `Gal2016CNN' on page 41 undefined on input line 85.
-
-
-Package natbib Warning: Citation `Gal2016-ny' on page 41 undefined on input line 85.
-
-
-Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 41 undefined on input line 85.
-
-
-Package natbib Warning: Citation `Gal2016CNN' on page 41 undefined on input line 87.
+Underfull \vbox (badness 1527) has occurred while \output is active []
 
 
 Overfull \hbox (36.23949pt too wide) has occurred while \output is active
-\OT1/cmr/m/sc/12 4.2.  Indirect Sun Detection using a Bayesian Convolutional Neural Network \OT1/cmr/m/n/12 41
+\OT1/cmr/m/sc/12 4.3.  Indirect Sun Detection using a Bayesian Convolutional Neural Network \OT1/cmr/m/n/12 41
  []
 
-[41]
+[41 <./figures/sun-bcnn/kitti_activations_horiz.pdf>]
+
+Package natbib Warning: Citation `Gal2016CNN' on page 42 undefined on input line 111.
+
+
+Package natbib Warning: Citation `Gal2016-ny' on page 42 undefined on input line 111.
+
+
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 42 undefined on input line 111.
+
 
 Package natbib Warning: Citation `Gal2016CNN' on page 42 undefined on input line 113.
 
 
-Package natbib Warning: Citation `jia2014caffe' on page 42 undefined on input line 117.
+Underfull \vbox (badness 2922) has occurred while \output is active []
+
+ [42]
+
+Package natbib Warning: Citation `Gal2016CNN' on page 43 undefined on input line 139.
 
 
-Package natbib Warning: Citation `Lalonde2011-jw' on page 42 undefined on input line 120.
-
-[42]
-
-Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 43 undefined on input line 129.
+Package natbib Warning: Citation `jia2014caffe' on page 43 undefined on input line 143.
 
 
-Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 43 undefined on input line 130.
+Package natbib Warning: Citation `Lalonde2011-jw' on page 43 undefined on input line 146.
 
-<figures/sun-bcnn/sims/sims_triangle200_environment.pdf, id=1501, 522.95375pt x 281.05pt>
-File: figures/sun-bcnn/sims/sims_triangle200_environment.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_triangle200_environment.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_triangle200_environment.pdf used on input line 148.
-(pdftex.def)             Requested size: 144.5433pt x 77.68138pt.
- <figures/sun-bcnn/sims/sims_square200_environment.pdf, id=1502, 522.95375pt x 281.05pt>
-File: figures/sun-bcnn/sims/sims_square200_environment.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_square200_environment.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_square200_environment.pdf used on input line 153.
-(pdftex.def)             Requested size: 144.5433pt x 77.68138pt.
- <figures/sun-bcnn/sims/sims_penta200_environment.pdf, id=1503, 522.95375pt x 281.05pt>
-File: figures/sun-bcnn/sims/sims_penta200_environment.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_penta200_environment.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_penta200_environment.pdf used on input line 158.
-(pdftex.def)             Requested size: 144.5433pt x 77.68138pt.
- <figures/sun-bcnn/sims/sims_circle200_traj.pdf, id=1504, 1151.30125pt x 357.335pt>
-File: figures/sun-bcnn/sims/sims_circle200_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_circle200_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_traj.pdf used on input line 167.
-(pdftex.def)             Requested size: 442.65182pt x 137.38628pt.
- <figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf, id=1505, 436.63126pt x 352.31625pt>
-File: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf used on input line 176.
-(pdftex.def)             Requested size: 144.5433pt x 116.63028pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
-[]\OT1/cmr/m/n/10.95 (a) |Trans-la-tional CRMSE
+Overfull \hbox (36.23949pt too wide) has occurred while \output is active
+\OT1/cmr/m/sc/12 4.3.  Indirect Sun Detection using a Bayesian Convolutional Neural Network \OT1/cmr/m/n/12 43
  []
 
-<figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf, id=1506, 436.63126pt x 352.31625pt>
+[43]
+
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 44 undefined on input line 155.
+
+
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 44 undefined on input line 156.
+
+<figures/sun-bcnn/sims/sims_triangle200_environment.pdf, id=1536, 522.95375pt x 281.05pt>
+File: figures/sun-bcnn/sims/sims_triangle200_environment.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/sims/sims_triangle200_environment.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_triangle200_environment.pdf used on input line 172.
+(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
+ <figures/sun-bcnn/sims/sims_square200_environment.pdf, id=1537, 522.95375pt x 281.05pt>
+File: figures/sun-bcnn/sims/sims_square200_environment.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/sims/sims_square200_environment.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_square200_environment.pdf used on input line 177.
+(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
+ <figures/sun-bcnn/sims/sims_penta200_environment.pdf, id=1538, 522.95375pt x 281.05pt>
+File: figures/sun-bcnn/sims/sims_penta200_environment.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/sims/sims_penta200_environment.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_penta200_environment.pdf used on input line 182.
+(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
+ <figures/sun-bcnn/sims/sims_circle200_traj.pdf, id=1539, 1151.30125pt x 357.335pt>
+File: figures/sun-bcnn/sims/sims_circle200_traj.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/sims/sims_circle200_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_traj.pdf used on input line 191.
+(pdftex.def)             Requested size: 442.65182pt x 137.38628pt.
+ <figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf, id=1540, 436.63126pt x 352.31625pt>
+File: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf used on input line 200.
+(pdftex.def)             Requested size: 189.70792pt x 153.07355pt.
+ <figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf, id=1541, 436.63126pt x 352.31625pt>
 File: figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf used on input line 183.
-(pdftex.def)             Requested size: 144.5433pt x 116.63028pt.
- <figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf, id=1507, 443.6575pt x 338.26375pt>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf used on input line 207.
+(pdftex.def)             Requested size: 189.70792pt x 153.07355pt.
+ <figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf, id=1542, 443.6575pt x 338.26375pt>
 File: figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf used on input line 189.
-(pdftex.def)             Requested size: 144.5433pt x 110.2028pt.
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf used on input line 213.
+(pdftex.def)             Requested size: 189.70792pt x 144.64021pt.
+ [44] [45 <./figures/sun-bcnn/sims/sims_triangle200_environment.pdf> <./figures/sun-bcnn/sims/sims_square200_environment.pdf> <./figures/sun-bcnn/sims/sims_penta200_environment.pdf> <./figures/sun-bcnn/sims/sims_circle200_traj.pdf>] [46 <./figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf>]
+
+Package natbib Warning: Citation `fisher1953dispersion' on page 47 undefined on input line 239.
+
+
+LaTeX Warning: Reference `tab:sim_armse' on page 1 undefined on input line 247.
+
+[47] <figures/sun-bcnn/kitti/kitti_cdf.pdf, id=1676, 765.86125pt x 242.9075pt>
+File: figures/sun-bcnn/kitti/kitti_cdf.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/kitti/kitti_cdf.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_cdf.pdf used on input line 261.
+(pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
+ <figures/sun-bcnn/kitti/kitti_hist_azzen.pdf, id=1677, 779.91376pt x 236.885pt>
+File: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf used on input line 264.
+(pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
+ <figures/sun-bcnn/kitti/kitti_error_over_time.pdf, id=1678, 539.01375pt x 467.7475pt>
+File: figures/sun-bcnn/kitti/kitti_error_over_time.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/kitti/kitti_error_over_time.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_error_over_time.pdf used on input line 272.
+(pdftex.def)             Requested size: 338.76563pt x 293.97588pt.
+ <figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf, id=1679, 1120.185pt x 247.92625pt>
+File: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf used on input line 308.
+(pdftex.def)             Requested size: 442.65182pt x 97.96951pt.
+ <figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf, id=1682, 425.59pt x 340.27126pt>
+File: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf used on input line 317.
+(pdftex.def)             Requested size: 189.70792pt x 151.67723pt.
+ <figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf, id=1683, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf used on input line 323.
+(pdftex.def)             Requested size: 189.70792pt x 153.42297pt.
+ <figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf, id=1684, 439.6425pt x 338.26375pt>
+File: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf used on input line 328.
+(pdftex.def)             Requested size: 189.70792pt x 145.96155pt.
+
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 48 undefined on input line 336.
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43] [44 <./figures/sun-bcnn/sims/sims_triangle200_environment.pdf> <./figures/sun-bcnn/sims/sims_square200_environment.pdf> <./figures/sun-bcnn/sims/sims_penta200_environment.pdf> <./figures/sun-bcnn/sims/sims_circle200_traj.pdf>] [45 <./figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf>]
-
-Package natbib Warning: Citation `fisher1953dispersion' on page 46 undefined on input line 215.
-
-[46]
-
-LaTeX Warning: Reference `tab:sim_armse' on page 1 undefined on input line 223.
-
-<figures/sun-bcnn/kitti/kitti_cdf.pdf, id=1640, 765.86125pt x 242.9075pt>
-File: figures/sun-bcnn/kitti/kitti_cdf.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_cdf.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_cdf.pdf used on input line 237.
-(pdftex.def)             Requested size: 216.80807pt x 68.76233pt.
- <figures/sun-bcnn/kitti/kitti_hist_azzen.pdf, id=1641, 779.91376pt x 236.885pt>
-File: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf used on input line 241.
-(pdftex.def)             Requested size: 216.80807pt x 65.85022pt.
- <figures/sun-bcnn/kitti/kitti_error_over_time.pdf, id=1642, 539.01375pt x 467.7475pt>
-File: figures/sun-bcnn/kitti/kitti_error_over_time.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_error_over_time.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_error_over_time.pdf used on input line 251.
-(pdftex.def)             Requested size: 216.80807pt x 188.14485pt.
-
-Overfull \hbox (150.78821pt too wide) in paragraph at lines 262--281
- [] 
- []
-
-<figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf, id=1643, 1120.185pt x 247.92625pt>
-File: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf used on input line 285.
-(pdftex.def)             Requested size: 442.65182pt x 97.96951pt.
- <figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf, id=1646, 425.59pt x 340.27126pt>
-File: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf used on input line 294.
-(pdftex.def)             Requested size: 144.5433pt x 115.56607pt.
- <figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf, id=1647, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf used on input line 300.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 301--301
-[]\OT1/cmr/m/n/10.95 (b) |Trans-la-tional CRMSE
- []
-
-<figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf, id=1648, 439.6425pt x 338.26375pt>
-File: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf used on input line 305.
-(pdftex.def)             Requested size: 144.5433pt x 111.20929pt.
-
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 47 undefined on input line 313.
-
-[47] <figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf, id=1661, 833.49754pt x 386.21689pt>
+ [48 <./figures/sun-bcnn/kitti/kitti_cdf.pdf> <./figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>] [49 <./figures/sun-bcnn/kitti/kitti_error_over_time.pdf>] [50 <./figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>] <figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf, id=1751, 833.49754pt x 386.21689pt>
 File: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf used on input line 321.
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf used on input line 344.
 (pdftex.def)             Requested size: 370.38707pt x 171.62729pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figures/sun-bcnn/kitti/kitti_02_traj.pdf, id=1662, 430.60875pt x 339.2675pt>
+ <figures/sun-bcnn/kitti/kitti_02_traj.pdf, id=1752, 430.60875pt x 339.2675pt>
 File: figures/sun-bcnn/kitti/kitti_02_traj.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_02_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_traj.pdf used on input line 329.
-(pdftex.def)             Requested size: 144.5433pt x 113.88438pt.
- <figures/sun-bcnn/kitti/kitti_05_traj.pdf, id=1663, 425.59pt x 342.27875pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_traj.pdf used on input line 352.
+(pdftex.def)             Requested size: 135.50763pt x 106.76628pt.
+ <figures/sun-bcnn/kitti/kitti_05_traj.pdf, id=1753, 425.59pt x 342.27875pt>
 File: figures/sun-bcnn/kitti/kitti_05_traj.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_05_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj.pdf used on input line 334.
-(pdftex.def)             Requested size: 144.5433pt x 116.24788pt.
- <figures/sun-bcnn/kitti/kitti_08_traj.pdf, id=1664, 439.6425pt x 336.25626pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj.pdf used on input line 357.
+(pdftex.def)             Requested size: 135.50763pt x 108.98303pt.
+
+Underfull \hbox (badness 1596) in paragraph at lines 358--358
+[]\OT1/cmr/m/n/10.95 (b) |\OT1/cmtt/m/n/10.95 05\OT1/cmr/m/n/10.95 : VO and ground
+ []
+
+<figures/sun-bcnn/kitti/kitti_08_traj.pdf, id=1754, 439.6425pt x 336.25626pt>
 File: figures/sun-bcnn/kitti/kitti_08_traj.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_08_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_traj.pdf used on input line 339.
-(pdftex.def)             Requested size: 144.5433pt x 110.5493pt.
- <figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf, id=1665, 430.60875pt x 352.31625pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_traj.pdf used on input line 362.
+(pdftex.def)             Requested size: 135.50763pt x 103.63805pt.
+ <figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf, id=1755, 430.60875pt x 352.31625pt>
 File: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf used on input line 344.
-(pdftex.def)             Requested size: 144.5433pt x 118.26456pt.
- <figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf, id=1666, 435.6275pt x 352.31625pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf used on input line 367.
+(pdftex.def)             Requested size: 135.50763pt x 110.87268pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--368
+[]\OT1/cmr/m/n/10.95 (d) |\OT1/cmtt/m/n/10.95 02\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf, id=1756, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf used on input line 349.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
- <figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf, id=1667, 435.6275pt x 352.31625pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf used on input line 372.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--373
+[]\OT1/cmr/m/n/10.95 (e) |\OT1/cmtt/m/n/10.95 05\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf, id=1757, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf used on input line 354.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
- <figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf, id=1668, 439.6425pt x 338.26375pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf used on input line 377.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+[]\OT1/cmr/m/n/10.95 (f) |\OT1/cmtt/m/n/10.95 08\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf, id=1758, 439.6425pt x 338.26375pt>
 File: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf used on input line 359.
-(pdftex.def)             Requested size: 144.5433pt x 111.20929pt.
- <figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf, id=1669, 439.6425pt x 338.26375pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf used on input line 382.
+(pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
+ <figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf, id=1759, 439.6425pt x 338.26375pt>
 File: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf used on input line 364.
-(pdftex.def)             Requested size: 144.5433pt x 111.20929pt.
- <figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf, id=1670, 444.66125pt x 338.26375pt>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf used on input line 387.
+(pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
+ <figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf, id=1760, 444.66125pt x 338.26375pt>
 File: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf used on input line 369.
-(pdftex.def)             Requested size: 144.5433pt x 109.95505pt.
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf used on input line 392.
+(pdftex.def)             Requested size: 135.50763pt x 103.07996pt.
 
 
-Package natbib Warning: Citation `Lalonde2011-jw' on page 48 undefined on input line 373.
+Package natbib Warning: Citation `Lalonde2011-jw' on page 51 undefined on input line 396.
 
 
-Package natbib Warning: Citation `Clement2016-ir' on page 48 undefined on input line 373.
+Package natbib Warning: Citation `Clement2016-ir' on page 51 undefined on input line 396.
 
 
-Package natbib Warning: Citation `Lalonde2011-jw' on page 48 undefined on input line 373.
+Package natbib Warning: Citation `Lalonde2011-jw' on page 51 undefined on input line 396.
 
 
-Package natbib Warning: Citation `Clement2016-ir' on page 48 undefined on input line 373.
-
-
-LaTeX Warning: Float too large for page by 335.6951pt on input line 375.
+Package natbib Warning: Citation `Clement2016-ir' on page 51 undefined on input line 396.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 377.
+               Default added (so using `tbp') on input line 400.
 
 
-Overfull \hbox (65.13387pt too wide) in paragraph at lines 382--421
- [] 
- []
-
-
-LaTeX Warning: Float too large for page by 80.67644pt on input line 421.
-
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 426.
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 451.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [48 <./figures/sun-bcnn/kitti/kitti_cdf.pdf> <./figures/sun-bcnn/kitti/kitti_hist_azzen.pdf> <./figures/sun-bcnn/kitti/kitti_error_over_time.pdf>] [49 <./figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf>] [50 <./figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>] [51] <figures/sun-bcnn/devon/devon_collage.pdf, id=1750, 1440.76855pt x 306.44054pt>
+ [51 <./figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>] [52 <./figures/sun-bcnn/kitti/kitti_02_traj.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj.pdf> <./figures/sun-bcnn/kitti/kitti_08_traj.pdf> <./figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>] [53]
+
+LaTeX Warning: Reference `fig:kitti_cnn_testerrors' on page 1 undefined on input line 455.
+
+
+LaTeX Warning: Reference `fig:kitti_error_over_time' on page 1 undefined on input line 455.
+
+<figures/sun-bcnn/devon/devon_collage.pdf, id=1883, 1440.76855pt x 306.44054pt>
 File: figures/sun-bcnn/devon/devon_collage.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/devon/devon_collage.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_collage.pdf used on input line 438.
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_collage.pdf used on input line 463.
 (pdftex.def)             Requested size: 447.17311pt x 95.1078pt.
- [52 <./figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>] [53 <./figures/sun-bcnn/kitti/kitti_02_traj.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj.pdf> <./figures/sun-bcnn/kitti/kitti_08_traj.pdf> <./figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>]
+ [54 <./figures/sun-bcnn/devon/devon_collage.pdf>]
 
-Package natbib Warning: Citation `Lalonde2011-jw' on page 54 undefined on input line 450.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 54 undefined on input line 450.
-
-[54 <./figures/sun-bcnn/devon/devon_collage.pdf>]
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 55 undefined on input line 471.
+Package natbib Warning: Citation `Lalonde2011-jw' on page 55 undefined on input line 475.
 
 
-Package natbib Warning: Citation `Clement2016-ir' on page 55 undefined on input line 471.
+Package natbib Warning: Citation `Clement2016-ir' on page 55 undefined on input line 475.
 
 
-Package natbib Warning: Citation `Clement2016-ir' on page 55 undefined on input line 474.
+LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 485.
 
-[55] <figures/sun-bcnn/devon/devon_cdf.pdf, id=1920, 765.86125pt x 242.9075pt>
+
+LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 487.
+
+[55]
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 56 undefined on input line 496.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 56 undefined on input line 496.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 56 undefined on input line 499.
+
+
+LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 501.
+
+<figures/sun-bcnn/devon/devon_cdf.pdf, id=1943, 765.86125pt x 242.9075pt>
 File: figures/sun-bcnn/devon/devon_cdf.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/devon/devon_cdf.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_cdf.pdf used on input line 487.
-(pdftex.def)             Requested size: 216.80807pt x 68.76233pt.
- <figures/sun-bcnn/devon/devon_hist_azzen.pdf, id=1921, 779.91376pt x 236.885pt>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_cdf.pdf used on input line 512.
+(pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
+ <figures/sun-bcnn/devon/devon_hist_azzen.pdf, id=1944, 779.91376pt x 236.885pt>
 File: figures/sun-bcnn/devon/devon_hist_azzen.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/devon/devon_hist_azzen.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_hist_azzen.pdf used on input line 491.
-(pdftex.def)             Requested size: 216.80807pt x 65.85022pt.
- <figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf, id=1922, 539.01375pt x 467.7475pt>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_hist_azzen.pdf used on input line 515.
+(pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
+ <figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf, id=1945, 539.01375pt x 467.7475pt>
 File: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf used on input line 501.
-(pdftex.def)             Requested size: 216.80807pt x 188.14485pt.
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf used on input line 525.
+(pdftex.def)             Requested size: 338.76563pt x 293.97588pt.
 
 
-Package natbib Warning: Citation `Furgale2012-kk' on page 56 undefined on input line 508.
+Package natbib Warning: Citation `Furgale2012-kk' on page 56 undefined on input line 532.
 
 
-Package natbib Warning: Citation `Lambert2012-um' on page 56 undefined on input line 511.
+Package natbib Warning: Citation `Lambert2012-um' on page 56 undefined on input line 535.
 
-[56 <./figures/sun-bcnn/devon/devon_cdf.pdf> <./figures/sun-bcnn/devon/devon_hist_azzen.pdf>]
-Overfull \hbox (6.58412pt too wide) in paragraph at lines 514--517
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [56]
+Overfull \hbox (6.58412pt too wide) in paragraph at lines 538--541
 []\OT1/cmr/m/n/12 The De-von Is-land en-vi-ron-ment con-tains many fea-tures one might ex-pect to be amenable
  []
 
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 522.
-
-
-Overfull \hbox (140.71983pt too wide) in paragraph at lines 527--547
- [] 
- []
-
-<figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf, id=1947, 1120.185pt x 247.92625pt>
-File: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf used on input line 551.
-(pdftex.def)             Requested size: 442.65182pt x 97.96951pt.
-
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 559.
+Underfull \vbox (badness 1348) has occurred while \output is active []
 
 
 Overfull \hbox (75.55902pt too wide) has occurred while \output is active
 \OT1/cmr/m/sc/12 4.6.  Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset \OT1/cmr/m/n/12 57
  []
 
-[57 <./figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>] [58 <./figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>]
+[57 <./figures/sun-bcnn/devon/devon_cdf.pdf> <./figures/sun-bcnn/devon/devon_hist_azzen.pdf>] [58 <./figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>]
 
-Package natbib Warning: Citation `Lalonde2011-jw' on page 59 undefined on input line 577.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 546.
 
-
-Package natbib Warning: Citation `Clement2016-ir' on page 59 undefined on input line 577.
-
-<figures/sun-bcnn/devon/devon_c00_traj.pdf, id=1985, 425.59pt x 343.2825pt>
-File: figures/sun-bcnn/devon/devon_c00_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c00_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_traj.pdf used on input line 583.
-(pdftex.def)             Requested size: 144.5433pt x 116.58878pt.
- <figures/sun-bcnn/devon/devon_c01_traj.pdf, id=1986, 433.62pt x 342.27875pt>
-File: figures/sun-bcnn/devon/devon_c01_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c01_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_traj.pdf used on input line 590.
-(pdftex.def)             Requested size: 144.5433pt x 114.0961pt.
- <figures/sun-bcnn/devon/devon_c05_traj.pdf, id=1987, 425.59pt x 339.2675pt>
-File: figures/sun-bcnn/devon/devon_c05_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c05_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_traj.pdf used on input line 597.
-(pdftex.def)             Requested size: 144.5433pt x 115.22517pt.
- <figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf, id=1988, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf used on input line 603.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
- <figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf, id=1989, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf used on input line 609.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
- <figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf, id=1990, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf used on input line 615.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
- <figures/sun-bcnn/devon/devon_c00_en_rmse.pdf, id=1991, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c00_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf used on input line 621.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
- <figures/sun-bcnn/devon/devon_c01_en_rmse.pdf, id=1992, 421.575pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c01_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf used on input line 627.
-(pdftex.def)             Requested size: 144.5433pt x 120.7966pt.
- <figures/sun-bcnn/devon/devon_c05_en_rmse.pdf, id=1993, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf used on input line 633.
-(pdftex.def)             Requested size: 144.5433pt x 116.89908pt.
+<figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf, id=1985, 1120.185pt x 247.92625pt>
+File: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf used on input line 577.
+(pdftex.def)             Requested size: 451.68752pt x 99.97075pt.
 
 
-LaTeX Warning: Float too large for page by 312.37773pt on input line 639.
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 578.
 
 
-Overfull \hbox (136.7054pt too wide) in paragraph at lines 645--661
- [][] 
- []
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 578.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 585.
+
+
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 586.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (75.55902pt too wide) has occurred while \output is active
 \OT1/cmr/m/sc/12 4.6.  Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset \OT1/cmr/m/n/12 59
  []
 
-[59] [60 <./figures/sun-bcnn/devon/devon_c00_traj.pdf> <./figures/sun-bcnn/devon/devon_c01_traj.pdf> <./figures/sun-bcnn/devon/devon_c05_traj.pdf> <./figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c00_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>] [61]
+[59 <./figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>]
 
-LaTeX Warning: Reference `fig:kitti_cnn_activations' on page 1 undefined on input line 682.
+LaTeX Warning: Reference `fig:devon_cnn_testerrors' on page 1 undefined on input line 588.
 
 
-Package natbib Warning: Citation `Maddern2016-ng' on page 62 undefined on input line 684.
+LaTeX Warning: Reference `fig:devon_test_error_whiskers' on page 1 undefined on input line 588.
 
-<figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf, id=2083, 473.31027pt x 362.441pt>
+
+LaTeX Warning: Reference `fig:devon_error_over_time' on page 1 undefined on input line 588.
+
+
+LaTeX Warning: Reference `fig:kitti_cnn_testerrors' on page 1 undefined on input line 589.
+
+
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 593.
+
+
+LaTeX Warning: Reference `fig:devon_cnn_testerrors' on page 1 undefined on input line 593.
+
+
+LaTeX Warning: Reference `fig:devon_test_error_whiskers' on page 1 undefined on input line 593.
+
+
+LaTeX Warning: Reference `fig:devon_error_over_time' on page 1 undefined on input line 594.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 60 undefined on input line 603.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 60 undefined on input line 603.
+
+<figures/sun-bcnn/devon/devon_c00_traj.pdf, id=2003, 425.59pt x 343.2825pt>
+File: figures/sun-bcnn/devon/devon_c00_traj.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c00_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_traj.pdf used on input line 609.
+(pdftex.def)             Requested size: 135.50763pt x 109.30264pt.
+ <figures/sun-bcnn/devon/devon_c01_traj.pdf, id=2004, 433.62pt x 342.27875pt>
+File: figures/sun-bcnn/devon/devon_c01_traj.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c01_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_traj.pdf used on input line 616.
+(pdftex.def)             Requested size: 135.50763pt x 106.96184pt.
+ <figures/sun-bcnn/devon/devon_c05_traj.pdf, id=2005, 425.59pt x 339.2675pt>
+File: figures/sun-bcnn/devon/devon_c05_traj.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c05_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_traj.pdf used on input line 623.
+(pdftex.def)             Requested size: 135.50763pt x 108.02425pt.
+ <figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf, id=2006, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf used on input line 629.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 630--630
+[]\OT1/cmr/m/n/10.95 (d) |\OT1/cmtt/m/n/10.95 00\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf, id=2007, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf used on input line 635.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 636--636
+[]\OT1/cmr/m/n/10.95 (e) |\OT1/cmtt/m/n/10.95 01\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf, id=2008, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf used on input line 641.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 642--642
+[]\OT1/cmr/m/n/10.95 (f) |\OT1/cmtt/m/n/10.95 01\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/devon/devon_c00_en_rmse.pdf, id=2009, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c00_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf used on input line 647.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 648--648
+[]\OT1/cmr/m/n/10.95 (g) |\OT1/cmtt/m/n/10.95 00\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/devon/devon_c01_en_rmse.pdf, id=2010, 421.575pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c01_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf used on input line 653.
+(pdftex.def)             Requested size: 135.50763pt x 113.24345pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 654--654
+[]\OT1/cmr/m/n/10.95 (h) |\OT1/cmtt/m/n/10.95 01\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+<figures/sun-bcnn/devon/devon_c05_en_rmse.pdf, id=2011, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf Graphic file (type pdf)
+ <use figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf used on input line 659.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 660--660
+[]\OT1/cmr/m/n/10.95 (i) |\OT1/cmtt/m/n/10.95 05\OT1/cmr/m/n/10.95 : Trans-la-tional
+ []
+
+
+LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 663.
+
+
+LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 663.
+
+[60]
+
+LaTeX Warning: Reference `fig:devon_vo' on page 1 undefined on input line 691.
+
+
+LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 694.
+
+
+LaTeX Warning: Reference `fig:kitti_cnn_activations' on page 1 undefined on input line 710.
+
+
+Package natbib Warning: Citation `Maddern2016-ng' on page 61 undefined on input line 712.
+
+[61] [62 <./figures/sun-bcnn/devon/devon_c00_traj.pdf> <./figures/sun-bcnn/devon/devon_c01_traj.pdf> <./figures/sun-bcnn/devon/devon_c05_traj.pdf> <./figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c00_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>] <figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf, id=2096, 473.31027pt x 362.441pt>
 File: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>
-Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf used on input line 688.
-(pdftex.def)             Requested size: 216.80807pt x 166.0225pt.
- <figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf, id=2085, 437.635pt x 417.56pt>
+Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf used on input line 716.
+(pdftex.def)             Requested size: 338.76563pt x 259.42538pt.
+ [63 <./figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>] <figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf, id=2138, 437.635pt x 417.56pt>
 File: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>
-Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf used on input line 702.
-(pdftex.def)             Requested size: 216.80807pt x 206.86166pt.
- [62 <./figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>]
+Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf used on input line 730.
+(pdftex.def)             Requested size: 338.76563pt x 323.22972pt.
 
-Package natbib Warning: Citation `mcmanus2014' on page 63 undefined on input line 720.
 
-[63 <./figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>] <figures/sun-bcnn/boxwhiskers_transfer_comp.pdf, id=2142, 437.635pt x 417.56pt>
+LaTeX Warning: Reference `tab:testBCNN_oxford_weather' on page 1 undefined on input line 735.
+
+[64 <./figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>]
+
+Package natbib Warning: Citation `mcmanus2014' on page 65 undefined on input line 748.
+
+
+LaTeX Warning: Reference `fig:experiment-transfer-boxwhiskers' on page 1 undefined on input line 761.
+
+
+LaTeX Warning: Reference `tab:testBCNN_transfer_experiment' on page 1 undefined on input line 761.
+
+[65] <figures/sun-bcnn/boxwhiskers_transfer_comp.pdf, id=2161, 437.635pt x 417.56pt>
 File: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf Graphic file (type pdf)
  <use figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>
-Package pdftex.def Info: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf used on input line 743.
-(pdftex.def)             Requested size: 216.80807pt x 206.86166pt.
+Package pdftex.def Info: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf used on input line 771.
+(pdftex.def)             Requested size: 338.76563pt x 323.22972pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 749.
-
-
-Overfull \hbox (105.34398pt too wide) in paragraph at lines 754--771
- [] 
- []
+               Default added (so using `tbp') on input line 777.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 773.
+               Default added (so using `tbp') on input line 804.
+
+[66 <./figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>] [67]
+
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 838.
 
 
-Overfull \hbox (115.40536pt too wide) in paragraph at lines 777--790
- [][] 
- []
-
-[64] [65 <./figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>]
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 806.
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 839.
 
 
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 807.
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 854.
 
-[66]
+[68]
 
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 822.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 835.
-
-
-Overfull \hbox (91.05087pt too wide) in paragraph at lines 839--849
- [][] 
- []
+LaTeX Warning: Reference `tab:cov_estimation_comp' on page 1 undefined on input line 864.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 851.
+               Default added (so using `tbp') on input line 867.
 
-) [67] [68]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 885.
+
+) [69] [70]
 \openout2 = `sections/dpc.aux'.
 
  (./sections/dpc.tex
 Chapter 5.
-<figures/dpc/dpc_high_level.pdf, id=2215, 578.48874pt x 554.09181pt>
+<figures/dpc/dpc_high_level.pdf, id=2228, 578.48874pt x 554.09181pt>
 File: figures/dpc/dpc_high_level.pdf Graphic file (type pdf)
  <use figures/dpc/dpc_high_level.pdf>
 Package pdftex.def Info: figures/dpc/dpc_high_level.pdf used on input line 11.
-(pdftex.def)             Requested size: 216.80807pt x 207.66554pt.
+(pdftex.def)             Requested size: 338.76563pt x 324.48482pt.
 
 Underfull \vbox (badness 2503) has occurred while \output is active []
 
- [69
+ [71
 
 
 
-] [70 <./figures/dpc/dpc_high_level.pdf>]
-Underfull \vbox (badness 1454) has occurred while \output is active []
-
- [71] <figures/dpc/siamese_dpc_net.pdf, id=2367, 569.62813pt x 579.26881pt>
+] [72 <./figures/dpc/dpc_high_level.pdf>] [73] <figures/dpc/siamese_dpc_net.pdf, id=2375, 569.62813pt x 579.26881pt>
 File: figures/dpc/siamese_dpc_net.pdf Graphic file (type pdf)
  <use figures/dpc/siamese_dpc_net.pdf>
 Package pdftex.def Info: figures/dpc/siamese_dpc_net.pdf used on input line 48.
-(pdftex.def)             Requested size: 216.80807pt x 220.47798pt.
- [72 <./figures/dpc/siamese_dpc_net.pdf>]
+(pdftex.def)             Requested size: 338.76563pt x 344.49686pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [74] [75 <./figures/dpc/siamese_dpc_net.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 67.
@@ -2066,7 +2212,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 67.
 
-[73]
+[76]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 87.
@@ -2083,7 +2229,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 103.
 
-[74] [75]
+[77] [78]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 172.
@@ -2097,66 +2243,72 @@ Overfull \hbox (1.67953pt too wide) in paragraph at lines 173--174
 \OT1/cmr/m/n/12 Our frame-work can be eas-ily mod-i-fied to learn $[](3)$ cor-rec-tions only. We can parametrize
  []
 
-[76] <figures/dpc/pose_relaxation.pdf, id=2547, 257.3075pt x 116.0335pt>
+[79] <figures/dpc/pose_relaxation.pdf, id=2563, 257.3075pt x 116.0335pt>
 File: figures/dpc/pose_relaxation.pdf Graphic file (type pdf)
  <use figures/dpc/pose_relaxation.pdf>
 Package pdftex.def Info: figures/dpc/pose_relaxation.pdf used on input line 215.
 (pdftex.def)             Requested size: 112.92188pt x 50.92209pt.
- [77 <./figures/dpc/pose_relaxation.pdf>] [78] <figures/dpc/distorted_images_horiz.pdf, id=2658, 1223.70775pt x 125.35814pt>
+ [80 <./figures/dpc/pose_relaxation.pdf>] [81] <figures/dpc/distorted_images_horiz.pdf, id=2670, 1223.70775pt x 125.35814pt>
 File: figures/dpc/distorted_images_horiz.pdf Graphic file (type pdf)
  <use figures/dpc/distorted_images_horiz.pdf>
 Package pdftex.def Info: figures/dpc/distorted_images_horiz.pdf used on input line 279.
 (pdftex.def)             Requested size: 433.62305pt x 44.42114pt.
- [79 <./figures/dpc/distorted_images_horiz.pdf>]
 
-Package natbib Warning: Citation `Clement2018-cat' on page 80 undefined on input line 297.
+Underfull \vbox (badness 7291) has occurred while \output is active []
 
-<figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf, id=2706, 578.16pt x 216.81pt>
+ [82]
+
+Package natbib Warning: Citation `Clement2018-cat' on page 83 undefined on input line 297.
+
+[83 <./figures/dpc/distorted_images_horiz.pdf>] <figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf, id=2728, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf used on input line 304.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/sparse-with-dense/combined/00_segs.pdf, id=2707, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
+ <figures/dpc/sparse-with-dense/combined/00_segs.pdf, id=2729, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/00_segs.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/combined/00_segs.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/00_segs.pdf used on input line 310.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf, id=2708, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
+ <figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf, id=2730, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf used on input line 316.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/sparse-with-dense/combined/02_segs.pdf, id=2709, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
+ <figures/dpc/sparse-with-dense/combined/02_segs.pdf, id=2731, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/02_segs.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/combined/02_segs.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/02_segs.pdf used on input line 322.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf, id=2710, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
+ <figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf, id=2732, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf used on input line 328.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/sparse-with-dense/combined/05_segs.pdf, id=2711, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
+ <figures/dpc/sparse-with-dense/combined/05_segs.pdf, id=2733, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/05_segs.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/combined/05_segs.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/05_segs.pdf used on input line 334.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/sparse-with-dense/pose/00_topdown.pdf, id=2712, 289.08pt x 216.81pt>
+(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
+ <figures/dpc/sparse-with-dense/pose/00_topdown.pdf, id=2734, 289.08pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/pose/00_topdown.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/pose/00_topdown.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/00_topdown.pdf used on input line 346.
-(pdftex.def)             Requested size: 144.5433pt x 108.40472pt.
- <figures/dpc/sparse-with-dense/pose/02_topdown.pdf, id=2713, 289.08pt x 216.81pt>
+(pdftex.def)             Requested size: 189.70792pt x 142.2812pt.
+ <figures/dpc/sparse-with-dense/pose/02_topdown.pdf, id=2735, 289.08pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/pose/02_topdown.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/pose/02_topdown.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/02_topdown.pdf used on input line 352.
-(pdftex.def)             Requested size: 144.5433pt x 108.40472pt.
- <figures/dpc/sparse-with-dense/pose/05_topdown.pdf, id=2714, 289.08pt x 216.81pt>
+(pdftex.def)             Requested size: 189.70792pt x 142.2812pt.
+ <figures/dpc/sparse-with-dense/pose/05_topdown.pdf, id=2736, 289.08pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/pose/05_topdown.pdf Graphic file (type pdf)
  <use figures/dpc/sparse-with-dense/pose/05_topdown.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/05_topdown.pdf used on input line 358.
-(pdftex.def)             Requested size: 144.5433pt x 108.40472pt.
- [80] [81 <./figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf> <./figures/dpc/sparse-with-dense/combined/00_segs.pdf
+(pdftex.def)             Requested size: 189.70792pt x 142.2812pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [84 <./figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf> <./figures/dpc/sparse-with-dense/combined/00_segs.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/combined/00_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 > <./figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf
@@ -2171,80 +2323,68 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-den
 > <./figures/dpc/sparse-with-dense/combined/05_segs.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/combined/05_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [82 <./figures/dpc/sparse-with-dense/pose/00_topdown.pdf> <./figures/dpc/sparse-with-dense/pose/02_topdown.pdf
+>] [85 <./figures/dpc/sparse-with-dense/pose/00_topdown.pdf> <./figures/dpc/sparse-with-dense/pose/02_topdown.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/pose/02_topdown.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 > <./figures/dpc/sparse-with-dense/pose/05_topdown.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/pose/05_topdown.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] <figures/dpc/distorted/combined/00_segs.pdf, id=2852, 578.16pt x 216.81pt>
+>] <figures/dpc/distorted/combined/00_segs.pdf, id=2864, 578.16pt x 216.81pt>
 File: figures/dpc/distorted/combined/00_segs.pdf Graphic file (type pdf)
  <use figures/dpc/distorted/combined/00_segs.pdf>
 Package pdftex.def Info: figures/dpc/distorted/combined/00_segs.pdf used on input line 393.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/distorted/combined/02_segs.pdf, id=2853, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 189.70792pt x 71.1406pt.
+ <figures/dpc/distorted/combined/02_segs.pdf, id=2865, 578.16pt x 216.81pt>
 File: figures/dpc/distorted/combined/02_segs.pdf Graphic file (type pdf)
  <use figures/dpc/distorted/combined/02_segs.pdf>
 Package pdftex.def Info: figures/dpc/distorted/combined/02_segs.pdf used on input line 399.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- <figures/dpc/distorted/combined/05_segs.pdf, id=2854, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 189.70792pt x 71.1406pt.
+ <figures/dpc/distorted/combined/05_segs.pdf, id=2866, 578.16pt x 216.81pt>
 File: figures/dpc/distorted/combined/05_segs.pdf Graphic file (type pdf)
  <use figures/dpc/distorted/combined/05_segs.pdf>
 Package pdftex.def Info: figures/dpc/distorted/combined/05_segs.pdf used on input line 405.
-(pdftex.def)             Requested size: 144.5433pt x 54.20236pt.
- [83]
+(pdftex.def)             Requested size: 189.70792pt x 71.1406pt.
+ [86]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 418.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--448
+Underfull \hbox (badness 10000) in paragraph at lines 454--454
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 448--449
+Underfull \hbox (badness 10000) in paragraph at lines 454--454
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--450
+Underfull \hbox (badness 10000) in paragraph at lines 454--454
 
  []
 
-
-Overfull \hbox (263.92865pt too wide) in paragraph at lines 423--453
- [] 
- []
-
-
-Overfull \hbox (253.11595pt too wide) in paragraph at lines 466--484
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [84 <./figures/dpc/distorted/combined/00_segs.pdf> <./figures/dpc/distorted/combined/02_segs.pdf
+[87 <./figures/dpc/distorted/combined/00_segs.pdf> <./figures/dpc/distorted/combined/02_segs.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/distorted/combined/02_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 > <./figures/dpc/distorted/combined/05_segs.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/distorted/combined/05_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [85] [86]
+>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [88] [89]
 \openout2 = `sections/lkf.aux'.
 
  (./sections/lkf.tex
 Chapter 6.
-<figures/lkf/nn_uncertainty.pdf, id=2935, 1526.77371pt x 350.4068pt>
+<figures/lkf/nn_uncertainty.pdf, id=2951, 1526.77371pt x 350.4068pt>
 File: figures/lkf/nn_uncertainty.pdf Graphic file (type pdf)
  <use figures/lkf/nn_uncertainty.pdf>
 Package pdftex.def Info: figures/lkf/nn_uncertainty.pdf used on input line 6.
 (pdftex.def)             Requested size: 386.18896pt x 88.6334pt.
- <figures/lkf/uncertainty_comp.pdf, id=2936, 794.17633pt x 434.15097pt>
+ <figures/lkf/uncertainty_comp.pdf, id=2952, 794.17633pt x 434.15097pt>
 File: figures/lkf/uncertainty_comp.pdf Graphic file (type pdf)
  <use figures/lkf/uncertainty_comp.pdf>
 Package pdftex.def Info: figures/lkf/uncertainty_comp.pdf used on input line 12.
@@ -2253,40 +2393,45 @@ Package pdftex.def Info: figures/lkf/uncertainty_comp.pdf used on input line 12.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figures/lkf/rel_system.pdf, id=2937, 782.6517pt x 467.85992pt>
+<figures/lkf/rel_system.pdf, id=2953, 782.6517pt x 467.85992pt>
 File: figures/lkf/rel_system.pdf Graphic file (type pdf)
  <use figures/lkf/rel_system.pdf>
 Package pdftex.def Info: figures/lkf/rel_system.pdf used on input line 21.
 (pdftex.def)             Requested size: 406.516pt x 243.01727pt.
-) [87
-
-
-
-]
-Overfull \hbox (204.80183pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 88 \OT1/cmr/m/sc/12 Chapter 6.  Learning Residual Probabilistic Observation Functions through Error-State Kalman Filters
- []
-
-[88 <./figures/lkf/nn_uncertainty.pdf> <./figures/lkf/uncertainty_comp.pdf>] [89 <./figures/lkf/rel_system.pdf>]
-\openout2 = `sections/conclusion.aux'.
-
- (./sections/conclusion.tex
-Chapter 7.
 ) [90
 
 
 
-] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bblpdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Clement_Improving}) has been already used, duplicate ignored
+] [91 <./figures/lkf/nn_uncertainty.pdf> <./figures/lkf/uncertainty_comp.pdf>]
+Overfull \hbox (204.80183pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/12 92 \OT1/cmr/m/sc/12 Chapter 6.  Learning Residual Probabilistic Observation Functions through Error-State Kalman Filters
+ []
+
+[92 <./figures/lkf/rel_system.pdf>]
+\openout2 = `sections/conclusion.aux'.
+
+ (./sections/conclusion.tex
+Chapter 7.
+[93
+
+
+
+]
+Overfull \hbox (1.63985pt too wide) in paragraph at lines 22--23
+\OT1/cmr/m/n/12 tive ro-bust es-ti-ma-tion for visual-inertial nav-i-ga-tion.  In \OT1/cmr/m/it/12 Pro-ceed-ings of the IEEE/RSJ
+ []
+
+) [94] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bblpdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Clement_Improving}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.43 ...ment et~al., 2017]{2017_Clement_Improving}
-                                                   [91
+                                                   [95
 
 
-] [92] [93] [94]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
+] [96] [97] [98]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.278 ...n et~al., 2015b]{2015_Peretroukhin_PROBE}
+l.285 ...n et~al., 2015c]{2015_Peretroukhin_PROBE}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_Get}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -2294,7 +2439,7 @@ l.292 ...hin et~al., 2015d]{2015_Peretroukhin_Get}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Peretroukhin_Reducing}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.300 ...t~al., 2017a]{2017_Peretroukhin_Reducing}
+l.306 ...t~al., 2017b]{2017_Peretroukhin_Reducing}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -2303,11 +2448,11 @@ l.313 ...t~al., 2018]{2018_Peretroukhin_Inferring}
 <to be read again> 
                    \relax 
 l.319 ... and Kelly, 2018]{2018_Peretroukhin_Deep}
-                                                   [95]pdfTeX warning (ext4): destination with the same identifier (name{cite.2016_Peretroukhin_PROBE-GK}) has been already used, duplicate ignored
+                                                   [99]pdfTeX warning (ext4): destination with the same identifier (name{cite.2016_Peretroukhin_PROBE-GK}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.335 ...t~al., 2016b]{2016_Peretroukhin_PROBE-GK}
-                                                   [96]pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Wagstaff_Improving}) has been already used, duplicate ignored
+                                                   [100]pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Wagstaff_Improving}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.414 ...ff et~al., 2017]{2017_Wagstaff_Improving}
@@ -2316,7 +2461,7 @@ l.414 ...ff et~al., 2017]{2017_Wagstaff_Improving}
 Package natbib Warning: There were undefined citations.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
-[97]
+[101]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
  (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/probe.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/sun-bcnn.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/dpc.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/lkf.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/conclusion.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
@@ -2333,10 +2478,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
- 19869 strings out of 492995
- 365158 string characters out of 6132704
- 459919 words of memory out of 5000000
- 22599 multiletter control sequences out of 15000+600000
+ 19888 strings out of 492995
+ 365842 string characters out of 6132704
+ 459920 words of memory out of 5000000
+ 22614 multiletter control sequences out of 15000+600000
  30331 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,23n,45p,10412b,558s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2372,10 +2517,10 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist,
 
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local
 /texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
-Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (105 pages, 24909402 bytes).
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (109 pages, 24915742 bytes).
 PDF statistics:
- 3619 PDF objects out of 4296 (max. 8388607)
- 2798 compressed objects within 28 object streams
- 472 named destinations out of 1000 (max. 500000)
+ 3649 PDF objects out of 4296 (max. 8388607)
+ 2825 compressed objects within 29 object streams
+ 476 named destinations out of 1000 (max. 500000)
  923 words of extra memory for PDF output out of 10000 (max. 10000000)
 

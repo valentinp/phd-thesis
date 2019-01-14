@@ -39,15 +39,17 @@ Warning--I didn't find a database entry for "Maimone2007-tc"
 Warning--I didn't find a database entry for "Geiger2012-fq"
 Warning--I didn't find a database entry for "Furgale2012-kk"
 Warning--I didn't find a database entry for "Maddern2016-ng"
+Warning--I didn't find a database entry for "Alcantarilla2016-fs"
+Warning--I didn't find a database entry for "Engel2015-il"
 Warning--I didn't find a database entry for "Clement2016-ir"
 Warning--I didn't find a database entry for "Lalonde2011-jw"
-Warning--I didn't find a database entry for "Szegedy2015-uw"
 Warning--I didn't find a database entry for "kendall2015posenet"
+Warning--I didn't find a database entry for "Gal2016UncertaintyThesis"
+Warning--I didn't find a database entry for "Gal2016-ny"
+Warning--I didn't find a database entry for "Szegedy2015-uw"
 Warning--I didn't find a database entry for "zhou2014MITPlaces"
 Warning--I didn't find a database entry for "deng2009imagenet"
 Warning--I didn't find a database entry for "Gal2016CNN"
-Warning--I didn't find a database entry for "Gal2016-ny"
-Warning--I didn't find a database entry for "Gal2016UncertaintyThesis"
 Warning--I didn't find a database entry for "jia2014caffe"
 Warning--I didn't find a database entry for "fisher1953dispersion"
 Warning--I didn't find a database entry for "mcmanus2014"
@@ -63,7 +65,7 @@ Warning--empty journal in Oliveira2017-lt
 Warning--empty publisher in vega-brown2014nonparametric
 You've used 73 entries,
             1935 wiz_defined-function locations,
-            929 strings with 18358 characters,
+            933 strings with 18420 characters,
 and the built_in function-call counts, 35452 in all, are:
 = -- 3532
 > -- 1471

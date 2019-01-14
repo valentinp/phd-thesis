@@ -8,7 +8,7 @@ that include estimator biases \cite{Peretroukhin2014-db}, poor calibration, and 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.48\textwidth]{dpc/dpc_high_level}
+	\includegraphics[width=0.75\textwidth]{dpc/dpc_high_level}
 	\caption{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE{3}$ \textit{corrections} to classical visual localizers.}
 	\label{fig:system_overview}
 	\vspace{-1.5em}
@@ -45,7 +45,7 @@ Taking inspiration from recent results that show that CNNs can be used to inject
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.48\textwidth]{dpc/siamese_dpc_net}
+	\includegraphics[width=0.75\textwidth]{dpc/siamese_dpc_net}
 	\caption{The Deep Pose Correction network with stereo RGB image data. 
 	The network learns a map from two stereo pairs to a vector of Lie algebra coordinates. 
 	Each darker blue block consists of a convolution, a PReLU non-linearity, and a dropout layer. We opt to not use MaxPooling in the network, following \cite{Handa2016-hm}.
@@ -300,37 +300,37 @@ We used this dense, direct estimator as our benchmark for a state-of-the-art vis
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.48\textwidth}
 	   \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/00_cum_norms.pdf}
        \label{00-pose-cum}
        \caption{Sequence \texttt{00}: Cumulative Errors.}
     \end{subfigure}
     ~
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/00_segs.pdf}
         \label{00-pose-segs}
         \caption{Sequence \texttt{00}: Segment Errors.}
      \end{subfigure}
      ~
-     \begin{subfigure}{0.32\textwidth}
+     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/02_cum_norms.pdf}
         \label{02-pose-cum}
         \caption{Sequence \texttt{02}: Cumulative Errors.}
      \end{subfigure}
      ~
-     \begin{subfigure}{0.32\textwidth}
+     \begin{subfigure}{0.48\textwidth}
          \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/02_segs.pdf}
          \label{02-pose-segs}
          \caption{Sequence \texttt{02}: Segment Errors.}
       \end{subfigure}
       ~
-      \begin{subfigure}{0.32\textwidth}
+      \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/05_cum_norms.pdf}
         \label{05-pose-cum}
         \caption{Sequence \texttt{05}: Cumulative Errors.}
      \end{subfigure}
      ~
-     \begin{subfigure}{0.32\textwidth}
+     \begin{subfigure}{0.48\textwidth}
          \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/05_segs.pdf}
          \label{05-pose-segs}
          \caption{Sequence \texttt{05}: Segment Errors.}
@@ -342,19 +342,19 @@ We used this dense, direct estimator as our benchmark for a state-of-the-art vis
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.42\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/pose/00_topdown.pdf}
         \label{00-top-down}
         \caption{Sequence \texttt{00}.}
     \end{subfigure}
     ~
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.42\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/pose/02_topdown.pdf}
         \label{02-top-down}
         \caption{Sequence \texttt{02}.}
     \end{subfigure}
     ~
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.42\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/pose/05_topdown.pdf}
         \label{05-top-down}
         \caption{Sequence \texttt{05}.}
@@ -389,19 +389,19 @@ where $N_s$ and $s_p$ (the number of segments of a given length, and the number 
 \section{Results \& Discussion}
 \begin{figure}
     \centering
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.42\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/00_segs.pdf}
         \label{00-pose-segs}
         \caption{Sequence \texttt{00} (Distorted): Segment Errors.}
     \end{subfigure} 
     ~
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.42\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/02_segs.pdf}
         \label{02-pose-segs}
         \caption{Sequence \texttt{02} (Distorted): Segment Errors.}
     \end{subfigure} 
     ~
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.42\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/05_segs.pdf}
         \label{05-pose-segs}
         \caption{Sequence \texttt{05} (Distorted): Segment Errors.}
@@ -419,6 +419,7 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
     \centering
     \caption{m-ATE and Mean Segment Errors for VO results with and without DPC-Net.}
     \label{tab:nondistorted_stats}
+    \resizebox{\columnwidth}{!}{%
 	\begin{threeparttable}
 		\begin{tabular}{lllcccc}
 			\toprule
@@ -450,6 +451,7 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
 		\item[4] All models trained for 30 epochs. The final model is selected based on the epoch with the lowest validation error.
     \end{tablenotes}
     \end{threeparttable}
+    }
 \end{table}
 
 \subsection{Distorted Images}
@@ -462,6 +464,7 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
     \centering
     \caption{m-ATE and Mean Segment Errors for VO results with and without DPC-Net for distorted images.}
     \label{tab:distorted_stats}
+    \resizebox{\columnwidth}{!}{%
 	\begin{threeparttable}
 		\begin{tabular}{lllcccc}
 			\toprule
@@ -481,4 +484,5 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
 
 \end{tabular}
 	\end{threeparttable}
+	}
 \end{table}

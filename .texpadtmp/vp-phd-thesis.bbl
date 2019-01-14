@@ -275,19 +275,19 @@ Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015a).
 \newblock In {\em Proc. IEEE/RSJ Int. Conf. Intelligent Robots and Syst.
   ({IROS})}, pages 3668--3675.
 
-\bibitem[Peretroukhin et~al., 2015b]{2015_Peretroukhin_PROBE}
+\bibitem[Peretroukhin et~al., 2015b]{peretroukhin2015PROBE}
 Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015b).
-\newblock {PROBE}: Predictive robust estimation for visual-inertial navigation.
-\newblock In {\em Proceedings of the {IEEE/RSJ} International Conference on
-  Intelligent Robots and Systems {(IROS'15)}}, pages 3668--3675, Hamburg,
-  Germany.
-
-\bibitem[Peretroukhin et~al., 2015c]{peretroukhin2015PROBE}
-Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015c).
 \newblock {{PROBE}}: Predictive robust estimation for visual-inertial
   navigation.
 \newblock In {\em Proc. IEEE/RSJ Int. Conf. Intell. Robots Syst. (IROS)}, pages
   3668--3675.
+
+\bibitem[Peretroukhin et~al., 2015c]{2015_Peretroukhin_PROBE}
+Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015c).
+\newblock {PROBE}: Predictive robust estimation for visual-inertial navigation.
+\newblock In {\em Proceedings of the {IEEE/RSJ} International Conference on
+  Intelligent Robots and Systems {(IROS'15)}}, pages 3668--3675, Hamburg,
+  Germany.
 
 \bibitem[Peretroukhin et~al., 2015d]{2015_Peretroukhin_Get}
 Peretroukhin, V., Clement, L., and Kelly, J. (2015d).
@@ -297,18 +297,18 @@ Peretroukhin, V., Clement, L., and Kelly, J. (2015d).
   Robotics and Automation Workshop on Scaling Up Active Perception}, Seattle,
   Washington, USA.
 
-\bibitem[Peretroukhin et~al., 2017a]{2017_Peretroukhin_Reducing}
+\bibitem[Peretroukhin et~al., 2017a]{Peretroukhin2017-eb}
 Peretroukhin, V., Clement, L., and Kelly, J. (2017a).
+\newblock Reducing drift in visual odometry by inferring sun direction using a
+  bayesian convolutional neural network.
+\newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}.
+
+\bibitem[Peretroukhin et~al., 2017b]{2017_Peretroukhin_Reducing}
+Peretroukhin, V., Clement, L., and Kelly, J. (2017b).
 \newblock Reducing drift in visual odometry by inferring sun direction using a
   bayesian convolutional neural network.
 \newblock In {\em Proceedings of the {IEEE} International Conference on
   Robotics and Automation {(ICRA'17})}, pages 2035--2042, Singapore.
-
-\bibitem[Peretroukhin et~al., 2017b]{Peretroukhin2017-eb}
-Peretroukhin, V., Clement, L., and Kelly, J. (2017b).
-\newblock Reducing drift in visual odometry by inferring sun direction using a
-  bayesian convolutional neural network.
-\newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}.
 
 \bibitem[Peretroukhin et~al., 2018]{2018_Peretroukhin_Inferring}
 Peretroukhin, V., Clement, L., and Kelly, J. (2018).
