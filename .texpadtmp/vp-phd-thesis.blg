@@ -6,59 +6,30 @@ A level-1 auxiliary file: sections/math.aux
 A level-1 auxiliary file: sections/probe.aux
 A level-1 auxiliary file: sections/sun-bcnn.aux
 A level-1 auxiliary file: sections/dpc.aux
-A level-1 auxiliary file: sections/residual-kalman-filtering.aux
+A level-1 auxiliary file: sections/lkf.aux
 A level-1 auxiliary file: sections/conclusion.aux
-The style file: plain.bst
-Database file #1: ../thesis.bib
-Warning--I didn't find a database entry for "Leutenegger2015-fk"
-Warning--I didn't find a database entry for "Cvisic2015-mt"
-Warning--I didn't find a database entry for "Tsotsos2015-qs"
-Warning--I didn't find a database entry for "Alcantarilla2016-kv"
-Warning--I didn't find a database entry for "Forster2014-bm"
-Warning--I didn't find a database entry for "LeCun2015-qf"
-Warning--I didn't find a database entry for "DeTone2016-ue"
-Warning--I didn't find a database entry for "Garg2016-ip"
-Warning--I didn't find a database entry for "Kendall2016-zf"
-Warning--I didn't find a database entry for "Sunderhauf2015-is"
-Warning--I didn't find a database entry for "Melekhov2017-dl"
-Warning--I didn't find a database entry for "Handa2016-hm"
-Warning--I didn't find a database entry for "Oliveira2017-lt"
-Warning--I didn't find a database entry for "Vega-Brown2014-sb"
-Warning--I didn't find a database entry for "Hu2015-uw"
-Warning--I didn't find a database entry for "MacTavish2015-wt"
-Warning--I didn't find a database entry for "Agarwal2013-jq"
-Warning--I didn't find a database entry for "Gal2015-bf"
-Warning--I didn't find a database entry for "McClure2016-ai"
-Warning--I didn't find a database entry for "Osband2016-jg"
-Warning--I didn't find a database entry for "Osband_undated-wl"
-Warning--I didn't find a database entry for "Costante2016-hb"
-Warning--I didn't find a database entry for "Kendall2015-kh"
-Warning--I didn't find a database entry for "Haarnoja2016-ph"
-Warning--I didn't find a database entry for "Punjani2015-pj"
-Warning--I didn't find a database entry for "Peretroukhin2015-em"
-Warning--I didn't find a database entry for "Peretroukhin2016-om"
-Warning--I didn't find a database entry for "Lambert2012-sn"
-Warning--I didn't find a database entry for "2018_Peretroukhin_Deep"
-Warning--I didn't find a database entry for "Wilson2016-vy"
-Warning--I didn't find a database entry for "Lee2015-af"
-Warning--I didn't find a database entry for "Lakshminarayanan2016-zh"
-Warning--I didn't find a database entry for "barfoot2014associating"
+The style file: apalike.bst
+Database file #1: ../pubs-general.bib
+Database file #2: ../pubs-mine.bib
+Repeated entry---line 110 of file ../pubs-mine.bib
+ : @inproceedings{2017_Wagstaff_Improving
+ :                                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 126 of file ../pubs-mine.bib
+ : @article{2018_Peretroukhin_Deep
+ :                                ,
+I'm skipping whatever remains of this entry
+Database file #3: ../pubs-probe.bib
+I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
+ : 
+ : ISSN={1050-4729},}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Fischler:1981cv"
-Warning--I didn't find a database entry for "VegaBrown:ew"
 Warning--I didn't find a database entry for "Anonymous:Ngi3VEEU"
 Warning--I didn't find a database entry for "Furgale:2013dm"
 Warning--I didn't find a database entry for "Lucas:1981uw"
 Warning--I didn't find a database entry for "Geiger:2013kp"
-Warning--I didn't find a database entry for "fischler1981random"
-Warning--I didn't find a database entry for "kerl2013robust"
-Warning--I didn't find a database entry for "Burgard:ii"
-Warning--I didn't find a database entry for "peretroukhin2015PROBE"
-Warning--I didn't find a database entry for "VegaBrown:2013fv"
-Warning--I didn't find a database entry for "fitzgibbon2007learning"
-Warning--I didn't find a database entry for "vega-brown2014nonparametric"
-Warning--I didn't find a database entry for "dempster1977maximum"
-Warning--I didn't find a database entry for "geiger2012kitti"
-Warning--I didn't find a database entry for "geiger2013vision"
 Warning--I didn't find a database entry for "Zhang2015-gf"
 Warning--I didn't find a database entry for "Olson2003-ax"
 Warning--I didn't find a database entry for "Furgale2011-zu"
@@ -68,45 +39,67 @@ Warning--I didn't find a database entry for "Maimone2007-tc"
 Warning--I didn't find a database entry for "Geiger2012-fq"
 Warning--I didn't find a database entry for "Furgale2012-kk"
 Warning--I didn't find a database entry for "Maddern2016-ng"
-You've used 0 entries,
-            2118 wiz_defined-function locations,
-            612 strings with 5869 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
-int.to.chr$ -- 0
+Warning--I didn't find a database entry for "Clement2016-ir"
+Warning--I didn't find a database entry for "Lalonde2011-jw"
+Warning--I didn't find a database entry for "Szegedy2015-uw"
+Warning--I didn't find a database entry for "kendall2015posenet"
+Warning--I didn't find a database entry for "zhou2014MITPlaces"
+Warning--I didn't find a database entry for "deng2009imagenet"
+Warning--I didn't find a database entry for "Gal2016CNN"
+Warning--I didn't find a database entry for "Gal2016-ny"
+Warning--I didn't find a database entry for "Gal2016UncertaintyThesis"
+Warning--I didn't find a database entry for "jia2014caffe"
+Warning--I didn't find a database entry for "fisher1953dispersion"
+Warning--I didn't find a database entry for "mcmanus2014"
+Warning--I didn't find a database entry for "Clement2018-cat"
+Warning--empty journal in Alcantarilla2016-kv
+Warning--empty journal in Clark2017-zg
+Warning--empty journal in DeTone2016-ue
+Warning--empty journal in Kendall2017-ix
+Warning--empty journal in Lee2015-af
+Warning--empty journal in Ma2016-at
+Warning--empty journal in McClure2016-ai
+Warning--empty journal in Oliveira2017-lt
+Warning--empty publisher in vega-brown2014nonparametric
+You've used 73 entries,
+            1935 wiz_defined-function locations,
+            929 strings with 18358 characters,
+and the built_in function-call counts, 35452 in all, are:
+= -- 3532
+> -- 1471
+< -- 60
++ -- 512
+- -- 500
+* -- 2763
+:= -- 5674
+add.period$ -- 219
+call.type$ -- 73
+change.case$ -- 612
+chr.to.int$ -- 61
+cite$ -- 82
+duplicate$ -- 1565
+empty$ -- 2537
+format.name$ -- 609
+if$ -- 7393
+int.to.chr$ -- 13
 int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 74
+newline$ -- 361
+num.names$ -- 221
+pop$ -- 770
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 613
 quote$ -- 0
-skip$ -- 1
+skip$ -- 1177
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 2432
+swap$ -- 434
+text.length$ -- 40
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
+type$ -- 436
+warning$ -- 9
+while$ -- 279
 width$ -- 0
-write$ -- 2
-(There were 58 warnings)
+write$ -- 929
+(There were 3 error messages)

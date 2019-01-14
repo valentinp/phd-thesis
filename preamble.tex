@@ -1,7 +1,7 @@
 % Packages
 \usepackage{caption}
 \usepackage{amssymb,amsfonts,amsmath,amscd}
-\usepackage[pdftex,colorlinks]{hyperref}
+\usepackage[pdftex]{hyperref}
 \usepackage[pdftex]{graphicx}
 
 \usepackage{booktabs}
@@ -14,12 +14,23 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 
-\usepackage{natbib}
 \usepackage{cleveref}
 \usepackage{xparse}
-
+\usepackage[authoryear]{natbib}
+\usepackage{bibentry}
+\nobibliography*
 %TODO: Replace For PROBE
-\usepackage{subfigure}
+%\usepackage{subfigure}
+
+%Necessary for Sun BCNN
+\usepackage{subcaption}
 
 %TODO: Use this throughout?
 \usepackage{nomencl}
+
+
+%This is an old Tim-style notation. Should figure out nomenclature
+\newenvironment{notation}{\vspace{3mm}\begin{tabular}[t]{p{.1\textwidth} @{\;\;\;:\;\;\;} p{.80\textwidth}}}{\end{tabular}\vspace{3mm}}
+\newcommand{\nitem}[2]{\raggedleft $\displaystyle {#1}$ & #2\\}
+
+%\makenomenclature

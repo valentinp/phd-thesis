@@ -1,32 +1,96 @@
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Measurement Models}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Outstanding Issues}{2}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}The limits of homoscedastic noise models}{2}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Deep, learned models with no uncertainty estimates}{3}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Integration of deep models into state estimation pipelines}{3}{subsection.1.2.3}
-\contentsline {section}{\numberline {1.3}Original Contributions}{3}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Predictive Robust Estimation for Sparse Visual Odometry}{3}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Software Sun Sensor using a Bayesian Convolutional Neural Network}{4}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Deep Pose Corrections (DPC-Net)}{4}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}Probabilistic $ \mathrm {SE}(3) $ inference using deep networks}{5}{subsection.1.3.4}
-\contentsline {chapter}{\numberline {2}Predictive Robust Estimation}{6}{chapter.2}
-\contentsline {section}{\numberline {2.1}Stereo Visual Odometry}{6}{section.2.1}
-\contentsline {section}{\numberline {2.2}Scalar k-Nearest Neighbours}{8}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Training}{10}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Evaluation}{10}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Prediction Space}{11}{subsection.2.2.3}
-\contentsline {subsubsection}{Angular velocity and linear acceleration}{11}{section*.8}
-\contentsline {subsubsection}{Local image entropy}{11}{section*.9}
-\contentsline {subsubsection}{Blur}{12}{section*.10}
-\contentsline {subsubsection}{Optical flow variance score}{13}{section*.13}
-\contentsline {subsubsection}{Image frequency composition}{13}{section*.15}
-\contentsline {section}{\numberline {2.3}Generalized Kernels}{14}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Predictive noise models for visual odometry}{16}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Inference without ground truth}{20}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Experiments}{21}{subsection.2.3.3}
-\contentsline {subsubsection}{Synthetic}{21}{section*.22}
-\contentsline {subsection}{\numberline {2.3.4}KITTI}{22}{subsection.2.3.4}
-\contentsline {subsubsection}{UTIAS}{25}{section*.29}
-\contentsline {chapter}{\numberline {3}Sun-BCNN}{28}{chapter.3}
-\contentsline {section}{\numberline {3.1}Introduction}{28}{section.3.1}
-\contentsline {chapter}{Bibliography}{32}{Item.6}
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Measurement Models}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Outstanding Issues in the Field}{3}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}The limits of homoscedastic noise models}{3}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Deep, learned models with no uncertainty estimates}{4}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Integration of deep models into state estimation pipelines}{4}{subsection.1.2.3}
+\contentsline {section}{\numberline {1.3}Original Contributions}{4}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Predictive Robust Estimation for Sparse Visual Odometry}{5}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Software Sun Sensor using a Bayesian Convolutional Neural Network}{5}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Deep Pose Corrections (DPC-Net)}{5}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Probabilistic $ \mathrm {SE}(3) $ inference using deep networks}{6}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Summary of Publications}{7}{subsection.1.3.5}
+\contentsline {chapter}{\numberline {2}Preliminaries}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Stereo Visual Odometry}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Robust Estimation}{11}{section.2.2}
+\contentsline {chapter}{\numberline {3}Predictive Robust Estimation}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}Motivation}{12}{section.3.1}
+\contentsline {section}{\numberline {3.2}Related Work}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}Scalar k-Nearest Neighbours}{13}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Training}{14}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Evaluation}{15}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Prediction Space}{16}{subsection.3.3.3}
+\contentsline {subsubsection}{Angular velocity and linear acceleration}{16}{section*.9}
+\contentsline {subsubsection}{Local image entropy}{16}{section*.10}
+\contentsline {subsubsection}{Blur}{17}{section*.11}
+\contentsline {subsubsection}{Optical flow variance score}{18}{section*.15}
+\contentsline {subsubsection}{Image frequency composition}{19}{section*.17}
+\contentsline {section}{\numberline {3.4}Generalized Kernels}{19}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Predictive noise models for visual odometry}{23}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Inference without ground truth}{26}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Experiments}{29}{subsection.3.4.3}
+\contentsline {subsubsection}{Synthetic}{29}{section*.24}
+\contentsline {subsection}{\numberline {3.4.4}KITTI}{30}{subsection.3.4.4}
+\contentsline {subsubsection}{UTIAS}{33}{section*.31}
+\contentsline {chapter}{\numberline {4}Sun-BCNN}{37}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{37}{section.4.1}
+\contentsline {section}{\numberline {4.2}Indirect Sun Detection using a Bayesian Convolutional Neural Network}{40}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Cost Function}{41}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Uncertainty Estimation}{41}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Implementation and Training}{42}{subsection.4.2.3}
+\contentsline {subsubsection}{Data Preparation \& Transfer Learning}{43}{section*.40}
+\contentsline {subsubsection}{Model Precision}{43}{section*.41}
+\contentsline {subsubsection}{Data Partitioning}{43}{section*.42}
+\contentsline {section}{\numberline {4.3}Experiments}{46}{section.4.3}
+\contentsline {section}{\numberline {4.4}Simulation Experiments}{46}{section.4.4}
+\contentsline {section}{\numberline {4.5}Urban Driving Experiments: The KITTI Odometry Benchmark}{47}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Sun-BCNN Test Results}{52}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Visual Odometry Experiments}{54}{subsection.4.5.2}
+\contentsline {subsubsection}{Simulated Sun Sensing}{54}{section*.57}
+\contentsline {subsubsection}{Vision-based Sun Sensing}{55}{section*.58}
+\contentsline {section}{\numberline {4.6}Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{56}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Sun-BCNN Test Results}{57}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Visual Odometry Experiments}{59}{subsection.4.6.2}
+\contentsline {section}{\numberline {4.7}Sensitivity Analysis}{61}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Cloud Cover}{62}{subsection.4.7.1}
+\contentsline {subsubsection}{Procedure}{62}{section*.67}
+\contentsline {subsubsection}{Results}{63}{section*.68}
+\contentsline {subsection}{\numberline {4.7.2}Model Generalization}{63}{subsection.4.7.2}
+\contentsline {subsubsection}{Procedure}{64}{section*.70}
+\contentsline {subsubsection}{Results}{64}{section*.71}
+\contentsline {subsection}{\numberline {4.7.3}Mean and Covariance Computation}{66}{subsection.4.7.3}
+\contentsline {subsubsection}{Mean computation}{66}{section*.76}
+\contentsline {paragraph}{Procedure}{66}{section*.77}
+\contentsline {paragraph}{Results}{67}{section*.78}
+\contentsline {subsubsection}{Covariance Computation}{67}{section*.79}
+\contentsline {paragraph}{Procedure}{67}{section*.80}
+\contentsline {paragraph}{Results}{67}{section*.81}
+\contentsline {chapter}{\numberline {5}Deep Pose Corrections for Visual Localization}{69}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{69}{section.5.1}
+\contentsline {section}{\numberline {5.2}Related Work}{71}{section.5.2}
+\contentsline {section}{\numberline {5.3}System Overview: Deep Pose Correction}{72}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Loss Function: Correcting $ \mathrm {SE}(3) $ Estimates}{73}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Loss Function: $ \mathrm {SE}(3) $ Covariance}{74}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Loss Function: $ \mathrm {SE}(3) $ Jacobians}{74}{subsection.5.3.3}
+\contentsline {subsubsection}{Deriving $ \genfrac {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method I}{75}{section*.86}
+\contentsline {subsubsection}{Deriving $ \genfrac {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method II}{75}{section*.87}
+\contentsline {subsection}{\numberline {5.3.4}Loss Function: Correcting $ \mathrm {SO}(3) $ Estimates}{76}{subsection.5.3.4}
+\contentsline {subsection}{\numberline {5.3.5}Pose Graph Relaxation}{76}{subsection.5.3.5}
+\contentsline {section}{\numberline {5.4}Experiments}{77}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Training \& Testing}{78}{subsection.5.4.1}
+\contentsline {subsubsection}{Rotation}{78}{section*.89}
+\contentsline {subsubsection}{Yaw}{79}{section*.90}
+\contentsline {subsection}{\numberline {5.4.2}Estimators}{79}{subsection.5.4.2}
+\contentsline {subsubsection}{Sparse Visual Odometry}{79}{section*.91}
+\contentsline {subsubsection}{Sparse Visual Odometry with Radial Distortion}{79}{section*.92}
+\contentsline {subsubsection}{Dense Visual Odometry}{80}{section*.94}
+\contentsline {subsection}{\numberline {5.4.3}Evaluation Metrics}{80}{subsection.5.4.3}
+\contentsline {subsubsection}{Mean Absolute Trajectory Error (m-ATE)}{82}{section*.97}
+\contentsline {subsubsection}{Cumulative Absolute Trajectory Error (c-ATE)}{83}{section*.98}
+\contentsline {subsubsection}{Segment Error}{83}{section*.99}
+\contentsline {section}{\numberline {5.5}Results \& Discussion}{83}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Correcting Sparse Visual Odometry}{83}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Distorted Images}{84}{subsection.5.5.2}
+\contentsline {chapter}{\numberline {6}Learning Residual Probabilistic Observation Functions through Error-State Kalman Filters}{87}{chapter.6}
+\contentsline {chapter}{\numberline {7}Conclusion}{90}{chapter.7}
+\contentsline {chapter}{Bibliography}{91}{chapter.7}

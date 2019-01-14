@@ -224,6 +224,96 @@
   \end{equation*}  
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SUN-BCNN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NewDocumentCommand\SunDirectionComponent{}{s}
+\NewDocumentCommand\SunDirection{}{\Vector{\SunDirectionComponent}}
+\NewDocumentCommand\SunDirectionAll{}{\Matrix{S}}
+\NewDocumentCommand\SunImage{}{\Vector{x}}
+\NewDocumentCommand\SunImageAll{}{\Matrix{X}}
+
+\NewDocumentCommand\CNNVariationalWeight{}{\boldsymbol{w}}
+\NewDocumentCommand\CNNWeightAll{}{\Matrix{M}}
+
+\NewDocumentCommand\AzimuthAngle{}{\phi}
+\NewDocumentCommand\ZenithAngle{}{\theta}
+
+\NewDocumentCommand\KeypointComponent{}{p}
+\NewDocumentCommand\Keypoint{}{\Vector{\KeypointComponent}}
+\NewDocumentCommand\CameraObservation{}{\Vector{y}}
+\NewDocumentCommand\CameraModel{m}{\Vector{g}\left(#1\right)}
+
+\NewDocumentCommand\Error{}{\Vector{e}}
+
+\NewDocumentCommand\CNNLoss{m}{\mathcal{L}\left(#1\right)}
+\NewDocumentCommand\BACost{}{\mathcal{J}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DPC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NewDocumentCommand\deltap{}{\Delta_p}
+\NewDocumentCommand\TargetVOTransform{}{\Transform_{i,i+\deltap}}
+\NewDocumentCommand\EstimatedVOTransform{}{\Estimate{\Transform}_{i,i+\deltap}}
+\NewDocumentCommand\EstimatedVOTransformNoSub{}{\Estimate{\Transform}}
+
+
+
+\NewDocumentCommand\TargetCorrection{}{\Transform^*}
+\NewDocumentCommand\TargetCorrectionIndex{}{\Transform^*_i}
+
+\NewDocumentCommand\TargetCorrectionVector{}{\TransformVector^*}
+\NewDocumentCommand\TargetCorrectionVectorIndex{}{\TransformVector^*_i}
+
+\NewDocumentCommand\TargetCorrectionRotation{}{\Rotation_*}
+\NewDocumentCommand\TargetCorrectionRotationVector{}{\RotationVector_*}
+
+\NewDocumentCommand\LeftJacobianSE{}{ \Matrix{\mathcal{J}} }
+\NewDocumentCommand\LeftJacobianSO{}{ \Matrix{J} }
+\NewDocumentCommand\LogMapFunction{m}{g({#1})}
+\NewDocumentCommand\LogMapFunctionSO{m}{f({#1})}
+
+\NewDocumentCommand\EstimatedVOTransformCorrected{}{\EstimatedVOTransform^{\text{corr}}}
+\NewDocumentCommand\EstimatedVOTransformCorrectedNoSub{}{\EstimatedVOTransformNoSub^{\mathrm{corr}}}
+
+\NewDocumentCommand\PredictionVector{}{\TransformVector}
+\NewDocumentCommand\PredictionVectorIndex{}{\TransformVector_i}
+
+\NewDocumentCommand\TransformCovariance{}{\Matrix{\Sigma}}
+
+
+\NewDocumentCommand\CostFunction{}{\mathcal{L}}
+\NewDocumentCommand\PoseCostFunction{}{\mathcal{O}}
+
+\NewDocumentCommand\MatLn{m}{\text{ln}\left({#1} \right)^{\vee}}
+\NewDocumentCommand\MatExp{m}{\text{exp}\left({#1}^{\wedge}\right)}
+\NewDocumentCommand\Inv{m}{{#1}^{-1}}
+
+\NewDocumentCommand\definedtobe{}{\triangleq}
+\NewDocumentCommand\Image{}{\Vector{I}}
+\NewDocumentCommand\ImageQuad{}{\Image}
+
+
+\newlength\fsep
+\setlength\fsep{1\fboxsep+2\fboxrule}
+\newsavebox\widebox
+\newenvironment{mathbox}
+{\par\vskip\fsep\noindent%
+ \begin{lrbox}{\widebox}%
+ \begin{minipage}{\columnwidth-\fsep}%
+}{\vskip\fsep\end{minipage}\end{lrbox}
+  \framebox{\usebox\widebox}%
+ }
+
+
+%\NewDocumentCommand\ProjectionFunction{}{\pi}
+%\NewDocumentCommand\ImageLandmarkCovariance{mm}{\Matrix{R}_{#1,#2}}
+\NewDocumentCommand\ImageCovariance{}{\Matrix{\Sigma_y}}
+%\NewDocumentCommand\ImageLandmark{mm}{\Vector{y}_{#1,#2}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Basic shortcuts
@@ -294,52 +384,3 @@
 \newcommand\Prior[1]{\check{#1}}
 \newcommand\Mean[1]{\overline{#1}}
 \newcommand\Optimal[1]{{#1}^*}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Additional definitions for your document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Deep Predictor
-\newcommand\deltap[0]{\Delta_p}
-\newcommand\TargetVOTransform[0]{\Transform_{i,i+\deltap}}
-\newcommand\EstimatedVOTransform[0]{\Estimate{\Transform}_{i,i+\deltap}}
-\newcommand\EstimatedVOTransformNoSub[0]{\Estimate{\Transform}}
-
-
-
-\newcommand\TargetCorrection[0]{\Transform^*}
-\newcommand\TargetCorrectionIndex[0]{\Transform^*_i}
-
-\newcommand\TargetCorrectionVector[0]{\TransformVector^*}
-\newcommand\TargetCorrectionVectorIndex[0]{\TransformVector^*_i}
-
-\newcommand\TargetCorrectionRotation[0]{\Rotation_*}
-\newcommand\TargetCorrectionRotationVector[0]{\RotationVector_*}
-
-\newcommand\LeftJacobianSE[0]{ \Matrix{\mathcal{J}} }
-\newcommand\LeftJacobianSO[0]{ \Matrix{J} }
-\newcommand\LogMapFunction[1]{g({#1})}
-\newcommand\LogMapFunctionSO[1]{f({#1})}
-
-\newcommand\EstimatedVOTransformCorrected[0]{\EstimatedVOTransform^{\text{corr}}}
-\newcommand\EstimatedVOTransformCorrectedNoSub[0]{\EstimatedVOTransformNoSub^{\mathrm{corr}}}
-
-\newcommand\PredictionVector[0]{\TransformVector}
-\newcommand\PredictionVectorIndex[0]{\TransformVector_i}
-
-\newcommand\TransformCovariance[0]{\Matrix{\Sigma}}
-
-
-\newcommand\CostFunction[0]{\mathcal{L}}
-\newcommand\PoseCostFunction[0]{\mathcal{J}}
-
-\newcommand\MatLn[1]{\text{ln}\left({#1} \right)^{\vee}}
-\newcommand\MatExp[1]{\text{exp}\left({#1}^{\wedge}\right)}
-\newcommand\Inv[1]{{#1}^{-1}}
-
-\newcommand\definedtobe[0]{\triangleq}
-\newcommand\ImageQuad[0]{\Image}
-\newcommand\LogDet[1]{\log{\left|#1\right|}}
-
-

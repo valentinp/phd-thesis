@@ -60,7 +60,7 @@
 %%    further customize the layout and/or formatting of the document.
 
 %% *** Add any desired options. ***
-\documentclass[draft]{ut-thesis}
+\documentclass[oneandahalfspaced,twoside,12pt]{ut-thesis}
 
 %% *** Add \usepackage declarations here. ***
 %% The standard packages `geometry' and `setspace' are already loaded by
@@ -134,7 +134,11 @@
 \begin{abstract}
 %% *** Put your Abstract here. ***
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
-The paradigm of learning complex measurement models from training data (rather than crafting these models by hand) has become pervasive in computer vision and robotics. These learned models, however, are often presented in isolation, and it can be unclear to what extent they can be integrated into (or replace) existing high-fidelity geometric and kinematic models. My thesis focuses on ways in which these two modelling efforts can be combined while still preserving the core advantages of both. To this end, I have published work on two Bayesian machine-learning-based techniques that improve on existing measurement models in visual odometry: (1) a fast, kernel-based Bayesian technique that learns a model for measurement covariances of a stereo camera to produce non-stationary robust costs and (2) a deep Bayesian Convolutional Neural Network model that can infer the direction of the Sun from a single RGB image. More recently, I have leveraged both of these two prior efforts to create a framework I call Deep Pose Correction (DPC). DPC relies on a novel loss function, based on matrix Lie groups, that permits a deep network to learn SE(3) corrections to existing visual pose estimators. By pairing a DPC network with a visual localization pipeline, one can combine the proven durability of classical algorithms with the representational power of modern machine learning techniques.   
+The paradigm of learning complex measurement models from training data, rather than crafting these models by hand, has become pervasive in computer vision and robotics. These learned models, however, are often presented in isolation, and it can be unclear to what extent they can be integrated into (or replace) existing high-fidelity geometric and kinematic models within state estimation pipelines. In this work, we explore ways in which these two modelling paradigms can be combined while still preserving the core advantages of both. To this end, we first present two Bayesian machine-learning-based techniques that improve on existing measurement models in visual odometry: (1) a fast, kernel-based Bayesian technique that learns a model for measurement covariances of a stereo camera to produce non-stationary robust costs and (2) a deep Bayesian Convolutional Neural Network model that can infer the direction of the Sun from a single RGB image. 
+
+Second, we extend these ideas to incorporate ideas from the field of deep learning. Instead of attempting to replacing existing pipelines with monolithic trained networks, we show that we can use the representational power of deep networks to build corrective, probabilistic models that correct, instead of replace, existing localization pipelines. Notably, we leverage concepts from differential geometry and matrix Lie groups to construct fully differentiable analytic loss functions that permit principled learning of corrections and associated uncertainty.
+
+We validate our methods on several kilometres of sensor data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the high Arctic.
 \end{abstract}
 
 %% Anything placed between the abstract and table of contents will
@@ -175,7 +179,6 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
 %% This generates the List of Figures (on a separate page), if needed
 %% (uncomment to have it appear in the document).
 %\listoffigures
-
 %% You can add commands here to generate any other material that belongs
 %% in the head matter (for example, List of Plates, Index of Symbols, or
 %% List of Appendices).
@@ -183,6 +186,24 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
 %% End of the preliminary sections: reset page style and numbering.
 \end{preliminary}
 
+\chapter*{Notation}
+\begin{notation}
+    \nitem{a}{Symbols in this font are real scalars.}
+    \nitem{\Vector{a}   }{Symbols in this font are real column vectors.}
+    \nitem{\Matrix{A}   }{Symbols in this font are real matrices.}
+    \nitem{\sim \mathcal{N}(\Vector{\mu}, \Matrix{R}) }{Normally distributed with mean $\Vector{\mu}$ and covariance $\Matrix{R}$.}
+    \nitem{E[\cdot]}{The expectation operator.}
+    \nitem{\cframe{a} }{A reference frame in three dimensions.}
+    \nitem{(\cdot)^\wedge }{An operator associated with the Lie algebra for rotations and poses. It produces a matrix from a column vector.}
+    \nitem{(\cdot)^\vee }{The inverse operation of $(\cdot)^\wedge$}
+    
+    \nitem{\mbf 1 }{The identity matrix.}
+    \nitem{\mbf 0 }{The zero matrix.}
+    \nitem{ \mbf p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\cframe{a}$ (denoted by the subscript). }
+    \nitem{ \mbf C_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\cframe{b}$ to $\cframe{a}$: $\mbf p_a^{c,b} = \mbf C_{a,b} \mbf p_b^{c,b}$. }
+    \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\cframe{b}$ to $\cframe{a}$: $\Vector{p}_a^{c,a} = \Transform_{a,b} \Vector{p}_b^{c,b}$. }
+\end{notation}
+%\printnomenclature
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Put your Chapters here; the easiest way to do this is to keep     %%
@@ -199,7 +220,7 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
 \include{sections/probe}
 \include{sections/sun-bcnn}
 \include{sections/dpc}
-\include{sections/residual-kalman-filtering}
+\include{sections/lkf}
 \include{sections/conclusion}
 
 
@@ -208,10 +229,11 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
 \addcontentsline{toc}{chapter}{Bibliography}
 %% *** Set the bibliography style. ***
 %% (change according to your preference/requirements)
-\bibliographystyle{plain}
+\bibliographystyle{apalike}
 %% *** Set the bibliography file. ***
 %% ("thesis.bib" by default; change as needed)
-\bibliography{thesis}
+\bibliography{pubs-general, pubs-mine, pubs-probe}
+
 
 %% *** NOTE ***
 %% If you don't use bibliography files, comment out the previous line

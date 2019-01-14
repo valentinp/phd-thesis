@@ -6,45 +6,262 @@
 \citation{Furgale2011-zu,Lambert2012-um}
 \citation{Eisenman2002-cg,Maimone2007-tc}
 \citation{Lambert2012-um}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Sun-BCNN}{28}{chapter.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Sun-BCNN}{37}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction}{28}{section.3.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph  {virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.\relax }}{29}{figure.caption.35}}
-\newlabel{fig:sun-bcnn_system}{{3.1}{29}{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph {virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.\relax }{figure.caption.35}{}}
-\newlabel{fig:sun-bcnn_system@cref}{{[figure][1][3]3.1}{29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces We train and test Sun-BCNN in a variety of environments ranging from urban driving in Europe to remote planetary analogue sites in the Canadian High Arctic. (Map data: Google, INEGI, ORION-ME.)\relax }}{29}{figure.caption.36}}
-\newlabel{fig:sun-bcnn_global-gps}{{3.2}{29}{We train and test Sun-BCNN in a variety of environments ranging from urban driving in Europe to remote planetary analogue sites in the Canadian High Arctic. (Map data: Google, INEGI, ORION-ME.)\relax }{figure.caption.36}{}}
-\newlabel{fig:sun-bcnn_global-gps@cref}{{[figure][2][3]3.2}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{37}{section.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph  {virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.\relax }}{38}{figure.caption.37}}
+\newlabel{fig:sun-bcnn_system}{{4.1}{38}{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph {virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.\relax }{figure.caption.37}{}}
+\newlabel{fig:sun-bcnn_system@cref}{{[figure][1][4]4.1}{38}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces We train and test Sun-BCNN in a variety of environments ranging from urban driving in Europe to remote planetary analogue sites in the Canadian High Arctic. (Map data: Google, INEGI, ORION-ME.)\relax }}{38}{figure.caption.38}}
+\newlabel{fig:sun-bcnn_global-gps}{{4.2}{38}{We train and test Sun-BCNN in a variety of environments ranging from urban driving in Europe to remote planetary analogue sites in the Canadian High Arctic. (Map data: Google, INEGI, ORION-ME.)\relax }{figure.caption.38}{}}
+\newlabel{fig:sun-bcnn_global-gps@cref}{{[figure][2][4]4.2}{38}}
 \citation{Geiger2012-fq}
 \citation{Furgale2012-kk}
 \citation{Lambert2012-um}
 \citation{Geiger2012-fq}
 \citation{Furgale2012-kk}
 \citation{Maddern2016-ng}
+\citation{Geiger2012-fq}
+\citation{Geiger2012-fq}
+\citation{Clement2016-ir}
+\citation{Ma2016-at}
+\citation{Lalonde2011-jw}
+\citation{Szegedy2015-uw}
+\citation{Kendall2016-zf,kendall2015posenet}
+\citation{Ma2016-at}
+\citation{zhou2014MITPlaces}
+\citation{deng2009imagenet}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Three \texttt  {conv1} layer activation maps superimposed on two images from the KITTI odometry benchmark \citep  {Geiger2012-fq} \texttt  {00} and \texttt  {04} for three selected filters. Each filter picks out salient parts of the image that aid in sun direction inference.\relax }}{40}{figure.caption.39}}
+\newlabel{fig:sun-bcnn_kitti_cnn_activations}{{4.3}{40}{Three \texttt {conv1} layer activation maps superimposed on two images from the KITTI odometry benchmark \citep {Geiger2012-fq} \texttt {00} and \texttt {04} for three selected filters. Each filter picks out salient parts of the image that aid in sun direction inference.\relax }{figure.caption.39}{}}
+\newlabel{fig:sun-bcnn_kitti_cnn_activations@cref}{{[figure][3][4]4.3}{40}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Indirect Sun Detection using a Bayesian Convolutional Neural Network}{40}{section.4.2}}
+\newlabel{sec:sun-bcnn}{{4.2}{40}{Indirect Sun Detection using a Bayesian Convolutional Neural Network}{section.4.2}{}}
+\newlabel{sec:sun-bcnn@cref}{{[section][2][4]4.2}{40}}
+\citation{Gal2016CNN,Gal2016-ny,Gal2016UncertaintyThesis}
+\citation{Gal2016CNN}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Cost Function}{41}{subsection.4.2.1}}
+\newlabel{eq:cnn_loss}{{4.1}{41}{Cost Function}{equation.4.2.1}{}}
+\newlabel{eq:cnn_loss@cref}{{[equation][1][4]4.1}{41}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Uncertainty Estimation}{41}{subsection.4.2.2}}
+\citation{Gal2016CNN}
+\citation{jia2014caffe}
+\citation{Lalonde2011-jw}
+\newlabel{eq:sun_direction_mean}{{4.4}{42}{Uncertainty Estimation}{equation.4.2.4}{}}
+\newlabel{eq:sun_direction_mean@cref}{{[equation][4][4]4.4}{42}}
+\newlabel{eq:bcnn_covar}{{4.5}{42}{Uncertainty Estimation}{equation.4.2.5}{}}
+\newlabel{eq:bcnn_covar@cref}{{[equation][5][4]4.5}{42}}
+\newlabel{eq:model_precision}{{4.6}{42}{Uncertainty Estimation}{equation.4.2.6}{}}
+\newlabel{eq:model_precision@cref}{{[equation][6][4]4.6}{42}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Implementation and Training}{42}{subsection.4.2.3}}
+\citation{Ma2016-at}
+\citation{Ma2016-at}
+\citation{Gal2016UncertaintyThesis}
+\citation{Gal2016UncertaintyThesis}
+\@writefile{toc}{\contentsline {subsubsection}{Data Preparation \& Transfer Learning}{43}{section*.40}}
+\@writefile{toc}{\contentsline {subsubsection}{Model Precision}{43}{section*.41}}
+\@writefile{toc}{\contentsline {subsubsection}{Data Partitioning}{43}{section*.42}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces One loop of the ``Triangle'', ``Square'', and ``Star'' trajectories, consisting primarily of translation and yaw rotation. Landmarks are shown as black asterisks, and the simulated sun direction is indicated with a yellow arrow along with its projection, in grey, on the EN-plane.\relax }}{44}{figure.caption.43}}
+\newlabel{fig:sim_environment}{{4.4}{44}{One loop of the ``Triangle'', ``Square'', and ``Star'' trajectories, consisting primarily of translation and yaw rotation. Landmarks are shown as black asterisks, and the simulated sun direction is indicated with a yellow arrow along with its projection, in grey, on the EN-plane.\relax }{figure.caption.43}{}}
+\newlabel{fig:sim_environment@cref}{{[figure][4][4]4.4}{44}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Selected segments of a 100-loop ``Circle'' trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The effect of VO drift can be clearly seen, as well as the benefit of incorporating observations of a directional landmark such as the sun.\relax }}{44}{figure.caption.44}}
+\newlabel{fig:sim_topdown}{{4.5}{44}{Selected segments of a 100-loop ``Circle'' trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The effect of VO drift can be clearly seen, as well as the benefit of incorporating observations of a directional landmark such as the sun.\relax }{figure.caption.44}{}}
+\newlabel{fig:sim_topdown@cref}{{[figure][5][4]4.5}{44}}
+\newlabel{fig:sim_traj}{{4.6a}{45}{Translational CRMSE (ENU)\relax }{figure.caption.45}{}}
+\newlabel{fig:sim_traj@cref}{{[subfigure][1][4,6]4.6a}{45}}
+\newlabel{sub@fig:sim_traj}{{a}{45}{Translational CRMSE (ENU)\relax }{figure.caption.45}{}}
+\newlabel{sub@fig:sim_traj@cref}{{[subfigure][1][4,6]4.6a}{45}}
+\newlabel{fig:sim_en_rmse}{{4.6b}{45}{Translational CRMSE (EN plane)\relax }{figure.caption.45}{}}
+\newlabel{fig:sim_en_rmse@cref}{{[subfigure][2][4,6]4.6b}{45}}
+\newlabel{sub@fig:sim_en_rmse}{{b}{45}{Translational CRMSE (EN plane)\relax }{figure.caption.45}{}}
+\newlabel{sub@fig:sim_en_rmse@cref}{{[subfigure][2][4,6]4.6b}{45}}
+\newlabel{fig:sim_rot_rmse}{{4.6c}{45}{Rotational CRMSE\relax }{figure.caption.45}{}}
+\newlabel{fig:sim_rot_rmse@cref}{{[subfigure][3][4,6]4.6c}{45}}
+\newlabel{sub@fig:sim_rot_rmse}{{c}{45}{Rotational CRMSE\relax }{figure.caption.45}{}}
+\newlabel{sub@fig:sim_rot_rmse@cref}{{[subfigure][3][4,6]4.6c}{45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Cumulative root mean squared error (CRMSE) of a simulated 100-loop circular trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The accumulated estimation error is greatly reduced by incorporating observations of the sun, and the benefit decreases as these observations become noisier.\relax }}{45}{figure.caption.45}}
+\newlabel{fig:sim_rmse}{{4.6}{45}{Cumulative root mean squared error (CRMSE) of a simulated 100-loop circular trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The accumulated estimation error is greatly reduced by incorporating observations of the sun, and the benefit decreases as these observations become noisier.\relax }{figure.caption.45}{}}
+\newlabel{fig:sim_rmse@cref}{{[figure][6][4]4.6}{45}}
+\citation{fisher1953dispersion}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Experiments}{46}{section.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Simulation Experiments}{46}{section.4.4}}
+\newlabel{sec:sim_vo}{{4.4}{46}{Simulation Experiments}{section.4.4}{}}
+\newlabel{sec:sim_vo@cref}{{[section][4][4]4.4}{46}}
+\citation{Geiger2012-fq,Geiger2013-ky}
+\citation{Ma2016-at}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Urban Driving Experiments: The KITTI Odometry Benchmark}{47}{section.4.5}}
+\citation{Lalonde2011-jw}
+\citation{Clement2016-ir}
+\citation{Ma2016-at}
+\citation{Lalonde2011-jw}
+\citation{Clement2016-ir}
+\citation{Ma2016-at}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Distributions of azimuth error, zenith error, and angular distance for Sun-BCNN compared to ground truth over each test sequence in the KITTI dataset. \emph  {Top row}: Cumulative distributions of errors for each test sequence individually. \emph  {Bottom row:} Histograms and Gaussian fits of aggregated errors.\relax }}{48}{figure.caption.46}}
+\newlabel{fig:kitti_cnn_testerrors}{{4.7}{48}{Distributions of azimuth error, zenith error, and angular distance for Sun-BCNN compared to ground truth over each test sequence in the KITTI dataset. \emph {Top row}: Cumulative distributions of errors for each test sequence individually. \emph {Bottom row:} Histograms and Gaussian fits of aggregated errors.\relax }{figure.caption.46}{}}
+\newlabel{fig:kitti_cnn_testerrors@cref}{{[figure][7][4]4.7}{48}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Azimuth (Sun-CNN and Sun-BCNN) and zenith (Sun-BCNN only) predictions over time for KITTI test sequences \texttt  {04}, \texttt  {06} and \texttt  {10}. Sun-CNN is trained and tested on every tenth image, whereas Sun-BCNN is trained and tested on every image. In our VO experiments, we use the Sun-BCNN predictions of every tenth image to make a fair comparison. \relax }}{48}{figure.caption.47}}
+\newlabel{fig:kitti_error_over_time}{{4.8}{48}{Azimuth (Sun-CNN and Sun-BCNN) and zenith (Sun-BCNN only) predictions over time for KITTI test sequences \texttt {04}, \texttt {06} and \texttt {10}. Sun-CNN is trained and tested on every tenth image, whereas Sun-BCNN is trained and tested on every image. In our VO experiments, we use the Sun-BCNN predictions of every tenth image to make a fair comparison. \relax }{figure.caption.47}{}}
+\newlabel{fig:kitti_error_over_time@cref}{{[figure][8][4]4.8}{48}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Test Errors for Sun-BCNN on KITTI odometry sequences with estimates computed at every image.\relax }}{49}{table.caption.48}}
+\newlabel{tab:kitti_test_cnn}{{4.1}{49}{Test Errors for Sun-BCNN on KITTI odometry sequences with estimates computed at every image.\relax }{table.caption.48}{}}
+\newlabel{tab:kitti_test_cnn@cref}{{[table][1][4]4.1}{49}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Box-and-whiskers plot of final test errors on all ten KITTI odometry sequences (c.f. \Cref  {tab:kitti_test_cnn}).\relax }}{49}{figure.caption.50}}
+\newlabel{fig:kitti_test_error_whiskers}{{4.9}{49}{Box-and-whiskers plot of final test errors on all ten KITTI odometry sequences (c.f. \Cref {tab:kitti_test_cnn}).\relax }{figure.caption.50}{}}
+\newlabel{fig:kitti_test_error_whiskers@cref}{{[figure][9][4]4.9}{49}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces VO results for KITTI odometry sequence \texttt  {05} using simulated sun measurements at every tenth pose. We observe a clear progression in cumulative root mean squared error (CRMSE) in translation and rotation as noise in the simulated sun measurements increases.\relax }}{50}{figure.caption.51}}
+\newlabel{fig:kitti-vo-sim-results}{{4.10}{50}{VO results for KITTI odometry sequence \texttt {05} using simulated sun measurements at every tenth pose. We observe a clear progression in cumulative root mean squared error (CRMSE) in translation and rotation as noise in the simulated sun measurements increases.\relax }{figure.caption.51}{}}
+\newlabel{fig:kitti-vo-sim-results@cref}{{[figure][10][4]4.10}{50}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of translational and rotational average root mean squared error (ARMSE) on KITTI odometry sequences with and without sun direction estimates at every tenth image. The best result (excluding simulated sun sensing) is highlighted in bold.\relax }}{51}{table.caption.54}}
+\newlabel{tab:kitti_armse}{{4.2}{51}{Comparison of translational and rotational average root mean squared error (ARMSE) on KITTI odometry sequences with and without sun direction estimates at every tenth image. The best result (excluding simulated sun sensing) is highlighted in bold.\relax }{table.caption.54}{}}
+\newlabel{tab:kitti_armse@cref}{{[table][2][4]4.2}{51}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Sun BCNN predictions and associated ground truth sun directions on the KITTI sequence \texttt  {05}. \emph  {Top two rows}: Sun BCNN produces accurate predictions in a variety of azimuth values. \emph  {Bottom row}: Poor results occur rarely due to shadow ambiguities.\relax }}{52}{figure.caption.52}}
+\newlabel{fig:kitti_arrows}{{4.11}{52}{Sun BCNN predictions and associated ground truth sun directions on the KITTI sequence \texttt {05}. \emph {Top two rows}: Sun BCNN produces accurate predictions in a variety of azimuth values. \emph {Bottom row}: Poor results occur rarely due to shadow ambiguities.\relax }{figure.caption.52}{}}
+\newlabel{fig:kitti_arrows@cref}{{[figure][11][4]4.11}{52}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Sun-BCNN Test Results}{52}{subsection.4.5.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces VO results for KITTI odometry sequences \texttt  {02}, \texttt  {05}, and \texttt  {08} using estimate sun directions at every tenth pose. \emph  {Top row}: Estimated and ground truth trajectories in the Easting-Northing (EN) plane. \emph  {Middle row}: Translational cumulative root mean squared error (CRMSE) in the EN-plane. \emph  {Bottom row}: Rotational CRMSE. Sun-BCNN significantly reduces the estimation error on sequence \texttt  {05}, while the Lalonde \citep  {Lalonde2011-jw}, Lalonde-VO \citep  {Clement2016-ir}, and Sun-CNN \citep  {Ma2016-at} methods provide modest reductions in estimation error. The remaining sequences are less clear, but Sun-BCNN generally provides some benefit.\relax }}{53}{figure.caption.53}}
+\newlabel{fig:kitti-vo-results}{{4.12}{53}{VO results for KITTI odometry sequences \texttt {02}, \texttt {05}, and \texttt {08} using estimate sun directions at every tenth pose. \emph {Top row}: Estimated and ground truth trajectories in the Easting-Northing (EN) plane. \emph {Middle row}: Translational cumulative root mean squared error (CRMSE) in the EN-plane. \emph {Bottom row}: Rotational CRMSE. Sun-BCNN significantly reduces the estimation error on sequence \texttt {05}, while the Lalonde \citep {Lalonde2011-jw}, Lalonde-VO \citep {Clement2016-ir}, and Sun-CNN \citep {Ma2016-at} methods provide modest reductions in estimation error. The remaining sequences are less clear, but Sun-BCNN generally provides some benefit.\relax }{figure.caption.53}{}}
+\newlabel{fig:kitti-vo-results@cref}{{[figure][12][4]4.12}{53}}
+\citation{Lalonde2011-jw}
+\citation{Clement2016-ir}
+\citation{Ma2016-at}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces GPS track and sample images from the Devon Island traverse, with the start of each sequence highlighted. The Devon Island dataset is conducive to visual sun sensing due to the presence of strong environmental shadows, reflective surfaces such as mud and water, occasionally visible sun, and self-shadowing by the sensor platform. (Map data: Google, DigitalGlobe)\relax }}{54}{figure.caption.56}}
+\newlabel{fig:devon_collage}{{4.13}{54}{GPS track and sample images from the Devon Island traverse, with the start of each sequence highlighted. The Devon Island dataset is conducive to visual sun sensing due to the presence of strong environmental shadows, reflective surfaces such as mud and water, occasionally visible sun, and self-shadowing by the sensor platform. (Map data: Google, DigitalGlobe)\relax }{figure.caption.56}{}}
+\newlabel{fig:devon_collage@cref}{{[figure][13][4]4.13}{54}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Visual Odometry Experiments}{54}{subsection.4.5.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Simulated Sun Sensing}{54}{section*.57}}
+\newlabel{sec:kitti_vo_sim_sun}{{4.5.2}{54}{Simulated Sun Sensing}{section*.57}{}}
+\newlabel{sec:kitti_vo_sim_sun@cref}{{[subsection][2][4,5]4.5.2}{54}}
+\citation{Ma2016-at}
+\citation{Ma2016-at}
+\citation{Lalonde2011-jw}
+\citation{Clement2016-ir}
+\citation{Ma2016-at}
+\citation{Clement2016-ir}
+\@writefile{toc}{\contentsline {subsubsection}{Vision-based Sun Sensing}{55}{section*.58}}
+\newlabel{sec:kitti_vo_sim_sun}{{4.5.2}{55}{Vision-based Sun Sensing}{section*.58}{}}
+\newlabel{sec:kitti_vo_sim_sun@cref}{{[subsection][2][4,5]4.5.2}{55}}
+\citation{Furgale2012-kk}
+\citation{Lambert2012-um}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces (Devon Island) Distributions of azimuth error, zenith error, and angular distance for Sun-BCNN compared to ground truth over each test sequence. \emph  {Top row}: Cumulative distributions of errors for each test sequence individually. \emph  {Bottom row:} Histograms and Gaussian fits of aggregated errors.\relax }}{56}{figure.caption.59}}
+\newlabel{fig:devon_cnn_testerrors}{{4.14}{56}{(Devon Island) Distributions of azimuth error, zenith error, and angular distance for Sun-BCNN compared to ground truth over each test sequence. \emph {Top row}: Cumulative distributions of errors for each test sequence individually. \emph {Bottom row:} Histograms and Gaussian fits of aggregated errors.\relax }{figure.caption.59}{}}
+\newlabel{fig:devon_cnn_testerrors@cref}{{[figure][14][4]4.14}{56}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{56}{section.4.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces Azimuth (Sun-BCNN azimuth and zenith predictions over time for Devon Island test sequences \texttt  {00}, \texttt  {01} and \texttt  {12}. Sun-BCNN is trained and tested on all frames (in our VO experiments, we use the Sun-BCNN predictions of every tenth image to make a fair comparison). \relax }}{57}{figure.caption.60}}
+\newlabel{fig:devon_error_over_time}{{4.15}{57}{Azimuth (Sun-BCNN azimuth and zenith predictions over time for Devon Island test sequences \texttt {00}, \texttt {01} and \texttt {12}. Sun-BCNN is trained and tested on all frames (in our VO experiments, we use the Sun-BCNN predictions of every tenth image to make a fair comparison). \relax }{figure.caption.60}{}}
+\newlabel{fig:devon_error_over_time@cref}{{[figure][15][4]4.15}{57}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Sun-BCNN Test Results}{57}{subsection.4.6.1}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Test Errors for Sun-BCNN on Devon Island odometry sequences with estimates computed at every image.\relax }}{58}{table.caption.61}}
+\newlabel{tab:testBCNN_devon}{{4.3}{58}{Test Errors for Sun-BCNN on Devon Island odometry sequences with estimates computed at every image.\relax }{table.caption.61}{}}
+\newlabel{tab:testBCNN_devon@cref}{{[table][3][4]4.3}{58}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces Box-and-whiskers plot of final test errors on Devon Island odometry sequences (c.f. \Cref  {tab:testBCNN_devon}).\relax }}{58}{figure.caption.63}}
+\newlabel{fig:devon_test_error_whiskers}{{4.16}{58}{Box-and-whiskers plot of final test errors on Devon Island odometry sequences (c.f. \Cref {tab:testBCNN_devon}).\relax }{figure.caption.63}{}}
+\newlabel{fig:devon_test_error_whiskers@cref}{{[figure][16][4]4.16}{58}}
+\citation{Ma2016-at}
+\citation{Lalonde2011-jw}
+\citation{Clement2016-ir}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Visual Odometry Experiments}{59}{subsection.4.6.2}}
+\newlabel{fig:devon_c00_traj}{{4.17a}{60}{\texttt {00}: VO trajectories (EN-plane)\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c00_traj@cref}{{[subfigure][1][4,17]4.17a}{60}}
+\newlabel{sub@fig:devon_c00_traj}{{a}{60}{\texttt {00}: VO trajectories (EN-plane)\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c00_traj@cref}{{[subfigure][1][4,17]4.17a}{60}}
+\newlabel{fig:devon_c01_traj}{{4.17b}{60}{\texttt {01}: VO trajectories (EN-plane)\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c01_traj@cref}{{[subfigure][2][4,17]4.17b}{60}}
+\newlabel{sub@fig:devon_c01_traj}{{b}{60}{\texttt {01}: VO trajectories (EN-plane)\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c01_traj@cref}{{[subfigure][2][4,17]4.17b}{60}}
+\newlabel{fig:devon_c05_traj}{{4.17c}{60}{\texttt {05}: VO trajectories (EN-plane)\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c05_traj@cref}{{[subfigure][3][4,17]4.17c}{60}}
+\newlabel{sub@fig:devon_c05_traj}{{c}{60}{\texttt {05}: VO trajectories (EN-plane)\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c05_traj@cref}{{[subfigure][3][4,17]4.17c}{60}}
+\newlabel{fig:devon_c00_transerr_enu}{{4.17d}{60}{\texttt {00}: Translational CRMSE\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c00_transerr_enu@cref}{{[subfigure][4][4,17]4.17d}{60}}
+\newlabel{sub@fig:devon_c00_transerr_enu}{{d}{60}{\texttt {00}: Translational CRMSE\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c00_transerr_enu@cref}{{[subfigure][4][4,17]4.17d}{60}}
+\newlabel{fig:devon_c01_transerr_enu}{{4.17e}{60}{\texttt {01}: Translational CRMSE\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c01_transerr_enu@cref}{{[subfigure][5][4,17]4.17e}{60}}
+\newlabel{sub@fig:devon_c01_transerr_enu}{{e}{60}{\texttt {01}: Translational CRMSE\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c01_transerr_enu@cref}{{[subfigure][5][4,17]4.17e}{60}}
+\newlabel{fig:devon_c05_transerr_enu}{{4.17f}{60}{\texttt {01}: Translational CRMSE\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c05_transerr_enu@cref}{{[subfigure][6][4,17]4.17f}{60}}
+\newlabel{sub@fig:devon_c05_transerr_enu}{{f}{60}{\texttt {01}: Translational CRMSE\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c05_transerr_enu@cref}{{[subfigure][6][4,17]4.17f}{60}}
+\newlabel{fig:devon_c00_transerr_en}{{4.17g}{60}{\texttt {00}: Translational CRMSE (EN-Plane)\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c00_transerr_en@cref}{{[subfigure][7][4,17]4.17g}{60}}
+\newlabel{sub@fig:devon_c00_transerr_en}{{g}{60}{\texttt {00}: Translational CRMSE (EN-Plane)\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c00_transerr_en@cref}{{[subfigure][7][4,17]4.17g}{60}}
+\newlabel{fig:devon_c01_transerr_en}{{4.17h}{60}{\texttt {01}: Translational CRMSE (EN-Plane)\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c01_transerr_en@cref}{{[subfigure][8][4,17]4.17h}{60}}
+\newlabel{sub@fig:devon_c01_transerr_en}{{h}{60}{\texttt {01}: Translational CRMSE (EN-Plane)\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c01_transerr_en@cref}{{[subfigure][8][4,17]4.17h}{60}}
+\newlabel{fig:devon_c05_transerr_en}{{4.17i}{60}{\texttt {05}: Translational CRMSE (EN-Plane)\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_c05_transerr_en@cref}{{[subfigure][9][4,17]4.17i}{60}}
+\newlabel{sub@fig:devon_c05_transerr_en}{{i}{60}{\texttt {05}: Translational CRMSE (EN-Plane)\relax }{figure.caption.64}{}}
+\newlabel{sub@fig:devon_c05_transerr_en@cref}{{[subfigure][9][4,17]4.17i}{60}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces VO results for Devon Island sequences \texttt  {00}, \texttt  {01}, and \texttt  {05} using estimated sun directions. \emph  {Top row}: Estimated and ground truth trajectories in the EN-plane. \emph  {Bottom rows}: Translational cumulative root mean squared error (CRMSE). Sun-BCNN significantly reduces the estimation error on sequences where the sun sensing has an impact (c.f. \Cref  {tab:devon_armse}).\relax }}{60}{figure.caption.64}}
+\newlabel{fig:devon_vo}{{4.17}{60}{VO results for Devon Island sequences \texttt {00}, \texttt {01}, and \texttt {05} using estimated sun directions. \emph {Top row}: Estimated and ground truth trajectories in the EN-plane. \emph {Bottom rows}: Translational cumulative root mean squared error (CRMSE). Sun-BCNN significantly reduces the estimation error on sequences where the sun sensing has an impact (c.f. \Cref {tab:devon_armse}).\relax }{figure.caption.64}{}}
+\newlabel{fig:devon_vo@cref}{{[figure][17][4]4.17}{60}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Comparison of average root mean squared error (ARMSE) on Devon Island sequences with and without sun direction estimates using both a hardware sun sensor and vision-based methods. The best result using a vision-based method is bolded.\relax }}{61}{table.caption.65}}
+\newlabel{tab:devon_armse}{{4.4}{61}{Comparison of average root mean squared error (ARMSE) on Devon Island sequences with and without sun direction estimates using both a hardware sun sensor and vision-based methods. The best result using a vision-based method is bolded.\relax }{table.caption.65}{}}
+\newlabel{tab:devon_armse@cref}{{[table][4][4]4.4}{61}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Sensitivity Analysis}{61}{section.4.7}}
+\citation{Maddern2016-ng}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.18}{\ignorespaces Sample images of approximately the same location taken from three different Oxford Robotcar sequences we used to investigate the effect of cloud cover on Sun-BCNN.\relax }}{62}{figure.caption.66}}
+\newlabel{fig:oxford-images}{{4.18}{62}{Sample images of approximately the same location taken from three different Oxford Robotcar sequences we used to investigate the effect of cloud cover on Sun-BCNN.\relax }{figure.caption.66}{}}
+\newlabel{fig:oxford-images@cref}{{[figure][18][4]4.18}{62}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Cloud Cover}{62}{subsection.4.7.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Procedure}{62}{section*.67}}
+\citation{mcmanus2014}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.19}{\ignorespaces Box-and-whiskers plot for zenith, azimuth and vector angle errors for nine different combinations of train-test sequences taken from the Oxford Robotcar dataset. Each column corresponds to a different training sequence, and each plot contains three different test sequences. In the bottom legend, we use the labels O: \emph  {Overcast}, SCA: \emph  {Sun-Cloud A}, SCB: \emph  {Sun-Cloud B}.\relax }}{63}{figure.caption.69}}
+\newlabel{fig:oxford-boxwhiskers}{{4.19}{63}{Box-and-whiskers plot for zenith, azimuth and vector angle errors for nine different combinations of train-test sequences taken from the Oxford Robotcar dataset. Each column corresponds to a different training sequence, and each plot contains three different test sequences. In the bottom legend, we use the labels O: \emph {Overcast}, SCA: \emph {Sun-Cloud A}, SCB: \emph {Sun-Cloud B}.\relax }{figure.caption.69}{}}
+\newlabel{fig:oxford-boxwhiskers@cref}{{[figure][19][4]4.19}{63}}
+\@writefile{toc}{\contentsline {subsubsection}{Results}{63}{section*.68}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Model Generalization}{63}{subsection.4.7.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Procedure}{64}{section*.70}}
+\@writefile{toc}{\contentsline {subsubsection}{Results}{64}{section*.71}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.20}{\ignorespaces Box-and-whiskers plot for zenith, azimuth and vector angle errors for nine different combinations of train-test datasets. Each column corresponds to a different training sequence, and each plot contains three different test sequences. In the bottom legend, we use the labels K: KITTI, D: Devon Island, O: Oxford. All three models produce large biased errors when applied to other datasets, likely due to variations in optical properties and parameter settings across cameras.\relax }}{65}{figure.caption.72}}
+\newlabel{fig:experiment-transfer-boxwhiskers}{{4.20}{65}{Box-and-whiskers plot for zenith, azimuth and vector angle errors for nine different combinations of train-test datasets. Each column corresponds to a different training sequence, and each plot contains three different test sequences. In the bottom legend, we use the labels K: KITTI, D: Devon Island, O: Oxford. All three models produce large biased errors when applied to other datasets, likely due to variations in optical properties and parameter settings across cameras.\relax }{figure.caption.72}{}}
+\newlabel{fig:experiment-transfer-boxwhiskers@cref}{{[figure][20][4]4.20}{65}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Test Errors for Sun-BCNN on three different Oxford Robotcar sequences collected on the same day with different lighting conditions.\relax }}{65}{table.caption.73}}
+\newlabel{tab:testBCNN_oxford_weather}{{4.5}{65}{Test Errors for Sun-BCNN on three different Oxford Robotcar sequences collected on the same day with different lighting conditions.\relax }{table.caption.73}{}}
+\newlabel{tab:testBCNN_oxford_weather@cref}{{[table][5][4]4.5}{65}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Test Errors for Sun-BCNN on different training and test datasets.\relax }}{66}{table.caption.75}}
+\newlabel{tab:testBCNN_transfer_experiment}{{4.6}{66}{Test Errors for Sun-BCNN on different training and test datasets.\relax }{table.caption.75}{}}
+\newlabel{tab:testBCNN_transfer_experiment@cref}{{[table][6][4]4.6}{66}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Mean and Covariance Computation}{66}{subsection.4.7.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Mean computation}{66}{section*.76}}
+\@writefile{toc}{\contentsline {paragraph}{Procedure}{66}{section*.77}}
+\@writefile{toc}{\contentsline {paragraph}{Results}{67}{section*.78}}
+\@writefile{toc}{\contentsline {subsubsection}{Covariance Computation}{67}{section*.79}}
+\@writefile{toc}{\contentsline {paragraph}{Procedure}{67}{section*.80}}
+\@writefile{toc}{\contentsline {paragraph}{Results}{67}{section*.81}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces A comparison of prediction errors from different mean estimation methods.\relax }}{68}{table.caption.82}}
+\newlabel{tab:mean_estimation_comp}{{4.7}{68}{A comparison of prediction errors from different mean estimation methods.\relax }{table.caption.82}{}}
+\newlabel{tab:mean_estimation_comp@cref}{{[table][7][4]4.7}{68}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.8}{\ignorespaces A comparison of ANEES values for different mean and covariance propagation methods.\relax }}{68}{table.caption.83}}
+\newlabel{tab:cov_estimation_comp}{{4.8}{68}{A comparison of ANEES values for different mean and covariance propagation methods.\relax }{table.caption.83}{}}
+\newlabel{tab:cov_estimation_comp@cref}{{[table][8][4]4.8}{68}}
 \@setckpt{sections/sun-bcnn}{
-\setcounter{page}{32}
-\setcounter{equation}{0}
-\setcounter{enumi}{6}
+\setcounter{page}{69}
+\setcounter{equation}{6}
+\setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{1}
+\setcounter{footnote}{4}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
-\setcounter{chapter}{3}
-\setcounter{section}{1}
-\setcounter{subsection}{0}
+\setcounter{chapter}{4}
+\setcounter{section}{7}
+\setcounter{subsection}{3}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{2}
-\setcounter{table}{0}
+\setcounter{figure}{20}
+\setcounter{table}{8}
 \setcounter{ContinuedFloat}{0}
 \setcounter{parentequation}{0}
-\setcounter{Item}{6}
-\setcounter{Hfootnote}{2}
-\setcounter{bookmark@seq@number}{0}
+\setcounter{Item}{13}
+\setcounter{Hfootnote}{5}
+\setcounter{bookmark@seq@number}{45}
 \setcounter{ALG@line}{22}
 \setcounter{ALG@rem}{22}
 \setcounter{ALG@nested}{0}
@@ -56,8 +273,6 @@
 \setcounter{algorithm}{3}
 \setcounter{NAT@ctr}{0}
 \setcounter{subfigure}{0}
-\setcounter{lofdepth}{1}
 \setcounter{subtable}{0}
-\setcounter{lotdepth}{1}
-\setcounter{section@level}{1}
+\setcounter{section@level}{4}
 }

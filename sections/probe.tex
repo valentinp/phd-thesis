@@ -1,112 +1,6 @@
 \chapter{Predictive Robust Estimation}
-\section{Stereo Visual Odometry}
 
-In our frame-to-frame sparse stereo odometry pipeline,  the objective is to find
-$\Transform_t\in\text{SE}(3)$, the rigid transform between two subsequent stereo camera poses (note that the temporal index $t$ refers to the set of two stereo camera poses). We begin by rectifying, then stereo and temporally
-matching the set of 4 images to generate the corresponding locations of a set
-of $N_t$ visual landmarks in each stereo pair.  Each landmark corresponds to a
-point in space, expressed in homogeneous coordinates in the camera frame as
-$\HomogeneousPoint{i}{t} := \Transpose{\bbm p_1 & p_2 & p_3 & p_4 \ebm} \in
-\HomogeneousNumbers[3]$.  The stereo-camera model, $\ProjectionFunction$,
-projects a landmark expressed in homogeneous coordinates into image space, so
-that $\ImageLandmark{i}{t}$, the stereo pixel coordinates of landmark $i$ in the first camera pose at time $t$, is given
-by 
-\begin{equation}
-	\ImageLandmark{i}{t} = \bbm u_l \\ v_l \\ u_r \\ v_r \ebm 
-  = \ProjectionFunction(\HomogeneousPoint{i}{t}) 
-  = \Matrix{M} \frac{1}{p_3}\HomogeneousPoint{i}{t},
-\end{equation}
-where
-\begin{equation}
- \Matrix{M} = \bbm f_u & 0 & c_u & f_u \frac{b}{2} \\ 0 & f_v & c_v & 0 \\ f_u 
-                        & 0 & c_u & -f_u\frac{b}{2} \\ 0 & f_b & c_v & 0 \ebm.
-\end{equation}
-Here, $\{c_u, c_v\}$, $\{f_u, f_v\}$, and $b$ are the principal points, focal
-lengths and baseline of the stereo camera respectively. Note that in this
-formulation, the stereo camera frame is centered between the two individual
-lenses.  
-
-We triangulate landmarks in the first camera frame, $\ImageLandmark{i}{t}$, and re-project
-them into the second frame, $\ImageLandmark{i}{t}'$. We model errors due to sensor noise
-and quantization as a Gaussian distribution in image space with a known covariance
-$\Covariance$,
-\begin{equation}
-  p(\ImageLandmark{i}{t}' \vert \ImageLandmark{i}{t}, \Transform_t,
-  \Covariance)
-  =\NormalDistribution\left(\Vector{e}_{i,t}(\Transform_t); \Vector 0, \Covariance\right), 
-\end{equation}
-where
-\begin{equation}
- \Vector{e}_{i,t} = \ImageLandmark{i}{t}' - \ProjectionFunction( \Transform_t 
-    \ProjectionFunction^{-1}( \ImageLandmark{i}{t} ) ).	
-   \label{eq:image_error}
-\end{equation}
-  The maximum likelihood transform,
-$\Transform_t^*$, is then given by 
-\begin{equation}
-  \Transform_t^* = \ArgMin{\Transform_t\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  \Transpose{\Vector{e}_{i,t}} \Covariance^{-1} \Vector{e}_{i,t}.
-\end{equation}
-This is a nonlinear least squares problem, and can be solved iteratively using
-standard techniques. During iteration $n$, we represent the transform as the
-product of an estimate $\Transform^{(n)}\in\text{SE}(3)$ and a perturbation
-$\delta\Vector{\xi}\in\RealNumbers[6]$ represented in exponential
-coordinates:
-\begin{equation}
-  \Transform_t = \exp{\left( \delta\Vector{\xi}^{\wedge}
-  \right)} \Transform_t^{(n)}.
-\end{equation}
-The wedge operator $(\cdot)^\wedge$ is defined (following
-\citet{barfoot2014associating}) as both the map
-$\RealNumbers[3]\to\mathfrak{so}(3)$,  
-\begin{equation}
-\Vector \phi ^\wedge \triangleq \bbm \phi_1 \\ \phi_2 \\ \phi_3 \ebm^\wedge	= \bbm 0 &
--\phi_3 & \phi_2 \\ \phi_3 & 0 & -\phi_1 \\ -\phi_2 & \phi_1 & 0 \ebm,
-\label{eq:wedgeOpRotation}
-\end{equation}
-and the map $\RealNumbers[6]\to\mathfrak{se}(3)$,
-\begin{equation}
-  \Vector \xi^\wedge \triangleq \bbm \Vector \rho \\ \Vector \phi \ebm ^\wedge = \bbm
-  \Vector \phi^\wedge & \Vector \rho \\ \Transpose{\Vector{0}} &  0 \ebm.	
-\end{equation}
-Linearizing the transform for small perturbations $\delta\Vector{\xi}$
-yields a linear least-squares problem:
-\begin{equation}
-  \mathcal{L}(\delta \Vector{\xi}) = \frac{1}{2}\sum_{i=1}^{N_t} 
-  \Transpose{\left(\Vector{e}_{i,t}^{(n)}
-  - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)}
-\Covariance^{-1}
- \left(\Vector{e}_{i,t}^{(n)}
- - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)
-  \end{equation}
-Here, $\Matrix J_{i,t}^{(n)}$ is the Jacobian matrix of the reprojection error.
-The explicit form of the Jacobian matrix is omitted for brevity but can be
-found in our supplemental materials.\footnote{\url{http://groups.csail.mit.edu/rrg/peretroukhin_icra16/supplemental.pdf}}
-
-Rearranging, we see the minimizing perturbation is the solution to a
-linear system of equations:
-\begin{equation}
-  \delta\Vector{\xi}^{(n)} = 
-  \left( \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
-  \ImageLandmarkCovariance{}{}^{-1} \Matrix J_{i,t} \right)^{-1}
-  \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
-  \Covariance^{-1} \Vector{e}_{i,t}^{(n)}. 
-\label{eq:least-squares-iteration}
-\end{equation}
-We then update the estimated transform and proceed to the next iteration.
-\begin{equation}
-  \Transform_t^{(n+1)} = \exp{\left( \delta\Vector{\xi}^{(n)\wedge}
-  \right)} \Transform_t^{(n)}. \label{eq:update}
-\end{equation}
-There are many reasonable choices for both the initial transform
-$\Transform_t^{(0)}$ and for the conditions under which we terminate
-iteration. We initialize the estimated transform to identity, and iteratively
-perform the update given by \cref{eq:update} until we see a relative change in
-the squared error of less than one percent after an update.  
-
-
-\section{Scalar k-Nearest Neighbours}
-
+\section{Motivation}
 Robot navigation relies on an accurate quantification of sensor noise or uncertainty in order to produce reliable state estimates.
 In practice, this uncertainty is often fixed for a given sensor and experiment, whether by automatic calibration or by manual tuning.
 Although a fixed measure of uncertainty may be reasonable in certain static environments, dynamic scenes frequently exhibit many effects that corrupt a portion of the available observations.
@@ -114,7 +8,30 @@ For visual sensors, these effects include, for example, self-similar textures, v
 We assert that there may be useful information available in these observations that would normally be rejected by a fixed-threshold outlier rejection scheme. 
 Ideally, we would like to retain some of these observations in our estimator, while still placing more trust in observations that do not suffer from such effects.
 
-In this paper we present PROBE, a Predictive ROBust Estimation technique that improves localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
+\section{Related Work}
+
+
+There is a large and growing body of work on the problem of deriving accurate,
+consistent state estimates from visual data.  Although our approach to noise
+modelling is applicable in other domains, for simplicity we focus our attention
+on the problem of inferring egomotion from features extracted from sequential
+pairs of stereo images; see \citet{sunderhauf2007stereo} for a survey of
+techniques. The spectrum of alternative approaches to visual state estimation
+include monocular techniques, which may be feature-based
+\citep{scaramuzza2011visual}, direct \citep{irani2000direct}, or semi-direct
+\citep{forster2014svo}. 
+
+Apart from simply rejecting outliers, a number of recent approaches attempt to
+select the optimal set of features to produce an accurate localization estimate
+from tracked visual features. For example, \citet{Tsotsos2015} amend Random
+Sample Consensus (RANSAC) with statistical hypothesis testing to ensure that tracked visual features have normally distributed residuals before including them in
+the estimator. Unlike our predictive approach, their technique relies on the availability of feature tracks, and requires scene overlap to work continuously. In a different
+approach, \Citet{Zhang2015} choose an optimally observable feature subset for a
+monocular SLAM pipeline by selecting features with the highest \textit{informativeness} - a measure calculated based on the observability of the SLAM subsystem. Observability, however, is governed by the 3D location of the features, and therefore cannot predict systematic feature degradation due to environmental or sensor-based effects. 
+
+\section{Scalar k-Nearest Neighbours}
+
+In this chapter we present PROBE, a Predictive ROBust Estimation technique that improves localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
 We learn the model in an offline training procedure and then use it online to predict the uncertainty of incoming observations as a function of their location in a predefined \emph{prediction space}.
 Our model can be learned in completely unknown environments with frequent or infrequent ground truth data. 
 
@@ -239,20 +156,20 @@ The apparatus underwent both slow and fast translational and rotational motion, 
 %\end{figure}
 
 
-\begin{figure*}
+\begin{figure}
     \centering
-    \subfigure[Reprojection error of checkerboard corners triangulated from the VI-Sensor and reprojected into the Flea3.] {
-        \includegraphics[width=0.45\textwidth]{probe/reprojectionError}
+        \includegraphics[width=0.85\textwidth]{probe/reprojectionError}
         \label{fig:probe_visensor_reprojectionError}
-    }
-    ~
-    \subfigure[Tracking error of KLT-tracked checkerboard corners in the left VI-Sensor camera compared to directly re-detected corners.] {
-        \includegraphics[width=0.45\textwidth]{probe/trackingError}
-        \label{fig:probe_visensor_trackingError}
-    }
+      \caption{Reprojection error of checkerboard corners triangulated from the VI-Sensor and reprojected into the Flea3.}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{probe/trackingError}
+    \label{fig:probe_visensor_trackingError}
     \caption{Effect of blur on reprojection and tracking error for the slow-then-fast checkerboard dataset. We distinguish between high and low blur by thresholding the blur metric \cite{Anonymous:Ngi3VEEU}. The variance in both errors increases with blur.}
     \label{fig:visensor_histograms}
-\end{figure*}
+\end{figure}
 
 We detected checkerboard corners in each camera at synchronized time steps, computed their 3D coordinates in the VI-Sensor frame, then reprojected these 3D coordinates into the Flea3 frame.
 We then computed the reprojection error as the distance between the reprojected image coordinates and the true image coordinates in the Flea3 frame.
@@ -279,7 +196,7 @@ Our optical flow variance score generally picks out moving objects such as vehic
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.4\textwidth]{probe/flowPredictorCombined.png}
+    \includegraphics[width=0.8\textwidth]{probe/flowPredictorCombined.png}
     \caption{The optical flow variance predictor can help in detecting moving objects. Red circles correspond to higher values of the optical flow variance score (i.e., features more likely to belong to a moving object).}
     \label{fig:probe_flow_variance}
 \end{figure}
@@ -293,15 +210,16 @@ Our high-frequency predictor effectively distinguishes between textureless regio
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.4\textwidth]{probe/highFreqPredictor.png}
+    \includegraphics[width=0.8\textwidth]{probe/highFreqPredictor.png}
     \caption{A high-frequency predictor can distinguish between regions of high and low texture such as foliage and shadows. Green indicates higher values.}
     \label{fig:probe_high_frequency}
 \end{figure}
 
 \begin{table}
     \centering
+    
     \caption{Comparison of translational Average Root Mean Square Error (ARMSE) and Final Translational Error on the KITTI dataset.}
-
+	\resizebox{\columnwidth}{!}{%
     % Need to add an asterisk to the 30_drive_0027 "Type" to indicate that it's trained on City data, but can't do it without messing up the justification - Matt
     \begin{threeparttable}
         \begin{tabular}{cccccccccccc}
@@ -329,18 +247,19 @@ Our high-frequency predictor effectively distinguishes between textureless regio
             \item[\dag] This residential trial was evaluated with a model trained on a sequence from the city category because of several moving vehicles that were better represented in that training dataset.
         \end{tablenotes}
     \end{threeparttable}
+    }
 \end{table}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{probe/city-res-road.png}
+    \includegraphics[width=\textwidth]{probe/city-res-road.png}
     \caption{Three types of environments in the KITTI dataset, as well as 2 types of environments at the University of Toronto.  We use one trial from each category to train and then evaluate separate trials in the same category.}
     \label{fig:probe_KITTI-Types}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.4\textwidth]{probe/husky2}
+    \includegraphics[width=0.8\textwidth]{probe/husky2}
     \caption{Our four-wheeled skid-steered Clearpath Husky rover equipped with Skybotix VI-Sensor and Ashtech DGPS antenna used to collect the outdoor UTIAS dataset.}
     \label{fig:probe_huskypic}
 \end{figure}
@@ -362,7 +281,7 @@ careful tuning to work in a given environment.
 
 \begin{figure}
     \centering
-      \includegraphics[width=0.45\textwidth]{probe-gk/system_overview}
+      \includegraphics[width=0.75\textwidth]{probe-gk/system_overview}
       \caption{Our proposed system builds a predictive noise model for stereo visual odometry. (a)~At training
         time, we extract landmarks from two pairs of stereo images,
         and use egomotion ground truth to compute reprojection errors to build a covariance
@@ -704,7 +623,7 @@ the vertical and horizontal pixel locations in each of the stereo cameras.
 
 \begin{figure}
 \centering
-   \includegraphics[width=0.45\textwidth]{probe-gk/sim_world.pdf}
+   \includegraphics[width=0.5\textwidth]{probe-gk/sim_world.pdf}
    \label{fig:SimWorld} 
 \caption{Our synthetic world. A stereo camera rig moves through a world with 2000 point features.}
 \end{figure}
@@ -719,7 +638,7 @@ by approximately 50\%. In our synthetic data, the Expectation Maximization appro
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{probe-gk/simComparison_sim_rerun}
+    \includegraphics[width=0.75\textwidth]{probe-gk/simComparison_sim_rerun}
     \caption{A comparison of translational and rotational Root Mean Square Error on simulated data
     (RMSE) for four different stereo-visual odometry pipelines: two baseline
     bundle adjustment procedures with and without a robust Student's~$t$ cost with a fixed and
@@ -735,7 +654,7 @@ by approximately 50\%. In our synthetic data, the Expectation Maximization appro
 
 \subsection{KITTI}
 
-\begin{figure*}
+\begin{figure}
     \centering
     \includegraphics[width=0.98\textwidth]{probe-gk/KittiEnvironments}
     \caption{The KITTI dataset contains three different environments. We
@@ -743,7 +662,7 @@ by approximately 50\%. In our synthetic data, the Expectation Maximization appro
       stereo visual odometry pipeline.}
       \vspace{-0.5em}
     \label{fig:kitti_environments}
-\end{figure*}
+\end{figure}
 
 To evaluate PROBE-GK on real environments, we trained and tested several models on
 the KITTI Vision Benchmark suite \citep{geiger2012kitti, geiger2013vision}, a series of datasets collected by a car outfitted with a number of
@@ -755,10 +674,10 @@ work, we focused on the city, residential and road categories
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{probe-gk/{kittiComparison-0011-0009-15-Sep-2015-4way}}
+    \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0011-0009-15-Sep-2015-4way}}
     \caption{RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref{table:armse_errors} for a quantitative summary.}
     \vspace{-0.4em}
-    \label{fig:kitti_comparison1}
+    \label{fig:probe-gk_kitti_comparison1}
 \end{figure}
 
 Our prediction space consisted  of inertial magnitudes, high and low image frequency
@@ -772,18 +691,18 @@ a more detailed explanation of our choice of prediction space, see our previous 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{probe-gk/{kittiComparison-0035-0036-15-Sep-2015-4way}}
+    \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0035-0036-15-Sep-2015-4way}}
     \caption{RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset. See \Cref{table:armse_errors} for a quantitative summary.}
     \vspace{-0.4em}
-    \label{fig:kitti_comparison2}
+    \label{fig:probe-gk_kitti_comparison2}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{probe-gk/{kittiComparison-0070-0028-15-Sep-2015-4way}}
+    \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0070-0028-15-Sep-2015-4way}}
     \caption{RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset. See \Cref{table:armse_errors} for a quantitative summary.}
     \vspace{-0.4em}
-    \label{fig:kitti_comparison3}
+    \label{fig:probe-gk_kitti_comparison3}
 \end{figure}
 
 \Cref{fig:kitti_comparison1,fig:kitti_comparison2,fig:kitti_comparison3} show
@@ -804,24 +723,30 @@ of the training data to the final test trials. A characteristic training dataset
 
 \subsubsection{UTIAS}
 
-\begin{table*}
+\begin{table}
 \centering
 \caption{Comparison of average root mean squared errors (ARMSE) for rotational
   and translational components. Each trial is trained and tested from a
   particular category of raw data from the synthetic and KITTI datasets.}
+
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{l c c c c c c c c c }
- & & \multicolumn{4}{c}{Trans. ARMSE [m]} & \multicolumn{4}{c}{Rot. ARMSE [rad]}  \\  \cline{3-6}  \cline{7-10} \T                                                                                     & Length [m] & Fixed Covar. & Static M-Estimator  & GK-GT & GK-EM & Fixed Covar. &  Static M-Estimator  & GK-GT & GK-EM  \\                         \hline \T
+ & & \multicolumn{4}{c}{Trans. ARMSE [m]} & \multicolumn{4}{c}{Rot. ARMSE [rad]}  \\  \cline{3-6}  \cline{7-10} \T                                                                                    
+ & Length [m] & Fixed Covar. & Static M-Estimator  & GK-GT & GK-EM & Fixed Covar. &  Static M-Estimator  & GK-GT & GK-EM  \\                         
+\hline \T
 Synthetic & 180 & 3.87 & 2.49 & 1.59 & 1.66 & 0.18 & 0.13 & 0.070 & 0.073 \\                                                                                                                
 City & 332.9 & 3.84 & 2.99 & 1.69 & 2.87 & 0.032 & 0.021 & 0.0046 & 0.018 \\ 
 Residential & 714.1 & 13.48 & 9.37 & 1.97 & 8.80 & 0.068 & 0.050 & 0.013 & 0.044 \\
 Road & 723.8 & 17.69 & 9.38 & 5.24 & 8.87 & 0.060 & 0.027 & 0.015 & 0.024
-\\ \hline                                                                                                                \end{tabular}               \label{table:armse_errors}
-\end{table*}
+\\ \hline                                                                                                                
+\end{tabular}               \label{table:probe-gk_armse_errors}
+}
+\end{table}
 
 \begin{figure}
     \centering
     \hspace*{0.25cm}
-    \includegraphics[width=0.45\textwidth]{probe-gk/experiment_wide_border}
+    \includegraphics[width=0.75\textwidth]{probe-gk/experiment_wide_border}
     \caption{Our experimental apparatus: a Clearpath Husky rover outfitted with a PointGrey XB3 stereo camera and a differential GPS receiver and base station.}
       \vspace{-0.5em}
    	    \label{fig:experiments}
@@ -829,7 +754,7 @@ Road & 723.8 & 17.69 & 9.38 & 5.24 & 8.87 & 0.060 & 0.027 & 0.015 & 0.024
 
 \begin{figure}
     \centering
-	\includegraphics[width=0.45\textwidth]{probe-gk/xb3_rtk_fig}
+	\includegraphics[width=0.75\textwidth]{probe-gk/xb3_rtk_fig}
     \caption{GPS ground truth for 5 experimental trials collected
       near the UTIAS Mars Dome. Each trial is approximately 250 m long.}
       \vspace{-0.5em}
@@ -856,15 +781,15 @@ The EM approach indeed produced significant error reductions on the training dat
   4 & 205.4 & 2.81 & 7.57 \\
   5 & 249.9 & 2.34 & 7.75 \\ \hline
 \end{tabular}
-\label{table:loop_closure_errors}
+\label{table:probe-gk_loop_closure_errors}
 \end{table}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{probe-gk/{trainingStats}}
+    \includegraphics[width=0.75\textwidth]{probe-gk/{trainingStats}}
     \caption{Training without ground truth using PROBE-GK-EM on a 250.2m path
       around the Mars Dome at UTIAS. The likelihood of the data increases with
       each iteration, and the loop closure error decreases, improving significantly from a baseline static M-estimator.}
       \vspace{-1em}
-    \label{fig:experiments_trainingstats}
+    \label{fig:probe-gk_experiments_trainingstats}
 \end{figure}

@@ -11,7 +11,7 @@ In the last several years, a significant part of the state estimation literature
 Despite this surge of excitement, significant debate has emerged within the robotics and computer vision communities regarding the extent to which deep models should replace existing geometric state estimation algorithms. Owing to their representational power, deep models may move the onerous task of selecting `good' (i.e., robust to environmental vagaries and sensor motion) visual features from the roboticist to the learned model. By design, deep models also provide a straight-forward formulation for using \textit{dense} data while being flexible in their loss function, and taking full advantage of modern computing architecture to minimize run time. Despite these potential benefits, current deep regression techniques for state estimation often generalize poorly to new environments, come with few analytical guarantees, and provide only point estimates of latent parameters.
 
 
-\section{Outstanding Issues}
+\section{Outstanding Issues in the Field}
 
 \subsection{The limits of homoscedastic noise models}
 
@@ -25,7 +25,7 @@ Although the paradigm of deep neural networks has resulted in several significan
  To integrate the power of deep networks into state estimation algorithms, the recent literature differs in how to proceed. While some attempt to parametrize geometric transformations in their unconstrained state, and then learn the resulting state within a deep network regression optimization \citep{Costante2016-hb, Kendall2015-kh}, others integrate deep networks within outer estimation loops \citep{Haarnoja2016-ph}. Yet other work has used the neural network as an error correcting mechanism on top on an existing kinematic or dynamic model \citep{Punjani2015-pj}. This integration is made more difficult by the lack of uncertainty estimates associated with many learned measurement models in the computer vision and machine learning literature.
  
  
- \section{Original Contributions}
+\section{Original Contributions}
 The original contributions of my dissertation include three architectures that incorporate novel ways of using learned measurement models to improve egomotion estimation: PROBE, Sun-BCNN, and DPC-Net. Since the last D.E.C. meeting, I focussed on the latter two, and hope to build on DPC-Net in the final part of my thesis.
 
 \subsection{Predictive Robust Estimation for Sparse Visual Odometry}
@@ -66,4 +66,32 @@ In the final part of my dissertation, I am investigating ways in which a network
  Instead, I am investigating non-Bayesian approaches that learn a bespoke covariance matrix as part of their output using a log likelihood loss. By parametrizing the precision matrix through a Cholesky decomposition, it is possible to output positive definite matrices without enforcing any constraints on the network output (this approach was presented in the context of deep networks \citep{Haarnoja2016-ph}, and in the context of heteroscedastic noise modelling in \citep{Hu2015-uw}; it is similar in principal to switchable constraints \citep{Agarwal2013-jq}).
  
  Another potential alternative method is bootstrap aggregation (bagging). Bagging can be used to compute confidence bounds by training several models on randomly sub-sampled data (e.g., uncertainty for deep Q networks \citep{Osband2016-jg}). To reduce the cost of training multiple models, a number of authors have also suggested training a single network with multiple heads \citep{Lee2015-af}, \citep{Lakshminarayanan2016-zh}. I am investigating this latter approach, and also combining it with the log likelihood covariance learning.
+
+\subsection{Summary of Publications}
+\textbf{Deep Learned Models}
+\begin{itemize}
+	\item \bibentry{2018_Peretroukhin_Deep}
+\end{itemize}
+
+\noindent\textbf{Sun BCNN}
+
+\begin{itemize}
+	\item \bibentry{2018_Peretroukhin_Inferring}
+	\item \bibentry{2017_Peretroukhin_Reducing}
+	\item \bibentry{2017_Clement_Improving}
+\end{itemize}
+
+\noindent\textbf{Predictive Robust Estimation}
+
+\begin{itemize}
+	\item \bibentry{2016_Peretroukhin_PROBE-GK}
+	\item \bibentry{2015_Peretroukhin_PROBE}
+	\item \bibentry{2015_Peretroukhin_Get}
+\end{itemize}
+
+\noindent\textbf{Other learning}
+
+\begin{itemize}
+	\item \bibentry{2017_Wagstaff_Improving}
+\end{itemize}
 

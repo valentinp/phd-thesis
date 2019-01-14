@@ -1,0 +1,154 @@
+@inproceedings{2014_Peretroukhin_Optimizing,
+  abstract = {Visual Odometry (VO) is an integral part of many navigation techniques in mobile robotics. In this work, we investigate how the orientation of the camera affects the overall position estimates recovered from stereo VO. Through simulations and experimental work, we demonstrate that this error can be significantly reduced by changing the perspective of the stereo camera in relation to the moving platform. Specifically, we show that orienting the camera at an oblique angle to the direction of travel can reduce VO error by up to 82\% in simulations and up to 59\% in experimental data. A variety of parameters are investigated for their effects on this trend including frequency of captured images and camera resolution.},
+  address = {Montreal, Quebec, Canada},
+  author = {Valentin Peretroukhin and Jonathan Kelly and Timothy D. Barfoot},
+  booktitle = {Proceedings of the Canadian Conference on Computer and Robot Vision {(CRV'14)}},
+  date = {2014-05-07/2014-05-09},
+  doi = {10.1109/CRV.2014.9},
+  month = {May 7--9},
+  pages = {1--7},
+  title = {Optimizing Camera Perspective for Stereo Visual Odometry},
+  year = {2014}
+}
+
+@inbook{2015_Stenning_Towards,
+  title={Towards autonomous mobile robots for the exploration of steep terrain},
+  author={Stenning, Braden and Bajin, Lauren and Robson, Christine and Peretroukhin, Valentin and Osinski, Gordon R and Barfoot, Timothy D},
+  booktitle={Field and Service Robotics},
+  pages={33--47},
+  year={2015},
+  publisher={Springer International Publishing},
+	isbn={978-3-319-07488-7},
+	doi={10.1007/978-3-319-07488-7_3},
+}
+
+@inproceedings{2015_Clement_Battle,
+  abstract = {Accurate and consistent ego motion estimation is a critical component of autonomous navigation. For this task, the combination of visual and inertial sensors is an inexpensive, compact, and complementary hardware suite that can be used on many types of vehicles. In this work, we compare two modern approaches to ego motion estimation: the Multi-State Constraint Kalman Filter (MSCKF) and the Sliding Window Filter (SWF). Both filters use an Inertial Measurement Unit (IMU) to estimate the motion of a vehicle and then correct this estimate with observations of salient features from a monocular camera. While the SWF estimates feature positions as part of the filter state itself, the MSCKF optimizes feature positions in a separate procedure without including them in the filter state. We present experimental characterizations and comparisons of the MSCKF and SWF on data from a moving hand-held sensor rig, as well as several traverses from the KITTI dataset. In particular, we compare the accuracy and consistency of the two filters, and analyze the effect of feature track length and feature density on the performance of each filter. In general, our results show the SWF to be more accurate and less sensitive to tuning parameters than the MSCKF. However, the MSCKF is computationally cheaper, has good consistency properties, and improves in accuracy as more features are tracked.},
+  address = {Halifax, Nova Scotia, Canada},
+  author = {Lee Clement and Valentin Peretroukhin and Jacob Lambert and Jonathan Kelly},
+  booktitle = {Proceedings of the 12th Conference on Computer and Robot Vision {(CRV'15)}},
+  date = {2015-06-03/2015-06-05},
+  doi = {10.1109/CRV.2015.11},
+  month = {Jun. 3--5},
+  pages = {23--30},
+  title = {The Battle for Filter Supremacy: A Comparative Study of the Multi-State Constraint Kalman Filter and the Sliding Window Filter},
+  year = {2015}
+}
+
+@inproceedings{2015_Peretroukhin_Get,
+  address = {Seattle, Washington, USA},
+  author = {Valentin Peretroukhin and Lee Clement and Jonathan Kelly},
+  booktitle = {Proceedings of the {IEEE} International Conference on Robotics and Automation Workshop on Scaling Up Active Perception},
+  date = {2015-05-30},
+  month = {May 30},
+  title = {Get to the Point: Active Covariance Scaling for Feature Tracking Through Motion Blur},
+  year = {2015}
+}
+
+@inproceedings{2015_Peretroukhin_PROBE,
+  abstract = {Navigation in unknown, chaotic environments continues to present a significant challenge for the robotics community. Lighting changes, self-similar textures, motion blur, and moving objects are all considerable stumbling blocks for state-of-the-art vision-based navigation algorithms. In this paper we present a novel technique for improving localization accuracy within a visual-inertial navigation system (VINS). We make use of training data to learn a model for the quality of visual features with respect to localization error in a given environment. This model maps each visual observation from a predefined prediction space of visual-inertial predictors onto a scalar weight, which is then used to scale the observation covariance matrix. In this way, our model can adjust the influence of each observation according to its quality. We discuss our choice of predictors and report substantial reductions in localization error on 4 km of data from the KITTI dataset, as well as on experimental datasets consisting of 700 m of indoor and outdoor driving on a small ground rover equipped with a Skybotix VI-Sensor.},
+  address = {Hamburg, Germany},
+  author = {Valentin Peretroukhin and Lee Clement and Matthew Giamou and Jonathan Kelly},
+  booktitle = {Proceedings of the {IEEE/RSJ} International Conference on Intelligent Robots and Systems {(IROS'15)}},
+  date = {2015-09-28/2015-10-02},
+  doi = {10.1109/IROS.2015.7353890},
+  link = {https://arxiv.org/abs/1708.00174},
+  month = {Sep. 28--Oct. 2},
+  pages = {3668--3675},
+  title = {{PROBE}: Predictive Robust Estimation for Visual-Inertial Navigation},
+  video1 = {https://www.youtube.com/watch?v=0YmdVJ0Be3Q},
+  year = {2015}
+}
+
+@inproceedings{2016_Peretroukhin_PROBE-GK,
+  abstract = {Many algorithms in computer vision and robotics make strong assumptions about uncertainty, and rely on the validity of these assumptions to produce accurate and consistent state estimates. In practice, dynamic environments may degrade sensor performance in predictable ways that cannot be captured with static uncertainty parameters. In this paper, we employ fast nonparametric Bayesian inference techniques to more accurately model sensor uncertainty. By setting a prior on observation uncertainty, we derive a predictive robust estimator, and show how our model can be learned from sample images, both with and without knowledge of the motion used to generate the data. We validate our approach through Monte Carlo simulations, and report significant improvements in localization accuracy relative to a fixed noise model in several settings, including on synthetic data, the KITTI dataset, and our own experimental platform.},
+  address = {Stockholm, Sweden},
+  author = {Valentin Peretroukhin and William Vega-Brown and Nicholas Roy and Jonathan Kelly},
+  booktitle = {Proceedings of the {IEEE} International Conference on Robotics and Automation {(ICRA'16})},
+  date = {2016-05-16/2016-05-21},
+  doi = {10.1109/ICRA.2016.7487212},
+  link = {https://arxiv.org/abs/1708.00171},
+  month = {May 16--21},
+  pages = {817--824},
+  title = {{PROBE-GK}: Predictive Robust Estimation using Generalized Kernels},
+  year = {2016}
+}
+
+@incollection{2017_Clement_Improving,
+  abstract = {In the absence of reliable and accurate GPS, visual odometry (VO) has emerged as an effective means of estimating the egomotion of robotic vehicles. Like any dead-reckoning technique, VO suffers from unbounded accumulation of drift error over time, but this accumulation can be limited by incorporating absolute orientation information from, for example, a sun sensor. In this paper, we leverage recent work on visual outdoor illumination estimation to show that estimation error in a stereo VO pipeline can be reduced by inferring the sun position from the same image stream used to compute VO, thereby gaining the benefits of sun sensing without requiring a dedicated sun sensor or the sun to be visible to the camera. We compare sun estimation methods based on hand-crafted visual cues and Convolutional Neural Networks (CNNs) and demonstrate our approach on a combined 7.8 km of urban driving from the popular KITTI dataset, achieving up to a 43\% reduction in translational average root mean squared error (ARMSE) and a 59\% reduction in final translational drift error compared to pure VO alone.},
+  address = {Berlin Heidelberg},
+  author = {Lee Clement and Valentin Peretroukhin and Jonathan Kelly},
+  booktitle = {2016 International Symposium on Experimental Robotics},
+  doi = {10.1007/978-3-319-50115-4},
+  editor = {Dana Kulic and Yoshihiko Nakamura and Oussama Khatib and Gentiane Venture},
+  link = {https://arxiv.org/abs/1609.04705},
+  note = {Invited to Journal Special Issue},
+  pages = {409--419},
+  publisher = {Springer International Publishing},
+  series = {Springer Proceedings in Advanced Robotics},
+  title = {Improving the Accuracy of Stereo Visual Odometry Using Visual Illumination Estimation},
+  volume = {1},
+  year = {2017}
+}
+
+
+@inproceedings{2017_Peretroukhin_Reducing,
+  abstract = {We present a method to incorporate global orientation information from the sun into a visual odometry pipeline using the existing image stream only. We leverage recent advances in Bayesian Convolutional Neural Networks to train and implement a sun detection model that infers a three-dimensional sun direction vector from a single RGB image (where the sun is typically not visible). Crucially, our method also computes a principled uncertainty associated with each prediction, using a Monte-Carlo dropout scheme. We incorporate this uncertainty into a sliding window stereo visual odometry pipeline where accurate uncertainty estimates are critical for optimal data fusion. Our Bayesian sun detection model achieves median errors of less than 10 degrees on the KITTI odometry benchmark training set, and yields improvements of up to 37\% in translational ARMSE and 32\% in rotational ARMSE compared to standard VO. An implementation of our Bayesian CNN sun estimator (Sun-BCNN) is available as open-source code at https://github.com/utiasSTARS/sun-bcnn-vo.},
+  address = {Singapore},
+  author = {Valentin Peretroukhin and Lee Clement and Jonathan Kelly},
+  booktitle = {Proceedings of the {IEEE} International Conference on Robotics and Automation {(ICRA'17})},
+  date = {2017-05-29/2017-06-03},
+  doi = {10.1109/ICRA.2017.7989235},
+  link = {https://arxiv.org/abs/1609.05993},
+  month = {May 29--Jun. 3},
+  pages = {2035--2042},
+  title = {Reducing Drift in Visual Odometry by Inferring Sun Direction Using a Bayesian Convolutional Neural Network},
+  video1 = {https://www.youtube.com/watch?v=c5XTrq3a2tE},
+  year = {2017}
+}
+
+@inproceedings{2017_Wagstaff_Improving,
+  abstract = {We present a method to improve the accuracy of a foot-mounted, zero-velocity-aided inertial navigation system (INS) by varying estimator parameters based on a real-time classification of motion type. We train a support vector machine (SVM) classifier using inertial data recorded by a single foot-mounted sensor to differentiate between six motion types (walking, jogging, running, sprinting, crouch-walking, and ladder-climbing) and report mean test classification accuracy of over 90\% on a dataset with five different subjects.
+
+From these motion types, we select two of the most common (walking and running), and describe a method to compute optimal zero-velocity detection parameters tailored to both a specific user and motion type by maximizing the detector F-score. By combining the motion classifier with a set of optimal detection parameters, we show how we can reduce INS position error during mixed walking and running motion. We evaluate our adaptive system on a total of 5.9 km of indoor pedestrian navigation performed by five different subjects moving along a 130 m path with surveyed ground truth markers.},
+  address = {Sapporo, Japan},
+  author = {Brandon Wagstaff and Valentin Peretroukhin and Jonathan Kelly},
+  booktitle = {Proceedings of the International Conference on Indoor Positioning and Indoor Navigation {(IPIN'17)}},
+  date = {2017-09-18/2017-09-21},
+  doi = {10.1109/IPIN.2017.8115947},
+  link = {http://arxiv.org/abs/1707.01152},
+  month = {Sep. 18--21},
+  title = {Improving Foot-Mounted Inertial Navigation Through Real-Time Motion Classification},
+  video1 = {https://www.youtube.com/watch?v=Jiqj6j9E8dI},
+  year = {2017}
+}
+
+@article{2018_Peretroukhin_Deep,
+  abstract = {We present a novel method to fuse the power of deep networks with the computational efficiency of geometric and probabilistic localization algorithms. In contrast to other methods that completely replace a classical visual estimator with a deep network, we propose an approach that uses a convolutional neural network to learn difficult-to-model corrections to the estimator from ground-truth training data. To this end, we derive a novel loss function for learning SE{3} corrections based on a matrix Lie groups approach, with a natural formulation for balancing translation and rotation errors. We use this loss to train  a Deep Pose Correction network (DPC-Net) that learns to predict corrections for a particular estimator, sensor and environment. Using the KITTI odometry dataset, we demonstrate significant improvements to the accuracy of a computationally-efficient sparse stereo visual odometry pipeline, that render it as accurate as a modern computationally-intensive dense estimator. Further, we show how DPC-Net can be used to mitigate the effect of poorly calibrated lens distortion parameters.},
+  author = {Valentin Peretroukhin and Jonathan Kelly},
+  doi = {10.1109/LRA.2017.2778765},
+  journal = {{IEEE} Robotics and Automation Letters},
+  link = {https://arxiv.org/abs/1709.03128},
+  title = {{DPC-Net}: Deep Pose Correction for Visual Localization},
+  year = {2018}
+}
+
+
+@article{2018_Peretroukhin_Inferring,
+  abstract = {We present a method to incorporate global orientation information from the sun into a visual odometry pipeline using only the existing image stream, in which the sun is typically not visible. We leverage recent advances in Bayesian convolutional neural networks (BCNNs) to train and implement a sun detection model (dubbed Sun-BCNN) that infers a 3D sun direction vector from a single RGB image. Crucially, our method also computes a principled uncertainty associated with each prediction, using a Monte Carlo dropout scheme. We incorporate this uncertainty into a sliding window stereo visual odometry pipeline where accurate uncertainty estimates are critical for optimal data fusion. We evaluate our method on 21.6 km of urban driving data from the KITTI odometry benchmark where it achieves a median error of approximately 12 degrees and yields improvements of up to 42\% in translational average root mean squared error (ARMSE) and 32\% in rotational ARMSE compared with standard visual odometry. We further evaluate our method on an additional 10 km of visual navigation data from the Devon Island Rover Navigation dataset, achieving a median error of less than 8 degrees and yielding similar improvements in estimation error. In addition to reporting on the accuracy of Sun-BCNN and its impact on visual odometry, we analyze the sensitivity of our model to cloud cover, investigate the possibility of model transfer between urban and planetary analogue environments, and examine the impact of different methods for computing the mean and covariance of a norm-constrained vector on the accuracy and consistency of the estimated sun directions. Finally, we release Sun-BCNN as open-source software.},
+  author = {Valentin Peretroukhin and Lee Clement and Jonathan Kelly},
+  doi = {10.1177/0278364917749732},
+  journal = {International Journal of Robotics Research},
+  title = {Inferring Sun Direction to Improve Visual Odometry: A Deep Learning Approach},
+  year = {2018}
+}
+
+
+@article{2018_Giamou_Certifiably,
+  author = {Matthew Giamou and Ziye Ma and Valentin Peretroukhin and Jonathan Kelly},
+   journal = {{IEEE} Robotics and Automation Letters},
+  link = {https://ieeexplore.ieee.org/document/8598770},
+  title = {Certifiably Globally Optimal Extrinsic Calibration from Per Sensor Egomotion},
+  doi = {10.1109/LRA.2018.2890444},
+  year = {2018}
+}

@@ -1,6 +1,6 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Measurement Models}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Outstanding Issues}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Outstanding Issues in the Field}{chapter.1}% 3
 \BOOKMARK [2][-]{subsection.1.2.1}{The limits of homoscedastic noise models}{section.1.2}% 4
 \BOOKMARK [2][-]{subsection.1.2.2}{Deep, learned models with no uncertainty estimates}{section.1.2}% 5
 \BOOKMARK [2][-]{subsection.1.2.3}{Integration of deep models into state estimation pipelines}{section.1.2}% 6
@@ -9,15 +9,56 @@
 \BOOKMARK [2][-]{subsection.1.3.2}{Software Sun Sensor using a Bayesian Convolutional Neural Network}{section.1.3}% 9
 \BOOKMARK [2][-]{subsection.1.3.3}{Deep Pose Corrections \(DPC-Net\)}{section.1.3}% 10
 \BOOKMARK [2][-]{subsection.1.3.4}{Probabilistic \040SE\(3\) \040inference using deep networks}{section.1.3}% 11
-\BOOKMARK [0][-]{chapter.2}{Predictive Robust Estimation}{}% 12
-\BOOKMARK [1][-]{section.2.1}{Stereo Visual Odometry}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.2}{Scalar k-Nearest Neighbours}{chapter.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.1}{Training}{section.2.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.2}{Evaluation}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.3}{Prediction Space}{section.2.2}% 17
-\BOOKMARK [1][-]{section.2.3}{Generalized Kernels}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.3.1}{Predictive noise models for visual odometry}{section.2.3}% 19
-\BOOKMARK [2][-]{subsection.2.3.2}{Inference without ground truth}{section.2.3}% 20
-\BOOKMARK [2][-]{subsection.2.3.3}{Experiments}{section.2.3}% 21
-\BOOKMARK [2][-]{subsection.2.3.4}{KITTI}{section.2.3}% 22
-\BOOKMARK [0][-]{figure.caption.34}{Bibliography}{}% 23
+\BOOKMARK [2][-]{subsection.1.3.5}{Summary of Publications}{section.1.3}% 12
+\BOOKMARK [0][-]{chapter.2}{Preliminaries}{}% 13
+\BOOKMARK [1][-]{section.2.1}{Stereo Visual Odometry}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.2}{Robust Estimation}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Predictive Robust Estimation}{}% 16
+\BOOKMARK [1][-]{section.3.1}{Motivation}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{Related Work}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.3}{Scalar k-Nearest Neighbours}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.3.1}{Training}{section.3.3}% 20
+\BOOKMARK [2][-]{subsection.3.3.2}{Evaluation}{section.3.3}% 21
+\BOOKMARK [2][-]{subsection.3.3.3}{Prediction Space}{section.3.3}% 22
+\BOOKMARK [1][-]{section.3.4}{Generalized Kernels}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.4.1}{Predictive noise models for visual odometry}{section.3.4}% 24
+\BOOKMARK [2][-]{subsection.3.4.2}{Inference without ground truth}{section.3.4}% 25
+\BOOKMARK [2][-]{subsection.3.4.3}{Experiments}{section.3.4}% 26
+\BOOKMARK [2][-]{subsection.3.4.4}{KITTI}{section.3.4}% 27
+\BOOKMARK [0][-]{chapter.4}{Sun-BCNN}{}% 28
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.2}{Indirect Sun Detection using a Bayesian Convolutional Neural Network}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.2.1}{Cost Function}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.2}{Uncertainty Estimation}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.3}{Implementation and Training}{section.4.2}% 33
+\BOOKMARK [1][-]{section.4.3}{Experiments}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.4}{Simulation Experiments}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.5}{Urban Driving Experiments: The KITTI Odometry Benchmark}{chapter.4}% 36
+\BOOKMARK [2][-]{subsection.4.5.1}{Sun-BCNN Test Results}{section.4.5}% 37
+\BOOKMARK [2][-]{subsection.4.5.2}{Visual Odometry Experiments}{section.4.5}% 38
+\BOOKMARK [1][-]{section.4.6}{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.6.1}{Sun-BCNN Test Results}{section.4.6}% 40
+\BOOKMARK [2][-]{subsection.4.6.2}{Visual Odometry Experiments}{section.4.6}% 41
+\BOOKMARK [1][-]{section.4.7}{Sensitivity Analysis}{chapter.4}% 42
+\BOOKMARK [2][-]{subsection.4.7.1}{Cloud Cover}{section.4.7}% 43
+\BOOKMARK [2][-]{subsection.4.7.2}{Model Generalization}{section.4.7}% 44
+\BOOKMARK [2][-]{subsection.4.7.3}{Mean and Covariance Computation}{section.4.7}% 45
+\BOOKMARK [0][-]{chapter.5}{Deep Pose Corrections for Visual Localization}{}% 46
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.2}{Related Work}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.3}{System Overview: Deep Pose Correction}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.3.1}{Loss Function: Correcting \040SE\(3\) \040Estimates}{section.5.3}% 50
+\BOOKMARK [2][-]{subsection.5.3.2}{Loss Function: \040SE\(3\) \040Covariance}{section.5.3}% 51
+\BOOKMARK [2][-]{subsection.5.3.3}{Loss Function: \040SE\(3\) \040Jacobians}{section.5.3}% 52
+\BOOKMARK [2][-]{subsection.5.3.4}{Loss Function: Correcting \040SO\(3\) \040Estimates}{section.5.3}% 53
+\BOOKMARK [2][-]{subsection.5.3.5}{Pose Graph Relaxation}{section.5.3}% 54
+\BOOKMARK [1][-]{section.5.4}{Experiments}{chapter.5}% 55
+\BOOKMARK [2][-]{subsection.5.4.1}{Training \046 Testing}{section.5.4}% 56
+\BOOKMARK [2][-]{subsection.5.4.2}{Estimators}{section.5.4}% 57
+\BOOKMARK [2][-]{subsection.5.4.3}{Evaluation Metrics}{section.5.4}% 58
+\BOOKMARK [1][-]{section.5.5}{Results \046 Discussion}{chapter.5}% 59
+\BOOKMARK [2][-]{subsection.5.5.1}{Correcting Sparse Visual Odometry}{section.5.5}% 60
+\BOOKMARK [2][-]{subsection.5.5.2}{Distorted Images}{section.5.5}% 61
+\BOOKMARK [0][-]{chapter.6}{Learning Residual Probabilistic Observation Functions through Error-State Kalman Filters}{}% 62
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 63
+\BOOKMARK [0][-]{chapter.7}{Bibliography}{}% 64
