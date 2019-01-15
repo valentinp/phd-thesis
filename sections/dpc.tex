@@ -68,19 +68,19 @@ from two pairs of stereo images (collectively referred to as $\ImageQuad_{t_{i},
 
 One possible approach to learning $\TargetCorrection$ is to break it into constituent parts and then compose a loss function as the weighted sum of translational and rotational error norms (as done in \cite{Kendall2017-ix, Melekhov2017-dl, Oliveira2017-lt}). This however does not account for the possible correlation between the two losses, and requires the careful tuning of a scalar weight.
 
-In this work, we instead choose to parametrize our correction prediction as $\Transform = \MatExp{\PredictionVector}$, where $\PredictionVector \in \Real^6$, a vector of Lie algebra coordinates, is the output of our network (similar to \cite{Handa2016-hm}). We define a loss for $\PredictionVector$ as 
+In this work, we instead choose to parametrize our correction prediction as $\Transform = \Matexp{\PredictionVector}$, where $\PredictionVector \in \Real^6$, a vector of Lie algebra coordinates, is the output of our network (similar to \cite{Handa2016-hm}). We define a loss for $\PredictionVector$ as 
 \begin{equation}
 	\label{eq:se3loss_fn}
 \CostFunction (\PredictionVector) = \frac{1}{2} \LogMapFunction{\PredictionVector}^T \Inv{\TransformCovariance} \LogMapFunction{\PredictionVector},
 \end{equation} where 
 \begin{equation}
 	\label{eq:se3logmap_fn}
-	\LogMapFunction{\PredictionVector} \definedtobe \MatLn{\MatExp{\PredictionVector} \Inv{\TargetCorrection}}.
+	\LogMapFunction{\PredictionVector} \definedtobe \Matlog{\Matexp{\PredictionVector} \Inv{\TargetCorrection}}.
 \end{equation}
 Here, $\TransformCovariance$ is the covariance of our estimator (expressed using unconstrained Lie algebra coordinates), and $(\cdot)^\wedge$, $(\cdot)^\vee$ convert vectors of Lie algebra coordinates to matrix vectorspace quantities and back, respectively.
 Given two stereo image pairs, we use the output of DPC-Net, $\PredictionVector$, to correct our estimator as follows:
 \begin{align}
-	\EstimatedVOTransformCorrectedNoSub = \MatExp{\PredictionVector} \EstimatedVOTransformNoSub,
+	\EstimatedVOTransformCorrectedNoSub = \Matexp{\PredictionVector} \EstimatedVOTransformNoSub,
 \end{align}
 where we have dropped subscripts for clarity.
 
@@ -94,7 +94,7 @@ Since we are learning estimator \textit{corrections}, we can compute an empirica
 \end{equation}
 where 
 \begin{equation}
-	\TargetCorrectionVectorIndex \definedtobe \MatLn{\TargetCorrectionIndex}, \quad \Mean{\TargetCorrectionVector} \definedtobe \frac{1}{N} \sum_{i=1}^N \TargetCorrectionVectorIndex.
+	\TargetCorrectionVectorIndex \definedtobe \Matlog{\TargetCorrectionIndex}, \quad \Mean{\TargetCorrectionVector} \definedtobe \frac{1}{N} \sum_{i=1}^N \TargetCorrectionVectorIndex.
 \end{equation}
 
 The term $\TransformCovariance$ balances the rotational and translation loss terms based on their magnitudes in the training set, and accounts for potential correlations. We stress that if we were learning poses directly, the pose targets and their associated mean would be trajectory dependent and would render this type of covariance estimation meaningless. Further, we find that, in our experiments, $\TransformCovariance$ weights translational and rotational errors similarly to that presented in \cite{Kendall2017-ix} %\footnote{Kendall et al. assign an optimal relative weight of 250 to 2000 to the rotational (quaternionic) error for outdoor scenes, whereas we consistently see relative magnitudes of approximately 1000.} 
@@ -109,13 +109,13 @@ In order to use \Cref{eq:se3loss_fn} to train DPC-Net with back-propagation, we 
 The term $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ is of importance. We can derive it in two ways. To start, note two important identities \cite{Barfoot2017-ri}. First,
 \begin{equation}
 	\label{eq:delta_xi_exp}
-\MatExp{( \TransformVector + \delta \TransformVector)} \approx \MatExp{(\LeftJacobianSE \delta \TransformVector)} \MatExp{\TransformVector},
+\Matexp{( \TransformVector + \delta \TransformVector)} \approx \Matexp{(\LeftJacobianSE \delta \TransformVector)} \Matexp{\TransformVector},
 \end{equation}
 where $\LeftJacobianSE \definedtobe \LeftJacobianSE(\TransformVector)$ is the left $\LieGroupSE{3}$ Jacobian.
-Second, if $\Transform_1 \definedtobe \MatExp{\TransformVector_1}$ and $\Transform_2 \definedtobe \MatExp{\TransformVector_2}$, then
+Second, if $\Transform_1 \definedtobe \Matexp{\TransformVector_1}$ and $\Transform_2 \definedtobe \Matexp{\TransformVector_2}$, then
 \begin{align}
 	\label{eq:jacobian_xi_small}
-\MatLn{\Transform_1 \Transform_2} &= \MatLn{ \MatExp{\TransformVector_1} \MatExp{\TransformVector_2} } \nonumber \\
+\Matlog{\Transform_1 \Transform_2} &= \Matlog{ \Matexp{\TransformVector_1} \Matexp{\TransformVector_2} } \nonumber \\
 								  &\approx \left\{
 	\begin{array}{ll}
 		\Inv{\LeftJacobianSE(\TransformVector_2)} \TransformVector_1 + \TransformVector_2   & \mbox{if } \PredictionVector_1 ~ \mbox{small} \\
@@ -130,14 +130,14 @@ If we assume that only $\TransformVector$ is `small', we can apply \Cref{eq:jaco
 	\label{eq:logjacob_method1}
 	\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector} = \Inv{\LeftJacobianSE(-\TargetCorrectionVector)}, 
 \end{equation}
-with $	\TargetCorrectionVector \definedtobe \MatLn{\TargetCorrection}$. Although attractively compact, note that this expression for $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ assumes that $\PredictionVector$ is small, and may be inaccurate for `larger' $\TargetCorrection$ (since we will therefore require $\PredictionVector$ to be commensurately `large').
+with $	\TargetCorrectionVector \definedtobe \Matlog{\TargetCorrection}$. Although attractively compact, note that this expression for $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ assumes that $\PredictionVector$ is small, and may be inaccurate for `larger' $\TargetCorrection$ (since we will therefore require $\PredictionVector$ to be commensurately `large').
 
 \subsubsection{Deriving $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$, Method II}
 
 Alternatively, we can linearize \Cref{eq:se3logmap_fn} about $\PredictionVector$, by considering a small change $\delta \PredictionVector$ and applying \Cref{eq:delta_xi_exp}:
 \begin{align}
-	\LogMapFunction{\PredictionVector + \delta \PredictionVector} &=  \MatLn{\MatExp{( \TransformVector + \delta \TransformVector)} \Inv{\TargetCorrection}} \\
-	&\approx \MatLn{\MatExp{(\LeftJacobianSE \delta \TransformVector)} \MatExp{\TransformVector} \Inv{\TargetCorrection}}.
+	\LogMapFunction{\PredictionVector + \delta \PredictionVector} &=  \Matlog{\Matexp{( \TransformVector + \delta \TransformVector)} \Inv{\TargetCorrection}} \\
+	&\approx \Matlog{\Matexp{(\LeftJacobianSE \delta \TransformVector)} \Matexp{\TransformVector} \Inv{\TargetCorrection}}.
 \end{align}
 
 \noindent Now, assuming that $\LeftJacobianSE \delta \TransformVector$ is `small', and using \Cref{eq:se3logmap_fn}, \Cref{eq:jacobian_xi_small} gives: 
@@ -149,9 +149,9 @@ Comparing this to the first order Taylor expansion: $\LogMapFunction{\Prediction
 	\label{eq:logjacob_method2}
 	\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector} = \Inv{\LeftJacobianSE(\LogMapFunction{\PredictionVector})} \LeftJacobianSE( \TransformVector).
 \end{equation}
-Although slightly more computationally expensive, this expression makes no assumptions about the `magnitude` of our correction and works reliably for any target. Note further that if $\PredictionVector$ is small, then $\LeftJacobianSE( \TransformVector) \approx \IdentityMatrix$ and $\MatExp{\TransformVector} \approx \IdentityMatrix$. Thus,
+Although slightly more computationally expensive, this expression makes no assumptions about the `magnitude` of our correction and works reliably for any target. Note further that if $\PredictionVector$ is small, then $\LeftJacobianSE( \TransformVector) \approx \IdentityMatrix$ and $\Matexp{\TransformVector} \approx \IdentityMatrix$. Thus,
 \begin{equation}
-	\LogMapFunction{\PredictionVector} \approx \MatLn{\Inv{\TargetCorrection}} = -\TargetCorrectionVector,
+	\LogMapFunction{\PredictionVector} \approx \Matlog{\Inv{\TargetCorrection}} = -\TargetCorrectionVector,
 \end{equation}
 and \Cref{eq:logjacob_method2} becomes
 \begin{equation}
@@ -178,18 +178,18 @@ Our framework can be easily modified to learn $\LieGroupSO{3}$ corrections only.
 where 
 \begin{equation}
 	\label{eq:s03logmap_fn}
-	\LogMapFunctionSO{\RotationVector} \definedtobe \MatLn{\MatExp{\RotationVector} \Inv{\TargetCorrectionRotation}}.
+	\LogMapFunctionSO{\RotationVector} \definedtobe \Matlog{\Matexp{\RotationVector} \Inv{\TargetCorrectionRotation}}.
 \end{equation}
 \Cref{eq:delta_xi_exp,eq:jacobian_xi_small} have analogous $\LieGroupSO{3}$ formulations:
 
 \begin{equation}
 \label{eq:delta_phi_exp}
-\MatExp{( \RotationVector + \delta \RotationVector)} \approx \MatExp{(\LeftJacobianSO \delta \RotationVector)} \MatExp{\RotationVector},
+\Matexp{( \RotationVector + \delta \RotationVector)} \approx \Matexp{(\LeftJacobianSO \delta \RotationVector)} \Matexp{\RotationVector},
 \end{equation}
 and
 \begin{align}
 \label{eq:jacobian_phi_small}
-\MatLn{\Rotation_1 \Rotation_2} &= \MatLn{ \MatExp{\RotationVector_1} \MatExp{\RotationVector_2} } \nonumber \\
+\Matlog{\Rotation_1 \Rotation_2} &= \Matlog{ \Matexp{\RotationVector_1} \Matexp{\RotationVector_2} } \nonumber \\
 								  &\approx \left\{
 	\begin{array}{ll}
 		\Inv{\LeftJacobianSO(\RotationVector_2)} \RotationVector_1 + \RotationVector_2   & \mbox{if } \RotationVector_1 ~ \mbox{small} \\
@@ -228,7 +228,7 @@ while the latter incorporates a single pose correction,
 \end{equation}
 with the pose error defined as 
 \begin{equation}
-	\Vector{e}_{1,2} = \MatLn{\Estimate{\Transform}_{1,2} \Transform_{2}  \Transform^{-1}_{1}}.
+	\Vector{e}_{1,2} = \Matlog{\Estimate{\Transform}_{1,2} \Transform_{2}  \Transform^{-1}_{1}}.
 \end{equation}
 We refer the reader to \cite{Barfoot2017-ri} for a detailed treatment of pose-graph relaxation.
 
@@ -366,23 +366,23 @@ We used this dense, direct estimator as our benchmark for a state-of-the-art vis
 \subsection{Evaluation Metrics}
 To evaluate the performance of DPC-Net, we use three error metrics: mean absolute trajectory error, cumulative absolute trajectory error, and mean segment error. For clarity, we describe each of these three metrics explicitly and stress the importance of carefully selecting and defining error metrics when comparing \textit{relative} localization estimates, as results can be subtly deceiving.
 
-\subsubsection{Mean Absolute Trajectory Error (m-ATE)} The mean absolute trajectory error averages the magnitude of the rotational or translational error\footnote{For brevity, the notation $\MatLn{\cdot}$ returns rotational or translational components depending on context.} of estimated poses with respect to a ground truth trajectory defined within the same navigation frame. Concretely, $\Vector{e}_\text{m-ATE}$ is defined as
+\subsubsection{Mean Absolute Trajectory Error (m-ATE)} The mean absolute trajectory error averages the magnitude of the rotational or translational error\footnote{For brevity, the notation $\Matlog{\cdot}$ returns rotational or translational components depending on context.} of estimated poses with respect to a ground truth trajectory defined within the same navigation frame. Concretely, $\Vector{e}_\text{m-ATE}$ is defined as
 \begin{equation}
-	\Vector{e}_\text{m-ATE} \definedtobe \frac{1}{N} \sum_{p=1}^{N} \Norm{\MatLn{\Estimate{\Transform}^{-1}_{p,0} \Transform_{p,0}}}.
+	\Vector{e}_\text{m-ATE} \definedtobe \frac{1}{N} \sum_{p=1}^{N} \Norm{\Matlog{\Estimate{\Transform}^{-1}_{p,0} \Transform_{p,0}}}.
 \end{equation}
 Although widely used, m-ATE can be deceiving because a single poor relative transform can significantly affect the final statistic.
 
 \subsubsection{Cumulative Absolute Trajectory Error (c-ATE)}
 Cumulative absolute trajectory error sums rotational or translational $\Vector{e}_\text{m-ATE}$ up to a given point in a trajectory. It is defined as
 \begin{equation}
-	\Vector{e}_\text{c-ATE} (q)  \definedtobe \sum_{p=1}^{q} \Norm{\MatLn{\Estimate{\Transform}^{-1}_{p,0} \Transform_{p,0}}}.
+	\Vector{e}_\text{c-ATE} (q)  \definedtobe \sum_{p=1}^{q} \Norm{\Matlog{\Estimate{\Transform}^{-1}_{p,0} \Transform_{p,0}}}.
 \end{equation}
 c-ATE can show clearer trends than m-ATE (because it is less affected by fortunate trajectory overlaps), but it still suffers from the same susceptibility to poor (but isolated) relative transforms.
 
  
 \subsubsection{Segment Error} Our final metric, segment error, averages the end-point error for all the possible segments of a given length within a trajectory, and then normalizes by the segment length. Since it considers multiple starting points within a trajectory, segment error is much less sensitive to isolated degradations. Concretely, $\Vector{e}_\text{seg}(s)$ is defined as
 \begin{equation}
-	\Vector{e}_\text{seg}(s)  \definedtobe \frac{1}{s N_s} \sum_{p=1}^{N_s} \Norm{\MatLn{\Estimate{\Transform}^{-1}_{p+s_p,p} \Transform_{p+s_p,p}}},
+	\Vector{e}_\text{seg}(s)  \definedtobe \frac{1}{s N_s} \sum_{p=1}^{N_s} \Norm{\Matlog{\Estimate{\Transform}^{-1}_{p+s_p,p} \Transform_{p+s_p,p}}},
 \end{equation}
 where $N_s$ and $s_p$ (the number of segments of a given length, and the number of poses in each segment, respectively) are computed based on the selected segment length $s$. In this work, we follow the KITTI benchmark and report the mean segment error norms for all $s \in {[100, 200, 300, ..., 800]}$ (m). 
 

@@ -12,6 +12,11 @@
 \contentsline {chapter}{\numberline {2}Preliminaries}{8}{chapter.2}
 \contentsline {section}{\numberline {2.1}Stereo Visual Odometry}{8}{section.2.1}
 \contentsline {section}{\numberline {2.2}Robust Estimation}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}The effects of outliers}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}M-estimation}{10}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Matrix Lie Groups}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Manifolds}{10}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Local vs. Global Perturbations}{10}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Predictive Robust Estimation}{11}{chapter.3}
 \contentsline {section}{\numberline {3.1}Motivation}{11}{section.3.1}
 \contentsline {section}{\numberline {3.2}Related Work}{11}{section.3.2}
@@ -90,7 +95,12 @@
 \contentsline {section}{\numberline {5.5}Results \& Discussion}{87}{section.5.5}
 \contentsline {subsection}{\numberline {5.5.1}Correcting Sparse Visual Odometry}{87}{subsection.5.5.1}
 \contentsline {subsection}{\numberline {5.5.2}Distorted Images}{88}{subsection.5.5.2}
-\contentsline {chapter}{\numberline {6}Learning Residual Probabilistic Observation Functions through Error-State Kalman Filters}{90}{chapter.6}
-\contentsline {chapter}{\numberline {7}Conclusion}{93}{chapter.7}
-\contentsline {section}{\numberline {7.1}Summary of Publications}{93}{section.7.1}
-\contentsline {chapter}{Bibliography}{95}{section.7.1}
+\contentsline {chapter}{\numberline {6}Simultaneous Localization and Learning: Optimizing Deep SE(3) Measurement Models}{90}{chapter.6}
+\contentsline {section}{\numberline {6.1}Motivation}{90}{section.6.1}
+\contentsline {section}{\numberline {6.2}Global Lie Algebra Coordinates}{91}{section.6.2}
+\contentsline {section}{\numberline {6.3}Experiments}{91}{section.6.3}
+\contentsline {section}{\numberline {6.4}Consistent Uncertainty Estimates}{91}{section.6.4}
+\contentsline {section}{\numberline {6.5}System}{91}{section.6.5}
+\contentsline {chapter}{\numberline {7}Conclusion}{96}{chapter.7}
+\contentsline {section}{\numberline {7.1}Summary of Publications}{96}{section.7.1}
+\contentsline {chapter}{Bibliography}{98}{section.7.1}

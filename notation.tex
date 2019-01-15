@@ -288,8 +288,6 @@
 \NewDocumentCommand\CostFunction{}{\mathcal{L}}
 \NewDocumentCommand\PoseCostFunction{}{\mathcal{O}}
 
-\NewDocumentCommand\MatLn{m}{\text{ln}\left({#1} \right)^{\vee}}
-\NewDocumentCommand\MatExp{m}{\text{exp}\left({#1}^{\wedge}\right)}
 \NewDocumentCommand\Inv{m}{{#1}^{-1}}
 
 \NewDocumentCommand\definedtobe{}{\triangleq}
@@ -313,6 +311,34 @@
 %\NewDocumentCommand\ImageLandmarkCovariance{mm}{\Matrix{R}_{#1,#2}}
 \NewDocumentCommand\ImageCovariance{}{\Matrix{\Sigma_y}}
 %\NewDocumentCommand\ImageLandmark{mm}{\Vector{y}_{#1,#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Learned Kalman Filters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand\MeasurementCovariance{}{\Matrix{R}}
+\NewDocumentCommand\MeasurementJacobian{}{\Matrix{G}}
+
+\NewDocumentCommand\MotionCovariance{}{\Matrix{Q}}
+\NewDocumentCommand\MotionModel{}{\Vector{f}}
+\NewDocumentCommand\MotionJacobian{}{\Matrix{F}}
+
+\NewDocumentCommand\KFState{}{\Vector{x}}
+\NewDocumentCommand\KFStateCovariance{}{\Matrix{P}}
+
+
+\NewDocumentCommand\DeepMeasurementModel{}{\Matrix{g}}
+\NewDocumentCommand\SensorData{}{\Vector{z}}
+
+
+
+\NewDocumentCommand\MatLog{m}{\mathrm{Log}\left({#1}\right)}
+\NewDocumentCommand\MatExp{m}{\mathrm{Exp}\left({#1}\right)}
+\NewDocumentCommand\Matlog{m}{\mathrm{log}\left({#1}\right)^{\vee}}
+\NewDocumentCommand\Matexp{m}{\mathrm{exp}\left({#1}^{\wedge}\right)}
+\NewDocumentCommand\matlogexp{mm}{\MatLog{\MatExp{#1} \MatExp{#2}}}
+\NewDocumentCommand\matlogexpfn{mm}{g(#1, #2)}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
