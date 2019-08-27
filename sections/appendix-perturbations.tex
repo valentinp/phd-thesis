@@ -1,0 +1,175 @@
+\chapter{Left and Middle Perturbations}
+
+\section{Identities}
+\begin{equation}
+\label{eq:identity_dxi}
+\MatExp{( \TransformVector + \delta \TransformVector)} \approx \MatExp{(\LeftJacobianSE \delta \TransformVector)} \MatExp{\TransformVector},
+\end{equation}
+
+\begin{align}
+\label{eq:identity_xi_small}
+\Matlog{\Transform_1 \Transform_2} &= \Matlog{ \MatExp{\TransformVector_1} \MatExp{\TransformVector_2} } \nonumber \\
+								  &\approx \left\{
+	\begin{array}{ll}
+		\Inv{\LeftJacobianSE(\TransformVector_2)} \TransformVector_1 + \TransformVector_2   & \mbox{if } \PredictionVector_1 ~ \mbox{small} \\
+		\TransformVector_1 + \Inv{\LeftJacobianSE(-\TransformVector_1)} \TransformVector_2 & \mbox{if } \PredictionVector_2 ~ \mbox{small}.
+	\end{array}
+\right.
+\end{align}
+
+\section{Perturbing $\LieGroupSE{3}$}
+Consider the quantity,
+\begin{equation}
+	\Transform_{ba} = \Transform_{bi} \Inv{\Transform_{ai}}
+\end{equation}
+where $\CoordinateFrame{i}$ is some inertial frame.
+
+
+\subsection{Left Perturbation}
+Separating $\Transform_{ba}$ into a mean component, $\Mean{\Transform}_{ba}$, and a small left perturbation, 
+\begin{equation}
+	\Transform_{ba} = \MatExp{\delta \TransformVector_{ba}^l} \Mean{\Transform}_{ba} = \MatExp{\delta \TransformVector_{ba}^l} \MatExp{\Mean{\TransformVector}_{ba}}
+	\label{eq:left_perturb}
+\end{equation}
+Applying a logarithm to both sides,
+
+\begin{equation}
+	\Matlog{\Transform_{ba}} = \Matlog{\MatExp{\delta \TransformVector_{ba}^l} \MatExp{\Mean{\TransformVector}_{ba}}}
+\end{equation}
+
+Using \Cref{eq:identity_xi_small},
+
+\begin{equation}
+	\Matlog{\Transform_{ba}} \approx \Mean{\TransformVector}_{ba}
+ + \Inv{\LeftJacobianSE}_{ba} \delta \TransformVector_{ba}^l
+ \label{eq:left_perturb}
+	\end{equation}
+where $\LeftJacobianSE_{ba} \definedtobe \LeftJacobianSE(\Mean{\TransformVector}_{ba})$. This is exactly Equation 6.104 in Sean Anderson's thesis.
+
+
+
+\subsection{Middle Perturbation}
+Now consider the middle perturbation,
+\begin{equation}
+	\Transform_{ba} = \MatExp{\Mean{\TransformVector}_{ba} + \delta \TransformVector_{ba}^m}
+\end{equation}
+Immediately, we can take the logarithm of both sides and see that,
+
+\begin{equation}
+	\Matlog{\Transform_{ba}} = \Mean{\TransformVector}_{ba} + \delta \TransformVector_{ba}^m,
+	\label{eq:middle_perturb}
+\end{equation}
+where we now observe that $\delta \TransformVector_{ba}^l \approx \LeftJacobianSE_{ba} \delta \TransformVector_{ba}^m$. 
+
+
+\section{DPC $\LieGroupSE{3}$ Loss}
+Using the notation in this document, the DPC derivation requires an expression for $\delta  \TransformVector_{b}$, and assumes that $\TransformVector_{a}$ is constant. 
+
+\subsection{Middle Perturbation}
+
+
+Consider,
+
+\begin{equation}
+	\Transform_{ba} = \Transform_{b} \Inv{\Transform_{a}}
+\end{equation}
+where we have dropped the $i$ frame for clarity. Middle perturbing $\Transform_{ba}$ and $\Transform_{b}$ and keeping $\Transform_{a}$ fixed (i.e., $\Transform_{a} = \Mean{\Transform}_{a}$).
+
+\begin{equation}
+	\MatExp{\Mean{\TransformVector}_{ba} + \delta \TransformVector_{ba}^m} = \MatExp{\Mean{\TransformVector}_{b} + \delta \TransformVector_{b}^m} \Inv{\Mean{\Transform}_{a}}
+\end{equation}
+Using \Cref{eq:identity_dxi} twice,
+
+\begin{equation}
+	\MatExp{(\LeftJacobianSE_{ba} \delta \TransformVector_{ba}^m)} \MatExp{\Mean{\TransformVector}_{ba}} = \MatExp{(\LeftJacobianSE_{b} \delta \TransformVector_{b}^m)} \MatExp{\Mean{\TransformVector}_{b}} \Inv{\Mean{\Transform}_{a}}
+\end{equation}
+Collecting terms, we have
+
+\begin{equation}
+	\MatExp{(\LeftJacobianSE_{ba} \delta \TransformVector_{ba}^m)} \Mean{\Transform}_{ba} = \MatExp{(\LeftJacobianSE_{b} \delta \TransformVector_{b}^m)} \Mean{\Transform}_{b} \Inv{\Mean{\Transform}_{a}}
+\end{equation}
+Right multiplying by $\Inv{\Mean{\Transform}}_{ba}$, we are left with
+
+
+\begin{equation}
+	\MatExp{(\LeftJacobianSE_{ba} \delta \TransformVector_{ba}^m)}  = \MatExp{(\LeftJacobianSE_{b} \delta \TransformVector_{b}^m)} 
+\end{equation}
+
+or
+
+\begin{equation}
+	\LeftJacobianSE_{ba} \delta \TransformVector_{ba}^m  = \LeftJacobianSE_{b} \delta \TransformVector_{b}^m.
+\end{equation}
+Solving for $\delta \TransformVector_{ba}^m$,
+
+\begin{equation}
+	 \delta \TransformVector_{ba}^m  =  \Inv{\LeftJacobianSE}_{ba} \LeftJacobianSE_{b} \delta \TransformVector_{b}^m.
+	 \label{eq:xi_ba_in_terms_of_xi_b}
+\end{equation}
+Now inserting \Cref{eq:xi_ba_in_terms_of_xi_b} into \Cref{eq:middle_perturb},
+
+\begin{equation}
+	\Matlog{\Transform_{ba}} \approx \Mean{\TransformVector}_{ba} + \Inv{\LeftJacobianSE}_{ba} \LeftJacobianSE_{b} \delta \TransformVector_{b}^m
+	\label{eq:lin_log_middle}
+\end{equation}
+This is exactly Equation 13 in the DPC-Net paper: 
+\begin{equation}
+\LogMapFunction{\PredictionVector + \delta \PredictionVector} \approx \Inv{\LeftJacobianSE(\LogMapFunction{\PredictionVector})} \LeftJacobianSE( \TransformVector) \delta \TransformVector + \LogMapFunction{\PredictionVector}.
+\end{equation}
+
+\subsection{Left Perturbation}
+
+Using the left perturbation, we can repeat the procedure of relating $\delta \TransformVector_{ba}^l$ and $\delta \TransformVector_{b}^l$ (by perturbing $\Transform_{ba}$ and $\Transform_{b}$ and keeping $\Transform_{a}$ fixed (i.e., $\Transform_{a} = \Mean{\Transform}_{a}$).
+
+\begin{equation}
+	\MatExp{\delta \TransformVector_{ba}^l} \Mean{\Transform}_{ba} = \MatExp{\delta \TransformVector_{b}^l} \Mean{\Transform}_{b} \Inv{\Mean{\Transform}_{a}}
+\end{equation}
+
+\noindent from which we see immediately that $\MatExp{\delta \TransformVector_{ba}^l} = \MatExp{\delta \TransformVector_{b}^l}$ and therefore,
+
+\begin{equation}
+	\delta \TransformVector_{ba}^l = \delta \TransformVector_{b}^l
+\end{equation}
+
+\noindent Now using \Cref{eq:left_perturb}, we have
+
+\begin{equation}
+	\Matlog{\Transform_{ba}} \approx \Mean{\TransformVector}_{ba}
+ + \Inv{\LeftJacobianSE}_{ba} \delta \TransformVector_{b}^l
+\end{equation}
+
+\subsection{Summary}
+
+Using the left perturbation, we have
+
+\begin{equation}
+	\Matlog{\Transform_{ba}} \approx \Mean{\TransformVector}_{ba}
+ + \Inv{\LeftJacobianSE}_{ba} \delta \TransformVector_{b}^l
+\end{equation}
+
+\noindent Using the centre/middle perturbation, we have
+
+\begin{equation}
+	\Matlog{\Transform_{ba}} \approx \Mean{\TransformVector}_{ba} + \Inv{\LeftJacobianSE}_{ba} \LeftJacobianSE_{b} \delta \TransformVector_{b}^m
+\end{equation}
+
+\noindent And we see the same earlier expression relating left and middle perturbations,
+
+\begin{equation}
+	\delta \TransformVector^l \approx \LeftJacobianSE \delta \TransformVector^m
+\end{equation}
+
+\subsection{Reconciliation}
+Consider the two update rules:
+\begin{equation}
+\Transform_{b} \leftarrow \MatExp{\delta \TransformVector_b^l} \Mean{\Transform}_b	
+\end{equation}
+\begin{equation}
+\Transform_{b} \leftarrow \MatExp{(\Mean{\TransformVector}_b + \delta \TransformVector_b^m)}
+\end{equation}
+But using \Cref{eq:identity_dxi}, the middle update becomes,
+\begin{equation}
+\MatExp{(\Mean{\TransformVector}_b + \delta \TransformVector_b^m)}
+\approx \MatExp{( \LeftJacobianSE_{b} \delta \TransformVector_b^m)} \MatExp{\Mean{\TransformVector}_b} = \MatExp{( \LeftJacobianSE_{b} \delta \TransformVector_b^m)} \Mean{\Transform}_b = \MatExp{\delta \TransformVector_b^l} \Mean{\Transform}_b
+\end{equation}
+So the middle perturbation does not require us to keep the mean in the group (as long as we avoid any degeneracies).

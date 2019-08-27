@@ -1,61 +1,60 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 JAN 2019 13:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  27 AUG 2019 16:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **vp-phd-thesis.tex
 (./vp-phd-thesis.tex
-LaTeX2e <2017-04-15>
-Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
+LaTeX2e <2018-12-01>
 (./ut-thesis.cls
 Document Class: ut-thesis 2012/06/01 v2.0 graduate theses at the University of Toronto
 \@thesisfootnotesep=\skip41
 \@thesismarginparpush=\skip42
-(/usr/local/texlive/2017/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2017/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
-\c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
 \abovecaptionskip=\skip43
 \belowcaptionskip=\skip44
 \bibindent=\dimen102
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count88
-\calc@Bcount=\count89
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count89
+\calc@Bcount=\count90
 \calc@Adimen=\dimen103
 \calc@Bdimen=\dimen104
 \calc@Askip=\skip45
 \calc@Bskip=\skip46
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count90
+\calc@Ccount=\count91
 \calc@Cskip=\skip47
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2010/09/12 v5.6 Page Geometry
- (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
-) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
-) (/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count91
-\Gm@cntv=\count92
-\c@Gm@tempcnt=\count93
+\Gm@cnth=\count92
+\Gm@cntv=\count93
+\c@Gm@tempcnt=\count94
 \Gm@bindingoffset=\dimen105
 \Gm@wd@mp=\dimen106
 \Gm@odd@mp=\dimen107
@@ -65,13 +64,13 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen111
 \Gm@layoutvoffset=\dimen112
 \Gm@dimlist=\toks15
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/setspace/setspace.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-)) (./preamble.tex (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
- (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
+)) (./preamble.tex (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
 \captionmargin=\dimen113
 \captionmargin@=\dimen114
 \captionwidth=\dimen115
@@ -80,57 +79,58 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen118
 \caption@hangindent=\dimen119
 )
-\c@ContinuedFloat=\count94
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
+\c@caption@flags=\count95
+\c@ContinuedFloat=\count96
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks16
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/11/05 v2.16a AMS math features
+)) (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2018/12/01 v2.17b AMS math features
 \@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
- (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen120
-)) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen121
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count95
-LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count96
-\leftroot@=\count97
-LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count98
-\DOTSCASE@=\count99
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
+\inf@bad=\count97
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count98
+\leftroot@=\count99
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count100
+\DOTSCASE@=\count101
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
 \big@size=\dimen122
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count100
-\c@MaxMatrixCols=\count101
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count102
+\c@MaxMatrixCols=\count103
 \dotsspace@=\muskip10
-\c@parentequation=\count102
-\dspbrk@lvl=\count103
+\c@parentequation=\count104
+\dspbrk@lvl=\count105
 \tag@help=\toks18
-\row@=\count104
-\column@=\count105
-\maxfields@=\count106
+\row@=\count106
+\column@=\count107
+\maxfields@=\count108
 \andhelp@=\toks19
 \eqnshift@=\dimen123
 \alignsep@=\dimen124
@@ -142,19 +142,19 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \multlinegap=\skip49
 \multlinetaggap=\skip50
 \mathdisplay@stack=\toks21
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amscd.sty
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amscd.sty
 Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
 \athelp@=\toks22
 \minaw@=\dimen129
 \bigaw@=\dimen130
 \minCDarrowwidth=\dimen131
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
- (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
- (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -171,7 +171,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -190,80 +190,79 @@ Package atveryend Info: \enddocument detected (standard20110627).
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/auxhook.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen132
-\Hy@linkcounter=\count107
-\Hy@pagecounter=\count108
- (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
+\Hy@linkcounter=\count109
+\Hy@pagecounter=\count110
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count109
- (/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+\Hy@SavedSpaceFactor=\count111
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Hyper figures OFF on input line 4498.
-Package hyperref Info: Link nesting OFF on input line 4503.
-Package hyperref Info: Hyper index ON on input line 4506.
-Package hyperref Info: Plain pages OFF on input line 4513.
-Package hyperref Info: Backreferencing OFF on input line 4518.
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4751.
-\c@Hy@tempcnt=\count110
- (/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count112
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5104.
+LaTeX Info: Redefining \url on input line 5125.
 \XeTeXLinkMargin=\dimen133
-\Fld@menulength=\count111
+\Fld@menulength=\count113
 \Field@Width=\dimen134
 \Fld@charsize=\dimen135
-Package hyperref Info: Hyper figures OFF on input line 6358.
-Package hyperref Info: Link nesting OFF on input line 6363.
-Package hyperref Info: Hyper index ON on input line 6366.
-Package hyperref Info: backreferencing OFF on input line 6373.
-Package hyperref Info: Link coloring OFF on input line 6378.
-Package hyperref Info: Link coloring with OCG OFF on input line 6383.
-Package hyperref Info: PDF/A mode OFF on input line 6388.
-LaTeX Info: Redefining \ref on input line 6428.
-LaTeX Info: Redefining \pageref on input line 6432.
-\Hy@abspage=\count112
-\c@Item=\count113
-\c@Hfootnote=\count114
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count114
+\c@Item=\count115
+\c@Hfootnote=\count116
 )
-
-Package hyperref Message: Driver: hpdftex.
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
-\Fld@listcount=\count115
-\c@bookmark@seq@number=\count116
- (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package hyperref Info: Driver: hpdftex.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count117
+\c@bookmark@seq@number=\count118
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 282.
 )
 \Hy@SectionHShift=\skip51
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
- (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
-\Gread@gobject=\count117
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen136
 \Gin@req@width=\dimen137
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/booktabs/booktabs.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \heavyrulewidth=\dimen138
 \lightrulewidth=\dimen139
@@ -275,705 +274,705 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen145
 \cmidrulekern=\dimen146
 \defaultaddspace=\dimen147
-\@cmidla=\count118
-\@cmidlb=\count119
+\@cmidla=\count119
+\@cmidlb=\count120
 \@aboverulesep=\dimen148
 \@belowrulesep=\dimen149
-\@thisruleclass=\count120
-\@lastruleclass=\count121
+\@thisruleclass=\count121
+\@lastruleclass=\count122
 \@thisrulewidth=\dimen150
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
 \multirow@colwidth=\skip52
-\multirow@cntb=\count122
+\multirow@cntb=\count123
 \multirow@dima=\skip53
 \bigstrutjot=\dimen151
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen152
 \WF@size=\dimen153
-\c@WF@wrappedlines=\count123
-\WF@box=\box28
+\c@WF@wrappedlines=\count124
+\WF@box=\box29
 \WF@everypar=\toks23
 Package: wrapfig 2003/01/31  v 3.6
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box29
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
- (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/array.sty
-Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\@tempboxb=\box30
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \col@sep=\dimen154
+\ar@mcellbox=\box31
 \extrarowheight=\dimen155
 \NC@list=\toks24
 \extratabsurround=\skip54
 \backup@length=\skip55
+\ar@cellbox=\box32
 )
 \TX@col@width=\dimen156
 \TX@old@table=\dimen157
 \TX@old@col=\dimen158
 \TX@target=\dimen159
 \TX@delta=\dimen160
-\TX@cols=\count124
+\TX@cols=\count125
 \TX@ftn=\toks25
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks26
+\pgfutil@tempdima=\dimen161
+\pgfutil@tempdimb=\dimen162
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box33
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2019/02/02 v3.1.1 (3.1.1)
+))
+Package: pgf 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks27
+\pgfkeys@temptoks=\toks28
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks29
+))
+\pgf@x=\dimen163
+\pgf@y=\dimen164
+\pgf@xa=\dimen165
+\pgf@ya=\dimen166
+\pgf@xb=\dimen167
+\pgf@yb=\dimen168
+\pgf@xc=\dimen169
+\pgf@yc=\dimen170
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count126
+\c@pgf@countb=\count127
+\c@pgf@countc=\count128
+\c@pgf@countd=\count129
+\t@pgf@toka=\toks30
+\t@pgf@tokb=\toks31
+\t@pgf@tokc=\toks32
+\pgf@sys@id@count=\count130
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2019/02/02 v3.1.1 (3.1.1)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2019/02/02 v3.1.1 (3.1.1)
+))) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgfsyssoftpath@smallbuffer@items=\count131
+\pgfsyssoftpath@bigbuffer@items=\count132
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2019/02/02 v3.1.1 (3.1.1)
+)) (/usr/local/texlive/2018/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen171
+\pgfmath@count=\count133
+\pgfmath@box=\box34
+\pgfmath@toks=\toks33
+\pgfmath@stack@operand=\toks34
+\pgfmath@stack@operation=\toks35
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count134
+)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgf@picminx=\dimen172
+\pgf@picmaxx=\dimen173
+\pgf@picminy=\dimen174
+\pgf@picmaxy=\dimen175
+\pgf@pathminx=\dimen176
+\pgf@pathmaxx=\dimen177
+\pgf@pathminy=\dimen178
+\pgf@pathmaxy=\dimen179
+\pgf@xx=\dimen180
+\pgf@xy=\dimen181
+\pgf@yx=\dimen182
+\pgf@yy=\dimen183
+\pgf@zx=\dimen184
+\pgf@zy=\dimen185
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgf@path@lastx=\dimen186
+\pgf@path@lasty=\dimen187
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgf@shorten@end@additional=\dimen188
+\pgf@shorten@start@additional=\dimen189
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgfpic=\box35
+\pgf@hbox=\box36
+\pgf@layerbox@main=\box37
+\pgf@picture@serial@count=\count135
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgflinewidth=\dimen190
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgf@pt@x=\dimen191
+\pgf@pt@y=\dimen192
+\pgf@pt@temp=\dimen193
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgfarrowsep=\dimen194
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgf@max=\dimen195
+\pgf@sys@shading@range@num=\count136
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgfexternal@startupbox=\box38
+)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2019/02/02 v3.1.1 (3.1.1)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2019/02/02 v3.1.1 (3.1.1)
+))) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgfnodeparttextbox=\box39
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2019/02/02 v3.1.1 (3.1.1)
+\pgf@nodesepstart=\dimen196
+\pgf@nodesepend=\dimen197
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2019/02/02 v3.1.1 (3.1.1)
+)) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen198
+\pgffor@skip=\dimen199
+\pgffor@stack=\toks36
+\pgffor@toks=\toks37
+)) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgf@plot@mark@count=\count137
+\pgfplotmarksize=\dimen256
+)
+\tikz@lastx=\dimen257
+\tikz@lasty=\dimen258
+\tikz@lastxsaved=\dimen259
+\tikz@lastysaved=\dimen260
+\tikzleveldistance=\dimen261
+\tikzsiblingdistance=\dimen262
+\tikz@figbox=\box40
+\tikz@figbox@bg=\box41
+\tikz@tempbox=\box42
+\tikz@tempbox@bg=\box43
+\tikztreelevel=\count138
+\tikznumberofchildren=\count139
+\tikznumberofcurrentchild=\count140
+\tikz@fig@count=\count141
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgfmatrixcurrentrow=\count142
+\pgfmatrixcurrentcolumn=\count143
+\pgf@matrix@numberofcolumns=\count144
+)
+\tikz@expandcount=\count145
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2019/02/02 v3.1.1 (3.1.1)
+))) (/usr/local/texlive/2018/texmf-dist/tex/latex/venndiagram/venndiagram.sty
+Package: venndiagram 2018/06/07 v1.2 (NLCT) Venn diagrams
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks38
+\XKV@tempa@toks=\toks39
+)
+\XKV@depth=\count146
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count147
+)
+\@venn@Ax=\skip56
+\@venn@Ay=\skip57
+\@venn@Bx=\skip58
+\@venn@By=\skip59
+\@venn@Cx=\skip60
+\@venn@Cy=\skip61
+\@venn@w=\skip62
+\@venn@h=\skip63
+\@venn@intersect@i@x=\skip64
+\@venn@intersect@i@y=\skip65
+\@venn@intersect@ii@x=\skip66
+\@venn@intersect@ii@y=\skip67
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
- (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count125
-\c@ALG@rem=\count126
-\c@ALG@nested=\count127
-\ALG@tlm=\skip56
-\ALG@thistlm=\skip57
-\c@ALG@Lnr=\count128
-\c@ALG@blocknr=\count129
-\c@ALG@storecount=\count130
-\c@ALG@tmpcounter=\count131
-\ALG@tmplength=\skip58
+\c@ALG@line=\count148
+\c@ALG@rem=\count149
+\c@ALG@nested=\count150
+\ALG@tlm=\skip68
+\ALG@thistlm=\skip69
+\c@ALG@Lnr=\count151
+\c@ALG@blocknr=\count152
+\c@ALG@storecount=\count153
+\c@ALG@tmpcounter=\count154
+\ALG@tmplength=\skip70
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithms/algorithm.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
- (/usr/local/texlive/2017/texmf-dist/tex/latex/float/float.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count132
-\float@exts=\toks26
-\float@box=\box30
-\@float@everytoks=\toks27
-\@floatcapt=\box31
+\c@float@type=\count155
+\float@exts=\toks40
+\float@box=\box44
+\@float@everytoks=\toks41
+\@floatcapt=\box45
 )
-\@float@every@algorithm=\toks28
-\c@algorithm=\count133
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/cleveref/cleveref.sty
-Package: cleveref 2013/12/28 v0.19 Intelligent cross-referencing
-Package cleveref Info: `hyperref' support loaded on input line 2230.
-LaTeX Info: Redefining \cref on input line 2230.
-LaTeX Info: Redefining \Cref on input line 2230.
-LaTeX Info: Redefining \crefrange on input line 2230.
-LaTeX Info: Redefining \Crefrange on input line 2230.
-LaTeX Info: Redefining \cpageref on input line 2230.
-LaTeX Info: Redefining \Cpageref on input line 2230.
-LaTeX Info: Redefining \cpagerefrange on input line 2230.
-LaTeX Info: Redefining \Cpagerefrange on input line 2230.
-LaTeX Info: Redefining \labelcref on input line 2230.
-LaTeX Info: Redefining \labelcpageref on input line 2230.
-Package cleveref Info: `algorithmicx' support loaded on input line 2939.
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2017/05/13 L3 programming layer (loader) 
- (/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2017/05/13 L3 programming layer (code)
-\c_max_int=\count134
-\l_tmpa_int=\count135
-\l_tmpb_int=\count136
-\g_tmpa_int=\count137
-\g_tmpb_int=\count138
-\g__prg_map_int=\count139
-\c_log_iow=\count140
-\l_iow_line_count_int=\count141
-\l__iow_line_target_int=\count142
-\l__iow_one_indent_int=\count143
-\l__iow_indent_int=\count144
-\c_zero_dim=\dimen161
-\c_max_dim=\dimen162
-\l_tmpa_dim=\dimen163
-\l_tmpb_dim=\dimen164
-\g_tmpa_dim=\dimen165
-\g_tmpb_dim=\dimen166
-\c_zero_skip=\skip59
-\c_max_skip=\skip60
-\l_tmpa_skip=\skip61
-\l_tmpb_skip=\skip62
-\g_tmpa_skip=\skip63
-\g_tmpb_skip=\skip64
+\@float@every@algorithm=\toks42
+\c@algorithm=\count156
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/libertine.sty
+Package: libertine 2018/01/03 (Bob Tennent) Supports Libertine and Biolinum fonts for all LaTeX engines.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+FEFF (decimal 65279)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/mweights/mweights.sty
+Package: mweights 2017/03/30 (Bob Tennent) Support package for multiple-weight font packages. 
+LaTeX Info: Redefining \bfseries on input line 22.
+LaTeX Info: Redefining \mdseries on input line 30.
+LaTeX Info: Redefining \rmfamily on input line 38.
+LaTeX Info: Redefining \sffamily on input line 66.
+LaTeX Info: Redefining \ttfamily on input line 94.
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+Package: fontaxes 2014/03/23 v1.0d Font selection axes
+LaTeX Info: Redefining \upshape on input line 29.
+LaTeX Info: Redefining \itshape on input line 31.
+LaTeX Info: Redefining \slshape on input line 33.
+LaTeX Info: Redefining \scshape on input line 37.
+)
+LaTeX Info: Redefining \oldstylenums on input line 490.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/LinLibertine_I.tex)) (/usr/local/texlive/2018/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+Package cleveref Info: `algorithmicx' support loaded on input line 3120.
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 25.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2019-02-15 L3 programming layer (loader) 
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2019-02-15 L3 programming layer (code)
+\c_max_int=\count157
+\l_tmpa_int=\count158
+\l_tmpb_int=\count159
+\g_tmpa_int=\count160
+\g_tmpb_int=\count161
+\g__kernel_prg_map_int=\count162
+\c_log_iow=\count163
+\l_iow_line_count_int=\count164
+\l__iow_line_target_int=\count165
+\l__iow_one_indent_int=\count166
+\l__iow_indent_int=\count167
+\c_zero_dim=\dimen263
+\c_max_dim=\dimen264
+\l_tmpa_dim=\dimen265
+\l_tmpb_dim=\dimen266
+\g_tmpa_dim=\dimen267
+\g_tmpb_dim=\dimen268
+\c_zero_skip=\skip71
+\c_max_skip=\skip72
+\l_tmpa_skip=\skip73
+\l_tmpb_skip=\skip74
+\g_tmpa_skip=\skip75
+\g_tmpb_skip=\skip76
 \c_zero_muskip=\muskip12
 \c_max_muskip=\muskip13
 \l_tmpa_muskip=\muskip14
 \l_tmpb_muskip=\muskip15
 \g_tmpa_muskip=\muskip16
 \g_tmpb_muskip=\muskip17
-\l_keys_choice_int=\count145
-\c__fp_leading_shift_int=\count146
-\c__fp_middle_shift_int=\count147
-\c__fp_trailing_shift_int=\count148
-\c__fp_big_leading_shift_int=\count149
-\c__fp_big_middle_shift_int=\count150
-\c__fp_big_trailing_shift_int=\count151
-\c__fp_Bigg_leading_shift_int=\count152
-\c__fp_Bigg_middle_shift_int=\count153
-\c__fp_Bigg_trailing_shift_int=\count154
-\c__fp_rand_size_int=\count155
-\c__fp_rand_four_int=\count156
-\c__fp_rand_eight_int=\count157
-\l__sort_length_int=\count158
-\l__sort_min_int=\count159
-\l__sort_top_int=\count160
-\l__sort_max_int=\count161
-\l__sort_true_max_int=\count162
-\l__sort_block_int=\count163
-\l__sort_begin_int=\count164
-\l__sort_end_int=\count165
-\l__sort_A_int=\count166
-\l__sort_B_int=\count167
-\l__sort_C_int=\count168
-\c_empty_box=\box32
-\l_tmpa_box=\box33
-\l_tmpb_box=\box34
-\g_tmpa_box=\box35
-\g_tmpb_box=\box36
-\l__box_top_dim=\dimen167
-\l__box_bottom_dim=\dimen168
-\l__box_left_dim=\dimen169
-\l__box_right_dim=\dimen170
-\l__box_top_new_dim=\dimen171
-\l__box_bottom_new_dim=\dimen172
-\l__box_left_new_dim=\dimen173
-\l__box_right_new_dim=\dimen174
-\l__box_internal_box=\box37
-\l__coffin_internal_box=\box38
-\l__coffin_internal_dim=\dimen175
-\l__coffin_offset_x_dim=\dimen176
-\l__coffin_offset_y_dim=\dimen177
-\l__coffin_x_dim=\dimen178
-\l__coffin_y_dim=\dimen179
-\l__coffin_x_prime_dim=\dimen180
-\l__coffin_y_prime_dim=\dimen181
-\c_empty_coffin=\box39
-\l__coffin_aligned_coffin=\box40
-\l__coffin_aligned_internal_coffin=\box41
-\l_tmpa_coffin=\box42
-\l_tmpb_coffin=\box43
-\l__coffin_display_coffin=\box44
-\l__coffin_display_coord_coffin=\box45
-\l__coffin_display_pole_coffin=\box46
-\l__coffin_display_offset_dim=\dimen182
-\l__coffin_display_x_dim=\dimen183
-\l__coffin_display_y_dim=\dimen184
-\l__coffin_bounding_shift_dim=\dimen185
-\l__coffin_left_corner_dim=\dimen186
-\l__coffin_right_corner_dim=\dimen187
-\l__coffin_bottom_corner_dim=\dimen188
-\l__coffin_top_corner_dim=\dimen189
-\l__coffin_scaled_total_height_dim=\dimen190
-\l__coffin_scaled_width_dim=\dimen191
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
-File: l3pdfmode.def 2017/03/18 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count169
-\l__driver_tmp_box=\box47
+\l_keys_choice_int=\count168
+\l__intarray_loop_int=\count169
+\c__intarray_sp_dim=\dimen269
+\g__intarray_font_int=\count170
+\c__fp_leading_shift_int=\count171
+\c__fp_middle_shift_int=\count172
+\c__fp_trailing_shift_int=\count173
+\c__fp_big_leading_shift_int=\count174
+\c__fp_big_middle_shift_int=\count175
+\c__fp_big_trailing_shift_int=\count176
+\c__fp_Bigg_leading_shift_int=\count177
+\c__fp_Bigg_middle_shift_int=\count178
+\c__fp_Bigg_trailing_shift_int=\count179
+\c__kernel_randint_max_int=\count180
+\g__fp_array_int=\count181
+\l__fp_array_loop_int=\count182
+\l__sort_length_int=\count183
+\l__sort_min_int=\count184
+\l__sort_top_int=\count185
+\l__sort_max_int=\count186
+\l__sort_true_max_int=\count187
+\l__sort_block_int=\count188
+\l__sort_begin_int=\count189
+\l__sort_end_int=\count190
+\l__sort_A_int=\count191
+\l__sort_B_int=\count192
+\l__sort_C_int=\count193
+\l__tl_analysis_normal_int=\count194
+\l__tl_analysis_index_int=\count195
+\l__tl_analysis_nesting_int=\count196
+\l__tl_analysis_type_int=\count197
+\l__regex_internal_a_int=\count198
+\l__regex_internal_b_int=\count199
+\l__regex_internal_c_int=\count266
+\l__regex_balance_int=\count267
+\l__regex_group_level_int=\count268
+\l__regex_mode_int=\count269
+\c__regex_cs_in_class_mode_int=\count270
+\c__regex_cs_mode_int=\count271
+\l__regex_catcodes_int=\count272
+\l__regex_default_catcodes_int=\count273
+\c__regex_catcode_D_int=\count274
+\c__regex_catcode_S_int=\count275
+\c__regex_catcode_L_int=\count276
+\c__regex_catcode_O_int=\count277
+\c__regex_catcode_A_int=\count278
+\c__regex_all_catcodes_int=\count279
+\l__regex_show_lines_int=\count280
+\l__regex_min_state_int=\count281
+\l__regex_max_state_int=\count282
+\l__regex_left_state_int=\count283
+\l__regex_right_state_int=\count284
+\l__regex_capturing_group_int=\count285
+\l__regex_min_pos_int=\count286
+\l__regex_max_pos_int=\count287
+\l__regex_curr_pos_int=\count288
+\l__regex_start_pos_int=\count289
+\l__regex_success_pos_int=\count290
+\l__regex_curr_char_int=\count291
+\l__regex_curr_catcode_int=\count292
+\l__regex_last_char_int=\count293
+\l__regex_case_changed_char_int=\count294
+\l__regex_curr_state_int=\count295
+\l__regex_step_int=\count296
+\l__regex_min_active_int=\count297
+\l__regex_max_active_int=\count298
+\l__regex_replacement_csnames_int=\count299
+\l__regex_match_count_int=\count300
+\l__regex_min_submatch_int=\count301
+\l__regex_submatch_int=\count302
+\l__regex_zeroth_submatch_int=\count303
+\g__regex_trace_regex_int=\count304
+\c_empty_box=\box46
+\l_tmpa_box=\box47
+\l_tmpb_box=\box48
+\g_tmpa_box=\box49
+\g_tmpb_box=\box50
+\l__box_top_dim=\dimen270
+\l__box_bottom_dim=\dimen271
+\l__box_left_dim=\dimen272
+\l__box_right_dim=\dimen273
+\l__box_top_new_dim=\dimen274
+\l__box_bottom_new_dim=\dimen275
+\l__box_left_new_dim=\dimen276
+\l__box_right_new_dim=\dimen277
+\l__box_internal_box=\box51
+\l__coffin_internal_box=\box52
+\l__coffin_internal_dim=\dimen278
+\l__coffin_offset_x_dim=\dimen279
+\l__coffin_offset_y_dim=\dimen280
+\l__coffin_x_dim=\dimen281
+\l__coffin_y_dim=\dimen282
+\l__coffin_x_prime_dim=\dimen283
+\l__coffin_y_prime_dim=\dimen284
+\c_empty_coffin=\box53
+\l__coffin_aligned_coffin=\box54
+\l__coffin_aligned_internal_coffin=\box55
+\l_tmpa_coffin=\box56
+\l_tmpb_coffin=\box57
+\g_tmpa_coffin=\box58
+\g_tmpb_coffin=\box59
+\c__coffin_empty_coffin=\box60
+\l__coffin_display_coffin=\box61
+\l__coffin_display_coord_coffin=\box62
+\l__coffin_display_pole_coffin=\box63
+\l__coffin_display_offset_dim=\dimen285
+\l__coffin_display_x_dim=\dimen286
+\l__coffin_display_y_dim=\dimen287
+\g__file_internal_ior=\read2
+\l__coffin_bounding_shift_dim=\dimen288
+\l__coffin_left_corner_dim=\dimen289
+\l__coffin_right_corner_dim=\dimen290
+\l__coffin_bottom_corner_dim=\dimen291
+\l__coffin_top_corner_dim=\dimen292
+\l__coffin_scaled_total_height_dim=\dimen293
+\l__coffin_scaled_width_dim=\dimen294
+\l__seq_internal_a_int=\count305
+\l__seq_internal_b_int=\count306
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+File: l3pdfmode.def 2019-02-15 v L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count307
 ))
-Package: xparse 2017/05/13 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count170
-\g__xparse_grabber_int=\count171
-\l__xparse_m_args_int=\count172
-\l__xparse_mandatory_args_int=\count173
-\l__xparse_v_nesting_int=\count174
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/natbib/natbib.sty
+Package: xparse 2018-10-17 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count308
+\g__xparse_grabber_int=\count309
+\l__xparse_m_args_int=\count310
+\l__xparse_mandatory_args_int=\count311
+\l__xparse_v_nesting_int=\count312
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip65
-\bibsep=\skip66
+\bibhang=\skip77
+\bibsep=\skip78
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count175
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/natbib/bibentry.sty
+\c@NAT@ctr=\count313
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/natbib/bibentry.sty
 Package: bibentry 2007/10/30 1.5 (PWD)
-) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bbl) (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
-\c@subfigure=\count176
-\c@subtable=\count177
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/nomencl/nomencl.sty
-Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
-\nomlabelwidth=\dimen192
-\nom@tempdim=\dimen193
-\nomitemsep=\skip67
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bbl) (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
+\c@subfigure=\count314
+\c@subtable=\count315
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/epigraph/epigraph.sty
+Package: epigraph 2009/09/02 v1.5c typesetting epigraphs
+\beforeepigraphskip=\skip79
+\afterepigraphskip=\skip80
+\epigraphwidth=\skip81
+\epigraphrule=\skip82
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/nomencl/nomencl.sty
+Package: nomencl 2019/02/08 v5.1 Nomenclature package
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2019/02/01 v3.26b KOMA-Script package (handling toc-files)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2019/02/01 v3.26b KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2019/02/01 v3.26b KOMA-Script package (loading files)
+))
+\scr@dte@tocline@numberwidth=\skip83
+\scr@dte@tocline@numbox=\box64
+)
+Package tocbasic Info: setting babel extension for `nlo' on input line 24.
+Package tocbasic Info: setting babel extension for `nls' on input line 25.
+\nomlabelwidth=\dimen295
+\nom@tempdim=\dimen296
+\nomitemsep=\skip84
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count316
+\c@@ppsavesec=\count317
+\c@@ppsaveapp=\count318
 )) (./notation.tex
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \NaturalNumbers with sig. 'oo' on line 57.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Integers with sig. 'oo' on line 66.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \RationalNumbers with sig. 'oo' on line 75.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \RealNumbers with sig. 'oo' on line 84.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ComplexNumbers with sig. 'oo' on line 93.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \HomogeneousNumbers with sig. 'oo' on line 102.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SOg with sig. '' on line 104.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SOa with sig. '' on line 105.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Identity with sig. 'o' on line 125.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \HomogeneousPoint with sig. 'mm' on line 127.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \HomogeneousPointEstimate with sig. 'mm' on line 129.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \VisualLandmark with sig. 'mm' on line 131.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CameraPose with sig. 'm' on line 135.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ImageLandmark with sig. 'mm' on line 138.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \LinearizedImageLandmark with sig. 'mm' on line 139.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetImageLandmark with sig. 'o' on line 145.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ImageLandmarkCovariance with sig. 'mm' on line 150.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Covariance with sig. '' on line 151.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetImageLandmarkCovariance with sig. '' on line 153.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Predictor with sig. 'mm' on line 159.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetPredictor with sig. '' on line 163.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetTransform with sig. '' on line 167.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ProjectionFunction with sig. '' on line 173.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \NormalDistribution with sig. '' on line 182.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \InverseWishartDistribution with sig. '' on line 196.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \StudentTDistribution with sig. '' on line 211.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SunDirectionComponent with sig. '' on line 231.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SunDirection with sig. '' on line 232.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SunDirectionAll with sig. '' on line 233.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SunImage with sig. '' on line 234.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SunImageAll with sig. '' on line 235.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CNNVariationalWeight with sig. '' on line 237.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CNNWeightAll with sig. '' on line 238.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \AzimuthAngle with sig. '' on line 240.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ZenithAngle with sig. '' on line 241.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \KeypointComponent with sig. '' on line 243.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Keypoint with sig. '' on line 244.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CameraObservation with sig. '' on line 245.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CameraModel with sig. 'm' on line 246.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Error with sig. '' on line 248.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CNNLoss with sig. 'm' on line 250.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \BACost with sig. '' on line 251.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \deltap with sig. '' on line 258.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetVOTransform with sig. '' on line 259.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \EstimatedVOTransform with sig. '' on line 260.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \EstimatedVOTransformNoSub with sig. '' on line 261.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetCorrection with sig. '' on line 265.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetCorrectionIndex with sig. '' on line 266.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetCorrectionVector with sig. '' on line 268.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetCorrectionVectorIndex with sig. '' on line 269.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetCorrectionRotation with sig. '' on line 271.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TargetCorrectionRotationVector with sig. '' on line 272.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \LeftJacobianSE with sig. '' on line 274.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \LeftJacobianSO with sig. '' on line 275.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \LogMapFunction with sig. 'm' on line 276.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \LogMapFunctionSO with sig. 'm' on line 277.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \EstimatedVOTransformCorrected with sig. '' on line 279.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \EstimatedVOTransformCorrectedNoSub with sig. '' on line
-. 280.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \PredictionVector with sig. '' on line 282.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \PredictionVectorIndex with sig. '' on line 283.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \TransformCovariance with sig. '' on line 285.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CostFunction with sig. '' on line 288.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \PoseCostFunction with sig. '' on line 289.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Inv with sig. 'm' on line 291.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \definedtobe with sig. '' on line 293.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Image with sig. '' on line 294.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ImageQuad with sig. '' on line 295.
-.................................................
-\fsep=\skip68
-\widebox=\box48
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ImageCovariance with sig. '' on line 312.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MeasurementCovariance with sig. '' on line 319.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MeasurementJacobian with sig. '' on line 320.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MotionCovariance with sig. '' on line 322.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MotionModel with sig. '' on line 323.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MotionJacobian with sig. '' on line 324.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \KFState with sig. '' on line 326.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \KFStateCovariance with sig. '' on line 327.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DeepMeasurementModel with sig. '' on line 330.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SensorData with sig. '' on line 331.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MatLog with sig. 'm' on line 335.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \MatExp with sig. 'm' on line 336.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Matlog with sig. 'm' on line 337.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Matexp with sig. 'm' on line 338.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \matlogexp with sig. 'mm' on line 339.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \matlogexpfn with sig. 'mm' on line 340.
-.................................................
+\fsep=\skip85
+\widebox=\box65
 )
 
 LaTeX Warning: Unused global option(s):
     [oneandahalfspaced].
 
-(/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/probe.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/sun-bcnn.aux
+(/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux
 
-LaTeX Warning: Label `sec:kitti_vo_sim_sun' multiply defined.
-
-
-LaTeX Warning: Label `sec:kitti_vo_sim_sun@cref' multiply defined.
-
-) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/dpc.aux
-
-LaTeX Warning: Label `eq:image_error' multiply defined.
+LaTeX Warning: Label `fig:into_rur' multiply defined.
 
 
-LaTeX Warning: Label `eq:image_error@cref' multiply defined.
+LaTeX Warning: Label `fig:into_rur@cref' multiply defined.
 
-
-LaTeX Warning: Label `00-pose-segs' multiply defined.
-
-
-LaTeX Warning: Label `00-pose-segs@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@00-pose-segs' multiply defined.
-
-
-LaTeX Warning: Label `sub@00-pose-segs@cref' multiply defined.
-
-
-LaTeX Warning: Label `02-pose-segs' multiply defined.
-
-
-LaTeX Warning: Label `02-pose-segs@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@02-pose-segs' multiply defined.
-
-
-LaTeX Warning: Label `sub@02-pose-segs@cref' multiply defined.
-
-
-LaTeX Warning: Label `05-pose-segs' multiply defined.
-
-
-LaTeX Warning: Label `05-pose-segs@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@05-pose-segs' multiply defined.
-
-
-LaTeX Warning: Label `sub@05-pose-segs@cref' multiply defined.
-
-) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/lkf.aux
-
-LaTeX Warning: Label `fig:lkf_system' multiply defined.
-
-
-LaTeX Warning: Label `fig:lkf_system@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:lkf_system' multiply defined.
-
-
-LaTeX Warning: Label `fig:lkf_system@cref' multiply defined.
-
-) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/conclusion.aux))
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux))
 \openout1 = `vp-phd-thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
@@ -990,6 +989,18 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 118.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 118.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineT-TLF on input line 118.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
+File: OT1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxLibertineT-TLF.
+)
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 118.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1031,1582 +1042,265 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring OFF on input line 118.
-(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
+\AtBeginShipoutBox=\box66
+Package hyperref Info: Link coloring ON on input line 118.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
- (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count178
+\c@section@level=\count319
 )
 LaTeX Info: Redefining \ref on input line 118.
 LaTeX Info: Redefining \pageref on input line 118.
 LaTeX Info: Redefining \nameref on input line 118.
  (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.out) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.out)
-\@outlinefile=\write3
-\openout3 = `vp-phd-thesis.out'.
+\@outlinefile=\write4
+\openout4 = `vp-phd-thesis.out'.
 
- (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count179
-\scratchdimen=\dimen194
-\scratchbox=\box50
-\nofMPsegments=\count180
-\nofMParguments=\count181
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count182
-\MPscratchDim=\dimen195
-\MPnumerator=\count183
-\makeMPintoPDFobject=\count184
-\everyMPtoPDFconversion=\toks30
-) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+\scratchcounter=\count320
+\scratchdimen=\dimen297
+\scratchbox=\box67
+\nofMPsegments=\count321
+\nofMParguments=\count322
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count323
+\MPscratchDim=\dimen298
+\MPnumerator=\count324
+\makeMPintoPDFobject=\count325
+\everyMPtoPDFconversion=\toks44
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
- (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
- (/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-))
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 125.
- (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)) ABD: EveryShipout initializing macros
+\c@mv@tabular=\count326
+\c@mv@boldtabular=\count327
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 14.4pt on input line 125.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sc' will be
+(Font)              scaled to size 14.4pt on input line 125.
+LaTeX Font Info:    Try loading font information for TS1+LinuxLibertineT-TLF on input line 125.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
+File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 125.
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 14.4pt on input line 125.
  [1
 
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 2.
- (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 17.28pt on input line 134.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 17.28pt on input line 134.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 137.
+ [2]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 24.88pt on input line 150.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 24.88pt on input line 150.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 154.
+LaTeX Font Info:    Try loading font information for U+msa on input line 154.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 2.
- (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Try loading font information for U+msb on input line 154.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [5
+) [3
 
-] [6])
-\tf@toc=\write4
-\openout4 = `vp-phd-thesis.toc'.
-
- [7] [8
+] [4
 
 ]
-Overfull \hbox (12.07584pt too wide) in paragraph at lines 194--194
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 177.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 177.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 177.
+ [5] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.toc
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 1.
+)
+\tf@toc=\write5
+\openout5 = `vp-phd-thesis.toc'.
+
+ [6
+
+]
+Overfull \hbox (12.07584pt too wide) in paragraph at lines 202--202
  []|$[]$|
  []
 
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 200.
-(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) [1
+[1
+
 
 ]
 \openout2 = `sections/introduction.aux'.
 
  (./sections/introduction.tex
 Chapter 1.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 2.
+<figures/introduction/rur.jpg, id=185, 426.09187pt x 332.74312pt>
+File: figures/introduction/rur.jpg Graphic file (type jpg)
+<use figures/introduction/rur.jpg>
+Package pdftex.def Info: figures/introduction/rur.jpg  used on input line 13.
+(pdftex.def)             Requested size: 180.67224pt x 141.09154pt.
+
+Underfull \hbox (badness 2875) in paragraph at lines 16--16
+[]\OT1/LinuxLibertineT-TLF/m/n/12 Figure 1.1: |A robot re-bel-lion from Karel
+ []
+
+
+Underfull \hbox (badness 1430) in paragraph at lines 21--22
+\OT1/LinuxLibertineT-TLF/m/n/12 god Hep-haes-tus was said to cre-ate talk-
+ []
+
 [2
 
 
-] [3] [4] <figures/introduction/dpc_high_level.pdf, id=541, 578.48874pt x 554.09181pt>
+ <./figures/introduction/rur.jpg>]
+<figures/introduction/pancam-panorama-opportunity.jpg, id=204, 3011.25pt x 672.5125pt>
+File: figures/introduction/pancam-panorama-opportunity.jpg Graphic file (type jpg)
+<use figures/introduction/pancam-panorama-opportunity.jpg>
+Package pdftex.def Info: figures/introduction/pancam-panorama-opportunity.jpg  used on input line 38.
+(pdftex.def)             Requested size: 429.10176pt x 95.82376pt.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sl' in size <12> not available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/it' tried instead on input line 48.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 48.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scsl' in size <12> not available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/scit' tried instead on input line 48.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scit' will be
+(Font)              scaled to size 12.0pt on input line 48.
+ [3]
+Overfull \hbox (13.33441pt too wide) in paragraph at lines 73--74
+ [][] 
+ []
+
+
+Overfull \hbox (13.33441pt too wide) in paragraph at lines 94--94
+ [][] 
+ []
+
+
+Underfull \hbox (badness 1210) in paragraph at lines 94--94
+[]\OT1/LinuxLibertineT-TLF/m/n/10.95 (b) |The com-po-nents of soft-
+ []
+
+
+Overfull \hbox (36.65308pt too wide) in paragraph at lines 115--115
+ [][] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/it' will be
+(Font)              scaled to size 17.28pt on input line 123.
+[4 <./figures/introduction/pancam-panorama-opportunity.jpg>]
+<figures/introduction/vo_pipeline.pdf, id=239, 982.05573pt x 410.43579pt>
+File: figures/introduction/vo_pipeline.pdf Graphic file (type pdf)
+<use figures/introduction/vo_pipeline.pdf>
+Package pdftex.def Info: figures/introduction/vo_pipeline.pdf  used on input line 138.
+(pdftex.def)             Requested size: 442.65182pt x 185.00127pt.
+<figures/introduction/pseudo_sensor.pdf, id=240, 993.85384pt x 337.99716pt>
+File: figures/introduction/pseudo_sensor.pdf Graphic file (type pdf)
+<use figures/introduction/pseudo_sensor.pdf>
+Package pdftex.def Info: figures/introduction/pseudo_sensor.pdf  used on input line 148.
+(pdftex.def)             Requested size: 442.65182pt x 150.53976pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5] [6 <./figures/introduction/vo_pipeline.pdf> <./figures/introduction/pseudo_sensor.pdf>] [7]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 167.
+ [8]
+Overfull \hbox (4.33951pt too wide) in paragraph at lines 186--186
+[]\OT1/LinuxLibertineT-TLF/b/n/14.4 Software Sun Sen-sor us-ing a Bayesian Con-vo-lu-tional Neu-ral Net-
+ []
+
+
+Underfull \vbox (badness 1173) has occurred while \output is active []
+
+ [9]
+<figures/introduction/dpc_high_level.pdf, id=478, 578.48874pt x 554.09181pt>
 File: figures/introduction/dpc_high_level.pdf Graphic file (type pdf)
- <use figures/introduction/dpc_high_level.pdf>
-Package pdftex.def Info: figures/introduction/dpc_high_level.pdf used on input line 51.
+<use figures/introduction/dpc_high_level.pdf>
+Package pdftex.def Info: figures/introduction/dpc_high_level.pdf  used on input line 202.
 (pdftex.def)             Requested size: 216.80807pt x 207.66554pt.
- [5]
+ [10 <./figures/introduction/dpc_high_level.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 62.
+(hyperref)                removing `math shift' on input line 213.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 62.
+(hyperref)                removing `math shift' on input line 213.
 
-[6 <./figures/introduction/dpc_high_level.pdf>]) [7]
+) [11]
 \openout2 = `sections/math.aux'.
 
  (./sections/math.tex
 Chapter 2.
-[8
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 5.
+[12
 
 
 
 ]
 LaTeX Font Info:    Try loading font information for U+euf on input line 61.
- (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/ueuf.fd
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-Underfull \vbox (badness 3250) has occurred while \output is active []
-
- [9]) [10]
-\openout2 = `sections/probe.aux'.
-
- (./sections/probe.tex
-Chapter 3.
-[11
-
-
-
-]
-
-Package natbib Warning: Citation `Fischler:1981cv' on page 12 undefined on input line 38.
-
-<figures/probe/feature_space.pdf, id=732, 563.99232pt x 263.4973pt>
-File: figures/probe/feature_space.pdf Graphic file (type pdf)
- <use figures/probe/feature_space.pdf>
-Package pdftex.def Info: figures/probe/feature_space.pdf used on input line 43.
-(pdftex.def)             Requested size: 225.84375pt x 105.51364pt.
-
-
-LaTeX Warning: Reference `eqn:gamma' on page 12 undefined on input line 51.
-
-[12] [13 <./figures/probe/feature_space.pdf>] [14pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.104 \subsection
-                 {Prediction Space} \label{sec:predictors}]
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
-
-
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 15 undefined on input line 114.
-
-[15]
-
-LaTeX Warning: Reference `fig:tricifix' on page 16 undefined on input line 139.
-
-
-Package natbib Warning: Citation `Furgale:2013dm' on page 16 undefined on input line 140.
-
-
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 16 undefined on input line 141.
-
-<figures/probe/tricifix2.jpg, id=794, 803.0pt x 534.99875pt>
-File: figures/probe/tricifix2.jpg Graphic file (type jpg)
- <use figures/probe/tricifix2.jpg>
-Package pdftex.def Info: figures/probe/tricifix2.jpg used on input line 146.
-(pdftex.def)             Requested size: 180.67224pt x 120.36952pt.
- <figures/probe/reprojectionError.pdf, id=795, 485.31891pt x 193.12715pt>
-File: figures/probe/reprojectionError.pdf Graphic file (type pdf)
- <use figures/probe/reprojectionError.pdf>
-Package pdftex.def Info: figures/probe/reprojectionError.pdf used on input line 161.
-(pdftex.def)             Requested size: 383.93713pt x 152.78387pt.
- <figures/probe/trackingError.pdf, id=796, 485.31891pt x 193.12715pt>
-File: figures/probe/trackingError.pdf Graphic file (type pdf)
- <use figures/probe/trackingError.pdf>
-Package pdftex.def Info: figures/probe/trackingError.pdf used on input line 168.
-(pdftex.def)             Requested size: 383.93713pt x 152.78387pt.
-
-
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 16 undefined on input line 170.
-
-
-Package natbib Warning: Citation `Anonymous:Ngi3VEEU' on page 16 undefined on input line 170.
-
-
-Package natbib Warning: Citation `Lucas:1981uw' on page 16 undefined on input line 177.
-
-[16 <./figures/probe/tricifix2.jpg> <./figures/probe/reprojectionError.pdf>]
-
-LaTeX Warning: Reference `fig:probe_visensor_histograms' on page 17 undefined on input line 179.
-
-
-Underfull \vbox (badness 6792) has occurred while \output is active []
-
- [17 <./figures/probe/trackingError.pdf>]
-
-LaTeX Warning: Reference `fig:flow_variance' on page 18 undefined on input line 194.
-
-
-Package natbib Warning: Citation `Geiger:2013kp' on page 18 undefined on input line 194.
-
-<figures/probe/flowPredictorCombined.png, id=857, 492.84125pt x 162.10562pt>
-File: figures/probe/flowPredictorCombined.png Graphic file (type png)
- <use figures/probe/flowPredictorCombined.png>
-Package pdftex.def Info: figures/probe/flowPredictorCombined.png used on input line 199.
-(pdftex.def)             Requested size: 361.35138pt x 118.8605pt.
-
-
-LaTeX Warning: Reference `fig:high_frequency' on page 18 undefined on input line 208.
-
-
-Package natbib Warning: Citation `Geiger:2013kp' on page 18 undefined on input line 208.
-
-<figures/probe/highFreqPredictor.png, id=859, 492.84125pt x 162.10562pt>
-File: figures/probe/highFreqPredictor.png Graphic file (type png)
- <use figures/probe/highFreqPredictor.png>
-Package pdftex.def Info: figures/probe/highFreqPredictor.png used on input line 213.
-(pdftex.def)             Requested size: 361.35138pt x 118.8605pt.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 250.
- <figures/probe/city-res-road.png, id=860, 1003.75pt x 125.46875pt>
-File: figures/probe/city-res-road.png Graphic file (type png)
- <use figures/probe/city-res-road.png>
-Package pdftex.def Info: figures/probe/city-res-road.png used on input line 255.
-(pdftex.def)             Requested size: 451.68752pt x 56.46231pt.
- <figures/probe/husky2.jpg, id=861, 192.72pt x 128.3997pt>
-File: figures/probe/husky2.jpg Graphic file (type jpg)
- <use figures/probe/husky2.jpg>
-Package pdftex.def Info: figures/probe/husky2.jpg used on input line 262.
-(pdftex.def)             Requested size: 361.35138pt x 240.7508pt.
- [18 <./figures/probe/flowPredictorCombined.png>] [19 <./figures/probe/highFreqPredictor.png> <./figures/probe/city-res-road.png>] <figures/probe-gk/system_overview.pdf, id=888, 706.76712pt x 548.73396pt>
-File: figures/probe-gk/system_overview.pdf Graphic file (type pdf)
- <use figures/probe-gk/system_overview.pdf>
-Package pdftex.def Info: figures/probe-gk/system_overview.pdf used on input line 284.
-(pdftex.def)             Requested size: 338.76563pt x 263.02089pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [20 <./figures/probe/husky2.jpg>] [21 <./figures/probe-gk/system_overview.pdf>]
-Underfull \vbox (badness 6978) has occurred while \output is active []
-
- [22]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [23]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 413.
-pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.416     \Function
-                   {BuildCovarianceModel}{$\mathcal{D}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.417       \State
-                   Initialize an empty spatial index $\mathcal{M}$pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.418       \ForAll
-                   {$\mathcal{I}_t,\Transform_t$ in $\mathcal{D}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.419         \ForAll
-                     {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.421           \State
-                       $\Vector{e}_{i,t} = \ImageLandmark{i}{t}' -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.424             \State
-                         Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and storepdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.426         \EndFor
-                     pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.427       \EndFor
-                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.428       \State
-                  \Return $\mathcal{M}$pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.429     \EndFunction
-                      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.466     \Function
-                   {ComputeTransform}{$\mathcal{I}_t$, $\mathcal{M}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.467       \ForAll
-                   {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.469         \State
-                     $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$\mat...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.471         \State
-                     $g(\Transform) = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.474         \State
-                     $\mathcal{L} \gets \mathcal{L} +pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.478       \EndFor
-                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.479       \State
-                   \Return $\ArgMin{\Transform\in\text{SE}(3)}\mathcal{L}(\T...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.480     \EndFunction
-                      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.481     \Function
-                   {InferNoiseModel}{$\mathcal{M}$, $\TargetPredictor$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.482       \State
-                   $\textsc{neighbors}\gets$ \Call{GetNeighbors}{$\mathcal{M},pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.11}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.484       \State
-                  \Comment{$\rho$ is the radius of the support of the kernel...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.12}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.485       \State
-                   $\Matrix{\Psi}_* \gets \Matrix{\Psi}(\TargetPredictor)$ \... [24]
-Underfull \vbox (badness 1577) has occurred while \output is active []
-
- [25]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.576     \Function
-                   {BuildCovarianceModel}{$\mathcal{D'}$, $\Transform_{1:T}^...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.577       \State
-                   Initialize an empty spatial index $\mathcal{M}$pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.578       \ForAll
-                   {$\mathcal{I}_t$ in $\mathcal{D'}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.579         \ForAll
-                     {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.581           \State
-                       $\Vector{e}_{i,t} = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.584             \State
-                         Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and storepdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.586         \EndFor
-                     pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.587       \EndFor
-                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.588       \Repeat
-                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.589         \ForAll
-                     {$\mathcal{I}_t$ in $\mathcal{D'}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.11}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.590           \ForAll
-                       {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.12}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.592             \State
-                         $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.13}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.593             \State
-                         $g(\Transform) = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.14}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.596             \State
-                         $\mathcal{L} \gets \mathcal{L} +pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.15}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.600           \EndFor
-                       pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.16}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.601           \State
-                       $\Transform_t \gets \ArgMin{\Transform\in\text{SE}(3)}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.17}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.603           \State
-                       $\Vector{e}_{i,t} = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.18}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.606           \State
-                       Update the error stored at $\Predictor{i}{t}$ in $\ma...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.19}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.608         \EndFor
-                     
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [26] [27] <figures/probe-gk/sim_world.pdf, id=1101, 449.68pt x 338.26375pt>
-File: figures/probe-gk/sim_world.pdf Graphic file (type pdf)
- <use figures/probe-gk/sim_world.pdf>
-Package pdftex.def Info: figures/probe-gk/sim_world.pdf used on input line 626.
-(pdftex.def)             Requested size: 225.84375pt x 169.88503pt.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 633.
-
-
-LaTeX Warning: Reference `sec:ssvo' on page 1 undefined on input line 633.
-
-<figures/probe-gk/simComparison_sim_rerun.pdf, id=1105, 496.85625pt x 396.48125pt>
-File: figures/probe-gk/simComparison_sim_rerun.pdf Graphic file (type pdf)
- <use figures/probe-gk/simComparison_sim_rerun.pdf>
-Package pdftex.def Info: figures/probe-gk/simComparison_sim_rerun.pdf used on input line 641.
-(pdftex.def)             Requested size: 338.76563pt x 270.32965pt.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 28 undefined on input line 651.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 28 undefined on input line 651.
-
-[28 <./figures/probe-gk/sim_world.pdf>] <figures/probe-gk/KittiEnvironments.pdf, id=1123, 906.1415pt x 95.33878pt>
-File: figures/probe-gk/KittiEnvironments.pdf Graphic file (type pdf)
- <use figures/probe-gk/KittiEnvironments.pdf>
-Package pdftex.def Info: figures/probe-gk/KittiEnvironments.pdf used on input line 659.
-(pdftex.def)             Requested size: 442.65182pt x 46.57382pt.
- <figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf, id=1128, 484.81125pt x 393.47pt>
-File: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf Graphic file (type pdf)
- <use figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>
-Package pdftex.def Info: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf used on input line 677.
-(pdftex.def)             Requested size: 338.76563pt x 274.9528pt.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 678.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 678.
-
-[29 <./figures/probe-gk/simComparison_sim_rerun.pdf>] [30 <./figures/probe-gk/KittiEnvironments.pdf> <./figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>] <figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf, id=1183, 487.8225pt x 393.47pt>
-File: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf Graphic file (type pdf)
- <use figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf>
-Package pdftex.def Info: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf used on input line 694.
-(pdftex.def)             Requested size: 338.76563pt x 273.24771pt.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 695.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 695.
-
-<figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf, id=1184, 484.81125pt x 393.47pt>
-File: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf Graphic file (type pdf)
- <use figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>
-Package pdftex.def Info: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf used on input line 702.
-(pdftex.def)             Requested size: 338.76563pt x 274.9528pt.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 703.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 703.
-
-
-LaTeX Warning: Reference `fig:kitti_comparison3' on page 1 undefined on input line 708.
-
-
-LaTeX Warning: Reference `fig:kitti_comparison2' on page 1 undefined on input line 708.
-
-
-LaTeX Warning: Reference `fig:kitti_comparison1' on page 1 undefined on input line 708.
-
-
-LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 709.
-
-[31 <./figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf>] <figures/probe-gk/experiment_wide_border.pdf, id=1198, 610.61609pt x 421.44742pt>
-File: figures/probe-gk/experiment_wide_border.pdf Graphic file (type pdf)
- <use figures/probe-gk/experiment_wide_border.pdf>
-Package pdftex.def Info: figures/probe-gk/experiment_wide_border.pdf used on input line 749.
-(pdftex.def)             Requested size: 338.76563pt x 233.82248pt.
- <figures/probe-gk/xb3_rtk_fig.pdf, id=1199, 490.83376pt x 380.42125pt>
-File: figures/probe-gk/xb3_rtk_fig.pdf Graphic file (type pdf)
- <use figures/probe-gk/xb3_rtk_fig.pdf>
-Package pdftex.def Info: figures/probe-gk/xb3_rtk_fig.pdf used on input line 757.
-(pdftex.def)             Requested size: 338.76563pt x 262.56639pt.
-
-Underfull \vbox (badness 1735) has occurred while \output is active []
-
- [32 <./figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>] [33 <./figures/probe-gk/experiment_wide_border.pdf> <./figures/probe-gk/xb3_rtk_fig.pdf>]
-
-LaTeX Warning: Reference `fig:experiments_trainingstats' on page 1 undefined on input line 766.
-
-
-LaTeX Warning: Reference `table:loop_closure_errors' on page 1 undefined on input line 768.
-
-<figures/probe-gk/trainingStats.pdf, id=1268, 499.8675pt x 402.50375pt>
-File: figures/probe-gk/trainingStats.pdf Graphic file (type pdf)
- <use figures/probe-gk/trainingStats.pdf>
-Package pdftex.def Info: figures/probe-gk/trainingStats.pdf used on input line 789.
-(pdftex.def)             Requested size: 338.76563pt x 272.78995pt.
-) [34] [35 <./figures/probe-gk/trainingStats.pdf>]
-\openout2 = `sections/sun-bcnn.aux'.
-
- (./sections/sun-bcnn.tex
-Chapter 4.
-
-Package natbib Warning: Citation `Zhang2015-gf' on page 36 undefined on input line 4.
-
-<figures/sun-bcnn/system_overview.pdf, id=1294, 686.07072pt x 390.18723pt>
-File: figures/sun-bcnn/system_overview.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/system_overview.pdf>
-Package pdftex.def Info: figures/sun-bcnn/system_overview.pdf used on input line 12.
-(pdftex.def)             Requested size: 338.76563pt x 192.66399pt.
- <figures/sun-bcnn/all_datasets_gps.pdf, id=1295, 1027.7067pt x 375.26689pt>
-File: figures/sun-bcnn/all_datasets_gps.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/all_datasets_gps.pdf>
-Package pdftex.def Info: figures/sun-bcnn/all_datasets_gps.pdf used on input line 19.
-(pdftex.def)             Requested size: 442.65182pt x 161.63646pt.
-
-
-Package natbib Warning: Citation `Olson2003-ax' on page 36 undefined on input line 25.
-
-
-Package natbib Warning: Citation `Furgale2011-zu' on page 36 undefined on input line 26.
-
-
-Package natbib Warning: Citation `Lambert2012-um' on page 36 undefined on input line 26.
-
-
-Package natbib Warning: Citation `Eisenman2002-cg' on page 36 undefined on input line 26.
-
-
-Package natbib Warning: Citation `Maimone2007-tc' on page 36 undefined on input line 26.
-
-
-Package natbib Warning: Citation `Lambert2012-um' on page 36 undefined on input line 27.
-
-[36
-
-
-
-] [37 <./figures/sun-bcnn/system_overview.pdf> <./figures/sun-bcnn/all_datasets_gps.pdf>]
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 38 undefined on input line 39.
-
-
-Package natbib Warning: Citation `Furgale2012-kk' on page 38 undefined on input line 39.
-
-
-Package natbib Warning: Citation `Lambert2012-um' on page 38 undefined on input line 45.
-
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 38 undefined on input line 47.
-
-
-Package natbib Warning: Citation `Furgale2012-kk' on page 38 undefined on input line 47.
-
-
-Package natbib Warning: Citation `Maddern2016-ng' on page 38 undefined on input line 48.
-
-[38]
-
-Package natbib Warning: Citation `Alcantarilla2016-fs' on page 39 undefined on input line 55.
-
-
-Package natbib Warning: Citation `Engel2015-il' on page 39 undefined on input line 55.
-
-
-Package natbib Warning: Citation `Olson2003-ax' on page 39 undefined on input line 57.
-
-
-Package natbib Warning: Citation `Furgale2011-zu' on page 39 undefined on input line 60.
-
-
-Package natbib Warning: Citation `Lambert2012-um' on page 39 undefined on input line 60.
-
-
-Package natbib Warning: Citation `Maimone2007-tc' on page 39 undefined on input line 60.
-
-
-Package natbib Warning: Citation `Eisenman2002-cg' on page 39 undefined on input line 60.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 39 undefined on input line 61.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 39 undefined on input line 62.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 39 undefined on input line 62.
-
-
-Package natbib Warning: Citation `kendall2015posenet' on page 39 undefined on input line 65.
-
-[39]
-
-Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 40 undefined on input line 68.
-
-
-Package natbib Warning: Citation `Gal2016-ny' on page 40 undefined on input line 68.
-
-
-Package natbib Warning: Citation `kendall2015posenet' on page 40 undefined on input line 69.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 71.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 40 undefined on input line 71.
-
-
-Package natbib Warning: Citation `Lambert2012-um' on page 40 undefined on input line 71.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 40 undefined on input line 72.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 72.
-
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 72.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 74.
-
-
-Package natbib Warning: Citation `Gal2016-ny' on page 40 undefined on input line 75.
-
-<figures/sun-bcnn/kitti_activations_horiz.pdf, id=1504, 885.53093pt x 184.6922pt>
-File: figures/sun-bcnn/kitti_activations_horiz.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti_activations_horiz.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti_activations_horiz.pdf used on input line 83.
-(pdftex.def)             Requested size: 442.65182pt x 92.32332pt.
-
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 84.
-
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 40 undefined on input line 84.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 40 undefined on input line 90.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 40 undefined on input line 90.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [40]
-
-Package natbib Warning: Citation `Szegedy2015-uw' on page 41 undefined on input line 92.
-
-
-Package natbib Warning: Citation `kendall2015posenet' on page 41 undefined on input line 92.
-
-
-Package natbib Warning: Citation `zhou2014MITPlaces' on page 41 undefined on input line 93.
-
-
-Package natbib Warning: Citation `deng2009imagenet' on page 41 undefined on input line 93.
-
-
-Underfull \vbox (badness 1527) has occurred while \output is active []
-
-
-Overfull \hbox (36.23949pt too wide) has occurred while \output is active
-\OT1/cmr/m/sc/12 4.3.  Indirect Sun Detection using a Bayesian Convolutional Neural Network \OT1/cmr/m/n/12 41
- []
-
-[41 <./figures/sun-bcnn/kitti_activations_horiz.pdf>]
-
-Package natbib Warning: Citation `Gal2016CNN' on page 42 undefined on input line 111.
-
-
-Package natbib Warning: Citation `Gal2016-ny' on page 42 undefined on input line 111.
-
-
-Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 42 undefined on input line 111.
-
-
-Package natbib Warning: Citation `Gal2016CNN' on page 42 undefined on input line 113.
-
-
-Underfull \vbox (badness 2922) has occurred while \output is active []
-
- [42]
-
-Package natbib Warning: Citation `Gal2016CNN' on page 43 undefined on input line 139.
-
-
-Package natbib Warning: Citation `jia2014caffe' on page 43 undefined on input line 143.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 43 undefined on input line 146.
-
-
-Overfull \hbox (36.23949pt too wide) has occurred while \output is active
-\OT1/cmr/m/sc/12 4.3.  Indirect Sun Detection using a Bayesian Convolutional Neural Network \OT1/cmr/m/n/12 43
- []
-
-[43]
-
-Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 44 undefined on input line 155.
-
-
-Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 44 undefined on input line 156.
-
-<figures/sun-bcnn/sims/sims_triangle200_environment.pdf, id=1586, 522.95375pt x 281.05pt>
-File: figures/sun-bcnn/sims/sims_triangle200_environment.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_triangle200_environment.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_triangle200_environment.pdf used on input line 172.
-(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
- <figures/sun-bcnn/sims/sims_square200_environment.pdf, id=1587, 522.95375pt x 281.05pt>
-File: figures/sun-bcnn/sims/sims_square200_environment.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_square200_environment.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_square200_environment.pdf used on input line 177.
-(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
- <figures/sun-bcnn/sims/sims_penta200_environment.pdf, id=1588, 522.95375pt x 281.05pt>
-File: figures/sun-bcnn/sims/sims_penta200_environment.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_penta200_environment.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_penta200_environment.pdf used on input line 182.
-(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
- <figures/sun-bcnn/sims/sims_circle200_traj.pdf, id=1589, 1151.30125pt x 357.335pt>
-File: figures/sun-bcnn/sims/sims_circle200_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_circle200_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_traj.pdf used on input line 191.
-(pdftex.def)             Requested size: 442.65182pt x 137.38628pt.
- <figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf, id=1590, 436.63126pt x 352.31625pt>
-File: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf used on input line 200.
-(pdftex.def)             Requested size: 189.70792pt x 153.07355pt.
- <figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf, id=1591, 436.63126pt x 352.31625pt>
-File: figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf used on input line 207.
-(pdftex.def)             Requested size: 189.70792pt x 153.07355pt.
- <figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf, id=1592, 443.6575pt x 338.26375pt>
-File: figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf used on input line 213.
-(pdftex.def)             Requested size: 189.70792pt x 144.64021pt.
- [44] [45 <./figures/sun-bcnn/sims/sims_triangle200_environment.pdf> <./figures/sun-bcnn/sims/sims_square200_environment.pdf> <./figures/sun-bcnn/sims/sims_penta200_environment.pdf> <./figures/sun-bcnn/sims/sims_circle200_traj.pdf>] [46 <./figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf>]
-
-Package natbib Warning: Citation `fisher1953dispersion' on page 47 undefined on input line 239.
-
-
-LaTeX Warning: Reference `tab:sim_armse' on page 1 undefined on input line 247.
-
-[47] <figures/sun-bcnn/kitti/kitti_cdf.pdf, id=1726, 765.86125pt x 242.9075pt>
-File: figures/sun-bcnn/kitti/kitti_cdf.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_cdf.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_cdf.pdf used on input line 261.
-(pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
- <figures/sun-bcnn/kitti/kitti_hist_azzen.pdf, id=1727, 779.91376pt x 236.885pt>
-File: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf used on input line 264.
-(pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
- <figures/sun-bcnn/kitti/kitti_error_over_time.pdf, id=1728, 539.01375pt x 467.7475pt>
-File: figures/sun-bcnn/kitti/kitti_error_over_time.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_error_over_time.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_error_over_time.pdf used on input line 272.
-(pdftex.def)             Requested size: 338.76563pt x 293.97588pt.
- <figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf, id=1729, 1120.185pt x 247.92625pt>
-File: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf used on input line 308.
-(pdftex.def)             Requested size: 442.65182pt x 97.96951pt.
- <figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf, id=1732, 425.59pt x 340.27126pt>
-File: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf used on input line 317.
-(pdftex.def)             Requested size: 189.70792pt x 151.67723pt.
- <figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf, id=1733, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf used on input line 323.
-(pdftex.def)             Requested size: 189.70792pt x 153.42297pt.
- <figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf, id=1734, 439.6425pt x 338.26375pt>
-File: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf used on input line 328.
-(pdftex.def)             Requested size: 189.70792pt x 145.96155pt.
-
-
-Package natbib Warning: Citation `Geiger2012-fq' on page 48 undefined on input line 336.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [48 <./figures/sun-bcnn/kitti/kitti_cdf.pdf> <./figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>] [49 <./figures/sun-bcnn/kitti/kitti_error_over_time.pdf>] [50 <./figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>] <figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf, id=1801, 833.49754pt x 386.21689pt>
-File: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf used on input line 344.
-(pdftex.def)             Requested size: 370.38707pt x 171.62729pt.
- <figures/sun-bcnn/kitti/kitti_02_traj.pdf, id=1802, 430.60875pt x 339.2675pt>
-File: figures/sun-bcnn/kitti/kitti_02_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_02_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_traj.pdf used on input line 352.
-(pdftex.def)             Requested size: 135.50763pt x 106.76628pt.
- <figures/sun-bcnn/kitti/kitti_05_traj.pdf, id=1803, 425.59pt x 342.27875pt>
-File: figures/sun-bcnn/kitti/kitti_05_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj.pdf used on input line 357.
-(pdftex.def)             Requested size: 135.50763pt x 108.98303pt.
-
-Underfull \hbox (badness 1596) in paragraph at lines 358--358
-[]\OT1/cmr/m/n/10.95 (b) |\OT1/cmtt/m/n/10.95 05\OT1/cmr/m/n/10.95 : VO and ground
- []
-
-<figures/sun-bcnn/kitti/kitti_08_traj.pdf, id=1804, 439.6425pt x 336.25626pt>
-File: figures/sun-bcnn/kitti/kitti_08_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_08_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_traj.pdf used on input line 362.
-(pdftex.def)             Requested size: 135.50763pt x 103.63805pt.
- <figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf, id=1805, 430.60875pt x 352.31625pt>
-File: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf used on input line 367.
-(pdftex.def)             Requested size: 135.50763pt x 110.87268pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 368--368
-[]\OT1/cmr/m/n/10.95 (d) |\OT1/cmtt/m/n/10.95 02\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf, id=1806, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf used on input line 372.
-(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 373--373
-[]\OT1/cmr/m/n/10.95 (e) |\OT1/cmtt/m/n/10.95 05\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf, id=1807, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf used on input line 377.
-(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 378--378
-[]\OT1/cmr/m/n/10.95 (f) |\OT1/cmtt/m/n/10.95 08\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf, id=1808, 439.6425pt x 338.26375pt>
-File: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf used on input line 382.
-(pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
- <figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf, id=1809, 439.6425pt x 338.26375pt>
-File: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf used on input line 387.
-(pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
- <figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf, id=1810, 444.66125pt x 338.26375pt>
-File: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf used on input line 392.
-(pdftex.def)             Requested size: 135.50763pt x 103.07996pt.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 51 undefined on input line 396.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 51 undefined on input line 396.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 51 undefined on input line 396.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 51 undefined on input line 396.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 400.
-
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 451.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [51 <./figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>] [52 <./figures/sun-bcnn/kitti/kitti_02_traj.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj.pdf> <./figures/sun-bcnn/kitti/kitti_08_traj.pdf> <./figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>] [53]
-
-LaTeX Warning: Reference `fig:kitti_cnn_testerrors' on page 1 undefined on input line 455.
-
-
-LaTeX Warning: Reference `fig:kitti_error_over_time' on page 1 undefined on input line 455.
-
-<figures/sun-bcnn/devon/devon_collage.pdf, id=1933, 1440.76855pt x 306.44054pt>
-File: figures/sun-bcnn/devon/devon_collage.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_collage.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_collage.pdf used on input line 463.
-(pdftex.def)             Requested size: 447.17311pt x 95.1078pt.
- [54 <./figures/sun-bcnn/devon/devon_collage.pdf>]
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 55 undefined on input line 475.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 55 undefined on input line 475.
-
-
-LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 485.
-
-
-LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 487.
-
-[55]
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 56 undefined on input line 496.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 56 undefined on input line 496.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 56 undefined on input line 499.
-
-
-LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 501.
-
-<figures/sun-bcnn/devon/devon_cdf.pdf, id=1994, 765.86125pt x 242.9075pt>
-File: figures/sun-bcnn/devon/devon_cdf.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_cdf.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_cdf.pdf used on input line 512.
-(pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
- <figures/sun-bcnn/devon/devon_hist_azzen.pdf, id=1995, 779.91376pt x 236.885pt>
-File: figures/sun-bcnn/devon/devon_hist_azzen.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_hist_azzen.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_hist_azzen.pdf used on input line 515.
-(pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
- <figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf, id=1996, 539.01375pt x 467.7475pt>
-File: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf used on input line 525.
-(pdftex.def)             Requested size: 338.76563pt x 293.97588pt.
-
-
-Package natbib Warning: Citation `Furgale2012-kk' on page 56 undefined on input line 532.
-
-
-Package natbib Warning: Citation `Lambert2012-um' on page 56 undefined on input line 535.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [56]
-Overfull \hbox (6.58412pt too wide) in paragraph at lines 538--541
-[]\OT1/cmr/m/n/12 The De-von Is-land en-vi-ron-ment con-tains many fea-tures one might ex-pect to be amenable
- []
-
-
-Underfull \vbox (badness 1348) has occurred while \output is active []
-
-
-Overfull \hbox (75.55902pt too wide) has occurred while \output is active
-\OT1/cmr/m/sc/12 4.6.  Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset \OT1/cmr/m/n/12 57
- []
-
-[57 <./figures/sun-bcnn/devon/devon_cdf.pdf> <./figures/sun-bcnn/devon/devon_hist_azzen.pdf>] [58 <./figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 546.
-
-<figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf, id=2035, 1120.185pt x 247.92625pt>
-File: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf used on input line 577.
-(pdftex.def)             Requested size: 451.68752pt x 99.97075pt.
-
-
-LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 578.
-
-
-LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 578.
-
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 585.
-
-
-LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 586.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (75.55902pt too wide) has occurred while \output is active
-\OT1/cmr/m/sc/12 4.6.  Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset \OT1/cmr/m/n/12 59
- []
-
-[59 <./figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>]
-
-LaTeX Warning: Reference `fig:devon_cnn_testerrors' on page 1 undefined on input line 588.
-
-
-LaTeX Warning: Reference `fig:devon_test_error_whiskers' on page 1 undefined on input line 588.
-
-
-LaTeX Warning: Reference `fig:devon_error_over_time' on page 1 undefined on input line 588.
-
-
-LaTeX Warning: Reference `fig:kitti_cnn_testerrors' on page 1 undefined on input line 589.
-
-
-LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 593.
-
-
-LaTeX Warning: Reference `fig:devon_cnn_testerrors' on page 1 undefined on input line 593.
-
-
-LaTeX Warning: Reference `fig:devon_test_error_whiskers' on page 1 undefined on input line 593.
-
-
-LaTeX Warning: Reference `fig:devon_error_over_time' on page 1 undefined on input line 594.
-
-
-Package natbib Warning: Citation `Lalonde2011-jw' on page 60 undefined on input line 603.
-
-
-Package natbib Warning: Citation `Clement2016-ir' on page 60 undefined on input line 603.
-
-<figures/sun-bcnn/devon/devon_c00_traj.pdf, id=2053, 425.59pt x 343.2825pt>
-File: figures/sun-bcnn/devon/devon_c00_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c00_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_traj.pdf used on input line 609.
-(pdftex.def)             Requested size: 135.50763pt x 109.30264pt.
- <figures/sun-bcnn/devon/devon_c01_traj.pdf, id=2054, 433.62pt x 342.27875pt>
-File: figures/sun-bcnn/devon/devon_c01_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c01_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_traj.pdf used on input line 616.
-(pdftex.def)             Requested size: 135.50763pt x 106.96184pt.
- <figures/sun-bcnn/devon/devon_c05_traj.pdf, id=2055, 425.59pt x 339.2675pt>
-File: figures/sun-bcnn/devon/devon_c05_traj.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c05_traj.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_traj.pdf used on input line 623.
-(pdftex.def)             Requested size: 135.50763pt x 108.02425pt.
- <figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf, id=2056, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf used on input line 629.
-(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 630--630
-[]\OT1/cmr/m/n/10.95 (d) |\OT1/cmtt/m/n/10.95 00\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf, id=2057, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf used on input line 635.
-(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 636--636
-[]\OT1/cmr/m/n/10.95 (e) |\OT1/cmtt/m/n/10.95 01\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf, id=2058, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf used on input line 641.
-(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
-[]\OT1/cmr/m/n/10.95 (f) |\OT1/cmtt/m/n/10.95 01\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/devon/devon_c00_en_rmse.pdf, id=2059, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c00_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf used on input line 647.
-(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 648--648
-[]\OT1/cmr/m/n/10.95 (g) |\OT1/cmtt/m/n/10.95 00\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/devon/devon_c01_en_rmse.pdf, id=2060, 421.575pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c01_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf used on input line 653.
-(pdftex.def)             Requested size: 135.50763pt x 113.24345pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 654--654
-[]\OT1/cmr/m/n/10.95 (h) |\OT1/cmtt/m/n/10.95 01\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-<figures/sun-bcnn/devon/devon_c05_en_rmse.pdf, id=2061, 435.6275pt x 352.31625pt>
-File: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>
-Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf used on input line 659.
-(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 660--660
-[]\OT1/cmr/m/n/10.95 (i) |\OT1/cmtt/m/n/10.95 05\OT1/cmr/m/n/10.95 : Trans-la-tional
- []
-
-
-LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 663.
-
-
-LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 663.
-
-[60]
-
-LaTeX Warning: Reference `fig:devon_vo' on page 1 undefined on input line 691.
-
-
-LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 694.
-
-
-LaTeX Warning: Reference `fig:kitti_cnn_activations' on page 1 undefined on input line 710.
-
-
-Package natbib Warning: Citation `Maddern2016-ng' on page 61 undefined on input line 712.
-
-[61] [62 <./figures/sun-bcnn/devon/devon_c00_traj.pdf> <./figures/sun-bcnn/devon/devon_c01_traj.pdf> <./figures/sun-bcnn/devon/devon_c05_traj.pdf> <./figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c00_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>] <figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf, id=2146, 473.31027pt x 362.441pt>
-File: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>
-Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf used on input line 716.
-(pdftex.def)             Requested size: 338.76563pt x 259.42538pt.
- [63 <./figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>] <figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf, id=2188, 437.635pt x 417.56pt>
-File: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>
-Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf used on input line 730.
-(pdftex.def)             Requested size: 338.76563pt x 323.22972pt.
-
-
-LaTeX Warning: Reference `tab:testBCNN_oxford_weather' on page 1 undefined on input line 735.
-
-[64 <./figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>]
-
-Package natbib Warning: Citation `mcmanus2014' on page 65 undefined on input line 748.
-
-
-LaTeX Warning: Reference `fig:experiment-transfer-boxwhiskers' on page 1 undefined on input line 761.
-
-
-LaTeX Warning: Reference `tab:testBCNN_transfer_experiment' on page 1 undefined on input line 761.
-
-[65] <figures/sun-bcnn/boxwhiskers_transfer_comp.pdf, id=2212, 437.635pt x 417.56pt>
-File: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf Graphic file (type pdf)
- <use figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>
-Package pdftex.def Info: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf used on input line 771.
-(pdftex.def)             Requested size: 338.76563pt x 323.22972pt.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 777.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 804.
-
-[66 <./figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>] [67]
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 838.
-
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 839.
-
-
-LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 854.
-
-[68]
-
-LaTeX Warning: Reference `tab:cov_estimation_comp' on page 1 undefined on input line 864.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 867.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 885.
-
-) [69] [70]
-\openout2 = `sections/dpc.aux'.
-
- (./sections/dpc.tex
-Chapter 5.
-<figures/dpc/dpc_high_level.pdf, id=2278, 578.48874pt x 554.09181pt>
-File: figures/dpc/dpc_high_level.pdf Graphic file (type pdf)
- <use figures/dpc/dpc_high_level.pdf>
-Package pdftex.def Info: figures/dpc/dpc_high_level.pdf used on input line 11.
-(pdftex.def)             Requested size: 338.76563pt x 324.48482pt.
-
-Underfull \vbox (badness 2503) has occurred while \output is active []
-
- [71
-
-
-
-] [72 <./figures/dpc/dpc_high_level.pdf>] [73] <figures/dpc/siamese_dpc_net.pdf, id=2425, 569.62813pt x 579.26881pt>
-File: figures/dpc/siamese_dpc_net.pdf Graphic file (type pdf)
- <use figures/dpc/siamese_dpc_net.pdf>
-Package pdftex.def Info: figures/dpc/siamese_dpc_net.pdf used on input line 48.
-(pdftex.def)             Requested size: 338.76563pt x 344.49686pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [74] [75 <./figures/dpc/siamese_dpc_net.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 67.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 67.
-
-[76]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 87.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 87.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 103.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 103.
-
-[77] [78]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 172.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 172.
-
-
-Overfull \hbox (1.67953pt too wide) in paragraph at lines 173--174
-\OT1/cmr/m/n/12 Our frame-work can be eas-ily mod-i-fied to learn $[](3)$ cor-rec-tions only. We can parametrize
- []
-
-[79] <figures/dpc/pose_relaxation.pdf, id=2614, 257.3075pt x 116.0335pt>
-File: figures/dpc/pose_relaxation.pdf Graphic file (type pdf)
- <use figures/dpc/pose_relaxation.pdf>
-Package pdftex.def Info: figures/dpc/pose_relaxation.pdf used on input line 215.
-(pdftex.def)             Requested size: 112.92188pt x 50.92209pt.
- [80 <./figures/dpc/pose_relaxation.pdf>] [81] <figures/dpc/distorted_images_horiz.pdf, id=2721, 1223.70775pt x 125.35814pt>
-File: figures/dpc/distorted_images_horiz.pdf Graphic file (type pdf)
- <use figures/dpc/distorted_images_horiz.pdf>
-Package pdftex.def Info: figures/dpc/distorted_images_horiz.pdf used on input line 279.
-(pdftex.def)             Requested size: 433.62305pt x 44.42114pt.
-
-Underfull \vbox (badness 7291) has occurred while \output is active []
-
- [82]
-
-Package natbib Warning: Citation `Clement2018-cat' on page 83 undefined on input line 297.
-
-[83 <./figures/dpc/distorted_images_horiz.pdf>] <figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf, id=2778, 578.16pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf used on input line 304.
-(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
- <figures/dpc/sparse-with-dense/combined/00_segs.pdf, id=2779, 578.16pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/combined/00_segs.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/combined/00_segs.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/00_segs.pdf used on input line 310.
-(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
- <figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf, id=2780, 578.16pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf used on input line 316.
-(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
- <figures/dpc/sparse-with-dense/combined/02_segs.pdf, id=2781, 578.16pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/combined/02_segs.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/combined/02_segs.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/02_segs.pdf used on input line 322.
-(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
- <figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf, id=2782, 578.16pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf used on input line 328.
-(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
- <figures/dpc/sparse-with-dense/combined/05_segs.pdf, id=2783, 578.16pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/combined/05_segs.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/combined/05_segs.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/05_segs.pdf used on input line 334.
-(pdftex.def)             Requested size: 216.80807pt x 81.30023pt.
- <figures/dpc/sparse-with-dense/pose/00_topdown.pdf, id=2784, 289.08pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/pose/00_topdown.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/pose/00_topdown.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/00_topdown.pdf used on input line 346.
-(pdftex.def)             Requested size: 189.70792pt x 142.2812pt.
- <figures/dpc/sparse-with-dense/pose/02_topdown.pdf, id=2785, 289.08pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/pose/02_topdown.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/pose/02_topdown.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/02_topdown.pdf used on input line 352.
-(pdftex.def)             Requested size: 189.70792pt x 142.2812pt.
- <figures/dpc/sparse-with-dense/pose/05_topdown.pdf, id=2786, 289.08pt x 216.81pt>
-File: figures/dpc/sparse-with-dense/pose/05_topdown.pdf Graphic file (type pdf)
- <use figures/dpc/sparse-with-dense/pose/05_topdown.pdf>
-Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/05_topdown.pdf used on input line 358.
-(pdftex.def)             Requested size: 189.70792pt x 142.2812pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [84 <./figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf> <./figures/dpc/sparse-with-dense/combined/00_segs.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/combined/00_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./figures/dpc/sparse-with-dense/combined/02_segs.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/combined/02_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./figures/dpc/sparse-with-dense/combined/05_segs.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/combined/05_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [85 <./figures/dpc/sparse-with-dense/pose/00_topdown.pdf> <./figures/dpc/sparse-with-dense/pose/02_topdown.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/pose/02_topdown.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./figures/dpc/sparse-with-dense/pose/05_topdown.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/pose/05_topdown.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] <figures/dpc/distorted/combined/00_segs.pdf, id=2914, 578.16pt x 216.81pt>
-File: figures/dpc/distorted/combined/00_segs.pdf Graphic file (type pdf)
- <use figures/dpc/distorted/combined/00_segs.pdf>
-Package pdftex.def Info: figures/dpc/distorted/combined/00_segs.pdf used on input line 393.
-(pdftex.def)             Requested size: 189.70792pt x 71.1406pt.
- <figures/dpc/distorted/combined/02_segs.pdf, id=2915, 578.16pt x 216.81pt>
-File: figures/dpc/distorted/combined/02_segs.pdf Graphic file (type pdf)
- <use figures/dpc/distorted/combined/02_segs.pdf>
-Package pdftex.def Info: figures/dpc/distorted/combined/02_segs.pdf used on input line 399.
-(pdftex.def)             Requested size: 189.70792pt x 71.1406pt.
- <figures/dpc/distorted/combined/05_segs.pdf, id=2916, 578.16pt x 216.81pt>
-File: figures/dpc/distorted/combined/05_segs.pdf Graphic file (type pdf)
- <use figures/dpc/distorted/combined/05_segs.pdf>
-Package pdftex.def Info: figures/dpc/distorted/combined/05_segs.pdf used on input line 405.
-(pdftex.def)             Requested size: 189.70792pt x 71.1406pt.
- [86]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 418.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 454--454
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 454--454
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 454--454
-
- []
-
-[87 <./figures/dpc/distorted/combined/00_segs.pdf> <./figures/dpc/distorted/combined/02_segs.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/distorted/combined/02_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./figures/dpc/distorted/combined/05_segs.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/distorted/combined/05_segs.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [88] [89]
-\openout2 = `sections/lkf.aux'.
-
- (./sections/lkf.tex
-Chapter 6.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [90
-
-
-
-] <figures/lkf/rel_system.pdf, id=3006, 782.6517pt x 467.85992pt>
-File: figures/lkf/rel_system.pdf Graphic file (type pdf)
- <use figures/lkf/rel_system.pdf>
-Package pdftex.def Info: figures/lkf/rel_system.pdf used on input line 52.
-(pdftex.def)             Requested size: 406.516pt x 243.01727pt.
- <figures/lkf/nn_uncertainty.pdf, id=3007, 1526.77371pt x 350.4068pt>
-File: figures/lkf/nn_uncertainty.pdf Graphic file (type pdf)
- <use figures/lkf/nn_uncertainty.pdf>
-Package pdftex.def Info: figures/lkf/nn_uncertainty.pdf used on input line 63.
-(pdftex.def)             Requested size: 386.18896pt x 88.6334pt.
- <figures/lkf/uncertainty_comp.pdf, id=3008, 794.17633pt x 434.15097pt>
-File: figures/lkf/uncertainty_comp.pdf Graphic file (type pdf)
- <use figures/lkf/uncertainty_comp.pdf>
-Package pdftex.def Info: figures/lkf/uncertainty_comp.pdf used on input line 69.
-(pdftex.def)             Requested size: 386.18896pt x 211.11943pt.
- <figures/lkf/a2_topdown.png, id=3009, 567.11874pt x 429.605pt>
-File: figures/lkf/a2_topdown.png Graphic file (type png)
- <use figures/lkf/a2_topdown.png>
-Package pdftex.def Info: figures/lkf/a2_topdown.png used on input line 83.
-(pdftex.def)             Requested size: 304.887pt x 230.96718pt.
- <figures/lkf/a2_errors.png, id=3010, 568.1225pt x 445.665pt>
-File: figures/lkf/a2_errors.png Graphic file (type png)
- <use figures/lkf/a2_errors.png>
-Package pdftex.def Info: figures/lkf/a2_errors.png used on input line 90.
-(pdftex.def)             Requested size: 304.887pt x 239.17986pt.
- <figures/lkf/a3_combined.png, id=3011, 1246.6575pt x 325.215pt>
-File: figures/lkf/a3_combined.png Graphic file (type png)
- <use figures/lkf/a3_combined.png>
-Package pdftex.def Info: figures/lkf/a3_combined.png used on input line 101.
-(pdftex.def)             Requested size: 451.68752pt x 117.83159pt.
- <figures/lkf/a3_imu-gps_combined.png, id=3012, 437.635pt x 562.1pt>
-File: figures/lkf/a3_imu-gps_combined.png Graphic file (type png)
- <use figures/lkf/a3_imu-gps_combined.png>
-Package pdftex.def Info: figures/lkf/a3_imu-gps_combined.png used on input line 108.
-(pdftex.def)             Requested size: 338.76563pt x 435.11696pt.
-) [91]
-Overfull \hbox (158.37527pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 92 \OT1/cmr/m/sc/12 Chapter 6.  Simultaneous Localization and Learning: Optimizing Deep SE(3) Measurement Models
- []
-
-[92 <./figures/lkf/rel_system.pdf>] [93 <./figures/lkf/nn_uncertainty.pdf> <./figures/lkf/uncertainty_comp.pdf>]
-Overfull \hbox (158.37527pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 94 \OT1/cmr/m/sc/12 Chapter 6.  Simultaneous Localization and Learning: Optimizing Deep SE(3) Measurement Models
- []
-
-[94 <./figures/lkf/a2_topdown.png> <./figures/lkf/a2_errors.png>] [95 <./figures/lkf/a3_combined.png> <./figures/lkf/a3_imu-gps_combined.png>]
-\openout2 = `sections/conclusion.aux'.
-
- (./sections/conclusion.tex
-Chapter 7.
-[96
-
-
-
-]
-Overfull \hbox (1.63985pt too wide) in paragraph at lines 22--23
-\OT1/cmr/m/n/12 tive ro-bust es-ti-ma-tion for visual-inertial nav-i-ga-tion.  In \OT1/cmr/m/it/12 Pro-ceed-ings of the IEEE/RSJ
- []
-
-) [97] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bblpdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Clement_Improving}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.43 ...ment et~al., 2017]{2017_Clement_Improving}
-                                                   [98
-
-
-] [99] [100] [101]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.285 ...n et~al., 2015c]{2015_Peretroukhin_PROBE}
-                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_Get}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.292 ...hin et~al., 2015d]{2015_Peretroukhin_Get}
-                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Peretroukhin_Reducing}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.306 ...t~al., 2017b]{2017_Peretroukhin_Reducing}
-                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.313 ...t~al., 2018]{2018_Peretroukhin_Inferring}
-                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Deep}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.319 ... and Kelly, 2018]{2018_Peretroukhin_Deep}
-                                                   [102]pdfTeX warning (ext4): destination with the same identifier (name{cite.2016_Peretroukhin_PROBE-GK}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.335 ...t~al., 2016b]{2016_Peretroukhin_PROBE-GK}
-                                                   [103]pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Wagstaff_Improving}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.414 ...ff et~al., 2017]{2017_Wagstaff_Improving}
-                                                  )
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
-[104]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
- (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/probe.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/sun-bcnn.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/dpc.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/lkf.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/conclusion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
+LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TLF on input line 84.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.fd
+File: OT1LinuxLibertineMonoT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxLibertineMonoT-TLF.
+)
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 84.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 84.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 5.0pt on input line 84.
+
+Underfull \vbox (badness 2573) has occurred while \output is active []
+
+ [13]) [14] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bbl [15
+
+
+] [16] [17]) [18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 255.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 255.
+ (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 255.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 255.
 Package rerunfilecheck Info: File `vp-phd-thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 0EE2C808435E290C62D738C5BEC5FBE2;4664.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 255.
  ) 
 Here is how much of TeX's memory you used:
- 19988 strings out of 492995
- 367666 string characters out of 6132704
- 460756 words of memory out of 5000000
- 22689 multiletter control sequences out of 15000+600000
- 30331 words of font info for 103 fonts, out of 8000000 for 9000
+ 33928 strings out of 492616
+ 642602 string characters out of 6128982
+ 709109 words of memory out of 5000000
+ 37212 multiletter control sequences out of 15000+600000
+ 576503 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,23n,45p,10412b,558s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.14} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.13} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
-
+ 57i,23n,79p,1617b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist, replaced by a fixed one
@@ -2617,12 +1311,12 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local
-/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
-Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (112 pages, 27033641 bytes).
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (24 pages, 3803879 bytes).
 PDF statistics:
- 3730 PDF objects out of 4296 (max. 8388607)
- 2895 compressed objects within 29 object streams
- 497 named destinations out of 1000 (max. 500000)
- 1023 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 753 PDF objects out of 1000 (max. 8388607)
+ 645 compressed objects within 7 object streams
+ 116 named destinations out of 1000 (max. 500000)
+ 238 words of extra memory for PDF output out of 10000 (max. 10000000)
 

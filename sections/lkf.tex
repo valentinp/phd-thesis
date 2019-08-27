@@ -2,10 +2,22 @@
 
 \section{Motivation}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{lkf/rel_system}
+	\caption{We present a novel way to learn a deep probabilistic measurement models with sparse external positioning data. Our architecture uses a multi-headed network we call a HydraNet to output residuals to a predicted state given sensor data and the state itself.}
+	\label{fig:lkf_system}
+\end{figure}
+
 We present a novel way to use error-state Kalman filters to optimize deep probabilistic measurement models. Unlike traditional approaches that separate learning into two distinct training and evaluation phases, we instead use the modern tools of deep learning to embed a hyper-parametric model that can be optimized in tandem with trajectory estimates. Extending our prior work, we use matrix Lie groups to develop a parametrization with analytically differentiable loss functions and uncertainty propagation for 6 degree-of-freedom pose estimation. We show that by learning residuals to a predicted state, we can use the method of uncertainty injection onto the manifold to predict meaningful covariance estimates. As calibrated uncertainty estimates are crucial to reliable state estimation, we leverage ideas from the method of the statistical bootstrap to create a network we call a HydraNet that can produce covariance estimates that incorporate both epistemic and aleatoric uncertainty. Finally, we show how our system can be used to learn deep probabilistic measurement models in both two dimensions with planar Lidar data, and in three dimensions with stereo cameras.
 
+\section{Related Work}
 
-\section{Global Lie Algebra Coordinates}
+TODO...
+
+\section{System Design}
+
+In order to be able to construct a computational graph, we opt to parametrize $\LieGroupSE{3}$ using a vector in $\Real^6$. We exploit the surjective property of the exponential map, and stay careful to avoid singularities associated with large rotations.
 
 A basic composition in $\LieGroupSE{3}$ is given by,
 \begin{align}
@@ -27,8 +39,10 @@ Left perturbations:
 \delta \TransformVector_c =  \delta \TransformVector_a + \LieGroupAdjoint{\Transform_a} \delta \TransformVector_b.
 \end{align}
 
+This has the advantage of having a static Jacobian.
 
-Middle perturbations:
+
+Note that with middle perturbations:
 
 \begin{align}
 \delta \TransformVector_c = \LeftJacobianSE(\TransformVector_c)^{-1} \LeftJacobianSE(\TransformVector_a) \delta \TransformVector_a + \LeftJacobianSE(\TransformVector_c)^{-1}  \LieGroupAdjoint{\Transform_a} \LeftJacobianSE(\TransformVector_b) \delta \TransformVector_b.
@@ -45,17 +59,31 @@ We can now define the loss function - negative log likelihood:
 
 where $\TransformVector_a \ominus \TransformVector_b = \matlogexpfn{\TransformVector_a}{-\TransformVector_b}$ 
 
-\section{Experiments}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{lkf/rel_system}
-	\caption{We present a novel way to train deep probabilistic measurement models with sparse ground truth data. Our architecture uses a multi-headed network we call a HydraNet to output residuals to a predicted state given sensor data and the state itself.}
-	\label{fig:lkf_system}
-\end{figure}
+\subsection{Error State Kalman Filter}
+
+\begin{align}
+			    \check{\KFState} &= \MotionModel(\hat{\KFState}, \Vector{u}) \\
+			    \check{\KFStateCovariance} &= \MotionJacobian \hat{\KFStateCovariance} \MotionJacobian^T + \MotionCovariance \\
+			   \Matrix{K} &= \check{\KFStateCovariance}\MeasurementJacobian^T\left(\MeasurementJacobian \check{\KFStateCovariance}\MeasurementJacobian^T + \MeasurementCovariance\right)^{-1} \\
+	\delta \hat{\KFState} &= \Matrix{K} \delta \KFState \\
+	\hat{\KFState} &= \check{\KFState} \oplus \delta \hat{\KFState}
+\end{align}
+
+
+\section{Deep Residual Model}
+
+
+\begin{align}
+\left\{\delta \KFState,  \MeasurementCovariance \right\} &= \DeepMeasurementModel(\SensorData, \check{\KFState}, \check{\KFStateCovariance}) \\
+\end{align}
+
 
 
 \section{Consistent Uncertainty Estimates}
+\section{Epistemic and Aleatoric Uncertainty}
+
+\section{HydraNet}
 
 \begin{figure}
     \centering
@@ -73,8 +101,9 @@ where $\TransformVector_a \ominus \TransformVector_b = \matlogexpfn{\TransformVe
 	\caption{Investigations into uncertainty with deep neural networks. The network consists of two layers, with one dimensional inputs and outputs. Bagging uses 10 models and HydraNet uses 10 heads.}
 \end{figure}
 
-\section{System}
+\section{Experiments}
 
+\subsection{2D}
 
 \begin{figure}
     \centering
@@ -92,24 +121,51 @@ where $\TransformVector_a \ominus \TransformVector_b = \matlogexpfn{\TransformVe
 	\label{fig:lkf_2d_errors} 
 		\end{subfigure}
 	\label{fig:lkf_2d}
-	\caption{2D investigations.}
+	\caption{2D investigation.}
 \end{figure}
+
+\subsection{3D}
 
 
 \begin{figure}
+
+\begin{subfigure}[]{0.9\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{lkf/a3_combined}
+	\caption{3D dataset with external groundtruth every 30 seconds.}
+	\label{fig:lkf_3d_combined}    
+    \end{subfigure}
+    
+    \begin{subfigure}[]{0.9\textwidth}
 	\centering
-	\includegraphics[width=\textwidth]{lkf/a3_combined}
-	\caption{Errors on a 3D dataset with external groundtruth every 15 seconds.}
-	\label{fig:lkf_system}
+    \includegraphics[width=0.75\textwidth]{lkf/a3_norms}
+	\caption{Errors on a 3D dataset with external pose updates every 30 seconds.}
+	\label{fig:lkf_3d_norms} 
+	\end{subfigure}
+	\label{fig:lkf_3d}
+	\caption{3D investigation}
 \end{figure}
 
 \begin{figure}
+\begin{subfigure}[]{0.9\textwidth}
+    \centering
+    \includegraphics[width=0.75\textwidth]{lkf/a3_imu-gps_plot}
+	\caption{Trajectory.}
+	\label{fig:lkf_imu-gps_plot}    
+    \end{subfigure}
+    
+    \begin{subfigure}[]{0.9\textwidth}
 	\centering
-	\includegraphics[width=0.75\textwidth]{lkf/a3_imu-gps_combined}
-	\caption{The same 3D data with a traditional Kalman filter with the same ground truth.}
-	\label{fig:lkf_system}
+    \includegraphics[width=0.75\textwidth]{lkf/a3_imu-gps_norms}
+	\caption{Translation and rotational errors.}
+	\label{fig:lkf_imu-gps_norms} 
+	\end{subfigure}
+	\label{fig:lkf_3d_imu-gps}
+	\caption{The same 3D data with a traditional Kalman filter that uses the external the external pose updates as a correction.}
 \end{figure}
 
+\subsection{VKITTI}
 
+TODO...
 
  

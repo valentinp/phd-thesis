@@ -1,10 +1,161 @@
 \chapter{Introduction}
-Reliable state estimation is at the heart of mobile robotics.
+\epigraph{To be sure, a writer cannot begin with a thesis; he must rather use his writerly sensitivity to intuit what is going on, even if he cannot understand its implications.}{--- Gary Morson, \textit{How the great truth dawned}}
+
+ 
+%Gary Saul Morson, How the great truth dawned
+%https://www.newcriterion.com/issues/2019/9/how-the-great-truth-dawned
+
+%Taken from https://en.wikipedia.org/wiki/R.U.R.
+\section{Autonomy and humanity through the ages}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+  	\vspace{-20pt}
+    \includegraphics[width=0.4\textwidth]{introduction/rur.jpg}
+     \vspace{-15pt}
+  \end{center}
+  \caption{A robot rebellion from Karel Capek's 1920 play, \textit{Rossum's Universal Robots}.}
+  \vspace{-5pt}
+  \label{fig:into_rur}
+\end{wrapfigure}
+
+This thesis deals with the improvement of autonomous systems, which, in some form, have been imagined and realized for all of recorded history. In Greek mythology, the god Hephaestus was said to create talking mechanical hand-maidens, while early Hindu and Buddhist texts tell of \textit{yantakara} that lived in Greece and created machines that helped in trade and farming. The secret methods of the \textit{yantakara} (the early `roboticists') were closely guarded, and mechanical assassins were said to pursue and kill any person who revealed their techniques\footnote{Please be careful distributing this thesis.}. 
+
+%https://scroll.in/article/916490/in-an-ancient-indian-legend-robots-guarded-buddhas-relics
+%Cite 
+
+
+Since the industrial revolution, the idea of an autonomous machine--one that requires no, or very minimal, human intervention or oversight to operate--has been imagined in different ways. Depending on one's perspective, autonomous machines have perennially promised to either usher in a utopia of freedom, or threatened to bring about an age of job loss and social upheaval that worsens socioeconomic divisions. Much like the Luddites of the 19th century, the social critics of the 21st century have continued the dialectic to understand the social ramifications of modern \textit{yantakara} and their newly-created autonomous hand-maidens.
+
+These controversial origins are embedded even within the modern name of for the academic field, \textit{robotics}. The word \textit{robot} comes from an anglicized title of a science fiction play, Rossum's Universal Robots, written by the Czech playwright Karel Capek in 1920 (see \Cref{fig:into_rur}). In naming the play, the word \textit{robot} was derived from the Slavic term for slave, \textit{rab}, and its Czech derivative for serf labour, \textit{rabota}, while the name \textit{Rossum} was inspired by the Czech word for reason, or intellect. Indeed, the concept of enslaved or embodied  intelligence is at the heart of modern definitions of the discipline of robotics \citep{Redfield2019-pi}. Much of the popular culture surrounding robots (e.g., Shelley's \textit{Frankenstein}, Asimov's \textit{I, Robot}, Kubrick's and Clarke's \textit{2001: A Space Odyssey}), as well, paints a complicated picture of humanity's relationship with such enslaved machines. In this thesis, I focus on improving a specific part of a modern \textit{mobile} autonomy pipeline, while minimizing the use of term \textit{robot} to avoid maelstrom of philosophical and ethical problems that it connotes. I hope my work aids the march of technological progress towards a future which finds some Hegelian synthesis of autonomy and humanity---a future in which human-in-the-loop autonomous systems augment and improve the lot of many people while still negotiating and constantly considering the social costs that come with technological innovation.
+
+\section{Mobile Autonomy and State Estimation}
+While the looms and railroads of the industrial revolution were spurred by the discovery of steam engines and electricity, modern \textit{mobile} autonomy was largely born out of the technological arms race of the cold war and the constraints and challenges associated with long-distance flight and extraterrestrial travel (see \cite{Grewal2010-ts} for a history of one of the seminal algorithms in mobile autonomy, the Kalman filter). Indeed, much of the work on modern perception algorithms has its origins in the automated compilation of cold-war-era reconnaissance imagery and the design of extraterrestrial rovers like the Mars Exploration Rovers, \textit{Spirit} and \textit{Opportunity} \citep{Scaramuzza2011-qr}. Much of the planning and control algorithms originate in American and Soviet defence-funded research \citep{Nilsson1984-oc,Thrun2006-hb}.
+
+%https://mars.nasa.gov/resources/22342/opportunity-legacy-pan-true-color/
+\begin{figure}
+  \begin{center}
+  	\vspace{-10pt}
+    \includegraphics[width=0.95\textwidth]{introduction/pancam-panorama-opportunity}
+     \vspace{-15pt}
+  \end{center}
+  \caption{The last 360 degree panorama taken by the PanCam apparatus of the Mars Exploration Rover, \textit{Opportunity}, at its final resting place on Mars, the western rim of the Endeavour Crater. Contact with \textit{Opportunity} was lost shortly after this was captured, due to a severe dust storm. Credit: NASA/JPL-Caltech/Cornell/ASU.}
+  \vspace{-5pt}
+  \label{fig:into_rur}
+\end{figure}
+
+
+Once confined to carefully-controlled factories, autonomous mobile platforms have now began to show great promise in improving the safety of human transport, reducing the burden of repetitive, arduous jobs, and more efficiently leveraging limited resources for environmental monitoring. This newly-realized potential can be attributed to several factors: improvements in the cost and efficiency of computing devices (in terms energy efficiency, processing power, and overall size), the availability of relatively cheap, compact, high-quality sensors and rapid prototyping tools, and the development of open-source hardware, software platforms and datasets (e.g., the Robot Operating System, the KITTI Self-Driving Car dataset \citep{Geiger2013-ky}). 
+
+ 
+ Despite decades of research, mobile autonomy as a field still has nebulous demarcations between subfields. I have attempted to provide a general overview of the field through a series of Venn diagrams in \Cref{fig:intro_three_venn}.  At the highest level, the field can be roughly divided into those researchers who study and develop software, those who study and develop hardware, and those who study and analyze the interaction between autonomous systems (composed of both software and hardware) and humans (\Cref{fig:intro_autonomy_venn}). There is, of course, a plethora of overlap between all three of these rough categories. Within the software realm, there has historically been a distinction between those who study algorithms that deal with the perception of the interoceptive and exteroceptive data, those who study how to use that data to plan action, and those who study how to use those plans to control a system to execute that action (\Cref{fig:intro_software_venn}). 
+ 
+ Within perception, which is the focus of this thesis, there are several general categories of research: localization, mapping and object detection and tracking.
+ 
+ %https://tex.stackexchange.com/questions/9681/how-to-draw-venn-diagrams-especially-complements-in-latex 
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+\def\firstcircle{(0,0) circle (2cm)}
+\def\secondcircle{(60:2.75cm) circle (2cm)}
+\def\thirdcircle{(0:2.75cm) circle (2cm)}
+\scalebox{0.75}{
+\begin{tikzpicture}
+    \begin{scope}[shift={(3cm,-5cm)}, fill]
+        \fill[green!80,opacity=0.5] \firstcircle;
+        \fill[blue,opacity=0.5] \secondcircle;
+        \fill[black,opacity=0.5] \thirdcircle;
+        \draw \firstcircle node [yshift=-1ex,xshift=-2.5ex,align=center] {C. Human\\Interaction};
+        \draw \secondcircle node [above,color=white] {A. Software};
+        \draw \thirdcircle node [yshift=-1ex,xshift=3ex,color=white] {B. Hardware};
+    \end{scope}
+\end{tikzpicture}         
+}
+\caption{Research strands in mobile autonomy.}
+ \label{fig:intro_autonomy_venn}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+\def\firstcircle{(0,0) circle (2cm)}
+\def\secondcircle{(60:2.75cm) circle (2cm)}
+\def\thirdcircle{(0:2.75cm) circle (2cm)}
+\scalebox{0.75}{
+\begin{tikzpicture}
+    \begin{scope}[shift={(3cm,-5cm)}, fill]
+        \fill[blue,opacity=0.5] \firstcircle;
+        \fill[blue!20,opacity=0.5] \secondcircle;
+        \fill[blue!60,opacity=0.5] \thirdcircle;
+        \draw \firstcircle node [align=center,yshift=-1ex,xshift=-2.5ex,color=white] {A.III.\\Control};
+        \draw \secondcircle node [above,align=center,color=black] {A.I.\\Perception};
+        \draw \thirdcircle node [align=center,yshift=-1ex,xshift=2.5ex] {A.II.\\ Planning};
+    \end{scope}
+\end{tikzpicture} 
+}        \caption{The components of software research.}
+         \label{fig:intro_software_venn}
+ \end{subfigure}
+ \hfill
+      \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+\def\firstcircle{(0,0) circle (2cm)}
+\def\secondcircle{(60:2.75cm) circle (2cm)}
+\def\thirdcircle{(0:2.75cm) circle (2cm)}
+\scalebox{0.75}{
+\begin{tikzpicture}
+    \begin{scope}[shift={(3cm,-5cm)}, fill]
+        \fill[blue!20,opacity=0.5] \firstcircle;
+        \fill[blue!10,opacity=0.5] \secondcircle;
+        \fill[blue!5,opacity=0.5] \thirdcircle;
+        \draw \firstcircle node [align=center,yshift=-1ex,xshift=-2.5ex] {A.I.3\\Object\\Detection\\ \& Tracking};
+        \draw \secondcircle node [above,align=center] {A.I.1.\\Localization};
+        \draw \thirdcircle node [align=center,yshift=-1ex,xshift=2.5ex] {A.I.2.\\Mapping};
+        \draw[->] (1.2,0.8) -- (3.7,3) node[right,align=left] {State\\Estimation};
+    \end{scope}
+\end{tikzpicture} 
+}        \caption{The components of perception.}
+         \label{fig:intro_perception_venn}
+ \end{subfigure}
+        \caption{Venn diagrams of modern mobile autonomy.}
+        \label{fig:intro_three_venn}
+\end{figure}
+
+
+\section{The \textit{State} of State Estimation}
+
+
+Central to many autonomous systems is the idea of a pipeline that processes high dimensional data and extracts some useful quantity. 
+
+ of  the \textit{measurement model}, a mathematical entity that relates  observed measurement data to latent state parameters. By quantifying information contained within sensor data, probabilistic measurement models facilitate the construction of complex state estimation architectures that can fuse observations from sensors of varied modality to create rich models of the external world and infer the state of a mobile robot within it. My thesis focuses on egomotion estimation: the problem of accurately and consistently estimating the relative pose of a moving robot. For this task, a variety of different sensors may be useful (e.g., lidar, stereo cameras, or inertial measurement units), and each may allow for various hand-crafted or learned probabilistic measurement models.
+
+
+
+
+For instance, modern visual and inertial egomotion estimation pipelines \citep{Leutenegger2015-fk, Cvisic2015-mt, Tsotsos2015-qs} have achieved impressive localization accuracy on trajectories spanning several kilometres by carefully extracting and tracking sparse visual features (using \textit{hand-crafted} algorithms) across consecutive images. Simultaneously, significant effort has gone to developing localization pipelines that eschew sparse features in favour of  \textit{dense} visual data \citep{Alcantarilla2016-kv, Forster2014-bm}, \todo{Add some modern citations here} typically relying on loss functions that use direct pixel intensities. Notably, in both the dense and sparse approaches, the visual observation model is often assumed to have an uncertainty model that is static, and known a priori.
+\section{Classical Visual Estimation Pipelines}
+
+\begin{figure}
+\begin{center}
+		\includegraphics[width=0.98\textwidth]{introduction/vo_pipeline.pdf}
+		\caption{A traditional visual odometry pipeline.}
+  	\label{fig:intro_vo_pipeline}
+\end{center}
+\end{figure}
+
+\section{Pseudo Sensors}
+
+\begin{figure}
+\begin{center}
+		\includegraphics[width=0.98\textwidth]{introduction/pseudo_sensor.pdf}
+		\caption{A learned \textit{pseudo-sensor} extracts latent information from the same data stream.}
+  	\label{fig:intro_pseudo_sensor}
+\end{center}
+\end{figure}
+
 
 \section{Measurement Models}
 A core component of any state estimation pipeline is the \textit{measurement model}, a mathematical entity that relates  observed measurement data to latent state parameters. By quantifying information contained within sensor data, probabilistic measurement models facilitate the construction of complex state estimation architectures that can fuse observations from sensors of varied modality to create rich models of the external world and infer the state of a mobile robot within it. My thesis focuses on egomotion estimation: the problem of accurately and consistently estimating the relative pose of a moving robot. For this task, a variety of different sensors may be useful (e.g., lidar, stereo cameras, or inertial measurement units), and each may allow for various hand-crafted or learned probabilistic measurement models.
 
-For instance, modern visual and inertial egomotion estimation pipelines \citep{Leutenegger2015-fk, Cvisic2015-mt, Tsotsos2015-qs} have achieved impressive localization accuracy on trajectories spanning several kilometres by carefully extracting and tracking sparse visual features (using \textit{hand-crafted} algorithms) across consecutive images. Simultaneously, significant effort has gone to developing localization pipelines that eschew sparse features in favour of  \textit{dense} visual data \citep{Alcantarilla2016-kv, Forster2014-bm}, typically relying on loss functions that use direct pixel intensities. Notably, in both the dense and sparse approaches, the visual observation model is often assumed to have an uncertainty model that is static, and known a priori. %here is a dearth of research towards building better uncertainty representations.
+For instance, modern visual and inertial egomotion estimation pipelines \citep{Leutenegger2015-fk, Cvisic2015-mt, Tsotsos2015-qs} have achieved impressive localization accuracy on trajectories spanning several kilometres by carefully extracting and tracking sparse visual features (using \textit{hand-crafted} algorithms) across consecutive images. Simultaneously, significant effort has gone to developing localization pipelines that eschew sparse features in favour of  \textit{dense} visual data \citep{Alcantarilla2016-kv, Forster2014-bm}, \todo{Add some modern citations here} typically relying on loss functions that use direct pixel intensities. Notably, in both the dense and sparse approaches, the visual observation model is often assumed to have an uncertainty model that is static, and known a priori. %here is a dearth of research towards building better uncertainty representations.
 
 In the last several years, a significant part of the state estimation literature has focused on learned visual measurement models through convolutional neural networks (CNNs). Although initially developed for image classification  \citep{LeCun2015-qf}, CNN-based measurement models have been applied to numerous problems in geometric state estimation (e.g., homography estimation \citep{DeTone2016-ue}, single image depth reconstruction \citep{Garg2016-ip},  camera re-localization \citep{Kendall2016-zf}, place recognition \citep{Sunderhauf2015-is}). A number of recent CNN-based approaches have also tackled the problem of egomotion estimation, often purporting to obviate the need for classical visual localization pipelines by learning pose changes \textit{end-to-end}, directly from image data (e.g., \cite{Melekhov2017-dl}, \cite{Handa2016-hm}, \cite{Oliveira2017-lt}).
 

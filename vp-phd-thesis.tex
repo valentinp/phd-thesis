@@ -92,7 +92,7 @@
 \department{Institute for Aerospace Studies}
 \gradyear{2019}
 \author{Valentin Peretroukhin}
-\title{On learning probabilistic models for state estimation}
+\title{On improving egomotion estimation for mobile autonomy by inferring latent information from sensor data}
 
 %% *** NOTE ***
 %% Put here all other formatting commands that belong in the preamble.
@@ -134,11 +134,12 @@
 \begin{abstract}
 %% *** Put your Abstract here. ***
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
-The paradigm of learning complex measurement models from training data, rather than crafting these models by hand, has become pervasive in computer vision and robotics. These learned models, however, are often presented in isolation, and it can be unclear to what extent they can be integrated into (or replace) existing high-fidelity geometric and kinematic models within state estimation pipelines. In this work, we explore ways in which these two modelling paradigms can be combined while still preserving the core advantages of both. To this end, we first present two Bayesian machine-learning-based techniques that improve on existing measurement models in visual odometry: (1) a fast, kernel-based Bayesian technique that learns a model for measurement covariances of a stereo camera to produce non-stationary robust costs and (2) a deep Bayesian Convolutional Neural Network model that can infer the direction of the Sun from a single RGB image. 
-
-Second, we extend these ideas to incorporate ideas from the field of deep learning. Instead of attempting to replacing existing pipelines with monolithic trained networks, we show that we can use the representational power of deep networks to build corrective, probabilistic models that correct, instead of replace, existing localization pipelines. Notably, we leverage concepts from differential geometry and matrix Lie groups to construct fully differentiable analytic loss functions that permit principled learning of corrections and associated uncertainty.
-
-We validate our methods on several kilometres of sensor data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the high Arctic.
+The ability to estimate \textit{egomotion}, that is, to track one's own pose through an unknown environment, is at the heart of safe and reliable mobile autonomy. By inferring pose changes from sequential sensor measurements, egomotion estimation forms the basis of mapping and navigation pipelines, and permits mobile robots to self-localize within environments where external localization sources are intermittent or unavailable. 
+Visual and inertial egomotion estimation, in particular, have become ubiquitous in mobile robotics due to the availability of high-quality, compact, and inexpensive sensors that capture rich representations of the world.
+ To remain computationally tractable, `classical' visual-inertial pipelines (like visual odometry and visual SLAM) make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error in the final localization output. In this thesis, we present several data-driven models that serve to complement (but not replace) conventional pipelines by inferring latent information from sensor data to improve the final egomotion estimate. Our approach retains a prior based on a pipeline with interpretable components and decades of prior research, while leveraging high-capacity hyper-parametric models to better model sensor uncertainty, or to extract complementary information in the form of a `pseudo-sensor' whose output can be fused with the original pipeline to improve localization.
+  %the  models can improve their localization accuracy, and mitigate the effect of these deleterious effects of violated assumptions. For visual it can be unclear to what extent they can be integrated into (or replace) performant 	`classical` geometric and kinematic models within state estimation pipelines. In this thesis, we argue that a fruitful resolution to this dichotomy is to use data-driven learning to extract latent information from sensor data that is typically discarded by conventional analytic models.   Towards this end, we present four ways in which learning can be used to build `pseudo-sensors` whose output can complement existing egomotion. Namely, we first present two Bayesian machine-learning-based techniques that improve on existing measurement models in visual odometry: (1) a fast, kernel-based Bayesian technique that learns a model for measurement covariances of a stereo camera to produce non-stationary robust costs and (2) a deep Bayesian Convolutional Neural Network model that can infer the direction of the Sun from RGB images. 
+%Second, we broaden our approach to learn full pose corrections from raw sensor data. We show that we can use the representational power of deep networks to build corrective, probabilistic models that correct, instead of replace, existing localization pipelines. Notably, we leverage concepts from differential geometry and matrix Lie groups to construct fully differentiable analytic loss functions that permit learning of corrections and associated uncertainty to better model estimator biases, deleterious environmental effects, poor sensor calibrations.
+We validate our methods on several kilometres of sensor data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the high arctic.
 \end{abstract}
 
 %% Anything placed between the abstract and table of contents will
@@ -146,10 +147,18 @@ We validate our methods on several kilometres of sensor data collected in sundry
 %% the table of contents starts with \clearpage.  Use \cleardoublepage
 %% for anything that you want to appear on a right-hand page.
 
+\chapter*{Epigraph}
+\epigraph{A little learning is a dangerous thing; 
+drink deep, or taste not the Pierian spring: 
+there shallow draughts intoxicate the brain, 
+and drinking largely sobers us again.}{Alexander Pope}
+\clearpage
+	
+
 %% This generates a "dedication" section, if needed -- just a paragraph
 %% formatted flush right (uncomment to have it appear in the document).
 \begin{dedication}
-To all those who encouraged my intellectual wanderlust.
+To all those who encouraged (or, at least, \textit{never discouraged}) my intellectual wanderlust.
 \end{dedication}
 
 %% The `dedication' and `acknowledgements' sections do not create new
@@ -165,8 +174,7 @@ To all those who encouraged my intellectual wanderlust.
 %% This generates an "acknowledgements" section, if needed
 %% (uncomment to have it appear in the document).
 \begin{acknowledgements}
-% *** Put your Acknowledgements here. ***
-I would like to acknowledge my parents, my partner-in-crime, and my partner-in-academia.
+This document would not have been possible without the generous support and guidance of my supervisor\footnote{as well as all my collaborators and academic mentors}, the perennial love of my family and friends\footnote{especially the support and encouragement of Elyse}, and the limitless patience of my lab mates\footnote{in humouring my insatiable need for debate and banter}. Thank you all.
 \end{acknowledgements}
 
 %% This generates the Table of Contents (on a separate page).
@@ -197,10 +205,10 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
     \nitem{(\cdot)^\wedge }{An operator associated with the Lie algebra for rotations and poses. It produces a matrix from a column vector.}
     \nitem{(\cdot)^\vee }{The inverse operation of $(\cdot)^\wedge$}
     
-    \nitem{\mbf 1 }{The identity matrix.}
-    \nitem{\mbf 0 }{The zero matrix.}
-    \nitem{ \mbf p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\cframe{a}$ (denoted by the subscript). }
-    \nitem{ \mbf C_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\cframe{b}$ to $\cframe{a}$: $\mbf p_a^{c,b} = \mbf C_{a,b} \mbf p_b^{c,b}$. }
+    \nitem{\Matrix 1 }{The identity matrix.}
+    \nitem{\Matrix 0 }{The zero matrix.}
+    \nitem{ \Vector p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\cframe{a}$ (denoted by the subscript). }
+    \nitem{ \Matrix C_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\cframe{b}$ to $\cframe{a}$: $\Vector p_a^{c,b} = \Matrix C_{a,b} \Vector p_b^{c,b}$. }
     \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\cframe{b}$ to $\cframe{a}$: $\Vector{p}_a^{c,a} = \Transform_{a,b} \Vector{p}_b^{c,b}$. }
 \end{notation}
 %\printnomenclature
@@ -217,12 +225,15 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
 %% *** Include chapter files here. ***
 \include{sections/introduction}
 \include{sections/math}
-\include{sections/probe}
-\include{sections/sun-bcnn}
-\include{sections/dpc}
-\include{sections/lkf}
-\include{sections/conclusion}
-
+%\include{sections/probe}
+%\include{sections/sun-bcnn}
+%\include{sections/dpc}
+%%\include{sections/lkf}
+%\include{sections/so3-learning}
+%\include{sections/conclusion}
+%\begin{appendices}
+%\include{sections/appendix-perturbations}
+%\end{appendices}
 
 
 %% This adds a line for the Bibliography in the Table of Contents.
@@ -241,4 +252,4 @@ I would like to acknowledge my parents, my partner-in-crime, and my partner-in-a
 %% case, you should probably put the bibliography in a separate file and
 %% `\include' or `\input' it here).
 
-\end{document}
+\end{document}	

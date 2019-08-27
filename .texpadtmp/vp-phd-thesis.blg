@@ -1,20 +1,11 @@
-This is BibTeX, Version 0.99d (TeX Live 2017)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
 A level-1 auxiliary file: sections/introduction.aux
 A level-1 auxiliary file: sections/math.aux
-A level-1 auxiliary file: sections/probe.aux
-A level-1 auxiliary file: sections/sun-bcnn.aux
-A level-1 auxiliary file: sections/dpc.aux
-A level-1 auxiliary file: sections/lkf.aux
-A level-1 auxiliary file: sections/conclusion.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
-Repeated entry---line 110 of file ../pubs-mine.bib
- : @inproceedings{2017_Wagstaff_Improving
- :                                       ,
-I'm skipping whatever remains of this entry
 Repeated entry---line 126 of file ../pubs-mine.bib
  : @article{2018_Peretroukhin_Deep
  :                                ,
@@ -25,83 +16,50 @@ I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
  : ISSN={1050-4729},}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "Fischler:1981cv"
-Warning--I didn't find a database entry for "Anonymous:Ngi3VEEU"
-Warning--I didn't find a database entry for "Furgale:2013dm"
-Warning--I didn't find a database entry for "Lucas:1981uw"
-Warning--I didn't find a database entry for "Geiger:2013kp"
-Warning--I didn't find a database entry for "Zhang2015-gf"
-Warning--I didn't find a database entry for "Olson2003-ax"
-Warning--I didn't find a database entry for "Furgale2011-zu"
-Warning--I didn't find a database entry for "Lambert2012-um"
-Warning--I didn't find a database entry for "Eisenman2002-cg"
-Warning--I didn't find a database entry for "Maimone2007-tc"
-Warning--I didn't find a database entry for "Geiger2012-fq"
-Warning--I didn't find a database entry for "Furgale2012-kk"
-Warning--I didn't find a database entry for "Maddern2016-ng"
-Warning--I didn't find a database entry for "Alcantarilla2016-fs"
-Warning--I didn't find a database entry for "Engel2015-il"
-Warning--I didn't find a database entry for "Clement2016-ir"
-Warning--I didn't find a database entry for "Lalonde2011-jw"
-Warning--I didn't find a database entry for "kendall2015posenet"
-Warning--I didn't find a database entry for "Gal2016UncertaintyThesis"
-Warning--I didn't find a database entry for "Gal2016-ny"
-Warning--I didn't find a database entry for "Szegedy2015-uw"
-Warning--I didn't find a database entry for "zhou2014MITPlaces"
-Warning--I didn't find a database entry for "deng2009imagenet"
-Warning--I didn't find a database entry for "Gal2016CNN"
-Warning--I didn't find a database entry for "jia2014caffe"
-Warning--I didn't find a database entry for "fisher1953dispersion"
-Warning--I didn't find a database entry for "mcmanus2014"
-Warning--I didn't find a database entry for "Clement2018-cat"
 Warning--empty journal in Alcantarilla2016-kv
-Warning--empty journal in Clark2017-zg
 Warning--empty journal in DeTone2016-ue
-Warning--empty journal in Kendall2017-ix
 Warning--empty journal in Lee2015-af
-Warning--empty journal in Ma2016-at
 Warning--empty journal in McClure2016-ai
 Warning--empty journal in Oliveira2017-lt
-Warning--empty publisher in vega-brown2014nonparametric
-You've used 73 entries,
+You've used 39 entries,
             1935 wiz_defined-function locations,
-            933 strings with 18420 characters,
-and the built_in function-call counts, 35452 in all, are:
-= -- 3532
-> -- 1471
-< -- 60
-+ -- 512
-- -- 500
-* -- 2763
-:= -- 5674
-add.period$ -- 219
-call.type$ -- 73
-change.case$ -- 612
-chr.to.int$ -- 61
-cite$ -- 82
-duplicate$ -- 1565
-empty$ -- 2537
-format.name$ -- 609
-if$ -- 7393
-int.to.chr$ -- 13
+            710 strings with 11304 characters,
+and the built_in function-call counts, 19110 in all, are:
+= -- 1892
+> -- 854
+< -- 33
++ -- 298
+- -- 296
+* -- 1542
+:= -- 3104
+add.period$ -- 115
+call.type$ -- 39
+change.case$ -- 344
+chr.to.int$ -- 39
+cite$ -- 44
+duplicate$ -- 795
+empty$ -- 1319
+format.name$ -- 359
+if$ -- 3912
+int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 74
-newline$ -- 361
-num.names$ -- 221
-pop$ -- 770
+missing$ -- 38
+newline$ -- 193
+num.names$ -- 117
+pop$ -- 406
 preamble$ -- 1
-purify$ -- 613
+purify$ -- 343
 quote$ -- 0
-skip$ -- 1177
+skip$ -- 606
 stack$ -- 0
-substring$ -- 2432
-swap$ -- 434
-text.length$ -- 40
+substring$ -- 1316
+swap$ -- 203
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 436
-warning$ -- 9
-while$ -- 279
+type$ -- 234
+warning$ -- 5
+while$ -- 152
 width$ -- 0
-write$ -- 929
-(There were 3 error messages)
+write$ -- 492
+(There were 2 error messages)

@@ -10,11 +10,20 @@
 \usepackage{threeparttable}
 \usepackage{multirow}
 \usepackage{tabularx}
-
+\usepackage{tikz}
+\usepackage{venndiagram}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 
+%Typography
+\usepackage{libertine}
+%\usepackage{palatino}
+
+ 
 \usepackage{cleveref}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor={blue},citecolor={blue},urlcolor={red}}  
+\usepackage{url}
 \usepackage{xparse}
 \usepackage[authoryear]{natbib}
 \usepackage{bibentry}
@@ -24,13 +33,18 @@
 
 %Necessary for Sun BCNN
 \usepackage{subcaption}
+\usepackage{epigraph}
+
 
 %TODO: Use this throughout?
 \usepackage{nomencl}
-
+\usepackage{color}
 
 %This is an old Tim-style notation. Should figure out nomenclature
 \newenvironment{notation}{\vspace{3mm}\begin{tabular}[t]{p{.1\textwidth} @{\;\;\;:\;\;\;} p{.80\textwidth}}}{\end{tabular}\vspace{3mm}}
 \newcommand{\nitem}[2]{\raggedleft $\displaystyle {#1}$ & #2\\}
 
-%\makenomenclature
+\usepackage[toc,page]{appendix}
+\usepackage{epigraph}
+
+\newcommand{\todo}[1]{{\color{red}\textbf{ToDo: #1}}}
