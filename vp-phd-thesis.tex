@@ -92,7 +92,7 @@
 \department{Institute for Aerospace Studies}
 \gradyear{2019}
 \author{Valentin Peretroukhin}
-\title{On improving egomotion estimation for mobile autonomy by inferring latent information from sensor data}
+\title{On improving visual odometry through learned pseudo-sensors}
 
 %% *** NOTE ***
 %% Put here all other formatting commands that belong in the preamble.
@@ -208,7 +208,7 @@ This document would not have been possible without the generous support and guid
     \nitem{\Matrix 1 }{The identity matrix.}
     \nitem{\Matrix 0 }{The zero matrix.}
     \nitem{ \Vector p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\cframe{a}$ (denoted by the subscript). }
-    \nitem{ \Matrix C_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\cframe{b}$ to $\cframe{a}$: $\Vector p_a^{c,b} = \Matrix C_{a,b} \Vector p_b^{c,b}$. }
+    \nitem{ \Matrix R_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\cframe{b}$ to $\cframe{a}$: $\Vector p_a^{c,b} = \Matrix C_{a,b} \Vector p_b^{c,b}$. }
     \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\cframe{b}$ to $\cframe{a}$: $\Vector{p}_a^{c,a} = \Transform_{a,b} \Vector{p}_b^{c,b}$. }
 \end{notation}
 %\printnomenclature
@@ -225,15 +225,19 @@ This document would not have been possible without the generous support and guid
 %% *** Include chapter files here. ***
 \include{sections/introduction}
 \include{sections/math}
+\include{sections/vo}
 %\include{sections/probe}
 %\include{sections/sun-bcnn}
 %\include{sections/dpc}
 %%\include{sections/lkf}
 %\include{sections/so3-learning}
 %\include{sections/conclusion}
-%\begin{appendices}
-%\include{sections/appendix-perturbations}
-%\end{appendices}
+\begin{appendices}
+\include{sections/appendix-perturbations}
+\include{sections/appendix-misc}
+%\include{sections/appendix-so3-learning}
+
+\end{appendices}
 
 
 %% This adds a line for the Bibliography in the Table of Contents.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  27 AUG 2019 16:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  29 AUG 2019 11:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -535,12 +535,33 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \@venn@intersect@i@y=\skip65
 \@venn@intersect@ii@x=\skip66
 \@venn@intersect@ii@y=\skip67
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
-Package: algpseudocode 
- (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex
+File: tikzlibrary3d.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\arrowsize=\dimen263
+))) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgfarrowinset=\dimen264
+\pgfarrowlength=\dimen265
+\pgfarrowwidth=\dimen266
+\pgfarrowlinewidth=\dimen267
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2019/02/02 v3.1.1 (3.1.1)
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\pgf@layerbox@background=\box44
+\pgf@layerboxsaved@background=\box45
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
@@ -562,9 +583,9 @@ Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environ
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count155
 \float@exts=\toks40
-\float@box=\box44
+\float@box=\box46
 \@float@everytoks=\toks41
-\@floatcapt=\box45
+\@floatcapt=\box47
 )
 \@float@every@algorithm=\toks42
 \c@algorithm=\count156
@@ -755,7 +776,7 @@ LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
 Package cleveref Info: `algorithmicx' support loaded on input line 3120.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 25.
+Package hyperref Info: Option `colorlinks' set `true' on input line 30.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2019-02-15 L3 programming layer (loader) 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3-code.tex
@@ -771,12 +792,12 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l__iow_line_target_int=\count165
 \l__iow_one_indent_int=\count166
 \l__iow_indent_int=\count167
-\c_zero_dim=\dimen263
-\c_max_dim=\dimen264
-\l_tmpa_dim=\dimen265
-\l_tmpb_dim=\dimen266
-\g_tmpa_dim=\dimen267
-\g_tmpb_dim=\dimen268
+\c_zero_dim=\dimen268
+\c_max_dim=\dimen269
+\l_tmpa_dim=\dimen270
+\l_tmpb_dim=\dimen271
+\g_tmpa_dim=\dimen272
+\g_tmpb_dim=\dimen273
 \c_zero_skip=\skip71
 \c_max_skip=\skip72
 \l_tmpa_skip=\skip73
@@ -791,7 +812,7 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \g_tmpb_muskip=\muskip17
 \l_keys_choice_int=\count168
 \l__intarray_loop_int=\count169
-\c__intarray_sp_dim=\dimen269
+\c__intarray_sp_dim=\dimen274
 \g__intarray_font_int=\count170
 \c__fp_leading_shift_int=\count171
 \c__fp_middle_shift_int=\count172
@@ -861,50 +882,50 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l__regex_submatch_int=\count302
 \l__regex_zeroth_submatch_int=\count303
 \g__regex_trace_regex_int=\count304
-\c_empty_box=\box46
-\l_tmpa_box=\box47
-\l_tmpb_box=\box48
-\g_tmpa_box=\box49
-\g_tmpb_box=\box50
-\l__box_top_dim=\dimen270
-\l__box_bottom_dim=\dimen271
-\l__box_left_dim=\dimen272
-\l__box_right_dim=\dimen273
-\l__box_top_new_dim=\dimen274
-\l__box_bottom_new_dim=\dimen275
-\l__box_left_new_dim=\dimen276
-\l__box_right_new_dim=\dimen277
-\l__box_internal_box=\box51
-\l__coffin_internal_box=\box52
-\l__coffin_internal_dim=\dimen278
-\l__coffin_offset_x_dim=\dimen279
-\l__coffin_offset_y_dim=\dimen280
-\l__coffin_x_dim=\dimen281
-\l__coffin_y_dim=\dimen282
-\l__coffin_x_prime_dim=\dimen283
-\l__coffin_y_prime_dim=\dimen284
-\c_empty_coffin=\box53
-\l__coffin_aligned_coffin=\box54
-\l__coffin_aligned_internal_coffin=\box55
-\l_tmpa_coffin=\box56
-\l_tmpb_coffin=\box57
-\g_tmpa_coffin=\box58
-\g_tmpb_coffin=\box59
-\c__coffin_empty_coffin=\box60
-\l__coffin_display_coffin=\box61
-\l__coffin_display_coord_coffin=\box62
-\l__coffin_display_pole_coffin=\box63
-\l__coffin_display_offset_dim=\dimen285
-\l__coffin_display_x_dim=\dimen286
-\l__coffin_display_y_dim=\dimen287
+\c_empty_box=\box48
+\l_tmpa_box=\box49
+\l_tmpb_box=\box50
+\g_tmpa_box=\box51
+\g_tmpb_box=\box52
+\l__box_top_dim=\dimen275
+\l__box_bottom_dim=\dimen276
+\l__box_left_dim=\dimen277
+\l__box_right_dim=\dimen278
+\l__box_top_new_dim=\dimen279
+\l__box_bottom_new_dim=\dimen280
+\l__box_left_new_dim=\dimen281
+\l__box_right_new_dim=\dimen282
+\l__box_internal_box=\box53
+\l__coffin_internal_box=\box54
+\l__coffin_internal_dim=\dimen283
+\l__coffin_offset_x_dim=\dimen284
+\l__coffin_offset_y_dim=\dimen285
+\l__coffin_x_dim=\dimen286
+\l__coffin_y_dim=\dimen287
+\l__coffin_x_prime_dim=\dimen288
+\l__coffin_y_prime_dim=\dimen289
+\c_empty_coffin=\box55
+\l__coffin_aligned_coffin=\box56
+\l__coffin_aligned_internal_coffin=\box57
+\l_tmpa_coffin=\box58
+\l_tmpb_coffin=\box59
+\g_tmpa_coffin=\box60
+\g_tmpb_coffin=\box61
+\c__coffin_empty_coffin=\box62
+\l__coffin_display_coffin=\box63
+\l__coffin_display_coord_coffin=\box64
+\l__coffin_display_pole_coffin=\box65
+\l__coffin_display_offset_dim=\dimen290
+\l__coffin_display_x_dim=\dimen291
+\l__coffin_display_y_dim=\dimen292
 \g__file_internal_ior=\read2
-\l__coffin_bounding_shift_dim=\dimen288
-\l__coffin_left_corner_dim=\dimen289
-\l__coffin_right_corner_dim=\dimen290
-\l__coffin_bottom_corner_dim=\dimen291
-\l__coffin_top_corner_dim=\dimen292
-\l__coffin_scaled_total_height_dim=\dimen293
-\l__coffin_scaled_width_dim=\dimen294
+\l__coffin_bounding_shift_dim=\dimen293
+\l__coffin_left_corner_dim=\dimen294
+\l__coffin_right_corner_dim=\dimen295
+\l__coffin_bottom_corner_dim=\dimen296
+\l__coffin_top_corner_dim=\dimen297
+\l__coffin_scaled_total_height_dim=\dimen298
+\l__coffin_scaled_width_dim=\dimen299
 \l__seq_internal_a_int=\count305
 \l__seq_internal_b_int=\count306
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
@@ -945,12 +966,12 @@ Package: scrbase 2019/02/01 v3.26b KOMA-Script package (KOMA-Script-independent 
 Package: scrlfile 2019/02/01 v3.26b KOMA-Script package (loading files)
 ))
 \scr@dte@tocline@numberwidth=\skip83
-\scr@dte@tocline@numbox=\box64
+\scr@dte@tocline@numbox=\box66
 )
 Package tocbasic Info: setting babel extension for `nlo' on input line 24.
 Package tocbasic Info: setting babel extension for `nls' on input line 25.
-\nomlabelwidth=\dimen295
-\nom@tempdim=\dimen296
+\nomlabelwidth=\dimen300
+\nom@tempdim=\dimen301
 \nomitemsep=\skip84
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/appendix/appendix.sty
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
@@ -959,7 +980,7 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@ppsaveapp=\count318
 )) (./notation.tex
 \fsep=\skip85
-\widebox=\box65
+\widebox=\box67
 )
 
 LaTeX Warning: Unused global option(s):
@@ -972,7 +993,14 @@ LaTeX Warning: Label `fig:into_rur' multiply defined.
 
 LaTeX Warning: Label `fig:into_rur@cref' multiply defined.
 
-) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux))
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/vo.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-perturbations.aux
+
+LaTeX Warning: Label `eq:left_perturb' multiply defined.
+
+
+LaTeX Warning: Label `eq:left_perturb@cref' multiply defined.
+
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-misc.aux))
 \openout1 = `vp-phd-thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
@@ -1042,7 +1070,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box66
+\AtBeginShipoutBox=\box68
 Package hyperref Info: Link coloring ON on input line 118.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1061,13 +1089,13 @@ LaTeX Info: Redefining \nameref on input line 118.
  (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count320
-\scratchdimen=\dimen297
-\scratchbox=\box67
+\scratchdimen=\dimen302
+\scratchbox=\box69
 \nofMPsegments=\count321
 \nofMParguments=\count322
 \everyMPshowfont=\toks43
 \MPscratchCnt=\count323
-\MPscratchDim=\dimen298
+\MPscratchDim=\dimen303
 \MPnumerator=\count324
 \makeMPintoPDFobject=\count325
 \everyMPtoPDFconversion=\toks44
@@ -1132,11 +1160,13 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
  [5] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.toc
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 1.
-)
+ [6
+
+])
 \tf@toc=\write5
 \openout5 = `vp-phd-thesis.toc'.
 
- [6
+ [7] [8
 
 ]
 Overfull \hbox (12.07584pt too wide) in paragraph at lines 202--202
@@ -1145,15 +1175,12 @@ Overfull \hbox (12.07584pt too wide) in paragraph at lines 202--202
 
 [1
 
-
 ]
 \openout2 = `sections/introduction.aux'.
 
  (./sections/introduction.tex
 Chapter 1.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 2.
-<figures/introduction/rur.jpg, id=185, 426.09187pt x 332.74312pt>
+<figures/introduction/rur.jpg, id=278, 426.09187pt x 332.74312pt>
 File: figures/introduction/rur.jpg Graphic file (type jpg)
 <use figures/introduction/rur.jpg>
 Package pdftex.def Info: figures/introduction/rur.jpg  used on input line 13.
@@ -1163,16 +1190,11 @@ Underfull \hbox (badness 2875) in paragraph at lines 16--16
 []\OT1/LinuxLibertineT-TLF/m/n/12 Figure 1.1: |A robot re-bel-lion from Karel
  []
 
-
-Underfull \hbox (badness 1430) in paragraph at lines 21--22
-\OT1/LinuxLibertineT-TLF/m/n/12 god Hep-haes-tus was said to cre-ate talk-
- []
-
 [2
 
 
  <./figures/introduction/rur.jpg>]
-<figures/introduction/pancam-panorama-opportunity.jpg, id=204, 3011.25pt x 672.5125pt>
+<figures/introduction/pancam-panorama-opportunity.jpg, id=297, 3011.25pt x 672.5125pt>
 File: figures/introduction/pancam-panorama-opportunity.jpg Graphic file (type jpg)
 <use figures/introduction/pancam-panorama-opportunity.jpg>
 Package pdftex.def Info: figures/introduction/pancam-panorama-opportunity.jpg  used on input line 38.
@@ -1186,121 +1208,265 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scsl' in size <12> not
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scit' will be
 (Font)              scaled to size 12.0pt on input line 48.
  [3]
-Overfull \hbox (13.33441pt too wide) in paragraph at lines 73--74
+Overfull \hbox (13.33441pt too wide) in paragraph at lines 74--75
  [][] 
  []
 
 
-Overfull \hbox (13.33441pt too wide) in paragraph at lines 94--94
+Overfull \hbox (13.33441pt too wide) in paragraph at lines 95--95
  [][] 
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 94--94
+Underfull \hbox (badness 1210) in paragraph at lines 95--95
 []\OT1/LinuxLibertineT-TLF/m/n/10.95 (b) |The com-po-nents of soft-
  []
 
 
-Overfull \hbox (36.65308pt too wide) in paragraph at lines 115--115
+Overfull \hbox (36.65308pt too wide) in paragraph at lines 116--116
  [][] 
  []
 
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 17.28pt on input line 123.
 [4 <./figures/introduction/pancam-panorama-opportunity.jpg>]
-<figures/introduction/vo_pipeline.pdf, id=239, 982.05573pt x 410.43579pt>
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/it' will be
+(Font)              scaled to size 17.28pt on input line 124.
+<figures/introduction/vo_pipeline.pdf, id=323, 982.05573pt x 410.43579pt>
 File: figures/introduction/vo_pipeline.pdf Graphic file (type pdf)
 <use figures/introduction/vo_pipeline.pdf>
-Package pdftex.def Info: figures/introduction/vo_pipeline.pdf  used on input line 138.
+Package pdftex.def Info: figures/introduction/vo_pipeline.pdf  used on input line 128.
 (pdftex.def)             Requested size: 442.65182pt x 185.00127pt.
-<figures/introduction/pseudo_sensor.pdf, id=240, 993.85384pt x 337.99716pt>
+ [5 <./figures/introduction/vo_pipeline.pdf>]
+<figures/introduction/pseudo_sensor.pdf, id=425, 993.85384pt x 337.99716pt>
 File: figures/introduction/pseudo_sensor.pdf Graphic file (type pdf)
 <use figures/introduction/pseudo_sensor.pdf>
-Package pdftex.def Info: figures/introduction/pseudo_sensor.pdf  used on input line 148.
+Package pdftex.def Info: figures/introduction/pseudo_sensor.pdf  used on input line 149.
 (pdftex.def)             Requested size: 442.65182pt x 150.53976pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2368) has occurred while \output is active []
 
- [5] [6 <./figures/introduction/vo_pipeline.pdf> <./figures/introduction/pseudo_sensor.pdf>] [7]
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 167.
- [8]
-Overfull \hbox (4.33951pt too wide) in paragraph at lines 186--186
-[]\OT1/LinuxLibertineT-TLF/b/n/14.4 Software Sun Sen-sor us-ing a Bayesian Con-vo-lu-tional Neu-ral Net-
+ [6]
+Underfull \hbox (badness 2951) in paragraph at lines 164--164
+[]|\OT1/LinuxLibertineT-TLF/m/n/12 Decades of lit-er-a-ture & do-main
  []
 
 
-Underfull \vbox (badness 1173) has occurred while \output is active []
-
- [9]
-<figures/introduction/dpc_high_level.pdf, id=478, 578.48874pt x 554.09181pt>
-File: figures/introduction/dpc_high_level.pdf Graphic file (type pdf)
-<use figures/introduction/dpc_high_level.pdf>
-Package pdftex.def Info: figures/introduction/dpc_high_level.pdf  used on input line 202.
-(pdftex.def)             Requested size: 216.80807pt x 207.66554pt.
- [10 <./figures/introduction/dpc_high_level.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 213.
+Underfull \hbox (badness 10000) in paragraph at lines 168--168
+[]|\OT1/LinuxLibertineT-TLF/m/n/12 Foundational to prob-a-bilis-tic
+ []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 213.
-
-) [11]
-\openout2 = `sections/math.aux'.
-
- (./sections/math.tex
-Chapter 2.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 5.
-[12
+Overfull \hbox (8.89981pt too wide) in paragraph at lines 161--177
+[]
+ []
 
 
+Underfull \vbox (badness 5147) has occurred while \output is active []
 
-]
-LaTeX Font Info:    Try loading font information for U+euf on input line 61.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TLF on input line 84.
+ [7 <./figures/introduction/pseudo_sensor.pdf>]
+<figures/introduction/all_pseudo_sensors.pdf, id=503, 1012.24254pt x 574.18414pt>
+File: figures/introduction/all_pseudo_sensors.pdf Graphic file (type pdf)
+<use figures/introduction/all_pseudo_sensors.pdf>
+Package pdftex.def Info: figures/introduction/all_pseudo_sensors.pdf  used on input line 205.
+(pdftex.def)             Requested size: 442.65182pt x 251.09103pt.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 212.
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 218.
+ [8 <./figures/introduction/all_pseudo_sensors.pdf>] [9]pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.238 \item \bibentry{2018_Peretroukhin_Inferring}
+                                                  
+LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TLF on input line 248.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.fd
 File: OT1LinuxLibertineMonoT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxLibertineMonoT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 84.
+(Font)              scaled to size 12.0pt on input line 248.
+) [10]
+\openout2 = `sections/math.aux'.
 
-Underfull \vbox (badness 2573) has occurred while \output is active []
-
- [13]) [14] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bbl [15
+ (./sections/math.tex
+Chapter 2.
+[11
 
 
-] [16] [17]) [18]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 255.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 255.
- (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 255.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 255.
+
+]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 85.
+ [12]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 108.
+ [13]
+LaTeX Font Info:    Try loading font information for U+euf on input line 157.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+) [14]) [15]
+\openout2 = `sections/vo.aux'.
+
+ (./sections/vo.tex
+Chapter 3.
+<figures/math/stereo_vo_pipeline.pdf, id=971, 1017.477pt x 262.30428pt>
+File: figures/math/stereo_vo_pipeline.pdf Graphic file (type pdf)
+<use figures/math/stereo_vo_pipeline.pdf>
+Package pdftex.def Info: figures/math/stereo_vo_pipeline.pdf  used on input line 10.
+(pdftex.def)             Requested size: 442.65182pt x 114.11343pt.
+<figures/math/stereo_camera_rectified.png, id=972, 580.1675pt x 300.12125pt>
+File: figures/math/stereo_camera_rectified.png Graphic file (type png)
+<use figures/math/stereo_camera_rectified.png>
+Package pdftex.def Info: figures/math/stereo_camera_rectified.png  used on input line 20.
+(pdftex.def)             Requested size: 442.65182pt x 228.98752pt.
+
+Underfull \vbox (badness 4266) has occurred while \output is active []
+
+ [16
+
+
+
+ <./figures/math/stereo_vo_pipeline.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17 <./figures/math/stereo_camera_rectified.png>] [18] [19]
+
+LaTeX Warning: Reference `eq:L2' on page 20 undefined on input line 156.
+
+
+LaTeX Warning: Reference `eq:Huber' on page 20 undefined on input line 159.
+
+
+LaTeX Warning: Reference `eq:Tukey' on page 20 undefined on input line 159.
+
+
+LaTeX Warning: Reference `eq:Fair' on page 20 undefined on input line 159.
+
+) [20] [21
+
+
+
+]
+\openout2 = `sections/appendix-perturbations.aux'.
+
+ (./sections/appendix-perturbations.tex
+Appendix A.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 20.
+
+[22
+
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 65.
+
+[23] [24]) [25]
+\openout2 = `sections/appendix-misc.aux'.
+
+ (./sections/appendix-misc.tex
+Appendix B.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package natbib Warning: Citation `Hartley2013-rc' on page 26 undefined on input line 27.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [26
+
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27] [28]
+Appendix C.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 86.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 86.
+
+) [29
+
+] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bblpdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Clement_Improving}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.17 ...ment et~al., 2017]{2017_Clement_Improving}
+                                                   [30
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.117 ...in et~al., 2015]{2015_Peretroukhin_PROBE}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Peretroukhin_Reducing}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.124 ...et~al., 2017]{2017_Peretroukhin_Reducing}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.131 ...t~al., 2018]{2018_Peretroukhin_Inferring}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Deep}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.137 ... and Kelly, 2018]{2018_Peretroukhin_Deep}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.Peretroukhin2016-om}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.142 ...oukhin et~al., 2016]{Peretroukhin2016-om}
+                                                   [31])
+
+Package natbib Warning: There were undefined citations.
+
+[32]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
+ (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/vo.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-perturbations.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-misc.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
 Package rerunfilecheck Info: File `vp-phd-thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 0EE2C808435E290C62D738C5BEC5FBE2;4664.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 255.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
  ) 
 Here is how much of TeX's memory you used:
- 33928 strings out of 492616
- 642602 string characters out of 6128982
- 709109 words of memory out of 5000000
- 37212 multiletter control sequences out of 15000+600000
- 576503 words of font info for 115 fonts, out of 8000000 for 9000
+ 35548 strings out of 492616
+ 681629 string characters out of 6128982
+ 741633 words of memory out of 5000000
+ 38665 multiletter control sequences out of 15000+600000
+ 582844 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,23n,79p,1617b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,23n,79p,1612b,1019s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
+
 pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist, replaced by a fixed one
@@ -1311,12 +1477,12 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (24 pages, 3803879 bytes).
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (40 pages, 6361325 bytes).
 PDF statistics:
- 753 PDF objects out of 1000 (max. 8388607)
- 645 compressed objects within 7 object streams
- 116 named destinations out of 1000 (max. 500000)
- 238 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1352 PDF objects out of 1440 (max. 8388607)
+ 1110 compressed objects within 12 object streams
+ 224 named destinations out of 1000 (max. 500000)
+ 384 words of extra memory for PDF output out of 10000 (max. 10000000)
 

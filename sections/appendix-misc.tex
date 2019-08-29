@@ -1,0 +1,89 @@
+\chapter{More Notes on Rotation}
+\label{chap:appendix_rot_dist}
+
+\section{Metrics on $\LieGroupSO{3}$}
+The three different rotation metrics can be related to the angular (or geodesic) metric, $\RotDist{ang}$, as follows,
+
+\begin{align}
+\RotDist{ang}(\Matrix{R}_a, \Matrix{R}_b) &= \Norm{\MatLog{\Matrix{R}_a \Matrix{R}_b^T}}_2 
+\\
+ &= \theta,	
+\\
+\RotDist{quat}(\quat_a, \quat_b) &= \min\left( \Norm{\quat_a - \quat_b}_2, \Norm{\quat_a + \quat_b}_2 \right) 
+\\ &= 2 \sin{\frac{\theta}{4}},	
+\\
+\RotDist{ang}(\Matrix{R}_a, \Matrix{R}_b) &= \Norm{\Matrix{R}_a - \Matrix{R}_b}_\mathrm{Frob} \\	 
+&= 2\sqrt{2} \sin{\frac{\theta}{2}}.
+\end{align}
+
+Given a set of rotations parametrized by unit quaternions $\{\quat_i\}_{i=1}^n$,
+\begin{equation}
+\Mean{\quat} = \frac{\sum_{i=1}^n \quat_i}{\Norm{\sum_{i=1}^n \quat_i}},	
+\end{equation}
+solves
+\begin{equation}
+\quat = \ArgMin{\Matrix{R}(\quat) \in \LieGroupSO{3}} \sum_{i=1}^n \RotDist{quat}(\quat_i, \quat)^2	,
+\end{equation}
+so long as $\RotDist{ang}(\Matrix{R}(\Mean{\quat}), \Matrix{R}(\quat_i)) < \pi/2$. See \cite{Hartley2013-rc} for more details.
+
+\section{Topology}
+
+The exponential map for SO(3) is not a covering map, it cannot represent rotations by $\pi$. These form the ‘cut locus’. 
+
+A covering map is not a ‘surjective map’ but also requires 'each point in X has a neighbourhood  that is the same after the mapping'.
+
+To get  $\LieGroupSO{3}$, you take the ball given by $\Norm{\phi} \leq \pi$ and then 'glue together' antipodal points at the border $\Norm{\phi} = \pi$.
+
+ $\LieGroupSO{3}$ is diffeomorphic to RP(3) 'real projective space' which can be made by 'identifying' antipodal points in $S^3$ (unit sphere in $\RealNumbers^4$). The unit quaternion is simply $S^3$, which is why it is a double cover (since we have not identified $\quat$ and $-\quat$).
+
+
+\section{Antipodal Rotations}
+
+What is the geodesic distance of two ‘antipodal’ SO(3) elements $\Matrix{C}_1$, $\Matrix{C}_2$ (i.e., $\Matrix{C}_1 = \Matrix{C}(\pi)\Matrix{C}_2$)? 
+
+Consider $\MatLog{\Matrix{C}_1\Matrix{C}_2^T} = \MatLog{\Matrix{C}(\pi)\Matrix{C}_2\Matrix{C}_2^T} = \MatLog{\Matrix{C}(\pi)} =$ undefined? ($\pi \hat{\Vector{n}}$ or $-\pi\hat{\Vector{n}}$?)
+
+We might be tempted to use the following logic:
+
+$\Matrix{C}(\pi) = \Matrix{C}(-\pi) = \Matrix{C}(\pi)^T$, so $\Matrix{C}(\pi)\Matrix{C}(\pi) = \Matrix{1}$. 
+Given this, 
+\begin{align}
+\Vector{0} &= \MatLog{\Matrix{1}} \\
+&= \MatLog{\Matrix{C}(\pi)\Matrix{C}(\pi)} \\
+&(\text{since}  ~\Matrix{C}(\pi)~ \text{commutes with itself}) \\
+&= \MatLog{\Matrix{C}(\pi)} + \MatLog{\Matrix{C}(\pi)} \\  &= 2 \MatLog{\Matrix{C}(\pi)}
+\end{align}. 
+So $\MatLog{\Matrix{C}(\pi)} = \Vector{0}$! But this doesn't make sense. Clearly $\Matrix{C}_1$, $\Matrix{C}_2$ are not the same elements - how can their geodesic distance (given by $\Norm{\MatLog{\Matrix{C}_1\Matrix{C}_2^T}}$) be 0?
+
+I believe this is resolved by realizing that $\MatLog{\Matrix{C}(\pi)}$ cannot be defined in $\Real^3$ since its magnitude is not 0, but  $\MatLog{\Matrix{C}(\pi)} + \MatLog{\Matrix{C}(\pi)} = \Vector{0}$. Hand waving, if we define $\MatLog{\Matrix{C}(\pi)}$ up to a sign ambiguity, we have:
+\begin{align}
+\MatLog{\Matrix{C}(\pi)} + \MatLog{\Matrix{C}(\pi)} = \pm \pi \hat{\Vector{n}} \mp \pi\hat{\Vector{n}} = \Vector{0}
+\end{align}
+
+\begin{align}
+\Norm{\MatLog{\Matrix{C}_1\Matrix{C}_2^T}} &=\Norm{\MatLog{\Matrix{C}(\pi)}} \\
+&=\Norm{\pm \pi \hat{\Vector{n}}} \\ 
+&= \pi!
+\end{align}
+
+
+Without loss of generality, consider $\Matrix{C}_2$ = $\Matrix{1}$, $\Matrix{C}_1 = \Matrix{C}(\pi)$. 
+
+Then using the Barfoot noise injection scheme,
+\begin{equation}
+\Matrix{C} = \MatExp{\Vector{\phi}} \Matrix{\Mean{C}}, \quad\quad \Vector{\phi} \sim \NormalDistribution{\Vector{0}}{\Matrix{\Sigma}}
+\end{equation}
+
+If we set $\Matrix{C}_2$ to be the mean, we can still produce $\Matrix{C}_1$ as a sample since,
+\begin{equation}
+\Matrix{C}_1 = \MatExp{\pm\pi \hat{\Vector{n}}} \Matrix{C}_2 =  \MatExp{\pm\pi \hat{\Vector{n}}} 
+\end{equation}
+
+However, to use this in a loss function, we need to compute the likelihood of $\Matrix{C}_1$ given the mean $\Matrix{C}_2$. If $\Matrix{\Sigma} = \Matrix{1}$ then the negative log likelihood is equal to $\pi^2$ since , but in general this involves the Mahalanobis distance. Can we compute the Mahalonobis distance without explicitly evaluating the components of the log map (since they involve sign ambiguities)?
+
+
+
+\chapter{Representations of $\LieGroupSE{3}$}
+\label{chap:appendix_se3}
+\todo{Discuss the banana uncertainty (cannot represent uncertainty over SE(3) with certain position but uncertain rotation)} \\
+\todo{Discuss SO(3) x R3 vs SE(3) vs (SO(3), R3)}

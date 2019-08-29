@@ -3,6 +3,9 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
 A level-1 auxiliary file: sections/introduction.aux
 A level-1 auxiliary file: sections/math.aux
+A level-1 auxiliary file: sections/vo.aux
+A level-1 auxiliary file: sections/appendix-perturbations.aux
+A level-1 auxiliary file: sections/appendix-misc.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
@@ -16,50 +19,52 @@ I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
  : ISSN={1050-4729},}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Hartley2013-rc"
 Warning--empty journal in Alcantarilla2016-kv
 Warning--empty journal in DeTone2016-ue
-Warning--empty journal in Lee2015-af
-Warning--empty journal in McClure2016-ai
+Warning--empty school in furgale_phd11
 Warning--empty journal in Oliveira2017-lt
-You've used 39 entries,
+Warning--empty journal in Sola2018-kg
+Warning--empty journal in Zhou2019-se
+You've used 33 entries,
             1935 wiz_defined-function locations,
-            710 strings with 11304 characters,
-and the built_in function-call counts, 19110 in all, are:
-= -- 1892
-> -- 854
-< -- 33
-+ -- 298
-- -- 296
-* -- 1542
-:= -- 3104
-add.period$ -- 115
-call.type$ -- 39
-change.case$ -- 344
-chr.to.int$ -- 39
-cite$ -- 44
-duplicate$ -- 795
-empty$ -- 1319
-format.name$ -- 359
-if$ -- 3912
+            696 strings with 10546 characters,
+and the built_in function-call counts, 15555 in all, are:
+= -- 1532
+> -- 712
+< -- 26
++ -- 250
+- -- 246
+* -- 1284
+:= -- 2589
+add.period$ -- 99
+call.type$ -- 33
+change.case$ -- 284
+chr.to.int$ -- 33
+cite$ -- 39
+duplicate$ -- 622
+empty$ -- 1040
+format.name$ -- 291
+if$ -- 3131
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 38
-newline$ -- 193
-num.names$ -- 117
-pop$ -- 406
+missing$ -- 31
+newline$ -- 164
+num.names$ -- 101
+pop$ -- 309
 preamble$ -- 1
-purify$ -- 343
+purify$ -- 286
 quote$ -- 0
-skip$ -- 606
+skip$ -- 487
 stack$ -- 0
-substring$ -- 1316
-swap$ -- 203
-text.length$ -- 18
+substring$ -- 1051
+swap$ -- 150
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 234
-warning$ -- 5
-while$ -- 152
+type$ -- 196
+warning$ -- 6
+while$ -- 124
 width$ -- 0
-write$ -- 492
+write$ -- 423
 (There were 2 error messages)

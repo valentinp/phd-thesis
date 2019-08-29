@@ -1,116 +1,210 @@
-\chapter{Preliminaries}
-\section{Stereo Visual Odometry}
+\chapter{Mathematical Foundations}
+\epigraph{By relieving the brain of all unnecessary work, a good notation sets it free to concentrate on more advanced problems, and, in effect, increases the mental power of the race.}{Alfred North Whitehead}
+  \section{3D Notation}
 
-In our frame-to-frame sparse stereo odometry pipeline,  the objective is to find
-$\Transform_t\in\text{SE}(3)$, the rigid transform between two subsequent stereo camera poses (note that the temporal index $t$ refers to the set of two stereo camera poses). We begin by rectifying, then stereo and temporally
-matching the set of 4 images to generate the corresponding locations of a set
-of $N_t$ visual landmarks in each stereo pair.  Each landmark corresponds to a
-point in space, expressed in homogeneous coordinates in the camera frame as
-$\HomogeneousPoint{i}{t} := \Transpose{\bbm p_1 & p_2 & p_3 & p_4 \ebm} \in
-\HomogeneousNumbers[3]$.  The stereo-camera model, $\ProjectionFunction$,
-projects a landmark expressed in homogeneous coordinates into image space, so
-that $\ImageLandmark{i}{t}$, the stereo pixel coordinates of landmark $i$ in the first camera pose at time $t$, is given
-by 
-\begin{equation}
-	\ImageLandmark{i}{t} = \bbm u_l \\ v_l \\ u_r \\ v_r \ebm 
-  = \ProjectionFunction(\HomogeneousPoint{i}{t}) 
-  = \Matrix{M} \frac{1}{p_3}\HomogeneousPoint{i}{t},
-\end{equation}
-where
-\begin{equation}
- \Matrix{M} = \bbm f_u & 0 & c_u & f_u \frac{b}{2} \\ 0 & f_v & c_v & 0 \\ f_u 
-                        & 0 & c_u & -f_u\frac{b}{2} \\ 0 & f_b & c_v & 0 \ebm.
-\end{equation}
-Here, $\{c_u, c_v\}$, $\{f_u, f_v\}$, and $b$ are the principal points, focal
-lengths and baseline of the stereo camera respectively. Note that in this
-formulation, the stereo camera frame is centered between the two individual
-lenses.  
+In this thesis, we largely follow the notation of \cite{Barfoot2017-ri} when dealing with three-dimensional rigid-body kinematics. As it is crucial to all four components of the work, we will begin by outlining the basic components.
 
-We triangulate landmarks in the first camera frame, $\ImageLandmark{i}{t}$, and re-project
-them into the second frame, $\ImageLandmark{i}{t}'$. We model errors due to sensor noise
-and quantization as a Gaussian distribution in image space with a known covariance
-$\Covariance$,
+\begin{figure}[h!]
+\center
+\tdplotsetmaincoords{60}{110}
+%
+\pgfmathsetmacro{\rvec}{1.75}
+\pgfmathsetmacro{\thetavec}{45}
+\pgfmathsetmacro{\phivec}{60}
+%
+\begin{tikzpicture}[scale=5,tdplot_main_coords]
+\coordinate (O) at (0,0,0) node[anchor=south east]{$\CoordinateFrame{o}$};
+\draw[very thick,->, red] (0,0,0) -- (0.7,0,0);
+\draw[very thick,->, green] (0,0,0) -- (0,0.7,0);
+\draw[very thick,->, blue] (0,0,0) -- (0,0,0.7);
+\tdplotsetcoord{V}{\rvec}{\thetavec}{\phivec}
+\tdplotsetrotatedcoords{\phivec}{\thetavec}{0} 
+\tdplotsetrotatedcoordsorigin{(V)}
+
+\draw [fill, tdplot_rotated_coords] (.3,.3,.3) circle [radius=0.01] node[anchor=north west]{$p$};
+\draw[-stealth,tdplot_rotated_coords, black] (O) -- (.31,.31,.31) node[midway,below] {$\VectorArrow{r}^{po}$} ;
+
+
+\end{tikzpicture}
+\caption{A position vector expressed in a coordinate frame.}
+\end{figure}
+
+We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one that originates at the origin of a coordinate reference frame, $\CoordinateFrame{o}$, and terminates at the point $p$. This geometric quantity has the numerical coordinates $\Vector{r}^{po}_o$ when expressed in $\CoordinateFrame{o}$. Often, we will refer to two reference frames such as a world or \textit{inertial} frame,  $\CoordinateFrame{i}$, and a vehicle frame, $\CoordinateFrame{v}$. Rotation matrices or rigid-body transformations that convert coordinates from $\CoordinateFrame{i}$ to $\CoordinateFrame{v}$ will be represented as $\Transform_{vi}$, and $\Rotation_{vi}$\footnote{We use $\Rotation$ and not $\Matrix{R}$ for rotation matrices to avoid confusion with common notation for measurement model covariance.}, respectively. 
+
+
+\begin{figure}[h!]
+\center
+\tdplotsetmaincoords{60}{110}
+%
+\pgfmathsetmacro{\rvec}{1.75}
+\pgfmathsetmacro{\thetavec}{45}
+\pgfmathsetmacro{\phivec}{60}
+%
+\begin{tikzpicture}[scale=5,tdplot_main_coords]
+\coordinate (O) at (0,0,0) node[anchor=south east]{$\CoordinateFrame{i}$};
+\draw[very thick,->, red] (0,0,0) -- (0.7,0,0);
+\draw[very thick,->, green] (0,0,0) -- (0,0.7,0);
+\draw[very thick,->, blue] (0,0,0) -- (0,0,0.7);
+\tdplotsetcoord{V}{\rvec}{\thetavec}{\phivec}
+\draw[-stealth] (O) -- (V) node[midway,above] {$\VectorArrow{t}^{vi}$} ;
+
+\tdplotsetrotatedcoords{\phivec}{\thetavec}{0} 
+\tdplotsetrotatedcoordsorigin{(V)}
+
+
+%Coordinate frame with label
+\draw[very thick,tdplot_rotated_coords,->, red] (0,0,0) -- (.4,0,0);
+\draw[very thick,tdplot_rotated_coords,->, green] (0,0,0) -- (0,.4,0);
+\draw[very thick,tdplot_rotated_coords,->, blue] (0,0,0)-- (0,0,.4);
+\draw[tdplot_rotated_coords] (0,0,0) node[anchor=south east] {$\CoordinateFrame{v}$};
+
+%Local vector
+\draw [fill, tdplot_rotated_coords] (.31,.31,.31) circle [radius=0.01] node[anchor=north west]{$p$};
+\draw[-stealth,tdplot_rotated_coords, purple] (0,0,0) -- (.3,.3,.3) node[midway,above] {\footnotesize $\VectorArrow{r}^{pv}$};
+\draw[-stealth,tdplot_rotated_coords, black] (O) -- (.3,.3,.3) node[midway,below] {$\VectorArrow{r}^{pi}$} ;
+
+\end{tikzpicture}
+\caption{Two common references frames used throughout this thesis.}
+\end{figure}
+
+
+
+\section{Rotations} 
+
+The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO{3}$ and can be defined as a matrix as follows:
+
 \begin{equation}
-  p(\ImageLandmark{i}{t}' \vert \ImageLandmark{i}{t}, \Transform_t,
-  \Covariance)
-  =\NormalDistribution\left(\Vector{e}_{i,t}(\Transform_t); \Vector 0, \Covariance\right), 
+\LieGroupSO{3} = \{ \Rotation \in \Real{}^{3 \times 3} | ~ \Rotation^T\Rotation = \Matrix{1}, \det{\Rotation} = 1  \}.	
 \end{equation}
-where
+
+\subsubsection{Active vs. Passive}
+An active (or alibi) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or alias) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this thesis are passive unless otherwise noted.  
+
+\subsubsection{Exponential and Logarithmic Maps}
+
+Since rotations form a matrix Lie group (we refer the reader to \cite{Sola2018-kg} and \cite{Barfoot2017-ri} for more thorough presentation of Lie groups), we can define a surjective exponential map\footnote{We follow \cite{Sola2018-kg} and also define \textit{capitalized} map for notational clarity.} from three axis-angle parameters, $\RotationVector = \phi \Vector{a}, ~~ \phi \in \Real{}, \Vector{a} \in S^2$, to a rotation matrix, $\Rotation$: 
+\begin{align}
+\label{eq:so3_exp}
+\Rotation = \MatExp{\Vector{\phi}} = \Matexp{\Vector{\phi}} &= \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\phi}^\wedge)}^n\\
+\label{eq:euler_rodriguez}
+&= \cos{\phi} \IdentityMatrix + (1 - \cos{\phi}) \Vector{a}\Vector{a}^T + \sin{\phi} \Vector{a}^\wedge,
+\end{align}
+
+where the wedge operator $(\cdot)^\wedge$\footnote{This operator is often expressed as $(\cdot)^\times$ and is known as the skew-symmetric operator.} is defined as
 \begin{equation}
- \Vector{e}_{i,t} = \ImageLandmark{i}{t}' - \ProjectionFunction( \Transform_t 
-    \ProjectionFunction^{-1}( \ImageLandmark{i}{t} ) ).	
-   \label{eq:image_error}
+\Vector{a}^\wedge = \bbm a_0 \\ a_1 \\ a_2 \ebm^\wedge = \bbm 0 & -a_2 & a_1 \\ a_2 & 0 & -a_0 \\ -a_1 & a_0 & 0 \ebm.	
 \end{equation}
-  The maximum likelihood transform,
-$\Transform_t^*$, is then given by 
+
+\Cref{eq:euler_rodriguez} is known as the Euler-Rodriguez formula and it can also be derived geometrically, starting from Euler's theorem that any rotation can be expressed as an axis of rotation and an angle of rotation about that axis. Although  the map in \Cref{eq:so3_exp} is surjective, we can define an inverse map if we restrict its domain to $0 \leq \phi < \pi$:
+
+\begin{align}
+\label{eq:so3_log}
+\RotationVector =  \MatLog{\Rotation} = \Matlog{\Rotation} &= \frac{\phi (\Rotation - \Rotation^T)^\vee}{2 \sin{\phi}}, 
+\end{align}
+
+where $\phi = \arccos{\frac{\Trace{\Rotation} - 1}{2}}$ and the \textit{vee} operator, $(\cdot)^\vee : \Real{}^{3 \times 3} \rightarrow \Real{}^3$, is defined as the unique inverse of the wedge operator $(\cdot)^\wedge$. Note \Cref{eq:so3_log} is undefined at both $\phi = 0$ and at $\phi = \pi$. In the former case, we can use a small-angle approximation and define
+
 \begin{equation}
-  \Transform_t^* = \ArgMin{\Transform_t\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  \Transpose{\Vector{e}_{i,t}} \Covariance^{-1} \Vector{e}_{i,t}.
+	\MatLog{\Rotation} \approx (\Rotation - \IdentityMatrix)^\vee ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
-This is a nonlinear least squares problem, and can be solved iteratively using
-standard techniques. During iteration $n$, we represent the transform as the
-product of an estimate $\Transform^{(n)}\in\text{SE}(3)$ and a perturbation
-$\delta\Vector{\xi}\in\RealNumbers[6]$ represented in exponential
-coordinates:
+
+The latter case, (when $\phi = \pi$), defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$. This \textit{cut locus} is related to the idea that any three parameterization of $\LieGroupSO{3}$ will have singularities associated with it.
+
+\subsection{Unit Quaternions}
+
+Another way (and historically, the original way) to represent a general rotation is to use a unit quaternion, $\quat$. A unit quaternion has four parameters, a scalar $q_\omega$ and a three-dimensional vector component, $\quat_v$:
+
 \begin{equation}
-  \Transform_t = \exp{\left( \delta\Vector{\xi}^{\wedge}
-  \right)} \Transform_t^{(n)}.
+	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
-The wedge operator $(\cdot)^\wedge$ is defined (following
-\citet{barfoot2014associating}) as both the map
-$\RealNumbers[3]\to\mathfrak{so}(3)$,  
+
+Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. This manifold represents a double cover of $\LieGroupSO{3}$ (since both $\quat$ and $-\quat$ represent the same rotation). As with rotation matrices, we can define a surjective map from three parameters to the group itself,
+
 \begin{equation}
-\Vector \phi ^\wedge \triangleq \bbm \phi_1 \\ \phi_2 \\ \phi_3 \ebm^\wedge	= \bbm 0 &
--\phi_3 & \phi_2 \\ \phi_3 & 0 & -\phi_1 \\ -\phi_2 & \phi_1 & 0 \ebm,
-\label{eq:wedgeOpRotation}
+\quat = \MatExp{\RotationVector} = \bbm \cos{\phi/2} \\ \Vector{a} \sin{\phi/2} \ebm.	
 \end{equation}
+
+Similarly, we can also define a logarithmic map,
+
+\begin{align}
+\label{eq:math_quat_log}
+	\RotationVector =  \MatLog{\quat} = 2 \quat_v \frac{\arctan{(\Norm{\quat_v},  q_\omega})}{\Norm{\quat_v}}.
+\end{align}
+
+To avoid issues with the double cover, we replace $\quat$ with $-\quat$ if $q_\omega$ is negative before evaluating \Cref{eq:math_quat_log}. Also note again that \Cref{eq:math_quat_log} is undefined when $\phi = 0$, but, importantly, we do not face any issues when $\phi = \pi$ due to the half angle. As with rotation matrices, we can use small angle approximations to define:
+
+\begin{equation}
+	\MatLog{\quat} \approx \frac{\quat_v}{q_\omega} \left( 1 - \frac{\Norm{\quat_v}^2}{3 q_\omega^2}\right) ~~ \textrm{when} ~~ \phi \approx 0. 
+\end{equation}
+
+A fantastic summary of the history of rotation parameterizations, unit quaternions and the story of Hamilton and Rodriguez can be found in \cite{Altmann1989-ru}.
+
+
+
+\section{Spatial Transforms}
+The rigid body transform $\Transform_{vi}$ is a also a member of the matrix Lie group, $\LieGroupSE{3}$ and can be defined as a $4 \times 4$ matrix as follows:
+
+\begin{equation}
+\LieGroupSE{3} = \{ \Transform = \bbm \Rotation & \Vector{t} \\ \Vector{0}^T & 1 \ebm \in \Real{}^{4 \times 4} | ~  \Rotation \in \LieGroupSO{3},  \Vector{t} \in \Real{}^3  \}.
+\end{equation}
+
+As a member of a matrix Lie group
+
+\begin{equation}
+\Transform = \Matexp{\Vector{\xi}} = \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\xi}^\wedge)}^n	
+\end{equation}
+
 and the map $\RealNumbers[6]\to\mathfrak{se}(3)$,
 \begin{equation}
   \Vector \xi^\wedge \triangleq \bbm \Vector \rho \\ \Vector \phi \ebm ^\wedge = \bbm
   \Vector \phi^\wedge & \Vector \rho \\ \Transpose{\Vector{0}} &  0 \ebm.	
 \end{equation}
-Linearizing the transform for small perturbations $\delta\Vector{\xi}$
-yields a linear least-squares problem:
-\begin{equation}
-  \mathcal{L}(\delta \Vector{\xi}) = \frac{1}{2}\sum_{i=1}^{N_t} 
-  \Transpose{\left(\Vector{e}_{i,t}^{(n)}
-  - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)}
-\Covariance^{-1}
- \left(\Vector{e}_{i,t}^{(n)}
- - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)
-  \end{equation}
-Here, $\Matrix J_{i,t}^{(n)}$ is the Jacobian matrix of the reprojection error.
-The explicit form of the Jacobian matrix is omitted for brevity but can be
-found in our supplemental materials.\footnote{\url{http://groups.csail.mit.edu/rrg/peretroukhin_icra16/supplemental.pdf}}
 
-Rearranging, we see the minimizing perturbation is the solution to a
-linear system of equations:
+The transform $\Transform_{vi}$ can be expressed as a $4 \times 4$ transformation matrix as
+
 \begin{equation}
-  \delta\Vector{\xi}^{(n)} = 
-  \left( \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
-  \ImageLandmarkCovariance{}{}^{-1} \Matrix J_{i,t} \right)^{-1}
-  \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
-  \Covariance^{-1} \Vector{e}_{i,t}^{(n)}. 
-\label{eq:least-squares-iteration}
+\Transform_{vi} = \bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm,
 \end{equation}
-We then update the estimated transform and proceed to the next iteration.
+
+where $\Rotation \in \LieGroupSO{3}$ is a rotation matrix. This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i$ and express the following relation:
+
 \begin{equation}
-  \Transform_t^{(n+1)} = \exp{\left( \delta\Vector{\xi}^{(n)\wedge}
-  \right)} \Transform_t^{(n)}. \label{eq:update}
+	\bbm \Vector{r}^{pi}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm
 \end{equation}
-There are many reasonable choices for both the initial transform
-$\Transform_t^{(0)}$ and for the conditions under which we terminate
-iteration. We initialize the estimated transform to identity, and iteratively
-perform the update given by \cref{eq:update} until we see a relative change in
-the squared error of less than one percent after an update. 
 
-\section{Robust Estimation}
-\subsection{The effects of outliers}
-\subsection{M-estimation}
 
-\section{Matrix Lie Groups}
-\subsection{Manifolds}
-\subsection{Local vs. Global Perturbations}
+
+This is equivalent to  
+
+\begin{equation}
+ \Vector{r}^{pi}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}  
+ \end{equation}
+
+
+
+
+
+
+
+
+
+%\subsection{Uncertainty through noise injection}
+%
+%
+%\begin{figure}[h!]
+%\center
+%\includegraphics[width=0.3\textwidth]{math/quaternion_uncertainty}
+%\caption{Uncertainty injection}
+%\end{figure}
+
+\section{Perturbations}
+
+\todo{Left,middle,right}
+\todo{Look at Seans thesis}
+
+
+\section{Uncertainty}
+\todo{Injection onto the manifold}
 
 
  

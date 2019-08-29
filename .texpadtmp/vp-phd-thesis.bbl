@@ -1,27 +1,28 @@
 \begin{thebibliography}{}
 
-\bibitem[Agarwal et~al., 2013]{Agarwal2013-jq}
-Agarwal, P., Tipaldi, G.~D., Spinello, L., Stachniss, C., and Burgard, W.
-  (2013).
-\newblock Robust map optimization using dynamic covariance scaling.
-\newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
-  62--69.
-
 \bibitem[Alcantarilla and Woodford, 2016]{Alcantarilla2016-kv}
 Alcantarilla, P.~F. and Woodford, O.~J. (2016).
 \newblock Noise models in feature-based stereo visual odometry.
 
-\bibitem[Barfoot and Furgale, 2014]{barfoot2014associating}
-Barfoot, T.~D. and Furgale, P.~T. (2014).
-\newblock Associating uncertainty with three-dimensional poses for use in
-  estimation problems.
-\newblock {\em {IEEE} Trans. Robot.}, 30(3):679--693.
+\bibitem[Altmann, 1989]{Altmann1989-ru}
+Altmann, S.~L. (1989).
+\newblock Hamilton, rodrigues, and the quaternion scandal.
+\newblock {\em Math. Mag.}, 62(5):291--308.
 
-\bibitem[Costante et~al., 2016]{Costante2016-hb}
-Costante, G., Mancini, M., Valigi, P., and Ciarfuglia, T.~A. (2016).
-\newblock Exploring representation learning with {CNNs} for {Frame-to-Frame}
-  {Ego-Motion} estimation.
-\newblock {\em IEEE Robotics and Automation Letters}, 1(1):18--25.
+\bibitem[Barfoot, 2017]{Barfoot2017-ri}
+Barfoot, T.~D. (2017).
+\newblock {\em State Estimation for Robotics}.
+\newblock Cambridge University Press.
+
+\bibitem[Clement et~al., 2017]{2017_Clement_Improving}
+Clement, L., Peretroukhin, V., and Kelly, J. (2017).
+\newblock Improving the accuracy of stereo visual odometry using visual
+  illumination estimation.
+\newblock In Kulic, D., Nakamura, Y., Khatib, O., and Venture, G., editors,
+  {\em 2016 International Symposium on Experimental Robotics}, volume~1 of {\em
+  Springer Proceedings in Advanced Robotics}, pages 409--419. Springer
+  International Publishing, Berlin Heidelberg.
+\newblock Invited to Journal Special Issue.
 
 \bibitem[Cvi{\v s}i{\'c} and Petrovi{\'c}, 2015]{Cvisic2015-mt}
 Cvi{\v s}i{\'c}, I. and Petrovi{\'c}, I. (2015).
@@ -38,12 +39,11 @@ Forster, C., Pizzoli, M., and Scaramuzza, D. (2014).
 \newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
   15--22.
 
-\bibitem[Gal and Ghahramani, 2016]{Gal2015-bf}
-Gal, Y. and Ghahramani, Z. (2016).
-\newblock Bayesian convolutional neural networks with {B}ernoulli approximate
-  variational inference.
-\newblock In {\em Proc. Int. Conf. Learning Representations ({ICLR}), Workshop
-  Track}.
+\bibitem[Furgale, 2011]{furgale_phd11}
+Furgale, P. (2011).
+\newblock {\em Extensions to the Visual Odometry Pipeline for the Exploration
+  of Planetary Surfaces}.
+\newblock PhD thesis.
 
 \bibitem[Garg et~al., 2016]{Garg2016-ip}
 Garg, R., Carneiro, G., and Reid, I. (2016).
@@ -62,12 +62,6 @@ Grewal, M.~S. and Andrews, A.~P. (2010).
   [historical perspectives].
 \newblock {\em IEEE Control Syst. Mag.}, 30(3):69--78.
 
-\bibitem[Haarnoja et~al., 2016]{Haarnoja2016-ph}
-Haarnoja, T., Ajay, A., Levine, S., and Abbeel, P. (2016).
-\newblock Backprop {KF}: Learning discriminative deterministic state
-  estimators.
-\newblock In {\em Proc. Advances in Neural Inform. Process. Syst. ({NIPS})}.
-
 \bibitem[Handa et~al., 2016]{Handa2016-hm}
 Handa, A., Bloesch, M., P{\u a}tr{\u a}ucean, V., Stent, S., McCormac, J., and
   Davison, A. (2016).
@@ -75,30 +69,18 @@ Handa, A., Bloesch, M., P{\u a}tr{\u a}ucean, V., Stent, S., McCormac, J., and
 \newblock In {\em Computer Vision -- {ECCV} 2016 Workshops}, pages 67--82.
   Springer, Cham.
 
-\bibitem[Hu and Kantor, 2015]{Hu2015-uw}
-Hu, H. and Kantor, G. (2015).
-\newblock Parametric covariance prediction for heteroscedastic noise.
-\newblock In {\em Proc. IEEE/RSJ Int. Conf. Intelligent Robots and Syst.
-  ({IROS})}, pages 3052--3057.
-
-\bibitem[Kendall et~al., 2015]{Kendall2015-kh}
-Kendall, A., Alex, K., Matthew, G., and Roberto, C. (2015).
-\newblock {PoseNet}: A convolutional network for {Real-Time} {6-DOF} camera
-  relocalization.
-\newblock In {\em Proc. of {IEEE} Int. Conf. on Computer Vision ({ICCV})}.
+\bibitem[Kelly, 2011]{kelly_phd2011}
+Kelly, J. (2011).
+\newblock {\em On Temporal and Spatial Calibration for High Accuracy
+  Visual-Inertial Motion Estimation}.
+\newblock PhD thesis, University of Southern California, Los Angeles,
+  California, USA.
 
 \bibitem[Kendall and Cipolla, 2016]{Kendall2016-zf}
 Kendall, A. and Cipolla, R. (2016).
 \newblock Modelling uncertainty in deep learning for camera relocalization.
 \newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
   4762--4769.
-
-\bibitem[Lakshminarayanan et~al., 2017]{Lakshminarayanan2016-zh}
-Lakshminarayanan, B., Pritzel, A., and Blundell, C. (2017).
-\newblock Simple and scalable predictive uncertainty estimation using deep
-  ensembles.
-\newblock In {\em Proc. Advances in Neural Inform. Process. Syst. ({NIPS})},
-  pages 6405--6416.
 
 \bibitem[Lambert et~al., 2012]{Lambert2012-sn}
 Lambert, A., Furgale, P., Barfoot, T.~D., and Enright, J. (2012).
@@ -111,27 +93,11 @@ LeCun, Y., Bengio, Y., and Hinton, G. (2015).
 \newblock Deep learning.
 \newblock {\em Nature}, 521(7553):436--444.
 
-\bibitem[Lee et~al., 2015]{Lee2015-af}
-Lee, S., Purushwalkam, S., Cogswell, M., Crandall, D., and Batra, D. (2015).
-\newblock Why {M} heads are better than one: Training a diverse ensemble of
-  deep networks.
-
 \bibitem[Leutenegger et~al., 2015]{Leutenegger2015-fk}
 Leutenegger, S., Lynen, S., Bosse, M., Siegwart, R., and Furgale, P. (2015).
 \newblock Keyframe-based visual--inertial odometry using nonlinear
   optimization.
 \newblock {\em Int. J. Rob. Res.}, 34(3):314--334.
-
-\bibitem[MacTavish and Barfoot, 2015]{MacTavish2015-wt}
-MacTavish, K. and Barfoot, T.~D. (2015).
-\newblock At all costs: A comparison of robust cost functions for camera
-  correspondence outliers.
-\newblock In {\em Proc. Conf. on Comp. and Robot Vision ({CRV})}, pages 62--69.
-
-\bibitem[McClure and Kriegeskorte, 2016]{McClure2016-ai}
-McClure, P. and Kriegeskorte, N. (2016).
-\newblock Representation of uncertainty in deep neural networks through
-  sampling.
 
 \bibitem[Melekhov et~al., 2017]{Melekhov2017-dl}
 Melekhov, I., Ylioinas, J., Kannala, J., and Rahtu, E. (2017).
@@ -148,24 +114,25 @@ Nilsson, N.~J. (1984).
 Oliveira, G.~L., Radwan, N., Burgard, W., and Brox, T. (2017).
 \newblock Topometric localization with deep learning.
 
-\bibitem[Osband, 2017]{Osband_undated-wl}
-Osband, I. (2017).
-\newblock Risk versus uncertainty in deep learning: Bayes, bootstrap and the
-  dangers of dropout.
-\newblock In {\em Proc. of Workshop on ``{Bayesian Deep Learning}'', {Advances
-  in Neural Inform. Process. Syst. ({NIPS})}}.
-
-\bibitem[Osband et~al., 2016]{Osband2016-jg}
-Osband, I., Blundell, C., Pritzel, A., and Van~Roy, B. (2016).
-\newblock Deep exploration via bootstrapped {DQN}.
-\newblock In {\em Proc. Advances in Neural Inform. Process. Syst. ({NIPS})},
-  pages 4026--4034.
-
-\bibitem[Peretroukhin et~al., 2015]{Peretroukhin2015-em}
+\bibitem[Peretroukhin et~al., 2015]{2015_Peretroukhin_PROBE}
 Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015).
 \newblock {PROBE}: Predictive robust estimation for visual-inertial navigation.
-\newblock In {\em Proc. IEEE/RSJ Int. Conf. Intelligent Robots and Syst.
-  ({IROS})}, pages 3668--3675.
+\newblock In {\em Proceedings of the {IEEE/RSJ} International Conference on
+  Intelligent Robots and Systems {(IROS'15)}}, pages 3668--3675, Hamburg,
+  Germany.
+
+\bibitem[Peretroukhin et~al., 2017]{2017_Peretroukhin_Reducing}
+Peretroukhin, V., Clement, L., and Kelly, J. (2017).
+\newblock Reducing drift in visual odometry by inferring sun direction using a
+  bayesian convolutional neural network.
+\newblock In {\em Proceedings of the {IEEE} International Conference on
+  Robotics and Automation {(ICRA'17})}, pages 2035--2042, Singapore.
+
+\bibitem[Peretroukhin et~al., 2018]{2018_Peretroukhin_Inferring}
+Peretroukhin, V., Clement, L., and Kelly, J. (2018).
+\newblock Inferring sun direction to improve visual odometry: A deep learning
+  approach.
+\newblock {\em International Journal of Robotics Research}.
 
 \bibitem[Peretroukhin and Kelly, 2018]{2018_Peretroukhin_Deep}
 Peretroukhin, V. and Kelly, J. (2018).
@@ -178,12 +145,6 @@ Peretroukhin, V., Vega-Brown, W., Roy, N., and Kelly, J. (2016).
 \newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
   817--824.
 
-\bibitem[Punjani and Abbeel, 2015]{Punjani2015-pj}
-Punjani, A. and Abbeel, P. (2015).
-\newblock Deep learning helicopter dynamics models.
-\newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
-  3223--3230.
-
 \bibitem[Redfield, 2019]{Redfield2019-pi}
 Redfield, S. (2019).
 \newblock A definition for robotics as an academic discipline.
@@ -193,6 +154,10 @@ Redfield, S. (2019).
 Scaramuzza, D. and Fraundorfer, F. (2011).
 \newblock Visual odometry [tutorial].
 \newblock {\em IEEE Robot. Autom. Mag.}, 18(4):80--92.
+
+\bibitem[Sol{\`a} et~al., 2018]{Sola2018-kg}
+Sol{\`a}, J., Deray, J., and Atchuthan, D. (2018).
+\newblock A micro lie theory for state estimation in robotics.
 
 \bibitem[S{\"u}nderhauf et~al., 2015]{Sunderhauf2015-is}
 S{\"u}nderhauf, N., Shirazi, S., Dayoub, F., Upcroft, B., and Milford, M.
@@ -224,10 +189,8 @@ Vega-Brown, W.~R., Doniec, M., and Roy, N.~G. (2014).
 \newblock In {\em Proc. Advances in Neural Information Proc. Syst. ({NIPS})
   27}, pages 2546--2554.
 
-\bibitem[Wilson et~al., 2016]{Wilson2016-vy}
-Wilson, A.~G., Hu, Z., Salakhutdinov, R.~R., and Xing, E.~P. (2016).
-\newblock Stochastic variational deep kernel learning.
-\newblock In {\em Advances in Neural Information Processing Systems}, pages
-  2586--2594.
+\bibitem[Zhou et~al., 2019]{Zhou2019-se}
+Zhou, B., Kr{\"a}henb{\"u}hl, P., and Koltun, V. (2019).
+\newblock Does computer vision matter for action?
 
 \end{thebibliography}

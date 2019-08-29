@@ -5,13 +5,13 @@
 \citation{Peretroukhin2016-om,Peretroukhin2015-em}
 \citation{Costante2016-hb,Clark2017-zg,Kendall2017-ix,Melekhov2017-dl,Oliveira2017-lt}
 \citation{Peretroukhin2017-eb}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Deep Pose Corrections for Visual Localization}{68}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Deep Pose Corrections for Visual Localization}{76}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{68}{section.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces We propose a Deep Pose Correction network (DPC-Net) that learns $ \mathrm  {SE}(3) $ \textit  {corrections} to classical visual localizers.\relax }}{69}{figure.caption.85}\protected@file@percent }
-\newlabel{fig:system_overview}{{5.1}{69}{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE {3}$ \textit {corrections} to classical visual localizers.\relax }{figure.caption.85}{}}
-\newlabel{fig:system_overview@cref}{{[figure][1][5]5.1}{[1][68][]69}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{76}{section.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces We propose a Deep Pose Correction network (DPC-Net) that learns $ \mathrm  {SE}(3) $ \textit  {corrections} to classical visual localizers.\relax }}{77}{figure.caption.100}\protected@file@percent }
+\newlabel{fig:system_overview}{{5.1}{77}{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE {3}$ \textit {corrections} to classical visual localizers.\relax }{figure.caption.100}{}}
+\newlabel{fig:system_overview@cref}{{[figure][1][5]5.1}{[1][76][]77}}
 \citation{Scaramuzza2011-qr}
 \citation{Cadena2016-ds}
 \citation{LeCun2015-fw}
@@ -26,7 +26,7 @@
 \citation{Handa2016-hm}
 \citation{Oliveira2017-lt}
 \citation{Clark2017-zg}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Related Work}{70}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Related Work}{78}{section.5.2}\protected@file@percent }
 \citation{Cvisic2015-mt}
 \citation{Peretroukhin2017-eb}
 \citation{2017_Li_Deep,Punjani2015-pj}
@@ -36,141 +36,141 @@
 \citation{Handa2016-hm}
 \citation{Kendall2017-ix,Melekhov2017-dl,Oliveira2017-lt}
 \citation{Costante2016-hb}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}System Overview: Deep Pose Correction}{71}{section.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces The Deep Pose Correction network with stereo RGB image data. The network learns a map from two stereo pairs to a vector of Lie algebra coordinates. Each darker blue block consists of a convolution, a PReLU non-linearity, and a dropout layer. We opt to not use MaxPooling in the network, following \cite  {Handa2016-hm}. The labels correspond to the stride, kernel size, and number of input and output channels of for each convolution.\relax }}{72}{figure.caption.86}\protected@file@percent }
-\newlabel{fig:dpc_net}{{5.2}{72}{The Deep Pose Correction network with stereo RGB image data. The network learns a map from two stereo pairs to a vector of Lie algebra coordinates. Each darker blue block consists of a convolution, a PReLU non-linearity, and a dropout layer. We opt to not use MaxPooling in the network, following \cite {Handa2016-hm}. The labels correspond to the stride, kernel size, and number of input and output channels of for each convolution.\relax }{figure.caption.86}{}}
-\newlabel{fig:dpc_net@cref}{{[figure][2][5]5.2}{[1][71][]72}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}System Overview: Deep Pose Correction}{79}{section.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces The Deep Pose Correction network with stereo RGB image data. The network learns a map from two stereo pairs to a vector of Lie algebra coordinates. Each darker blue block consists of a convolution, a PReLU non-linearity, and a dropout layer. We opt to not use MaxPooling in the network, following \cite  {Handa2016-hm}. The labels correspond to the stride, kernel size, and number of input and output channels of for each convolution.\relax }}{80}{figure.caption.101}\protected@file@percent }
+\newlabel{fig:dpc_net}{{5.2}{80}{The Deep Pose Correction network with stereo RGB image data. The network learns a map from two stereo pairs to a vector of Lie algebra coordinates. Each darker blue block consists of a convolution, a PReLU non-linearity, and a dropout layer. We opt to not use MaxPooling in the network, following \cite {Handa2016-hm}. The labels correspond to the stride, kernel size, and number of input and output channels of for each convolution.\relax }{figure.caption.101}{}}
+\newlabel{fig:dpc_net@cref}{{[figure][2][5]5.2}{[1][79][]80}}
 \citation{Kendall2017-ix,Melekhov2017-dl,Oliveira2017-lt}
 \citation{Handa2016-hm}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Loss Function: Correcting $ \mathrm  {SE}(3) $ Estimates}{73}{subsection.5.3.1}\protected@file@percent }
-\newlabel{eq:se3loss_fn}{{5.2}{73}{Loss Function: Correcting $\LieGroupSE {3}$ Estimates}{equation.5.3.2}{}}
-\newlabel{eq:se3loss_fn@cref}{{[equation][2][5]5.2}{[1][73][]73}}
-\newlabel{eq:se3logmap_fn}{{5.3}{73}{Loss Function: Correcting $\LieGroupSE {3}$ Estimates}{equation.5.3.3}{}}
-\newlabel{eq:se3logmap_fn@cref}{{[equation][3][5]5.3}{[1][73][]73}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Loss Function: Correcting $ \mathrm  {SE}(3) $ Estimates}{81}{subsection.5.3.1}\protected@file@percent }
+\newlabel{eq:se3loss_fn}{{5.2}{81}{Loss Function: Correcting $\LieGroupSE {3}$ Estimates}{equation.5.3.2}{}}
+\newlabel{eq:se3loss_fn@cref}{{[equation][2][5]5.2}{[1][81][]81}}
+\newlabel{eq:se3logmap_fn}{{5.3}{81}{Loss Function: Correcting $\LieGroupSE {3}$ Estimates}{equation.5.3.3}{}}
+\newlabel{eq:se3logmap_fn@cref}{{[equation][3][5]5.3}{[1][81][]81}}
 \citation{Kendall2017-ix}
 \citation{Barfoot2017-ri}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Loss Function: $ \mathrm  {SE}(3) $ Covariance}{74}{subsection.5.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Loss Function: $ \mathrm  {SE}(3) $ Jacobians}{74}{subsection.5.3.3}\protected@file@percent }
-\newlabel{eq:se3_jacobchainrule}{{5.7}{74}{Loss Function: $\LieGroupSE {3}$ Jacobians}{equation.5.3.7}{}}
-\newlabel{eq:se3_jacobchainrule@cref}{{[equation][7][5]5.7}{[1][74][]74}}
-\newlabel{eq:delta_xi_exp}{{5.8}{74}{Loss Function: $\LieGroupSE {3}$ Jacobians}{equation.5.3.8}{}}
-\newlabel{eq:delta_xi_exp@cref}{{[equation][8][5]5.8}{[1][74][]74}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Loss Function: $ \mathrm  {SE}(3) $ Covariance}{82}{subsection.5.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Loss Function: $ \mathrm  {SE}(3) $ Jacobians}{82}{subsection.5.3.3}\protected@file@percent }
+\newlabel{eq:se3_jacobchainrule}{{5.7}{82}{Loss Function: $\LieGroupSE {3}$ Jacobians}{equation.5.3.7}{}}
+\newlabel{eq:se3_jacobchainrule@cref}{{[equation][7][5]5.7}{[1][82][]82}}
+\newlabel{eq:delta_xi_exp}{{5.8}{82}{Loss Function: $\LieGroupSE {3}$ Jacobians}{equation.5.3.8}{}}
+\newlabel{eq:delta_xi_exp@cref}{{[equation][8][5]5.8}{[1][82][]82}}
 \citation{Barfoot2017-ri}
-\newlabel{eq:jacobian_xi_small}{{5.9}{75}{Loss Function: $\LieGroupSE {3}$ Jacobians}{equation.5.3.9}{}}
-\newlabel{eq:jacobian_xi_small@cref}{{[equation][9][5]5.9}{[1][74][]75}}
-\@writefile{toc}{\contentsline {subsubsection}{Deriving $ \genfrac  {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method I}{75}{section*.87}\protected@file@percent }
-\newlabel{eq:logjacob_method1}{{5.10}{75}{Deriving $\PartialDerivative {\LogMapFunction {\PredictionVector }}{\PredictionVector }$, Method I}{equation.5.3.10}{}}
-\newlabel{eq:logjacob_method1@cref}{{[equation][10][5]5.10}{[1][75][]75}}
-\@writefile{toc}{\contentsline {subsubsection}{Deriving $ \genfrac  {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method II}{75}{section*.88}\protected@file@percent }
-\newlabel{eq:logjacob_method2}{{5.14}{75}{Deriving $\PartialDerivative {\LogMapFunction {\PredictionVector }}{\PredictionVector }$, Method II}{equation.5.3.14}{}}
-\newlabel{eq:logjacob_method2@cref}{{[equation][14][5]5.14}{[1][75][]75}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Loss Function: Correcting $ \mathrm  {SO}(3) $ Estimates}{76}{subsection.5.3.4}\protected@file@percent }
-\newlabel{eq:so3loss_fn}{{5.17}{76}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.17}{}}
-\newlabel{eq:so3loss_fn@cref}{{[equation][17][5]5.17}{[1][76][]76}}
-\newlabel{eq:s03logmap_fn}{{5.18}{76}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.18}{}}
-\newlabel{eq:s03logmap_fn@cref}{{[equation][18][5]5.18}{[1][76][]76}}
-\newlabel{eq:delta_phi_exp}{{5.19}{76}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.19}{}}
-\newlabel{eq:delta_phi_exp@cref}{{[equation][19][5]5.19}{[1][76][]76}}
-\newlabel{eq:jacobian_phi_small}{{5.20}{76}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.20}{}}
-\newlabel{eq:jacobian_phi_small@cref}{{[equation][20][5]5.20}{[1][76][]76}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Pose Graph Relaxation}{76}{subsection.5.3.5}\protected@file@percent }
+\newlabel{eq:jacobian_xi_small}{{5.9}{83}{Loss Function: $\LieGroupSE {3}$ Jacobians}{equation.5.3.9}{}}
+\newlabel{eq:jacobian_xi_small@cref}{{[equation][9][5]5.9}{[1][82][]83}}
+\@writefile{toc}{\contentsline {subsubsection}{Deriving $ \genfrac  {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method I}{83}{section*.102}\protected@file@percent }
+\newlabel{eq:logjacob_method1}{{5.10}{83}{Deriving $\PartialDerivative {\LogMapFunction {\PredictionVector }}{\PredictionVector }$, Method I}{equation.5.3.10}{}}
+\newlabel{eq:logjacob_method1@cref}{{[equation][10][5]5.10}{[1][83][]83}}
+\@writefile{toc}{\contentsline {subsubsection}{Deriving $ \genfrac  {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method II}{83}{section*.103}\protected@file@percent }
+\newlabel{eq:logjacob_method2}{{5.14}{83}{Deriving $\PartialDerivative {\LogMapFunction {\PredictionVector }}{\PredictionVector }$, Method II}{equation.5.3.14}{}}
+\newlabel{eq:logjacob_method2@cref}{{[equation][14][5]5.14}{[1][83][]83}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Loss Function: Correcting $ \mathrm  {SO}(3) $ Estimates}{84}{subsection.5.3.4}\protected@file@percent }
+\newlabel{eq:so3loss_fn}{{5.17}{84}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.17}{}}
+\newlabel{eq:so3loss_fn@cref}{{[equation][17][5]5.17}{[1][84][]84}}
+\newlabel{eq:s03logmap_fn}{{5.18}{84}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.18}{}}
+\newlabel{eq:s03logmap_fn@cref}{{[equation][18][5]5.18}{[1][84][]84}}
+\newlabel{eq:delta_phi_exp}{{5.19}{84}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.19}{}}
+\newlabel{eq:delta_phi_exp@cref}{{[equation][19][5]5.19}{[1][84][]84}}
+\newlabel{eq:jacobian_phi_small}{{5.20}{84}{Loss Function: Correcting $\LieGroupSO {3}$ Estimates}{equation.5.3.20}{}}
+\newlabel{eq:jacobian_phi_small@cref}{{[equation][20][5]5.20}{[1][84][]84}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Pose Graph Relaxation}{84}{subsection.5.3.5}\protected@file@percent }
 \citation{Barfoot2017-ri}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces We apply pose graph relaxation to fuse high-rate visual localization estimates ($\mathaccentV {hat}05E{  \boldsymbol  {\mathbf  {T}}  }_{i,i+1}$) with low-rate deep pose corrections ($\EstimatedVOTransformCorrected $).\relax }}{77}{figure.caption.89}\protected@file@percent }
-\newlabel{fig:posegraph_relaxation}{{5.3}{77}{We apply pose graph relaxation to fuse high-rate visual localization estimates ($\Estimate {\Transform }_{i,i+1}$) with low-rate deep pose corrections ($\EstimatedVOTransformCorrected $).\relax }{figure.caption.89}{}}
-\newlabel{fig:posegraph_relaxation@cref}{{[figure][3][5]5.3}{[1][77][]77}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Experiments}{77}{section.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces We apply pose graph relaxation to fuse high-rate visual localization estimates ($\mathaccentV {hat}05E{  \boldsymbol  {\mathbf  {T}}  }_{i,i+1}$) with low-rate deep pose corrections ($\EstimatedVOTransformCorrected $).\relax }}{85}{figure.caption.104}\protected@file@percent }
+\newlabel{fig:posegraph_relaxation}{{5.3}{85}{We apply pose graph relaxation to fuse high-rate visual localization estimates ($\Estimate {\Transform }_{i,i+1}$) with low-rate deep pose corrections ($\EstimatedVOTransformCorrected $).\relax }{figure.caption.104}{}}
+\newlabel{fig:posegraph_relaxation@cref}{{[figure][3][5]5.3}{[1][85][]85}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Experiments}{85}{section.5.4}\protected@file@percent }
 \citation{Geiger2013-ky}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Training \& Testing}{78}{subsection.5.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Rotation}{78}{section*.90}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Training \& Testing}{86}{subsection.5.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Rotation}{86}{section*.105}\protected@file@percent }
 \citation{Peretroukhin2016-om}
 \citation{Geiger2011-xe}
 \citation{Costante2016-hb}
 \citation{Costante2016-hb}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Illustration of our image radial distortion procedure. Left: rectified RGB image (frame \texttt  {280} from KITTI odometry sequence \texttt  {05}). Middle: the same image with radial distortion applied. Right: distorted, cropped, and scaled image.\relax }}{79}{figure.caption.94}\protected@file@percent }
-\newlabel{fig:distorted_images}{{5.4}{79}{Illustration of our image radial distortion procedure. Left: rectified RGB image (frame \texttt {280} from KITTI odometry sequence \texttt {05}). Middle: the same image with radial distortion applied. Right: distorted, cropped, and scaled image.\relax }{figure.caption.94}{}}
-\newlabel{fig:distorted_images@cref}{{[figure][4][5]5.4}{[1][79][]79}}
-\@writefile{toc}{\contentsline {subsubsection}{Yaw}{79}{section*.91}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Estimators}{79}{subsection.5.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Sparse Visual Odometry}{79}{section*.92}\protected@file@percent }
-\newlabel{eq:image_error}{{5.27}{79}{Sparse Visual Odometry}{equation.5.4.27}{}}
-\newlabel{eq:image_error@cref}{{[equation][27][5]5.27}{[1][79][]79}}
-\@writefile{toc}{\contentsline {subsubsection}{Sparse Visual Odometry with Radial Distortion}{79}{section*.93}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Illustration of our image radial distortion procedure. Left: rectified RGB image (frame \texttt  {280} from KITTI odometry sequence \texttt  {05}). Middle: the same image with radial distortion applied. Right: distorted, cropped, and scaled image.\relax }}{87}{figure.caption.109}\protected@file@percent }
+\newlabel{fig:distorted_images}{{5.4}{87}{Illustration of our image radial distortion procedure. Left: rectified RGB image (frame \texttt {280} from KITTI odometry sequence \texttt {05}). Middle: the same image with radial distortion applied. Right: distorted, cropped, and scaled image.\relax }{figure.caption.109}{}}
+\newlabel{fig:distorted_images@cref}{{[figure][4][5]5.4}{[1][87][]87}}
+\@writefile{toc}{\contentsline {subsubsection}{Yaw}{87}{section*.106}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Estimators}{87}{subsection.5.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Sparse Visual Odometry}{87}{section*.107}\protected@file@percent }
+\newlabel{eq:image_error}{{5.27}{87}{Sparse Visual Odometry}{equation.5.4.27}{}}
+\newlabel{eq:image_error@cref}{{[equation][27][5]5.27}{[1][87][]87}}
+\@writefile{toc}{\contentsline {subsubsection}{Sparse Visual Odometry with Radial Distortion}{87}{section*.108}\protected@file@percent }
 \citation{Clement2018-cat}
-\newlabel{eq:radial_distortion}{{5.29}{80}{Sparse Visual Odometry with Radial Distortion}{equation.5.4.29}{}}
-\newlabel{eq:radial_distortion@cref}{{[equation][29][5]5.29}{[1][80][]80}}
-\@writefile{toc}{\contentsline {subsubsection}{Dense Visual Odometry}{80}{section*.95}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Evaluation Metrics}{80}{subsection.5.4.3}\protected@file@percent }
-\newlabel{00-pose-cum}{{\caption@xref {00-pose-cum}{ on input line 305}}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{00-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{sub@00-pose-cum}{{}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{sub@00-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{00-pose-segs}{{\caption@xref {00-pose-segs}{ on input line 311}}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{00-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{sub@00-pose-segs}{{a}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{sub@00-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{02-pose-cum}{{\caption@xref {02-pose-cum}{ on input line 317}}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{02-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{sub@02-pose-cum}{{b}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{sub@02-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{02-pose-segs}{{\caption@xref {02-pose-segs}{ on input line 323}}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{02-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{sub@02-pose-segs}{{c}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{sub@02-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{05-pose-cum}{{\caption@xref {05-pose-cum}{ on input line 329}}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{05-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{sub@05-pose-cum}{{d}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{sub@05-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{05-pose-segs}{{\caption@xref {05-pose-segs}{ on input line 335}}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{05-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\newlabel{sub@05-pose-segs}{{e}{81}{Dense Visual Odometry}{figure.caption.96}{}}
-\newlabel{sub@05-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]81}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces c-ATE and mean segment errors for S-VO with and without DPC-Net.\relax }}{81}{figure.caption.96}\protected@file@percent }
-\newlabel{fig:cum-seg-errs}{{5.5}{81}{c-ATE and mean segment errors for S-VO with and without DPC-Net.\relax }{figure.caption.96}{}}
-\newlabel{fig:cum-seg-errs@cref}{{[figure][5][5]5.5}{[1][80][]81}}
-\newlabel{00-top-down}{{\caption@xref {00-top-down}{ on input line 347}}{82}{Dense Visual Odometry}{figure.caption.97}{}}
-\newlabel{00-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]82}}
-\newlabel{sub@00-top-down}{{}{82}{Dense Visual Odometry}{figure.caption.97}{}}
-\newlabel{sub@00-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]82}}
-\newlabel{02-top-down}{{\caption@xref {02-top-down}{ on input line 353}}{82}{Dense Visual Odometry}{figure.caption.97}{}}
-\newlabel{02-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]82}}
-\newlabel{sub@02-top-down}{{a}{82}{Dense Visual Odometry}{figure.caption.97}{}}
-\newlabel{sub@02-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]82}}
-\newlabel{05-top-down}{{\caption@xref {05-top-down}{ on input line 359}}{82}{Dense Visual Odometry}{figure.caption.97}{}}
-\newlabel{05-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]82}}
-\newlabel{sub@05-top-down}{{b}{82}{Dense Visual Odometry}{figure.caption.97}{}}
-\newlabel{sub@05-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][80][]82}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Top down projections for S-VO with and without DPC-Net.\relax }}{82}{figure.caption.97}\protected@file@percent }
-\newlabel{fig:top-downs}{{5.6}{82}{Top down projections for S-VO with and without DPC-Net.\relax }{figure.caption.97}{}}
-\newlabel{fig:top-downs@cref}{{[figure][6][5]5.6}{[1][80][]82}}
-\@writefile{toc}{\contentsline {subsubsection}{Mean Absolute Trajectory Error (m-ATE)}{83}{section*.98}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Cumulative Absolute Trajectory Error (c-ATE)}{83}{section*.99}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Segment Error}{83}{section*.100}\protected@file@percent }
-\newlabel{00-pose-segs}{{\caption@xref {00-pose-segs}{ on input line 394}}{84}{Results \& Discussion}{figure.caption.101}{}}
-\newlabel{00-pose-segs@cref}{{[section][5][5]5.5}{[1][83][]84}}
-\newlabel{sub@00-pose-segs}{{}{84}{Results \& Discussion}{figure.caption.101}{}}
-\newlabel{sub@00-pose-segs@cref}{{[section][5][5]5.5}{[1][83][]84}}
-\newlabel{02-pose-segs}{{\caption@xref {02-pose-segs}{ on input line 400}}{84}{Results \& Discussion}{figure.caption.101}{}}
-\newlabel{02-pose-segs@cref}{{[section][5][5]5.5}{[1][83][]84}}
-\newlabel{sub@02-pose-segs}{{a}{84}{Results \& Discussion}{figure.caption.101}{}}
-\newlabel{sub@02-pose-segs@cref}{{[section][5][5]5.5}{[1][83][]84}}
-\newlabel{05-pose-segs}{{\caption@xref {05-pose-segs}{ on input line 406}}{84}{Results \& Discussion}{figure.caption.101}{}}
-\newlabel{05-pose-segs@cref}{{[section][5][5]5.5}{[1][83][]84}}
-\newlabel{sub@05-pose-segs}{{b}{84}{Results \& Discussion}{figure.caption.101}{}}
-\newlabel{sub@05-pose-segs@cref}{{[section][5][5]5.5}{[1][83][]84}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces c-ATE and segment errors for S-VO with radially distorted images with and without DPC-Net.\relax }}{84}{figure.caption.101}\protected@file@percent }
-\newlabel{fig:cum-seg-errs-distorted}{{5.7}{84}{c-ATE and segment errors for S-VO with radially distorted images with and without DPC-Net.\relax }{figure.caption.101}{}}
-\newlabel{fig:cum-seg-errs-distorted@cref}{{[figure][7][5]5.7}{[1][83][]84}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Results \& Discussion}{84}{section.5.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Correcting Sparse Visual Odometry}{84}{subsection.5.5.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces m-ATE and Mean Segment Errors for VO results with and without DPC-Net.\relax }}{85}{table.caption.102}\protected@file@percent }
-\newlabel{tab:nondistorted_stats}{{5.1}{85}{m-ATE and Mean Segment Errors for VO results with and without DPC-Net.\relax }{table.caption.102}{}}
-\newlabel{tab:nondistorted_stats@cref}{{[table][1][5]5.1}{[1][84][]85}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Distorted Images}{85}{subsection.5.5.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces m-ATE and Mean Segment Errors for VO results with and without DPC-Net for distorted images.\relax }}{86}{table.caption.104}\protected@file@percent }
-\newlabel{tab:distorted_stats}{{5.2}{86}{m-ATE and Mean Segment Errors for VO results with and without DPC-Net for distorted images.\relax }{table.caption.104}{}}
-\newlabel{tab:distorted_stats@cref}{{[table][2][5]5.2}{[1][85][]86}}
+\newlabel{eq:radial_distortion}{{5.29}{88}{Sparse Visual Odometry with Radial Distortion}{equation.5.4.29}{}}
+\newlabel{eq:radial_distortion@cref}{{[equation][29][5]5.29}{[1][88][]88}}
+\@writefile{toc}{\contentsline {subsubsection}{Dense Visual Odometry}{88}{section*.110}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Evaluation Metrics}{88}{subsection.5.4.3}\protected@file@percent }
+\newlabel{00-pose-cum}{{\caption@xref {00-pose-cum}{ on input line 305}}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{00-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{sub@00-pose-cum}{{}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{sub@00-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{00-pose-segs}{{\caption@xref {00-pose-segs}{ on input line 311}}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{00-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{sub@00-pose-segs}{{a}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{sub@00-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{02-pose-cum}{{\caption@xref {02-pose-cum}{ on input line 317}}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{02-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{sub@02-pose-cum}{{b}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{sub@02-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{02-pose-segs}{{\caption@xref {02-pose-segs}{ on input line 323}}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{02-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{sub@02-pose-segs}{{c}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{sub@02-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{05-pose-cum}{{\caption@xref {05-pose-cum}{ on input line 329}}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{05-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{sub@05-pose-cum}{{d}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{sub@05-pose-cum@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{05-pose-segs}{{\caption@xref {05-pose-segs}{ on input line 335}}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{05-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\newlabel{sub@05-pose-segs}{{e}{89}{Dense Visual Odometry}{figure.caption.111}{}}
+\newlabel{sub@05-pose-segs@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]89}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces c-ATE and mean segment errors for S-VO with and without DPC-Net.\relax }}{89}{figure.caption.111}\protected@file@percent }
+\newlabel{fig:cum-seg-errs}{{5.5}{89}{c-ATE and mean segment errors for S-VO with and without DPC-Net.\relax }{figure.caption.111}{}}
+\newlabel{fig:cum-seg-errs@cref}{{[figure][5][5]5.5}{[1][88][]89}}
+\newlabel{00-top-down}{{\caption@xref {00-top-down}{ on input line 347}}{90}{Dense Visual Odometry}{figure.caption.112}{}}
+\newlabel{00-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]90}}
+\newlabel{sub@00-top-down}{{}{90}{Dense Visual Odometry}{figure.caption.112}{}}
+\newlabel{sub@00-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]90}}
+\newlabel{02-top-down}{{\caption@xref {02-top-down}{ on input line 353}}{90}{Dense Visual Odometry}{figure.caption.112}{}}
+\newlabel{02-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]90}}
+\newlabel{sub@02-top-down}{{a}{90}{Dense Visual Odometry}{figure.caption.112}{}}
+\newlabel{sub@02-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]90}}
+\newlabel{05-top-down}{{\caption@xref {05-top-down}{ on input line 359}}{90}{Dense Visual Odometry}{figure.caption.112}{}}
+\newlabel{05-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]90}}
+\newlabel{sub@05-top-down}{{b}{90}{Dense Visual Odometry}{figure.caption.112}{}}
+\newlabel{sub@05-top-down@cref}{{[subsection][2][5,4]5.4.2}{[1][88][]90}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Top down projections for S-VO with and without DPC-Net.\relax }}{90}{figure.caption.112}\protected@file@percent }
+\newlabel{fig:top-downs}{{5.6}{90}{Top down projections for S-VO with and without DPC-Net.\relax }{figure.caption.112}{}}
+\newlabel{fig:top-downs@cref}{{[figure][6][5]5.6}{[1][88][]90}}
+\@writefile{toc}{\contentsline {subsubsection}{Mean Absolute Trajectory Error (m-ATE)}{91}{section*.113}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Cumulative Absolute Trajectory Error (c-ATE)}{91}{section*.114}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Segment Error}{91}{section*.115}\protected@file@percent }
+\newlabel{00-pose-segs}{{\caption@xref {00-pose-segs}{ on input line 394}}{92}{Results \& Discussion}{figure.caption.116}{}}
+\newlabel{00-pose-segs@cref}{{[section][5][5]5.5}{[1][91][]92}}
+\newlabel{sub@00-pose-segs}{{}{92}{Results \& Discussion}{figure.caption.116}{}}
+\newlabel{sub@00-pose-segs@cref}{{[section][5][5]5.5}{[1][91][]92}}
+\newlabel{02-pose-segs}{{\caption@xref {02-pose-segs}{ on input line 400}}{92}{Results \& Discussion}{figure.caption.116}{}}
+\newlabel{02-pose-segs@cref}{{[section][5][5]5.5}{[1][91][]92}}
+\newlabel{sub@02-pose-segs}{{a}{92}{Results \& Discussion}{figure.caption.116}{}}
+\newlabel{sub@02-pose-segs@cref}{{[section][5][5]5.5}{[1][91][]92}}
+\newlabel{05-pose-segs}{{\caption@xref {05-pose-segs}{ on input line 406}}{92}{Results \& Discussion}{figure.caption.116}{}}
+\newlabel{05-pose-segs@cref}{{[section][5][5]5.5}{[1][91][]92}}
+\newlabel{sub@05-pose-segs}{{b}{92}{Results \& Discussion}{figure.caption.116}{}}
+\newlabel{sub@05-pose-segs@cref}{{[section][5][5]5.5}{[1][91][]92}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces c-ATE and segment errors for S-VO with radially distorted images with and without DPC-Net.\relax }}{92}{figure.caption.116}\protected@file@percent }
+\newlabel{fig:cum-seg-errs-distorted}{{5.7}{92}{c-ATE and segment errors for S-VO with radially distorted images with and without DPC-Net.\relax }{figure.caption.116}{}}
+\newlabel{fig:cum-seg-errs-distorted@cref}{{[figure][7][5]5.7}{[1][91][]92}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Results \& Discussion}{92}{section.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Correcting Sparse Visual Odometry}{92}{subsection.5.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces m-ATE and Mean Segment Errors for VO results with and without DPC-Net.\relax }}{93}{table.caption.117}\protected@file@percent }
+\newlabel{tab:nondistorted_stats}{{5.1}{93}{m-ATE and Mean Segment Errors for VO results with and without DPC-Net.\relax }{table.caption.117}{}}
+\newlabel{tab:nondistorted_stats@cref}{{[table][1][5]5.1}{[1][92][]93}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Distorted Images}{93}{subsection.5.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces m-ATE and Mean Segment Errors for VO results with and without DPC-Net for distorted images.\relax }}{94}{table.caption.119}\protected@file@percent }
+\newlabel{tab:distorted_stats}{{5.2}{94}{m-ATE and Mean Segment Errors for VO results with and without DPC-Net for distorted images.\relax }{table.caption.119}{}}
+\newlabel{tab:distorted_stats@cref}{{[table][2][5]5.2}{[1][93][]94}}
 \@setckpt{sections/dpc}{
-\setcounter{page}{87}
+\setcounter{page}{95}
 \setcounter{equation}{32}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -190,9 +190,9 @@
 \setcounter{caption@flags}{0}
 \setcounter{ContinuedFloat}{0}
 \setcounter{parentequation}{0}
-\setcounter{Item}{16}
+\setcounter{Item}{20}
 \setcounter{Hfootnote}{18}
-\setcounter{bookmark@seq@number}{67}
+\setcounter{bookmark@seq@number}{69}
 \setcounter{ALG@line}{22}
 \setcounter{ALG@rem}{22}
 \setcounter{ALG@nested}{0}
