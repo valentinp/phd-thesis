@@ -2,10 +2,9 @@ This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
 A level-1 auxiliary file: sections/introduction.aux
-A level-1 auxiliary file: sections/math.aux
-A level-1 auxiliary file: sections/vo.aux
+A level-1 auxiliary file: sections/sun-bcnn.aux
+A level-1 auxiliary file: sections/conclusion.aux
 A level-1 auxiliary file: sections/appendix-perturbations.aux
-A level-1 auxiliary file: sections/appendix-misc.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
@@ -19,52 +18,75 @@ I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
  : ISSN={1050-4729},}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "Hartley2013-rc"
+Warning--I didn't find a database entry for "Zhang2015-gf"
+Warning--I didn't find a database entry for "Olson2003-ax"
+Warning--I didn't find a database entry for "Furgale2011-zu"
+Warning--I didn't find a database entry for "Lambert2012-um"
+Warning--I didn't find a database entry for "Eisenman2002-cg"
+Warning--I didn't find a database entry for "Maimone2007-tc"
+Warning--I didn't find a database entry for "Geiger2012-fq"
+Warning--I didn't find a database entry for "Furgale2012-kk"
+Warning--I didn't find a database entry for "Maddern2016-ng"
+Warning--I didn't find a database entry for "Alcantarilla2016-fs"
+Warning--I didn't find a database entry for "Engel2015-il"
+Warning--I didn't find a database entry for "Clement2016-ir"
+Warning--I didn't find a database entry for "Lalonde2011-jw"
+Warning--I didn't find a database entry for "kendall2015posenet"
+Warning--I didn't find a database entry for "Gal2016UncertaintyThesis"
+Warning--I didn't find a database entry for "Gal2016-ny"
+Warning--I didn't find a database entry for "Szegedy2015-uw"
+Warning--I didn't find a database entry for "zhou2014MITPlaces"
+Warning--I didn't find a database entry for "deng2009imagenet"
+Warning--I didn't find a database entry for "Gal2016CNN"
+Warning--I didn't find a database entry for "jia2014caffe"
+Warning--I didn't find a database entry for "fisher1953dispersion"
+Warning--I didn't find a database entry for "mcmanus2014"
+Warning--I didn't find a database entry for "Lakshminarayanan2017"
+Warning--I didn't find a database entry for "Osband2016"
 Warning--empty journal in Alcantarilla2016-kv
 Warning--empty journal in DeTone2016-ue
-Warning--empty school in furgale_phd11
+Warning--empty journal in Ma2016-at
 Warning--empty journal in Oliveira2017-lt
-Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 33 entries,
+You've used 36 entries,
             1935 wiz_defined-function locations,
-            696 strings with 10546 characters,
-and the built_in function-call counts, 15555 in all, are:
-= -- 1532
-> -- 712
-< -- 26
-+ -- 250
-- -- 246
-* -- 1284
-:= -- 2589
-add.period$ -- 99
-call.type$ -- 33
-change.case$ -- 284
+            752 strings with 12239 characters,
+and the built_in function-call counts, 17362 in all, are:
+= -- 1700
+> -- 813
+< -- 27
++ -- 287
+- -- 282
+* -- 1421
+:= -- 2869
+add.period$ -- 108
+call.type$ -- 36
+change.case$ -- 318
 chr.to.int$ -- 33
-cite$ -- 39
-duplicate$ -- 622
-empty$ -- 1040
-format.name$ -- 291
-if$ -- 3131
-int.to.chr$ -- 1
+cite$ -- 41
+duplicate$ -- 709
+empty$ -- 1174
+format.name$ -- 330
+if$ -- 3522
+int.to.chr$ -- 4
 int.to.str$ -- 0
-missing$ -- 31
-newline$ -- 164
-num.names$ -- 101
-pop$ -- 309
+missing$ -- 37
+newline$ -- 179
+num.names$ -- 110
+pop$ -- 370
 preamble$ -- 1
-purify$ -- 286
+purify$ -- 319
 quote$ -- 0
-skip$ -- 487
+skip$ -- 533
 stack$ -- 0
-substring$ -- 1051
-swap$ -- 150
-text.length$ -- 14
+substring$ -- 1132
+swap$ -- 174
+text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 196
-warning$ -- 6
-while$ -- 124
+type$ -- 212
+warning$ -- 5
+while$ -- 137
 width$ -- 0
-write$ -- 423
+write$ -- 462
 (There were 2 error messages)

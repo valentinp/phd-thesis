@@ -1,4 +1,5 @@
 \chapter{Predictive Robust Estimation}
+\label{ch:probe}
 \epigraph{Information is the resolution of uncertainty.}{Claude Shannon}
 \section{Motivation}
 Robot navigation relies on an accurate quantification of sensor noise or uncertainty in order to produce reliable state estimates.
@@ -31,11 +32,11 @@ monocular SLAM pipeline by selecting features with the highest \textit{informati
 
 \section{Scalar k-Nearest Neighbours}
 
-In this chapter we present PROBE, a Predictive ROBust Estimation technique that improves localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
+Predictive ROBust Estimation technique that improves localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
 We learn the model in an offline training procedure and then use it online to predict the uncertainty of incoming observations as a function of their location in a predefined \emph{prediction space}.
 Our model can be learned in completely unknown environments with frequent or infrequent ground truth data. 
 
-The primary contributions of this research are a flexible framework for learning the quality of visual features with respect to navigation estimates, and a straightforward way to incorporate this information into a navigation pipeline. On its own, PROBE can produce more accurate estimates than a binary outlier rejection scheme like Random Sample Consensus (RANSAC) \cite{Fischler:1981cv} because it can simultaneously reduce the influence of outliers while intelligently weighting inliers. PROBE reduces the need to develop finely-tuned uncertainty models for complex sensors such as cameras, and better accounts for the effects observed in complex, dynamic scenes than typical fixed-uncertainty models. While we present PROBE in the context of visual feature-based navigation, we stress that it is not limited to visual measurements and could also be applied to other sensor modalities.
+The primary contributions of this research are a flexible framework for learning the quality of visual features with respect to navigation estimates, and a straightforward way to incorporate this information into a navigation pipeline. On its own, PROBE can produce more accurate estimates than a binary outlier rejection scheme like Random Sample Consensus (RANSAC) because it can simultaneously reduce the influence of outliers while intelligently weighting inliers. PROBE reduces the need to develop finely-tuned uncertainty models for complex sensors such as cameras, and better accounts for the effects observed in complex, dynamic scenes than typical fixed-uncertainty models. While we present PROBE in the context of visual feature-based navigation, we stress that it is not limited to visual measurements and could also be applied to other sensor modalities.
 % The remainder of this paper is organized as follows: In Section \ref{sec:related_work}, we discuss related work in the literature. Section \ref{sec:approach} outlines our tightly-coupled visual-inertial odometry pipeline and learning model. Section \ref{sec:predictors} discusses and justifies our choice of prediction space. Sections \ref{sec:results} and \ref{sec:discussion} discuss experimental results of PROBE's performance on several segments from the KITTI dataset \cite{Geiger:2013kp}, and experimental datasets collected at the University of Toronto Institute for Aerospace Studies (UTIAS). Finally, Section \ref{sec:conclusions} offers some concluding remarks.
 
 \begin{figure}
@@ -48,7 +49,7 @@ The primary contributions of this research are a flexible framework for learning
 The aim of PROBE is to learn a model for the quality of visual features, with the goal of reducing the impact of deleterious visual effects such as moving objects, motion blur, and shadows on navigation estimates.
 Feature quality is characterized by a scalar weight, $\beta_i$, for each visual feature in an environment.
 To compute $\beta_i$ we define a prediction space (similar to \cite{VegaBrown:ew}) that consists of a set of visual-inertial predictors computed from the local image region around the feature and the inertial state of the vehicle (Section \ref{sec:predictors} details our choice of predictors).
-We then scale the image covariance of each feature ($\mbf{R}_a^{i}$, $\mbf{R}_b^{i}$ in \ref{eqn:gamma}) by $\beta_i$ during the non-linear optimization.
+We then scale the image covariance of each feature ($\MeasurementCovariance_a^{i}$, $\MeasurementCovariance_b^{i}$ in \ref{eqn:gamma}) by $\beta_i$ during the non-linear optimization.
 
 In a similar manner to M-estimation, PROBE achieves robustness by varying the influence of certain measurements.
 However, in contrast to robust cost functions that weight measurements based purely on estimation error, PROBE weights measurements based on their assessed quality.
@@ -60,10 +61,11 @@ We learn the quality of visual features \textit{indirectly} through their effect
 \subsection{Training}
 Training proceeds by traversing the training path, selecting a subset of visual features at each step, and using them to compute an incremental position estimate. By comparing the estimated position to the ground truth position, we compute the translational Root Mean Squared Error (RMSE), denoted by $ \alpha_{l,s} $ for iteration $l$ and step $s$, and store it at each feature's position in the prediction space (we denote the set of predictors and associated RMSE value by $\Theta_{l,s}$). The full algorithm is summarized in Figure \ref{fig:ProbeTraining}. Note that $\alpha_{l,s}$ can be computed at each step, at intermittent steps, or for an entire path, depending on the availability of ground truth data.
 \begin{figure}[h]
+\begin{center}
 \begin{algorithmic}[1]
 \Procedure{trainPROBEModel}{}
-\For{$l\gets 1, totalLearningIterations$}
-\For{$s\gets 1, totalPathSteps$}
+\For{$l\gets 1, N_{iter}$}
+\For{$s\gets 1, N_{path}$}
 	\State $f_1, \dots, f_J \gets visualFeatureSubset(l)$
 	\State $\mbs\pi^1_l, \dots, \mbs\pi^J_l \gets predictors(f_1, \dots, f_J)$
 	\State $\bar{\mbf{C}}_{ba},  \bar{\mbf{r}}_a^{ba} \gets poseChange(f_1, \dots, f_J)$
@@ -75,6 +77,7 @@ Training proceeds by traversing the training path, selecting a subset of visual 
 \EndProcedure
 \end{algorithmic}
 \caption{The PROBE training procedure.}\label{fig:ProbeTraining}
+\end{center}
 \end{figure}
 	\subsection{Evaluation}
 To use the PROBE model in a test environment, we compute the location of each observed visual feature in our prediction space, and then compute its relative weight $\beta_i$ as a function of its $K$ nearest neighbours in the training set.
@@ -84,7 +87,7 @@ The final scaling factor $\beta_i$ is a function of the mean of the $\alpha$ val
 \begin{figure}[h]
 \begin{algorithmic}[1]
 \Procedure{usePROBEModel}{$\mbs \Theta$}
-\For{$i \gets 1, totalFeatures$}
+\For{$i \gets 1, N_{feat}$}
 	\State $\mbs \pi_i  \gets predictors(f_i) $
 	\State $\alpha_1,...,\alpha_K \gets findKNN(\mbs \pi_i, K, \mbs\Theta)$
 	\State $\beta_i \gets \left(\frac{1}{\overline{\alpha} K} \sum_{k=1}^K \alpha_k  \right)^{\gamma}$
@@ -111,7 +114,7 @@ In our implementation, we use the following predictors, but stress that the choi
 \begin{itemize}
     \item Angular velocity and linear acceleration magnitudes
     \item Local image entropy
-    \item Blur (quantified by the blur metric of \cite{Anonymous:Ngi3VEEU})
+    \item Blur (quantified by the blur metric of \cite{crete2007blur})
     \item Optical flow variance score
     \item Image frequency composition
 \end{itemize}
@@ -136,9 +139,9 @@ where $c_i$ is the number of pixels counted in the $i^\text{th}$ bin.
 Blur can arise from a number of sources including motion, dirty lenses, and sensor defects.
 All of these have deleterious effects on feature tracking quality.
 To assess the effect of blur in detail, we performed a separate experiment.
-We recorded images of 32 interior corners of a standard checkerboard calibration target using a low frame-rate (20 FPS) Skybotix VI-Sensor stereo camera and a high frame-rate (125 FPS) Point Grey Flea3 monocular camera rigidly connected by a bar (Figure \ref{fig:tricifix}).
-Prior to the experiment, we determined the intrinsic and extrinsic calibration parameters of our rig using the Kalibr package \cite{Furgale:2013dm}.
-The apparatus underwent both slow and fast translational and rotational motion, which induced different levels of motion blur as quantified by the blur metric proposed by \cite{Anonymous:Ngi3VEEU}.
+We recorded images of 32 interior corners of a standard checkerboard calibration target using a low frame-rate (20 FPS) Skybotix VI-Sensor stereo camera and a high frame-rate (125 FPS) Point Grey Flea3 monocular camera rigidly connected by a bar (\Cref{fig:probe_tricifix}).
+Prior to the experiment, we determined the intrinsic and extrinsic calibration parameters of our rig using the \textsc{Kalibr}\footnote{\url{https://github.com/ethz-asl/kalibr}} package \cite{Furgale2013-sl}.
+The apparatus underwent both slow and fast translational and rotational motion, which induced different levels of motion blur as quantified by the blur metric proposed by \cite{crete2007blur}.
 % The two motion regimes induced different levels of motion blur, which we distinguish by thresholding the blur metric proposed by \cite{Anonymous:Ngi3VEEU}.
 
 \begin{figure}
@@ -167,16 +170,16 @@ The apparatus underwent both slow and fast translational and rotational motion, 
     \centering
     \includegraphics[width=0.85\textwidth]{probe/trackingError}
     \label{fig:probe_visensor_trackingError}
-    \caption{Effect of blur on reprojection and tracking error for the slow-then-fast checkerboard dataset. We distinguish between high and low blur by thresholding the blur metric \cite{Anonymous:Ngi3VEEU}. The variance in both errors increases with blur.}
-    \label{fig:visensor_histograms}
+    \caption{Effect of blur on reprojection and tracking error for the slow-then-fast checkerboard dataset. We distinguish between high and low blur by thresholding the blur metric \cite{crete2007blur}. The variance in both errors increases with blur.}
+    \label{fig:probe_visensor_histograms}
 \end{figure}
 
 We detected checkerboard corners in each camera at synchronized time steps, computed their 3D coordinates in the VI-Sensor frame, then reprojected these 3D coordinates into the Flea3 frame.
 We then computed the reprojection error as the distance between the reprojected image coordinates and the true image coordinates in the Flea3 frame.
 Since the Flea3 operated at a much higher frame rate than the VI-Sensor, it was less susceptible to motion blur and so we treated its observations as ground truth.
-We also computed a tracking error by comparing the image coordinates of checkerboard corners in the left camera of the VI-Sensor computed from both KLT tracking \cite{Lucas:1981uw} and re-detection.
+We also computed a tracking error by comparing the image coordinates of checkerboard corners in the left camera of the VI-Sensor computed from both KLT tracking \cite{Lucas:1981} and re-detection.
 
-Figure \ref{fig:probe_visensor_histograms} shows histograms and fitted normal distributions for both reprojection error and tracking error.
+\Cref{fig:probe_visensor_histograms} shows histograms and fitted normal distributions for both reprojection error and tracking error.
 From these distributions we can see that the errors remain approximately zero-mean, but that their variance increases with blur.
 This result is compelling evidence that the effect of blur on feature tracking quality can be accounted for by scaling the feature covariance matrix by a function of the blur metric.
 
@@ -191,7 +194,7 @@ We compute this optical flow variance score according to
     \log \left( \frac{\bar{\sigma}^2_s}{\bar{\sigma}^2_l} \right),
 \end{equation}
 where $\bar{\sigma}^2_s, \bar{\sigma}^2_l$ are the means of the variance of the vertical and horizontal optical flow vector components in the small and large regions respectively.
-Figure \ref{fig:flow_variance} shows sample results of this scoring procedure for two images in the KITTI dataset \cite{Geiger:2013kp}.
+\Cref{fig:probe_flow_variance} shows sample results of this scoring procedure for two images in the KITTI dataset.
 Our optical flow variance score generally picks out moving objects such as vehicles and cyclists in diverse scenes.
 
 \begin{figure}
@@ -205,7 +208,7 @@ Our optical flow variance score generally picks out moving objects such as vehic
 Reliable feature tracking is often difficult in textureless or self-similar environments due to low feature counts and false matches.
 We detect textureless and self-similar image regions by computing the Fast Fourier Transform (FFT) of each image and analyzing its frequency composition.
 For each feature, we compute a coefficient for the low- and high-frequency regimes of the FFT.
-Figure \ref{fig:high_frequency} shows the result of the high-frequency version of this predictor on a sample image from the KITTI dataset \cite{Geiger:2013kp}.
+\Cref{fig:probe_high_frequency} shows the result of the high-frequency version of this predictor on a sample image from the KITTI dataset.
 Our high-frequency predictor effectively distinguishes between textureless regions (e.g., shadows and roads) and texture-rich regions (e.g., foliage).
 
 \begin{figure}
@@ -509,30 +512,27 @@ to obtain.  In these cases, we can instead formulate a likelihood model $p(\math
 landmarks and predictors for each training image pair. We can construct a model
 for future queries by inferring the most likely sequence of transforms for our
 training images.  The likelihood has the following factorized form:
-\begin{multline}
+\begin{equation}
   p(\mathcal{D}' \vert \Transform_{1:T}) \propto \int \prod_{i,t}
   \mathrm{d}\ImageLandmarkCovariance{i}{t}\,
   p(\ImageLandmark{i}{t}' \vert \ImageLandmark{i}{t}, 
-    \Transform_t, \ImageLandmarkCovariance{i}{t}) \nonumber \\
-  \times p(\ImageLandmarkCovariance{i}{t}\vert \Predictor{i}{t},
+    \Transform_t, \ImageLandmarkCovariance{i}{t}) p(\ImageLandmarkCovariance{i}{t}\vert \Predictor{i}{t},
     \mathcal{D}, \Transform_{1:T}).
-\end{multline}
+\end{equation}
 We cannot easily maximize this likelihood, since marginalizing over the
 noise covariances removes the independence of the transforms between
-each image pair. To render the optimization tractable, we follow
-our previous work \citep{VegaBrown:2013fv} and formulate an iterative expectation-maximization (EM)
+each image pair. To render the optimization tractable, we follow previous work \citep{VegaBrown:2013fv} and formulate an iterative expectation-maximization (EM)
 procedure. Given an estimate $\Transform_{t}^{(n)}$ of the transforms, we can
 compute the expected log-likelihood conditioned on our current estimate: 
-\begin{multline}
+\begin{equation}
   Q(\Transform_{1:T} \vert \Transform_{1:T}^{(n)}) = 
     \int \left(\prod_{i,t}\mathrm{d}\ImageLandmarkCovariance{i}{t}
       \,p(\ImageLandmarkCovariance{i}{t} | \mathcal{D}_{\setminus
         i,t},
-      \Transform_{1:T}^{(n)})\right)
-    \\ \times \log \prod_{i,t} p(\ImageLandmark{i}{t}' \vert
+      \Transform_{1:T}^{(n)})\right) \log \prod_{i,t} p(\ImageLandmark{i}{t}' \vert
       \ImageLandmark{i}{t}, \Transform_t,
       \ImageLandmarkCovariance{i}{t}).
-\end{multline}
+\end{equation}
 This has the effect of rendering the likelihood of each transform to be
 estimated independently.  Moreover, the expected log-likelihood can be
 evaluated in closed form:
@@ -630,7 +630,7 @@ the vertical and horizontal pixel locations in each of the stereo cameras.
 
 We simulated independent training and test traversals, where the camera moved for
 30 and 60 seconds respectively (at a forward speed of 3 metres per second for final path
-lengths of 90 and 180 meters).  \Cref{fig:sim_comparison} and \Cref{table:armse_errors} document the qualitative and quantitative comparisons of PROBE-GK (trained with and without ground-truth) against two baseline stereo odometry frameworks. Both baseline estimators were implemented based on \Cref{sec:ssvo}. The first utilized fixed covariances for all reprojection errors, while the second used a modified robust cost (i.e. M-estimation) based on Student's~$t$ weighting, with $\nu = 5$ (as suggested in \cite{kerl2013robust}).  These benchmarks served as baseline estimators (with and without robust costs) that used fixed covariance matrices and did not include a predictive component. 
+lengths of 90 and 180 meters).  \Cref{fig:sim_comparison} and \Cref{table:probe-gk_armse_errors} document the qualitative and quantitative comparisons of PROBE-GK (trained with and without ground-truth) against two baseline stereo odometry frameworks. Both baseline estimators were implemented based on \Cref{sec:ssvo}. The first utilized fixed covariances for all reprojection errors, while the second used a modified robust cost (i.e. M-estimation) based on Student's~$t$ weighting, with $\nu = 5$ (as suggested in \cite{kerl2013robust}).  These benchmarks served as baseline estimators (with and without robust costs) that used fixed covariance matrices and did not include a predictive component. 
 
 Using PROBE-GK with ground truth data for training,
 we significantly reduced both the translation and rotational Average Root Mean Squared Error (ARMSE)
@@ -648,7 +648,7 @@ by approximately 50\%. In our synthetic data, the Expectation Maximization appro
     covariances learned without ground truth using expectation maximization,
     with \cref{alg:train-em} (GK-EM). Note in this experiment, the RMSE curves
     for GK-GT and GK-EM very nearly overlap. The overall translational and
-    rotational ARMSE values are shown in Table \ref{table:armse_errors}.} 
+    rotational ARMSE values are shown in Table \ref{table:probe-gk_armse_errors}.} 
     \label{fig:sim_comparison}
 \end{figure}
 
@@ -675,7 +675,7 @@ work, we focused on the city, residential and road categories
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0011-0009-15-Sep-2015-4way}}
-    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref{table:armse_errors} for a quantitative summary.}
+    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref{table:probe-gk_armse_errors} for a quantitative summary.}
     \vspace{-0.4em}
     \label{fig:probe-gk_kitti_comparison1}
 \end{figure}
@@ -692,7 +692,7 @@ a more detailed explanation of our choice of prediction space, see our previous 
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0035-0036-15-Sep-2015-4way}}
-    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset. See \Cref{table:armse_errors} for a quantitative summary.}
+    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset.}
     \vspace{-0.4em}
     \label{fig:probe-gk_kitti_comparison2}
 \end{figure}
@@ -700,12 +700,12 @@ a more detailed explanation of our choice of prediction space, see our previous 
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0070-0028-15-Sep-2015-4way}}
-    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset. See \Cref{table:armse_errors} for a quantitative summary.}
+    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset.}
     \vspace{-0.4em}
     \label{fig:probe-gk_kitti_comparison3}
 \end{figure}
 
-\Cref{fig:kitti_comparison1,fig:kitti_comparison2,fig:kitti_comparison3} show
+\Cref{fig:probe-gk_kitti_comparison1,fig:probe-gk_kitti_comparison2,fig:probe-gk_kitti_comparison3} show
 typical results; \Cref{table:armse_errors} presents a quantitative comparison.
 PROBE GK-GT produced significant reductions in ARMSE, reducing translational ARMSE by
 as much as 80\%. In contrast, GK-EM showed more modest improvements; this is
@@ -749,7 +749,7 @@ Road & 723.8 & 17.69 & 9.38 & 5.24 & 8.87 & 0.060 & 0.027 & 0.015 & 0.024
     \includegraphics[width=0.75\textwidth]{probe-gk/experiment_wide_border}
     \caption{Our experimental apparatus: a Clearpath Husky rover outfitted with a PointGrey XB3 stereo camera and a differential GPS receiver and base station.}
       \vspace{-0.5em}
-   	    \label{fig:experiments}
+   	    \label{fig:probe-gk_experiments}
 \end{figure}
 
 \begin{figure}
@@ -758,14 +758,14 @@ Road & 723.8 & 17.69 & 9.38 & 5.24 & 8.87 & 0.060 & 0.027 & 0.015 & 0.024
     \caption{GPS ground truth for 5 experimental trials collected
       near the UTIAS Mars Dome. Each trial is approximately 250 m long.}
       \vspace{-0.5em}
-    \label{fig:experiment_groundtruth}
+    \label{fig:probe-gk_experiment_groundtruth}
 \end{figure}
 
-To further investigate the capability of our EM approach, we evaluated PROBE-GK on experimental data collected at the University of Toronto Institute for Aerospace Studies (UTIAS). For this experiment, we drove a Clearpath Husky rover outfitted with an Ashtech DG14 Differential GPS, and a PointGrey XB3 stereo camera around the MarsDome (an indoor Mars analog testing environment) at UTIAS (\Cref{fig:experiments}) for five trials of a similar path.  Each trial was approximately 250 m in length and we made an effort to align the start and end points of each loop. We used the wide baseline (25 cm) of the XB3 stereo camera to record the stereo images. The approximate trajectory for all 5 trials, as recorded by GPS, is shown in \Cref{fig:experiment_groundtruth}.  Note that the GPS data was not used during training, and only recorded for reference.
+To further investigate the capability of our EM approach, we evaluated PROBE-GK on experimental data collected at the University of Toronto Institute for Aerospace Studies (UTIAS). For this experiment, we drove a Clearpath Husky rover outfitted with an Ashtech DG14 Differential GPS, and a PointGrey XB3 stereo camera around the MarsDome (an indoor Mars analog testing environment) at UTIAS (\Cref{fig:probe-gk_experiments}) for five trials of a similar path.  Each trial was approximately 250 m in length and we made an effort to align the start and end points of each loop. We used the wide baseline (25 cm) of the XB3 stereo camera to record the stereo images. The approximate trajectory for all 5 trials, as recorded by GPS, is shown in \Cref{fig:probe-gk_experiment_groundtruth}.  Note that the GPS data was not used during training, and only recorded for reference.
 
-For the prediction space in our experiments, we mimicked the KITTI experiments, omitting inertial magnitudes as no inertial data was available. We trained PROBE-GK without ground truth, using the Expectation Maximization approach. \Cref{fig:experiments_trainingstats} shows the likelihood and loop closure error as a function of EM iteration. 
+For the prediction space in our experiments, we mimicked the KITTI experiments, omitting inertial magnitudes as no inertial data was available. We trained PROBE-GK without ground truth, using the Expectation Maximization approach. \Cref{fig:probe-gk_experiments_trainingstats} shows the likelihood and loop closure error as a function of EM iteration. 
 
-The EM approach indeed produced significant error reductions on the training dataset after just a few iterations.  Although  it was trained with no ground truth information, our PROBE-GK model was used to produce significant reductions in the loop closure errors of the remaining 4 test trials. This reinforced our earlier hypothesis: the EM method works well when the training trajectory more closely resembles the test trials (as was the case in this experiment). \Cref{table:loop_closure_errors} lists the statistics for each test. 
+The EM approach indeed produced significant error reductions on the training dataset after just a few iterations.  Although  it was trained with no ground truth information, our PROBE-GK model was used to produce significant reductions in the loop closure errors of the remaining 4 test trials. This reinforced our earlier hypothesis: the EM method works well when the training trajectory more closely resembles the test trials (as was the case in this experiment). \Cref{table:probe-gk_loop_closure_errors} lists the statistics for each test. 
 
 
 \begin{table}
@@ -793,3 +793,15 @@ The EM approach indeed produced significant error reductions on the training dat
       \vspace{-1em}
     \label{fig:probe-gk_experiments_trainingstats}
 \end{figure}
+
+\section{Summary}
+
+Predictive Robust Estimation applied two different techniques (scalar weighted covariances and the method of generalized kernel estimation) to improve on the uncorrelated and static Gaussian error models typically employed in stereo odometry.
+
+%In this work, we presented PROBE, a novel method for predicting the quality of visual features within complex, dynamic environments. By using training data to learn a mapping from a predefined space of visual-inertial predictors to a scalar weight, we can adjust the influence of individual visual features on the final navigation estimate. PROBE can be used in place of traditional outlier rejection techniques such as RANSAC, or combined with them to more intelli- gently weight inlier measurements.
+%We explored a variety of potential predictors, and validated our technique using a visual-inertial navigation system on over 4 km of data from the KITTI dataset and 700 m of indoor and outdoor data collected at the University of Toronto Institute for Aerospace Studies. Our results show that PROBE outperforms RANSAC-based binary outlier re- jection in many environments, even with only sparse ground truth available during the training step.
+%In future work, we plan to examine a broader set of predic- tors, and extend the training procedure to incorporate online learning using intermittent ground truth measurements or loop closures detected by a place recognition thread. Further, we are interested in analyzing the amount of training data required for a given improvement in navigation accuracy, and in investigating PROBE’s effect on estimator consistency.
+
+
+% By inferring a more accurate noise model given past sensory experience, we can reduce the tracking error of a sequence of estimates and improve the robustness of our estimator, even when the training data does not have associated ground truth. Our method has the advantage of having relatively few tuning parameters, meaning it can be applied to new problems with very little user intervention. We do rely on the availability of a good set of predictors, and have found that for problems of interest finding a good set is not difficult; a principled choice of an optimal set of predictors, however, remains an interesting open problem.
+%Although our experiments demonstrate utility only in the context of sequential maximum likelihood estimation on stereo vision data, we believe the model presented here can be applied to a more general class of filter or factor- based estimation algorithms, as well as to a more general class of sensors. In future work, we plan to investigate the applicability of our method to problems of simultaneous localization and mapping, explore the possibility of learning the predictive model online (obviating the need for training data), and examine more principled approaches to selecting an informative prediction space.

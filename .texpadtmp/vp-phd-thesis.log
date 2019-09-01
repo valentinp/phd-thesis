@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  29 AUG 2019 11:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  1 SEP 2019 15:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -993,14 +993,28 @@ LaTeX Warning: Label `fig:into_rur' multiply defined.
 
 LaTeX Warning: Label `fig:into_rur@cref' multiply defined.
 
-) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/vo.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-perturbations.aux
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/sun-bcnn.aux
+
+LaTeX Warning: Label `sec:kitti_vo_sim_sun' multiply defined.
+
+
+LaTeX Warning: Label `sec:kitti_vo_sim_sun@cref' multiply defined.
+
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/conclusion.aux
+
+LaTeX Warning: Label `fig:intro_vo_pipeline' multiply defined.
+
+
+LaTeX Warning: Label `fig:intro_vo_pipeline@cref' multiply defined.
+
+) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-perturbations.aux
 
 LaTeX Warning: Label `eq:left_perturb' multiply defined.
 
 
 LaTeX Warning: Label `eq:left_perturb@cref' multiply defined.
 
-) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-misc.aux))
+))
 \openout1 = `vp-phd-thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
@@ -1134,16 +1148,16 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 12.0pt on input line 137.
  [2]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 24.88pt on input line 150.
+(Font)              scaled to size 24.88pt on input line 148.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 24.88pt on input line 150.
+(Font)              scaled to size 24.88pt on input line 148.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 154.
-LaTeX Font Info:    Try loading font information for U+msa on input line 154.
+(Font)              scaled to size 10.95pt on input line 152.
+LaTeX Font Info:    Try loading font information for U+msa on input line 152.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 154.
+LaTeX Font Info:    Try loading font information for U+msb on input line 152.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [3
@@ -1152,11 +1166,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 177.
+(Font)              scaled to size 8.0pt on input line 180.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 177.
+(Font)              scaled to size 10.0pt on input line 180.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 177.
+(Font)              scaled to size 7.0pt on input line 180.
  [5] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.toc
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 1.
@@ -1168,26 +1182,33 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 
  [7] [8
 
-]
-Overfull \hbox (12.07584pt too wide) in paragraph at lines 202--202
- []|$[]$|
- []
-
-[1
+] [1
 
 ]
 \openout2 = `sections/introduction.aux'.
 
  (./sections/introduction.tex
 Chapter 1.
-<figures/introduction/rur.jpg, id=278, 426.09187pt x 332.74312pt>
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 3.
+<figures/introduction/rur.jpg, id=270, 426.09187pt x 332.74312pt>
 File: figures/introduction/rur.jpg Graphic file (type jpg)
 <use figures/introduction/rur.jpg>
-Package pdftex.def Info: figures/introduction/rur.jpg  used on input line 13.
+Package pdftex.def Info: figures/introduction/rur.jpg  used on input line 14.
 (pdftex.def)             Requested size: 180.67224pt x 141.09154pt.
 
-Underfull \hbox (badness 2875) in paragraph at lines 16--16
-[]\OT1/LinuxLibertineT-TLF/m/n/12 Figure 1.1: |A robot re-bel-lion from Karel
+Underfull \hbox (badness 1472) in paragraph at lines 17--17
+[]\OT1/LinuxLibertineT-TLF/m/n/12 Figure 1.1: |A `robot' re-bel-lion from Karel
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 22--23
+\OT1/LinuxLibertineT-TLF/m/n/12 ogy, the god Hep-haes-tus, the `pa-tron of
+ []
+
+
+Underfull \hbox (badness 2050) in paragraph at lines 22--23
+\OT1/LinuxLibertineT-TLF/m/n/12 in-ven-tion and tech-nol-ogy' ([][]Mayor[][], [][]2019[][])
  []
 
 [2
@@ -1197,54 +1218,57 @@ Underfull \hbox (badness 2875) in paragraph at lines 16--16
 <figures/introduction/pancam-panorama-opportunity.jpg, id=297, 3011.25pt x 672.5125pt>
 File: figures/introduction/pancam-panorama-opportunity.jpg Graphic file (type jpg)
 <use figures/introduction/pancam-panorama-opportunity.jpg>
-Package pdftex.def Info: figures/introduction/pancam-panorama-opportunity.jpg  used on input line 38.
+Package pdftex.def Info: figures/introduction/pancam-panorama-opportunity.jpg  used on input line 39.
 (pdftex.def)             Requested size: 429.10176pt x 95.82376pt.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sl' in size <12> not available
-(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/it' tried instead on input line 48.
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/it' tried instead on input line 49.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 48.
+(Font)              scaled to size 12.0pt on input line 49.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scsl' in size <12> not available
-(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/scit' tried instead on input line 48.
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/scit' tried instead on input line 49.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scit' will be
-(Font)              scaled to size 12.0pt on input line 48.
+(Font)              scaled to size 12.0pt on input line 49.
  [3]
-Overfull \hbox (13.33441pt too wide) in paragraph at lines 74--75
+Overfull \hbox (13.33441pt too wide) in paragraph at lines 68--69
  [][] 
  []
 
 
-Overfull \hbox (13.33441pt too wide) in paragraph at lines 95--95
+Overfull \hbox (13.33441pt too wide) in paragraph at lines 89--89
  [][] 
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 95--95
+Underfull \hbox (badness 1210) in paragraph at lines 89--89
 []\OT1/LinuxLibertineT-TLF/m/n/10.95 (b) |The com-po-nents of soft-
  []
 
 
-Overfull \hbox (36.65308pt too wide) in paragraph at lines 116--116
+Overfull \hbox (36.65308pt too wide) in paragraph at lines 110--110
  [][] 
  []
 
-[4 <./figures/introduction/pancam-panorama-opportunity.jpg>]
+
+Underfull \vbox (badness 1968) has occurred while \output is active []
+
+ [4 <./figures/introduction/pancam-panorama-opportunity.jpg>]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 17.28pt on input line 124.
-<figures/introduction/vo_pipeline.pdf, id=323, 982.05573pt x 410.43579pt>
+(Font)              scaled to size 17.28pt on input line 126.
+<figures/introduction/vo_pipeline.pdf, id=322, 982.05573pt x 410.43579pt>
 File: figures/introduction/vo_pipeline.pdf Graphic file (type pdf)
 <use figures/introduction/vo_pipeline.pdf>
-Package pdftex.def Info: figures/introduction/vo_pipeline.pdf  used on input line 128.
+Package pdftex.def Info: figures/introduction/vo_pipeline.pdf  used on input line 130.
 (pdftex.def)             Requested size: 442.65182pt x 185.00127pt.
  [5 <./figures/introduction/vo_pipeline.pdf>]
-<figures/introduction/pseudo_sensor.pdf, id=425, 993.85384pt x 337.99716pt>
-File: figures/introduction/pseudo_sensor.pdf Graphic file (type pdf)
-<use figures/introduction/pseudo_sensor.pdf>
-Package pdftex.def Info: figures/introduction/pseudo_sensor.pdf  used on input line 149.
-(pdftex.def)             Requested size: 442.65182pt x 150.53976pt.
-
 Underfull \vbox (badness 2368) has occurred while \output is active []
 
  [6]
+<figures/introduction/pseudo_sensor.pdf, id=449, 993.85384pt x 337.99716pt>
+File: figures/introduction/pseudo_sensor.pdf Graphic file (type pdf)
+<use figures/introduction/pseudo_sensor.pdf>
+Package pdftex.def Info: figures/introduction/pseudo_sensor.pdf  used on input line 151.
+(pdftex.def)             Requested size: 442.65182pt x 150.53976pt.
+
 Underfull \hbox (badness 2951) in paragraph at lines 164--164
 []|\OT1/LinuxLibertineT-TLF/m/n/12 Decades of lit-er-a-ture & do-main
  []
@@ -1260,87 +1284,737 @@ Overfull \hbox (8.89981pt too wide) in paragraph at lines 161--177
  []
 
 
-Underfull \vbox (badness 5147) has occurred while \output is active []
+LaTeX Warning: Reference `ch:probe' on page 1 undefined on input line 181.
 
- [7 <./figures/introduction/pseudo_sensor.pdf>]
-<figures/introduction/all_pseudo_sensors.pdf, id=503, 1012.24254pt x 574.18414pt>
+
+LaTeX Warning: Reference `ch:hydranet' on page 1 undefined on input line 181.
+
+
+LaTeX Warning: Reference `ch:dpc' on page 1 undefined on input line 181.
+
+
+Overfull \hbox (6.17914pt too wide) in paragraph at lines 181--182
+\OT1/LinuxLibertineT-TLF/m/n/12 learned \OT1/LinuxLibertineT-TLF/m/it/12 pseudo-sensor\OT1/LinuxLibertineT-TLF/m/n/12 . In-stead of com-pletely re-plac-ing the clas-si-cal pipeline, this the-sis presents
+ []
+
+[7 <./figures/introduction/pseudo_sensor.pdf>]
+<figures/introduction/all_pseudo_sensors.pdf, id=508, 1012.24254pt x 574.18414pt>
 File: figures/introduction/all_pseudo_sensors.pdf Graphic file (type pdf)
 <use figures/introduction/all_pseudo_sensors.pdf>
-Package pdftex.def Info: figures/introduction/all_pseudo_sensors.pdf  used on input line 205.
+Package pdftex.def Info: figures/introduction/all_pseudo_sensors.pdf  used on input line 203.
 (pdftex.def)             Requested size: 442.65182pt x 251.09103pt.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 212.
-LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 218.
- [8 <./figures/introduction/all_pseudo_sensors.pdf>] [9]pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.238 \item \bibentry{2018_Peretroukhin_Inferring}
-                                                  
-LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TLF on input line 248.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.fd
-File: OT1LinuxLibertineMonoT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxLibertineMonoT-TLF.
-)
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 248.
-) [10]
-\openout2 = `sections/math.aux'.
 
- (./sections/math.tex
+
+LaTeX Warning: Reference `ch:probe' on page 1 undefined on input line 214.
+
+[8 <./figures/introduction/all_pseudo_sensors.pdf>]
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 216.
+ [9]
+
+LaTeX Warning: Reference `ch:dpc' on page 1 undefined on input line 229.
+
+
+LaTeX Warning: Reference `ch:hydranet' on page 1 undefined on input line 236.
+
+) [10]
+\openout2 = `sections/sun-bcnn.aux'.
+
+ (./sections/sun-bcnn.tex
 Chapter 2.
+
+Package natbib Warning: Citation `Zhang2015-gf' on page 11 undefined on input line 5.
+
+<figures/sun-bcnn/system_overview.pdf, id=895, 686.07072pt x 390.18723pt>
+File: figures/sun-bcnn/system_overview.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/system_overview.pdf>
+Package pdftex.def Info: figures/sun-bcnn/system_overview.pdf  used on input line 13.
+(pdftex.def)             Requested size: 338.76563pt x 192.66399pt.
+<figures/sun-bcnn/all_datasets_gps.pdf, id=896, 1027.7067pt x 375.26689pt>
+File: figures/sun-bcnn/all_datasets_gps.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/all_datasets_gps.pdf>
+Package pdftex.def Info: figures/sun-bcnn/all_datasets_gps.pdf  used on input line 20.
+(pdftex.def)             Requested size: 442.65182pt x 161.63646pt.
+
+Package natbib Warning: Citation `Olson2003-ax' on page 11 undefined on input line 26.
+
+
+Package natbib Warning: Citation `Furgale2011-zu' on page 11 undefined on input line 27.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 11 undefined on input line 27.
+
+
+Package natbib Warning: Citation `Eisenman2002-cg' on page 11 undefined on input line 27.
+
+
+Package natbib Warning: Citation `Maimone2007-tc' on page 11 undefined on input line 27.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 11 undefined on input line 28.
+
 [11
 
 
 
-]
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 85.
- [12]
+] [12 <./figures/sun-bcnn/system_overview.pdf> <./figures/sun-bcnn/all_datasets_gps.pdf>]
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 13 undefined on input line 40.
+
+
+Package natbib Warning: Citation `Furgale2012-kk' on page 13 undefined on input line 40.
+
+LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TLF on input line 42.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.fd
+File: OT1LinuxLibertineMonoT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxLibertineMonoT-TLF.
+)
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 42.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 13 undefined on input line 46.
+
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 13 undefined on input line 48.
+
+
+Package natbib Warning: Citation `Furgale2012-kk' on page 13 undefined on input line 48.
+
+
+Package natbib Warning: Citation `Maddern2016-ng' on page 13 undefined on input line 49.
+
+[13]
+
+Package natbib Warning: Citation `Alcantarilla2016-fs' on page 14 undefined on input line 56.
+
+
+Package natbib Warning: Citation `Engel2015-il' on page 14 undefined on input line 56.
+
+
+Package natbib Warning: Citation `Olson2003-ax' on page 14 undefined on input line 58.
+
+
+Package natbib Warning: Citation `Furgale2011-zu' on page 14 undefined on input line 61.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 14 undefined on input line 61.
+
+
+Package natbib Warning: Citation `Maimone2007-tc' on page 14 undefined on input line 61.
+
+
+Package natbib Warning: Citation `Eisenman2002-cg' on page 14 undefined on input line 61.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 14 undefined on input line 62.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 14 undefined on input line 63.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 14 undefined on input line 63.
+
+
+Package natbib Warning: Citation `kendall2015posenet' on page 14 undefined on input line 66.
+
+
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 14 undefined on input line 69.
+
+
+Package natbib Warning: Citation `Gal2016-ny' on page 14 undefined on input line 69.
+
+
+Package natbib Warning: Citation `kendall2015posenet' on page 14 undefined on input line 70.
+
+[14]
+
+Package natbib Warning: Citation `Clement2016-ir' on page 15 undefined on input line 72.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 15 undefined on input line 72.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 15 undefined on input line 72.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 15 undefined on input line 73.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 15 undefined on input line 73.
+
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 15 undefined on input line 73.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 15 undefined on input line 75.
+
+
+Package natbib Warning: Citation `Gal2016-ny' on page 15 undefined on input line 76.
+
+
+Overfull \hbox (7.47968pt too wide) in paragraph at lines 80--80
+[]\OT1/LinuxLibertineT-TLF/b/n/17.28 Indirect Sun De-tec-tion us-ing a Bayesian Con-vo-lu-tional
+ []
+
+<figures/sun-bcnn/kitti_activations_horiz.pdf, id=1107, 885.53093pt x 184.6922pt>
+File: figures/sun-bcnn/kitti_activations_horiz.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti_activations_horiz.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti_activations_horiz.pdf  used on input line 84.
+(pdftex.def)             Requested size: 442.65182pt x 92.32332pt.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 85.
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 15 undefined on input line 85.
+
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 15 undefined on input line 85.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 15 undefined on input line 91.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 15 undefined on input line 91.
+
+
+Package natbib Warning: Citation `Szegedy2015-uw' on page 15 undefined on input line 93.
+
+
+Package natbib Warning: Citation `kendall2015posenet' on page 15 undefined on input line 93.
+
+
+Package natbib Warning: Citation `zhou2014MITPlaces' on page 15 undefined on input line 94.
+
+
+Package natbib Warning: Citation `deng2009imagenet' on page 15 undefined on input line 94.
+
+[15]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 97.
+
+
+Package natbib Warning: Citation `Gal2016CNN' on page 16 undefined on input line 112.
+
+
+Package natbib Warning: Citation `Gal2016-ny' on page 16 undefined on input line 112.
+
+
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 16 undefined on input line 112.
+
+
+Package natbib Warning: Citation `Gal2016CNN' on page 16 undefined on input line 114.
+
+[16 <./figures/sun-bcnn/kitti_activations_horiz.pdf>]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 108.
- [13]
-LaTeX Font Info:    Try loading font information for U+euf on input line 157.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [14]) [15]
-\openout2 = `sections/vo.aux'.
-
- (./sections/vo.tex
-Chapter 3.
-<figures/math/stereo_vo_pipeline.pdf, id=971, 1017.477pt x 262.30428pt>
-File: figures/math/stereo_vo_pipeline.pdf Graphic file (type pdf)
-<use figures/math/stereo_vo_pipeline.pdf>
-Package pdftex.def Info: figures/math/stereo_vo_pipeline.pdf  used on input line 10.
-(pdftex.def)             Requested size: 442.65182pt x 114.11343pt.
-<figures/math/stereo_camera_rectified.png, id=972, 580.1675pt x 300.12125pt>
-File: figures/math/stereo_camera_rectified.png Graphic file (type png)
-<use figures/math/stereo_camera_rectified.png>
-Package pdftex.def Info: figures/math/stereo_camera_rectified.png  used on input line 20.
-(pdftex.def)             Requested size: 442.65182pt x 228.98752pt.
-
-Underfull \vbox (badness 4266) has occurred while \output is active []
-
- [16
+(Font)              scaled to size 6.0pt on input line 123.
 
 
+Package natbib Warning: Citation `Gal2016CNN' on page 17 undefined on input line 140.
 
- <./figures/math/stereo_vo_pipeline.pdf>]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17 <./figures/math/stereo_camera_rectified.png>] [18] [19]
+ [17]
 
-LaTeX Warning: Reference `eq:L2' on page 20 undefined on input line 156.
-
-
-LaTeX Warning: Reference `eq:Huber' on page 20 undefined on input line 159.
+Package natbib Warning: Citation `jia2014caffe' on page 18 undefined on input line 144.
 
 
-LaTeX Warning: Reference `eq:Tukey' on page 20 undefined on input line 159.
+Package natbib Warning: Citation `Lalonde2011-jw' on page 18 undefined on input line 147.
 
 
-LaTeX Warning: Reference `eq:Fair' on page 20 undefined on input line 159.
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 18 undefined on input line 156.
 
-) [20] [21
+
+Package natbib Warning: Citation `Gal2016UncertaintyThesis' on page 18 undefined on input line 157.
+
+
+Underfull \vbox (badness 1527) has occurred while \output is active []
+
+ [18]
+<figures/sun-bcnn/sims/sims_triangle200_environment.pdf, id=1197, 522.95375pt x 281.05pt>
+File: figures/sun-bcnn/sims/sims_triangle200_environment.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/sims/sims_triangle200_environment.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_triangle200_environment.pdf  used on input line 173.
+(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
+<figures/sun-bcnn/sims/sims_square200_environment.pdf, id=1198, 522.95375pt x 281.05pt>
+File: figures/sun-bcnn/sims/sims_square200_environment.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/sims/sims_square200_environment.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_square200_environment.pdf  used on input line 178.
+(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
+<figures/sun-bcnn/sims/sims_penta200_environment.pdf, id=1199, 522.95375pt x 281.05pt>
+File: figures/sun-bcnn/sims/sims_penta200_environment.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/sims/sims_penta200_environment.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_penta200_environment.pdf  used on input line 183.
+(pdftex.def)             Requested size: 203.258pt x 109.23595pt.
+<figures/sun-bcnn/sims/sims_circle200_traj.pdf, id=1200, 1151.30125pt x 357.335pt>
+File: figures/sun-bcnn/sims/sims_circle200_traj.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/sims/sims_circle200_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_traj.pdf  used on input line 192.
+(pdftex.def)             Requested size: 442.65182pt x 137.38628pt.
+<figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf, id=1201, 436.63126pt x 352.31625pt>
+File: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf  used on input line 201.
+(pdftex.def)             Requested size: 189.70792pt x 153.07355pt.
+<figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf, id=1202, 436.63126pt x 352.31625pt>
+File: figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf  used on input line 208.
+(pdftex.def)             Requested size: 189.70792pt x 153.07355pt.
+<figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf, id=1203, 443.6575pt x 338.26375pt>
+File: figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf  used on input line 214.
+(pdftex.def)             Requested size: 189.70792pt x 144.64021pt.
+ [19 <./figures/sun-bcnn/sims/sims_triangle200_environment.pdf> <./figures/sun-bcnn/sims/sims_square200_environment.pdf> <./figures/sun-bcnn/sims/sims_penta200_environment.pdf>] [20 <./figures/sun-bcnn/sims/sims_circle200_traj.pdf> <./figures/sun-bcnn/sims/sims_circle200_enu_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_en_rmse.pdf> <./figures/sun-bcnn/sims/sims_circle200_rot_rmse.pdf>]
+
+Package natbib Warning: Citation `fisher1953dispersion' on page 21 undefined on input line 240.
+
+
+LaTeX Warning: Reference `tab:sim_armse' on page 1 undefined on input line 248.
+
+[21]
+Overfull \hbox (31.76285pt too wide) in paragraph at lines 258--258
+[]\OT1/LinuxLibertineT-TLF/b/n/17.28 Urban Driv-ing Ex-per-i-ments: The KITTI Odom-e-try Bench-
+ []
+
+<figures/sun-bcnn/kitti/kitti_cdf.pdf, id=1330, 765.86125pt x 242.9075pt>
+File: figures/sun-bcnn/kitti/kitti_cdf.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_cdf.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_cdf.pdf  used on input line 262.
+(pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
+<figures/sun-bcnn/kitti/kitti_hist_azzen.pdf, id=1331, 779.91376pt x 236.885pt>
+File: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf  used on input line 265.
+(pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
+<figures/sun-bcnn/kitti/kitti_error_over_time.pdf, id=1332, 539.01375pt x 467.7475pt>
+File: figures/sun-bcnn/kitti/kitti_error_over_time.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_error_over_time.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_error_over_time.pdf  used on input line 273.
+(pdftex.def)             Requested size: 338.76563pt x 293.97588pt.
+<figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf, id=1333, 1120.185pt x 247.92625pt>
+File: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf  used on input line 309.
+(pdftex.def)             Requested size: 442.65182pt x 97.96951pt.
+<figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf, id=1336, 425.59pt x 340.27126pt>
+File: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf  used on input line 318.
+(pdftex.def)             Requested size: 189.70792pt x 151.67723pt.
+<figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf, id=1337, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf  used on input line 324.
+(pdftex.def)             Requested size: 189.70792pt x 153.42297pt.
+<figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf, id=1338, 439.6425pt x 338.26375pt>
+File: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf  used on input line 329.
+(pdftex.def)             Requested size: 189.70792pt x 145.96155pt.
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 22 undefined on input line 337.
+
+
+Underfull \hbox (badness 1946) in paragraph at lines 337--337
+[][]\OT1/LinuxLibertineT-TLF/m/n/10 Because we rely on the first pose re-ported by the GPS/INS sys-tem, we used the raw (rec-ti-fied
+ []
+
+
+Underfull \hbox (badness 1360) in paragraph at lines 337--337
+\OT1/LinuxLibertineT-TLF/m/n/10 and syn-chro-nized) se-quences cor-re-spond-ing to each odom-e-try se-quence. How-ever, the raw se-quence
+ []
+
+[22 <./figures/sun-bcnn/kitti/kitti_cdf.pdf> <./figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>] [23 <./figures/sun-bcnn/kitti/kitti_error_over_time.pdf>] [24 <./figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>]
+<figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf, id=1408, 833.49754pt x 386.21689pt>
+File: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf  used on input line 345.
+(pdftex.def)             Requested size: 370.38707pt x 171.62729pt.
+<figures/sun-bcnn/kitti/kitti_02_traj.pdf, id=1409, 430.60875pt x 339.2675pt>
+File: figures/sun-bcnn/kitti/kitti_02_traj.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_02_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_traj.pdf  used on input line 353.
+(pdftex.def)             Requested size: 135.50763pt x 106.76628pt.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 354.
+<figures/sun-bcnn/kitti/kitti_05_traj.pdf, id=1410, 425.59pt x 342.27875pt>
+File: figures/sun-bcnn/kitti/kitti_05_traj.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_05_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj.pdf  used on input line 358.
+(pdftex.def)             Requested size: 135.50763pt x 108.98303pt.
+<figures/sun-bcnn/kitti/kitti_08_traj.pdf, id=1411, 439.6425pt x 336.25626pt>
+File: figures/sun-bcnn/kitti/kitti_08_traj.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_08_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_traj.pdf  used on input line 363.
+(pdftex.def)             Requested size: 135.50763pt x 103.63805pt.
+<figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf, id=1412, 430.60875pt x 352.31625pt>
+File: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf  used on input line 368.
+(pdftex.def)             Requested size: 135.50763pt x 110.87268pt.
+<figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf, id=1413, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf  used on input line 373.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+<figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf, id=1414, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf  used on input line 378.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+<figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf, id=1415, 439.6425pt x 338.26375pt>
+File: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf  used on input line 383.
+(pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
+<figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf, id=1416, 439.6425pt x 338.26375pt>
+File: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf  used on input line 388.
+(pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
+<figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf, id=1417, 444.66125pt x 338.26375pt>
+File: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf  used on input line 393.
+(pdftex.def)             Requested size: 135.50763pt x 103.07996pt.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 25 undefined on input line 397.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 25 undefined on input line 397.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 25 undefined on input line 397.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 25 undefined on input line 397.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 401.
+
+
+LaTeX Warning: Float too large for page by 32.266pt on input line 447.
+
+
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 452.
+
+
+LaTeX Warning: Reference `fig:kitti_cnn_testerrors' on page 1 undefined on input line 456.
+
+
+LaTeX Warning: Reference `fig:kitti_error_over_time' on page 1 undefined on input line 456.
+
+[25 <./figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>] [26 <./figures/sun-bcnn/kitti/kitti_02_traj.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj.pdf> <./figures/sun-bcnn/kitti/kitti_08_traj.pdf> <./figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>] [27]
+<figures/sun-bcnn/devon/devon_collage.pdf, id=1538, 1440.76855pt x 306.44054pt>
+File: figures/sun-bcnn/devon/devon_collage.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_collage.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_collage.pdf  used on input line 464.
+(pdftex.def)             Requested size: 447.17311pt x 95.1078pt.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 28 undefined on input line 476.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 28 undefined on input line 476.
+
+[28 <./figures/sun-bcnn/devon/devon_collage.pdf>]
+
+LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 486.
+
+
+LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 488.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 29 undefined on input line 497.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 29 undefined on input line 497.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 29 undefined on input line 500.
+
+[29]
+
+LaTeX Warning: Reference `tab:kitti_armse' on page 1 undefined on input line 502.
+
+<figures/sun-bcnn/devon/devon_cdf.pdf, id=1600, 765.86125pt x 242.9075pt>
+File: figures/sun-bcnn/devon/devon_cdf.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_cdf.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_cdf.pdf  used on input line 513.
+(pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
+<figures/sun-bcnn/devon/devon_hist_azzen.pdf, id=1601, 779.91376pt x 236.885pt>
+File: figures/sun-bcnn/devon/devon_hist_azzen.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_hist_azzen.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_hist_azzen.pdf  used on input line 516.
+(pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
+<figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf, id=1602, 539.01375pt x 467.7475pt>
+File: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf  used on input line 526.
+(pdftex.def)             Requested size: 338.76563pt x 293.97588pt.
+
+Package natbib Warning: Citation `Furgale2012-kk' on page 30 undefined on input line 533.
+
+
+Package natbib Warning: Citation `Lambert2012-um' on page 30 undefined on input line 536.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [30 <./figures/sun-bcnn/devon/devon_cdf.pdf> <./figures/sun-bcnn/devon/devon_hist_azzen.pdf>] [31 <./figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>]
+Overfull \hbox (0.40863pt too wide) in paragraph at lines 539--542
+\OT1/LinuxLibertineT-TLF/m/n/12 shad-ows, stretches of wet ter-rain fea-tur-ing re-flec-tive mud and wa-ter, and some self-shadowing
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 547.
+
+<figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf, id=1636, 1120.185pt x 247.92625pt>
+File: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf  used on input line 578.
+(pdftex.def)             Requested size: 451.68752pt x 99.97075pt.
+
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 579.
+
+
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 579.
+
+
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 586.
+
+
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 587.
+
+[32] [33 <./figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>]
+
+LaTeX Warning: Reference `fig:devon_cnn_testerrors' on page 1 undefined on input line 589.
+
+
+LaTeX Warning: Reference `fig:devon_test_error_whiskers' on page 1 undefined on input line 589.
+
+
+LaTeX Warning: Reference `fig:devon_error_over_time' on page 1 undefined on input line 589.
+
+
+LaTeX Warning: Reference `fig:kitti_cnn_testerrors' on page 1 undefined on input line 590.
+
+
+LaTeX Warning: Reference `tab:testBCNN_devon' on page 1 undefined on input line 594.
+
+
+LaTeX Warning: Reference `fig:devon_cnn_testerrors' on page 1 undefined on input line 594.
+
+
+LaTeX Warning: Reference `fig:devon_test_error_whiskers' on page 1 undefined on input line 594.
+
+
+LaTeX Warning: Reference `fig:devon_error_over_time' on page 1 undefined on input line 595.
+
+
+Package natbib Warning: Citation `Lalonde2011-jw' on page 34 undefined on input line 604.
+
+
+Package natbib Warning: Citation `Clement2016-ir' on page 34 undefined on input line 604.
+
+<figures/sun-bcnn/devon/devon_c00_traj.pdf, id=1657, 425.59pt x 343.2825pt>
+File: figures/sun-bcnn/devon/devon_c00_traj.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c00_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_traj.pdf  used on input line 610.
+(pdftex.def)             Requested size: 135.50763pt x 109.30264pt.
+<figures/sun-bcnn/devon/devon_c01_traj.pdf, id=1658, 433.62pt x 342.27875pt>
+File: figures/sun-bcnn/devon/devon_c01_traj.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c01_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_traj.pdf  used on input line 617.
+(pdftex.def)             Requested size: 135.50763pt x 106.96184pt.
+<figures/sun-bcnn/devon/devon_c05_traj.pdf, id=1659, 425.59pt x 339.2675pt>
+File: figures/sun-bcnn/devon/devon_c05_traj.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c05_traj.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_traj.pdf  used on input line 624.
+(pdftex.def)             Requested size: 135.50763pt x 108.02425pt.
+<figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf, id=1660, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf  used on input line 630.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+<figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf, id=1661, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf  used on input line 636.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+<figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf, id=1662, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf  used on input line 642.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+<figures/sun-bcnn/devon/devon_c00_en_rmse.pdf, id=1663, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c00_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf  used on input line 648.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+<figures/sun-bcnn/devon/devon_c01_en_rmse.pdf, id=1664, 421.575pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c01_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf  used on input line 654.
+(pdftex.def)             Requested size: 135.50763pt x 113.24345pt.
+<figures/sun-bcnn/devon/devon_c05_en_rmse.pdf, id=1665, 435.6275pt x 352.31625pt>
+File: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>
+Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf  used on input line 660.
+(pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
+
+LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 664.
+
+
+LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 664.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:devon_vo' on page 1 undefined on input line 692.
+
+
+LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 695.
+
+[34] [35 <./figures/sun-bcnn/devon/devon_c00_traj.pdf> <./figures/sun-bcnn/devon/devon_c01_traj.pdf> <./figures/sun-bcnn/devon/devon_c05_traj.pdf> <./figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c00_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>]
+
+LaTeX Warning: Reference `fig:kitti_cnn_activations' on page 1 undefined on input line 711.
+
+
+Package natbib Warning: Citation `Maddern2016-ng' on page 36 undefined on input line 713.
+
+[36]
+<figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf, id=1751, 473.31027pt x 362.441pt>
+File: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>
+Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf  used on input line 717.
+(pdftex.def)             Requested size: 338.76563pt x 259.42538pt.
+
+Overfull \hbox (0.45314pt too wide) in paragraph at lines 723--726
+\OT1/LinuxLibertineMonoT-TLF/m/n/12 2014-07-14-14-49-50\OT1/LinuxLibertineT-TLF/m/n/12 , \OT1/LinuxLibertineMonoT-TLF/m/n/12 2014-07-14-15-16-36\OT1/LinuxLibertineT-TLF/m/n/12 , and \OT1/LinuxLibertineMonoT-TLF/m/n/12 2014-07-14-15-42-
+ []
+
+<figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf, id=1753, 437.635pt x 417.56pt>
+File: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>
+Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf  used on input line 731.
+(pdftex.def)             Requested size: 338.76563pt x 323.22972pt.
+
+LaTeX Warning: Reference `tab:testBCNN_oxford_weather' on page 1 undefined on input line 736.
+
+[37 <./figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>] [38 <./figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>]
+
+Package natbib Warning: Citation `mcmanus2014' on page 39 undefined on input line 749.
+
+
+LaTeX Warning: Reference `fig:experiment-transfer-boxwhiskers' on page 1 undefined on input line 762.
+
+
+LaTeX Warning: Reference `tab:testBCNN_transfer_experiment' on page 1 undefined on input line 762.
+
+[39]
+<figures/sun-bcnn/boxwhiskers_transfer_comp.pdf, id=1816, 437.635pt x 417.56pt>
+File: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf Graphic file (type pdf)
+<use figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>
+Package pdftex.def Info: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf  used on input line 772.
+(pdftex.def)             Requested size: 338.76563pt x 323.22972pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 778.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 805.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [40 <./figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>] [41]
+
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 839.
+
+
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 840.
+
+
+LaTeX Warning: Reference `eq:vec-to-az-zen' on page 1 undefined on input line 855.
+
+[42]
+
+LaTeX Warning: Reference `tab:cov_estimation_comp' on page 1 undefined on input line 865.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 868.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 886.
+
+) [43] [44]
+\openout2 = `sections/conclusion.aux'.
+
+ (./sections/conclusion.tex
+Chapter 3.
+[45
+
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.22 	\item \bibentry{2015_Peretroukhin_PROBE}
+                                              pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.29 	\item \bibentry{2018_Peretroukhin_Inferring}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Peretroukhin_Reducing}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.30 	\item \bibentry{2017_Peretroukhin_Reducing}
+                                                 pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Clement_Improving}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.31 	\item \bibentry{2017_Clement_Improving}
+                                             
+
+Package natbib Warning: Citation `Geiger2012-fq' on page 46 undefined on input line 39.
+
+
+Package natbib Warning: Citation `Furgale2012-kk' on page 46 undefined on input line 39.
+
+[46]pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Deep}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.54 	\item \bibentry{2018_Peretroukhin_Deep}
+                                             
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Package natbib Warning: Citation `Lakshminarayanan2017' on page 47 undefined on input line 64.
+
+
+Package natbib Warning: Citation `Osband2016' on page 47 undefined on input line 64.
+
+pdfTeX warning (ext4): destination with the same identifier (name{cite.2019_Peretroukhin_Deep}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.70 \item \bibentry{2019_Peretroukhin_Deep}
+                                            
+<figures/conclusion/learning_as_prior.pdf, id=1887, 969.3402pt x 466.93195pt>
+File: figures/conclusion/learning_as_prior.pdf Graphic file (type pdf)
+<use figures/conclusion/learning_as_prior.pdf>
+Package pdftex.def Info: figures/conclusion/learning_as_prior.pdf  used on input line 84.
+(pdftex.def)             Requested size: 442.65182pt x 213.23097pt.
+ [47]) [48 <./figures/conclusion/learning_as_prior.pdf>] [49] [50
 
 
 
@@ -1357,7 +2031,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 20.
 
-[22
+[51
 
 
 ]
@@ -1369,81 +2043,55 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 65.
 
-[23] [24]) [25]
-\openout2 = `sections/appendix-misc.aux'.
-
- (./sections/appendix-misc.tex
-Appendix B.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 4.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 4.
-
-
-Package natbib Warning: Citation `Hartley2013-rc' on page 26 undefined on input line 27.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [26
-
-
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [27] [28]
-Appendix C.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 86.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 86.
-
-) [29
-
-] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bblpdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Clement_Improving}) has been already used, duplicate ignored
+[52] [53]) [54] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bblpdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Clement_Improving}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.17 ...ment et~al., 2017]{2017_Clement_Improving}
-                                                   [30
+l.12 ...ment et~al., 2017]{2017_Clement_Improving}
+                                                   [55
 
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.117 ...in et~al., 2015]{2015_Peretroukhin_PROBE}
+l.114 ...n et~al., 2015a]{2015_Peretroukhin_PROBE}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_Get}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.121 ...hin et~al., 2015b]{2015_Peretroukhin_Get}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Peretroukhin_Reducing}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.124 ...et~al., 2017]{2017_Peretroukhin_Reducing}
-                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
+l.129 ...t~al., 2017a]{2017_Peretroukhin_Reducing}
+                                                   [56]pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.131 ...t~al., 2018]{2018_Peretroukhin_Inferring}
+l.142 ...t~al., 2018]{2018_Peretroukhin_Inferring}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Deep}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.137 ... and Kelly, 2018]{2018_Peretroukhin_Deep}
+l.148 ... and Kelly, 2018]{2018_Peretroukhin_Deep}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.Peretroukhin2016-om}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.142 ...oukhin et~al., 2016]{Peretroukhin2016-om}
-                                                   [31])
+l.153 ...ukhin et~al., 2016a]{Peretroukhin2016-om}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2016_Peretroukhin_PROBE-GK}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.159 ...t~al., 2016b]{2016_Peretroukhin_PROBE-GK}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2019_Peretroukhin_Deep}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.165 ...hin et~al., 2019]{2019_Peretroukhin_Deep}
+                                                   [57])
 
 Package natbib Warning: There were undefined citations.
 
-[32]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
- (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/vo.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-perturbations.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-misc.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
+[58]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 261.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 261.
+ (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/introduction.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/sun-bcnn.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/conclusion.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/appendix-perturbations.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 261.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 261.
 Package rerunfilecheck Info: File `vp-phd-thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 0EE2C808435E290C62D738C5BEC5FBE2;4664.
 
@@ -1453,16 +2101,24 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 261.
  ) 
 Here is how much of TeX's memory you used:
- 35548 strings out of 492616
- 681629 string characters out of 6128982
- 741633 words of memory out of 5000000
- 38665 multiletter control sequences out of 15000+600000
- 582844 words of font info for 137 fonts, out of 8000000 for 9000
+ 35733 strings out of 492616
+ 692529 string characters out of 6128982
+ 782437 words of memory out of 5000000
+ 38757 multiletter control sequences out of 15000+600000
+ 577333 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,23n,79p,1612b,1019s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,23n,79p,1610b,1015s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist, replaced by a fixed one
+
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
@@ -1478,11 +2134,11 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (40 pages, 6361325 bytes).
+2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (66 pages, 20152800 bytes).
 PDF statistics:
- 1352 PDF objects out of 1440 (max. 8388607)
- 1110 compressed objects within 12 object streams
- 224 named destinations out of 1000 (max. 500000)
- 384 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2188 PDF objects out of 2487 (max. 8388607)
+ 1660 compressed objects within 17 object streams
+ 279 named destinations out of 1000 (max. 500000)
+ 583 words of extra memory for PDF output out of 10000 (max. 10000000)
 

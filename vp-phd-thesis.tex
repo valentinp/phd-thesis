@@ -92,7 +92,7 @@
 \department{Institute for Aerospace Studies}
 \gradyear{2019}
 \author{Valentin Peretroukhin}
-\title{On improving visual odometry through learned pseudo-sensors}
+\title{Using pseudo-sensors to improve egomotion estimation for mobile autonomy}
 
 %% *** NOTE ***
 %% Put here all other formatting commands that belong in the preamble.
@@ -136,10 +136,8 @@
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
 The ability to estimate \textit{egomotion}, that is, to track one's own pose through an unknown environment, is at the heart of safe and reliable mobile autonomy. By inferring pose changes from sequential sensor measurements, egomotion estimation forms the basis of mapping and navigation pipelines, and permits mobile robots to self-localize within environments where external localization sources are intermittent or unavailable. 
 Visual and inertial egomotion estimation, in particular, have become ubiquitous in mobile robotics due to the availability of high-quality, compact, and inexpensive sensors that capture rich representations of the world.
- To remain computationally tractable, `classical' visual-inertial pipelines (like visual odometry and visual SLAM) make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error in the final localization output. In this thesis, we present several data-driven models that serve to complement (but not replace) conventional pipelines by inferring latent information from sensor data to improve the final egomotion estimate. Our approach retains a prior based on a pipeline with interpretable components and decades of prior research, while leveraging high-capacity hyper-parametric models to better model sensor uncertainty, or to extract complementary information in the form of a `pseudo-sensor' whose output can be fused with the original pipeline to improve localization.
-  %the  models can improve their localization accuracy, and mitigate the effect of these deleterious effects of violated assumptions. For visual it can be unclear to what extent they can be integrated into (or replace) performant 	`classical` geometric and kinematic models within state estimation pipelines. In this thesis, we argue that a fruitful resolution to this dichotomy is to use data-driven learning to extract latent information from sensor data that is typically discarded by conventional analytic models.   Towards this end, we present four ways in which learning can be used to build `pseudo-sensors` whose output can complement existing egomotion. Namely, we first present two Bayesian machine-learning-based techniques that improve on existing measurement models in visual odometry: (1) a fast, kernel-based Bayesian technique that learns a model for measurement covariances of a stereo camera to produce non-stationary robust costs and (2) a deep Bayesian Convolutional Neural Network model that can infer the direction of the Sun from RGB images. 
-%Second, we broaden our approach to learn full pose corrections from raw sensor data. We show that we can use the representational power of deep networks to build corrective, probabilistic models that correct, instead of replace, existing localization pipelines. Notably, we leverage concepts from differential geometry and matrix Lie groups to construct fully differentiable analytic loss functions that permit learning of corrections and associated uncertainty to better model estimator biases, deleterious environmental effects, poor sensor calibrations.
-We validate our methods on several kilometres of sensor data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the high arctic.
+ To remain computationally tractable, `classical' visual-inertial pipelines (like visual odometry and visual SLAM) make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error. In this thesis, we present several data-driven \textit{pseudo-sensors} that serve to complement conventional pipelines by inferring latent information from the same data stream. Our approach retains much of the benefits of traditional pipelines, while leveraging high-capacity hyper-parametric models to extract complementary information that can be used to improve uncertainty quantification, correct for systematic bias, and improve robustness to difficult-to-model deleterious effects.
+We validate our \textit{pseudo-sensors} on several kilometres of sensor data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the Canadian high arctic.
 \end{abstract}
 
 %% Anything placed between the abstract and table of contents will
@@ -152,6 +150,11 @@ We validate our methods on several kilometres of sensor data collected in sundry
 drink deep, or taste not the Pierian spring: 
 there shallow draughts intoxicate the brain, 
 and drinking largely sobers us again.}{Alexander Pope}
+\epigraph{The universe is no narrow thing and the order within it is not constrained by any latitude in its conception to repeat what exists in one part in any other part. Even in this world more things exist without our knowledge than with it and the order in creation which you see is that which you have put there, like a string in a maze, so that you shall not lose your way. For existence has its own order and that no man's mind can compass, that mind itself being but a fact among others.}{Cormac McCarthy}
+\epigraph{Elephants don't play chess.}{Rodney Brooks}
+
+%\epigraph{The highest activity a human being can attain is learning for understanding, because to understand is to be free.}{Baruch Spinoza}
+
 \clearpage
 	
 
@@ -199,17 +202,17 @@ This document would not have been possible without the generous support and guid
     \nitem{a}{Symbols in this font are real scalars.}
     \nitem{\Vector{a}   }{Symbols in this font are real column vectors.}
     \nitem{\Matrix{A}   }{Symbols in this font are real matrices.}
-    \nitem{\sim \mathcal{N}(\Vector{\mu}, \Matrix{R}) }{Normally distributed with mean $\Vector{\mu}$ and covariance $\Matrix{R}$.}
+    \nitem{\mathcal{N}(\Vector{\mu}, \Matrix{R}) }{Normally distributed with mean $\Vector{\mu}$ and covariance $\Matrix{R}$.}
     \nitem{E[\cdot]}{The expectation operator.}
-    \nitem{\cframe{a} }{A reference frame in three dimensions.}
+    \nitem{\CoordinateFrame{a}}{A reference frame in three dimensions.}
     \nitem{(\cdot)^\wedge }{An operator associated with the Lie algebra for rotations and poses. It produces a matrix from a column vector.}
     \nitem{(\cdot)^\vee }{The inverse operation of $(\cdot)^\wedge$}
     
     \nitem{\Matrix 1 }{The identity matrix.}
     \nitem{\Matrix 0 }{The zero matrix.}
-    \nitem{ \Vector p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\cframe{a}$ (denoted by the subscript). }
-    \nitem{ \Matrix R_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\cframe{b}$ to $\cframe{a}$: $\Vector p_a^{c,b} = \Matrix C_{a,b} \Vector p_b^{c,b}$. }
-    \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\cframe{b}$ to $\cframe{a}$: $\Vector{p}_a^{c,a} = \Transform_{a,b} \Vector{p}_b^{c,b}$. }
+    \nitem{ \Vector p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript). This vector can be in homogenous coordinates depending on context. }
+    \nitem{ \Rotation_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector p_a^{c,b} = \Rotation_{a,b} \Vector p_b^{c,b}$. }
+    \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector{p}_a^{c,a} = \Transform_{a,b} \Vector{p}_b^{c,b}$. }
 \end{notation}
 %\printnomenclature
 
@@ -224,17 +227,16 @@ This document would not have been possible without the generous support and guid
 
 %% *** Include chapter files here. ***
 \include{sections/introduction}
-\include{sections/math}
-\include{sections/vo}
+%\include{sections/math}
+%\include{sections/vo}
 %\include{sections/probe}
-%\include{sections/sun-bcnn}
+\include{sections/sun-bcnn}
 %\include{sections/dpc}
-%%\include{sections/lkf}
 %\include{sections/so3-learning}
-%\include{sections/conclusion}
+\include{sections/conclusion}
 \begin{appendices}
 \include{sections/appendix-perturbations}
-\include{sections/appendix-misc}
+%\include{sections/appendix-misc}
 %\include{sections/appendix-so3-learning}
 
 \end{appendices}

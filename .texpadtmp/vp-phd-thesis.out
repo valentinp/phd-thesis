@@ -2,41 +2,39 @@
 \BOOKMARK [1][-]{section.1.1}{Autonomy and humanity through the ages}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Mobile Autonomy and State Estimation}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{The State of State Estimation}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.4}{Pipelines vs. Parametric Learning}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.5}{The Learned Pseudo-Sensor}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.6}{Original Contributions}{chapter.1}% 7
-\BOOKMARK [2][-]{subsection.1.6.1}{Publications}{section.1.6}% 8
-\BOOKMARK [2][-]{subsection.1.6.2}{Software Contributions}{section.1.6}% 9
-\BOOKMARK [0][-]{chapter.2}{Mathematical Foundations}{}% 10
-\BOOKMARK [1][-]{section.2.1}{3D Notation}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.2}{Rotations}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.1}{Unit Quaternions}{section.2.2}% 13
-\BOOKMARK [1][-]{section.2.3}{Spatial Transforms}{chapter.2}% 14
-\BOOKMARK [1][-]{section.2.4}{Perturbations}{chapter.2}% 15
-\BOOKMARK [1][-]{section.2.5}{Uncertainty}{chapter.2}% 16
-\BOOKMARK [0][-]{chapter.3}{Classical Visual State Estimation}{}% 17
-\BOOKMARK [1][-]{section.3.1}{Visual Odometry Pipeline}{chapter.3}% 18
-\BOOKMARK [2][-]{subsection.3.1.1}{Pre processing}{section.3.1}% 19
-\BOOKMARK [2][-]{subsection.3.1.2}{Data association}{section.3.1}% 20
-\BOOKMARK [2][-]{subsection.3.1.3}{Motion solution}{section.3.1}% 21
-\BOOKMARK [1][-]{section.3.2}{Pose Graph Relaxation}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.3}{Robust Estimation}{chapter.3}% 23
-\BOOKMARK [2][-]{subsection.3.3.1}{Removing outliers}{section.3.3}% 24
-\BOOKMARK [2][-]{subsection.3.3.2}{Robust M-Estimation}{section.3.3}% 25
-\BOOKMARK [0][-]{section*.22}{Appendices}{}% 26
-\BOOKMARK [0][-]{Appendix.1.A}{Left and Middle Perturbations}{}% 27
-\BOOKMARK [1][-]{section.1.A.1}{Identities}{Appendix.1.A}% 28
-\BOOKMARK [1][-]{section.1.A.2}{Perturbing \040SE\(3\) }{Appendix.1.A}% 29
-\BOOKMARK [2][-]{subsection.1.A.2.1}{Left Perturbation}{section.1.A.2}% 30
-\BOOKMARK [2][-]{subsection.1.A.2.2}{Middle Perturbation}{section.1.A.2}% 31
-\BOOKMARK [1][-]{section.1.A.3}{DPC \040SE\(3\) \040Loss}{Appendix.1.A}% 32
-\BOOKMARK [2][-]{subsection.1.A.3.1}{Middle Perturbation}{section.1.A.3}% 33
-\BOOKMARK [2][-]{subsection.1.A.3.2}{Left Perturbation}{section.1.A.3}% 34
-\BOOKMARK [2][-]{subsection.1.A.3.3}{Summary}{section.1.A.3}% 35
-\BOOKMARK [2][-]{subsection.1.A.3.4}{Reconciliation}{section.1.A.3}% 36
-\BOOKMARK [0][-]{Appendix.1.B}{More Notes on Rotation}{}% 37
-\BOOKMARK [1][-]{section.1.B.1}{Metrics on \040SO\(3\) }{Appendix.1.B}% 38
-\BOOKMARK [1][-]{section.1.B.2}{Topology}{Appendix.1.B}% 39
-\BOOKMARK [1][-]{section.1.B.3}{Antipodal Rotations}{Appendix.1.B}% 40
-\BOOKMARK [0][-]{Appendix.1.C}{Representations of \040SE\(3\) }{}% 41
-\BOOKMARK [0][-]{Appendix.1.C}{Bibliography}{}% 42
+\BOOKMARK [1][-]{section.1.4}{The Learned Pseudo-Sensor}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Original Contributions}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Sun-BCNN}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Motivation}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Related Work}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Indirect Sun Detection using a Bayesian Convolutional Neural Network}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{Cost Function}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.2}{Uncertainty Estimation}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.3}{Implementation and Training}{section.2.3}% 13
+\BOOKMARK [1][-]{section.2.4}{Simulation Experiments}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.5}{Urban Driving Experiments: The KITTI Odometry Benchmark}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.5.1}{Sun-BCNN Test Results}{section.2.5}% 16
+\BOOKMARK [2][-]{subsection.2.5.2}{Visual Odometry Experiments}{section.2.5}% 17
+\BOOKMARK [1][-]{section.2.6}{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.6.1}{Sun-BCNN Test Results}{section.2.6}% 19
+\BOOKMARK [2][-]{subsection.2.6.2}{Visual Odometry Experiments}{section.2.6}% 20
+\BOOKMARK [1][-]{section.2.7}{Sensitivity Analysis}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.7.1}{Cloud Cover}{section.2.7}% 22
+\BOOKMARK [2][-]{subsection.2.7.2}{Model Generalization}{section.2.7}% 23
+\BOOKMARK [2][-]{subsection.2.7.3}{Mean and Covariance Computation}{section.2.7}% 24
+\BOOKMARK [0][-]{chapter.3}{Conclusion}{}% 25
+\BOOKMARK [1][-]{section.3.1}{Summary of Contributions}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.2}{Future Work}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.3}{Final Remarks}{chapter.3}% 28
+\BOOKMARK [0][-]{section*.62}{Appendices}{}% 29
+\BOOKMARK [0][-]{Appendix.1.A}{Left and Middle Perturbations}{}% 30
+\BOOKMARK [1][-]{section.1.A.1}{Identities}{Appendix.1.A}% 31
+\BOOKMARK [1][-]{section.1.A.2}{Perturbing \040SE\(3\) }{Appendix.1.A}% 32
+\BOOKMARK [2][-]{subsection.1.A.2.1}{Left Perturbation}{section.1.A.2}% 33
+\BOOKMARK [2][-]{subsection.1.A.2.2}{Middle Perturbation}{section.1.A.2}% 34
+\BOOKMARK [1][-]{section.1.A.3}{DPC \040SE\(3\) \040Loss}{Appendix.1.A}% 35
+\BOOKMARK [2][-]{subsection.1.A.3.1}{Middle Perturbation}{section.1.A.3}% 36
+\BOOKMARK [2][-]{subsection.1.A.3.2}{Left Perturbation}{section.1.A.3}% 37
+\BOOKMARK [2][-]{subsection.1.A.3.3}{Summary}{section.1.A.3}% 38
+\BOOKMARK [2][-]{subsection.1.A.3.4}{Reconciliation}{section.1.A.3}% 39
+\BOOKMARK [0][-]{equation.1.A.3.26}{Bibliography}{}% 40

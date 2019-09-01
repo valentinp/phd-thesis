@@ -1,36 +1,68 @@
-\chapter{Classical Visual State Estimation}
+\chapter{Classical Visual Odometry}
+\label{ch:vo}
+\epigraph{Eventually, my eyes were opened, and I really understood nature.}{Claude Monet}
 
-\section{Visual Odometry Pipeline}
+Visual odometry and its offshoots has a rich history in mobile robotics and computer vision -- see \cite{Scaramuzza2011-qr} for a seminal tutorial on visual odometry. 
 
-The learned pseudo-sensors in this thesis are applied to a standard visual odometry pipeline largely based on the work of \cite{furgale_phd11}. We briefly summarize the pipeline here, and outline any unique design choices we made.
+\section{A taxonomy}
 
-
-\begin{figure}
+\begin{figure}[h!]
 \begin{center}
-		\includegraphics[width=0.98\textwidth]{math/stereo_vo_pipeline.pdf}
+		\includegraphics[width=0.98\textwidth]{classical-vo/vo_taxonomy.pdf}
+		\caption{A taxonomy of different types of visual odometry.}
+  	\label{fig:vo_taxonomy}
+\end{center}
+\end{figure}
+
+\section{Pipeline}
+
+The learned pseudo-sensors in this thesis are applied to a standard visual odometry pipeline largely based on the work of \cite{furgale_phd11}. We briefly summarize the pipeline here, and outline any unique design choices.
+
+\begin{figure}[h!]
+\begin{center}
+		\includegraphics[width=0.98\textwidth]{classical-vo/stereo_vo_pipeline.pdf}
 		\caption{A `classical' stereo visual odometry pipeline consists of several distinct components that have interpretable inputs and outputs.}
-  	\label{fig:math_stereo_vo_pipeline}
+  	\label{fig:vo_stereo_vo_pipeline}
 \end{center}
 \end{figure}
 
-\subsection{Pre processing}
+\subsection{Preprocessing}
 
-\begin{figure}
-\begin{center}
-		\includegraphics[width=0.98\textwidth]{math/stereo_camera_rectified}
-		%\input{figures/math/stereo_projection}
-		\caption{A rectified stereo camera with equal focal lengths. Taken \cite{furgale_phd11}. \todo{reproduce myself}.}
-  	\label{fig:math_stereo_camera}
-\end{center}
+
+\begin{figure}[h!]
+     \centering
+     \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+     		\includegraphics[width=0.98\textwidth]{classical-vo/stereo_camera_rectified}
+			\caption{Ideal stereo camera. Taken from \cite{furgale_phd11}.}
+			 \label{fig:vo_stereo_camera}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+         \includegraphics[width=0.75\textwidth]{classical-vo/preprocessing}
+        \caption{Rectification and undistortion..}
+         \label{fig:vo_undistort_recitfy}
+	 \end{subfigure}
+    \caption{Preprocessing components. \todo{Reproduce both of these figures myself.}}
+        \label{fig:vo_preprocessing}
 \end{figure}
 
-In the preprocessing stage, stereo images are undistorted and rectified such that their principal axes are parallel, see \Cref{fig:math_stereo_camera}. We assume the stereo camera intrinsic and extrinsic parameters as well as the lens properties are known a priori (or computed through a calibration process like that detailed in \cite{kelly_phd2011}).
+In the preprocessing stage, stereo images are undistorted and rectified such that their principal axes are parallel, see \Cref{fig:vo_preprocessing}. We assume the stereo camera intrinsic and extrinsic parameters as well as the lens properties are known a priori (or computed through a calibration process like that detailed in \cite{kelly_phd2011}).
 
 \subsection{Data association}
 
 \subsubsection{Feature extraction and matching}
 
-During data association, some form of image features must be matched. In this thesis, we focus on sparse stereo visual odometry which uses the \texttt{libviso2} image feature extraction and matching mechanism.  
+\begin{figure}[h!]
+\begin{center}
+		\includegraphics[width=0.98\textwidth]{classical-vo/feature_tracking}
+		\caption{Steps within feature tracking.}
+  	\label{fig:vo_feature_tracking}
+\end{center}
+\end{figure}
+
+During data association, some form of image features must be matched. In this thesis, we focus on sparse stereo visual odometry which uses the \texttt{libviso2} \citep{geiger2011stereoscan} image feature extraction and matching mechanism.  
 
 Each landmark corresponds to a
 point in space, expressed in homogeneous coordinates in the camera frame as
@@ -57,8 +89,8 @@ lenses.
 
 \subsubsection{Outlier rejection}
 
-Brief description of RANSAC and Horn's method.
-
+We use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRANSAC:1981}) to reject spurious matches based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
+  
 \subsection{Motion solution}
 
 In our frame-to-frame sparse stereo odometry pipeline,  the objective is to find
@@ -122,8 +154,7 @@ linear system of equations:
 \end{equation}
 We then update the estimated transform and proceed to the next iteration.
 \begin{equation}
-  \Transform_t^{(n+1)} = \exp{\left( \delta\Vector{\xi}^{(n)\wedge}
-  \right)} \Transform_t^{(n)}. \label{eq:update}
+  \Transform_t^{(n+1)} = \MatExp{\delta\Vector{\xi}^{(n)}} \Transform_t^{(n)}. \label{eq:update}
 \end{equation}
 There are many reasonable choices for both the initial transform
 $\Transform_t^{(0)}$ and for the conditions under which we terminate
@@ -133,6 +164,17 @@ the squared error of less than one percent after an update.
 
 
 \section{Pose Graph Relaxation}
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+	\includegraphics[width=0.38\textwidth]{classical-vo/pose_graph.pdf}
+  \end{center}
+    \vspace{-20pt}
+	\label{fig:math_pose_graph}
+	\caption{The formulation of pose graph relaxation can incorporate different probabilistic \textit{factors} that constrain each camera pose.}
+\end{wrapfigure} 
+
 
 we fused our probabilistic rotation regression with classical stereo visual odometry using pose graph relaxation implemented with the help of a Python-based factor graph library which we will publicize after the review process. Using that framework, we solved
 \begin{align}
@@ -151,7 +193,7 @@ and $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\Estimate{\R
 
 
 \section{Robust Estimation}
-\subsection{Removing outliers}
+\todo{Add discussion of outliers}
 \subsection{Robust M-Estimation}
 Since the standard $L_2$ cost function \eqref{eq:L2} assigns cost values that grow quadratically with measurement error, it is very sensitive to outlier measurements.
 A common solution to this problem is to replace the $L_2$ cost function with one that is less sensitive to large measurement errors.
@@ -169,3 +211,64 @@ and repeatedly minimize the weighted least-squares objective
     \mathcal{O} = \sum_i w_i e_i^2,
 \end{equation}
 updating the weights at each iteration until convergence.
+
+\section{Outstanding Issues}
+Herein, we summarize several outstanding limitations of classical visual odometry pipelines and point to parts of this thesis that address them.
+
+\begin{table}[h!]
+	\caption{\textbf{Data efficiency vs. Computational Efficiency}}	\begin{threeparttable}
+	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
+		\toprule
+		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
+		Inherent trade-off between using all of the information contained within image and while still remaining computationally tractable. & PROBE, DPC-Net, Sun-BCNN, HydraNet \\
+		& \\
+		\bottomrule
+	\end{tabular}
+\end{threeparttable}
+\end{table}
+
+
+\begin{table}[h!]
+	\caption{\textbf{Systematic Bias}}
+	\begin{threeparttable}
+	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
+		\toprule
+		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
+		Stereo visual odometry can incur systematic bias through poor extrinsic or intrinsic calibration, stereo triangulation errors, poor feature \textit{spread} (i.e., concentration of features on one side of an image), and poor data association due self-similar textures. &  DPC-Net \\
+		& \\
+		\bottomrule
+	\end{tabular}
+\end{threeparttable}
+\end{table}
+
+
+\begin{table}[h!]
+	\caption{\textbf{Homoscedastic uncertainty}}
+	\begin{threeparttable}
+	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
+		\toprule
+		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
+		Recent work \citep{Vega-Brown2014-sb, Hu2015-uw} suggests that using a stationary, homoscedastic noise in observation models can often reduce the consistency and accuracy of state estimates. This is especially true for complex, inferred measurement models. In visual data, inferred visual observations can be degraded not only due to sensor imperfections (e.g. poor intrinsic calibration, digitization effects, motion blur), but also as a result of the observed environment (e.g. self-similar scenes, specular surfaces, textureless environments). Indeed, robust costs \cite{Alcantarilla2016-kv, MacTavish2015-wt, Agarwal2013-jq} and whiteness tests \citep{Tsotsos2015-qs} have commonly been used to alleviate the problem of poor noise modelling, but more work is required to better learn uncertainty in complex measurement models. &  PROBE, Sun-BCNN, HydraNet \\
+		& \\
+		\bottomrule
+	\end{tabular}
+\end{threeparttable}
+\end{table}
+
+%
+%
+%\textbf{Adaptation to new environments}
+%
+%\begin{table}[h!]
+%	\begin{threeparttable}
+%	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
+%		\toprule
+%		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
+%		Traditional VO pipelines do little to adapt to new environments.
+%. &  PROBE-GK, DPC-Net, HydraNet \\
+%		& \\
+%		\bottomrule
+%	\end{tabular}
+%\end{threeparttable}
+%\end{table}
+

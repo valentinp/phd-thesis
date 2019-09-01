@@ -314,7 +314,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Learned Kalman Filters
+%% General
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewDocumentCommand\MeasurementCovariance{}{\Matrix{R}}
 \NewDocumentCommand\MeasurementJacobian{}{\Matrix{G}}
@@ -415,6 +415,7 @@
 \newcommand\RotationVector[0]{ \Vector{\phi} }
 \newcommand\Transform[0]{ \Matrix{T} }
 \newcommand\TransformVector[0]{ \Vector{\xi} }
+\newcommand\RotationAxisVector[0]{ \Vector{a} }
 
 %% Variable decorations
 \newcommand\Estimate[1]{\hat{#1}}
