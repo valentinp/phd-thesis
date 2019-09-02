@@ -19,8 +19,7 @@
   \label{fig:into_rur}
 \end{wrapfigure}
 
-Autonomous systems, in some form, have been imagined and realized for the bulk of recorded history. In ancient Greek mythology, the god Hephaestus, the `patron of invention and technology' \citep{MayorGodsRobots2019} was said to create talking mechanical hand-maidens, while early Hindu and Buddhist texts tell of \textit{yantakara} that lived in Greece and created machines that helped in trade and farming. The secret methods of the \textit{yantakara} (the early `roboticists') were closely guarded, and mechanical assassins were said to pursue and kill any person who revealed their techniques\footnote{Please be careful distributing this thesis.} \citep{MayorGodsRobots2019}. \cite{fitzgibbon2007learning} 
-
+Autonomous systems, in some form, have been imagined and realized for the bulk of recorded history. In ancient Greek mythology, the god Hephaestus, the `patron of invention and technology' \citep{MayorGodsRobots2019} was said to create talking mechanical hand-maidens, while early Hindu and Buddhist texts tell of \textit{yantakara} that lived in Greece and created machines that helped in trade and farming. The secret methods of the \textit{yantakara} (the early `roboticists') were closely guarded, and mechanical assassins were said to pursue and kill any person who revealed their techniques\footnote{Please be careful distributing this thesis.} \citep{MayorGodsRobots2019}. 
 %https://scroll.in/article/916490/in-an-ancient-indian-legend-robots-guarded-buddhas-relics
 %Cite 
 
@@ -134,7 +133,7 @@ Once confined to carefully-controlled factory floors, autonomous mobile platform
 \end{figure}
 
 
-Central to \textit{classical} state estimation algorithms (which, in this context, refers to the bulk of state estimation research published prior to 2016) is the idea of a pipeline. A pipeline consists several distinguishable blocks that have interpretable inputs and outputs.  By carefully processing information contained within sensor data, pipelines facilitate the construction of complex state estimation architectures that can fuse observations from sensors of varied modality to create rich models of the external world and infer the state of a mobile platform within it. My thesis focuses on egomotion estimation: the problem of accurately and consistently estimating the relative pose of a moving platform. For this task, a variety of different sensors may be useful (e.g., lidar, stereo cameras, or inertial measurement units), and each may allow for various components of a state estimation pipeline. For cameras, egomotion estimation is typically referred to as \textit{visual odometry} or VO for short. A typical VO pipeline is illustrated in \Cref{fig:intro_vo_pipeline}. 
+Central to \textit{classical} state estimation algorithms (which, in this context, refers to the bulk of state estimation research published during what \cite{Cadena2016-ds} call the \textit{classical} and \textit{algorithmic-analysis} ages of SLAM research between 1986 and 2015) is the idea of a pipeline. A pipeline consists several distinguishable blocks that have interpretable inputs and outputs.  By carefully processing information contained within sensor data, pipelines facilitate the construction of complex state estimation architectures that can fuse observations from sensors of varied modality to create rich models of the external world and infer the state of a mobile platform within it. My thesis focuses on egomotion estimation: the problem of accurately and consistently estimating the relative pose of a moving platform. For this task, a variety of different sensors may be useful (e.g., lidar, stereo cameras, or inertial measurement units), and each may allow for various components of a state estimation pipeline. For cameras, egomotion estimation is typically referred to as \textit{visual odometry} or VO for short. A typical VO pipeline is illustrated in \Cref{fig:intro_vo_pipeline}. 
 
 
 
@@ -156,20 +155,20 @@ Despite this surge of excitement, significant debate has emerged within the robo
 
 
 \begin{table}[h!]
-	\caption{The benefits and downsides to using learning.}
+	\caption{A comaprison of pipelines and end-to-end deep models for visual egomotion estimation.}
 	\begin{threeparttable}
 	\begin{tabular}{m{0.18\textwidth}m{0.38\textwidth}m{0.38\textwidth}}
 		\toprule
 		& \textbf{Classical Pipelines} & \textbf{Deep Models} \\ \midrule  
-		\textit{Maturity} & Decades of literature \& domain knowledge & Nascent in autonomy \\
+		\textit{Maturity} & Decades of literature \& domain knowledge & Nascent with few uses in mobile autonomy \\
 		& & \\
 		\textit{Interpretability} & Good, each component has interpretable input and output & Poor, often with no interpretable intermediate outputs \\
 		& & \\
-		\textit{Uncertainty} & Foundational to probabilistic robotics & Some methods (bootstrap, BCNNs)  \\
+		\textit{Uncertainty} & Foundational to \textit{probabilistic robotics} & Few nascent methods (Monte-carlo Dropout \citep{Gal2016-ny}, Bootstrap \citep{Osband2016-jg})  \\
 		& & \\
-		\textit{Robustness} & Relatively good & Highly dependant on training data\\
+		\textit{Robustness} & Empirically generalizable \citep{Zhou2019-se} & Highly dependant on training data\\
 		& & \\
-		\textit{Flexibility} & Limited by components & Limited by training data \\
+		\textit{Flexibility} & Limited by ingenuity of designer & Limited by training data \\
 		\bottomrule
 	\end{tabular}
 \end{threeparttable}
@@ -178,7 +177,7 @@ Despite this surge of excitement, significant debate has emerged within the robo
 
 \section{The Learned Pseudo-Sensor}
 
-To retain the benefits of classical state estimation pipelines while leveraging the representational power of modern data-drive learning techniques, we introduce the paradigm of the learned \textit{pseudo-sensor}. Instead of completely replacing the classical pipeline, this thesis presents four general ways in which machine learning can be used to train a hyper-parametric model that extracts latent information from an existing visual data stream. By fusing the output of these sensors with the output of the pipeline, we can make the final egomotion estimates more accurate and more robust to difficult-to-model effects (\Cref{fig:intro_pseudo_sensor}). In this thesis, we present two different ways in which this fusion can be performed. The first, which is used in Predictive Robust Estimation (PROBE, and its follow up PROBE-GK, \Cref{ch:probe}), is to use it to learn a heteroscedastic noise model that can be incorporated into a maximum-likelihood loss function which can be minimized traditional non-linear optimization techniques. The second (used by Sun-BCNN, DPC, and HydraNet,  \Cref{ch:sun-bcnn,ch:dpc,ch:hydranet}) produce geometric quantities (probabilistic estimates of an illumination source, $\LieGroupSE{3}$ corrections to existing egomotion estimates, and independent probabilistic rotation estimates, respectively), that can be fused with the original pipeline through a general factor graph framework.
+As state estimation enters the robust-perception age \citep{Cadena2016-ds}, algorithms that work in limited context will need to be adapted and modified to ensure they can operate over longer time-periods, and sundry environments. To achieve this, and to retain the benefits of classical state estimation pipelines while leveraging the representational power of modern data-drive learning techniques, we introduce the paradigm of the \textit{learned pseudo-sensor}. Instead of completely replacing the classical pipeline, this thesis presents four general ways in which machine learning can be used to train a hyper-parametric model that extracts latent information from an existing visual data stream. By fusing the output of these sensors with the output of the pipeline, we can make the final egomotion estimates more accurate in particular environments and more robust to difficult-to-model effects (\Cref{fig:intro_pseudo_sensor}) lighting changes and miscalibrations. In this thesis, we present two different ways in which this fusion can be performed. The first, which is used in Predictive Robust Estimation (PROBE, and its follow up PROBE-GK, \Cref{ch:probe}), is to use it to learn a heteroscedastic noise model that can be incorporated into a maximum-likelihood loss. This loss can then be minimized through traditional non-linear optimization techniques. The second (used by Sun-BCNN, DPC, and HydraNet,  \Cref{ch:sun-bcnn,ch:dpc,ch:hydranet}) produce geometric quantities (probabilistic estimates of an illumination source, $\LieGroupSE{3}$ corrections to existing egomotion estimates, and independent probabilistic rotation estimates, respectively), that can be fused with the original pipeline through a factor graph optimization routine.
 
 %\section{Outstanding Issues in the Field}
 
@@ -201,14 +200,13 @@ To retain the benefits of classical state estimation pipelines while leveraging 
 \begin{figure}[h!]
 \begin{center}
 		\includegraphics[width=0.98\textwidth]{introduction/all_pseudo_sensors.pdf}
-		\caption{My thesis presents four different types of pseudo-sensors to improve egomotion estimation.}
+		\caption{My thesis details four examples of \textit{pseudo-sensors} that improve 'classical` egomotion estimation through data-driven learning.}
   	\label{fig:intro_pseudo_sensors}
 \end{center}
 \end{figure}
 
 
-My thesis presents four different types of pseudo-sensors to improve visual odometry: PROBE, Sun-BCNN, DPC-Net, and $\LieGroupSO{3}$ HydraNet:
-
+This thesis consists of several published contributions under the umbrella of a \textit{learned pseudo-sensor} that improves a canonical visual egomotion pipeline. Before detailing each pseudo-sensor, we present some mathematical foundations and a common baseline for an indirect stereo visual odometry pipeline which all four methods build upon. In total, there are two journal papers, and five conference papers associated with our work. Below, we briefly summarize each of the pseudo-sensors and list the publications that are associated with each.
 \begin{enumerate}
 \item \textbf{Predictive Robust Estimation (PROBE)},  \\
 Predictive Robust Estimation (\Cref{ch:probe}) uses k-NN regression (original PROBE) or Generalized Kernels \citep{Vega-Brown2014-sb} (PROBE-GK) to train a predictive model for heteroscedastic measurement covariance of stereo reprojection errors to improve the accuracy and consistency of an indirect stereo visual odometry pipeline. It is associated with two publications:
@@ -218,7 +216,7 @@ Predictive Robust Estimation (\Cref{ch:probe}) uses k-NN regression (original PR
 \end{itemize}
 
 \item \textbf{Virtual Sun Sensor using a Bayesian Convolutional Neural Network} \\ 
-Sun-BCNN (\Cref{ch:sun-bcnn}) is a technique to infer a probabilistic estimate of the direction of the sun from a single RGB image using a Bayesian Convolutional Neural Networks (BCNN). The method works much like dedicated sun sensors \citep{Lambert2012-sn}, but requires no additional hardware, and can provide mean and covariance estimates that can be readily incorporated into existing visual odometry frameworks.  Initial exploratory work was published at ISER 2016, and the BCNN improvement was presented at ICRA 2017. An additional journal paper summarizing the work of the prior two papers, adding data from the Canadian High Arctic and Oxford, and investigating the effect of cloud cover and transfer learning was published in the International Journal of Robotics' Research, Special Issue on Experimental Robotics at the end of 2017. 
+Sun-BCNN (\Cref{ch:sun-bcnn}) is a technique to infer a probabilistic estimate of the direction of the sun from a single RGB image using a Bayesian Convolutional Neural Networks (BCNN). The method works much like dedicated sun sensors \citep{Lambert2012-sn}, but requires no additional hardware, and can provide mean and covariance estimates that can be readily incorporated into existing visual odometry frameworks.  It is associated with three publications listed below. Initial exploratory work was published at ISER 2016, and the BCNN improvement was presented at ICRA 2017. An additional journal paper summarizing the work of the prior two papers, adding data from the Canadian High Arctic and Oxford, and investigating the effect of cloud cover and transfer learning was published in the International Journal of Robotics' Research, Special Issue on Experimental Robotics at the end of 2017. 
 \begin{itemize}
 \item \bibentry{2017_Clement_Improving}
 \item \bibentry{2017_Peretroukhin_Reducing}
@@ -233,10 +231,10 @@ Deep Pose Correction (\Cref{ch:dpc}) is an approach to improving egomotion estim
 
 \item \textbf{Estimating Rotation through Deep Probabilistic Inference with HydraNet}
 
-Finally, HydraNet (\Cref{ch:hydranet}) is a multi-headed network structure that can regress probabilistic estimates of rotation (elements of the matrix Lie group, $\LieGroupSO{3}$ accounting for both aleatoric and epistemic uncertainty. This uncertainty can then be used to fuse the output of HydraNet with the output of classical egomotion pipelines in a probabilistic factor graph formulation.
+Finally, HydraNet (\Cref{ch:hydranet}) is a multi-headed network structure that can regress probabilistic estimates of rotation (elements of the matrix Lie group, $\LieGroupSO{3}$ accounting for both aleatoric and epistemic uncertainty. This uncertainty can then be used to fuse the output of HydraNet with the output of classical egomotion pipelines in a probabilistic factor graph formulation. It is associated with one publication:
 
 \begin{itemize}
-\item \bibentry{2019_Peretroukhin_Deep}
+\item \bibentry{2019_Peretroukhin_Deep}.
 \end{itemize}
 
 

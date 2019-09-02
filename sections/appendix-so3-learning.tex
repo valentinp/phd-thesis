@@ -6,7 +6,7 @@
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=0.98\textwidth]{supplementary/uncertainty_methods.pdf}
+	\includegraphics[width=0.98\textwidth]{so3_learning/supplementary/uncertainty_methods.pdf}
 	\vspace{-.5em}
 	\caption{Different scalable approaches to neural network uncertainty. }
 	\label{fig:nn-uncertainty}
@@ -22,7 +22,7 @@ We present three additional figures here that were not included in the main pape
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.48\textwidth]{supplementary/uncertainty-MSE}
+	\includegraphics[width=0.48\textwidth]{so3_learning/supplementary/uncertainty-MSE}
 	\caption{Mean squared errors for the different probabilistic regression models in 1D.}
 	\label{fig:1d-mse}
 \end{figure}
@@ -30,7 +30,7 @@ We present three additional figures here that were not included in the main pape
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.48\textwidth]{supplementary/uncertainty-NLL-target_noise}
+	\includegraphics[width=0.48\textwidth]{so3_learning/supplementary/uncertainty-NLL-target_noise}
 	\caption{For the 1D experiment, we experimented with adding zero-mean Gaussian additive noise to the regression targets in an attempt to promote diversity amongst the outputs. We found that while this improved the uncertainty estimates gleaned from the HydraNet heads alone (what we call epistemic uncertainty) it made little difference once we included aleatoric uncertainty.}
 	\label{fig:1d-target-noise}
 \end{figure}
@@ -41,31 +41,31 @@ We present three additional figures here that were not included in the main pape
 	%load *.pt to plot a specific run from the 100 run experiment
 	\centering
 	\begin{subfigure}[]{\textwidth}
-		\includegraphics[width=\textwidth]{supplementary/supp_dropout.pdf}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_dropout.pdf}
 		\caption{Dropout}
 		\label{fig:1D_dropout}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[]{\textwidth}
-		\includegraphics[width=\textwidth]{supplementary/supp_sigma.pdf}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_sigma.pdf}
 		\caption{Direct Uncertainty}
 		\label{fig:1D_direct}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[]{\textwidth}
-		\includegraphics[width=\textwidth]{supplementary/supp_bagging.pdf}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_bagging.pdf}
 		\caption{Bagging}
 		\label{fig:1D_bagging}
 	\end{subfigure}
 	\hfill	
 	\begin{subfigure}[]{\textwidth}
-		\includegraphics[width=\textwidth]{supplementary/supp_hydranet.pdf}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_hydranet.pdf}
 		\caption{HydraNet (no direct uncertainty)}
 		\label{fig:1D_hydranet_undirect}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[]{\textwidth}
-		\includegraphics[width=\textwidth]{supplementary/supp_hydranetsigma.pdf}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_hydranetsigma.pdf}
 		\caption{HydraNet}
 		\label{fig:1D_hydranet}
 	\end{subfigure}
@@ -106,31 +106,31 @@ The network consisted of five residual blocks, each containing a fully connected
 \begin{figure*}[h!]
 	\centering
 	\begin{subfigure}[]{0.33\textwidth}
-		\includegraphics[width=\textwidth]{supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13}
 		\caption{Chess}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4}
 		\caption{Fire}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11}
 		\caption{Heads}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/7scenes_abs_best_model_office_heads_25_epoch_15}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_office_heads_25_epoch_15}
 		\caption{Office}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13}
 		\caption{Pumpkin}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2}
 		\caption{Kitchen}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11}
 		\caption{Stairs}
 	\end{subfigure}
 	
@@ -194,27 +194,27 @@ and the head structure being identical to both of the previous experiments. Our 
 \begin{figure*}[h!]
 	\centering
 	\begin{subfigure}[]{0.33\textwidth}
-		\includegraphics[width=\textwidth]{supplementary/kitti_abs_00_downsample_5}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_abs_00_downsample_5}
 		\caption{\texttt{00}}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/kitti_abs_02_downsample_5}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_abs_02_downsample_5}
 		\caption{\texttt{02}}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/kitti_abs_05_downsample_5}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_abs_05_downsample_5}
 		\caption{\texttt{05}}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/kitti_00_topdown}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_00_topdown}
 		\caption{\texttt{00}}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/kitti_02_topdown}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_02_topdown}
 		\caption{\texttt{02}}
 	\end{subfigure}
 	\begin{subfigure}[]{0.33\textwidth} 
-		\includegraphics[width=\textwidth]{supplementary/kitti_05_topdown}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_05_topdown}
 		\caption{\texttt{05}}
 	\end{subfigure}
 	\caption{KITTI frame-to-frame rotation probabilistic regression for sequences \texttt{00}, \texttt{02} and \texttt{05}. Top-down trajectory plots show localization improvements after fusion with a classical stereo visual odometry pipeline.}

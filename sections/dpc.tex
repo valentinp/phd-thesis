@@ -1,11 +1,13 @@
 \chapter{Deep Pose Corrections for Visual Localization}
 \label{ch:dpc}
+\epigraph{Life can only be understood backwards; but it must be lived forwards.}{Søren Kierkegaard}
+
 \section{Introduction}
-Deep convolutional neural networks (CNNs) are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\cite{LeCun2015-fw}. 
+Deep convolutional neural networks (CNNs) are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\citep{LeCun2015-fw}. 
 These CNN-based techniques achieve accuracies previously
 unattainable by classical methods. In mobile robotics and state estimation, however, it remains unclear to what extent these deep architectures can obviate the need for classical geometric modelling. 
 In this work, we focus on visual odometry (VO): the task of computing the egomotion of a camera through an unknown environment with no external positioning sources. Visual localization algorithms like VO can suffer from several systematic error sources
-that include estimator biases \cite{Peretroukhin2014-db}, poor calibration, and environmental factors (e.g., a lack of scene texture). While machine learning approaches can be used to better model specific subsystems of a localization pipeline (e.g., the heteroscedastic feature track error covariance modelling of \cite{Peretroukhin2016-om, Peretroukhin2015-em}), much recent work \cite{Costante2016-hb, Clark2017-zg, Kendall2017-ix, Melekhov2017-dl, Oliveira2017-lt} has been devoted to completely replacing the estimator with a CNN-based system.
+that include estimator biases \citep{Peretroukhin2014-db}, poor calibration, and environmental factors (e.g., a lack of scene texture). While machine learning approaches can be used to better model specific subsystems of a localization pipeline (e.g., the heteroscedastic feature track error covariance modelling of \citep{Peretroukhin2016-om, Peretroukhin2015-em}), much recent work \citep{Costante2016-hb, Clark2017-zg, Kendall2017-ix, Melekhov2017-dl, Oliveira2017-lt} has been devoted to completely replacing the estimator with a CNN-based system.
 
 \begin{figure}
 	\centering
@@ -15,7 +17,7 @@ that include estimator biases \cite{Peretroukhin2014-db}, poor calibration, and 
 	\vspace{-1.5em}
 \end{figure}
 
-We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from recent results \cite{Peretroukhin2017-eb} that demonstrate that CNNs can infer difficult-to-model geometric quantities (e.g., the direction of the sun) to improve an existing localization estimate.  
+We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from recent results \citep{Peretroukhin2017-eb} that demonstrate that CNNs can infer difficult-to-model geometric quantities (e.g., the direction of the sun) to improve an existing localization estimate.  
 In a similar vein, we propose a system (\Cref{fig:system_overview}) that takes as its starting point an efficient, classical localization algorithm that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
 
 % By applying the correction to the final $\LieGroupSE{3}$ pose, we design DPC-Net to learn effects that are often difficult to model by hand: estimator bias, environmental factors, and sensor mis-calibrations.
@@ -32,17 +34,17 @@ In summary, the main contributions of this work are
 
 
 \section{Related Work}
-Visual state estimation has a rich history in mobile robotics. We direct the reader to \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds} for detailed surveys of what we call \textit{classical}, geometric approaches to visual odometry (VO) and visual simultaneous localization and mapping (SLAM).
+Visual state estimation has a rich history in mobile robotics. We direct the reader to \citep{Scaramuzza2011-qr} and \citep{Cadena2016-ds} for detailed surveys of what we call \textit{classical}, geometric approaches to visual odometry (VO) and visual simultaneous localization and mapping (SLAM).
 
-In the past decade, much of machine learning and its sub-disciplines has been revolutionized by carefully constructed deep neural networks (DNNs)~\cite{LeCun2015-fw}. For tasks like image segmentation, classification, and natural language processing, most prior state-of-the-art algorithms have been replaced by their DNN alternatives.
+In the past decade, much of machine learning and its sub-disciplines has been revolutionized by carefully constructed deep neural networks (DNNs)~\citep{LeCun2015-fw}. For tasks like image segmentation, classification, and natural language processing, most prior state-of-the-art algorithms have been replaced by their DNN alternatives.
 
-In mobile robotics, deep neural networks have ushered in a new paradigm of end-to-end training of visuomotor policies \cite{Levine2016-bj} and significantly impacted the related field of reinforcement learning~\cite{Duan2016-jw}. In state estimation, however, most successful applications of deep networks have aimed at replacing a specific sub-system of a localization and mapping pipeline (for example, object detection~\cite{yang2016exploit}, place recognition~\cite{Sunderhauf2015-oc}, or bespoke discriminative observation functions~\cite{Haarnoja2016-ph}).
+In mobile robotics, deep neural networks have ushered in a new paradigm of end-to-end training of visuomotor policies \citep{Levine2016-bj} and significantly impacted the related field of reinforcement learning~\citep{Duan2016-jw}. In state estimation, however, most successful applications of deep networks have aimed at replacing a specific sub-system of a localization and mapping pipeline (for example, object detection~\citep{yang2016exploit}, place recognition~\citep{Sunderhauf2015-oc}, or bespoke discriminative observation functions~\citep{Haarnoja2016-ph}).
 
-Nevertheless, a number of recent approaches have presented convolutional neural network architectures that purport to obviate the need for classical visual localization algorithms. For example, Kendall et al.~\cite{Kendall2015-kh,Kendall2017-ix} presented extensive work on PoseNet, a CNN-based camera re-localization approach that regresses the 6-DOF pose of a camera within a previously explored environment. Building upon PoseNet, Melekhov~\cite{Melekhov2017-dl} applied a similar CNN learning paradigm to relative camera motion. In related work, Costante et al. \cite{Costante2016-hb} presented a CNN-based VO technique that uses pre-processed dense optical flow images. By focusing on RGB-D odometry, Handa et al.~\cite{Handa2016-hm}, detailed an approach to learning relative poses with \textit{3D Spatial Transformer} modules and a dense photometric loss. Finally, Oliviera et al. \cite{Oliveira2017-lt} and Clark et al.~\cite{Clark2017-zg} described techniques for more general sensor fusion and mapping. The former work outlined a DNN-based topometric localization pipeline with separate VO and place recognition modules while the latter presented VINet, a CNN paired with a recurrent neural network for visual-inertial sensor fusion and online calibration.
+Nevertheless, a number of recent approaches have presented convolutional neural network architectures that purport to obviate the need for classical visual localization algorithms. For example, Kendall et al.~\citep{Kendall2015-kh,Kendall2017-ix} presented extensive work on PoseNet, a CNN-based camera re-localization approach that regresses the 6-DOF pose of a camera within a previously explored environment. Building upon PoseNet, Melekhov~\citep{Melekhov2017-dl} applied a similar CNN learning paradigm to relative camera motion. In related work, Costante et al. \citep{Costante2016-hb} presented a CNN-based VO technique that uses pre-processed dense optical flow images. By focusing on RGB-D odometry, Handa et al.~\cite{Handa2016-hm}, detailed an approach to learning relative poses with \textit{3D Spatial Transformer} modules and a dense photometric loss. Finally, Oliviera et al. \citep{Oliveira2017-lt} and Clark et al.~\citep{Clark2017-zg} described techniques for more general sensor fusion and mapping. The former work outlined a DNN-based topometric localization pipeline with separate VO and place recognition modules while the latter presented VINet, a CNN paired with a recurrent neural network for visual-inertial sensor fusion and online calibration.
 
-With this recent surge of work in end-to-end learning for visual localization, one may be tempted to think this is the only way forward. It is important to note, however, that these deep CNN-based approaches do not yet report state-of-the-art localization accuracy, focusing instead on proof-of-concept validation. Indeed, at the time of writing, the most accurate visual odometry approach on the KITTI odometry benchmark leaderboard\footnote{See \url{http://www.cvlibs.net/datasets/kitti/eval_odometry.php}.} remains a variant of a sparse feature-based pipeline with carefully hand-tuned optimization~\cite{Cvisic2015-mt}. 
+With this recent surge of work in end-to-end learning for visual localization, one may be tempted to think this is the only way forward. It is important to note, however, that these deep CNN-based approaches do not yet report state-of-the-art localization accuracy, focusing instead on proof-of-concept validation. Indeed, at the time of writing, the most accurate visual odometry approach on the KITTI odometry benchmark leaderboard\footnote{See \url{http://www.cvlibs.net/datasets/kitti/eval_odometry.php}.} remains a variant of a sparse feature-based pipeline with carefully hand-tuned optimization~\citep{Cvisic2015-mt}. 
 
-Taking inspiration from recent results that show that CNNs can be used to inject global orientation information into a visual localization pipeline \cite{Peretroukhin2017-eb}, and leveraging ideas from recent approaches to trajectory tracking in the field of controls~\cite{2017_Li_Deep, Punjani2015-pj}, we formulate a system that learns \textit{pose corrections} to an existing estimator, instead of learning the entire localization problem \textit{ab initio}.
+Taking inspiration from recent results that show that CNNs can be used to inject global orientation information into a visual localization pipeline \citep{Peretroukhin2017-eb}, and leveraging ideas from recent approaches to trajectory tracking in the field of controls~\citep{2017_Li_Deep, Punjani2015-pj}, we formulate a system that learns \textit{pose corrections} to an existing estimator, instead of learning the entire localization problem \textit{ab initio}.
 
 \begin{figure}
 	\centering
@@ -57,7 +59,7 @@ Taking inspiration from recent results that show that CNNs can be used to inject
 
 \section{System Overview: Deep Pose Correction}
 
-We base our network structure on that of \cite{Handa2016-hm} but learn $\LieGroupSE{3}$ \textit{corrections} from stereo images and require no pre-training. Similar to \cite{Handa2016-hm}, we use primarily \texttt{3x3} convolutions and avoid the use of max pooling to preserve spatial information. We achieve downsampling by setting the stride to 2 where appropriate (see \Cref{fig:dpc_net} for a full description of the network structure). We derive a novel loss function, unlike that used in \cite{Kendall2017-ix, Melekhov2017-dl, Oliveira2017-lt}, based on $\LieGroupSE{3}$ geodesic distance. Our loss naturally balances translation and rotation error without requiring a hand-tuned scalar hyper-parameter. Similar to \cite{Costante2016-hb}, we test our final system on the KITTI odometry benchmark, and evaluate how it copes with degraded visual data. 
+We base our network structure on that of \citep{Handa2016-hm} but learn $\LieGroupSE{3}$ \textit{corrections} from stereo images and require no pre-training. Similar to \citep{Handa2016-hm}, we use primarily \texttt{3x3} convolutions and avoid the use of max pooling to preserve spatial information. We achieve downsampling by setting the stride to 2 where appropriate (see \Cref{fig:dpc_net} for a full description of the network structure). We derive a novel loss function, unlike that used in \cite{Kendall2017-ix, Melekhov2017-dl, Oliveira2017-lt}, based on $\LieGroupSE{3}$ geodesic distance. Our loss naturally balances translation and rotation error without requiring a hand-tuned scalar hyper-parameter. Similar to \citep{Costante2016-hb}, we test our final system on the KITTI odometry benchmark, and evaluate how it copes with degraded visual data. 
 
 Given two coordinate frames $\CoordinateFrame{i}$, $\CoordinateFrame{i+\deltap}$ that represent a camera's pose at time $t_{i}$ and $t_{i+\deltap}$ (where $\deltap$ is an integer hyper-parameter that allows DPC-Net to learn corrections across multiple temporally consecutive poses), we assume that our visual localizer gives us an estimate\footnote{We use $\Estimate{(\cdot)}$ to denote an estimated quantity throughout the paper.}, $\EstimatedVOTransform$, of the true transform $\TargetVOTransform \in \LieGroupSE{3}$ between the two frames. We aim to learn a target correction,
 \begin{equation}
@@ -343,19 +345,19 @@ We used this dense, direct estimator as our benchmark for a state-of-the-art vis
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.42\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/pose/00_topdown.pdf}
         \label{00-top-down}
         \caption{Sequence \texttt{00}.}
     \end{subfigure}
     ~
-    \begin{subfigure}{0.42\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/pose/02_topdown.pdf}
         \label{02-top-down}
         \caption{Sequence \texttt{02}.}
     \end{subfigure}
     ~
-    \begin{subfigure}{0.42\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/pose/05_topdown.pdf}
         \label{05-top-down}
         \caption{Sequence \texttt{05}.}
@@ -390,19 +392,19 @@ where $N_s$ and $s_p$ (the number of segments of a given length, and the number 
 \section{Results \& Discussion}
 \begin{figure}
     \centering
-    \begin{subfigure}{0.42\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/00_segs.pdf}
         \label{00-pose-segs}
         \caption{Sequence \texttt{00} (Distorted): Segment Errors.}
     \end{subfigure} 
     ~
-    \begin{subfigure}{0.42\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/02_segs.pdf}
         \label{02-pose-segs}
         \caption{Sequence \texttt{02} (Distorted): Segment Errors.}
     \end{subfigure} 
     ~
-    \begin{subfigure}{0.42\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/05_segs.pdf}
         \label{05-pose-segs}
         \caption{Sequence \texttt{05} (Distorted): Segment Errors.}
@@ -487,3 +489,5 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
 	\end{threeparttable}
 	}
 \end{table}
+
+\section{Summary}

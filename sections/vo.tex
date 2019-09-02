@@ -2,21 +2,30 @@
 \label{ch:vo}
 \epigraph{Eventually, my eyes were opened, and I really understood nature.}{Claude Monet}
 
-Visual odometry and its offshoots has a rich history in mobile robotics and computer vision -- see \cite{Scaramuzza2011-qr} for a seminal tutorial on visual odometry. 
-
-\section{A taxonomy}
-
 \begin{figure}[h!]
 \begin{center}
-		\includegraphics[width=0.98\textwidth]{classical-vo/vo_taxonomy.pdf}
+		\includegraphics[width=0.95\textwidth]{classical-vo/vo_taxonomy.pdf}
 		\caption{A taxonomy of different types of visual odometry.}
   	\label{fig:vo_taxonomy}
 \end{center}
 \end{figure}
 
-\section{Pipeline}
 
-The learned pseudo-sensors in this thesis are applied to a standard visual odometry pipeline largely based on the work of \cite{furgale_phd11}. We briefly summarize the pipeline here, and outline any unique design choices.
+Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this thesis largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to two seminal papers: \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds}.
+
+\section{A taxonomy of VO}
+
+VO can be largely divided along two dimensions (c.f. \Cref{fig:vo_taxonomy}): the type of camera (monocular vs. stereo) and the type of data association (indirect, or feature-based vs. direct, or pixel intensity-based). 
+
+\textbf{Monocular vs. Stereo:}
+The first distinction is based on the type of camera used by the VO pipeline. Monocular VO methods use a single camera to infer motion and can use a single compact, low-power vision sensor. They do not require any extrinsic calibration but must rely on known visual cues or external information (e.g., wheel odometry, inertial measurements) to provide metric egomotion estimates. Conversely, stereo VO methods use a stereo camera to triangulate objects with metric scale. This allows stereo VO to provide metricaly-acurate egomotion estimates. However, stereo methods rely on accurate extrinsic calibration, and their ability to resolve depth is limited by the baseline distance between the stereo pair. 
+
+\textbf{Direct vs. Indirect:}
+The second distinction is based on the type of data association used to match sequential images. Direct methods make the assumption of brightness constancy, and attempt to \textit{directly} maximize the similarity of pixel intensities. Indirect methods, however, rely on image features detectors to extract a set of salient landmarks, and then match these landmarks across images (typically through some sort of invariant descriptor).
+
+\section{A classical VO pipeline}
+
+In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline largely based on the work of \cite{furgale_phd11}. We briefly summarize the pipeline here.
 
 \begin{figure}[h!]
 \begin{center}
@@ -48,7 +57,7 @@ The learned pseudo-sensors in this thesis are applied to a standard visual odome
         \label{fig:vo_preprocessing}
 \end{figure}
 
-In the preprocessing stage, stereo images are undistorted and rectified such that their principal axes are parallel, see \Cref{fig:vo_preprocessing}. We assume the stereo camera intrinsic and extrinsic parameters as well as the lens properties are known a priori (or computed through a calibration process like that detailed in \cite{kelly_phd2011}).
+In the preprocessing stage, stereo images are undistorted and rectified such that their principal axes are parallel (\Cref{fig:vo_preprocessing}). We assume the stereo camera intrinsic and extrinsic parameters as well as the lens properties are known a priori (or computed through a calibration process like that detailed in \cite{kelly_phd2011}).
 
 \subsection{Data association}
 
@@ -57,12 +66,12 @@ In the preprocessing stage, stereo images are undistorted and rectified such tha
 \begin{figure}[h!]
 \begin{center}
 		\includegraphics[width=0.98\textwidth]{classical-vo/feature_tracking}
-		\caption{Steps within feature tracking.}
+		\caption{Indirect feature tracking and outlier rejection.}
   	\label{fig:vo_feature_tracking}
 \end{center}
 \end{figure}
 
-During data association, some form of image features must be matched. In this thesis, we focus on sparse stereo visual odometry which uses the \texttt{libviso2} \citep{geiger2011stereoscan} image feature extraction and matching mechanism.  
+During data association, some form of image features must be matched. In this thesis, we focus on sparse stereo visual odometry which uses the \texttt{libviso2} \citep{geiger2011stereoscan} image feature extraction and matching mechanism although many other possible features can be used for this task. A detailed comparison of feature tracking is outside the scope of this work.
 
 Each landmark corresponds to a
 point in space, expressed in homogeneous coordinates in the camera frame as
@@ -93,31 +102,30 @@ We use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRA
   
 \subsection{Motion solution}
 
-In our frame-to-frame sparse stereo odometry pipeline,  the objective is to find
-$\Transform_t\in\text{SE}(3)$, the rigid transform between two subsequent stereo camera poses (note that the temporal index $t$ refers to the set of two stereo camera poses). We begin by rectifying, then stereo and temporally
-matching the set of 4 images to generate the corresponding locations of a set
-of $N_t$ visual landmarks in each stereo pair.  
+To compute
+$\Transform\in\text{SE}(3)$, the rigid transform between two subsequent stereo camera poses, we assume we have a set
+of $N_t$ visual landmarks in each stereo pair at a time instance, $t$.
 
 We triangulate landmarks in the first camera frame, $\ImageLandmark{i}{t}$, and re-project
 them into the second frame, $\ImageLandmark{i}{t}'$. We model errors due to sensor noise
-and quantization as a Gaussian distribution in image space with a known covariance
-$\Covariance$,
+and quantization as a Gaussian distribution in image space with a covariance
+$\ImageCovariance_{i,t}$ that may change for each feature or may be constant, $\ImageCovariance_{i,t} = \ImageCovariance$,
 \begin{equation}
-  p(\ImageLandmark{i}{t}' \vert \ImageLandmark{i}{t}, \Transform_t,
-  \Covariance)
-  =\NormalDistribution\left(\Vector{e}_{i,t}(\Transform_t); \Vector 0, \Covariance\right), 
+  p(\ImageLandmark{i}{t}' \vert \ImageLandmark{i}{t}, \Transform,
+  \ImageCovariance_{i,t})
+  =\NormalDistribution\left(\Vector{e}_{i,t}(\Transform); \Vector 0, \ImageCovariance_{i,t}\right), 
 \end{equation}
 where
 \begin{equation}
- \Vector{e}_{i,t} = \ImageLandmark{i}{t}' - \ProjectionFunction( \Transform_t 
+ \Vector{e}_{i,t} = \ImageLandmark{i}{t}' - \ProjectionFunction( \Transform 
     \ProjectionFunction^{-1}( \ImageLandmark{i}{t} ) ).	
    \label{eq:image_error}
 \end{equation}
   The maximum likelihood transform,
-$\Transform_t^*$, is then given by 
+$\Transform^*$, is then given by 
 \begin{equation}
-  \Transform_t^* = \ArgMin{\Transform_t\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  \Transpose{\Vector{e}_{i,t}} \Covariance^{-1} \Vector{e}_{i,t}.
+  \Transform^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  \Transpose{\Vector{e}_{i,t}} \ImageCovariance_{i,t}^{-1} \Vector{e}_{i,t}.
 \end{equation}
 This is a nonlinear least squares problem, and can be solved iteratively using
 standard techniques. During iteration $n$, we represent the transform as the
@@ -125,22 +133,21 @@ product of an estimate $\Transform^{(n)}\in\text{SE}(3)$ and a perturbation
 $\delta\Vector{\xi}\in\RealNumbers[6]$ represented in exponential
 coordinates:
 \begin{equation}
-  \Transform_t = \exp{\left( \delta\Vector{\xi}^{\wedge}
-  \right)} \Transform_t^{(n)}.
+  \Transform = \exp{\left( \delta\Vector{\xi}^{\wedge}
+  \right)} \Mean{\Transform}.
 \end{equation}
 Linearizing the transform for small perturbations $\delta\Vector{\xi}$
 yields a linear least-squares problem:
 \begin{equation}
+\label{eq:vo_linleastsquares}
   \mathcal{L}(\delta \Vector{\xi}) = \frac{1}{2}\sum_{i=1}^{N_t} 
   \Transpose{\left(\Vector{e}_{i,t}^{(n)}
   - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)}
-\Covariance^{-1}
+\ImageCovariance_{i,t}^{-1}
  \left(\Vector{e}_{i,t}^{(n)}
  - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)
   \end{equation}
-Here, $\Matrix J_{i,t}^{(n)}$ is the Jacobian matrix of the reprojection error.
-The explicit form of the Jacobian matrix is omitted for brevity but can be
-found in our supplemental materials.
+Here, $\Matrix J_{i,t}^{(n)}$ is the Jacobian matrix of the reprojection error. \todo{add this to the appendix}
 
 Rearranging, we see the minimizing perturbation is the solution to a
 linear system of equations:
@@ -149,68 +156,76 @@ linear system of equations:
   \left( \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
   \ImageLandmarkCovariance{}{}^{-1} \Matrix J_{i,t} \right)^{-1}
   \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
-  \Covariance^{-1} \Vector{e}_{i,t}^{(n)}. 
+  \ImageCovariance_{i,t}^{-1} \Vector{e}_{i,t}^{(n)}. 
 \label{eq:least-squares-iteration}
 \end{equation}
-We then update the estimated transform and proceed to the next iteration.
+We then update the estimated transform and proceed to the next iteration,
 \begin{equation}
-  \Transform_t^{(n+1)} = \MatExp{\delta\Vector{\xi}^{(n)}} \Transform_t^{(n)}. \label{eq:update}
+  \Transform^{(n+1)} = \MatExp{\delta\Vector{\xi}^{(n)}} \Transform^{(n)}. \label{eq:update}
 \end{equation}
 There are many reasonable choices for both the initial transform
-$\Transform_t^{(0)}$ and for the conditions under which we terminate
+$\Transform^{(0)}$ and for the conditions under which we terminate
 iteration. We initialize the estimated transform to identity, and iteratively
 perform the update given by \cref{eq:update} until we see a relative change in
 the squared error of less than one percent after an update. 
 
-
-\section{Pose Graph Relaxation}
-
-\begin{wrapfigure}{r}{0.4\textwidth}
-  \vspace{-20pt}
-  \begin{center}
-	\includegraphics[width=0.38\textwidth]{classical-vo/pose_graph.pdf}
-  \end{center}
-    \vspace{-20pt}
-	\label{fig:math_pose_graph}
-	\caption{The formulation of pose graph relaxation can incorporate different probabilistic \textit{factors} that constrain each camera pose.}
-\end{wrapfigure} 
-
-
-we fused our probabilistic rotation regression with classical stereo visual odometry using pose graph relaxation implemented with the help of a Python-based factor graph library which we will publicize after the review process. Using that framework, we solved
-\begin{align}
-	\Transform_{1,w}^*, \Transform_{2,w}^* &= \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)}\mathcal{L}(\Estimate{\Transform}_{2,1}, \Estimate{\Rotation}_{2,1}) \\ & = \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)} \Vector{\xi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_\text{vo} \Vector{\xi}_\text{1,2} + \Vector{\phi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_{\text{hn}} \Vector{\phi}_\text{1,2} 
-\end{align}
-where
-\begin{equation}
-	\Vector{\xi}_\text{1,2} =  \MatLog{\left(\Transform_{2,w} \Transform_{1,w}^{-1} \right)\Estimate{\Transform}_{2,1}^{-1}},
-\end{equation}
-\begin{equation}
-	\Vector{\phi}_\text{1,2} =  \MatLog{\left(\Rotation_{2,w} \Rotation_{1,w}^{T} \right)\Estimate{\Rotation}_{2,1}^{T}},
-\end{equation}
-and $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\Estimate{\Rotation}_{2,1}$, $\Matrix{\Sigma}_{\text{hn}}$ were provided by our classical estimator and the HydraNet network respectively. Note that $\Matrix{\Sigma}_{\text{hn}} \in \Real^{3 \times 3} \geq 0$ while $\Matrix{\Sigma}_{\text{vo}} \in \Real^{6 \times 6} \geq 0 $. We also overload the logarithm function, $\MatLog{\cdot}$ to represent both $\LieGroupSE{3}$ and $\LieGroupSO{3}$ logarithmic maps as necessary. To account for gauge freedom, we fixed the first transformation to identity, $\Transform_{1,w} = \IdentityMatrix$, and initialized $\Transform_{2,w}$ to  $\Estimate{\Transform}_{2,1}$.  After convergence, we composed the final frame-to-frame estimate as $ \Transform_{2,1}^* =  \Transform_{2,w}^*  \left(\Transform_{1,w}^*\right)^{-1} = \Transform_{2,w}^*$.
-
+%\newpage
+%\section{Pose Graph Optimization}
+%
+%\begin{wrapfigure}{r}{0.4\textwidth}
+%  \vspace{-20pt}
+%  \begin{center}
+%	\includegraphics[width=0.38\textwidth]{classical-vo/pose_graph.pdf}
+%  \end{center}
+%    \vspace{-20pt}
+%	\label{fig:math_pose_graph}
+%	\caption{The formulation of pose graph relaxation can incorporate different probabilistic \textit{factors} that constrain each camera pose.}
+%\end{wrapfigure} 
+%
+%
+%we fused our probabilistic rotation regression with classical stereo visual odometry using pose graph relaxation implemented with the help of a Python-based factor graph library which we will publicize after the review process. Using that framework, we solved
+%\begin{align}
+%	\Transform_{1,w}^*, \Transform_{2,w}^* &= \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)}\mathcal{L}(\Estimate{\Transform}_{2,1}, \Estimate{\Rotation}_{2,1}) \\ & = \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)} \Vector{\xi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_\text{vo} \Vector{\xi}_\text{1,2} + \Vector{\phi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_{\text{hn}} \Vector{\phi}_\text{1,2} 
+%\end{align}
+%where
+%\begin{equation}
+%	\Vector{\xi}_\text{1,2} =  \MatLog{\left(\Transform_{2,w} \Transform_{1,w}^{-1} \right)\Estimate{\Transform}_{2,1}^{-1}},
+%\end{equation}
+%\begin{equation}
+%	\Vector{\phi}_\text{1,2} =  \MatLog{\left(\Rotation_{2,w} \Rotation_{1,w}^{T} \right)\Estimate{\Rotation}_{2,1}^{T}},
+%\end{equation}
+%and $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\Estimate{\Rotation}_{2,1}$, $\Matrix{\Sigma}_{\text{hn}}$ were provided by our classical estimator and the HydraNet network respectively. Note that $\Matrix{\Sigma}_{\text{hn}} \in \Real^{3 \times 3} \geq 0$ while $\Matrix{\Sigma}_{\text{vo}} \in \Real^{6 \times 6} \geq 0 $. We also overload the logarithm function, $\MatLog{\cdot}$ to represent both $\LieGroupSE{3}$ and $\LieGroupSO{3}$ logarithmic maps as necessary. To account for gauge freedom, we fixed the first transformation to identity, $\Transform_{1,w} = \IdentityMatrix$, and initialized $\Transform_{2,w}$ to  $\Estimate{\Transform}_{2,1}$.  After convergence, we composed the final frame-to-frame estimate as $ \Transform_{2,1}^* =  \Transform_{2,w}^*  \left(\Transform_{1,w}^*\right)^{-1} = \Transform_{2,w}^*$.
+%
 
 
 
 \section{Robust Estimation}
-\todo{Add discussion of outliers}
-\subsection{Robust M-Estimation}
-Since the standard $L_2$ cost function \eqref{eq:L2} assigns cost values that grow quadratically with measurement error, it is very sensitive to outlier measurements.
-A common solution to this problem is to replace the $L_2$ cost function with one that is less sensitive to large measurement errors.
-These robust cost functions are collectively known as M-estimators, and many variants exist.
-Here, we consider three M-estimators: the Huber \eqref{eq:Huber}, Tukey \eqref{eq:Tukey}, and ``Fair'' \eqref{eq:Fair} cost functions.
+Since \cref{eq:vo_linleastsquares} assigns cost values that grow quadratically with measurement error, it is very sensitive to outlier measurements.
+A common solution to this problem is to replace the $L_2$ cost function with one that is less sensitive to large measurement errors \citep{MacTavish2015-wt}.
+These robust cost functions are collectively known as M-estimators, and many variants exist. Each uses a re-weighting function, $\rho(\cdot)$,
 
-
-
-Optimization using robust cost functions such as these typically proceeds using an Iteratively Reweighted Least-Squares (IRLS) procedure in which we define a weight for the $i^{\text{th}}$ measurement as
 \begin{equation}
-    w_i = \frac{1}{e_i}\PartialDerivative{\rho(e_i)}{e_i}
+  \Transform^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  \rho\left(\Transpose{\Vector{e}_{i,t}} \ImageCovariance_{i,t}^{-1} \Vector{e}_{i,t}\right) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  \rho(\epsilon_i),
 \end{equation}
-and repeatedly minimize the weighted least-squares objective
-\begin{equation}
-    \mathcal{O} = \sum_i w_i e_i^2,
-\end{equation}
-updating the weights at each iteration until convergence.
+
+where. given a parameter $c$, some common examples include:
+
+\begin{align}
+\rho(\epsilon) &= \left\{  	\begin{array}{ll}
+		 \frac{c^2}{2} \log{\left(1 + \frac{\epsilon^2}{c^2}\right)}   & \mbox{Cauchy,} \\
+		 \frac{1}{2} \frac{\epsilon^2}{c^2 + \epsilon^2}  & \mbox{Geman-McClure \citep{geman1992nonlinear},} \\
+		 \\
+		\left\{  	\begin{array}{ll}  \frac{\epsilon^2}{2} & \mbox{if} \Norm{\epsilon} < c \\
+										c\Norm{\epsilon} - \frac{c^2}{2} & \mbox{if} \Norm{\epsilon} \geq c \end{array}
+																						 \right.   & \mbox{Huber \citep{huber1964robust}.} \\
+	\end{array}
+	\right.
+\end{align}
+
+
+
 
 \section{Outstanding Issues}
 Herein, we summarize several outstanding limitations of classical visual odometry pipelines and point to parts of this thesis that address them.
@@ -248,7 +263,7 @@ Herein, we summarize several outstanding limitations of classical visual odometr
 	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
 		\toprule
 		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
-		Recent work \citep{Vega-Brown2014-sb, Hu2015-uw} suggests that using a stationary, homoscedastic noise in observation models can often reduce the consistency and accuracy of state estimates. This is especially true for complex, inferred measurement models. In visual data, inferred visual observations can be degraded not only due to sensor imperfections (e.g. poor intrinsic calibration, digitization effects, motion blur), but also as a result of the observed environment (e.g. self-similar scenes, specular surfaces, textureless environments). Indeed, robust costs \cite{Alcantarilla2016-kv, MacTavish2015-wt, Agarwal2013-jq} and whiteness tests \citep{Tsotsos2015-qs} have commonly been used to alleviate the problem of poor noise modelling, but more work is required to better learn uncertainty in complex measurement models. &  PROBE, Sun-BCNN, HydraNet \\
+		Stationary, homoscedastic noise in observation models can often reduce the consistency and accuracy of state estimates. This is especially true for complex, inferred measurement models. In visual data, inferred visual observations can be degraded not only due to sensor imperfections (e.g. poor intrinsic calibration, digitization effects, motion blur), but also as a result of the observed environment (e.g. self-similar scenes, specular surfaces, textureless environments). &  PROBE, Sun-BCNN, HydraNet \\
 		& \\
 		\bottomrule
 	\end{tabular}

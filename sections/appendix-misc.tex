@@ -66,24 +66,24 @@ I believe this is resolved by realizing that $\MatLog{\Matrix{C}(\pi)}$ cannot b
 &= \pi!
 \end{align}
 
+%
+%Without loss of generality, consider $\Matrix{C}_2$ = $\Matrix{1}$, $\Matrix{C}_1 = \Matrix{C}(\pi)$. 
+%
+%Then using the Barfoot noise injection scheme,
+%\begin{equation}
+%\Matrix{C} = \MatExp{\Vector{\phi}} \Matrix{\Mean{C}}, \quad\quad \Vector{\phi} \sim \NormalDistribution{\Vector{0}}{\Matrix{\Sigma}}
+%\end{equation}
+%
+%If we set $\Matrix{C}_2$ to be the mean, we can still produce $\Matrix{C}_1$ as a sample since,
+%\begin{equation}
+%\Matrix{C}_1 = \MatExp{\pm\pi \hat{\Vector{n}}} \Matrix{C}_2 =  \MatExp{\pm\pi \hat{\Vector{n}}} 
+%\end{equation}
+%
+%However, to use this in a loss function, we need to compute the likelihood of $\Matrix{C}_1$ given the mean $\Matrix{C}_2$. If $\Matrix{\Sigma} = \Matrix{1}$ then the negative log likelihood is equal to $\pi^2$ since , but in general this involves the Mahalanobis distance. Can we compute the Mahalonobis distance without explicitly evaluating the components of the log map (since they involve sign ambiguities)?
 
-Without loss of generality, consider $\Matrix{C}_2$ = $\Matrix{1}$, $\Matrix{C}_1 = \Matrix{C}(\pi)$. 
-
-Then using the Barfoot noise injection scheme,
-\begin{equation}
-\Matrix{C} = \MatExp{\Vector{\phi}} \Matrix{\Mean{C}}, \quad\quad \Vector{\phi} \sim \NormalDistribution{\Vector{0}}{\Matrix{\Sigma}}
-\end{equation}
-
-If we set $\Matrix{C}_2$ to be the mean, we can still produce $\Matrix{C}_1$ as a sample since,
-\begin{equation}
-\Matrix{C}_1 = \MatExp{\pm\pi \hat{\Vector{n}}} \Matrix{C}_2 =  \MatExp{\pm\pi \hat{\Vector{n}}} 
-\end{equation}
-
-However, to use this in a loss function, we need to compute the likelihood of $\Matrix{C}_1$ given the mean $\Matrix{C}_2$. If $\Matrix{\Sigma} = \Matrix{1}$ then the negative log likelihood is equal to $\pi^2$ since , but in general this involves the Mahalanobis distance. Can we compute the Mahalonobis distance without explicitly evaluating the components of the log map (since they involve sign ambiguities)?
 
 
-
-\chapter{Representations of $\LieGroupSE{3}$}
-\label{chap:appendix_se3}
-\todo{Discuss the banana uncertainty (cannot represent uncertainty over SE(3) with certain position but uncertain rotation)} \\
-\todo{Discuss SO(3) x R3 vs SE(3) vs (SO(3), R3)}
+%\chapter{Representations of $\LieGroupSE{3}$}
+%\label{chap:appendix_se3}
+%\todo{Discuss the banana uncertainty (cannot represent uncertainty over SE(3) with certain position but uncertain rotation)} \\
+%\todo{Discuss SO(3) x R3 vs SE(3) vs (SO(3), R3)}

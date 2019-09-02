@@ -4,37 +4,108 @@
 \BOOKMARK [1][-]{section.1.3}{The State of State Estimation}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{The Learned Pseudo-Sensor}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.5}{Original Contributions}{chapter.1}% 6
-\BOOKMARK [0][-]{chapter.2}{Sun-BCNN}{}% 7
-\BOOKMARK [1][-]{section.2.1}{Motivation}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.2}{Related Work}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.3}{Indirect Sun Detection using a Bayesian Convolutional Neural Network}{chapter.2}% 10
-\BOOKMARK [2][-]{subsection.2.3.1}{Cost Function}{section.2.3}% 11
-\BOOKMARK [2][-]{subsection.2.3.2}{Uncertainty Estimation}{section.2.3}% 12
-\BOOKMARK [2][-]{subsection.2.3.3}{Implementation and Training}{section.2.3}% 13
-\BOOKMARK [1][-]{section.2.4}{Simulation Experiments}{chapter.2}% 14
-\BOOKMARK [1][-]{section.2.5}{Urban Driving Experiments: The KITTI Odometry Benchmark}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.5.1}{Sun-BCNN Test Results}{section.2.5}% 16
-\BOOKMARK [2][-]{subsection.2.5.2}{Visual Odometry Experiments}{section.2.5}% 17
-\BOOKMARK [1][-]{section.2.6}{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.6.1}{Sun-BCNN Test Results}{section.2.6}% 19
-\BOOKMARK [2][-]{subsection.2.6.2}{Visual Odometry Experiments}{section.2.6}% 20
-\BOOKMARK [1][-]{section.2.7}{Sensitivity Analysis}{chapter.2}% 21
-\BOOKMARK [2][-]{subsection.2.7.1}{Cloud Cover}{section.2.7}% 22
-\BOOKMARK [2][-]{subsection.2.7.2}{Model Generalization}{section.2.7}% 23
-\BOOKMARK [2][-]{subsection.2.7.3}{Mean and Covariance Computation}{section.2.7}% 24
-\BOOKMARK [0][-]{chapter.3}{Conclusion}{}% 25
-\BOOKMARK [1][-]{section.3.1}{Summary of Contributions}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.2}{Future Work}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.3}{Final Remarks}{chapter.3}% 28
-\BOOKMARK [0][-]{section*.62}{Appendices}{}% 29
-\BOOKMARK [0][-]{Appendix.1.A}{Left and Middle Perturbations}{}% 30
-\BOOKMARK [1][-]{section.1.A.1}{Identities}{Appendix.1.A}% 31
-\BOOKMARK [1][-]{section.1.A.2}{Perturbing \040SE\(3\) }{Appendix.1.A}% 32
-\BOOKMARK [2][-]{subsection.1.A.2.1}{Left Perturbation}{section.1.A.2}% 33
-\BOOKMARK [2][-]{subsection.1.A.2.2}{Middle Perturbation}{section.1.A.2}% 34
-\BOOKMARK [1][-]{section.1.A.3}{DPC \040SE\(3\) \040Loss}{Appendix.1.A}% 35
-\BOOKMARK [2][-]{subsection.1.A.3.1}{Middle Perturbation}{section.1.A.3}% 36
-\BOOKMARK [2][-]{subsection.1.A.3.2}{Left Perturbation}{section.1.A.3}% 37
-\BOOKMARK [2][-]{subsection.1.A.3.3}{Summary}{section.1.A.3}% 38
-\BOOKMARK [2][-]{subsection.1.A.3.4}{Reconciliation}{section.1.A.3}% 39
-\BOOKMARK [0][-]{equation.1.A.3.26}{Bibliography}{}% 40
+\BOOKMARK [0][-]{chapter.2}{Mathematical Foundations}{}% 7
+\BOOKMARK [1][-]{section.2.1}{3D Notation}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Rotations}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{Unit Quaternions}{section.2.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Spatial Transforms}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.3.1}{Applying Transforms}{section.2.3}% 12
+\BOOKMARK [1][-]{section.2.4}{Perturbations}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.5}{Uncertainty}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Classical Visual Odometry}{}% 15
+\BOOKMARK [1][-]{section.3.1}{A taxonomy of VO}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{A classical VO pipeline}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.2.1}{Preprocessing}{section.3.2}% 18
+\BOOKMARK [2][-]{subsection.3.2.2}{Data association}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.3}{Motion solution}{section.3.2}% 20
+\BOOKMARK [1][-]{section.3.3}{Robust Estimation}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.4}{Outstanding Issues}{chapter.3}% 22
+\BOOKMARK [0][-]{chapter.4}{Predictive Robust Estimation}{}% 23
+\BOOKMARK [1][-]{section.4.1}{Motivation}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.2}{Related Work}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.3}{Scalar k-Nearest Neighbours}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.3.1}{Training}{section.4.3}% 27
+\BOOKMARK [2][-]{subsection.4.3.2}{Evaluation}{section.4.3}% 28
+\BOOKMARK [2][-]{subsection.4.3.3}{Prediction Space}{section.4.3}% 29
+\BOOKMARK [1][-]{section.4.4}{Generalized Kernels}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.4.1}{Predictive noise models for visual odometry}{section.4.4}% 31
+\BOOKMARK [2][-]{subsection.4.4.2}{Inference without ground truth}{section.4.4}% 32
+\BOOKMARK [2][-]{subsection.4.4.3}{Experiments}{section.4.4}% 33
+\BOOKMARK [2][-]{subsection.4.4.4}{KITTI}{section.4.4}% 34
+\BOOKMARK [1][-]{section.4.5}{Summary}{chapter.4}% 35
+\BOOKMARK [0][-]{chapter.5}{Sun-BCNN}{}% 36
+\BOOKMARK [1][-]{section.5.1}{Motivation}{chapter.5}% 37
+\BOOKMARK [1][-]{section.5.2}{Related Work}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.3}{Orientation Correction}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.4}{Indirect Sun Detection using a Bayesian Convolutional Neural Network}{chapter.5}% 40
+\BOOKMARK [2][-]{subsection.5.4.1}{Cost Function}{section.5.4}% 41
+\BOOKMARK [2][-]{subsection.5.4.2}{Uncertainty Estimation}{section.5.4}% 42
+\BOOKMARK [2][-]{subsection.5.4.3}{Implementation and Training}{section.5.4}% 43
+\BOOKMARK [1][-]{section.5.5}{Simulation Experiments}{chapter.5}% 44
+\BOOKMARK [1][-]{section.5.6}{Urban Driving Experiments: The KITTI Odometry Benchmark}{chapter.5}% 45
+\BOOKMARK [2][-]{subsection.5.6.1}{Sun-BCNN Test Results}{section.5.6}% 46
+\BOOKMARK [2][-]{subsection.5.6.2}{Visual Odometry Experiments}{section.5.6}% 47
+\BOOKMARK [1][-]{section.5.7}{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{chapter.5}% 48
+\BOOKMARK [2][-]{subsection.5.7.1}{Sun-BCNN Test Results}{section.5.7}% 49
+\BOOKMARK [2][-]{subsection.5.7.2}{Visual Odometry Experiments}{section.5.7}% 50
+\BOOKMARK [1][-]{section.5.8}{Sensitivity Analysis}{chapter.5}% 51
+\BOOKMARK [2][-]{subsection.5.8.1}{Cloud Cover}{section.5.8}% 52
+\BOOKMARK [2][-]{subsection.5.8.2}{Model Generalization}{section.5.8}% 53
+\BOOKMARK [2][-]{subsection.5.8.3}{Mean and Covariance Computation}{section.5.8}% 54
+\BOOKMARK [1][-]{section.5.9}{Summary}{chapter.5}% 55
+\BOOKMARK [0][-]{chapter.6}{Deep Pose Corrections for Visual Localization}{}% 56
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 57
+\BOOKMARK [1][-]{section.6.2}{Related Work}{chapter.6}% 58
+\BOOKMARK [1][-]{section.6.3}{System Overview: Deep Pose Correction}{chapter.6}% 59
+\BOOKMARK [2][-]{subsection.6.3.1}{Loss Function: Correcting \040SE\(3\) \040Estimates}{section.6.3}% 60
+\BOOKMARK [2][-]{subsection.6.3.2}{Loss Function: \040SE\(3\) \040Covariance}{section.6.3}% 61
+\BOOKMARK [2][-]{subsection.6.3.3}{Loss Function: \040SE\(3\) \040Jacobians}{section.6.3}% 62
+\BOOKMARK [2][-]{subsection.6.3.4}{Loss Function: Correcting \040SO\(3\) \040Estimates}{section.6.3}% 63
+\BOOKMARK [2][-]{subsection.6.3.5}{Pose Graph Relaxation}{section.6.3}% 64
+\BOOKMARK [1][-]{section.6.4}{Experiments}{chapter.6}% 65
+\BOOKMARK [2][-]{subsection.6.4.1}{Training \046 Testing}{section.6.4}% 66
+\BOOKMARK [2][-]{subsection.6.4.2}{Estimators}{section.6.4}% 67
+\BOOKMARK [2][-]{subsection.6.4.3}{Evaluation Metrics}{section.6.4}% 68
+\BOOKMARK [1][-]{section.6.5}{Results \046 Discussion}{chapter.6}% 69
+\BOOKMARK [2][-]{subsection.6.5.1}{Correcting Sparse Visual Odometry}{section.6.5}% 70
+\BOOKMARK [2][-]{subsection.6.5.2}{Distorted Images}{section.6.5}% 71
+\BOOKMARK [1][-]{section.6.6}{Summary}{chapter.6}% 72
+\BOOKMARK [0][-]{chapter.7}{Learning Deep Probabilistic Estimates of Elements of SO\(3\)}{}% 73
+\BOOKMARK [1][-]{section.7.1}{Introduction}{chapter.7}% 74
+\BOOKMARK [1][-]{section.7.2}{Related work}{chapter.7}% 75
+\BOOKMARK [1][-]{section.7.3}{Approach}{chapter.7}% 76
+\BOOKMARK [2][-]{subsection.7.3.1}{Why Rotations?}{section.7.3}% 77
+\BOOKMARK [2][-]{subsection.7.3.2}{Probabilistic Regression}{section.7.3}% 78
+\BOOKMARK [2][-]{subsection.7.3.3}{Deep Probabilistic \040SO\(3\) \040Regression}{section.7.3}% 79
+\BOOKMARK [2][-]{subsection.7.3.4}{Loss Function}{section.7.3}% 80
+\BOOKMARK [1][-]{section.7.4}{Experiments}{chapter.7}% 81
+\BOOKMARK [2][-]{subsection.7.4.1}{Uncertainty Evaluation: Synthetic Data}{section.7.4}% 82
+\BOOKMARK [2][-]{subsection.7.4.2}{Absolute Orientation: 7-Scenes}{section.7.4}% 83
+\BOOKMARK [2][-]{subsection.7.4.3}{Relative Rotation: KITTI Visual Odometry}{section.7.4}% 84
+\BOOKMARK [1][-]{section.7.5}{Conclusion}{chapter.7}% 85
+\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 86
+\BOOKMARK [1][-]{section.8.1}{Summary of Contributions}{chapter.8}% 87
+\BOOKMARK [2][-]{subsection.8.1.1}{Predictive Robust Estimation}{section.8.1}% 88
+\BOOKMARK [2][-]{subsection.8.1.2}{Sun BCNN}{section.8.1}% 89
+\BOOKMARK [2][-]{subsection.8.1.3}{Deep Pose Corrections}{section.8.1}% 90
+\BOOKMARK [2][-]{subsection.8.1.4}{Deep Probabilistic Inference of \040SO\(3\) \040with HydraNet}{section.8.1}% 91
+\BOOKMARK [1][-]{section.8.2}{Future Work}{chapter.8}% 92
+\BOOKMARK [1][-]{section.8.3}{Final Remarks}{chapter.8}% 93
+\BOOKMARK [0][-]{section*.158}{Appendices}{}% 94
+\BOOKMARK [0][-]{Appendix.1.A}{Left and Middle Perturbations}{}% 95
+\BOOKMARK [1][-]{section.1.A.1}{Identities}{Appendix.1.A}% 96
+\BOOKMARK [1][-]{section.1.A.2}{Perturbing \040SE\(3\) }{Appendix.1.A}% 97
+\BOOKMARK [2][-]{subsection.1.A.2.1}{Left Perturbation}{section.1.A.2}% 98
+\BOOKMARK [2][-]{subsection.1.A.2.2}{Middle Perturbation}{section.1.A.2}% 99
+\BOOKMARK [1][-]{section.1.A.3}{DPC \040SE\(3\) \040Loss}{Appendix.1.A}% 100
+\BOOKMARK [2][-]{subsection.1.A.3.1}{Middle Perturbation}{section.1.A.3}% 101
+\BOOKMARK [2][-]{subsection.1.A.3.2}{Left Perturbation}{section.1.A.3}% 102
+\BOOKMARK [2][-]{subsection.1.A.3.3}{Summary}{section.1.A.3}% 103
+\BOOKMARK [2][-]{subsection.1.A.3.4}{Reconciliation}{section.1.A.3}% 104
+\BOOKMARK [0][-]{Appendix.1.B}{SO\(3\) Regression}{}% 105
+\BOOKMARK [1][-]{section.1.B.1}{Experiments}{Appendix.1.B}% 106
+\BOOKMARK [2][-]{subsection.1.B.1.1}{One-dimensional regression}{section.1.B.1}% 107
+\BOOKMARK [2][-]{subsection.1.B.1.2}{Hemisphere world}{section.1.B.1}% 108
+\BOOKMARK [2][-]{subsection.1.B.1.3}{7-Scenes}{section.1.B.1}% 109
+\BOOKMARK [2][-]{subsection.1.B.1.4}{KITTI}{section.1.B.1}% 110
+\BOOKMARK [0][-]{section*.170}{Bibliography}{}% 111

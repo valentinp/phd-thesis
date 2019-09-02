@@ -3,7 +3,7 @@
 \epigraph{By relieving the brain of all unnecessary work, a good notation sets it free to concentrate on more advanced problems, and, in effect, increases the mental power of the race.}{Alfred North Whitehead}
   \section{3D Notation}
 
-In this thesis, we largely follow the notation of \cite{Barfoot2017-ri} when dealing with three-dimensional rigid-body kinematics. As it is crucial to all four components of the work, we will begin by outlining the basic components.
+Before we can present the main contributions of this thesis, it will be useful to first outline the notation and mathematical foundations that underly the work. Throughout this thesis, we largely follow the notation of \cite{Barfoot2017-ri} when dealing with three-dimensional rigid-body kinematics. 
 
 \begin{figure}[h!]
 \center
@@ -80,11 +80,11 @@ The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO
 \end{equation}
 
 \subsubsection{Active vs. Passive}
-An active (or alibi) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or alias) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this thesis are passive unless otherwise noted.  
+An active (or \textit{alibi}) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or \textit{alias}) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this thesis are passive unless otherwise noted.  
 
 \subsubsection{Exponential and Logarithmic Maps}
 
-Since rotations form a matrix Lie group (we refer the reader to \cite{Sola2018-kg} and \cite{Barfoot2017-ri} for more thorough presentation of Lie groups), we can define a surjective exponential map\footnote{We follow \cite{Sola2018-kg} and also define \textit{capitalized} map for notational clarity.} from three axis-angle parameters, $\RotationVector = \phi \RotationAxisVector, ~~ \phi \in \Real{}, \RotationAxisVector \in S^2$, to a rotation matrix, $\Rotation$: 
+Since rotations form a matrix Lie group (we refer the reader to \cite{Sola2018-kg} and \cite{Barfoot2017-ri} for a thorough treatment of Lie groups for state estimation), we can define a surjective exponential map\footnote{We follow \cite{Sola2018-kg} and also define \textit{capitalized} map for notational clarity.} from three axis-angle parameters, $\RotationVector = \phi \RotationAxisVector, ~~ \phi \in \Real{}, \RotationAxisVector \in S^2$, to a rotation matrix, $\Rotation$: 
 \begin{align}
 \label{eq:so3_exp}
 \Rotation = \MatExp{\Vector{\phi}} = \Matexp{\Vector{\phi}} &= \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\phi}^\wedge)}^n\\
@@ -284,7 +284,7 @@ and also, for unit quaternions,
 \begin{align}
 \quat &= \MatExp{\delta \RotationVector} \otimes \Mean{\quat} 
 \end{align}
-where $\otimes$ refers to the standard quaternion product operator \cite{Sola2017quaternion}. \todo{Add discussion of banana density this induces for SE(3) and the impossibility of known position but unknown rotation}.
+where $\otimes$ refers to the standard quaternion product operator \cite{Sola2017quaternion}. %\todo{Add discussion of banana density this induces for SE(3) and the impossibility of known position but unknown rotation}.
 
 
 

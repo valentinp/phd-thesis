@@ -1,12 +1,7 @@
 \chapter{Sun-BCNN}
+\epigraph{He stepped down, avoiding any long look at her as one avoids long looks at the sun, but seeing her as one sees the sun, without looking.}{Leo Tolstoy, \textit{Anna Karenina}}
 \label{ch:sun-bcnn}
-\section{Motivation}
-A crucial competency of any autonomous mobile robot is the ability to estimate its own motion through an operating environment.
-While there exists a rich body of literature on the topic of motion estimation using a variety of techniques such as lidar-based point cloud matching \citep{Zhang2015-gf} and visual-inertial odometry \citep{Leutenegger2015-fk}, egomotion estimation is fundamentally a process of dead-reckoning and will accumulate unbounded error over time.
-This accumulated error, or drift, can be limited by incorporating global information into the motion estimation problem.
-This frequently takes the form of a globally consistent map, loop closure detection, or reliance on additional sensors such as GPS to make corrections to the estimated trajectory.
-In many situations, however, a globally consistent map may be unavailable or prohibitively expensive to compute, loop closures may not occur, or GPS may be unavailable or inaccurate.
-In such cases, it can be advantageous to rely on environmental cues such as the sun, which can easily provide global orientation information since it is readily detectable and its apparent motion in the sky is well described by ephemeris models.
+
 
 \begin{figure}
     \centering
@@ -14,6 +9,15 @@ In such cases, it can be advantageous to rely on environmental cues such as the 
       \caption{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph{virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.}
     \label{fig:sun-bcnn_system}
 \end{figure}
+
+\section{Motivation}
+A crucial competency of any autonomous mobile robot is the ability to estimate its own motion through an operating environment.
+While there exists a rich body of literature on the topic of motion estimation using a variety of techniques such as lidar-based point cloud matching \citep{Zhang2015} and visual-inertial odometry \citep{Leutenegger2015-fk}, egomotion estimation is fundamentally a process of dead-reckoning and will accumulate unbounded error over time.
+This accumulated error, or drift, can be limited by incorporating global information into the motion estimation problem.
+This frequently takes the form of a globally consistent map, loop closure detection, or reliance on additional sensors such as GPS to make corrections to the estimated trajectory.
+In many situations, however, a globally consistent map may be unavailable or prohibitively expensive to compute, loop closures may not occur, or GPS may be unavailable or inaccurate.
+In such cases, it can be advantageous to rely on environmental cues such as the sun, which can easily provide global orientation information since it is readily detectable and its apparent motion in the sky is well described by ephemeris models.
+
 
 \begin{figure}
     \centering
@@ -74,6 +78,66 @@ We also build on the work of \citet{Peretroukhin2017-eb}, who presented prelimin
 
 While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{Clement2016-ir}). 
 Furthermore, our Bayesian CNN includes a dropout layer after every convolutional and fully connected layer (as outlined by \citet{Gal2016-ny} but not done by \citet{Kendall2016-zf}), which produces more principled covariance outputs.
+
+
+\section{Orientation Correction}
+In order to combat drift in the VO estimate produced by accumulated orientation error, we adopt the technique of \citet{Lambert2012-um} to incorporate absolute orientation information from the sun directly into the estimation problem.
+We assume the initial camera pose and its timestamp are available from GPS and use them to determine the global direction of the sun $\Vector{s}_0$, expressed as a 3D unit vector, from ephemeris data.
+We define the world frame $\CoordinateFrame{0}$ to be a local ENU coordinate system with the initial GPS position as its origin.
+At each timestep we update $\SunDirection_0$ by querying the ephemeris model using the current timestamp and the initial camera pose, allowing our model to account for the apparent motion of the sun over long trajectories.
+
+By transforming the global sun direction into each camera frame $\CoordinateFrame{k}$ in the window, we obtain predicted sun directions $\Estimate{\SunDirection}_k = \Estimate{\Transform}_{k,0} \SunDirection_0$, where $\Estimate{\Transform}_{k,0}$ is the current estimate of camera pose $k$ in the base frame. 
+We compare the predicted and estimated sun directions to introduce an additional error term into the bundle adjustment cost function (cf. \Cref{eq:cost_function}):
+\begin{equation} \label{eq:cost_function_with_sun}
+    \BACost = \BACost_\text{reprojection} + \BACost_\text{prior} + \BACost_\text{sun},
+\end{equation}
+where 
+\begin{equation} \label{eq:sun_cost}
+	\BACost_\text{sun} = \sum_{k=k_1}^{k_2} \Transpose{\Error}_{\SunDirection_k} \Covariance^{-1}_{\SunDirection_k} \Error_{\SunDirection_k},
+\end{equation}
+and $\BACost_\text{reprojection}$ and $\BACost_\text{prior}$ are defined in \Cref{eq:reprojection_cost,eq:prior_cost}, respectively.
+This additional term constrains the orientation of the camera, which helps limit drift in the VO result due to orientation error \citep{Lambert2012-um}.
+
+\begin{table}[]
+\centering
+\caption{Comparison of translational and rotational average root mean squared errors (ARMSE) on simulated sequences.}
+\label{tab:sim_armse}
+\begin{tabular}{@{}lcccc@{}}
+\textbf{Loop Shape}                                  & Circle & Triangle & Square & Star   \\ \midrule
+\textbf{\# Loops}                             & 100    & 100      & 100    & 100    \\ \midrule
+\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE {[}m{]}}  } \\
+\quad Without Sun & 2.22 & 2.00 & 2.33 & 1.41 \T\B \\
+\quad GT-Sun-0    & 1.19 & 1.62 & 2.13 & 0.75 \T \\
+\quad GT-Sun-10   & 2.29 & 2.07 & 2.05 & 1.32 \\
+\quad GT-Sun-20   & 2.08 & 2.12 & 2.31 & 1.33 \\
+\quad GT-Sun-30   & 2.10 & 1.95 & 2.16 & 1.38 \\ \midrule
+\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE (EN-plane) {[}m{]}}} \\
+\quad Without Sun & 2.67 & 1.88 & 2.57 & 1.10 \T\B \\
+\quad GT-Sun-0    & 1.34 & 1.89 & 2.56 & 0.83 \T \\
+\quad GT-Sun-10   & 2.61 & 2.04 & 2.26 & 0.99 \\
+\quad GT-Sun-20   & 2.44 & 2.03 & 2.57 & 0.88 \\
+\quad GT-Sun-30   & 2.46 & 2.00 & 2.35 & 1.25 \\ \midrule
+\multicolumn{5}{@{}l@{}}{\textbf{Rot. ARMSE $\mathbf{(\times 10^{-3})}$ {[}axis-angle{]}}} \\
+\quad Without Sun & 115.32 & 144.56 & 107.27 & 111.19 \T\B \\
+\quad GT-Sun-0    & 14.10  & 113.58 & 59.21  & 30.69  \T \\
+\quad GT-Sun-10   & 55.22  & 115.03 & 75.62  & 39.17  \\
+\quad GT-Sun-20   & 65.02  & 121.11 & 80.41  & 49.75  \\
+\quad GT-Sun-30   & 78.73  & 145.22 & 100.91 & 72.39  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Since $\SunDirection_k$ is constrained to be unit length, there are only two underlying degrees of freedom.
+We therefore define $\Vector{f}\left(\cdot\right)$ to be a function that transforms a 3D unit vector in camera frame $\CoordinateFrame{k}$ to a zenith-azimuth parametrization:
+\begin{equation} \label{eq:vec-to-az-zen}
+	\bbm \theta \\ \phi \ebm
+    = \Vector{f} \left( \SunDirection_k \right)
+    = \bbm \text{acos}\left( -\SunDirectionComponent_{k,y} \right) \\ \text{atan2}\left(\SunDirectionComponent_{k,x}, \SunDirectionComponent_{k,z} \right) \ebm
+\end{equation}
+where $\SunDirection_k = \Transpose{\bbm \SunDirectionComponent_{k,x} & \SunDirectionComponent_{k,y} & \SunDirectionComponent_{k,z} \ebm}$.
+We can then define the term $\Error_{\SunDirection_k} = \Vector{f}\left(\Estimate{\SunDirection}_k\right) - \Vector{f}\left(\SunDirection_k\right)$ to be the error in the predicted sun direction, expressed in azimuth-zenith coordinates, and $\Covariance_{\SunDirection_k}$ to be the covariance of these errors.
+While $\Covariance_{\SunDirection_k}$ would generally be treated as an empirically determined static covariance, in our approach we use the per-observation covariance computed using \Cref{eq:bcnn_covar}, which allows us to weight each observation individually according to a measure of its intrinsic quality.
+In practice, we also attempt to mitigate the effect of outlier sun predictions by applying a robust Huber loss to the sun measurements in our optimizer.
+
 
 
 
@@ -708,7 +772,7 @@ In this section we analyze the sensitivity of our model to cloud cover, investig
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cloud Cover}
 Given that both the KITTI and Devon Island datasets were collected in sunny conditions, it is natural to wonder whether and to what extent Sun-BCNN is affected by cloud cover. 
-As shown in \Cref{fig:kitti_cnn_activations}, Sun-BCNN relies in part on shadows and other local illumination variations to estimate the direction of the sun.
+As shown in \Cref{fig:sun-bcnn_kitti_cnn_activations}, Sun-BCNN relies in part on shadows and other local illumination variations to estimate the direction of the sun.
 Since the diffuse nature of daylight in cloudy conditions tends to soften shadows and other shading variations, one might expect Sun-BCNN to perform worse in cloudy conditions.
 Accordingly, we investigated the effect of cloud cover on Sun-BCNN using selected sequences from the Oxford Robotcar Dataset \citep{Maddern2016-ng}, which consists of 1000~km of urban driving along a consistent route but in varying weather conditions and at varying times over the course of a year.
 
@@ -733,7 +797,7 @@ To evaluate the performance of Sun-BCNN in each of these conditions, we partitio
     \label{fig:oxford-boxwhiskers}
 \end{figure}
 
-\Cref{fig:oxford-boxwhiskers} shows the results of these experiments with box and whisker plots for azimuth, zenith and vector angle errors while \Cref{tab:testBCNN_oxford_weather} summarizes the results numerically. 
+\Cref{fig:oxford-boxwhiskers} shows the results of these experiments with box and whisker plots for azimuth, zenith and vector angle errors while \Cref{tab:sun-bcnn_testBCNN_oxford_weather} summarizes the results numerically. 
 We obtained the most accurate test predictions using the model trained on \emph{Sun-Cloud B}, the sequence with the least amount of cloud cover. 
 Notably, this model produced vector angle errors on the  \emph{Overcast} test set that were lower than those trained with its own \emph{Overcast} training set. 
 Moreover, we note that the \emph{Sun-Cloud A} model achieved similar test errors when applied to the \emph{Sun-Cloud B} test set as when applied to the \emph{Overcast} test set.
@@ -907,4 +971,6 @@ We then compared the consistency of the cross-correlations of each method (i.e.,
                         &                         &   Method II &  & 0.89  \\ \bottomrule
 \end{tabular}
 \end{table}
+
+\section{Summary}
 

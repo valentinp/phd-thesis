@@ -2,9 +2,15 @@ This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
 A level-1 auxiliary file: sections/introduction.aux
+A level-1 auxiliary file: sections/math.aux
+A level-1 auxiliary file: sections/vo.aux
+A level-1 auxiliary file: sections/probe.aux
 A level-1 auxiliary file: sections/sun-bcnn.aux
+A level-1 auxiliary file: sections/dpc.aux
+A level-1 auxiliary file: sections/so3-learning.aux
 A level-1 auxiliary file: sections/conclusion.aux
 A level-1 auxiliary file: sections/appendix-perturbations.aux
+A level-1 auxiliary file: sections/appendix-so3-learning.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
@@ -18,75 +24,111 @@ I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
  : ISSN={1050-4729},}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "Zhang2015-gf"
-Warning--I didn't find a database entry for "Olson2003-ax"
-Warning--I didn't find a database entry for "Furgale2011-zu"
-Warning--I didn't find a database entry for "Lambert2012-um"
-Warning--I didn't find a database entry for "Eisenman2002-cg"
-Warning--I didn't find a database entry for "Maimone2007-tc"
-Warning--I didn't find a database entry for "Geiger2012-fq"
-Warning--I didn't find a database entry for "Furgale2012-kk"
-Warning--I didn't find a database entry for "Maddern2016-ng"
-Warning--I didn't find a database entry for "Alcantarilla2016-fs"
-Warning--I didn't find a database entry for "Engel2015-il"
-Warning--I didn't find a database entry for "Clement2016-ir"
-Warning--I didn't find a database entry for "Lalonde2011-jw"
-Warning--I didn't find a database entry for "kendall2015posenet"
-Warning--I didn't find a database entry for "Gal2016UncertaintyThesis"
-Warning--I didn't find a database entry for "Gal2016-ny"
-Warning--I didn't find a database entry for "Szegedy2015-uw"
-Warning--I didn't find a database entry for "zhou2014MITPlaces"
-Warning--I didn't find a database entry for "deng2009imagenet"
-Warning--I didn't find a database entry for "Gal2016CNN"
-Warning--I didn't find a database entry for "jia2014caffe"
-Warning--I didn't find a database entry for "fisher1953dispersion"
-Warning--I didn't find a database entry for "mcmanus2014"
-Warning--I didn't find a database entry for "Lakshminarayanan2017"
-Warning--I didn't find a database entry for "Osband2016"
+Database file #4: ../pubs-sun_bcnn.bib
+Repeated entry---line 9 of file ../pubs-sun_bcnn.bib
+ : @article{LeCun2015-qf
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 21 of file ../pubs-sun_bcnn.bib
+ : @article{Leutenegger2015-fk
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 99 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Ma2016-at
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 109 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Cvisic2015-mt
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 119 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Forster2014-bm
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 130 of file ../pubs-sun_bcnn.bib
+ : @article{Scaramuzza2011-qr
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 161 of file ../pubs-sun_bcnn.bib
+ : @article{Geiger2013-ky
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 292 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Geiger2011-xe
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 322 of file ../pubs-sun_bcnn.bib
+ : @book{Barfoot2017-ri
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 352 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Kendall2016-zf
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 368 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Peretroukhin2017-eb
+ :                                   ,
+I'm skipping whatever remains of this entry
+Database file #5: ../pubs-so3_learning.bib
+Warning--I didn't find a database entry for "Clement2018-cat"
+Warning--I didn't find a database entry for "Peretroukhin2018"
+Warning--I didn't find a database entry for "Hornik2014-jw"
+Warning--I didn't find a database entry for "farneback2003two"
+Warning--I didn't find a database entry for "engel2014lsd"
 Warning--empty journal in Alcantarilla2016-kv
+Warning--empty journal in Alcantarilla2016-fs
+Warning--empty journal in Clark2017-zg
 Warning--empty journal in DeTone2016-ue
+Warning--can't use both volume and number fields in fisher1953dispersion
+Warning--empty booktitle in Forster2015-af
+Warning--empty school in furgale_phd11
+Warning--empty journal in Kendall2017-ix
+Warning--empty journal in Lee2015-af
+Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in Oliveira2017-lt
+Warning--empty journal in Sola2018-kg
+Warning--empty publisher in vega-brown2014nonparametric
 Warning--empty journal in Zhou2019-se
-You've used 36 entries,
+You've used 125 entries,
             1935 wiz_defined-function locations,
-            752 strings with 12239 characters,
-and the built_in function-call counts, 17362 in all, are:
-= -- 1700
-> -- 813
-< -- 27
-+ -- 287
-- -- 282
-* -- 1421
-:= -- 2869
-add.period$ -- 108
-call.type$ -- 36
-change.case$ -- 318
-chr.to.int$ -- 33
-cite$ -- 41
-duplicate$ -- 709
-empty$ -- 1174
-format.name$ -- 330
-if$ -- 3522
-int.to.chr$ -- 4
+            1209 strings with 27908 characters,
+and the built_in function-call counts, 60299 in all, are:
+= -- 5983
+> -- 2585
+< -- 102
++ -- 920
+- -- 885
+* -- 4804
+:= -- 9765
+add.period$ -- 377
+call.type$ -- 125
+change.case$ -- 1058
+chr.to.int$ -- 102
+cite$ -- 140
+duplicate$ -- 2574
+empty$ -- 4236
+format.name$ -- 1060
+if$ -- 12429
+int.to.chr$ -- 24
 int.to.str$ -- 0
-missing$ -- 37
-newline$ -- 179
-num.names$ -- 110
-pop$ -- 370
+missing$ -- 123
+newline$ -- 618
+num.names$ -- 379
+pop$ -- 1268
 preamble$ -- 1
-purify$ -- 319
+purify$ -- 1062
 quote$ -- 0
-skip$ -- 533
+skip$ -- 1937
 stack$ -- 0
-substring$ -- 1132
-swap$ -- 174
-text.length$ -- 17
+substring$ -- 4159
+swap$ -- 683
+text.length$ -- 65
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 212
-warning$ -- 5
-while$ -- 137
+type$ -- 746
+warning$ -- 15
+while$ -- 475
 width$ -- 0
-write$ -- 462
-(There were 2 error messages)
+write$ -- 1599
+(There were 13 error messages)
