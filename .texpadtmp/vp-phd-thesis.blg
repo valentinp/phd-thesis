@@ -4,10 +4,6 @@ The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-
 A level-1 auxiliary file: sections/introduction.aux
 A level-1 auxiliary file: sections/math.aux
 A level-1 auxiliary file: sections/vo.aux
-A level-1 auxiliary file: sections/probe.aux
-A level-1 auxiliary file: sections/sun-bcnn.aux
-A level-1 auxiliary file: sections/dpc.aux
-A level-1 auxiliary file: sections/so3-learning.aux
 A level-1 auxiliary file: sections/conclusion.aux
 A level-1 auxiliary file: sections/appendix-perturbations.aux
 A level-1 auxiliary file: sections/appendix-so3-learning.aux
@@ -32,10 +28,6 @@ I'm skipping whatever remains of this entry
 Repeated entry---line 21 of file ../pubs-sun_bcnn.bib
  : @article{Leutenegger2015-fk
  :                            ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 99 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Ma2016-at
- :                         ,
 I'm skipping whatever remains of this entry
 Repeated entry---line 109 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Cvisic2015-mt
@@ -65,70 +57,54 @@ Repeated entry---line 352 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Kendall2016-zf
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 368 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Peretroukhin2017-eb
- :                                   ,
-I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
-Warning--I didn't find a database entry for "Clement2018-cat"
-Warning--I didn't find a database entry for "Peretroukhin2018"
-Warning--I didn't find a database entry for "Hornik2014-jw"
-Warning--I didn't find a database entry for "farneback2003two"
 Warning--I didn't find a database entry for "engel2014lsd"
 Warning--empty journal in Alcantarilla2016-kv
-Warning--empty journal in Alcantarilla2016-fs
-Warning--empty journal in Clark2017-zg
 Warning--empty journal in DeTone2016-ue
-Warning--can't use both volume and number fields in fisher1953dispersion
-Warning--empty booktitle in Forster2015-af
+Warning--empty school in florez2010
 Warning--empty school in furgale_phd11
-Warning--empty journal in Kendall2017-ix
-Warning--empty journal in Lee2015-af
-Warning--empty journal in Li:2017
-Warning--empty journal in Ma2016-at
 Warning--empty journal in Oliveira2017-lt
 Warning--empty journal in Sola2018-kg
-Warning--empty publisher in vega-brown2014nonparametric
 Warning--empty journal in Zhou2019-se
-You've used 125 entries,
+You've used 55 entries,
             1935 wiz_defined-function locations,
-            1209 strings with 27908 characters,
-and the built_in function-call counts, 60299 in all, are:
-= -- 5983
-> -- 2585
-< -- 102
-+ -- 920
-- -- 885
-* -- 4804
-:= -- 9765
-add.period$ -- 377
-call.type$ -- 125
-change.case$ -- 1058
-chr.to.int$ -- 102
-cite$ -- 140
-duplicate$ -- 2574
-empty$ -- 4236
-format.name$ -- 1060
-if$ -- 12429
-int.to.chr$ -- 24
+            840 strings with 15226 characters,
+and the built_in function-call counts, 26112 in all, are:
+= -- 2597
+> -- 1117
+< -- 45
++ -- 393
+- -- 381
+* -- 2120
+:= -- 4280
+add.period$ -- 167
+call.type$ -- 55
+change.case$ -- 457
+chr.to.int$ -- 51
+cite$ -- 62
+duplicate$ -- 1075
+empty$ -- 1808
+format.name$ -- 456
+if$ -- 5323
+int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 123
-newline$ -- 618
-num.names$ -- 379
-pop$ -- 1268
+missing$ -- 54
+newline$ -- 274
+num.names$ -- 169
+pop$ -- 504
 preamble$ -- 1
-purify$ -- 1062
+purify$ -- 460
 quote$ -- 0
-skip$ -- 1937
+skip$ -- 837
 stack$ -- 0
-substring$ -- 4159
-swap$ -- 683
-text.length$ -- 65
+substring$ -- 1864
+swap$ -- 275
+text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 746
-warning$ -- 15
-while$ -- 475
+type$ -- 326
+warning$ -- 7
+while$ -- 215
 width$ -- 0
-write$ -- 1599
-(There were 13 error messages)
+write$ -- 709
+(There were 11 error messages)

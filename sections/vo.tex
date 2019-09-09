@@ -1,6 +1,6 @@
 \chapter{Classical Visual Odometry}
 \label{ch:vo}
-\epigraph{Eventually, my eyes were opened, and I really understood nature.}{Claude Monet}
+\epigraph{Eventually, my eyes were opened, and I really understood nature.}{\textsc{Claude Monet}}
 
 \begin{figure}[h!]
 \begin{center}
@@ -11,7 +11,7 @@
 \end{figure}
 
 
-Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this thesis largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to two seminal papers: \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds}.
+Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to two seminal papers: \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds}.
 
 \section{A taxonomy of VO}
 
@@ -25,7 +25,7 @@ The second distinction is based on the type of data association used to match se
 
 \section{A classical VO pipeline}
 
-In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline largely based on the work of \cite{furgale_phd11}. We briefly summarize the pipeline here.
+In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline largely based on the work of \cite{furgale_phd11}. We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the dpipeline here.
 
 \begin{figure}[h!]
 \begin{center}
@@ -42,22 +42,22 @@ In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indire
      \centering
      \begin{subfigure}[b]{0.48\textwidth}
          \centering
-     		\includegraphics[width=0.98\textwidth]{classical-vo/stereo_camera_rectified}
-			\caption{Ideal stereo camera. Taken from \cite{furgale_phd11}.}
+     		\includegraphics[width=0.98\textwidth]{classical-vo/stereo_camera}
+			\caption{Ideal stereo camera.}
 			 \label{fig:vo_stereo_camera}
      \end{subfigure}
      \hfill
      \begin{subfigure}[b]{0.48\textwidth}
          \centering
-         \includegraphics[width=0.75\textwidth]{classical-vo/preprocessing}
-        \caption{Rectification and undistortion..}
+         \includegraphics[width=0.75\textwidth]{classical-vo/stereo_rectification}
+        \caption{Rectification and undistortion process. Figure adapted from \cite{florez2010}.}
          \label{fig:vo_undistort_recitfy}
 	 \end{subfigure}
-    \caption{Preprocessing components. \todo{Reproduce both of these figures myself.}}
+    \caption{Preprocessing components.}
         \label{fig:vo_preprocessing}
 \end{figure}
 
-In the preprocessing stage, stereo images are undistorted and rectified such that their principal axes are parallel (\Cref{fig:vo_preprocessing}). We assume the stereo camera intrinsic and extrinsic parameters as well as the lens properties are known a priori (or computed through a calibration process like that detailed in \cite{kelly_phd2011}).
+During preprocessing, we use a lens model (assumed to be known apriori) to undistort each stereo image. Further, using the camera extrinsic parameters (also assumed to be known), we \textit{rectify} the stereo pair such that the images can be assumed to come from two cameras whose principal axes are parallel (\Cref{fig:vo_preprocessing}). Finally, we also assume that the stereo camera intrinsics are known a priori or compute them through a calibration process \citep{Furgale2013-sl}.
 
 \subsection{Data association}
 
@@ -65,18 +65,18 @@ In the preprocessing stage, stereo images are undistorted and rectified such tha
 
 \begin{figure}[h!]
 \begin{center}
-		\includegraphics[width=0.98\textwidth]{classical-vo/feature_tracking}
-		\caption{Indirect feature tracking and outlier rejection.}
+		\includegraphics[width=0.88\textwidth]{classical-vo/libviso2_scan}
+		\caption{Feature tracking using \texttt{libviso2}, taken from \cite{Geiger2011-xe}. Colours correspond to depth.}
   	\label{fig:vo_feature_tracking}
 \end{center}
 \end{figure}
 
-During data association, some form of image features must be matched. In this thesis, we focus on sparse stereo visual odometry which uses the \texttt{libviso2} \citep{geiger2011stereoscan} image feature extraction and matching mechanism although many other possible features can be used for this task. A detailed comparison of feature tracking is outside the scope of this work.
+In this thesis, we focus on indirect stereo visual odometry for its computational efficiency. Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \texttt{viso2} \citep{geiger2011stereoscan} image feature extraction and matching algorithm. In \texttt{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \texttt{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric of $11 \times 11$ windows of Sobel filter responses. Finally, features are matched across a stereo-pair and forward in time, to ensure that a single feature exists across two consecutive stereo camera poses. 
 
-Each landmark corresponds to a
+Each extract feature corresponds to a
 point in space, expressed in homogeneous coordinates in the camera frame as
 $\HomogeneousPoint{i}{t} := \Transpose{\bbm p_1 & p_2 & p_3 & p_4 \ebm} \in
-\HomogeneousNumbers[3]$.  The stereo-camera model, $\ProjectionFunction$,
+\HomogeneousNumbers[3]$.  Given our intrinsics and extrinsic calibration parameters, our idealized stereo-camera model, $\ProjectionFunction$,
 projects a landmark expressed in homogeneous coordinates into image space, so
 that $\ImageLandmark{i}{t}$, the stereo pixel coordinates of landmark $i$ in the first camera pose at time $t$, is given
 by 
@@ -87,8 +87,8 @@ by
 \end{equation}
 where
 \begin{equation}
- \Matrix{M} = \bbm f_u & 0 & c_u & f_u \frac{b}{2} \\ 0 & f_v & c_v & 0 \\ f_u 
-                        & 0 & c_u & -f_u\frac{b}{2} \\ 0 & f_b & c_v & 0 \ebm.
+ \Matrix{M} = \bbm f & 0 & c_u & f \frac{b}{2} \\ 0 & f & c_v & 0 \\ f 
+                        & 0 & c_u & -f\frac{b}{2} \\ 0 & f & c_v & 0 \ebm.
 \end{equation}
 Here, $\{c_u, c_v\}$, $\{f_u, f_v\}$, and $b$ are the principal points, focal
 lengths and baseline of the stereo camera respectively. Note that in this
@@ -98,7 +98,7 @@ lenses.
 
 \subsubsection{Outlier rejection}
 
-We use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRANSAC:1981}) to reject spurious matches based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
+To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRANSAC:1981}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
   
 \subsection{Motion solution}
 
@@ -228,14 +228,14 @@ where. given a parameter $c$, some common examples include:
 
 
 \section{Outstanding Issues}
-Herein, we summarize several outstanding limitations of classical visual odometry pipelines and point to parts of this thesis that address them.
+There are several outstanding limitations of classical visual odometry pipelines that we can address with learned pseudo-sensors. 
 
 \begin{table}[h!]
-	\caption{\textbf{Data efficiency vs. Computational Efficiency}}	\begin{threeparttable}
+	\caption{\textbf{Data efficiency vs. computational efficiency}}	\begin{threeparttable}
 	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
 		\toprule
 		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
-		Inherent trade-off between using all of the information contained within image and while still remaining computationally tractable. & PROBE, DPC-Net, Sun-BCNN, HydraNet \\
+		Classical VO pipelines face a difficult-to-optimize trade-off between using all of the information contained within image and while still remaining computationally tractable.  & PROBE, DPC-Net, Sun-BCNN, HydraNet \\
 		& \\
 		\bottomrule
 	\end{tabular}
@@ -244,7 +244,7 @@ Herein, we summarize several outstanding limitations of classical visual odometr
 
 
 \begin{table}[h!]
-	\caption{\textbf{Systematic Bias}}
+	\caption{\textbf{Systematic bias}}
 	\begin{threeparttable}
 	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
 		\toprule

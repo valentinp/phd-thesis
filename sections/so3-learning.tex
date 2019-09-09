@@ -1,19 +1,22 @@
 \chapter{Learning Deep Probabilistic Estimates of Elements of SO(3)}
 \label{ch:hydranet}
 \epigraph{It is because Humanity has never known where it was going that it has been able to find its way.}{Oscar Wilde}
-\section{Introduction}
+
+\begin{wrapfigure}{r}{0.6\textwidth}
+	\centering
+	\includegraphics[width=0.58\textwidth]{so3_learning/main_fig}
+	\caption{We improve classical pose estimation by fusing it with deep probabilistic models.}
+	\label{fig:fusion_fig}
+	\vspace{-1em}
+\end{wrapfigure}
+
+\section{Motivation}
 %%%%%%%%% BODY TEXT
 Accounting for position and orientation, or pose, is at the heart of computer vision. Many algorithms in image classification and feature tracking, for example, are explicitly concerned with output that is robust to camera orientation. Conversely, algorithms like visual odometry, structure from motion, and SLAM use visual sensors to estimate and track the pose of a camera as it moves through some environment. The algorithms in this latter category form the basis of visual localization pipelines in autonomous vehicles, aid in aerial vehicle navigation and mapping, and are often crucial to augmented reality applications.  
 
  
 Recent work  \citep{Clark2017, Melekhov2017-dl, Kendall2015-kh} has attempted to  transfer the success of deep neural networks in many areas of computer vision to the task of camera pose estimation. These approaches, however, can produce arbitrarily poor pose estimates if sensor data differs from what is observed during training (i.e., it is `out of training distribution') and their monolithic nature makes them difficult to debug. Further, despite much research effort, classical motion estimation algorithms, like stereo visual odometry, still achieve state-of-the-art performance in nominal conditions\footnote{Based on the KITTI odometry leaderboard \citep{Geiger2013-ky} at the time of writing.}. Nevertheless, the representational power of deep regression algorithms makes them an attractive option to complement classical motion estimation when these latter methods perform poorly (e.g., under diverse lighting conditions or low scene texture). By endowing deep regression models with a useful notion of uncertainty, we can account for out-of-training-distribution errors and fuse these models with classical methods using probabilistic factor graphs. In this work, we choose to focus on rotation regression, since many motion algorithms are sensitive to rotation errors \citep{Peretroukhin2018}, and good rotation initializations can be critical to robust optimization. Our novel contributions are
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{so3_learning/main_fig}
-	\caption{We improve classical pose estimation by fusing it with deep probabilistic models.}
-	\label{fig:fusion_fig}
-	\vspace{-1em}
-\end{figure}
+
 \vspace{-0.5em}
 \begin{enumerate}
 \item a deep network structure we call \textit{HydraNet} that builds on prior work \citep{Lakshminarayanan2017,Osband2016} to produce meaningful uncertainties over unconstrained targets,
@@ -503,6 +506,6 @@ The estimates $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\E
 
 \Cref{tab:kitti_fusion_stats} summarizes the results when we perform this fusion - and \Cref{fig:kitti_topdown} shows the final effect on the trajectory for sequence \texttt{00}. Similar to \citep{2018_Peretroukhin_Deep} and \citep{Peretroukhin2018}, we found that fusing deep rotation regression with classical methods results in motion estimates that significantly out-perform other methods that rely on deep regression alone. However, we note that even with consistent estimates, a small bias can affect the final fused estimates (e.g., sequence \texttt{05}) and removing bias is an important avenue for future work. Further, the KITTI dataset contains few deleterious effects that negatively affect classical algorithms, and therefore we expect that this fusion would produce even more pronounced improvements on more varied visual data.
 
-\section{Conclusion}
-In summary, we presented a method to regress probabilistic estimates of rotation using a deep multi-headed network structure. We used the quaternionic metric on $\LieGroupSO{3}$ to define a rotation average, and extracted anisotropic covariances by modelling uncertainty through noise injection on the manifold.
-Further avenues for future work include obviating the need for supervised training by embedding the HydraNet structure within a Bayesian filter (see for example, \citep{Haarnoja2016-ph}), applying a HydraNet $\LieGroupSO{3}$ regression to improve convergence in non-convex pose graphs, and using HydraNet outputs to improve direct keyframe-based visual localization within a tight optimization loop.
+\section{Summary}
+We presented a method to regress probabilistic estimates of rotation using a deep multi-headed network structure. We used the quaternionic metric on $\LieGroupSO{3}$ to define a rotation average, and extracted anisotropic covariances by modelling uncertainty through noise injection on the manifold.
+%Further avenues for future work include obviating the need for supervised training by embedding the HydraNet structure within a Bayesian filter (see for example, \citep{Haarnoja2016-ph}), applying a HydraNet $\LieGroupSO{3}$ regression to improve convergence in non-convex pose graphs, and using HydraNet outputs to improve direct keyframe-based visual localization within a tight optimization loop.

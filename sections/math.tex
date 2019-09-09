@@ -1,7 +1,7 @@
 \chapter{Mathematical Foundations}
 \label{ch:math}
-\epigraph{By relieving the brain of all unnecessary work, a good notation sets it free to concentrate on more advanced problems, and, in effect, increases the mental power of the race.}{Alfred North Whitehead}
-  \section{3D Notation}
+\epigraph{By relieving the brain of all unnecessary work, a good notation sets it free to concentrate on more advanced problems, and, in effect, increases the mental power of the race.}{\textsc{Alfred North Whitehead}}
+  \section{Coordinate Frames}
 
 Before we can present the main contributions of this thesis, it will be useful to first outline the notation and mathematical foundations that underly the work. Throughout this thesis, we largely follow the notation of \cite{Barfoot2017-ri} when dealing with three-dimensional rigid-body kinematics. 
 
@@ -212,8 +212,7 @@ We can relate all the left and middle perturbations through the left Jacobian of
 \MatExp{( \RotationVector + \delta \RotationVector^m)} \approx \MatExp{\LeftJacobianSO(\RotationVector) \delta \RotationVector^m} \MatExp{\RotationVector}.	
 \end{equation}
 
-This allows us to write $\delta \RotationVector^\ell \approx \LeftJacobianSO(\RotationVector) \delta \RotationVector^m$ and elucidates why $\LeftJacobianSO$ is called the \textit{left} Jacobian. \todo{Elaborate here}
-
+This allows us to write $\delta \RotationVector^\ell \approx \LeftJacobianSO(\RotationVector) \delta \RotationVector^m$ and elucidates why $\LeftJacobianSO$ is called the \textit{left} Jacobian. 
 
 In this thesis, we will use the left and middle perturbations when appropriate. Using small angle approximations, the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) yields $\MatExp{\delta \RotationVector} \approx \IdentityMatrix + \delta \RotationVector^\wedge$, which allows us to write the useful formula for the left perturbation:
 

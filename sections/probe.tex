@@ -2,6 +2,16 @@
 \label{ch:probe}
 \epigraph{Information is the resolution of uncertainty.}{Claude Shannon}
 \section{Motivation}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+      \includegraphics[width=0.5\textwidth]{probe-gk/system_overview}
+      \caption{PROBE builds a predictive noise model for stereo visual odometry.}
+        \vspace{-1em}
+    \label{fig:probe_gk_system}
+\end{wrapfigure}
+
+
 Robot navigation relies on an accurate quantification of sensor noise or uncertainty in order to produce reliable state estimates.
 In practice, this uncertainty is often fixed for a given sensor and experiment, whether by automatic calibration or by manual tuning.
 Although a fixed measure of uncertainty may be reasonable in certain static environments, dynamic scenes frequently exhibit many effects that corrupt a portion of the available observations.
@@ -262,7 +272,7 @@ Our high-frequency predictor effectively distinguishes between textureless regio
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{probe/husky2}
+    \includegraphics[width=0.6\textwidth]{probe/husky2}
     \caption{Our four-wheeled skid-steered Clearpath Husky rover equipped with Skybotix VI-Sensor and Ashtech DGPS antenna used to collect the outdoor UTIAS dataset.}
     \label{fig:probe_huskypic}
 \end{figure}
@@ -282,21 +292,7 @@ tuning of the parameters of inlier selection and robust estimation. Performance
 can vary significantly from one environment to the next, and most algorithms require
 careful tuning to work in a given environment. 
 
-\begin{figure}
-    \centering
-      \includegraphics[width=0.75\textwidth]{probe-gk/system_overview}
-      \caption{Our proposed system builds a predictive noise model for stereo visual odometry. (a)~At training
-        time, we extract landmarks from two pairs of stereo images,
-        and use egomotion ground truth to compute reprojection errors to build a covariance
-        model. (b)~At run time, we predict a covariance for each visual landmark. We use these covariances in a robust nonlinear least-squares
-        problem, which is solved to estimate the transform between camera poses.
-        (c)~If the ground truth egomotion is not known, we iteratively apply an
-        optimization procedure (yellow box) to estimate them.}
-        \vspace{-1em}
-    \label{fig:probe_gk_system}
-\end{figure}
-
-In this paper, we describe a principled, data-driven way to build a noise model
+In this work, we describe a principled, data-driven way to build a noise model
 for visual odometry. We combine our previous work \citep{peretroukhin2015PROBE}
 on predictive robust estimation (PROBE) with our work on covariance estimation
 \citep{VegaBrown:2013fv} to formulate a predictive robust estimator for a
@@ -796,7 +792,13 @@ The EM approach indeed produced significant error reductions on the training dat
 
 \section{Summary}
 
-Predictive Robust Estimation applied two different techniques (scalar weighted covariances and the method of generalized kernel estimation) to improve on the uncorrelated and static Gaussian error models typically employed in stereo odometry.
+Predictive Robust Estimation applied two different techniques (scalar weighted covariances and the method of generalized kernel estimation) to improve on the uncorrelated and static Gaussian error models typically employed in stereo odometry. PROBE and its follow up PROBE-GK, contributed
+\begin{enumerate}
+\item a probabilistic model for indirect stereo visual odometry, leading to a predictive robust algorithm for inference on that model,
+\item two different approaches to constructing the robust algorithm: one based on k-nearest neighbours, and one based on Generalized Kernel (GK) estimation,
+\item a procedure for training our model using pairs of stereo images with known relative transforms, and
+\item an iterative, expectation-maximization approach to train our GK model when the relative ground truth egomotion was unavailable.
+\end{enumerate}
 
 %In this work, we presented PROBE, a novel method for predicting the quality of visual features within complex, dynamic environments. By using training data to learn a mapping from a predefined space of visual-inertial predictors to a scalar weight, we can adjust the influence of individual visual features on the final navigation estimate. PROBE can be used in place of traditional outlier rejection techniques such as RANSAC, or combined with them to more intelli- gently weight inlier measurements.
 %We explored a variety of potential predictors, and validated our technique using a visual-inertial navigation system on over 4 km of data from the KITTI dataset and 700 m of indoor and outdoor data collected at the University of Toronto Institute for Aerospace Studies. Our results show that PROBE outperforms RANSAC-based binary outlier re- jection in many environments, even with only sparse ground truth available during the training step.

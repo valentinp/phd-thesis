@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {1.4}The Learned Pseudo-Sensor}{8}{section.1.4}% 
 \contentsline {section}{\numberline {1.5}Original Contributions}{8}{section.1.5}% 
 \contentsline {chapter}{\numberline {2}Mathematical Foundations}{12}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}3D Notation}{12}{section.2.1}% 
+\contentsline {section}{\numberline {2.1}Coordinate Frames}{12}{section.2.1}% 
 \contentsline {section}{\numberline {2.2}Rotations}{13}{section.2.2}% 
 \contentsline {subsubsection}{Active vs. Passive}{13}{section*.16}% 
 \contentsline {subsubsection}{Exponential and Logarithmic Maps}{13}{section*.17}% 
@@ -21,137 +21,36 @@
 \contentsline {subsection}{\numberline {3.2.2}Data association}{21}{subsection.3.2.2}% 
 \contentsline {subsubsection}{Feature extraction and matching}{21}{section*.22}% 
 \contentsline {subsubsection}{Outlier rejection}{22}{section*.24}% 
-\contentsline {subsection}{\numberline {3.2.3}Motion solution}{22}{subsection.3.2.3}% 
-\contentsline {section}{\numberline {3.3}Robust Estimation}{23}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.2.3}Motion solution}{23}{subsection.3.2.3}% 
+\contentsline {section}{\numberline {3.3}Robust Estimation}{24}{section.3.3}% 
 \contentsline {section}{\numberline {3.4}Outstanding Issues}{24}{section.3.4}% 
-\contentsline {chapter}{\numberline {4}Predictive Robust Estimation}{26}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Motivation}{26}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Related Work}{26}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Scalar k-Nearest Neighbours}{27}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}Training}{28}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}Evaluation}{29}{subsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.3.3}Prediction Space}{30}{subsection.4.3.3}% 
-\contentsline {subsubsection}{Angular velocity and linear acceleration}{30}{section*.34}% 
-\contentsline {subsubsection}{Local image entropy}{30}{section*.35}% 
-\contentsline {subsubsection}{Blur}{31}{section*.36}% 
-\contentsline {subsubsection}{Optical flow variance score}{32}{section*.40}% 
-\contentsline {subsubsection}{Image frequency composition}{33}{section*.42}% 
-\contentsline {section}{\numberline {4.4}Generalized Kernels}{35}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Predictive noise models for visual odometry}{36}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Inference without ground truth}{39}{subsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.4.3}Experiments}{41}{subsection.4.4.3}% 
-\contentsline {subsubsection}{Synthetic}{41}{section*.49}% 
-\contentsline {subsection}{\numberline {4.4.4}KITTI}{42}{subsection.4.4.4}% 
-\contentsline {subsubsection}{UTIAS}{46}{section*.56}% 
-\contentsline {section}{\numberline {4.5}Summary}{48}{section.4.5}% 
-\contentsline {chapter}{\numberline {5}Sun-BCNN}{49}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Motivation}{49}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Related Work}{52}{section.5.2}% 
-\contentsline {section}{\numberline {5.3}Orientation Correction}{54}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}Indirect Sun Detection using a Bayesian Convolutional Neural Network}{56}{section.5.4}% 
-\contentsline {subsection}{\numberline {5.4.1}Cost Function}{56}{subsection.5.4.1}% 
-\contentsline {subsection}{\numberline {5.4.2}Uncertainty Estimation}{57}{subsection.5.4.2}% 
-\contentsline {subsection}{\numberline {5.4.3}Implementation and Training}{58}{subsection.5.4.3}% 
-\contentsline {subsubsection}{Data Preparation \& Transfer Learning}{59}{section*.66}% 
-\contentsline {subsubsection}{Model Precision}{59}{section*.67}% 
-\contentsline {subsubsection}{Data Partitioning}{59}{section*.68}% 
-\contentsline {section}{\numberline {5.5}Simulation Experiments}{59}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}Urban Driving Experiments: The KITTI Odometry Benchmark}{63}{section.5.6}% 
-\contentsline {subsection}{\numberline {5.6.1}Sun-BCNN Test Results}{66}{subsection.5.6.1}% 
-\contentsline {subsection}{\numberline {5.6.2}Visual Odometry Experiments}{70}{subsection.5.6.2}% 
-\contentsline {subsubsection}{Simulated Sun Sensing}{70}{section*.83}% 
-\contentsline {subsubsection}{Vision-based Sun Sensing}{70}{section*.84}% 
-\contentsline {section}{\numberline {5.7}Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{71}{section.5.7}% 
-\contentsline {subsection}{\numberline {5.7.1}Sun-BCNN Test Results}{74}{subsection.5.7.1}% 
-\contentsline {subsection}{\numberline {5.7.2}Visual Odometry Experiments}{75}{subsection.5.7.2}% 
-\contentsline {section}{\numberline {5.8}Sensitivity Analysis}{77}{section.5.8}% 
-\contentsline {subsection}{\numberline {5.8.1}Cloud Cover}{77}{subsection.5.8.1}% 
-\contentsline {subsubsection}{Procedure}{78}{section*.93}% 
-\contentsline {subsubsection}{Results}{79}{section*.94}% 
-\contentsline {subsection}{\numberline {5.8.2}Model Generalization}{79}{subsection.5.8.2}% 
-\contentsline {subsubsection}{Procedure}{79}{section*.96}% 
-\contentsline {subsubsection}{Results}{80}{section*.97}% 
-\contentsline {subsection}{\numberline {5.8.3}Mean and Covariance Computation}{80}{subsection.5.8.3}% 
-\contentsline {subsubsection}{Mean computation}{82}{section*.102}% 
-\contentsline {paragraph}{Procedure}{82}{section*.103}% 
-\contentsline {paragraph}{Results}{82}{section*.104}% 
-\contentsline {subsubsection}{Covariance Computation}{82}{section*.105}% 
-\contentsline {paragraph}{Procedure}{82}{section*.106}% 
-\contentsline {paragraph}{Results}{83}{section*.107}% 
-\contentsline {section}{\numberline {5.9}Summary}{84}{section.5.9}% 
-\contentsline {chapter}{\numberline {6}Deep Pose Corrections for Visual Localization}{85}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Introduction}{85}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Related Work}{87}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}System Overview: Deep Pose Correction}{88}{section.6.3}% 
-\contentsline {subsection}{\numberline {6.3.1}Loss Function: Correcting $ \mathrm {SE}(3) $ Estimates}{90}{subsection.6.3.1}% 
-\contentsline {subsection}{\numberline {6.3.2}Loss Function: $ \mathrm {SE}(3) $ Covariance}{91}{subsection.6.3.2}% 
-\contentsline {subsection}{\numberline {6.3.3}Loss Function: $ \mathrm {SE}(3) $ Jacobians}{91}{subsection.6.3.3}% 
-\contentsline {subsubsection}{Deriving $ \genfrac {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method I}{92}{section*.112}% 
-\contentsline {subsubsection}{Deriving $ \genfrac {}{}{}0{\partial \LogMapFunction {\PredictionVector }}{\partial \PredictionVector } $, Method II}{92}{section*.113}% 
-\contentsline {subsection}{\numberline {6.3.4}Loss Function: Correcting $ \mathrm {SO}(3) $ Estimates}{93}{subsection.6.3.4}% 
-\contentsline {subsection}{\numberline {6.3.5}Pose Graph Relaxation}{94}{subsection.6.3.5}% 
-\contentsline {section}{\numberline {6.4}Experiments}{95}{section.6.4}% 
-\contentsline {subsection}{\numberline {6.4.1}Training \& Testing}{95}{subsection.6.4.1}% 
-\contentsline {subsubsection}{Rotation}{96}{section*.115}% 
-\contentsline {subsubsection}{Yaw}{96}{section*.116}% 
-\contentsline {subsection}{\numberline {6.4.2}Estimators}{96}{subsection.6.4.2}% 
-\contentsline {subsubsection}{Sparse Visual Odometry}{96}{section*.117}% 
-\contentsline {subsubsection}{Sparse Visual Odometry with Radial Distortion}{97}{section*.118}% 
-\contentsline {subsubsection}{Dense Visual Odometry}{97}{section*.120}% 
-\contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{98}{subsection.6.4.3}% 
-\contentsline {subsubsection}{Mean Absolute Trajectory Error (m-ATE)}{100}{section*.123}% 
-\contentsline {subsubsection}{Cumulative Absolute Trajectory Error (c-ATE)}{100}{section*.124}% 
-\contentsline {subsubsection}{Segment Error}{100}{section*.125}% 
-\contentsline {section}{\numberline {6.5}Results \& Discussion}{101}{section.6.5}% 
-\contentsline {subsection}{\numberline {6.5.1}Correcting Sparse Visual Odometry}{101}{subsection.6.5.1}% 
-\contentsline {subsection}{\numberline {6.5.2}Distorted Images}{102}{subsection.6.5.2}% 
-\contentsline {section}{\numberline {6.6}Summary}{102}{section.6.6}% 
-\contentsline {chapter}{\numberline {7}Learning Deep Probabilistic Estimates of Elements of SO(3)}{104}{chapter.7}% 
-\contentsline {section}{\numberline {7.1}Introduction}{104}{section.7.1}% 
-\contentsline {section}{\numberline {7.2}Related work}{105}{section.7.2}% 
-\contentsline {section}{\numberline {7.3}Approach}{106}{section.7.3}% 
-\contentsline {subsection}{\numberline {7.3.1}Why Rotations?}{107}{subsection.7.3.1}% 
-\contentsline {subsection}{\numberline {7.3.2}Probabilistic Regression}{107}{subsection.7.3.2}% 
-\contentsline {subsubsection}{HydraNet}{108}{section*.133}% 
-\contentsline {subsubsection}{One-dimensional experiment}{108}{section*.134}% 
-\contentsline {subsection}{\numberline {7.3.3}Deep Probabilistic $ \mathrm {SO}(3) $ Regression}{110}{subsection.7.3.3}% 
-\contentsline {subsubsection}{Rotation Averaging}{111}{section*.137}% 
-\contentsline {subsubsection}{SO(3) Uncertainty}{111}{section*.138}% 
-\contentsline {subsection}{\numberline {7.3.4}Loss Function}{112}{subsection.7.3.4}% 
-\contentsline {section}{\numberline {7.4}Experiments}{113}{section.7.4}% 
-\contentsline {subsection}{\numberline {7.4.1}Uncertainty Evaluation: Synthetic Data}{113}{subsection.7.4.1}% 
-\contentsline {subsection}{\numberline {7.4.2}Absolute Orientation: 7-Scenes}{116}{subsection.7.4.2}% 
-\contentsline {subsection}{\numberline {7.4.3}Relative Rotation: KITTI Visual Odometry}{116}{subsection.7.4.3}% 
-\contentsline {subsubsection}{Classical VO}{120}{section*.151}% 
-\contentsline {subsubsection}{Fusion via Graph Relaxation}{120}{section*.152}% 
-\contentsline {section}{\numberline {7.5}Conclusion}{121}{section.7.5}% 
-\contentsline {chapter}{\numberline {8}Conclusion}{122}{chapter.8}% 
-\contentsline {section}{\numberline {8.1}Summary of Contributions}{122}{section.8.1}% 
-\contentsline {subsection}{\numberline {8.1.1}Predictive Robust Estimation}{122}{subsection.8.1.1}% 
-\contentsline {subsection}{\numberline {8.1.2}Sun BCNN}{123}{subsection.8.1.2}% 
-\contentsline {subsection}{\numberline {8.1.3}Deep Pose Corrections}{124}{subsection.8.1.3}% 
-\contentsline {subsection}{\numberline {8.1.4}Deep Probabilistic Inference of $ \mathrm {SO}(3) $ with HydraNet}{125}{subsection.8.1.4}% 
-\contentsline {section}{\numberline {8.2}Future Work}{125}{section.8.2}% 
-\contentsline {section}{\numberline {8.3}Final Remarks}{126}{section.8.3}% 
-\contentsline {chapter}{Appendices}{128}{section*.158}% 
-\contentsline {chapter}{\numberline {A}Left and Middle Perturbations}{129}{Appendix.1.A}% 
-\contentsline {section}{\numberline {A.1}Identities}{129}{section.1.A.1}% 
-\contentsline {section}{\numberline {A.2}Perturbing $ \mathrm {SE}(3) $}{129}{section.1.A.2}% 
-\contentsline {subsection}{\numberline {A.2.1}Left Perturbation}{129}{subsection.1.A.2.1}% 
-\contentsline {subsection}{\numberline {A.2.2}Middle Perturbation}{130}{subsection.1.A.2.2}% 
-\contentsline {section}{\numberline {A.3}DPC $ \mathrm {SE}(3) $ Loss}{130}{section.1.A.3}% 
-\contentsline {subsection}{\numberline {A.3.1}Middle Perturbation}{130}{subsection.1.A.3.1}% 
-\contentsline {subsection}{\numberline {A.3.2}Left Perturbation}{131}{subsection.1.A.3.2}% 
-\contentsline {subsection}{\numberline {A.3.3}Summary}{131}{subsection.1.A.3.3}% 
-\contentsline {subsection}{\numberline {A.3.4}Reconciliation}{132}{subsection.1.A.3.4}% 
-\contentsline {chapter}{\numberline {B}SO(3) Regression}{133}{Appendix.1.B}% 
-\contentsline {section}{\numberline {B.1}Experiments}{133}{section.1.B.1}% 
-\contentsline {subsection}{\numberline {B.1.1}One-dimensional regression}{133}{subsection.1.B.1.1}% 
-\contentsline {subsection}{\numberline {B.1.2}Hemisphere world}{135}{subsection.1.B.1.2}% 
-\contentsline {subsection}{\numberline {B.1.3}7-Scenes}{136}{subsection.1.B.1.3}% 
-\contentsline {subsection}{\numberline {B.1.4}KITTI}{136}{subsection.1.B.1.4}% 
-\contentsline {subsubsection}{Network details}{136}{section*.166}% 
-\contentsline {subsubsection}{Keyframe direct VO}{138}{section*.168}% 
-\contentsline {subsubsection}{Pose graph relaxation}{139}{section*.169}% 
-\contentsline {subsubsection}{Additional results}{139}{section*.170}% 
-\contentsline {chapter}{Bibliography}{140}{section*.170}% 
+\contentsline {chapter}{\numberline {4}Conclusion}{26}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Summary of Contributions}{26}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Predictive Robust Estimation}{26}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Sun BCNN}{27}{subsection.4.1.2}% 
+\contentsline {subsection}{\numberline {4.1.3}Deep Pose Corrections}{28}{subsection.4.1.3}% 
+\contentsline {subsection}{\numberline {4.1.4}Deep Probabilistic Inference of $ \mathrm {SO}(3) $ with HydraNet}{29}{subsection.4.1.4}% 
+\contentsline {section}{\numberline {4.2}Future Work}{30}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Final Remarks}{31}{section.4.3}% 
+\contentsline {chapter}{Appendices}{32}{section*.37}% 
+\contentsline {chapter}{\numberline {A}Left and Middle Perturbations}{33}{Appendix.1.A}% 
+\contentsline {section}{\numberline {A.1}Identities}{33}{section.1.A.1}% 
+\contentsline {section}{\numberline {A.2}Perturbing $ \mathrm {SE}(3) $}{33}{section.1.A.2}% 
+\contentsline {subsection}{\numberline {A.2.1}Left Perturbation}{33}{subsection.1.A.2.1}% 
+\contentsline {subsection}{\numberline {A.2.2}Middle Perturbation}{34}{subsection.1.A.2.2}% 
+\contentsline {section}{\numberline {A.3}DPC $ \mathrm {SE}(3) $ Loss}{34}{section.1.A.3}% 
+\contentsline {subsection}{\numberline {A.3.1}Middle Perturbation}{34}{subsection.1.A.3.1}% 
+\contentsline {subsection}{\numberline {A.3.2}Left Perturbation}{35}{subsection.1.A.3.2}% 
+\contentsline {subsection}{\numberline {A.3.3}Summary}{35}{subsection.1.A.3.3}% 
+\contentsline {subsection}{\numberline {A.3.4}Reconciliation}{36}{subsection.1.A.3.4}% 
+\contentsline {chapter}{\numberline {B}Supplementary HydraNet Details}{37}{Appendix.1.B}% 
+\contentsline {section}{\numberline {B.1}Experiments}{37}{section.1.B.1}% 
+\contentsline {subsection}{\numberline {B.1.1}One-dimensional regression}{37}{subsection.1.B.1.1}% 
+\contentsline {subsection}{\numberline {B.1.2}Hemisphere world}{39}{subsection.1.B.1.2}% 
+\contentsline {subsection}{\numberline {B.1.3}7-Scenes}{40}{subsection.1.B.1.3}% 
+\contentsline {subsection}{\numberline {B.1.4}KITTI}{40}{subsection.1.B.1.4}% 
+\contentsline {subsubsection}{Network details}{40}{section*.45}% 
+\contentsline {subsubsection}{Keyframe direct VO}{42}{section*.47}% 
+\contentsline {subsubsection}{Pose graph relaxation}{43}{section*.48}% 
+\contentsline {subsubsection}{Additional results}{43}{section*.49}% 
+\contentsline {chapter}{Bibliography}{44}{section*.49}% 

@@ -2,20 +2,22 @@
 \label{ch:dpc}
 \epigraph{Life can only be understood backwards; but it must be lived forwards.}{Søren Kierkegaard}
 
-\section{Introduction}
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.48\textwidth]{dpc/dpc_high_level}
+	\caption{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE{3}$ \textit{corrections} to classical visual localizers.}
+	\label{fig:system_overview}
+	\vspace{-1.5em}
+\end{wrapfigure}
+
+\section{Motivation}
 Deep convolutional neural networks (CNNs) are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\citep{LeCun2015-fw}. 
 These CNN-based techniques achieve accuracies previously
 unattainable by classical methods. In mobile robotics and state estimation, however, it remains unclear to what extent these deep architectures can obviate the need for classical geometric modelling. 
 In this work, we focus on visual odometry (VO): the task of computing the egomotion of a camera through an unknown environment with no external positioning sources. Visual localization algorithms like VO can suffer from several systematic error sources
 that include estimator biases \citep{Peretroukhin2014-db}, poor calibration, and environmental factors (e.g., a lack of scene texture). While machine learning approaches can be used to better model specific subsystems of a localization pipeline (e.g., the heteroscedastic feature track error covariance modelling of \citep{Peretroukhin2016-om, Peretroukhin2015-em}), much recent work \citep{Costante2016-hb, Clark2017-zg, Kendall2017-ix, Melekhov2017-dl, Oliveira2017-lt} has been devoted to completely replacing the estimator with a CNN-based system.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.75\textwidth]{dpc/dpc_high_level}
-	\caption{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE{3}$ \textit{corrections} to classical visual localizers.}
-	\label{fig:system_overview}
-	\vspace{-1.5em}
-\end{figure}
+
 
 We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from recent results \citep{Peretroukhin2017-eb} that demonstrate that CNNs can infer difficult-to-model geometric quantities (e.g., the direction of the sun) to improve an existing localization estimate.  
 In a similar vein, we propose a system (\Cref{fig:system_overview}) that takes as its starting point an efficient, classical localization algorithm that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
@@ -258,22 +260,23 @@ To further simplify the corrections, we extracted a single-degree-of-freedom yaw
 
 \subsection{Estimators}
 \subsubsection{Sparse Visual Odometry}
-To collect $ \TargetCorrectionIndex$, we first used a frame-to-frame sparse visual odometry pipeline similar to that presented in \cite{Peretroukhin2016-om}. We briefly outline the pipeline here. 
-
-Using the open-source \texttt{libviso2} package~\cite{Geiger2011-xe}, we detect and track sparse stereo image key-points, $\ImageLandmark{l}{t_{i+1}}$ and $\ImageLandmark{l}{t_{i}}$, between stereo image pairs (assumed to be undistorted and rectified).
-We model reprojection errors (due to sensor noise
-and quantization) as zero-mean Gaussians with a known covariance, $\ImageCovariance$,
-\begin{align}
- \Vector{e}_{l,t_i} &= \ImageLandmark{l}{t_{i+1}} - \ProjectionFunction( \Transform_{t_{i+1},t_i} 
-    \ProjectionFunction^{-1}( \ImageLandmark{l}{t_{i}} ) ) \\ &\sim \NormalDistribution{\Vector{0}}{\ImageCovariance},
-   \label{eq:image_error}
-\end{align}
-where $\ProjectionFunction(\cdot)$ is the stereo camera projection function. To generate an initial guess and to reject outliers, we use three point Random Sample Consensus (RANSAC) based on stereo reprojection error.
-Finally, we solve for the maximum likelihood transform, $\Transform_{t+1,t}^*$, through a Gauss-Newton minimization:
-\begin{equation}
-  \Transform_{t_{i+1},t_i}^* = \ArgMin{\Transform_{t_{i+1},t_i}\in\text{SE}(3)}\sum_{l=1}^{N_{t_i}} 
-  \Transpose{\Vector{e}}_{l,t_i} \ImageCovariance^{-1} \Vector{e}_{l,t_i}.
-\end{equation}
+This is the standard pipeline described in \Cref{ch:vo}.
+%To collect $ \TargetCorrectionIndex$, we first used a frame-to-frame sparse visual odometry pipeline similar to that presented in \cite{Peretroukhin2016-om}. We briefly outline the pipeline here. 
+%
+%Using the open-source \texttt{libviso2} package~\cite{Geiger2011-xe}, we detect and track sparse stereo image key-points, $\ImageLandmark{l}{t_{i+1}}$ and $\ImageLandmark{l}{t_{i}}$, between stereo image pairs (assumed to be undistorted and rectified).
+%We model reprojection errors (due to sensor noise
+%and quantization) as zero-mean Gaussians with a known covariance, $\ImageCovariance$,
+%\begin{align}
+% \Vector{e}_{l,t_i} &= \ImageLandmark{l}{t_{i+1}} - \ProjectionFunction( \Transform_{t_{i+1},t_i} 
+%    \ProjectionFunction^{-1}( \ImageLandmark{l}{t_{i}} ) ) \\ &\sim \NormalDistribution{\Vector{0}}{\ImageCovariance},
+%   \label{eq:image_error}
+%\end{align}
+%where $\ProjectionFunction(\cdot)$ is the stereo camera projection function. To generate an initial guess and to reject outliers, we use three point Random Sample Consensus (RANSAC) based on stereo reprojection error.
+%Finally, we solve for the maximum likelihood transform, $\Transform_{t+1,t}^*$, through a Gauss-Newton minimization:
+%\begin{equation}
+%  \Transform_{t_{i+1},t_i}^* = \ArgMin{\Transform_{t_{i+1},t_i}\in\text{SE}(3)}\sum_{l=1}^{N_{t_i}} 
+%  \Transpose{\Vector{e}}_{l,t_i} \ImageCovariance^{-1} \Vector{e}_{l,t_i}.
+%\end{equation}
 
 \subsubsection{Sparse Visual Odometry with Radial Distortion}
 
@@ -491,3 +494,13 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
 \end{table}
 
 \section{Summary}
+
+In summary, DPC-Net learns six degree-of-freedom corrections for a given egomotion pipeline and environment. Our contributions include
+
+\begin{enumerate}
+	\item the formulation of a novel deep corrective approach to egomotion estimation,
+	\item a novel cost function for deep $\LieGroupSE{3}$ regression that naturally balances translation and rotation errors, and
+	\item an open-source implementation of DPC-Net in \texttt{PyTorch}\footnote{See \url{https://github.com/utiasSTARS/dpc-net}.}.
+\end{enumerate}
+
+

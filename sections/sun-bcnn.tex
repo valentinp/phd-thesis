@@ -1,14 +1,13 @@
-\chapter{Sun-BCNN}
+\chapter{Inferring Sun Direction through a Bayesian CNN}
 \epigraph{He stepped down, avoiding any long look at her as one avoids long looks at the sun, but seeing her as one sees the sun, without looking.}{Leo Tolstoy, \textit{Anna Karenina}}
 \label{ch:sun-bcnn}
 
-
-\begin{figure}
+\begin{wrapfigure}{r}{0.5\textwidth}
     \centering
-      \includegraphics[width=0.75\columnwidth]{sun-bcnn/system_overview}
+      \includegraphics[width=0.48\columnwidth]{sun-bcnn/system_overview}
       \caption{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph{virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.}
     \label{fig:sun-bcnn_system}
-\end{figure}
+\end{wrapfigure}
 
 \section{Motivation}
 A crucial competency of any autonomous mobile robot is the ability to estimate its own motion through an operating environment.
@@ -36,15 +35,6 @@ The main idea here is that by reasoning over more than just the geometric inform
 In particular, we leverage recent advances in Bayesian Convolutional Neural Networks (BCNNs) to demonstrate how we can build and train a deep model capable of inferring the direction of the sun from a single RGB image. 
 Moreover, we show that our network, dubbed Sun-BCNN, can produce a covariance estimate for each observation that obviates the need for a hand-tuned or empirically computed static covariance typically used for data fusion in a motion estimation pipeline. 
 
-Our main contributions can be summarized as follows:
-\begin{enumerate}
-\item We apply a Bayesian CNN to the problem of sun direction estimation, incorporating the resulting covariance estimates into a visual odometry pipeline; 
-\item We demonstrate that a Bayesian CNN with dropout layers after each convolutional and fully-connected layer can achieve state-of-the-art accuracy at test time;
-\item We learn a 3D unit-length sun direction vector, appropriate for full 6-DOF pose estimation;
-\item We present experimental results on over 30~km of visual navigation data in urban \citep{Geiger2012-fq} and planetary analogue \citep{Furgale2012-kk} environments; 
-\item We investigate the sensitivity of our Bayesian CNN-based sun estimator (Sun-BCNN) to cloud cover, camera and environment changes, and measurement parameterization; and
-\item We release Sun-BCNN as open-source \footnote{\url{https://github.com/utiasSTARS/sun-bcnn-vo}.}.
-\end{enumerate}
 
 The remainder of this paper begins with a discussion of related work, followed by an overview of the theory underlying BCNNs and a discussion of our model architecture, implementation, and training procedure.
 We then outline our chosen visual odometry pipeline, which is based on a two-frame bundle adjustment optimization, and describe how observations of the sun can be incorporated directly into the motion estimation problem following the technique of \citet{Lambert2012-um}.
@@ -517,7 +507,7 @@ To obtain the required covariance on azimuth and zenith angles, we sampled the v
 We investigate the impact of this parametrization (as opposed to working in azimuth and zenith coordinates directly) later in this paper.
 As shown in \Cref{tab:kitti_test_cnn}, we chose a value for the model precision $\tau$ such that the Average Normalized Estimation Error Squared (ANEES) of each test sequence is close to one (i.e., the estimator is consistent).
 
-\Cref{fig:kitti_test_error_whiskers,fig:kitti_cnn_testerrors} plot the error distributions for azimuth, zenith, and angular distance for all ten KITTI odometry sequences, while \Cref{fig:kitti_error_over_time} shows three characteristic plots of the azimuth and zenith predictions over time. 
+\Cref{fig:kitti_test_error_whiskers,fig:sun-bcnn_kitti_cnn_testerrors} plot the error distributions for azimuth, zenith, and angular distance for all ten KITTI odometry sequences, while \Cref{fig:sun-bcnn_kitti_error_over_time} shows three characteristic plots of the azimuth and zenith predictions over time. 
 We see that the errors in azimuth and zenith are strongly peaked around zero and are reasonably well described by a Gaussian distribution, which are important properties assumed by our VO pipeline to produce maximum likelihood motion estimates based on the fusion of multiple data sources.
 Note that the error distribution in zenith is slightly biased towards negative values due to the presence of a long tail on the negative side of the mean.
 This is an artifact of the azimuth-zenith parameterization when the sun zenith is small (i.e., when the sun is high in the sky), since zenith angles are defined on $[0,\pi]$.
@@ -547,9 +537,9 @@ Using the same convention as our experiments with simulated trajectories, we cre
 %\vspace{-0.4em}
 \Cref{fig:kitti-vo-sim-results} shows the results we obtained using simulated sun measurements on sequence \texttt{05}, in which the basic VO suffers from substantial orientation drift.\footnote{In order to make a fair comparison to the Sun-CNN of \citet{Ma2016-at}, who compute sun directions for every tenth image of the KITTI odometry benchmark, we subsample the sun directions obtained through each other method to match.}
 Incorporating absolute orientation information from the simulated sun sensor allows the VO to correct these errors, but the magnitude of the correction decreases as sensor noise increases, consistent with the results of our simulation experiments.
-As shown in \Cref{tab:kitti_armse}, which summarizes our VO results for all ten sequences, this is typical of sequences where orientation drift is the dominant source of error.
+As shown in \Cref{tab:sun-bcnn_kitti_armse}, which summarizes our VO results for all ten sequences, this is typical of sequences where orientation drift is the dominant source of error.
 
-While the VO solutions for sequences such as \texttt{00} do not improve in terms of translational ARMSE, \Cref{tab:kitti_armse} shows that rotational ARMSE nevertheless improves on all ten sequences when low-noise simulated sun measurements are included.
+While the VO solutions for sequences such as \texttt{00} do not improve in terms of translational ARMSE, \Cref{tab:sun-bcnn_kitti_armse} shows that rotational ARMSE nevertheless improves on all ten sequences when low-noise simulated sun measurements are included.
 This implies that the estimation errors of the basic VO solutions for certain sequences are dominated by non-rotational effects, and that the apparent benefit of the Lalonde method on translational ARMSE in sequence \texttt{00} is likely coincidental.
 
 \subsubsection{Vision-based Sun Sensing} \label{sec:kitti_vo_sim_sun}
@@ -563,7 +553,7 @@ A selection of results using simulated sun measurements are also displayed for r
 All four sun detection methods succeed in reducing the growth of total estimation error on this sequence, with Sun-BCNN reducing both translational and rotational error growth significantly more than the other three methods.
 Both Sun-CNN and Sun-BCNN outperform the two Lalonde variants, consistent with the results of \citet{Ma2016-at} and \citet{Clement2016-ir}.
 
-\Cref{tab:kitti_armse} shows results for all ten sequences using each method.
+\Cref{tab:sun-bcnn_kitti_armse} shows results for all ten sequences using each method.
 With few exceptions, the VO results using Sun-BCNN achieve improvements in rotational and translational ARMSE comparable to those achieved using the simulated sun measurements with between 10 and 30 degrees average error.
 As previously noted, sequences such as \texttt{00} do not benefit significantly from sun sensing since rotational drift is not the dominant source of estimation error in these cases.
 Nevertheless, these results indicate that CNN-based sun sensing is a valuable tool for improving localization accuracy in VO and an improvement that comes without the need for additional sensors or a specially oriented camera.
@@ -648,15 +638,15 @@ This leaves nine sequences remaining to form the training sets for each test and
 \subsection{Sun-BCNN Test Results}
 As in our experiments with the KITTI odometry benchmark, we obtained the mean estimated sun vector by evaluating \Cref{eq:sun_direction_mean} with $N=25$ and re-normalizing the resulting vector to preserve unit length. 
 To obtain the required covariance on azimuth and zenith angles, we again sampled the vector outputs, converted them to azimuth and zenith angles using \Cref{eq:vec-to-az-zen}, and then applied \Cref{eq:bcnn_covar}.
-As shown in \Cref{tab:testBCNN_devon}, we chose a value for the model precision $\tau$ such that the Average Normalized Estimation Error Squared (ANEES) of each test sequence is close to one (i.e., the estimator is consistent).
+As shown in \Cref{tab:sun-bcnn_testBCNN_devon}, we chose a value for the model precision $\tau$ such that the Average Normalized Estimation Error Squared (ANEES) of each test sequence is close to one (i.e., the estimator is consistent).
 
-\Cref{fig:devon_test_error_whiskers,fig:devon_cnn_testerrors} plot the error distributions for azimuth, zenith, and angular distance for all 11 Devon Island odometry sequences, while \Cref{fig:devon_error_over_time} shows three characteristic plots of the azimuth and zenith predictions over time. 
-We see that the errors in azimuth and zenith are strongly peaked around zero and are better described by a Gaussian distribution than in the case of KITTI (c.f. \Cref{fig:kitti_cnn_testerrors}), which as we previously mentioned are important properties assumed by our VO pipeline to appropriately fuse data.
+\Cref{fig:sun-bcnn_devon_test_error_whiskers,fig:sun-bcnn_devon_cnn_testerrors} plot the error distributions for azimuth, zenith, and angular distance for all 11 Devon Island odometry sequences, while \Cref{fig:sun-bcnn_devon_error_over_time} shows three characteristic plots of the azimuth and zenith predictions over time. 
+We see that the errors in azimuth and zenith are strongly peaked around zero and are better described by a Gaussian distribution than in the case of KITTI (c.f. \Cref{fig:sun-bcnn_kitti_cnn_testerrors}), which as we previously mentioned are important properties assumed by our VO pipeline to appropriately fuse data.
 The distribution of zenith errors in the Devon Island dataset does not exhibit the same bias and long tail we observed in the KITTI dataset. 
 This is likely because the sun is much lower in the sky (i.e., the zenith angle is further from zero) in the Devon Island dataset than in the KITTI dataset, so there is no clipping of the distribution near zero zenith.
 
-\Cref{tab:testBCNN_devon} summarizes the test errors and ANEES of each sequence numerically, while \Cref{fig:devon_test_error_whiskers,fig:devon_cnn_testerrors} plot the error distributions for azimuth, zenith, and angular distance for each sequence. 
-\Cref{fig:devon_error_over_time} shows three characteristic plots of the azimuth and zenith predictions over time. 
+\Cref{tab:sun-bcnn_testBCNN_devon} summarizes the test errors and ANEES of each sequence numerically, while \Cref{fig:sun-bcnn_devon_test_error_whiskers,fig:sun-bcnn_devon_cnn_testerrors} plot the error distributions for azimuth, zenith, and angular distance for each sequence. 
+\Cref{fig:sun-bcnn_devon_error_over_time} shows three characteristic plots of the azimuth and zenith predictions over time. 
 Sun-BCNN achieved median vector angle errors of less than 10 degrees on every sequence except sequence \texttt{08}.
 Consistent with the results we observed in the KITTI experiments, the sequences with the highest median vector angle error (sequences \texttt{02} and \texttt{08}) also have the highest ANEES values, again indicating that the homoscedastic noise assumption is perhaps ill suited to this environment.
 
@@ -753,10 +743,10 @@ However, we do compare the results obtained using Sun-BCNN to those obtained usi
 }
 \end{table}
 
-\Cref{fig:devon_vo} shows sample VO results on three sequences from the Devon Island dataset using no sun measurements, the hardware sun sensor, Sun-BCNN, and the Lalonde variants.
+\Cref{fig:sun-bcnn_devon_vo} shows sample VO results on three sequences from the Devon Island dataset using no sun measurements, the hardware sun sensor, Sun-BCNN, and the Lalonde variants.
 While the Lalonde methods struggle in this environment, Sun-BCNN yields significant improvements in VO accuracy, nearly on par with those obtained using the hardware sun sensor.
 
-\Cref{tab:devon_armse} summarizes these results numerically for all 11 sequences in the dataset.
+\Cref{tab:sun-bcnn_devon_armse} summarizes these results numerically for all 11 sequences in the dataset.
 While the addition of sun sensing using either the hardware sensor or Sun-BCNN generally results in significant reductions in error, we note that in certain cases (e.g., sequence \texttt{05}), sun sensing has little or no impact on the VO result.
 We suspect that the translation errors in these cases are dominated by non-rotational effects, similarly to those observed in our experiments with the KITTI dataset, although it is difficult to be certain in the absence of rotational ground truth.
 As previously mentioned, the incorporation of a motion prior in the VO estimator would likely reduce the impact of these errors.
@@ -926,7 +916,7 @@ To control for the effect of tuning the model precision $\tau$, we replace the d
 We then compared the consistency of the cross-correlations of each method (i.e., the off-diagonal components of the covariance matrix) by computing ANEES values over the each model's corresponding test set using both mean computation methods.  
 
 \paragraph{Results}
-\Cref{tab:cov_estimation_comp} lists the ANEES values produced by each method of covariance computation when paired with each mean computation method. 
+\Cref{tab:sun-bcnn_cov_estimation_comp} lists the ANEES values produced by each method of covariance computation when paired with each mean computation method. 
 \emph{Method I} covariances produced better ANEES values when paired with \emph{Method I} mean estimation, but \emph{Method II} covariances paired well with either mean estimation scheme. 
 
 \begin{table}[]
@@ -973,4 +963,14 @@ We then compared the consistency of the cross-correlations of each method (i.e.,
 \end{table}
 
 \section{Summary}
+
+In summary, with Sun-BCNN, we applied learned \textit{pseudo-sensors} to the problem of illumination direction in outdoor environments. Sun-BCNN presented
+\begin{enumerate}
+\item the application of a Bayesian CNN to the problem of sun direction estimation, incorporating the resulting covariance estimates into a visual odometry pipeline; 
+\item an empirical demonstration that a Bayesian CNN with dropout layers after each convolutional and fully-connected layer can achieve state-of-the-art accuracy at test time;
+\item a loss function that incorporated a 3D unit-length sun direction vector, appropriate for full 6-DOF pose estimation;
+\item experimental results on over 30~km of visual navigation data in urban \citep{Geiger2012-fq} and planetary analogue \citep{Furgale2012-kk} environments; 
+\item an investigation into the sensitivity of the Bayesian CNN-based sun estimate to cloud cover, camera and environment changes, and measurement parameterization; and
+\item open-source software\footnote{\url{https://github.com/utiasSTARS/sun-bcnn-vo}.}.
+\end{enumerate}
 

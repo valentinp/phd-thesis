@@ -1,8 +1,8 @@
 \chapter{Conclusion}
-\epigraph{Of what a strange nature is knowledge! It clings to a mind when it has once seized on it like a lichen on a rock.}{Mary Shelley, \textit{Frankenstein; or, The Modern Prometheus}}
+\epigraph{Of what a strange nature is knowledge! It clings to a mind when it has once seized on it like a lichen on a rock.}{\textsc{Mary Shelley}, \textit{Frankenstein; or, The Modern Prometheus}}
 
 
-And thus, we have reached the end. This thesis dealt with the development of a general framework for improving the performance of model-based visual-inertial localization pipelines. We accomplished this by complementing these pipelines with learned probabilistic ‘pseudo-sensors’ that extracted difficult-to-model latent information from sensor data.  We presented four examples of such \textit{pseudo-sensors}. 
+And thus, we have reached the end. This dissertation has dealt with the development of a general framework for improving the performance of model-based visual odometry pipelines through learned probabilistic pseudo-sensors that extract difficult-to-model latent information.  We presented four examples of such \textit{pseudo-sensors}. We close with a final summary of the contributions and list of publications, a discussion of potential future work, and some concluding remarks.
 
 \section{Summary of Contributions}
 
@@ -19,10 +19,10 @@ And thus, we have reached the end. This thesis dealt with the development of a g
 \end{wrapfigure}
 
 
-We began with the pseudo-sensor that used a heteroscedastic noise model to enable predictively robust estimation. PROBE and its follow up PROBE-GK, contributed
+We began with a pseudo-sensor that used a heteroscedastic noise model to enable predictively robust estimation. PROBE and its follow-up work, PROBE-GK, contributed
 \begin{enumerate}
 \item a probabilistic model for indirect stereo visual odometry, leading to a predictive robust algorithm for inference on that model,
-\item two different approaches to constructing the robust algorithm: one based on k-nearest neighbours, and one based on Generalized Kernel (GK) estimation,
+\item two different approaches to constructing the robust algorithm: one baseds on k-nearest neighbours, and one based on Generalized Kernel (GK) estimation,
 \item a procedure for training our model using pairs of stereo images with known relative transforms, and
 \item an iterative, expectation-maximization approach to train our GK model when the relative ground truth egomotion was unavailable.
 \end{enumerate}
@@ -137,5 +137,12 @@ A potential thread of future work addresses this deficiency by developing more t
 \section{Final Remarks}
 
 The German Philosopher Georg Hegel had a particular dialectic method that involved a triad: a thesis, antithesis and synthesis.
-Somewhat curiously, this \textit{thesis} has been an attempt at a \textit{synthesis} of the thesis posed by classical visual egomotion, and the antithesis posed by data-drive end-to-end learning techniques.
-My hope is that the synthesis based on the concept of \textit{pseudo-sensors} will prove to be a fruitful one within the field of state-estimation, and for the broader robotics community at large.
+Somewhat curiously, this \textit{thesis} has been an attempt at a \textit{synthesis} of the thesis posed by classical visual egomotion, and the antithesis posed by data-driven end-to-end learning techniques.
+My hope is that the synthesis proposed by the paradigm of learned \textit{pseudo-sensors} will prove to be a fruitful one within the field of state-estimation, and for the broader robotics community at large. 
+
+\section*{Post Scriptum}
+\epigraph{Machinery that gives us abundance has left us in want.
+Our knowledge has made us cynical.
+Our cleverness, hard and unkind.
+We think too much, and feel too little.
+More than machinery, we need humanity.}{\textsc{Charlie Chaplin}, \textit{The Great Dictator}}
