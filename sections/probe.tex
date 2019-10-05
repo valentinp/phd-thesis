@@ -1,16 +1,36 @@
 \chapter{Predictive Robust Estimation}
 \label{ch:probe}
 \epigraph{Information is the resolution of uncertainty.}{Claude Shannon}
+
+\section{Introduction}
+
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{probe.pdf}
+ \caption{PROBE builds a predictive noise model for stereo visual odometry.}
+ \label{fig:probe_intro_fig}
+\end{figure*}
+
+The first pseudo-sensor we present is a general technique we call PRedictive ROBust Estimation, or PROBE. This approach uses non-parametric learning to predict observation covariances for a stereo visual odometry pipeline, effectively scaling a least squares objective in a predictive fashion. We present two different methods to learn and incorporate these covariances. First we use a simple k-nearest-neighbours approach to learn isotropic covariances for three dimensional point-cloud matching. Second, we extend this significantly by applying the method of Generalized Kernels to a Bayesian treatment of covariance learning. We show that by assuming a particular covariance prior over re-projection errors, we can derive a robust least squares loss with parameters that are predicted for each  error by our approach.
+
+There are three publications associated with this work:
+\begin{itemize}
+\item \bibentry{2015_Peretroukhin_PROBE}
+\item \bibentry{2015_Peretroukhin_Get}
+\item \bibentry{Peretroukhin2016-om}.
+\end{itemize}
+
+
+
+%\begin{wrapfigure}{r}{0.5\textwidth}
+%    \centering
+%      \includegraphics[width=0.5\textwidth]{probe-gk/system_overview}
+%      \caption{PROBE builds a predictive noise model for stereo visual odometry.}
+%        \vspace{-1em}
+%    \label{fig:probe_gk_system}
+%\end{wrapfigure}
+
 \section{Motivation}
-
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \centering
-      \includegraphics[width=0.5\textwidth]{probe-gk/system_overview}
-      \caption{PROBE builds a predictive noise model for stereo visual odometry.}
-        \vspace{-1em}
-    \label{fig:probe_gk_system}
-\end{wrapfigure}
-
 
 Robot navigation relies on an accurate quantification of sensor noise or uncertainty in order to produce reliable state estimates.
 In practice, this uncertainty is often fixed for a given sensor and experiment, whether by automatic calibration or by manual tuning.
@@ -42,19 +62,19 @@ monocular SLAM pipeline by selecting features with the highest \textit{informati
 
 \section{Scalar k-Nearest Neighbours}
 
-Predictive ROBust Estimation technique that improves localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
+Predictive ROBust Estimation is a technique that improves localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
 We learn the model in an offline training procedure and then use it online to predict the uncertainty of incoming observations as a function of their location in a predefined \emph{prediction space}.
 Our model can be learned in completely unknown environments with frequent or infrequent ground truth data. 
 
 The primary contributions of this research are a flexible framework for learning the quality of visual features with respect to navigation estimates, and a straightforward way to incorporate this information into a navigation pipeline. On its own, PROBE can produce more accurate estimates than a binary outlier rejection scheme like Random Sample Consensus (RANSAC) because it can simultaneously reduce the influence of outliers while intelligently weighting inliers. PROBE reduces the need to develop finely-tuned uncertainty models for complex sensors such as cameras, and better accounts for the effects observed in complex, dynamic scenes than typical fixed-uncertainty models. While we present PROBE in the context of visual feature-based navigation, we stress that it is not limited to visual measurements and could also be applied to other sensor modalities.
 % The remainder of this paper is organized as follows: In Section \ref{sec:related_work}, we discuss related work in the literature. Section \ref{sec:approach} outlines our tightly-coupled visual-inertial odometry pipeline and learning model. Section \ref{sec:predictors} discusses and justifies our choice of prediction space. Sections \ref{sec:results} and \ref{sec:discussion} discuss experimental results of PROBE's performance on several segments from the KITTI dataset \cite{Geiger:2013kp}, and experimental datasets collected at the University of Toronto Institute for Aerospace Studies (UTIAS). Finally, Section \ref{sec:conclusions} offers some concluding remarks.
 
-\begin{figure}
+\begin{wrapfigure}{r}{0.5\textwidth}
     \centering
     \includegraphics[width=0.5\textwidth]{probe/feature_space}
     \caption{PROBE maps image features into a prediction space to predict feature quality ($\alpha$). Feature quality is a function of the nearest neighbours from training data.}
     \label{fig:probe_feature_space}
-\end{figure}
+\end{wrapfigure}
 
 The aim of PROBE is to learn a model for the quality of visual features, with the goal of reducing the impact of deleterious visual effects such as moving objects, motion blur, and shadows on navigation estimates.
 Feature quality is characterized by a scalar weight, $\beta_i$, for each visual feature in an environment.
@@ -73,10 +93,10 @@ Training proceeds by traversing the training path, selecting a subset of visual 
 \begin{figure}[h]
 \begin{center}
 \begin{algorithmic}[1]
-\Procedure{trainPROBEModel}{}
+\Procedure{trainPROBE()}{}
 \For{$l\gets 1, N_{iter}$}
 \For{$s\gets 1, N_{path}$}
-	\State $f_1, \dots, f_J \gets visualFeatureSubset(l)$
+	\State $f_1, \dots, f_J \gets \text{sample_features}(l)$
 	\State $\mbs\pi^1_l, \dots, \mbs\pi^J_l \gets predictors(f_1, \dots, f_J)$
 	\State $\bar{\mbf{C}}_{ba},  \bar{\mbf{r}}_a^{ba} \gets poseChange(f_1, \dots, f_J)$
 	\State $\mbf \alpha_{l,s}  \gets computeRMSE(\bar{\mbf{r}}_a^{ba}, {\mbf{r}_{a}^{ba}}_{GT} )$
@@ -96,7 +116,7 @@ The final scaling factor $\beta_i$ is a function of the mean of the $\alpha$ val
 
 \begin{figure}[h]
 \begin{algorithmic}[1]
-\Procedure{usePROBEModel}{$\mbs \Theta$}
+\Procedure{testPROBE}{$\mbs \Theta$}
 \For{$i \gets 1, N_{feat}$}
 	\State $\mbs \pi_i  \gets predictors(f_i) $
 	\State $\alpha_1,...,\alpha_K \gets findKNN(\mbs \pi_i, K, \mbs\Theta)$

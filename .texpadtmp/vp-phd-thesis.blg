@@ -1,19 +1,10 @@
 This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
-A level-1 auxiliary file: sections/introduction.aux
-A level-1 auxiliary file: sections/math.aux
-A level-1 auxiliary file: sections/vo.aux
-A level-1 auxiliary file: sections/conclusion.aux
-A level-1 auxiliary file: sections/appendix-perturbations.aux
-A level-1 auxiliary file: sections/appendix-so3-learning.aux
+A level-1 auxiliary file: sections/probe.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
-Repeated entry---line 126 of file ../pubs-mine.bib
- : @article{2018_Peretroukhin_Deep
- :                                ,
-I'm skipping whatever remains of this entry
 Database file #3: ../pubs-probe.bib
 I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
  : 
@@ -21,90 +12,47 @@ I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Database file #4: ../pubs-sun_bcnn.bib
-Repeated entry---line 9 of file ../pubs-sun_bcnn.bib
- : @article{LeCun2015-qf
- :                      ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 21 of file ../pubs-sun_bcnn.bib
- : @article{Leutenegger2015-fk
- :                            ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 109 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Cvisic2015-mt
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 119 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Forster2014-bm
- :                              ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 130 of file ../pubs-sun_bcnn.bib
- : @article{Scaramuzza2011-qr
- :                           ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 161 of file ../pubs-sun_bcnn.bib
- : @article{Geiger2013-ky
- :                       ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 292 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Geiger2011-xe
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 322 of file ../pubs-sun_bcnn.bib
- : @book{Barfoot2017-ri
- :                     ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 352 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Kendall2016-zf
- :                              ,
-I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
-Warning--I didn't find a database entry for "engel2014lsd"
-Warning--empty journal in Alcantarilla2016-kv
-Warning--empty journal in DeTone2016-ue
-Warning--empty school in florez2010
-Warning--empty school in furgale_phd11
-Warning--empty journal in Oliveira2017-lt
-Warning--empty journal in Sola2018-kg
-Warning--empty journal in Zhou2019-se
-You've used 55 entries,
+Warning--empty publisher in vega-brown2014nonparametric
+You've used 23 entries,
             1935 wiz_defined-function locations,
-            840 strings with 15226 characters,
-and the built_in function-call counts, 26112 in all, are:
-= -- 2597
-> -- 1117
-< -- 45
-+ -- 393
-- -- 381
-* -- 2120
-:= -- 4280
-add.period$ -- 167
-call.type$ -- 55
-change.case$ -- 457
-chr.to.int$ -- 51
-cite$ -- 62
-duplicate$ -- 1075
-empty$ -- 1808
-format.name$ -- 456
-if$ -- 5323
-int.to.chr$ -- 5
+            617 strings with 8472 characters,
+and the built_in function-call counts, 11817 in all, are:
+= -- 1204
+> -- 434
+< -- 25
++ -- 152
+- -- 146
+* -- 875
+:= -- 1822
+add.period$ -- 73
+call.type$ -- 23
+change.case$ -- 188
+chr.to.int$ -- 21
+cite$ -- 24
+duplicate$ -- 555
+empty$ -- 872
+format.name$ -- 183
+if$ -- 2545
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 54
-newline$ -- 274
-num.names$ -- 169
-pop$ -- 504
+missing$ -- 23
+newline$ -- 118
+num.names$ -- 69
+pop$ -- 242
 preamble$ -- 1
-purify$ -- 460
+purify$ -- 188
 quote$ -- 0
-skip$ -- 837
+skip$ -- 437
 stack$ -- 0
-substring$ -- 1864
-swap$ -- 275
-text.length$ -- 25
+substring$ -- 851
+swap$ -- 187
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 326
-warning$ -- 7
-while$ -- 215
+type$ -- 138
+warning$ -- 1
+while$ -- 93
 width$ -- 0
-write$ -- 709
-(There were 11 error messages)
+write$ -- 306
+(There was 1 error message)

@@ -1,79 +1,41 @@
 \begin{thebibliography}{}
 
-\bibitem[Alcantarilla and Woodford, 2016]{Alcantarilla2016-kv}
-Alcantarilla, P.~F. and Woodford, O.~J. (2016).
-\newblock Noise models in feature-based stereo visual odometry.
+\bibitem[Agarwal et~al., 2013]{Burgard:ii}
+Agarwal, P., Tipaldi, G.~D., Spinello, L., Stachniss, C., and Burgard, W.
+  (2013).
+\newblock Robust map optimization using dynamic covariance scaling.
+\newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages 62--69.
 
-\bibitem[Altmann, 1989]{Altmann1989-ru}
-Altmann, S.~L. (1989).
-\newblock Hamilton, rodrigues, and the quaternion scandal.
-\newblock {\em Math. Mag.}, 62(5):291--308.
+\bibitem[Crete et~al., 2007]{crete2007blur}
+Crete, F., Dolmiere, T., Ladret, P., and Nicolas, M. (2007).
+\newblock The blur effect: perception and estimation with a new no-reference
+  perceptual blur metric.
+\newblock In {\em Human vision and electronic imaging XII}, volume 6492, page
+  64920I. International Society for Optics and Photonics.
 
-\bibitem[Barfoot, 2017]{Barfoot2017-ri}
-Barfoot, T.~D. (2017).
-\newblock {\em State Estimation for Robotics}.
-\newblock Cambridge University Press.
+\bibitem[Dempster et~al., 1977]{dempster1977maximum}
+Dempster, A., Laird, N., and Rubin, D. (1977).
+\newblock Maximum likelihood from incomplete data via the {{EM}} algorithm.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)}, pages 1--38.
 
-\bibitem[Barfoot and Furgale, 2014]{Barfoot2014-ac}
-Barfoot, T.~D. and Furgale, P.~T. (2014).
-\newblock Associating uncertainty with three-dimensional poses for use in
-  estimation problems.
-\newblock {\em IEEE Trans. Rob.}, 30(3):679--693.
-
-\bibitem[Cadena et~al., 2016]{Cadena2016-ds}
-Cadena, C., Carlone, L., Carrillo, H., Latif, Y., Scaramuzza, D., Neira, J.,
-  Reid, I., and Leonard, J.~J. (2016).
-\newblock Past, present, and future of simultaneous localization and mapping:
-  Toward the {Robust-Perception} age.
-\newblock {\em IEEE Trans. Rob.}, 32(6):1309--1332.
-
-\bibitem[Clement et~al., 2017]{2017_Clement_Improving}
-Clement, L., Peretroukhin, V., and Kelly, J. (2017).
-\newblock Improving the accuracy of stereo visual odometry using visual
-  illumination estimation.
-\newblock In Kulic, D., Nakamura, Y., Khatib, O., and Venture, G., editors,
-  {\em 2016 International Symposium on Experimental Robotics}, volume~1 of {\em
-  Springer Proceedings in Advanced Robotics}, pages 409--419. Springer
-  International Publishing, Berlin Heidelberg.
-\newblock Invited to Journal Special Issue.
-
-\bibitem[Cvi{\v s}i{\'c} and Petrovi{\'c}, 2015]{Cvisic2015-mt}
-Cvi{\v s}i{\'c}, I. and Petrovi{\'c}, I. (2015).
-\newblock Stereo odometry based on careful feature selection and tracking.
-\newblock In {\em Proc. European Conf. on Mobile Robots ({ECMR)}}, pages 1--6.
-
-\bibitem[DeTone et~al., 2016]{DeTone2016-ue}
-DeTone, D., Malisiewicz, T., and Rabinovich, A. (2016).
-\newblock Deep image homography estimation.
-
-\bibitem[Fischler and Bolles, 1981]{FischlerRANSAC:1981}
-Fischler, M.~A. and Bolles, R.~C. (1981).
-\newblock Random sample consensus: A paradigm for model fitting with
+\bibitem[Fischler and Bolles, 1981]{fischler1981random}
+Fischler, M. and Bolles, R. (1981).
+\newblock Random sample consensus: a paradigm for model fitting with
   applications to image analysis and automated cartography.
-\newblock {\em Commun. ACM}, 24(6):381--395.
+\newblock {\em Comm. ACM}, 24(6):381--395.
 
-\bibitem[Florez, 2010]{florez2010}
-Florez, S. A.~R. (2010).
-\newblock {\em Contributions by vision systems to multi-sensor object
-  localization and tracking for intelligent vehicles}.
-\newblock PhD thesis.
+\bibitem[Fitzgibbon et~al., 2007]{fitzgibbon2007learning}
+Fitzgibbon, A.~W., Robertson, D.~P., Criminisi, A., Ramalingam, S., and Blake,
+  A. (2007).
+\newblock Learning priors for calibrating families of stereo cameras.
+\newblock In {\em Proc. IEEE Int. Conf. Computer Vision (ICCV)}, pages 1--8.
 
-\bibitem[Forster et~al., 2014]{Forster2014-bm}
+\bibitem[Forster et~al., 2014]{forster2014svo}
 Forster, C., Pizzoli, M., and Scaramuzza, D. (2014).
-\newblock {SVO}: Fast semi-direct monocular visual odometry.
-\newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
-  15--22.
-
-\bibitem[Furgale, 2011]{furgale_phd11}
-Furgale, P. (2011).
-\newblock {\em Extensions to the Visual Odometry Pipeline for the Exploration
-  of Planetary Surfaces}.
-\newblock PhD thesis.
-
-\bibitem[Furgale et~al., 2012]{Furgale2012-kk}
-Furgale, P., Carle, P., Enright, J., and Barfoot, T.~D. (2012).
-\newblock The devon island rover navigation dataset.
-\newblock {\em Int. J. Rob. Res.}, 31(6):707--713.
+\newblock {{SVO}}: Fast semi-direct monocular visual odometry.
+\newblock In {\em Proc. IEEE Int. Conf. Robot. Automat.(ICRA)}, pages 15--22.
+  IEEE.
 
 \bibitem[Furgale et~al., 2013]{Furgale2013-sl}
 Furgale, P., Rehder, J., and Siegwart, R. (2013).
@@ -81,132 +43,37 @@ Furgale, P., Rehder, J., and Siegwart, R. (2013).
 \newblock In {\em 2013 {IEEE/RSJ} International Conference on Intelligent
   Robots and Systems}, pages 1280--1286.
 
-\bibitem[Gal and Ghahramani, 2016]{Gal2016-ny}
-Gal, Y. and Ghahramani, Z. (2016).
-\newblock Dropout as a bayesian approximation: Representing model uncertainty
-  in deep learning.
-\newblock In {\em Proc. Int. Conf. Mach. Learning ({ICML})}, pages 1050--1059.
-
-\bibitem[Garg et~al., 2016]{Garg2016-ip}
-Garg, R., Carneiro, G., and Reid, I. (2016).
-\newblock Unsupervised {CNN} for single view depth estimation: Geometry to the
-  rescue.
-\newblock In {\em European Conf. on Comp. Vision}, pages 740--756. Springer.
-
-\bibitem[Geiger et~al., 2013]{Geiger2013-ky}
+\bibitem[Geiger et~al., 2013]{geiger2013vision}
 Geiger, A., Lenz, P., Stiller, C., and Urtasun, R. (2013).
-\newblock Vision meets robotics: The {KITTI} dataset.
-\newblock {\em Int. J. Rob. Res.}, 32(11):1231--1237.
+\newblock Vision meets robotics: The {{KITTI}} dataset.
+\newblock {\em Int. Journal Robot. Research (IJRR)}.
 
-\bibitem[Geiger et~al., 2012]{Geiger2012-fq}
+\bibitem[Geiger et~al., 2012]{geiger2012kitti}
 Geiger, A., Lenz, P., and Urtasun, R. (2012).
-\newblock Are we ready for autonomous driving? the {KITTI} vision benchmark
+\newblock Are we ready for autonomous driving? {The} {{KITTI}} vision benchmark
   suite.
-\newblock In {\em Proc. {IEEE} Conf. Comput. Vision and Pattern Recognition,
-  ({CVPR})}, pages 3354--3361.
+\newblock In {\em Proc. IEEE Conf. on Computer Vision and Pattern Recognition
+  (CVPR)}.
 
-\bibitem[Geiger et~al., 2011a]{Geiger2011-xe}
-Geiger, A., Ziegler, J., and Stiller, C. (2011a).
-\newblock {StereoScan}: Dense {3D} reconstruction in real-time.
-\newblock In {\em Proc. Intelligent Vehicles Symp. ({IV})}, pages 963--968.
-  IEEE.
+\bibitem[Irani and Anandan, 2000]{irani2000direct}
+Irani, M. and Anandan, P. (2000).
+\newblock About direct methods.
+\newblock In {\em {Vision Algorithms: Theory and Practice}}, pages 267--277.
+  Springer.
 
-\bibitem[Geiger et~al., 2011b]{geiger2011stereoscan}
-Geiger, A., Ziegler, J., and Stiller, C. (2011b).
-\newblock {{StereoScan}}: Dense {{3D}} reconstruction in real-time.
-\newblock In {\em Proc. IEEE Intelligent Vehicles Symp. (IV)}, pages 963--968.
+\bibitem[Kerl et~al., 2013]{kerl2013robust}
+Kerl, C., Sturm, J., and Cremers, D. (2013).
+\newblock Robust odometry estimation for {RGB-D} cameras.
+\newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages
+  3748--3754.
 
-\bibitem[Geman et~al., 1992]{geman1992nonlinear}
-Geman, S., McClure, D.~E., and Geman, D. (1992).
-\newblock A nonlinear filter for film restoration and other problems in image
-  processing.
-\newblock {\em CVGIP: Graphical models and image processing}, 54(4):281--289.
-
-\bibitem[Grewal and Andrews, 2010]{Grewal2010-ts}
-Grewal, M.~S. and Andrews, A.~P. (2010).
-\newblock Applications of kalman filtering in aerospace 1960 to the present
-  [historical perspectives].
-\newblock {\em IEEE Control Syst. Mag.}, 30(3):69--78.
-
-\bibitem[Handa et~al., 2016]{Handa2016-hm}
-Handa, A., Bloesch, M., P{\u a}tr{\u a}ucean, V., Stent, S., McCormac, J., and
-  Davison, A. (2016).
-\newblock {gvnn}: Neural network library for geometric computer vision.
-\newblock In {\em Computer Vision -- {ECCV} 2016 Workshops}, pages 67--82.
-  Springer, Cham.
-
-\bibitem[Huber, 1964]{huber1964robust}
-Huber, P.~J. (1964).
-\newblock Robust estimation of a location parameter.
-\newblock {\em The Annals of Mathematical Statistics}, pages 73--101.
-
-\bibitem[Kendall and Cipolla, 2016]{Kendall2016-zf}
-Kendall, A. and Cipolla, R. (2016).
-\newblock Modelling uncertainty in deep learning for camera relocalization.
-\newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
-  4762--4769.
-
-\bibitem[Lakshminarayanan et~al., 2017]{Lakshminarayanan2017}
-Lakshminarayanan, B., Pritzel, A., and Blundell, C. (2017).
-\newblock Simple and scalable predictive uncertainty estimation using deep
-  ensembles.
-\newblock In Guyon, I., Luxburg, U.~V., Bengio, S., Wallach, H., Fergus, R.,
-  Vishwanathan, S., and Garnett, R., editors, {\em Advances in Neural
-  Information Processing Systems 30}, pages 6402--6413. Curran Associates, Inc.
-
-\bibitem[Lambert et~al., 2012]{Lambert2012-sn}
-Lambert, A., Furgale, P., Barfoot, T.~D., and Enright, J. (2012).
-\newblock Field testing of visual odometry aided by a sun sensor and
-  inclinometer.
-\newblock {\em J. Field Robot.}, 29(3):426--444.
-
-\bibitem[LeCun et~al., 2015]{LeCun2015-qf}
-LeCun, Y., Bengio, Y., and Hinton, G. (2015).
-\newblock Deep learning.
-\newblock {\em Nature}, 521(7553):436--444.
-
-\bibitem[Leutenegger et~al., 2015]{Leutenegger2015-fk}
-Leutenegger, S., Lynen, S., Bosse, M., Siegwart, R., and Furgale, P. (2015).
-\newblock Keyframe-based visual--inertial odometry using nonlinear
-  optimization.
-\newblock {\em Int. J. Rob. Res.}, 34(3):314--334.
-
-\bibitem[MacTavish and Barfoot, 2015]{MacTavish2015-wt}
-MacTavish, K. and Barfoot, T.~D. (2015).
-\newblock At all costs: A comparison of robust cost functions for camera
-  correspondence outliers.
-\newblock In {\em Proc. Conf. on Comp. and Robot Vision ({CRV})}, pages 62--69.
-
-\bibitem[Mayor, 2019]{MayorGodsRobots2019}
-Mayor, A. (2019).
-\newblock {\em Gods and Robots}.
-\newblock Princeton University Press.
-
-\bibitem[Melekhov et~al., 2017]{Melekhov2017-dl}
-Melekhov, I., Ylioinas, J., Kannala, J., and Rahtu, E. (2017).
-\newblock Relative camera pose estimation using convolutional neural networks.
-\newblock In {\em Proc. Int. Conf. on Advanced Concepts for Intel. Vision
-  Syst.}, pages 675--687. Springer.
-
-\bibitem[Nilsson, 1984]{Nilsson1984-oc}
-Nilsson, N.~J. (1984).
-\newblock Shakey the robot.
-\newblock Technical report, SRI INTERNATIONAL MENLO PARK CA.
-
-\bibitem[Oliveira et~al., 2017]{Oliveira2017-lt}
-Oliveira, G.~L., Radwan, N., Burgard, W., and Brox, T. (2017).
-\newblock Topometric localization with deep learning.
-
-\bibitem[Osband et~al., 2016a]{Osband2016}
-Osband, I., Blundell, C., Pritzel, A., and Roy, B.~V. (2016a).
-\newblock Deep exploration via bootstrapped {DQN}.
-\newblock {\em CoRR}, abs/1602.04621.
-
-\bibitem[Osband et~al., 2016b]{Osband2016-jg}
-Osband, I., Blundell, C., Pritzel, A., and Van~Roy, B. (2016b).
-\newblock Deep exploration via bootstrapped {DQN}.
-\newblock In {\em Proc. Advances in Neural Inform. Process. Syst. ({NIPS})},
-  pages 4026--4034.
+\bibitem[Lucas and Kanade, 1981]{Lucas:1981}
+Lucas, B.~D. and Kanade, T. (1981).
+\newblock An iterative image registration technique with an application to
+  stereo vision.
+\newblock In {\em Proceedings of the 7th International Joint Conference on
+  Artificial Intelligence - Volume 2}, IJCAI'81, pages 674--679, San Francisco,
+  CA, USA. Morgan Kaufmann Publishers Inc.
 
 \bibitem[Peretroukhin et~al., 2015a]{2015_Peretroukhin_PROBE}
 Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015a).
@@ -215,115 +82,66 @@ Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015a).
   Intelligent Robots and Systems {(IROS'15)}}, pages 3668--3675, Hamburg,
   Germany.
 
-\bibitem[Peretroukhin et~al., 2015b]{2015_Peretroukhin_Get}
-Peretroukhin, V., Clement, L., and Kelly, J. (2015b).
+\bibitem[Peretroukhin et~al., 2015b]{peretroukhin2015PROBE}
+Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015b).
+\newblock {{PROBE}}: Predictive robust estimation for visual-inertial
+  navigation.
+\newblock In {\em Proc. IEEE/RSJ Int. Conf. Intell. Robots Syst. (IROS)}, pages
+  3668--3675.
+
+\bibitem[Peretroukhin et~al., 2015c]{2015_Peretroukhin_Get}
+Peretroukhin, V., Clement, L., and Kelly, J. (2015c).
 \newblock Get to the point: Active covariance scaling for feature tracking
   through motion blur.
 \newblock In {\em Proceedings of the {IEEE} International Conference on
   Robotics and Automation Workshop on Scaling Up Active Perception}, Seattle,
   Washington, USA.
 
-\bibitem[Peretroukhin et~al., 2017]{2017_Peretroukhin_Reducing}
-Peretroukhin, V., Clement, L., and Kelly, J. (2017).
-\newblock Reducing drift in visual odometry by inferring sun direction using a
-  bayesian convolutional neural network.
-\newblock In {\em Proceedings of the {IEEE} International Conference on
-  Robotics and Automation {(ICRA'17})}, pages 2035--2042, Singapore.
-
-\bibitem[Peretroukhin et~al., 2018]{2018_Peretroukhin_Inferring}
-Peretroukhin, V., Clement, L., and Kelly, J. (2018).
-\newblock Inferring sun direction to improve visual odometry: A deep learning
-  approach.
-\newblock {\em International Journal of Robotics Research}.
-
-\bibitem[Peretroukhin and Kelly, 2018]{2018_Peretroukhin_Deep}
-Peretroukhin, V. and Kelly, J. (2018).
-\newblock {DPC-Net}: Deep pose correction for visual localization.
-\newblock {\em {IEEE} Robotics and Automation Letters}.
-
-\bibitem[Peretroukhin et~al., 2016a]{Peretroukhin2016-om}
-Peretroukhin, V., Vega-Brown, W., Roy, N., and Kelly, J. (2016a).
+\bibitem[Peretroukhin et~al., 2016]{Peretroukhin2016-om}
+Peretroukhin, V., Vega-Brown, W., Roy, N., and Kelly, J. (2016).
 \newblock {PROBE-GK}: Predictive robust estimation using generalized kernels.
 \newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
   817--824.
 
-\bibitem[Peretroukhin et~al., 2016b]{2016_Peretroukhin_PROBE-GK}
-Peretroukhin, V., Vega-Brown, W., Roy, N., and Kelly, J. (2016b).
-\newblock {PROBE-GK}: Predictive robust estimation using generalized kernels.
-\newblock In {\em Proceedings of the {IEEE} International Conference on
-  Robotics and Automation {(ICRA'16})}, pages 817--824, Stockholm, Sweden.
-
-\bibitem[Peretroukhin et~al., 2019]{2019_Peretroukhin_Deep}
-Peretroukhin, V., Wagstaff, B., and Kelly, J. (2019).
-\newblock Deep probabilistic regression of elements of so(3) using quaternion
-  averaging and uncertainty injection.
-\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
-  Pattern Recognition (CVPR'19) Workshop on Uncertainty and Robustness in Deep
-  Visual Learning}, pages 83--86, Long Beach, California, USA.
-
-\bibitem[Redfield, 2019]{Redfield2019-pi}
-Redfield, S. (2019).
-\newblock A definition for robotics as an academic discipline.
-\newblock {\em Nature Machine Intelligence}, 1(6):263--264.
-
-\bibitem[Rosen et~al., 2019]{Rosen2019-kk}
-Rosen, D.~M., Carlone, L., Bandeira, A.~S., and Leonard, J.~J. (2019).
-\newblock {SE-Sync}: A certifiably correct algorithm for synchronization over
-  the special euclidean group.
-\newblock {\em Int. J. Rob. Res.}, 38(2-3):95--125.
-
-\bibitem[Scaramuzza and Fraundorfer, 2011]{Scaramuzza2011-qr}
+\bibitem[Scaramuzza and Fraundorfer, 2011]{scaramuzza2011visual}
 Scaramuzza, D. and Fraundorfer, F. (2011).
 \newblock Visual odometry [tutorial].
-\newblock {\em IEEE Robot. Autom. Mag.}, 18(4):80--92.
+\newblock {\em {IEEE} Robot. Automat. Mag.}, 18(4):80--92.
 
-\bibitem[Sola, 2017]{Sola2017quaternion}
-Sola, J. (2017).
-\newblock Quaternion kinematics for the error-state kalman filter.
-\newblock {\em arXiv preprint arXiv:1711.02508}.
+\bibitem[S{\"u}nderhauf and Protzel, 2007]{sunderhauf2007stereo}
+S{\"u}nderhauf, N. and Protzel, P. (2007).
+\newblock Stereo odometry: a review of approaches.
+\newblock {\em Chemnitz University of Technology Technical Report}.
 
-\bibitem[Sol{\`a} et~al., 2018]{Sola2018-kg}
-Sol{\`a}, J., Deray, J., and Atchuthan, D. (2018).
-\newblock A micro lie theory for state estimation in robotics.
-
-\bibitem[S{\"u}nderhauf et~al., 2015]{Sunderhauf2015-is}
-S{\"u}nderhauf, N., Shirazi, S., Dayoub, F., Upcroft, B., and Milford, M.
-  (2015).
-\newblock On the performance of {ConvNet} features for place recognition.
-\newblock In {\em Proc. IEEE/RSJ Int. Conf. Intelligent Robots and Syst.
-  ({IROS})}, pages 4297--4304.
-
-\bibitem[Thrun et~al., 2006]{Thrun2006-hb}
-Thrun, S., Montemerlo, M., Dahlkamp, H., Stavens, D., Aron, A., Diebel, J.,
-  Fong, P., Gale, J., Halpenny, M., Hoffmann, G., Lau, K., Oakley, C.,
-  Palatucci, M., Pratt, V., Stang, P., Strohband, S., Dupont, C., Jendrossek,
-  L.-E., Koelen, C., Markey, C., Rummel, C., van Niekerk, J., Jensen, E.,
-  Alessandrini, P., Bradski, G., Davies, B., Ettinger, S., Kaehler, A., Nefian,
-  A., and Mahoney, P. (2006).
-\newblock Stanley: The robot that won the {DARPA} grand challenge.
-\newblock {\em J. Field Robotics}, 23(9):661--692.
-
-\bibitem[Tsotsos et~al., 2015]{Tsotsos2015-qs}
+\bibitem[Tsotsos et~al., 2015]{Tsotsos2015}
 Tsotsos, K., Chiuso, A., and Soatto, S. (2015).
 \newblock Robust inference for visual-inertial sensor fusion.
-\newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
+\newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages
   5203--5210.
 
-\bibitem[Umeyama, 1991]{Umeyama1991-ws}
-Umeyama, S. (1991).
-\newblock {Least-Squares} estimation of transformation parameters between two
-  point patterns.
-\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 13(4):376--380.
+\bibitem[Vega-Brown et~al., 2013]{VegaBrown:ew}
+Vega-Brown, W., Bachrach, A., Bry, A., Kelly, J., and Roy, N. (2013).
+\newblock {{CELLO}}: A fast algorithm for covariance estimation.
+\newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages
+  3160--3167.
 
-\bibitem[Vega-Brown et~al., 2014]{Vega-Brown2014-sb}
+\bibitem[Vega-Brown and Roy, 2013]{VegaBrown:2013fv}
+Vega-Brown, W. and Roy, N. (2013).
+\newblock {{CELLO-EM}}: Adaptive sensor models without ground truth.
+\newblock In {\em Proc. IEEE/RSJ Int. Conf. Intell. Robots Syst. (IROS)}, pages
+  1907--1914.
+
+\bibitem[Vega-Brown et~al., 2014]{vega-brown2014nonparametric}
 Vega-Brown, W.~R., Doniec, M., and Roy, N.~G. (2014).
-\newblock Nonparametric {Bayesian} inference on multivariate exponential
+\newblock Nonparametric bayesian inference on multivariate exponential
   families.
-\newblock In {\em Proc. Advances in Neural Information Proc. Syst. ({NIPS})
-  27}, pages 2546--2554.
+\newblock In {\em Advances in Neural Information Processing Systems 27}, pages
+  2546--2554.
 
-\bibitem[Zhou et~al., 2019]{Zhou2019-se}
-Zhou, B., Kr{\"a}henb{\"u}hl, P., and Koltun, V. (2019).
-\newblock Does computer vision matter for action?
+\bibitem[Zhang and Vela, 2015]{Zhang2015}
+Zhang, G. and Vela, P. (2015).
+\newblock Optimally observable and minimal cardinality monocular {{SLAM}}.
+\newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages
+  5211--5218.
 
 \end{thebibliography}

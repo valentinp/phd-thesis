@@ -1,13 +1,17 @@
-\chapter{Inferring Sun Direction through a Bayesian CNN}
+\chapter{Learned Sun Sensor}
 \epigraph{He stepped down, avoiding any long look at her as one avoids long looks at the sun, but seeing her as one sees the sun, without looking.}{Leo Tolstoy, \textit{Anna Karenina}}
 \label{ch:sun-bcnn}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \centering
-      \includegraphics[width=0.48\columnwidth]{sun-bcnn/system_overview}
-      \caption{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph{virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.}
-    \label{fig:sun-bcnn_system}
-\end{wrapfigure}
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{sun-bcnn.pdf}
+ \caption{Sun-BCNN is a learned virtual sun sensor that outputs sun direction with an associated uncertainty based on a single RGB image. We use this as a source of orientation information within a privileged reference frame.}
+ \label{fig:probe_intro_fig}
+\end{figure*}
+\section{Introduction}
+
+Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model to act as a \textit{virtual sun sensor} that mimics a hardware sun sensor (used in space-based applications to orient rovers and satellites) with no additional hardware.  This project was a collaboration between myself and Lee Clement. While we were equally responsible for its conception and dissemination, Lee lead the integration of sun information into a visual odometry pipeline, while I designed and implemented the learning components.
+ 
 
 \section{Motivation}
 A crucial competency of any autonomous mobile robot is the ability to estimate its own motion through an operating environment.
@@ -30,10 +34,19 @@ For visual odometry (VO) in particular, the addition of global orientation infor
 Sun-based orientation corrections have been successfully used in planetary analogue environments \citep{Furgale2011-zu,Lambert2012-um} as well as on board the Mars Exploration Rovers (MERs) \citep{Eisenman2002-cg,Maimone2007-tc}.
 In particular, \citet{Lambert2012-um} showed that incorporating sun sensor and inclinometer measurements directly into the motion estimation pipeline (as opposed to periodically updating the vehicle heading, as in earlier work) can significantly reduce VO drift over long trajectories.
 
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+      \includegraphics[width=0.48\columnwidth]{sun-bcnn/system_overview}
+      \caption{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph{virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.}
+    \label{fig:sun-bcnn_system}
+\end{wrapfigure}
+
 In this work, we seek to answer the question of whether similar reductions in VO drift can be obtained solely from the image stream already being used to compute VO.
 The main idea here is that by reasoning over more than just the geometric information available from a standard RGB camera, we can improve existing VO techniques without needing to rely on a dedicated sun sensor or specially oriented camera.
 In particular, we leverage recent advances in Bayesian Convolutional Neural Networks (BCNNs) to demonstrate how we can build and train a deep model capable of inferring the direction of the sun from a single RGB image. 
 Moreover, we show that our network, dubbed Sun-BCNN, can produce a covariance estimate for each observation that obviates the need for a hand-tuned or empirically computed static covariance typically used for data fusion in a motion estimation pipeline. 
+
+
 
 
 The remainder of this paper begins with a discussion of related work, followed by an overview of the theory underlying BCNNs and a discussion of our model architecture, implementation, and training procedure.
