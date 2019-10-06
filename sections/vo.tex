@@ -101,14 +101,12 @@ lenses.
 To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRANSAC:1981}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
   
 \subsection{Maximum Likelihood Motion Solution}
-
 We will define $\Transform_t \in\text{SE}(3)$, as the rigid transform between two subsequent stereo camera poses, 
 $\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$
 
 \begin{equation}
 	\Transform_t = \Transform_{c_1w} \Transform^{-1}_{c_0w},
 \end{equation}
-
 where $\CoordinateFrame{w}$ is a privileged world frame. After data association, we assume we have a set
 of $N_t$ matches, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, between visual landmarks in the subsequent camera frames. For each match, we define an error function, $\Vector{e}_{i}(\Transform_t)$, that relates the rigid transform to these stereo feature matches. Throughout this dissertation, we assume that these errors are corrupted by zero-mean independent Gaussian noise with the (potentially heteroscedastic) covariance, $\Matrix{\Sigma}_{i,t}$;
  \begin{equation}

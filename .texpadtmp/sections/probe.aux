@@ -17,133 +17,132 @@
 \citation{irani2000direct}
 \citation{forster2014svo}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Motivation}{28}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Related Work}{28}{section.4.3}\protected@file@percent }
 \citation{Tsotsos2015}
 \citation{Zhang2015}
-\citation{VegaBrown:ew}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}PROBE via k-Nearest Neighbours}{29}{section.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Mathematical Formulation}{30}{subsection.4.4.1}\protected@file@percent }
-\newlabel{eq:vo_objective}{{4.3}{31}{Mathematical Formulation}{equation.4.4.3}{}}
-\newlabel{eq:vo_objective@cref}{{[equation][3][4]4.3}{[1][30][]31}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Training}{31}{subsection.4.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Evaluation}{31}{subsection.4.4.3}\protected@file@percent }
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Train PROBE based on a dataset ($\mathcal  {D}$) of pairs of input sensor data ($\mathcal  {I}_s$) and ground truth egomotion ($  \boldsymbol  {\mathbf  {T}}  _s$).\relax }}{32}{algorithm.1}\protected@file@percent }
-\newlabel{alg:probe_train}{{1}{32}{Train PROBE based on a dataset ($\mathcal {D}$) of pairs of input sensor data ($\mathcal {I}_s$) and ground truth egomotion ($\Transform _s$).\relax }{algorithm.1}{}}
-\newlabel{alg:probe_train@cref}{{[algorithm][1][]1}{[1][31][]32}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Compute scalar covariance factors, $\beta _i$, for a set of stereo feature tracks (and IMU data), $\mathcal  {F}$, given a PROBE model $\mathcal  {M}$.\relax }}{32}{algorithm.2}\protected@file@percent }
-\newlabel{alg:probe_test}{{2}{32}{Compute scalar covariance factors, $\beta _i$, for a set of stereo feature tracks (and IMU data), $\mathcal {F}$, given a PROBE model $\mathcal {M}$.\relax }{algorithm.2}{}}
-\newlabel{alg:probe_test@cref}{{[algorithm][2][]2}{[1][31][]32}}
 \citation{VegaBrown:2013fv}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Related Work}{29}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Predictive Robust Estimation for VO}{29}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Bayesian Noise Model for Visual Odometry}{30}{subsection.4.4.1}\protected@file@percent }
+\newlabel{eq:probe_vo_objective}{{4.2}{30}{Bayesian Noise Model for Visual Odometry}{equation.4.4.2}{}}
+\newlabel{eq:probe_vo_objective@cref}{{[equation][2][4]4.2}{[1][30][]30}}
+\newlabel{eq:probe_vo_objective}{{4.6}{30}{Bayesian Noise Model for Visual Odometry}{equation.4.4.6}{}}
+\newlabel{eq:probe_vo_objective@cref}{{[equation][6][4]4.6}{[1][30][]30}}
+\citation{Vega-Brown2014-sb}
+\citation{Vega-Brown2014-sb}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Generalized Kernels}{31}{subsection.4.4.2}\protected@file@percent }
+\newlabel{eq:probe_posterior_bayes_rule}{{4.9}{31}{Generalized Kernels}{equation.4.4.9}{}}
+\newlabel{eq:probe_posterior_bayes_rule@cref}{{[equation][9][4]4.9}{[1][31][]31}}
+\newlabel{eq:probe_extended_likelihood}{{4.11}{31}{Generalized Kernels}{equation.4.4.11}{}}
+\newlabel{eq:probe_extended_likelihood@cref}{{[equation][11][4]4.11}{[1][31][]31}}
 \citation{fitzgibbon2007learning}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Bayesian PROBE via Generalized Kernels}{33}{section.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Mathematical Formulation}{33}{subsection.4.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Inference with Ground Truth}{33}{subsection.4.5.2}\protected@file@percent }
-\citation{vega-brown2014nonparametric}
-\newlabel{eq:compute-psi}{{4.13}{34}{Inference with Ground Truth}{equation.4.5.13}{}}
-\newlabel{eq:compute-psi@cref}{{[equation][13][4]4.13}{[1][34][]34}}
-\newlabel{eq:compute-nu}{{4.14}{34}{Inference with Ground Truth}{equation.4.5.14}{}}
-\newlabel{eq:compute-nu@cref}{{[equation][14][4]4.14}{[1][34][]34}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Build the covariance model given a sequence of observations, $\mathcal  {D}$.\relax }}{35}{algorithm.3}\protected@file@percent }
-\newlabel{alg:train-ground-truth}{{3}{35}{Build the covariance model given a sequence of observations, $\mathcal {D}$.\relax }{algorithm.3}{}}
-\newlabel{alg:train-ground-truth@cref}{{[algorithm][3][]3}{[1][35][]35}}
-\newlabel{eq:robust-loss}{{4.19}{35}{Inference with Ground Truth}{equation.4.5.19}{}}
-\newlabel{eq:robust-loss@cref}{{[equation][19][4]4.19}{[1][35][]35}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Compute the transform between two images, given a set, $\mathcal  {I}_t$, of landmarks and predictors extracted from an image pair and a covariance model $\mathcal  {M}$. \relax }}{36}{algorithm.4}\protected@file@percent }
-\newlabel{alg:compute-transform}{{4}{36}{Compute the transform between two images, given a set, $\mathcal {I}_t$, of landmarks and predictors extracted from an image pair and a covariance model $\mathcal {M}$. \relax }{algorithm.4}{}}
-\newlabel{alg:compute-transform@cref}{{[algorithm][4][]4}{[1][36][]36}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Inference without ground truth}{36}{subsection.4.5.3}\protected@file@percent }
+\newlabel{eq:probe_kernel_likelihood}{{4.12}{32}{Generalized Kernels}{equation.4.4.12}{}}
+\newlabel{eq:probe_kernel_likelihood@cref}{{[equation][12][4]4.12}{[1][31][]32}}
+\newlabel{eq:probe_posterior}{{4.13}{32}{Generalized Kernels}{equation.4.4.13}{}}
+\newlabel{eq:probe_posterior@cref}{{[equation][13][4]4.13}{[1][32][]32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Generalized Kernels for Visual Odometry}{32}{subsection.4.4.3}\protected@file@percent }
+\citation{Vega-Brown2014-sb}
+\newlabel{eq:compute-psi}{{4.19}{33}{Generalized Kernels for Visual Odometry}{equation.4.4.19}{}}
+\newlabel{eq:compute-psi@cref}{{[equation][19][4]4.19}{[1][33][]33}}
+\newlabel{eq:compute-nu}{{4.20}{33}{Generalized Kernels for Visual Odometry}{equation.4.4.20}{}}
+\newlabel{eq:compute-nu@cref}{{[equation][20][4]4.20}{[1][33][]33}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Build the covariance model given a sequence of observations, $\mathcal  {D}$.\relax }}{34}{algorithm.1}\protected@file@percent }
+\newlabel{alg:train-ground-truth}{{1}{34}{Build the covariance model given a sequence of observations, $\mathcal {D}$.\relax }{algorithm.1}{}}
+\newlabel{alg:train-ground-truth@cref}{{[algorithm][1][]1}{[1][34][]34}}
+\newlabel{eq:robust-loss}{{4.25}{34}{Generalized Kernels for Visual Odometry}{equation.4.4.25}{}}
+\newlabel{eq:robust-loss@cref}{{[equation][25][4]4.25}{[1][34][]34}}
 \citation{VegaBrown:2013fv}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Compute the transform between two images, given a set, $\mathcal  {I}_t$, of landmarks and predictors extracted from an image pair and a covariance model $\mathcal  {M}$. \relax }}{35}{algorithm.2}\protected@file@percent }
+\newlabel{alg:compute-transform}{{2}{35}{Compute the transform between two images, given a set, $\mathcal {I}_t$, of landmarks and predictors extracted from an image pair and a covariance model $\mathcal {M}$. \relax }{algorithm.2}{}}
+\newlabel{alg:compute-transform@cref}{{[algorithm][2][]2}{[1][34][]35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Inference without ground truth}{35}{subsection.4.4.4}\protected@file@percent }
 \citation{dempster1977maximum}
-\newlabel{eq:Qargmin}{{4.24}{37}{Inference without ground truth}{equation.4.5.24}{}}
-\newlabel{eq:Qargmin@cref}{{[equation][24][4]4.24}{[1][37][]37}}
 \citation{crete2007blur}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Build the covariance model without ground truth given a sequence of observations, $\mathcal  {D'}$, and an initial odometry estimate $  \boldsymbol  {\mathbf  {T}}  _{1:T}^{(0)}$.\relax }}{38}{algorithm.5}\protected@file@percent }
-\newlabel{alg:train-em}{{5}{38}{Build the covariance model without ground truth given a sequence of observations, $\mathcal {D'}$, and an initial odometry estimate $\Transform _{1:T}^{(0)}$.\relax }{algorithm.5}{}}
-\newlabel{alg:train-em@cref}{{[algorithm][5][]5}{[1][38][]38}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Prediction Space}{38}{section.4.6}\protected@file@percent }
-\newlabel{sec:predictors}{{4.6}{38}{Prediction Space}{section.4.6}{}}
-\newlabel{sec:predictors@cref}{{[section][6][4]4.6}{[1][38][]38}}
+\newlabel{eq:Qargmin}{{4.30}{36}{Inference without ground truth}{equation.4.4.30}{}}
+\newlabel{eq:Qargmin@cref}{{[equation][30][4]4.30}{[1][36][]36}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Prediction Space}{36}{section.4.5}\protected@file@percent }
+\newlabel{sec:predictors}{{4.5}{36}{Prediction Space}{section.4.5}{}}
+\newlabel{sec:predictors@cref}{{[section][5][4]4.5}{[1][36][]36}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Build the covariance model without ground truth given a sequence of observations, $\mathcal  {D'}$, and an initial odometry estimate $  \boldsymbol  {\mathbf  {T}}  _{1:T}^{(0)}$.\relax }}{37}{algorithm.3}\protected@file@percent }
+\newlabel{alg:train-em}{{3}{37}{Build the covariance model without ground truth given a sequence of observations, $\mathcal {D'}$, and an initial odometry estimate $\Transform _{1:T}^{(0)}$.\relax }{algorithm.3}{}}
+\newlabel{alg:train-em@cref}{{[algorithm][3][]3}{[1][36][]37}}
 \citation{Furgale2013-sl}
+\citation{crete2007blur}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Angular velocity and linear acceleration}{38}{subsection.4.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Local image entropy}{38}{subsection.4.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Blur}{38}{subsection.4.5.3}\protected@file@percent }
+\citation{crete2007blur}
 \citation{crete2007blur}
 \citation{crete2007blur}
 \citation{crete2007blur}
 \citation{Lucas:1981}
-\@writefile{toc}{\contentsline {subsubsection}{Angular velocity and linear acceleration}{39}{section*.35}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Local image entropy}{39}{section*.36}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Blur}{39}{section*.37}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The Skybotix VI-Sensor, Point Grey Flea3, and checkerboard target used in our motion blur experiments.\relax }}{40}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:probe_tricifix}{{4.2}{40}{The Skybotix VI-Sensor, Point Grey Flea3, and checkerboard target used in our motion blur experiments.\relax }{figure.caption.38}{}}
-\newlabel{fig:probe_tricifix@cref}{{[figure][2][4]4.2}{[1][39][]40}}
-\newlabel{fig:probe_visensor_reprojectionError}{{\caption@xref {fig:probe_visensor_reprojectionError}{ on input line 584}}{40}{Blur}{figure.caption.39}{}}
-\newlabel{fig:probe_visensor_reprojectionError@cref}{{[section][6][4]4.6}{[1][39][]40}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Reprojection error of checkerboard corners triangulated from the VI-Sensor and reprojected into the Flea3.\relax }}{40}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:probe_visensor_trackingError}{{\caption@xref {fig:probe_visensor_trackingError}{ on input line 591}}{40}{Blur}{figure.caption.40}{}}
-\newlabel{fig:probe_visensor_trackingError@cref}{{[section][6][4]4.6}{[1][39][]40}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Effect of blur on reprojection and tracking error for the slow-then-fast checkerboard dataset. We distinguish between high and low blur by thresholding the blur metric \cite  {crete2007blur}. The variance in both errors increases with blur.\relax }}{40}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:probe_visensor_histograms}{{4.4}{40}{Effect of blur on reprojection and tracking error for the slow-then-fast checkerboard dataset. We distinguish between high and low blur by thresholding the blur metric \cite {crete2007blur}. The variance in both errors increases with blur.\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The Skybotix VI-Sensor, Point Grey Flea3, and checkerboard target used in our motion blur experiments.\relax }}{39}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:probe_tricifix}{{4.2}{39}{The Skybotix VI-Sensor, Point Grey Flea3, and checkerboard target used in our motion blur experiments.\relax }{figure.caption.35}{}}
+\newlabel{fig:probe_tricifix@cref}{{[figure][2][4]4.2}{[1][39][]39}}
+\newlabel{fig:probe_visensor_reprojectionError}{{\caption@xref {fig:probe_visensor_reprojectionError}{ on input line 514}}{39}{Blur}{figure.caption.36}{}}
+\newlabel{fig:probe_visensor_reprojectionError@cref}{{[subsection][3][4,5]4.5.3}{[1][39][]39}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Reprojection error of checkerboard corners triangulated from the VI-Sensor and reprojected into the Flea3.We distinguish between high and low blur by thresholding the blur metric \cite  {crete2007blur}.\relax }}{39}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:probe_visensor_trackingError}{{\caption@xref {fig:probe_visensor_trackingError}{ on input line 521}}{40}{Blur}{figure.caption.37}{}}
+\newlabel{fig:probe_visensor_trackingError@cref}{{[subsection][3][4,5]4.5.3}{[1][39][]40}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Effect of blur on reprojection and tracking error for the slow-then-fast checkerboard dataset. We distinguish between high and low blur by thresholding the blur metric \cite  {crete2007blur}. The variance in both errors increases with blur.\relax }}{40}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:probe_visensor_histograms}{{4.4}{40}{Effect of blur on reprojection and tracking error for the slow-then-fast checkerboard dataset. We distinguish between high and low blur by thresholding the blur metric \cite {crete2007blur}. The variance in both errors increases with blur.\relax }{figure.caption.37}{}}
 \newlabel{fig:probe_visensor_histograms@cref}{{[figure][4][4]4.4}{[1][39][]40}}
-\@writefile{toc}{\contentsline {subsubsection}{Optical flow variance score}{41}{section*.41}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Image frequency composition}{41}{section*.43}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces The optical flow variance predictor can help in detecting moving objects. Red circles correspond to higher values of the optical flow variance score (i.e., features more likely to belong to a moving object).\relax }}{42}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:probe_flow_variance}{{4.5}{42}{The optical flow variance predictor can help in detecting moving objects. Red circles correspond to higher values of the optical flow variance score (i.e., features more likely to belong to a moving object).\relax }{figure.caption.42}{}}
-\newlabel{fig:probe_flow_variance@cref}{{[figure][5][4]4.5}{[1][41][]42}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces A high-frequency predictor can distinguish between regions of high and low texture such as foliage and shadows. Green indicates higher values.\relax }}{42}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:probe_high_frequency}{{4.6}{42}{A high-frequency predictor can distinguish between regions of high and low texture such as foliage and shadows. Green indicates higher values.\relax }{figure.caption.44}{}}
-\newlabel{fig:probe_high_frequency@cref}{{[figure][6][4]4.6}{[1][42][]42}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Three types of environments in the KITTI dataset, as well as 2 types of environments at the University of Toronto. We use one trial from each category to train and then evaluate separate trials in the same category.\relax }}{42}{figure.caption.47}\protected@file@percent }
-\newlabel{fig:probe_KITTI-Types}{{4.7}{42}{Three types of environments in the KITTI dataset, as well as 2 types of environments at the University of Toronto. We use one trial from each category to train and then evaluate separate trials in the same category.\relax }{figure.caption.47}{}}
-\newlabel{fig:probe_KITTI-Types@cref}{{[figure][7][4]4.7}{[1][42][]42}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of translational Average Root Mean Square Error (ARMSE) and Final Translational Error on the KITTI dataset.\relax }}{43}{table.caption.45}\protected@file@percent }
-\newlabel{table:probe_kitti_data}{{\caption@xref {table:probe_kitti_data}{ on input line 678}}{43}{Comparison of translational Average Root Mean Square Error (ARMSE) and Final Translational Error on the KITTI dataset.\relax }{table.caption.46}{}}
-\newlabel{table:probe_kitti_data@cref}{{[table][1][4]4.1}{[1][42][]43}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Our four-wheeled skid-steered Clearpath Husky rover equipped with Skybotix VI-Sensor and Ashtech DGPS antenna used to collect the outdoor UTIAS dataset.\relax }}{43}{figure.caption.48}\protected@file@percent }
-\newlabel{fig:probe_huskypic}{{4.8}{43}{Our four-wheeled skid-steered Clearpath Husky rover equipped with Skybotix VI-Sensor and Ashtech DGPS antenna used to collect the outdoor UTIAS dataset.\relax }{figure.caption.48}{}}
-\newlabel{fig:probe_huskypic@cref}{{[figure][8][4]4.8}{[1][42][]43}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}Optical flow variance}{40}{subsection.4.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.5}Image frequency composition}{40}{subsection.4.5.5}\protected@file@percent }
+\citation{barfoot2014associating}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces The optical flow variance predictor can help in detecting moving objects. Red circles correspond to higher values of the optical flow variance score (i.e., features more likely to belong to a moving object).\relax }}{41}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:probe_flow_variance}{{4.5}{41}{The optical flow variance predictor can help in detecting moving objects. Red circles correspond to higher values of the optical flow variance score (i.e., features more likely to belong to a moving object).\relax }{figure.caption.38}{}}
+\newlabel{fig:probe_flow_variance@cref}{{[figure][5][4]4.5}{[1][40][]41}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces A high-frequency predictor can distinguish between regions of high and low texture such as foliage and shadows. Green indicates higher values.\relax }}{41}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:probe_high_frequency}{{4.6}{41}{A high-frequency predictor can distinguish between regions of high and low texture such as foliage and shadows. Green indicates higher values.\relax }{figure.caption.39}{}}
+\newlabel{fig:probe_high_frequency@cref}{{[figure][6][4]4.6}{[1][41][]41}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Experiments}{41}{section.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Simulation}{41}{subsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Monte-Carlo Verification}{41}{section*.40}\protected@file@percent }
 \citation{kerl2013robust}
-\newlabel{fig:SimWorld}{{\caption@xref {fig:SimWorld}{ on input line 709}}{44}{Synthetic}{figure.caption.50}{}}
-\newlabel{fig:SimWorld@cref}{{[subsection][2][4,7]4.7.2}{[1][44][]44}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Our synthetic world. A stereo camera rig moves through a world with 2000 point features.\relax }}{44}{figure.caption.50}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Experiments}{44}{section.4.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}PROBE}{44}{subsection.4.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}PROBE-GK}{44}{subsection.4.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Synthetic}{44}{section*.49}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Mean Frobenius norm of the error between the estimated and true noise covariance as a function of training data size. The norm tends to zero as training data is added which indicates that PROBE-GK is learning the correct covariances.\relax }}{42}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:probe_frobNorm}{{4.7}{42}{Mean Frobenius norm of the error between the estimated and true noise covariance as a function of training data size. The norm tends to zero as training data is added which indicates that PROBE-GK is learning the correct covariances.\relax }{figure.caption.41}{}}
+\newlabel{fig:probe_frobNorm@cref}{{[figure][7][4]4.7}{[1][42][]42}}
+\@writefile{toc}{\contentsline {subsubsection}{Synthetic}{42}{section*.42}\protected@file@percent }
 \citation{geiger2012kitti,geiger2013vision}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces A comparison of translational and rotational Root Mean Square Error on simulated data (RMSE) for four different stereo-visual odometry pipelines: two baseline bundle adjustment procedures with and without a robust Student's\nobreakspace  {}$t$ cost with a fixed and hand-tuned covariance and degrees of freedom (M-Estimation), a robust bundle adjustment with covariances learned from ground truth with \cref  {alg:train-ground-truth} (GK-GT), and a robust bundle adjustment using covariances learned without ground truth using expectation maximization, with \cref  {alg:train-em} (GK-EM). Note in this experiment, the RMSE curves for GK-GT and GK-EM very nearly overlap. The overall translational and rotational ARMSE values are shown in Table \ref  {table:probe-gk_armse_errors}.\relax }}{45}{figure.caption.51}\protected@file@percent }
-\newlabel{fig:sim_comparison}{{4.10}{45}{A comparison of translational and rotational Root Mean Square Error on simulated data (RMSE) for four different stereo-visual odometry pipelines: two baseline bundle adjustment procedures with and without a robust Student's~$t$ cost with a fixed and hand-tuned covariance and degrees of freedom (M-Estimation), a robust bundle adjustment with covariances learned from ground truth with \cref {alg:train-ground-truth} (GK-GT), and a robust bundle adjustment using covariances learned without ground truth using expectation maximization, with \cref {alg:train-em} (GK-EM). Note in this experiment, the RMSE curves for GK-GT and GK-EM very nearly overlap. The overall translational and rotational ARMSE values are shown in Table \ref {table:probe-gk_armse_errors}.\relax }{figure.caption.51}{}}
-\newlabel{fig:sim_comparison@cref}{{[figure][10][4]4.10}{[1][45][]45}}
-\@writefile{toc}{\contentsline {subsubsection}{KITTI}{45}{section*.52}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces The KITTI dataset contains three different environments. We validate PROBE-GK by training on each type and testing against a baseline stereo visual odometry pipeline.\relax }}{46}{figure.caption.53}\protected@file@percent }
-\newlabel{fig:kitti_environments}{{4.11}{46}{The KITTI dataset contains three different environments. We validate PROBE-GK by training on each type and testing against a baseline stereo visual odometry pipeline.\relax }{figure.caption.53}{}}
-\newlabel{fig:kitti_environments@cref}{{[figure][11][4]4.11}{[1][45][]46}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref  {table:probe-gk_armse_errors} for a quantitative summary.\relax }}{46}{figure.caption.54}\protected@file@percent }
-\newlabel{fig:probe-gk_kitti_comparison1}{{4.12}{46}{RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref {table:probe-gk_armse_errors} for a quantitative summary.\relax }{figure.caption.54}{}}
-\newlabel{fig:probe-gk_kitti_comparison1@cref}{{[figure][12][4]4.12}{[1][45][]46}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset.\relax }}{47}{figure.caption.55}\protected@file@percent }
-\newlabel{fig:probe-gk_kitti_comparison2}{{4.13}{47}{RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset.\relax }{figure.caption.55}{}}
-\newlabel{fig:probe-gk_kitti_comparison2@cref}{{[figure][13][4]4.13}{[1][47][]47}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset.\relax }}{48}{figure.caption.56}\protected@file@percent }
-\newlabel{fig:probe-gk_kitti_comparison3}{{4.14}{48}{RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset.\relax }{figure.caption.56}{}}
-\newlabel{fig:probe-gk_kitti_comparison3@cref}{{[figure][14][4]4.14}{[1][47][]48}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of average root mean squared errors (ARMSE) for rotational and translational components. Each trial is trained and tested from a particular category of raw data from the synthetic and KITTI datasets.\relax }}{48}{table.caption.58}\protected@file@percent }
-\newlabel{table:probe-gk_armse_errors}{{4.2}{48}{Comparison of average root mean squared errors (ARMSE) for rotational and translational components. Each trial is trained and tested from a particular category of raw data from the synthetic and KITTI datasets.\relax }{table.caption.58}{}}
-\newlabel{table:probe-gk_armse_errors@cref}{{[table][2][4]4.2}{[1][47][]48}}
-\@writefile{toc}{\contentsline {subsubsection}{UTIAS}{48}{section*.57}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces Our experimental apparatus: a Clearpath Husky rover outfitted with a PointGrey XB3 stereo camera and a differential GPS receiver and base station.\relax }}{49}{figure.caption.59}\protected@file@percent }
-\newlabel{fig:probe-gk_experiments}{{4.15}{49}{Our experimental apparatus: a Clearpath Husky rover outfitted with a PointGrey XB3 stereo camera and a differential GPS receiver and base station.\relax }{figure.caption.59}{}}
-\newlabel{fig:probe-gk_experiments@cref}{{[figure][15][4]4.15}{[1][48][]49}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces GPS ground truth for 5 experimental trials collected near the UTIAS Mars Dome. Each trial is approximately 250 m long.\relax }}{49}{figure.caption.60}\protected@file@percent }
-\newlabel{fig:probe-gk_experiment_groundtruth}{{4.16}{49}{GPS ground truth for 5 experimental trials collected near the UTIAS Mars Dome. Each trial is approximately 250 m long.\relax }{figure.caption.60}{}}
-\newlabel{fig:probe-gk_experiment_groundtruth@cref}{{[figure][16][4]4.16}{[1][48][]49}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of loop closure errors for 4 different experimental trials with and without a learned PROBE-GK-EM model.\relax }}{50}{table.caption.61}\protected@file@percent }
-\newlabel{table:probe-gk_loop_closure_errors}{{4.3}{50}{Comparison of loop closure errors for 4 different experimental trials with and without a learned PROBE-GK-EM model.\relax }{table.caption.61}{}}
-\newlabel{table:probe-gk_loop_closure_errors@cref}{{[table][3][4]4.3}{[1][50][]50}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.8}Summary}{50}{section.4.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces Training without ground truth using PROBE-GK-EM on a 250.2m path around the Mars Dome at UTIAS. The likelihood of the data increases with each iteration, and the loop closure error decreases, improving significantly from a baseline static M-estimator.\relax }}{51}{figure.caption.62}\protected@file@percent }
-\newlabel{fig:probe-gk_experiments_trainingstats}{{4.17}{51}{Training without ground truth using PROBE-GK-EM on a 250.2m path around the Mars Dome at UTIAS. The likelihood of the data increases with each iteration, and the loop closure error decreases, improving significantly from a baseline static M-estimator.\relax }{figure.caption.62}{}}
-\newlabel{fig:probe-gk_experiments_trainingstats@cref}{{[figure][17][4]4.17}{[1][50][]51}}
+\newlabel{fig:probe_SimWorld}{{\caption@xref {fig:probe_SimWorld}{ on input line 604}}{43}{Synthetic}{figure.caption.43}{}}
+\newlabel{fig:probe_SimWorld@cref}{{[subsection][1][4,6]4.6.1}{[1][42][]43}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Our synthetic world. A stereo camera rig moves through a world with 2000 point features.\relax }}{43}{figure.caption.43}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}KITTI}{43}{subsection.4.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces A comparison of translational and rotational Root Mean Square Error on simulated data (RMSE) for four different stereo-visual odometry pipelines: two baseline bundle adjustment procedures with and without a robust Student's\nobreakspace  {}$t$ cost with a fixed and hand-tuned covariance and degrees of freedom (M-Estimation), a robust bundle adjustment with covariances learned from ground truth with \cref  {alg:train-ground-truth} (GK-GT), and a robust bundle adjustment using covariances learned without ground truth using expectation maximization, with \cref  {alg:train-em} (GK-EM). Note in this experiment, the RMSE curves for GK-GT and GK-EM very nearly overlap. The overall translational and rotational ARMSE values are shown in Table \ref  {table:probe-gk_armse_errors}.\relax }}{44}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:sim_comparison}{{4.9}{44}{A comparison of translational and rotational Root Mean Square Error on simulated data (RMSE) for four different stereo-visual odometry pipelines: two baseline bundle adjustment procedures with and without a robust Student's~$t$ cost with a fixed and hand-tuned covariance and degrees of freedom (M-Estimation), a robust bundle adjustment with covariances learned from ground truth with \cref {alg:train-ground-truth} (GK-GT), and a robust bundle adjustment using covariances learned without ground truth using expectation maximization, with \cref {alg:train-em} (GK-EM). Note in this experiment, the RMSE curves for GK-GT and GK-EM very nearly overlap. The overall translational and rotational ARMSE values are shown in Table \ref {table:probe-gk_armse_errors}.\relax }{figure.caption.44}{}}
+\newlabel{fig:sim_comparison@cref}{{[figure][9][4]4.9}{[1][43][]44}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces The KITTI dataset contains three different environments. We validate PROBE-GK by training on each type and testing against a baseline stereo visual odometry pipeline.\relax }}{44}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:kitti_environments}{{4.10}{44}{The KITTI dataset contains three different environments. We validate PROBE-GK by training on each type and testing against a baseline stereo visual odometry pipeline.\relax }{figure.caption.45}{}}
+\newlabel{fig:kitti_environments@cref}{{[figure][10][4]4.10}{[1][43][]44}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref  {table:probe-gk_armse_errors} for a quantitative summary.\relax }}{45}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:probe-gk_kitti_comparison1}{{4.11}{45}{RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref {table:probe-gk_armse_errors} for a quantitative summary.\relax }{figure.caption.46}{}}
+\newlabel{fig:probe-gk_kitti_comparison1@cref}{{[figure][11][4]4.11}{[1][43][]45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset.\relax }}{45}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:probe-gk_kitti_comparison2}{{4.12}{45}{RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset.\relax }{figure.caption.47}{}}
+\newlabel{fig:probe-gk_kitti_comparison2@cref}{{[figure][12][4]4.12}{[1][43][]45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset.\relax }}{46}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:probe-gk_kitti_comparison3}{{4.13}{46}{RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset.\relax }{figure.caption.48}{}}
+\newlabel{fig:probe-gk_kitti_comparison3@cref}{{[figure][13][4]4.13}{[1][43][]46}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of average root mean squared errors (ARMSE) for rotational and translational components. Each trial is trained and tested from a particular category of raw data from the synthetic and KITTI datasets.\relax }}{46}{table.caption.49}\protected@file@percent }
+\newlabel{table:probe-gk_armse_errors}{{4.1}{46}{Comparison of average root mean squared errors (ARMSE) for rotational and translational components. Each trial is trained and tested from a particular category of raw data from the synthetic and KITTI datasets.\relax }{table.caption.49}{}}
+\newlabel{table:probe-gk_armse_errors@cref}{{[table][1][4]4.1}{[1][46][]46}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}UTIAS}{46}{subsection.4.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces Our experimental apparatus: a Clearpath Husky rover outfitted with a PointGrey XB3 stereo camera and a differential GPS receiver and base station.\relax }}{47}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:probe-gk_experiments}{{4.14}{47}{Our experimental apparatus: a Clearpath Husky rover outfitted with a PointGrey XB3 stereo camera and a differential GPS receiver and base station.\relax }{figure.caption.50}{}}
+\newlabel{fig:probe-gk_experiments@cref}{{[figure][14][4]4.14}{[1][46][]47}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces GPS ground truth for 5 experimental trials collected near the UTIAS Mars Dome. Each trial is approximately 250 m long.\relax }}{47}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:probe-gk_experiment_groundtruth}{{4.15}{47}{GPS ground truth for 5 experimental trials collected near the UTIAS Mars Dome. Each trial is approximately 250 m long.\relax }{figure.caption.51}{}}
+\newlabel{fig:probe-gk_experiment_groundtruth@cref}{{[figure][15][4]4.15}{[1][46][]47}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces Training without ground truth using PROBE-GK-EM on a 250.2m path around the Mars Dome at UTIAS. The likelihood of the data increases with each iteration, and the loop closure error decreases, improving significantly from a baseline static M-estimator.\relax }}{48}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:probe-gk_experiments_trainingstats}{{4.16}{48}{Training without ground truth using PROBE-GK-EM on a 250.2m path around the Mars Dome at UTIAS. The likelihood of the data increases with each iteration, and the loop closure error decreases, improving significantly from a baseline static M-estimator.\relax }{figure.caption.52}{}}
+\newlabel{fig:probe-gk_experiments_trainingstats@cref}{{[figure][16][4]4.16}{[1][46][]48}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of loop closure errors for 4 different experimental trials with and without a learned PROBE-GK-EM model.\relax }}{49}{table.caption.53}\protected@file@percent }
+\newlabel{table:probe-gk_loop_closure_errors}{{4.2}{49}{Comparison of loop closure errors for 4 different experimental trials with and without a learned PROBE-GK-EM model.\relax }{table.caption.53}{}}
+\newlabel{table:probe-gk_loop_closure_errors@cref}{{[table][2][4]4.2}{[1][48][]49}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Summary}{49}{section.4.7}\protected@file@percent }
 \@setckpt{sections/probe}{
-\setcounter{page}{52}
-\setcounter{equation}{26}
+\setcounter{page}{50}
+\setcounter{equation}{32}
 \setcounter{enumi}{4}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -152,19 +151,19 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
-\setcounter{section}{8}
+\setcounter{section}{7}
 \setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{17}
-\setcounter{table}{3}
-\setcounter{caption@flags}{0}
+\setcounter{figure}{16}
+\setcounter{table}{2}
+\setcounter{caption@flags}{2}
 \setcounter{ContinuedFloat}{0}
 \setcounter{parentequation}{0}
 \setcounter{Item}{11}
 \setcounter{Hfootnote}{11}
-\setcounter{bookmark@seq@number}{39}
+\setcounter{bookmark@seq@number}{42}
 \setcounter{ALG@line}{22}
 \setcounter{ALG@rem}{22}
 \setcounter{ALG@nested}{0}
@@ -173,7 +172,7 @@
 \setcounter{ALG@storecount}{0}
 \setcounter{ALG@tmpcounter}{0}
 \setcounter{float@type}{16}
-\setcounter{algorithm}{5}
+\setcounter{algorithm}{3}
 \setcounter{NAT@ctr}{0}
 \setcounter{subfigure}{0}
 \setcounter{subtable}{0}
