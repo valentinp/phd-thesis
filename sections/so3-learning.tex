@@ -1,4 +1,4 @@
-\chapter{Learning Deep Probabilistic Estimates of Elements of SO(3)}
+\chapter{Learned Probabilistic Rotations}
 \label{ch:hydranet}
 \epigraph{It is because Humanity has never known where it was going that it has been able to find its way.}{Oscar Wilde}
 
@@ -482,14 +482,14 @@ Next, we used HydraNet to regress absolute orientations from RGB images from the
 Finally, to show the benefit of fusing deep probabilistic estimates with classical estimators, we trained a network to estimate relative frame-to-frame rotations on the KITTI visual odometry (VO) benchmark. To regress relative rotations, we use the HydraNet-based network described in \Cref{fig:kitti_flow_hydranet}. For each pair of poses, we process two RGB images (taken from the left RGB camera) into a two channel dense optical flow image using a fast classical algorithm \citep{farneback2003two}. Compared to using raw images, we found that using the optical flow pre-processing greatly improved training robustness and rotation accuracy. Since we use two-channel flow images, the body of the network is not pre-trained and instead contains an eight layer convolutional network (see supplemental materials for additional details). We maintained the same head structure as the 7-Scenes experiment. \Cref{tab:kitti_hydranet_stats} and \Cref{fig:kitti_hists} detail the mean test error and negative log likelihood for KITTI odometry sequences \texttt{00}, \texttt{02} and \texttt{05} (chosen for their complexity and length). For each sequence, we trained the model on the remaining sequences in the benchmark. We found our model produced mean errors of approximately 0.1 degrees on all three test sequences. The covariance produced by HydraNet was consistent, spiking during yawing motions when the largest errors occurred (see \Cref{fig:kitti_topdown}). Despite its consistency, the network covariance was dominated by $\Covd$. We suspect that unlike the synthetic data, $\Covh$ remained small throughout the tests sets due to a more constrained input space (RGB or flow images, compared to pixel locations), but leave a thorough investigation to future work. 
  
 \subsubsection{Classical VO}
-For the classical visual odometry estimator, we used the open-source \texttt{libviso2} package~\citep{Geiger2011-xe} to detect and track sparse stereo image key-points in a similar manner to \citep{Peretroukhin2018}. In brief, our pipeline modelled stereo re-projection errors, $ \Vector{e}_{l,t_i}$, as zero-mean Gaussians with a known static covariance, $\ImageCovariance$. To generate an initial guess and to reject outliers, we used three point Random Sample Consensus (RANSAC) based on stereo re-projection error.
+For the classical visual odometry estimator, we used the open-source \texttt{libviso2} package~\citep{Geiger2011-xe} to detect and track sparse stereo image key-points in a similar manner to \citep{Peretroukhin2018}. In brief, our pipeline modelled stereo re-projection errors, $ \Vector{e}_{l,t_i}$, as zero-mean Gaussians with a known static covariance, $\Covariance$. To generate an initial guess and to reject outliers, we used three point Random Sample Consensus (RANSAC) based on stereo re-projection error.
 Finally, we solved for the maximum likelihood transform, $\Transform_{t+1,t}^*$, through a Gauss-Newton minimization of\begin{equation}
   \Transform_{t_{i+1},t_i}^* = \ArgMin{\Transform_{t_{i+1},t_i}\in\text{SE}(3)}\sum_{l=1}^{N_{t_i}} 
-  \Transpose{\Vector{e}}_{l} \ImageCovariance^{-1} \Vector{e}_{l}.
+  \Transpose{\Vector{e}}_{l} \Covariance^{-1} \Vector{e}_{l}.
 \end{equation}
 \noindent After convergence, we approximate the frame-to-frame transformation uncertainty as \citep{Barfoot2017-ri}:
 \begin{equation}
-	\Matrix{\Sigma}_\text{vo} \approx  \left( \sum_{l=1}^{N_t} \Transpose{\Matrix{J}}_{l} \ImageCovariance^{-1} \Matrix{J}_{l} \right)^{-1},
+	\Matrix{\Sigma}_\text{vo} \approx  \left( \sum_{l=1}^{N_t} \Transpose{\Matrix{J}}_{l} \Covariance^{-1} \Matrix{J}_{l} \right)^{-1},
     \label{eq:svo_uncertainty}
 \end{equation}
 where $\Matrix{J}_{l}$ refers to the Jacobian of each reprojection error.

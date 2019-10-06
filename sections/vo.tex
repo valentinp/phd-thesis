@@ -59,9 +59,9 @@ In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indire
 
 During preprocessing, we use a lens model (assumed to be known apriori) to undistort each stereo image. Further, using the camera extrinsic parameters (also assumed to be known), we \textit{rectify} the stereo pair such that the images can be assumed to come from two cameras whose principal axes are parallel (\Cref{fig:vo_preprocessing}). Finally, we also assume that the stereo camera intrinsics are known a priori or compute them through a calibration process \citep{Furgale2013-sl}.
 
-\subsection{Data association}
+\subsection{Data Association}
 
-\subsubsection{Feature extraction and matching}
+\subsubsection{Feature Extraction and Matching}
 
 \begin{figure}[h!]
 \begin{center}
@@ -96,11 +96,11 @@ formulation, the stereo camera frame is centered between the two individual
 lenses. 
 
 
-\subsubsection{Outlier rejection}
+\subsubsection{Outlier Rejection}
 
 To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRANSAC:1981}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
   
-\subsection{Maximum Likelihood Motion solution}
+\subsection{Maximum Likelihood Motion Solution}
 
 We will define $\Transform_t \in\text{SE}(3)$, as the rigid transform between two subsequent stereo camera poses, 
 $\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$
@@ -151,6 +151,7 @@ with
 $\Matrix{G}_{i,c} = \at{\PartialDerivative{\ProjectionFunction^{-1}}{\Vector{y}}}{\ImageLandmark{i}{c}}$.
 
 \subsubsection{Reprojection Error}
+\label{sec:vo_reprojection}
 
 Alternatively, we can represent reprojection errors in the second frame directly as
 \begin{equation}

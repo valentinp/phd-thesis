@@ -60,7 +60,7 @@ the estimator. Unlike our predictive approach, their technique relies on the ava
 approach, \Citet{Zhang2015} choose an optimally observable feature subset for a
 monocular SLAM pipeline by selecting features with the highest \textit{informativeness} - a measure calculated based on the observability of the SLAM subsystem. Observability, however, is governed by the 3D location of the features, and therefore cannot predict systematic feature degradation due to environmental or sensor-based effects. 
 
-\section{PROBE: Scalar k-Nearest Neighbours}
+\section{PROBE via k-Nearest Neighbours}
 
 In our initial exploratory work, we explored the idea of scaling 
 With Predictive ROBust Estimation, we aim to improve localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
@@ -90,13 +90,13 @@ We learn the quality of visual features \textit{indirectly} through their effect
 
 
 
-To solve for the relative egomotion between two camera frames, $\CoordinateFrame{c_0}$ and $\CoordinateFrame{c_1}$, we follow technique described in \Cref{sec:vo_point_cloud} to convert stereo observations into point-clouds and then solve for the maximum likelihood $\LieGroupSE{3}$ transformation. We associate with each match $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}$ a vector of
-\emph{predictors}, $\Predictor{i}{c}$.  Each predictor can be computed using both visual\footnote{Including potentially data from all four images in the pair of stereo images.} and inertial cues , allowing us to model effects like motion blur and self-similar
+To solve for the relative egomotion, $\Transform_t$, between two camera frames, $\CoordinateFrame{c_0}$ and $\CoordinateFrame{c_1}$, we follow technique described in \Cref{sec:vo_point_cloud} to convert stereo observations into point-clouds and then solve for the maximum likelihood $\LieGroupSE{3}$ transformation. We associate with each match $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}$ a vector of
+\emph{predictors}, $\Predictor{i}{t}$.  Each predictor can be computed using both visual\footnote{Including potentially data from all four images in the pair of stereo images.} and inertial cues, allowing us to model effects like motion blur and self-similar
 textures. We then compute the covariance as a function of these predictors, so
-that $\ImageLandmarkCovariance{i}{c} = \Covariance( \Predictor{i}{c})$, and we use the same covariance function for features in both frames\footnote{We conjecture that this is reasonable in a VO setup, where images change minimally between consecutive frames.},
+that $\ImageLandmarkCovariance{i}{c_0} =\ImageLandmarkCovariance{i}{c_1} = \ImageLandmarkCovariance{i}{t} = \Covariance( \Predictor{i}{t})$, and we use the same covariance function for features in both frames\footnote{We conjecture that this is reasonable in a VO setup, where images change minimally between consecutive frames.},
 \begin{align}
-	\ImageLandmark{i}{c_0} &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \ImageLandmarkCovariance{i}{c} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \Covariance( \Predictor{i}{c})\right) \\
-		\ImageLandmark{i}{c_1} &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \ImageLandmarkCovariance{i}{c} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \Covariance( \Predictor{i}{c})\right)
+	\ImageLandmark{i}{c_0} &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \ImageLandmarkCovariance{i}{t} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \Covariance( \Predictor{i}{t})\right) \\
+		\ImageLandmark{i}{c_1}, &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \ImageLandmarkCovariance{i}{t} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \Covariance( \Predictor{i}{t})\right).
 \end{align}
 
 
@@ -109,19 +109,19 @@ This then builds the following weighted least squares objective,
 \end{equation}
 where $\GeneralCovariance_{i,t}$ is now given by,
 \begin{equation}
-	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \Covariance( \Predictor{i}{c})  \Matrix{G}_{i,c_1}^T \Matrix{D}^T + 
- \Matrix{D}\Transform_t \Matrix{G}_{i,c_0} \Covariance( \Predictor{i}{c}) \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T
+	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \Covariance( \Predictor{i}{t})  \Matrix{G}_{i,c_1}^T \Matrix{D}^T + 
+ \Matrix{D}\Transform_t \Matrix{G}_{i,c_0} \Covariance( \Predictor{i}{t}) \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T
 \end{equation}
-We build a model for $\Covariance( \Predictor{i}{c})$ as,
+We build a model for $\Covariance( \Predictor{i}{t})$ as,
 \begin{equation}
-\Covariance( \Predictor{i}{c}) = \beta(\Predictor{i}{c}) \bar{\Covariance},
+\Covariance( \Predictor{i}{c}) = \beta(\Predictor{i}{t}) \bar{\Covariance},
 \end{equation}
 with
 \begin{equation}
- \beta(\Predictor{i}{c}) = \left(\frac{1}{\PROBEPoseError_\text{avg} K} \sum_{k=1}^K \PROBEPoseError_k  \right)^{\gamma}, ~ \PROBEPoseError_k \in \textsc{k-NN}(\Predictor{i}{c}),
+ \beta(\Predictor{i}{c}) = \left(\frac{1}{\PROBEPoseError_\text{avg} K} \sum_{k=1}^K \PROBEPoseError_k  \right)^{\gamma}, ~ \PROBEPoseError_k \in \textsc{k-NN}(\Predictor{i}{t}),
 \end{equation}
 
-where $\{\PROBEPoseError_k\}_{k=1}^K$ are $K$ egomotion errors that are `nearest' to $\Predictor{i}{c}$, $\epsilon_\text{avg}$ is an average error, and $\gamma > 1$ is a hyper-parameter designed to exaggerate the effect of small changes in position error.
+where $\{\PROBEPoseError_k\}_{k=1}^K$ are $K$ egomotion errors that are `nearest' to $\Predictor{i}{c}$, $\epsilon_\text{avg}$ is an average error, $\bar{\Covariance}$ is a baseline \textit{nominal} covariance, and $\gamma > 1$ is a hyper-parameter designed to exaggerate the effect of small changes in position error.
 
 \subsection{Training}
 Training proceeds by traversing the training path, selecting a subset of visual features at each step, and using them to compute an incremental position estimate. By comparing the estimated position to the ground truth position, we compute the translational Root Mean Squared Error (RMSE), $\epsilon$, and store it at each feature's position in the prediction space. The full algorithm is summarized in \Cref{alg:probe_train}. 
@@ -193,7 +193,337 @@ The computation of $\beta_i$ is designed to map small differences in learned $\a
 An appropriate value of $\gamma$ can be found by searching through a set range of candidate values and choosing the value that minimizes the average RMSE (ARMSE) on the training set.
 
 
-\subsection{Prediction Space} \label{sec:predictors}
+\section{Bayesian PROBE via Generalized Kernels}
+
+%However, not all features are created equal; most feature-based methods rely on
+%random sample consensus algorithms \citep{fischler1981random} to partition the extracted features
+%into inliers and outliers, and perform estimation based only on inliers. It is
+%common to guard against misclassifying an outlier as an inlier by using robust
+%estimation techniques, such as the Cauchy costs employed in
+%\citet{kerl2013robust} or the dynamic covariance scaling devised
+%by \citet{Burgard:ii}. These approaches, often grouped under the title of M-estimation, aim to maintain a quadratic influence
+%of small errors, while reducing the contribution of larger errors. The
+%robustness and accuracy of feature-based visual odometry often hinges on the
+%tuning of the parameters of inlier selection and robust estimation. Performance
+%can vary significantly from one environment to the next, and most algorithms require
+%careful tuning to work in a given environment. 
+
+In this section, we describe a principled, data-driven way to build a noise model
+for visual odometry. We combine the previous work
+on predictive robust estimation (PROBE) with work covariance estimation
+\citep{VegaBrown:2013fv} to formulate a predictive robust estimator for a
+stereo visual odometry pipeline. We frame the traditional non-linear least
+squares optimization problem as a problem of maximum likelihood estimation with
+a Gaussian noise model, and infer a distribution over the covariance matrix of
+the Gaussian noise from a predictive model learned from training data. This
+results in a Student's~$t$ distribution over the noise, and naturally yields a
+robust nonlinear least-squares optimization problem.  In this way, we can predict,
+in a principled manner, how informative each visual feature is with respect to the final state
+estimate, which allows our approach to intelligently weight observations to
+produce more accurate odometry estimates.  
+\subsection{Mathematical Formulation}
+In this section, we take the motion solution for visual odometry based on reprojection errors presented in \Cref{sec:vo_reprojection}. We build a Bayesian model for $\ImageLandmarkCovariance{i}{t}$, the covariance that defines the density of reprojection errors,
+ \begin{equation}
+  \Vector{e}_{i}(\Transform_t) = \Vector{e}_{i,t} = \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
+    \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) ) \sim 
+ \NormalDistribution\left(\Vector 0,  \ImageLandmarkCovariance{i}{t}\right). 
+\end{equation}
+
+To do this, we take a similar approach as before, but this time we encode a non-parametric model of covariance \textit{density} based on a dataset of errors, $\mathcal{D}$, and a predictor, $\Predictor{i}{t}$,  $p(\ImageLandmarkCovariance{i}{t}) = p(\Covariance|\mathcal{D}, \Predictor{i}{t})$. This density is then marginalized out to arrive at a posterior predictive distribution for the maximum likelihood egomotion transform.
+
+\subsection{Inference with Ground Truth}
+
+%
+%The process described in the previous section employs a fixed noise covariance
+%$\Covariance$.  However, not all landmarks are created equal: differing texture
+%gradients can cause feature localization to degrade in predictable ways, and
+%effects like motion blur can lead to landmarks being less informative. If we had a
+%good estimate of the noise covariance for each landmark, we could simply replace the fixed covariance $\Covariance$
+%with one that varies for each stereo observation,
+%$\ImageLandmarkCovariance{i}{t}$. Such a predictive model would allows us to  better account for observation errors from a diverse set of noise sources, and incorporate information from landmarks that may otherwise be discarded by a binary outlier rejection scheme.
+%
+%However, estimating these covariances in a principled way is a nontrivial task.
+%Even when we have reasonable heuristic estimates available, it is difficult
+%to guarantee those estimates will be reliable.  Instead of relying solely on such
+%heuristics, we propose to learn these image-space noise covariances from data.
+In
+order to exploit conjugacy to a Gaussian noise model, we formulate our prior knowledge
+about this function using an inverse Wishart (IW) distribution over positive
+definite $d \times d$ matrices (the IW distribution has been used as a prior on covariance matrices in other robotics and computer vision contexts, see for example, \citep{fitzgibbon2007learning}). This distribution is defined by a scale matrix
+$\Matrix{\Psi} \in \RealNumbers[d][d]\succ0$ and a scalar quantity called the
+degrees of freedom $\nu\in\RealNumbers>d-1$:
+\begin{align}
+  p\left(\Matrix{R}\right) &= \InverseWishartDistribution
+  \left(\Matrix{R}; \Matrix{\Psi}, \nu\right)  \\ 
+  &= \frac{\vert\Matrix{\Psi}\vert^{\nu/2}}{2^{\frac{\nu
+  d}{2}}\Gamma_d(\frac{\nu}{2})} \vert\Matrix{R}\vert
+  ^{-\frac{\nu+d+1}{2}} \exp\left( -\frac{1}{2} \text{tr}\left(\Matrix{\Psi}
+  \Matrix{R}^{-1}\right)\right) \nonumber.
+\end{align}
+We use the scale matrix to encode our prior estimate of the
+covariance, and the degrees of freedom to encode our confidence in
+that estimate.  Specifically, if we estimate the covariance $\Matrix{R}$
+associated with predictor $\Vector{\phi}$ to be $\hat{\Matrix{R}}$ with a
+confidence equivalent to seeing $n$ independent samples of the error from
+$\NormalDistribution(\Vector{0}, \hat{\Matrix R})$, we would choose
+$\nu(\Vector{\phi})=n$ and $\Matrix{\Psi}(\Vector{\phi})=n\hat{\Matrix{R}}$.
+Given a sequence of observations and ground truth transformations,
+\begin{equation}
+\mathcal{D}=\{\mathcal{I}_t,\Transform_t\},\quad t\in[1,N]
+\end{equation} 
+where
+\begin{equation}
+ \mathcal{I}_t = \{\ImageLandmark{i}{c_0},
+\ImageLandmark{i}{c_1}, \Predictor{i}{t} \} \quad i\in[1,N_t],
+\end{equation}
+we can use the procedure of generalized kernel estimation
+\citep{vega-brown2014nonparametric} to infer a posterior distribution over the
+covariance matrix $\TargetImageLandmarkCovariance$ associated with some query
+predictor vector $\TargetPredictor$:
+\begin{align}
+  p(\TargetImageLandmarkCovariance|\mathcal{D}, \TargetPredictor) &\propto
+    \prod_{i,t}\mathcal{N}(\Vector{e}_{i,t} \vert \Vector{0},
+      \TargetImageLandmarkCovariance)^{k(\TargetPredictor,\Predictor{i}{t})} \nonumber
+      \\
+      &\qquad\times\text{IW}(\TargetImageLandmarkCovariance;\Matrix{\Psi}(\TargetPredictor),
+      \nu(\TargetPredictor)) \\
+      &=\text{IW}(\TargetImageLandmarkCovariance;\Matrix{\Psi}_*, \nu_*). 
+\end{align}
+Here, $\Vector{e}_{i,t}= \ImageLandmark{i}{c_1} - \ProjectionFunction(
+\Transform_t \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ))$ as before.  
+The function $k: \RealNumbers[M]\times\RealNumbers[M]\to[0,1]$ is a kernel
+function which measures the similarity of two points in predictor space.
+Note also that the posterior parameters $\Matrix{\Psi}_*$ and $\nu_*$ can be
+computed in closed form as
+\begin{align}
+  \Matrix{\Psi}_* &= \Matrix{\Psi}(\TargetPredictor) + 
+    \sum_{i,t} k(\TargetPredictor,\Predictor{i}{t}) 
+    \Vector{e}_{i,t}\Transpose{\Vector{e}_{i,t}}, \label{eq:compute-psi}\\
+  \nu_* &= \nu(\TargetPredictor) + \sum_{i,t}
+    k(\TargetPredictor,\Predictor{i}{t}).  \label{eq:compute-nu}
+\end{align}
+If we marginalize over the covariance matrix, we find that the posterior
+predictive distribution is a multivariate Student's~$t$ distribution:
+\begin{align}
+p(\ImageLandmark{i}{c_1}&|  \Transform_t,\ImageLandmark{i}{c_0}, \mathcal{D},
+  \Predictor{i}{t}) \\ &= \int \mathrm{d}\ImageLandmarkCovariance{i}{t}
+  \NormalDistribution\left( \Vector{e}_{i,t}; \Vector{0},
+    \ImageLandmarkCovariance{i}{t}\right)
+  \text{IW}(\ImageLandmarkCovariance{i}{t};\Matrix{\Psi}_*, \nu_*)  \\ &=
+  \StudentTDistribution_{\nu_*-d+1}\left(
+    \Vector{e}_{i,t}; \Vector{0}, \frac{1}{\nu_*-d+1}\Matrix{\Psi}_*\right) \\ &=
+    \frac{\Gamma(\frac{\nu_*+1}{2})}{\Gamma(\frac{\nu_*-d+1}{2})}
+    \vert\Matrix{\Psi_*}\vert^{-\frac{1}{2}}\pi^{-\frac{d}{2}} \left(1+
+    \Transpose{\Vector{e}_{i,t}} \Matrix{\Psi_*}^{-1} \Vector{e}_{i,t}
+  \right)^{-\frac{\nu_*+1}{2}}. 
+\end{align}
+Given a new landmark and predictor vector, we can infer a noise model by
+evaluating \cref{eq:compute-psi,eq:compute-nu}.  In order to accelerate this
+computation, it is helpful to choose a kernel function with finite support:
+that is, $k(\Vector{\phi},\Vector{\phi}')=0$ if $\Vert\Vector{\phi} -
+\Vector{\phi}'\Vert_2 > \rho$. Then, by indexing our training data in a spatial
+index such as a $k$-d tree, we can identify the subset of samples relevant to
+evaluating the sums in \cref{eq:compute-psi,eq:compute-nu} in $\mathcal{O}(\log
+N + \log N_t)$ time.  \Cref{alg:train-ground-truth} describes the procedure for
+building this model. 
+
+\begin{algorithm}
+  \caption{Build the covariance model given a sequence of observations, $\mathcal{D}$.}
+  \label{alg:train-ground-truth}
+  \begin{algorithmic}
+    \Function{BuildCovarianceModel}{$\mathcal{D}$}
+      \State Initialize an empty spatial index $\mathcal{M}$
+      \ForAll{$\mathcal{I}_t,\Transform_t$ in $\mathcal{D}$}
+        \ForAll{$\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1},
+          \Predictor{i}{c_0} \}$ in $\mathcal{I}_t$}
+          \State $\Vector{e}_{i,t} = \ImageLandmark{i}{c_1} -
+            \ProjectionFunction( \Transform_t \ProjectionFunction^{-1}(
+            \ImageLandmark{i}{c_0} ))$
+            \State Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and store
+              $\Vector{e}_{i,t}$ at its location
+        \EndFor
+      \EndFor
+      \State\Return $\mathcal{M}$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+Once we have inferred a noise model for each landmark in a new image pair, the
+maximum likelihood optimization problem is given by 
+\begin{equation}
+  \Transform_t^* = \ArgMin{\Transform_t\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  (\nu_{i,t}+1)\log \left(1+ \Transpose{\Vector{e}_{i,t}}
+  \Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \right).\label{eq:robust-loss}
+\end{equation}
+The final optimization problem thus emerges as a nonlinear least squares problem with a rescaled Cauchy-like loss
+function, with error term $\Transpose{\Vector{e}_{i,t}}
+(\frac{1}{\nu_{i,t}+1}\Matrix{\Psi}_{i,t})^{-1} \Vector{e}_{i,t}$ and outlier
+scale $\nu_{i,t}+1$.  This is a common robust loss function which is
+approximately quadratic in the reprojection error for
+$\Transpose{\Vector{e}_{i,t}} \Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \ll
+\nu_{i,t}+1$, but grows only logarithmically for $\Transpose{\Vector{e}_{i,t}}
+\Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \gg \nu_{i,t}+1$.  It follows that in
+the limit of large $\nu_{i,t}$---in regions of predictor space where there are
+many relevant samples---our optimization problem becomes the original
+least-squares optimization problem.
+
+Solving nonlinear optimization problems with the form of  \Cref{eq:robust-loss}
+is a well-studied and well-understood task, and software packages to
+perform this computation are readily available. 
+% TODO: summarize implementation details: how we perform the optimization
+\Cref{alg:compute-transform} describes the procedure for computing the transform
+between a new image pair, treating the optimization of \Cref{eq:robust-loss} as
+a subroutine.
+
+\begin{algorithm}
+  \caption{Compute the transform between two images, given a set, $\mathcal{I}_t$,
+    of landmarks and predictors extracted from an image pair and a covariance
+    model $\mathcal{M}$. }
+  \label{alg:compute-transform}
+  \begin{algorithmic}
+    \Function{ComputeTransform}{$\mathcal{I}_t$, $\mathcal{M}$}
+      \ForAll{$\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1},
+      \Predictor{i}{c_0} \}$ in $\mathcal{I}_t$}
+        \State $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$\mathcal{M}$, $
+          \Predictor{i}{t}$}
+        \State $g(\Transform) = \ImageLandmark{i}{c_1} -
+          \ProjectionFunction( \Transform\ProjectionFunction^{-1}(
+          \ImageLandmark{i}{c_0} ))$
+        \State $\mathcal{L} \gets \mathcal{L} +
+        (\nu+1)\log\left(1 + \Transpose{g(\Transform)}
+          \Matrix{\Psi}^{-1}
+        g(\Transform)\right)$
+      \EndFor
+      \State \Return $\ArgMin{\Transform\in\text{SE}(3)}\mathcal{L}(\Transform)$
+    \EndFunction
+    \Function{InferNoiseModel}{$\mathcal{M}$, $\TargetPredictor$}
+      \State $\textsc{neighbors}\gets$ \Call{GetNeighbors}{$\mathcal{M},
+          \TargetPredictor, \rho$} \Comment{$\rho$ is the radius of support of kernel $k$}
+      \State $\Matrix{\Psi}_* \gets \Matrix{\Psi}(\TargetPredictor)$ \State
+      $\nu_* \gets \nu(\TargetPredictor)$
+      \For{$(\Predictor{i}{t},\Vector{e}_{i,t})$ in $\textsc{Neighbors}$}
+        \State $\Matrix{\Psi}_* \gets \Matrix{\Psi}_* + k(\TargetPredictor,
+          \Predictor{i}{t}) \Vector{e}_{i,t}\Transpose{\Vector{e}_{i,t}}$
+        \State $\nu_* \gets \nu_* + k(\TargetPredictor, \Predictor{i}{t})$
+      \EndFor
+    \State \Return $\Matrix{\Psi}_*, \nu_*$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+We observe that \Cref{alg:compute-transform} is predictively robust, in the
+sense that it uses past experiences not just to predict the reliability of a
+given image landmark, but also to introspect and estimate its own knowledge of
+that reliability.  Landmarks which are not known to be reliable are trusted 
+less than landmarks which look like those which have been observed previously, where ``looks like'' is defined by our prediction space and choice of kernel. 
+
+\subsection{Inference without ground truth}
+
+\Cref{alg:train-ground-truth} requires access to the true transform between
+training image pairs.  In practice, such ground truth data may be difficult
+to obtain.  In these cases, we can instead formulate a likelihood model $p(\mathcal{D}' \vert
+\Transform_1, \dots, \Transform_t)$, where $\mathcal{D}' = \{\mathcal{I}_t\}$ is a dataset consisting only of
+landmarks and predictors for each training image pair. We can construct a model
+for future queries by inferring the most likely sequence of transforms for our
+training images.  The likelihood has the following factorized form:
+\begin{equation}
+  p(\mathcal{D}' \vert \Transform_{1:T}) \propto \int \prod_{i,t}
+  \mathrm{d}\ImageLandmarkCovariance{i}{t}\,
+  p(\ImageLandmark{i}{c_1} \vert \ImageLandmark{i}{c_0}, 
+    \Transform_t, \ImageLandmarkCovariance{i}{t}) p(\ImageLandmarkCovariance{i}{t}\vert \Predictor{i}{t},
+    \mathcal{D}, \Transform_{1:T}).
+\end{equation}
+We cannot easily maximize this likelihood, since marginalizing over the
+noise covariances removes the independence of the transforms between
+each image pair. To render the optimization tractable, we follow previous work \citep{VegaBrown:2013fv} and formulate an iterative expectation-maximization (EM)
+procedure. Given an estimate $\Transform_{t}^{(n)}$ of the transforms, we can
+compute the expected log-likelihood conditioned on our current estimate: 
+\begin{equation}
+  Q(\Transform_{1:T} \vert \Transform_{1:T}^{(n)}) = 
+    \int \left(\prod_{i,t}\mathrm{d}\ImageLandmarkCovariance{i}{t}
+      \,p(\ImageLandmarkCovariance{i}{t} | \mathcal{D}_{\setminus
+        i,t},
+      \Transform_{1:T}^{(n)})\right) \log \prod_{i,t} p(\ImageLandmark{i}{c_1} \vert
+      \ImageLandmark{i}{c_0}, \Transform_t,
+      \ImageLandmarkCovariance{i}{t}).
+\end{equation}
+This has the effect of rendering the likelihood of each transform to be
+estimated independently.  Moreover, the expected log-likelihood can be
+evaluated in closed form:
+\begin{align}
+  Q(\Transform_{1:T} | \Transform_{1:T}^{(n)}) \cong -\frac{1}{2}\sum_{t=1}^T
+  \sum_{i=1}^{N_t} \Transpose{\Vector{e}_{i,t}}
+  \left(\frac{1}{\nu_{i,t}^{(n)}}\Matrix{\Psi}_{i,t}^{(n)}\right)^{-1}
+  \Vector{e}_{i,t}.
+\end{align}
+The symbol $\cong$ is used to indicate equality up to an additive constant. We can iteratively refine our estimate by maximizing the expected
+log-likelihood
+\begin{equation}
+  \Transform_{1:T}^{(n+1)} = 
+    \ArgMax {\Transform_{1:T}\in\text{SE}(3)^T}
+    Q(\Transform_{1:T} \vert \Transform_{1:T}^{(n)}).
+\end{equation}
+Due to the additive structure of $Q(\Transform_{1:T} \vert
+\Transform_{1:T}^{(n)})$, this takes the form of $T$ separate nonlinear least-squares optimizations:  
+\begin{equation}
+\label{eq:Qargmin}
+  \Transform_{t}^{(n+1)} = 
+    \ArgMin {\Transform_{t}\in\text{SE}(3)}
+  \sum_{i=1}^{N_t} \Transpose{\Vector{e}_{i,t}}
+  \left(\frac{1}{\nu_{i,t}^{(n)}}\Matrix{\Psi}_{i,t}^{(n)}\right)^{-1}
+  \Vector{e}_{i,t}.
+\end{equation}
+ \Cref{alg:train-em} describes the process of training a model without
+ground truth. We refer to this process as PROBE-GK-EM, and distinguish it from
+PROBE-GK-GT (Ground Truth). We note that the sequence of estimated transforms,
+$\Transform_{1:T}^{(n)}$, is guaranteed to converge to a local maxima of the
+likelihood function \citep{dempster1977maximum}. It is also possible to use a robust loss function (\Cref{eq:robust-loss}) in place of \Cref{eq:Qargmin} during EM training. Although not formally motivated by the derivation  above, this approach often leads to lower test errors in practice. Characterizing when and why this robust learning process outperforms its non-robust alternative is part of ongoing work.
+
+
+\begin{algorithm}
+  \caption{Build the covariance model without ground truth given a sequence of observations, $\mathcal{D'}$, and an initial odometry estimate $\Transform_{1:T}^{(0)}$.}
+  \label{alg:train-em}
+  \begin{algorithmic}
+    \Function{BuildCovarianceModel}{$\mathcal{D'}$, $\Transform_{1:T}^{(0)}$}
+      \State Initialize an empty spatial index $\mathcal{M}$
+      \ForAll{$\mathcal{I}_t$ in $\mathcal{D'}$}
+        \ForAll{$\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1},
+        \Predictor{i}{t} \}$ in $\mathcal{I}_t$}
+          \State $\Vector{e}_{i,t} = \ImageLandmark{i}{c_1} -
+          \ProjectionFunction( \Transform_t^{(0)} \ProjectionFunction^{-1}(
+            \ImageLandmark{i}{c_0} ))$
+            \State Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and store
+              $\Vector{e}_{i,t}$ at its location
+        \EndFor
+      \EndFor
+      \Repeat
+        \ForAll{$\mathcal{I}_t$ in $\mathcal{D'}$}
+          \ForAll{$\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1},
+          \Predictor{i}{t} \}$ in $\mathcal{I}_t$}
+            \State $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$\mathcal{M}, \Predictor{i}{t}$}
+            \State $g(\Transform) = \ImageLandmark{i}{c_1} -
+              \ProjectionFunction( \Transform\ProjectionFunction^{-1}(
+              \ImageLandmark{i}{c_0} ))$
+            \State $\mathcal{L} \gets \mathcal{L} +
+              \Transpose{g(\Transform)}
+              \left(\frac{1}{\nu}\Matrix{\Psi}\right)^{-1}
+              g(\Transform)$
+          \EndFor
+          \State $\Transform_t \gets \ArgMin{\Transform\in\text{SE}(3)}
+            \mathcal{L}(\Transform)$
+          \State $\Vector{e}_{i,t} = \ImageLandmark{i}{c_1} -
+            \ProjectionFunction( \Transform_t^{(0)} \ProjectionFunction^{-1}(
+            \ImageLandmark{i}{c_0} ))$
+          \State Update the error stored at $\Predictor{i}{t}$ in $\mathcal{M}$
+            to $\Vector{e}_{i,t}$
+        \EndFor
+      \Until{converged}
+      \State\Return $\mathcal{M}$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\section{Prediction Space} \label{sec:predictors}
 A crucial component of our technique is the choice of prediction space.
 In practice, feature tracking quality is often degraded by a variety of effects such as motion blur, moving objects, and textureless or self-similar image regions.
 % Features suffering from such effects are often poorly localized in the image, yet may contain useful information that we would like to retain in our estimator.
@@ -309,6 +639,9 @@ Our high-frequency predictor effectively distinguishes between textureless regio
 \end{figure}
 
 
+\section{Experiments}
+
+\subsection{PROBE}
 
 \begin{table}
     \centering
@@ -359,334 +692,9 @@ Our high-frequency predictor effectively distinguishes between textureless regio
     \label{fig:probe_huskypic}
 \end{figure}
 
-\section{Generalized Kernels}
-
-However, not all features are created equal; most feature-based methods rely on
-random sample consensus algorithms \citep{fischler1981random} to partition the extracted features
-into inliers and outliers, and perform estimation based only on inliers. It is
-common to guard against misclassifying an outlier as an inlier by using robust
-estimation techniques, such as the Cauchy costs employed in
-\citet{kerl2013robust} or the dynamic covariance scaling devised
-by \citet{Burgard:ii}. These approaches, often grouped under the title of M-estimation, aim to maintain a quadratic influence
-of small errors, while reducing the contribution of larger errors. The
-robustness and accuracy of feature-based visual odometry often hinges on the
-tuning of the parameters of inlier selection and robust estimation. Performance
-can vary significantly from one environment to the next, and most algorithms require
-careful tuning to work in a given environment. 
-
-In this work, we describe a principled, data-driven way to build a noise model
-for visual odometry. We combine our previous work \citep{peretroukhin2015PROBE}
-on predictive robust estimation (PROBE) with our work on covariance estimation
-\citep{VegaBrown:2013fv} to formulate a predictive robust estimator for a
-stereo visual odometry pipeline. We frame the traditional non-linear least
-squares optimization problem as a problem of maximum likelihood estimation with
-a Gaussian noise model, and infer a distribution over the covariance matrix of
-the Gaussian noise from a predictive model learned from training data. This
-results in a Student's~$t$ distribution over the noise, and naturally yields a
-robust nonlinear least-squares optimization problem.  In this way, we can predict,
-in a principled manner, how informative each visual feature is with respect to the final state
-estimate, which allows our approach to intelligently weight observations to
-produce more accurate odometry estimates.  Our pipeline is outlined in
-Figure \ref{fig:probe_gk_system}.
-
-\subsection{Predictive noise models for visual odometry}
-%
-%The process described in the previous section employs a fixed noise covariance
-%$\Covariance$.  However, not all landmarks are created equal: differing texture
-%gradients can cause feature localization to degrade in predictable ways, and
-%effects like motion blur can lead to landmarks being less informative. If we had a
-%good estimate of the noise covariance for each landmark, we could simply replace the fixed covariance $\Covariance$
-%with one that varies for each stereo observation,
-%$\ImageLandmarkCovariance{i}{t}$. Such a predictive model would allows us to  better account for observation errors from a diverse set of noise sources, and incorporate information from landmarks that may otherwise be discarded by a binary outlier rejection scheme.
-%
-%However, estimating these covariances in a principled way is a nontrivial task.
-%Even when we have reasonable heuristic estimates available, it is difficult
-%to guarantee those estimates will be reliable.  Instead of relying solely on such
-%heuristics, we propose to learn these image-space noise covariances from data.
-In
-order to exploit conjugacy to a Gaussian noise model, we formulate our prior knowledge
-about this function using an inverse Wishart (IW) distribution over positive
-definite $d \times d$ matrices (the IW distribution has been used as a prior on covariance matrices in other robotics and computer vision contexts, see for example, \citep{fitzgibbon2007learning}). This distribution is defined by a scale matrix
-$\Matrix{\Psi} \in \RealNumbers[d][d]\succ0$ and a scalar quantity called the
-degrees of freedom $\nu\in\RealNumbers>d-1$:
-\begin{align}
-  p\left(\Matrix{R}\right) &= \InverseWishartDistribution
-  \left(\Matrix{R}; \Matrix{\Psi}, \nu\right)  \\ 
-  &= \frac{\vert\Matrix{\Psi}\vert^{\nu/2}}{2^{\frac{\nu
-  d}{2}}\Gamma_d(\frac{\nu}{2})} \vert\Matrix{R}\vert
-  ^{-\frac{\nu+d+1}{2}} \exp\left( -\frac{1}{2} \text{tr}\left(\Matrix{\Psi}
-  \Matrix{R}^{-1}\right)\right) \nonumber.
-\end{align}
-We use the scale matrix to encode our prior estimate of the
-covariance, and the degrees of freedom to encode our confidence in
-that estimate.  Specifically, if we estimate the covariance $\Matrix{R}$
-associated with predictor $\Vector{\phi}$ to be $\hat{\Matrix{R}}$ with a
-confidence equivalent to seeing $n$ independent samples of the error from
-$\NormalDistribution(\Vector{0}, \hat{\Matrix R})$, we would choose
-$\nu(\Vector{\phi})=n$ and $\Matrix{\Psi}(\Vector{\phi})=n\hat{\Matrix{R}}$.
-
-Given a sequence of observations and ground truth transformations,
-\begin{equation}
-\mathcal{D}=\{\mathcal{I}_t,\Transform_t\},\quad t\in[1,N]
-\end{equation} 
-where
-\begin{equation}
- \mathcal{I}_t = \{\ImageLandmark{i}{t},
-\ImageLandmark{i}{t}', \Predictor{i}{t} \} \quad i\in[1,N_t],
-\end{equation}
-we can use the procedure of generalized kernel estimation
-\citep{vega-brown2014nonparametric} to infer a posterior distribution over the
-covariance matrix $\TargetImageLandmarkCovariance$ associated with some query
-predictor vector $\TargetPredictor$:
-\begin{align}
-  p(\TargetImageLandmarkCovariance|\mathcal{D}, \TargetPredictor) &\propto
-    \prod_{i,t}\mathcal{N}(\Vector{e}_{i,t} \vert \Vector{0},
-      \TargetImageLandmarkCovariance)^{k(\TargetPredictor,\Predictor{i}{t})} \nonumber
-      \\
-      &\qquad\times\text{IW}(\TargetImageLandmarkCovariance;\Matrix{\Psi}(\TargetPredictor),
-      \nu(\TargetPredictor)) \\
-      &=\text{IW}(\TargetImageLandmarkCovariance;\Matrix{\Psi}_*, \nu_*). 
-\end{align}
-Here, $\Vector{e}_{i,t}= \ImageLandmark{i}{t}' - \ProjectionFunction(
-\Transform_t \ProjectionFunction^{-1}( \ImageLandmark{i}{t} ))$ as before.  
-The function $k: \RealNumbers[M]\times\RealNumbers[M]\to[0,1]$ is a kernel
-function which measures the similarity of two points in predictor space.
-Note also that the posterior parameters $\Matrix{\Psi}_*$ and $\nu_*$ can be
-computed in closed form as
-\begin{align}
-  \Matrix{\Psi}_* &= \Matrix{\Psi}(\TargetPredictor) + 
-    \sum_{i,t} k(\TargetPredictor,\Predictor{i}{t}) 
-    \Vector{e}_{i,t}\Transpose{\Vector{e}_{i,t}}, \label{eq:compute-psi}\\
-  \nu_* &= \nu(\TargetPredictor) + \sum_{i,t}
-    k(\TargetPredictor,\Predictor{i}{t}).  \label{eq:compute-nu}
-\end{align}
-
-If we marginalize over the covariance matrix, we find that the posterior
-predictive distribution is a multivariate Student's~$t$ distribution:
-\begin{align}
-p(\ImageLandmark{i}{t}'&|  \Transform_t,\ImageLandmark{i}{t}, \mathcal{D},
-  \Predictor{i}{t}) \\ &= \int \mathrm{d}\ImageLandmarkCovariance{i}{t}
-  \NormalDistribution\left( \Vector{e}_{i,t}; \Vector{0},
-    \ImageLandmarkCovariance{i}{t}\right)
-  \text{IW}(\ImageLandmarkCovariance{i}{t};\Matrix{\Psi}_*, \nu_*)  \\ &=
-  \StudentTDistribution_{\nu_*-d+1}\left(
-    \Vector{e}_{i,t}; \Vector{0}, \frac{1}{\nu_*-d+1}\Matrix{\Psi}_*\right) \\ &=
-    \frac{\Gamma(\frac{\nu_*+1}{2})}{\Gamma(\frac{\nu_*-d+1}{2})}
-    \vert\Matrix{\Psi_*}\vert^{-\frac{1}{2}}\pi^{-\frac{d}{2}} \left(1+
-    \Transpose{\Vector{e}_{i,t}} \Matrix{\Psi_*}^{-1} \Vector{e}_{i,t}
-  \right)^{-\frac{\nu_*+1}{2}}. 
-\end{align}
-Given a new landmark and predictor vector, we can infer a noise model by
-evaluating \cref{eq:compute-psi,eq:compute-nu}.  In order to accelerate this
-computation, it is helpful to choose a kernel function with finite support:
-that is, $k(\Vector{\phi},\Vector{\phi}')=0$ if $\Vert\Vector{\phi} -
-\Vector{\phi}'\Vert_2 > \rho$. Then, by indexing our training data in a spatial
-index such as a $k$-d tree, we can identify the subset of samples relevant to
-evaluating the sums in \cref{eq:compute-psi,eq:compute-nu} in $\mathcal{O}(\log
-N + \log N_t)$ time.  \Cref{alg:train-ground-truth} describes the procedure for
-building this model. 
-
-\begin{algorithm}
-  \caption{Build the covariance model given a sequence of observations, $\mathcal{D}$.}
-  \label{alg:train-ground-truth}
-  \begin{algorithmic}
-    \Function{BuildCovarianceModel}{$\mathcal{D}$}
-      \State Initialize an empty spatial index $\mathcal{M}$
-      \ForAll{$\mathcal{I}_t,\Transform_t$ in $\mathcal{D}$}
-        \ForAll{$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',
-          \Predictor{i}{t} \}$ in $\mathcal{I}_t$}
-          \State $\Vector{e}_{i,t} = \ImageLandmark{i}{t}' -
-            \ProjectionFunction( \Transform_t \ProjectionFunction^{-1}(
-            \ImageLandmark{i}{t} ))$
-            \State Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and store
-              $\Vector{e}_{i,t}$ at its location
-        \EndFor
-      \EndFor
-      \State\Return $\mathcal{M}$
-    \EndFunction
-  \end{algorithmic}
-\end{algorithm}
-
-Once we have inferred a noise model for each landmark in a new image pair, the
-maximum likelihood optimization problem is given by 
-\begin{equation}
-  \Transform_t^* = \ArgMin{\Transform_t\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  (\nu_{i,t}+1)\log \left(1+ \Transpose{\Vector{e}_{i,t}}
-  \Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \right).\label{eq:robust-loss}
-\end{equation}
-The final optimization problem thus emerges as a nonlinear least squares problem with a rescaled Cauchy-like loss
-function, with error term $\Transpose{\Vector{e}_{i,t}}
-(\frac{1}{\nu_{i,t}+1}\Matrix{\Psi}_{i,t})^{-1} \Vector{e}_{i,t}$ and outlier
-scale $\nu_{i,t}+1$.  This is a common robust loss function which is
-approximately quadratic in the reprojection error for
-$\Transpose{\Vector{e}_{i,t}} \Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \ll
-\nu_{i,t}+1$, but grows only logarithmically for $\Transpose{\Vector{e}_{i,t}}
-\Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \gg \nu_{i,t}+1$.  It follows that in
-the limit of large $\nu_{i,t}$---in regions of predictor space where there are
-many relevant samples---our optimization problem becomes the original
-least-squares optimization problem.
-
-Solving nonlinear optimization problems with the form of  \Cref{eq:robust-loss}
-is a well-studied and well-understood task, and software packages to
-perform this computation are readily available. 
-% TODO: summarize implementation details: how we perform the optimization
-\Cref{alg:compute-transform} describes the procedure for computing the transform
-between a new image pair, treating the optimization of \Cref{eq:robust-loss} as
-a subroutine.
-
-\begin{algorithm}
-  \caption{Compute the transform between two images, given a set, $\mathcal{I}_t$,
-    of landmarks and predictors extracted from an image pair and a covariance
-    model $\mathcal{M}$. }
-  \label{alg:compute-transform}
-  \begin{algorithmic}
-    \Function{ComputeTransform}{$\mathcal{I}_t$, $\mathcal{M}$}
-      \ForAll{$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',
-      \Predictor{i}{t} \}$ in $\mathcal{I}_t$}
-        \State $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$\mathcal{M}$, $
-          \Predictor{i}{t}$}
-        \State $g(\Transform) = \ImageLandmark{i}{t} -
-          \ProjectionFunction( \Transform\ProjectionFunction^{-1}(
-          \ImageLandmark{i}{t}' ))$
-        \State $\mathcal{L} \gets \mathcal{L} +
-        (\nu+1)\log\left(1 + \Transpose{g(\Transform)}
-          \Matrix{\Psi}^{-1}
-        g(\Transform)\right)$
-      \EndFor
-      \State \Return $\ArgMin{\Transform\in\text{SE}(3)}\mathcal{L}(\Transform)$
-    \EndFunction
-    \Function{InferNoiseModel}{$\mathcal{M}$, $\TargetPredictor$}
-      \State $\textsc{neighbors}\gets$ \Call{GetNeighbors}{$\mathcal{M},
-          \TargetPredictor, \rho$}
-      \State\Comment{$\rho$ is the radius of the support of the kernel $k$}
-      \State $\Matrix{\Psi}_* \gets \Matrix{\Psi}(\TargetPredictor)$ \State
-      $\nu_* \gets \nu(\TargetPredictor)$
-      \For{$(\Predictor{i}{t},\Vector{e}_{i,t})$ in $\textsc{Neighbors}$}
-        \State $\Matrix{\Psi}_* \gets \Matrix{\Psi}_* + k(\TargetPredictor,
-          \Predictor{i}{t}) \Vector{e}_{i,t}\Transpose{\Vector{e}_{i,t}}$
-        \State $\nu_* \gets \nu_* + k(\TargetPredictor, \Predictor{i}{t})$
-      \EndFor
-    \State \Return $\Matrix{\Psi}_*, \nu_*$
-    \EndFunction
-  \end{algorithmic}
-\end{algorithm}
-
-We observe that \Cref{alg:compute-transform} is predictively robust, in the
-sense that it uses past experiences not just to predict the reliability of a
-given image landmark, but also to introspect and estimate its own knowledge of
-that reliability.  Landmarks which are not known to be reliable are trusted 
-less than landmarks which look like those which have been observed previously, where ``looks like'' is defined by our prediction space and choice of kernel. 
-
-\subsection{Inference without ground truth}
-
-\Cref{alg:train-ground-truth} requires access to the true transform between
-training image pairs.  In practice, such ground truth data may be difficult
-to obtain.  In these cases, we can instead formulate a likelihood model $p(\mathcal{D}' \vert
-\Transform_1, \dots, \Transform_t)$, where $\mathcal{D}' = \{\mathcal{I}_t\}$ is a dataset consisting only of
-landmarks and predictors for each training image pair. We can construct a model
-for future queries by inferring the most likely sequence of transforms for our
-training images.  The likelihood has the following factorized form:
-\begin{equation}
-  p(\mathcal{D}' \vert \Transform_{1:T}) \propto \int \prod_{i,t}
-  \mathrm{d}\ImageLandmarkCovariance{i}{t}\,
-  p(\ImageLandmark{i}{t}' \vert \ImageLandmark{i}{t}, 
-    \Transform_t, \ImageLandmarkCovariance{i}{t}) p(\ImageLandmarkCovariance{i}{t}\vert \Predictor{i}{t},
-    \mathcal{D}, \Transform_{1:T}).
-\end{equation}
-We cannot easily maximize this likelihood, since marginalizing over the
-noise covariances removes the independence of the transforms between
-each image pair. To render the optimization tractable, we follow previous work \citep{VegaBrown:2013fv} and formulate an iterative expectation-maximization (EM)
-procedure. Given an estimate $\Transform_{t}^{(n)}$ of the transforms, we can
-compute the expected log-likelihood conditioned on our current estimate: 
-\begin{equation}
-  Q(\Transform_{1:T} \vert \Transform_{1:T}^{(n)}) = 
-    \int \left(\prod_{i,t}\mathrm{d}\ImageLandmarkCovariance{i}{t}
-      \,p(\ImageLandmarkCovariance{i}{t} | \mathcal{D}_{\setminus
-        i,t},
-      \Transform_{1:T}^{(n)})\right) \log \prod_{i,t} p(\ImageLandmark{i}{t}' \vert
-      \ImageLandmark{i}{t}, \Transform_t,
-      \ImageLandmarkCovariance{i}{t}).
-\end{equation}
-This has the effect of rendering the likelihood of each transform to be
-estimated independently.  Moreover, the expected log-likelihood can be
-evaluated in closed form:
-\begin{align}
-  Q(\Transform_{1:T} | \Transform_{1:T}^{(n)}) \cong -\frac{1}{2}\sum_{t=1}^T
-  \sum_{i=1}^{N_t} \Transpose{\Vector{e}_{i,t}}
-  \left(\frac{1}{\nu_{i,t}^{(n)}}\Matrix{\Psi}_{i,t}^{(n)}\right)^{-1}
-  \Vector{e}_{i,t}.
-\end{align}
-The symbol $\cong$ is used to indicate equality up to an additive constant. 
-A derivation of this observation can be found in our supplemental material.
-
-We can iteratively refine our estimate by maximizing the expected
-log-likelihood
-\begin{equation}
-  \Transform_{1:T}^{(n+1)} = 
-    \ArgMax {\Transform_{1:T}\in\text{SE}(3)^T}
-    Q(\Transform_{1:T} \vert \Transform_{1:T}^{(n)}).
-\end{equation}
-Due to the additive structure of $Q(\Transform_{1:T} \vert
-\Transform_{1:T}^{(n)})$, this takes the form of $T$ separate nonlinear least-squares optimizations:  
-\begin{equation}
-\label{eq:Qargmin}
-  \Transform_{t}^{(n+1)} = 
-    \ArgMin {\Transform_{t}\in\text{SE}(3)}
-  \sum_{i=1}^{N_t} \Transpose{\Vector{e}_{i,t}}
-  \left(\frac{1}{\nu_{i,t}^{(n)}}\Matrix{\Psi}_{i,t}^{(n)}\right)^{-1}
-  \Vector{e}_{i,t}.
-\end{equation}
- \Cref{alg:train-em} describes the process of training a model without
-ground truth. We refer to this process as PROBE-GK-EM, and distinguish it from
-PROBE-GK-GT (Ground Truth). We note that the sequence of estimated transforms,
-$\Transform_{1:T}^{(n)}$, is guaranteed to converge to a local maxima of the
-likelihood function \citep{dempster1977maximum}. It is also possible to use a robust loss function (\Cref{eq:robust-loss}) in place of \Cref{eq:Qargmin} during EM training. Although not formally motivated by the derivation  above, this approach often leads to lower test errors in practice. Characterizing when and why this robust learning process outperforms its non-robust alternative is part of ongoing work.
+\subsection{PROBE-GK}
 
 
-\begin{algorithm}
-  \caption{Build the covariance model without ground truth given a sequence of observations, $\mathcal{D'}$, and an initial odometry estimate $\Transform_{1:T}^{(0)}$.}
-  \label{alg:train-em}
-  \begin{algorithmic}
-    \Function{BuildCovarianceModel}{$\mathcal{D'}$, $\Transform_{1:T}^{(0)}$}
-      \State Initialize an empty spatial index $\mathcal{M}$
-      \ForAll{$\mathcal{I}_t$ in $\mathcal{D'}$}
-        \ForAll{$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',
-        \Predictor{i}{t} \}$ in $\mathcal{I}_t$}
-          \State $\Vector{e}_{i,t} = \ImageLandmark{i}{t} -
-          \ProjectionFunction( \Transform_t^{(0)} \ProjectionFunction^{-1}(
-            \ImageLandmark{i}{t}' ))$
-            \State Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and store
-              $\Vector{e}_{i,t}$ at its location
-        \EndFor
-      \EndFor
-      \Repeat
-        \ForAll{$\mathcal{I}_t$ in $\mathcal{D'}$}
-          \ForAll{$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',
-          \Predictor{i}{t} \}$ in $\mathcal{I}_t$}
-            \State $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$\mathcal{M}, \Predictor{i}{t}$}
-            \State $g(\Transform) = \ImageLandmark{i}{t} -
-              \ProjectionFunction( \Transform\ProjectionFunction^{-1}(
-              \ImageLandmark{i}{t}' ))$
-            \State $\mathcal{L} \gets \mathcal{L} +
-              \Transpose{g(\Transform)}
-              \left(\frac{1}{\nu}\Matrix{\Psi}\right)^{-1}
-              g(\Transform)$
-          \EndFor
-          \State $\Transform_t \gets \ArgMin{\Transform\in\text{SE}(3)}
-            \mathcal{L}(\Transform)$
-          \State $\Vector{e}_{i,t} = \ImageLandmark{i}{t} -
-            \ProjectionFunction( \Transform_t^{(0)} \ProjectionFunction^{-1}(
-            \ImageLandmark{i}{t}' ))$
-          \State Update the error stored at $\Predictor{i}{t}$ in $\mathcal{M}$
-            to $\Vector{e}_{i,t}$
-        \EndFor
-      \Until{converged}
-      \State\Return $\mathcal{M}$
-    \EndFunction
-  \end{algorithmic}
-\end{algorithm}
-
-\subsection{Experiments}
 \subsubsection{Synthetic}
 
 Next, we formulated a synthetic dataset wherein a stereo camera traverses a circular path observing 2000 randomly distributed point features.
@@ -726,7 +734,7 @@ by approximately 50\%. In our synthetic data, the Expectation Maximization appro
     \label{fig:sim_comparison}
 \end{figure}
 
-\subsection{KITTI}
+\subsubsection{KITTI}
 
 \begin{figure}
     \centering
@@ -754,12 +762,10 @@ work, we focused on the city, residential and road categories
     \label{fig:probe-gk_kitti_comparison1}
 \end{figure}
 
-Our prediction space consisted  of inertial magnitudes, high and low image frequency
+Our prediction space consisted  of the same predictors as k-NN-based PROBE: inertial magnitudes, high and low image frequency
 coefficients, image entropy, pixel location, and estimated transform parameters.
 The choice of predictors is motivated by the types of effects we wish to capture
-(in this case: grassy self-similar textures, as well as shadows, and motion blur). For
-a more detailed explanation of our choice of prediction space, see our previous work
-\citep{peretroukhin2015PROBE}.
+(in this case: grassy self-similar textures, as well as shadows, and motion blur). 
 
 
 

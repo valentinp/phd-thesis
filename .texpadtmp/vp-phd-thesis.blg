@@ -1,12 +1,22 @@
 This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
+A level-1 auxiliary file: sections/introduction.aux
 A level-1 auxiliary file: sections/math.aux
 A level-1 auxiliary file: sections/vo.aux
 A level-1 auxiliary file: sections/probe.aux
+A level-1 auxiliary file: sections/sun-bcnn.aux
+A level-1 auxiliary file: sections/dpc.aux
+A level-1 auxiliary file: sections/so3-learning.aux
+A level-1 auxiliary file: sections/conclusion.aux
+A level-1 auxiliary file: sections/appendix-perturbations.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
+Repeated entry---line 126 of file ../pubs-mine.bib
+ : @article{2018_Peretroukhin_Deep
+ :                                ,
+I'm skipping whatever remains of this entry
 Database file #3: ../pubs-probe.bib
 I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
  : 
@@ -14,9 +24,33 @@ I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Database file #4: ../pubs-sun_bcnn.bib
+Repeated entry---line 9 of file ../pubs-sun_bcnn.bib
+ : @article{LeCun2015-qf
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 21 of file ../pubs-sun_bcnn.bib
+ : @article{Leutenegger2015-fk
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 99 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Ma2016-at
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 109 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Cvisic2015-mt
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 119 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Forster2014-bm
+ :                              ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 130 of file ../pubs-sun_bcnn.bib
  : @article{Scaramuzza2011-qr
  :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 161 of file ../pubs-sun_bcnn.bib
+ : @article{Geiger2013-ky
+ :                       ,
 I'm skipping whatever remains of this entry
 Repeated entry---line 292 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Geiger2011-xe
@@ -26,50 +60,74 @@ Repeated entry---line 322 of file ../pubs-sun_bcnn.bib
  : @book{Barfoot2017-ri
  :                     ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 352 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Kendall2016-zf
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 368 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Peretroukhin2017-eb
+ :                                   ,
+I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
+Warning--I didn't find a database entry for "Clement2018-cat"
+Warning--I didn't find a database entry for "Peretroukhin2018"
+Warning--I didn't find a database entry for "Hornik2014-jw"
+Warning--I didn't find a database entry for "farneback2003two"
+Warning--empty journal in Alcantarilla2016-kv
+Warning--empty journal in Alcantarilla2016-fs
+Warning--empty journal in Clark2017-zg
+Warning--empty journal in DeTone2016-ue
+Warning--can't use both volume and number fields in fisher1953dispersion
 Warning--empty school in florez2010
+Warning--empty booktitle in Forster2015-af
 Warning--empty school in furgale_phd11
+Warning--empty journal in Kendall2017-ix
+Warning--empty journal in Lee2015-af
+Warning--empty journal in Li:2017
+Warning--empty journal in Ma2016-at
+Warning--empty journal in Oliveira2017-lt
 Warning--empty journal in Sola2018-kg
 Warning--empty publisher in vega-brown2014nonparametric
-You've used 40 entries,
+Warning--empty journal in Zhou2019-se
+You've used 122 entries,
             1935 wiz_defined-function locations,
-            724 strings with 11344 characters,
-and the built_in function-call counts, 18611 in all, are:
-= -- 1888
-> -- 668
-< -- 40
-+ -- 235
-- -- 222
-* -- 1431
-:= -- 2972
-add.period$ -- 124
-call.type$ -- 40
-change.case$ -- 308
-chr.to.int$ -- 35
-cite$ -- 44
-duplicate$ -- 831
-empty$ -- 1365
-format.name$ -- 284
-if$ -- 3896
-int.to.chr$ -- 6
+            1192 strings with 27295 characters,
+and the built_in function-call counts, 58715 in all, are:
+= -- 5822
+> -- 2521
+< -- 99
++ -- 896
+- -- 863
+* -- 4679
+:= -- 9517
+add.period$ -- 368
+call.type$ -- 122
+change.case$ -- 1032
+chr.to.int$ -- 101
+cite$ -- 138
+duplicate$ -- 2506
+empty$ -- 4122
+format.name$ -- 1033
+if$ -- 12093
+int.to.chr$ -- 22
 int.to.str$ -- 0
-missing$ -- 39
-newline$ -- 202
-num.names$ -- 120
-pop$ -- 354
+missing$ -- 120
+newline$ -- 603
+num.names$ -- 370
+pop$ -- 1239
 preamble$ -- 1
-purify$ -- 311
+purify$ -- 1036
 quote$ -- 0
-skip$ -- 651
+skip$ -- 1885
 stack$ -- 0
-substring$ -- 1370
-swap$ -- 235
-text.length$ -- 22
+substring$ -- 4038
+swap$ -- 662
+text.length$ -- 63
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 238
-warning$ -- 4
-while$ -- 154
+type$ -- 728
+warning$ -- 16
+while$ -- 462
 width$ -- 0
-write$ -- 521
-(There were 4 error messages)
+write$ -- 1558
+(There were 13 error messages)
