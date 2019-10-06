@@ -14,11 +14,11 @@
 The first pseudo-sensor we present is a general technique we call PRedictive ROBust Estimation, or PROBE. This approach uses non-parametric learning to predict observation covariances for a stereo visual odometry pipeline, effectively scaling a least squares objective in a predictive fashion. We present two different methods to learn and incorporate these covariances. First we use a simple k-nearest-neighbours approach to learn isotropic covariances for three dimensional point-cloud matching. Second, we extend this significantly by applying the method of Generalized Kernels to a Bayesian treatment of covariance learning. We show that by assuming a particular covariance prior over re-projection errors, we can derive a robust least squares loss with parameters that are predicted for each  error by our approach.
 
 There are three publications associated with this work:
-\begin{itemize}
+\begin{enumerate}
 \item \bibentry{2015_Peretroukhin_PROBE}
 \item \bibentry{2015_Peretroukhin_Get}
 \item \bibentry{Peretroukhin2016-om}.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -60,26 +60,23 @@ the estimator. Unlike our predictive approach, their technique relies on the ava
 approach, \Citet{Zhang2015} choose an optimally observable feature subset for a
 monocular SLAM pipeline by selecting features with the highest \textit{informativeness} - a measure calculated based on the observability of the SLAM subsystem. Observability, however, is governed by the 3D location of the features, and therefore cannot predict systematic feature degradation due to environmental or sensor-based effects. 
 
-\section{Scalar k-Nearest Neighbours}
+\section{PROBE: Scalar k-Nearest Neighbours}
 
-Predictive ROBust Estimation is a technique that improves localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
+In our initial exploratory work, we explored the idea of scaling 
+With Predictive ROBust Estimation, we aim to improve localization accuracy in the presence of such effects by building a model of the uncertainty in the affected visual observations. 
 We learn the model in an offline training procedure and then use it online to predict the uncertainty of incoming observations as a function of their location in a predefined \emph{prediction space}.
-Our model can be learned in completely unknown environments with frequent or infrequent ground truth data. 
+Our model can be learned in completely unknown environments with frequent or infrequent ground truth data.
+ 
 
 The primary contributions of this research are a flexible framework for learning the quality of visual features with respect to navigation estimates, and a straightforward way to incorporate this information into a navigation pipeline. On its own, PROBE can produce more accurate estimates than a binary outlier rejection scheme like Random Sample Consensus (RANSAC) because it can simultaneously reduce the influence of outliers while intelligently weighting inliers. PROBE reduces the need to develop finely-tuned uncertainty models for complex sensors such as cameras, and better accounts for the effects observed in complex, dynamic scenes than typical fixed-uncertainty models. While we present PROBE in the context of visual feature-based navigation, we stress that it is not limited to visual measurements and could also be applied to other sensor modalities.
 % The remainder of this paper is organized as follows: In Section \ref{sec:related_work}, we discuss related work in the literature. Section \ref{sec:approach} outlines our tightly-coupled visual-inertial odometry pipeline and learning model. Section \ref{sec:predictors} discusses and justifies our choice of prediction space. Sections \ref{sec:results} and \ref{sec:discussion} discuss experimental results of PROBE's performance on several segments from the KITTI dataset \cite{Geiger:2013kp}, and experimental datasets collected at the University of Toronto Institute for Aerospace Studies (UTIAS). Finally, Section \ref{sec:conclusions} offers some concluding remarks.
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \centering
-    \includegraphics[width=0.5\textwidth]{probe/feature_space}
-    \caption{PROBE maps image features into a prediction space to predict feature quality ($\alpha$). Feature quality is a function of the nearest neighbours from training data.}
-    \label{fig:probe_feature_space}
-\end{wrapfigure}
+
 
 The aim of PROBE is to learn a model for the quality of visual features, with the goal of reducing the impact of deleterious visual effects such as moving objects, motion blur, and shadows on navigation estimates.
 Feature quality is characterized by a scalar weight, $\beta_i$, for each visual feature in an environment.
 To compute $\beta_i$ we define a prediction space (similar to \cite{VegaBrown:ew}) that consists of a set of visual-inertial predictors computed from the local image region around the feature and the inertial state of the vehicle (Section \ref{sec:predictors} details our choice of predictors).
-We then scale the image covariance of each feature ($\MeasurementCovariance_a^{i}$, $\MeasurementCovariance_b^{i}$ in \ref{eqn:gamma}) by $\beta_i$ during the non-linear optimization.
+We then scale the image covariance of each feature by $\beta_i$ during the non-linear optimization.
 
 In a similar manner to M-estimation, PROBE achieves robustness by varying the influence of certain measurements.
 However, in contrast to robust cost functions that weight measurements based purely on estimation error, PROBE weights measurements based on their assessed quality.
@@ -88,45 +85,107 @@ To learn the model, we require training data that consists of a traversal throug
 
 We learn the quality of visual features \textit{indirectly} through their effect on navigation estimates. We define high quality features as those that result in estimates that are close to ground truth. Our framework is flexible enough that we do not require ground truth at every image and we can learn the model based on even a single loop closure error.
 
+
+\subsection{Mathematical Formulation}
+
+
+
+To solve for the relative egomotion between two camera frames, $\CoordinateFrame{c_0}$ and $\CoordinateFrame{c_1}$, we follow technique described in \Cref{sec:vo_point_cloud} to convert stereo observations into point-clouds and then solve for the maximum likelihood $\LieGroupSE{3}$ transformation. We associate with each match $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}$ a vector of
+\emph{predictors}, $\Predictor{i}{c}$.  Each predictor can be computed using both visual\footnote{Including potentially data from all four images in the pair of stereo images.} and inertial cues , allowing us to model effects like motion blur and self-similar
+textures. We then compute the covariance as a function of these predictors, so
+that $\ImageLandmarkCovariance{i}{c} = \Covariance( \Predictor{i}{c})$, and we use the same covariance function for features in both frames\footnote{We conjecture that this is reasonable in a VO setup, where images change minimally between consecutive frames.},
+\begin{align}
+	\ImageLandmark{i}{c_0} &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \ImageLandmarkCovariance{i}{c} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \Covariance( \Predictor{i}{c})\right) \\
+		\ImageLandmark{i}{c_1} &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \ImageLandmarkCovariance{i}{c} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \Covariance( \Predictor{i}{c})\right)
+\end{align}
+
+
+This then builds the following weighted least squares objective,
+
+\begin{equation}
+\label{eq:vo_objective}
+  \Transform_t^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  \Transpose{\Vector{e}_{i}(\Transform_t)} \GeneralCovariance_{i,t}^{-1} \Vector{e}_{i}(\Transform_t).
+\end{equation}
+where $\GeneralCovariance_{i,t}$ is now given by,
+\begin{equation}
+	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \Covariance( \Predictor{i}{c})  \Matrix{G}_{i,c_1}^T \Matrix{D}^T + 
+ \Matrix{D}\Transform_t \Matrix{G}_{i,c_0} \Covariance( \Predictor{i}{c}) \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T
+\end{equation}
+We build a model for $\Covariance( \Predictor{i}{c})$ as,
+\begin{equation}
+\Covariance( \Predictor{i}{c}) = \beta(\Predictor{i}{c}) \bar{\Covariance},
+\end{equation}
+with
+\begin{equation}
+ \beta(\Predictor{i}{c}) = \left(\frac{1}{\PROBEPoseError_\text{avg} K} \sum_{k=1}^K \PROBEPoseError_k  \right)^{\gamma}, ~ \PROBEPoseError_k \in \textsc{k-NN}(\Predictor{i}{c}),
+\end{equation}
+
+where $\{\PROBEPoseError_k\}_{k=1}^K$ are $K$ egomotion errors that are `nearest' to $\Predictor{i}{c}$, $\epsilon_\text{avg}$ is an average error, and $\gamma > 1$ is a hyper-parameter designed to exaggerate the effect of small changes in position error.
+
 \subsection{Training}
-Training proceeds by traversing the training path, selecting a subset of visual features at each step, and using them to compute an incremental position estimate. By comparing the estimated position to the ground truth position, we compute the translational Root Mean Squared Error (RMSE), denoted by $ \alpha_{l,s} $ for iteration $l$ and step $s$, and store it at each feature's position in the prediction space (we denote the set of predictors and associated RMSE value by $\Theta_{l,s}$). The full algorithm is summarized in Figure \ref{fig:ProbeTraining}. Note that $\alpha_{l,s}$ can be computed at each step, at intermittent steps, or for an entire path, depending on the availability of ground truth data.
-\begin{figure}[h]
-\begin{center}
-\begin{algorithmic}[1]
-\Procedure{trainPROBE()}{}
-\For{$l\gets 1, N_{iter}$}
-\For{$s\gets 1, N_{path}$}
-	\State $f_1, \dots, f_J \gets \text{sample_features}(l)$
-	\State $\mbs\pi^1_l, \dots, \mbs\pi^J_l \gets predictors(f_1, \dots, f_J)$
-	\State $\bar{\mbf{C}}_{ba},  \bar{\mbf{r}}_a^{ba} \gets poseChange(f_1, \dots, f_J)$
-	\State $\mbf \alpha_{l,s}  \gets computeRMSE(\bar{\mbf{r}}_a^{ba}, {\mbf{r}_{a}^{ba}}_{GT} )$
-	\State  $ \Theta_{l,s} \gets \left\{\mbs\pi^1_{l,s}, \dots, \mbs\pi^J_{l,s}, \alpha_{l,s}\right\}$
-\EndFor
-\EndFor
-\State \textbf{return} $\mbs \Theta = \{ \Theta_{l,s} \}$
-\EndProcedure
-\end{algorithmic}
-\caption{The PROBE training procedure.}\label{fig:ProbeTraining}
-\end{center}
-\end{figure}
+Training proceeds by traversing the training path, selecting a subset of visual features at each step, and using them to compute an incremental position estimate. By comparing the estimated position to the ground truth position, we compute the translational Root Mean Squared Error (RMSE), $\epsilon$, and store it at each feature's position in the prediction space. The full algorithm is summarized in \Cref{alg:probe_train}. 
+%\begin{figure}[h]
+%\begin{center}
+%\begin{algorithmic}[1]
+%\Procedure{trainPROBE}{}
+%\For{$l\gets 1, N_{iter}$}
+%\For{$s\gets 1, N_{path}$}
+%	\State $f_1, \dots, f_J \gets \text{samplefeatures}(l)$
+%	\State $\mbs\pi^1_l, \dots, \mbs\pi^J_l \gets predictors(f_1, \dots, f_J)$
+%	\State $\bar{\mbf{C}}_{ba},  \bar{\mbf{r}}_a^{ba} \gets poseChange(f_1, \dots, f_J)$
+%	\State $\mbf \alpha_{l,s}  \gets computeRMSE(\bar{\mbf{r}}_a^{ba}, {\mbf{r}_{a}^{ba}}_{GT} )$
+%	\State  $ \Theta_{l,s} \gets \left\{\mbs\pi^1_{l,s}, \dots, \mbs\pi^J_{l,s}, \alpha_{l,s}\right\}$
+%\EndFor
+%\EndFor
+%\State \textbf{return} $\mbs \Theta = \{ \Theta_{l,s} \}$
+%\EndProcedure
+%\end{algorithmic}
+%\caption{The PROBE training procedure.}\label{fig:ProbeTraining}
+%\end{center}
+%\end{figure}
+
+\begin{algorithm}
+  \caption{Train PROBE based on a dataset ($\mathcal{D}$) of pairs of input sensor data ($\mathcal{I}_s$) and ground truth egomotion ($\Transform_s$).}
+   \label{alg:probe_train}
+  \begin{algorithmic}
+    \Function{BuildPROBEModel}{$\mathcal{D}$}
+      \For{$l \gets [1,...,N_{iter}]$}
+      \ForAll{$\mathcal{I}_s$, $\Transform_s$ in $\mathcal{D}$}
+	\State $\mathcal{F} \gets$ \Call{extractFeatures}{$\mathcal{I}_s$}
+	\State $\{f_1, \dots, f_J\} \gets$ \Call{sample}{$\mathcal{F}$}
+	\State $\Estimate{\Transform} \gets$ \Call{computeTransform}{$\{f_1, \dots, f_J\}$}
+	\State $\mbf \PROBEPoseError  \gets$ \Call{error}{$\Estimate{\Transform}, \Transform_s$}
+	\State $\{\Predictor{s}{1}, \dots, \Predictor{s}{J}\} \gets$ \Call{predictor}{$\{f_1, \dots, f_J\}$}
+	\State Insert $\{\Predictor{s}{1}, \dots,  \Predictor{s}{J}\}$ into $\mathcal{M}$ and store $\PROBEPoseError$ at all $J$ locations
+	\EndFor
+      \EndFor
+      \State\Return  $\mathcal{M}$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
 	\subsection{Evaluation}
 To use the PROBE model in a test environment, we compute the location of each observed visual feature in our prediction space, and then compute its relative weight $\beta_i$ as a function of its $K$ nearest neighbours in the training set.
 For efficiency, the $K$ nearest neighbours are found using a $k$-d tree.
-The final scaling factor $\beta_i$ is a function of the mean of the $\alpha$ values corresponding to the $K$ nearest neighbours, normalized by $\overline \alpha$, the mean $\alpha$ value of the entire training set.
+The final scaling factor $\beta_i$ is a function of the mean of the $\alpha$ values corresponding to the $K$ nearest neighbours, normalized by $\PROBEPoseError_\text{avg}$, the mean $\alpha$ value of the entire training set.
 
-\begin{figure}[h]
-\begin{algorithmic}[1]
-\Procedure{testPROBE}{$\mbs \Theta$}
-\For{$i \gets 1, N_{feat}$}
-	\State $\mbs \pi_i  \gets predictors(f_i) $
-	\State $\alpha_1,...,\alpha_K \gets findKNN(\mbs \pi_i, K, \mbs\Theta)$
-	\State $\beta_i \gets \left(\frac{1}{\overline{\alpha} K} \sum_{k=1}^K \alpha_k  \right)^{\gamma}$
-\EndFor
-\State \textbf{return}  $\mbs \beta = \{\beta_i\}$
-\EndProcedure
-\end{algorithmic}
-\caption{The PROBE evaluation procedure.}\label{fig:ProbeTest}
-\end{figure}
+\begin{algorithm}
+  \caption{Compute scalar covariance factors, $\beta_i$, for a set of stereo feature tracks (and IMU data), $\mathcal{F}$, given a PROBE model $\mathcal{M}$.}
+  \label{alg:probe_test}
+  \begin{algorithmic}
+    \Function{UsePROBE}{$\mathcal{M}$, $\mathcal{F}, \gamma$}
+     \State $\PROBEPoseError_\text{avg} \gets$ \Call{averageError}{$\mathcal{M}$}
+      \ForAll{$f_i$ in $\mathcal{F}$}
+        \State $\Vector{\phi}_i \gets$ \Call{predictor}{$f_i$} 
+        \State $\PROBEPoseError_1,...,\PROBEPoseError_K \gets$ \Call{findKNN}{$\Vector{\phi}_i, K, \mathcal{M}$}
+		\State $\beta_i \gets \left(\frac{1}{\PROBEPoseError_\text{avg} K} \sum_{k=1}^K \PROBEPoseError_k  \right)^{\gamma}$
+		
+	   \EndFor
+      \State\Return $\mbs \beta = \{\beta_i\}$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
 
 
 The value of $K$ can be determined through cross-validation, and in practice depends on the size of the training set and the environment.
@@ -241,12 +300,15 @@ For each feature, we compute a coefficient for the low- and high-frequency regim
 \Cref{fig:probe_high_frequency} shows the result of the high-frequency version of this predictor on a sample image from the KITTI dataset.
 Our high-frequency predictor effectively distinguishes between textureless regions (e.g., shadows and roads) and texture-rich regions (e.g., foliage).
 
+
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{probe/highFreqPredictor.png}
     \caption{A high-frequency predictor can distinguish between regions of high and low texture such as foliage and shadows. Green indicates higher values.}
     \label{fig:probe_high_frequency}
 \end{figure}
+
+
 
 \begin{table}
     \centering
@@ -328,24 +390,20 @@ produce more accurate odometry estimates.  Our pipeline is outlined in
 Figure \ref{fig:probe_gk_system}.
 
 \subsection{Predictive noise models for visual odometry}
-
-The process described in the previous section employs a fixed noise covariance
-$\Covariance$.  However, not all landmarks are created equal: differing texture
-gradients can cause feature localization to degrade in predictable ways, and
-effects like motion blur can lead to landmarks being less informative. If we had a
-good estimate of the noise covariance for each landmark, we could simply replace the fixed covariance $\Covariance$
-with one that varies for each stereo observation,
-$\ImageLandmarkCovariance{i}{t}$. Such a predictive model would allows us to  better account for observation errors from a diverse set of noise sources, and incorporate information from landmarks that may otherwise be discarded by a binary outlier rejection scheme.
-
-However, estimating these covariances in a principled way is a nontrivial task.
-Even when we have reasonable heuristic estimates available, it is difficult
-to guarantee those estimates will be reliable.  Instead of relying solely on such
-heuristics, we propose to learn these image-space noise covariances from data.
-
-We associate with each landmark $\ImageLandmark{i}{t}$ a vector of
-\emph{predictors}, $\Predictor{i}{t}\in\RealNumbers[M]$.  Each predictor can be computed using both visual and inertial cues, allowing us to model effects like motion blur and self-similar
-textures. We then compute the covariance as a function of these predictors, so
-that $\ImageLandmarkCovariance{i}{t} = \Covariance( \Predictor{i}{t})$.  In
+%
+%The process described in the previous section employs a fixed noise covariance
+%$\Covariance$.  However, not all landmarks are created equal: differing texture
+%gradients can cause feature localization to degrade in predictable ways, and
+%effects like motion blur can lead to landmarks being less informative. If we had a
+%good estimate of the noise covariance for each landmark, we could simply replace the fixed covariance $\Covariance$
+%with one that varies for each stereo observation,
+%$\ImageLandmarkCovariance{i}{t}$. Such a predictive model would allows us to  better account for observation errors from a diverse set of noise sources, and incorporate information from landmarks that may otherwise be discarded by a binary outlier rejection scheme.
+%
+%However, estimating these covariances in a principled way is a nontrivial task.
+%Even when we have reasonable heuristic estimates available, it is difficult
+%to guarantee those estimates will be reliable.  Instead of relying solely on such
+%heuristics, we propose to learn these image-space noise covariances from data.
+In
 order to exploit conjugacy to a Gaussian noise model, we formulate our prior knowledge
 about this function using an inverse Wishart (IW) distribution over positive
 definite $d \times d$ matrices (the IW distribution has been used as a prior on covariance matrices in other robotics and computer vision contexts, see for example, \citep{fitzgibbon2007learning}). This distribution is defined by a scale matrix

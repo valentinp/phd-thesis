@@ -1,6 +1,8 @@
 %%%%%%%
-% OLD TIM-STYLE NOTATION (for PROBE)
+% PROBE Notation
 %%%%%%%
+
+
 
 %% Basic bold for letters and symbols
 \DeclareMathAlphabet{\mbf}{OT1}{ptm}{b}{n}
@@ -38,6 +40,9 @@
 % Table spacing fixes
 \newcommand\T{\rule{0pt}{2.6ex}}        % Top strut
 \newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
+
+\NewDocumentCommand\PROBEPoseError{}{\epsilon}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,7 +140,12 @@
 \NewDocumentCommand\CameraPose{m}{\Vector{x}_{#1}}
 \nomenclature{$\CameraPose{t}\in\text{SE}(3)$}{Camera pose at frame $t$}%
 
-\NewDocumentCommand\ImageLandmark{mm}{\Vector{y}_{#1,#2}}
+
+\NewDocumentCommand\ImageLandmark{mm}{
+    	\Vector{y}_{#1, #2}
+}
+
+
 \NewDocumentCommand\LinearizedImageLandmark{mm}{\bar{\Vector{y}}_{#1,#2}}
 
 \NewDocumentCommand\TargetImageLandmark{o}{
@@ -147,14 +157,13 @@
   of visual landmark $i$ during frame $t$ in image coordinates
   for each stereo camera.}%
 
-\NewDocumentCommand\ImageLandmarkCovariance{mm}{\Matrix{R}_{#1,#2}}
+\NewDocumentCommand\GeneralCovariance{}{\Matrix{\Sigma}}
 \NewDocumentCommand\Covariance{}{\Matrix{R}}
+\NewDocumentCommand\ImageLandmarkCovariance{mm}{\Matrix{R}_{#1,#2}}
+
 
 \NewDocumentCommand\TargetImageLandmarkCovariance{}{\Matrix{R}_*}
-\nomenclature{$\ImageLandmarkCovariance{i}{t}\in\RealNumbers[4\times
-  4]\succ 0$}{Location
-  of visual landmark $i$ during frame $t$ in image coordinates
-  for each stereo camera.}%
+
 
 \NewDocumentCommand\Predictor{mm}{\Vector{\phi}_{#1,#2}}
 \nomenclature{$\Predictor{i}{t}$}{Predictor features for image-space
@@ -170,7 +179,7 @@
   \VisualLandmark{i}{t}$ is the location of visual landmark $i$ relative to the
   camera coordinate frame.}
 
-\NewDocumentCommand\ProjectionFunction{}{f}
+\NewDocumentCommand\ProjectionFunction{}{\Vector{f}}
 \nomenclature{$\ProjectionFunction:
   \RealNumbers[3]\to\RealNumbers[4]$}{Function mapping a visual landmark in
   the camera coordinate frame to image coordinates, so that
@@ -307,10 +316,8 @@
  }
 
 
-%\NewDocumentCommand\ProjectionFunction{}{\pi}
-%\NewDocumentCommand\ImageLandmarkCovariance{mm}{\Matrix{R}_{#1,#2}}
-\NewDocumentCommand\ImageCovariance{}{\Matrix{\Sigma_y}}
-%\NewDocumentCommand\ImageLandmark{mm}{\Vector{y}_{#1,#2}}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

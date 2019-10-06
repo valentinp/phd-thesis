@@ -30,7 +30,7 @@ Before we can present the main contributions of this thesis, it will be useful t
 \caption{A position vector expressed in a coordinate frame.}
 \end{figure}
 
-We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one that originates at the origin of a coordinate reference frame, $\CoordinateFrame{o}$, and terminates at the point $p$. This geometric quantity has the numerical coordinates $\Vector{r}^{po}_o$ when expressed in $\CoordinateFrame{o}$. Often, we will refer to two reference frames such as a world or \textit{inertial} frame,  $\CoordinateFrame{i}$, and a vehicle frame, $\CoordinateFrame{v}$. Rotation matrices or rigid-body transformations that convert coordinates from $\CoordinateFrame{i}$ to $\CoordinateFrame{v}$ will be represented as $\Transform_{v,i}$, and $\Rotation_{v,i}$\footnote{We use $\Rotation$ and not $\Matrix{R}$ for rotation matrices to avoid confusion with common notation for measurement model covariance.}, respectively. 
+We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one that originates at the origin of a coordinate reference frame, $\CoordinateFrame{o}$, and terminates at the point $p$. This geometric quantity has the numerical coordinates $\Vector{r}^{po}_o$ when expressed in $\CoordinateFrame{o}$. Often, we will refer to two reference frames such as a world or \textit{inertial} frame,  $\CoordinateFrame{i}$, and a vehicle frame, $\CoordinateFrame{v}$. Rotation matrices or rigid-body transformations that convert coordinates from $\CoordinateFrame{i}$ to $\CoordinateFrame{v}$ will be represented as $\Transform_{vi}$, and $\Rotation_{vi}$\footnote{We use $\Rotation$ and not $\Matrix{R}$ for rotation matrices to avoid confusion with common notation for measurement model covariance.}, respectively. 
 
 
 \begin{figure}[h!]
@@ -178,18 +178,18 @@ where
 \subsection{Applying Transforms}
 Applying our notation for coordinate frames (and referring back to \Cref{fig:math_two_ref_frames}), a transform, $\Transform_{vi}$ can be expressed as 
 \begin{equation}
-\Transform_{v,i} = \bbm \Rotation_{v,i} & \Vector{t}_v^{i,v} \\ \Vector{0}^T & 1 \ebm.
+\Transform_{vi} = \bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm.
 \end{equation}
 
 This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i$ and express the following relation:
 
 \begin{equation}
-	\bbm \Vector{r}^{p,i}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{v,i} & \Vector{t}_v^{i,v} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{v,i}} \bbm \Vector{r}^{p,i}_i \\ 1 \ebm
+	\bbm \Vector{r}^{pi}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm
 \end{equation}
 which is numerically equivalent to  
 
 \begin{equation}
- \Vector{r}^{p,i}_v =  \Rotation_{v,i} \Vector{r}^{p,i}_i + \Vector{t}_v^{i,v}  
+ \Vector{r}^{pi}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}  
  \end{equation}
 
 \section{Perturbations}

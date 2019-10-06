@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  5 OCT 2019 14:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  6 OCT 2019 03:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1010,7 +1010,14 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 LaTeX Warning: Unused global option(s):
     [oneandahalfspaced].
 
-(/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux)
+(/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/vo.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/probe.aux
+
+LaTeX Warning: Label `eq:vo_objective' multiply defined.
+
+
+LaTeX Warning: Label `eq:vo_objective@cref' multiply defined.
+
+))
 \openout1 = `vp-phd-thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
@@ -1172,264 +1179,552 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 180.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 7.0pt on input line 180.
- [5]
+ [5] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.toc
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 1.
+ [6
 
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
+])
 \tf@toc=\write5
 \openout5 = `vp-phd-thesis.toc'.
 
-[6
+ [7] [8
 
 ] [1
 
+]
+\openout2 = `sections/math.aux'.
+
+ (./sections/math.tex
+Chapter 1.
+[2
+
 
 ]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 87.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sl' in size <12> not available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/it' tried instead on input line 93.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 93.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scsl' in size <12> not available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/scit' tried instead on input line 93.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scit' will be
+(Font)              scaled to size 12.0pt on input line 93.
+ [3]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 110.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 115.
+ [4] [5] [6] [7]
+<figures/math/quaternion_uncertainty.pdf, id=337, 296.0395pt x 250.15337pt>
+File: figures/math/quaternion_uncertainty.pdf Graphic file (type pdf)
+<use figures/math/quaternion_uncertainty.pdf>
+Package pdftex.def Info: figures/math/quaternion_uncertainty.pdf  used on input line 261.
+(pdftex.def)             Requested size: 149.0577pt x 125.95428pt.
+
+Overfull \hbox (4.47705pt too wide) in paragraph at lines 271--272
+[]\OT1/LinuxLibertineT-TLF/m/n/12 Given a con-cen-trated nor-mal den-sity, $\OML/cmm/m/it/12 ^^N[] \OMS/cmsy/m/n/12 ^^X N[]\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; [][]\OT1/cmr/m/n/12 )$\OT1/LinuxLibertineT-TLF/m/n/12 ,
+ []
+
+) [8 <./figures/math/quaternion_uncertainty.pdf>]
+\openout2 = `sections/vo.aux'.
+
+ (./sections/vo.tex
+Chapter 2.
+<figures/classical-vo/vo_taxonomy.pdf, id=423, 804.69377pt x 361.92383pt>
+File: figures/classical-vo/vo_taxonomy.pdf Graphic file (type pdf)
+<use figures/classical-vo/vo_taxonomy.pdf>
+Package pdftex.def Info: figures/classical-vo/vo_taxonomy.pdf  used on input line 7.
+(pdftex.def)             Requested size: 429.10176pt x 192.995pt.
+[9
+
+
+
+ <./figures/classical-vo/vo_taxonomy.pdf>]
+<figures/classical-vo/stereo_vo_pipeline.pdf, id=482, 1017.477pt x 262.30428pt>
+File: figures/classical-vo/stereo_vo_pipeline.pdf Graphic file (type pdf)
+<use figures/classical-vo/stereo_vo_pipeline.pdf>
+Package pdftex.def Info: figures/classical-vo/stereo_vo_pipeline.pdf  used on input line 32.
+(pdftex.def)             Requested size: 442.65182pt x 114.11343pt.
+<figures/classical-vo/stereo_camera.pdf, id=483, 696.6025pt x 635.37375pt>
+File: figures/classical-vo/stereo_camera.pdf Graphic file (type pdf)
+<use figures/classical-vo/stereo_camera.pdf>
+Package pdftex.def Info: figures/classical-vo/stereo_camera.pdf  used on input line 45.
+(pdftex.def)             Requested size: 212.47098pt x 193.79355pt.
+<figures/classical-vo/stereo_rectification.pdf, id=484, 614.295pt x 794.97pt>
+File: figures/classical-vo/stereo_rectification.pdf Graphic file (type pdf)
+<use figures/classical-vo/stereo_rectification.pdf>
+Package pdftex.def Info: figures/classical-vo/stereo_rectification.pdf  used on input line 52.
+(pdftex.def)             Requested size: 162.60605pt x 210.42343pt.
+ [10 <./figures/classical-vo/stereo_vo_pipeline.pdf>]
+<figures/classical-vo/libviso2_scan.png, id=578, 713.66624pt x 221.82875pt>
+File: figures/classical-vo/libviso2_scan.png Graphic file (type png)
+<use figures/classical-vo/libviso2_scan.png>
+Package pdftex.def Info: figures/classical-vo/libviso2_scan.png  used on input line 68.
+(pdftex.def)             Requested size: 397.48721pt x 123.54965pt.
+LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TLF on input line 69.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.fd
+File: OT1LinuxLibertineMonoT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxLibertineMonoT-TLF.
+)
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 69.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[11 <./figures/classical-vo/stereo_camera.pdf> <./figures/classical-vo/stereo_rectification.pdf>] [12 <./figures/classical-vo/libviso2_scan.png>] [13]
+Underfull \vbox (badness 1708) has occurred while \output is active []
+
+ [14]
+Underfull \hbox (badness 5050) in paragraph at lines 275--276
+[]|\OT1/LinuxLibertineT-TLF/m/n/12 PROBE, DPC-Net, Sun-
+ []
+
+
+Overfull \hbox (5.92862pt too wide) in paragraph at lines 272--280
+[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
+Overfull \hbox (5.92862pt too wide) in paragraph at lines 286--294
+[] 
+ []
+
+
+Overfull \hbox (5.92862pt too wide) in paragraph at lines 300--308
+[] 
+ []
+
+) [16]
 \openout2 = `sections/probe.aux'.
 
  (./sections/probe.tex
-Chapter 1.
-<figures/probe.pdf, id=61, 1019.25703pt x 528.90175pt>
+Chapter 3.
+<figures/probe.pdf, id=787, 1019.25703pt x 528.90175pt>
 File: figures/probe.pdf Graphic file (type pdf)
 <use figures/probe.pdf>
 Package pdftex.def Info: figures/probe.pdf  used on input line 9.
 (pdftex.def)             Requested size: 361.35138pt x 187.50722pt.
-[2
+[17
 
 
- <./figures/probe.pdf>]
-LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 18.
 
-
-Package natbib Warning: Citation `2015_Peretroukhin_PROBE' undefined on input line 18.
-
-
-Package natbib Warning: Citation `2015_Peretroukhin_Get' undefined on input line 19.
-
-
-Package natbib Warning: Citation `Peretroukhin2016-om' undefined on input line 20.
-
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 49.
-
-Package natbib Warning: Citation `sunderhauf2007stereo' on page 3 undefined on input line 49.
-
-
-Package natbib Warning: Citation `scaramuzza2011visual' on page 3 undefined on input line 52.
-
-
-Package natbib Warning: Citation `irani2000direct' on page 3 undefined on input line 52.
-
-
-Package natbib Warning: Citation `forster2014svo' on page 3 undefined on input line 53.
-
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sl' in size <12> not available
-(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/it' tried instead on input line 54.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 54.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scsl' in size <12> not available
-(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/scit' tried instead on input line 54.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scit' will be
-(Font)              scaled to size 12.0pt on input line 54.
-[3]
-
-Package natbib Warning: Citation `Tsotsos2015' on page 4 undefined on input line 57.
-
-
-Package natbib Warning: Citation `Zhang2015' on page 4 undefined on input line 60.
-
-<figures/probe/feature_space.pdf, id=228, 563.99232pt x 263.4973pt>
-File: figures/probe/feature_space.pdf Graphic file (type pdf)
-<use figures/probe/feature_space.pdf>
-Package pdftex.def Info: figures/probe/feature_space.pdf  used on input line 74.
-(pdftex.def)             Requested size: 225.84375pt x 105.51364pt.
-
-Underfull \vbox (badness 5460) has occurred while \output is active []
-
- [4]
-
-Package natbib Warning: Citation `VegaBrown:ew' on page 5 undefined on input line 81.
-
-
-LaTeX Warning: Reference `sec:predictors' on page 5 undefined on input line 81.
-
-
-LaTeX Warning: Reference `eqn:gamma' on page 5 undefined on input line 82.
-
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 91.
-
-LaTeX Warning: Reference `fig:ProbeTraining' on page 5 undefined on input line 92.
-
+ <./figures/probe.pdf>] [18] [19] [20]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 96.
-./sections/probe.tex:99: Missing $ inserted.
-<inserted text> 
-                $
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+(Font)              scaled to size 12.0pt on input line 121.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 149.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 158.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+) [21] [22pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\text@ ...e {\textdef@ \displaystyle \f@size {#1}}
-                                                  {\textdef@ \textstyle \f@s...
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Missing $ inserted.
-<inserted text> 
-                $
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\text@ ...xtstyle \f@size {\firstchoice@false #1}}
-                                                  {\textdef@ \textstyle \sf@...
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Missing $ inserted.
-<inserted text> 
-                $
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.194 
+      ]
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 204.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 232.
+ [23]
+<figures/probe/tricifix2.jpg, id=1029, 803.0pt x 534.99875pt>
+File: figures/probe/tricifix2.jpg Graphic file (type jpg)
+<use figures/probe/tricifix2.jpg>
+Package pdftex.def Info: figures/probe/tricifix2.jpg  used on input line 238.
+(pdftex.def)             Requested size: 180.67224pt x 120.36952pt.
+<figures/probe/reprojectionError.pdf, id=1030, 485.31891pt x 193.12715pt>
+File: figures/probe/reprojectionError.pdf Graphic file (type pdf)
+<use figures/probe/reprojectionError.pdf>
+Package pdftex.def Info: figures/probe/reprojectionError.pdf  used on input line 253.
+(pdftex.def)             Requested size: 383.93713pt x 152.78387pt.
+<figures/probe/trackingError.pdf, id=1031, 485.31891pt x 193.12715pt>
+File: figures/probe/trackingError.pdf Graphic file (type pdf)
+<use figures/probe/trackingError.pdf>
+Package pdftex.def Info: figures/probe/trackingError.pdf  used on input line 260.
+(pdftex.def)             Requested size: 383.93713pt x 152.78387pt.
+ [24 <./figures/probe/tricifix2.jpg> <./figures/probe/reprojectionError.pdf>] [25 <./figures/probe/trackingError.pdf>]
+<figures/probe/flowPredictorCombined.png, id=1102, 492.84125pt x 162.10562pt>
+File: figures/probe/flowPredictorCombined.png Graphic file (type png)
+<use figures/probe/flowPredictorCombined.png>
+Package pdftex.def Info: figures/probe/flowPredictorCombined.png  used on input line 291.
+(pdftex.def)             Requested size: 361.35138pt x 118.8605pt.
+<figures/probe/highFreqPredictor.png, id=1104, 492.84125pt x 162.10562pt>
+File: figures/probe/highFreqPredictor.png Graphic file (type png)
+<use figures/probe/highFreqPredictor.png>
+Package pdftex.def Info: figures/probe/highFreqPredictor.png  used on input line 306.
+(pdftex.def)             Requested size: 361.35138pt x 118.8605pt.
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 345.
+<figures/probe/city-res-road.png, id=1105, 1003.75pt x 125.46875pt>
+File: figures/probe/city-res-road.png Graphic file (type png)
+<use figures/probe/city-res-road.png>
+Package pdftex.def Info: figures/probe/city-res-road.png  used on input line 350.
+(pdftex.def)             Requested size: 451.68752pt x 56.46231pt.
+<figures/probe/husky2.jpg, id=1106, 192.72pt x 128.3997pt>
+File: figures/probe/husky2.jpg Graphic file (type jpg)
+<use figures/probe/husky2.jpg>
+Package pdftex.def Info: figures/probe/husky2.jpg  used on input line 357.
+(pdftex.def)             Requested size: 271.01526pt x 180.56358pt.
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\text@ ...tstyle \sf@size {\firstchoice@false #1}}
-                                                  {\textdef@ \textstyle \ssf...
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+ [26 <./figures/probe/flowPredictorCombined.png> <./figures/probe/highFreqPredictor.png>] [27 <./figures/probe/city-res-road.png> <./figures/probe/husky2.jpg>]
 
-./sections/probe.tex:99: Missing $ inserted.
-<inserted text> 
-                $
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+LaTeX Warning: Reference `fig:probe_gk_system' on page 28 undefined on input line 390.
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\text@ ...style \ssf@size {\firstchoice@false #1}}
-                                                  \check@mathfonts }
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-                                                  (l)$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+ [28]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-./sections/probe.tex:99: Extra }, or forgotten $.
-\text@ ...firstchoice@false #1}}\check@mathfonts }
-                                                  
-l.99 ...1, \dots, f_J \gets \text{sample_features}
-          
+ [29]
+Overfull \hbox (3.25447pt too wide) in paragraph at lines 478--488
+\OT1/LinuxLibertineT-TLF/m/n/12 Given a new land-mark and pre-dic-tor vec-tor, we can in-fer a noise model by eval-u-at-ing eqs. ([][]3.14[][])
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.493     \Function
+                   {BuildCovarianceModel}{$\mathcal{D}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.494       \State
+                   Initialize an empty spatial index $\mathcal{M}$pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.495       \ForAll
+                   {$\mathcal{I}_t,\Transform_t$ in $\mathcal{D}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.496         \ForAll
+                     {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.498           \State
+                       $\Vector{e}_{i,t} = \ImageLandmark{i}{t}' -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.501             \State
+                         Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and storepdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.503         \EndFor
+                     pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.504       \EndFor
+                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.505       \State
+                  \Return $\mathcal{M}$pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.506     \EndFunction
+                       [30]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.543     \Function
+                   {ComputeTransform}{$\mathcal{I}_t$, $\mathcal{M}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.544       \ForAll
+                   {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.546         \State
+                     $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$\mat...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.548         \State
+                     $g(\Transform) = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.551         \State
+                     $\mathcal{L} \gets \mathcal{L} +pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.555       \EndFor
+                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.556       \State
+                   \Return $\ArgMin{\Transform\in\text{SE}(3)}\mathcal{L}(\T...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.557     \EndFunction
+                      pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.558     \Function
+                   {InferNoiseModel}{$\mathcal{M}$, $\TargetPredictor$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.559       \State
+                   $\textsc{neighbors}\gets$ \Call{GetNeighbors}{$\mathcal{M},pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.11}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.561       \State
+                  \Comment{$\rho$ is the radius of the support of the kernel...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.562       \State
+                   $\Matrix{\Psi}_* \gets \Matrix{\Psi}(\TargetPredictor)$ \...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.13}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.562 ...s \Matrix{\Psi}(\TargetPredictor)$ \State
+                                                   [31]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [32]pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.650     \Function
+                   {BuildCovarianceModel}{$\mathcal{D'}$, $\Transform_{1:T}^...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.651       \State
+                   Initialize an empty spatial index $\mathcal{M}$pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.652       \ForAll
+                   {$\mathcal{I}_t$ in $\mathcal{D'}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.653         \ForAll
+                     {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.655           \State
+                       $\Vector{e}_{i,t} = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.658             \State
+                         Insert $\Predictor{i}{t}$ into $\mathcal{M}$ and storepdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.660         \EndFor
+                     pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.661       \EndFor
+                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.662       \Repeat
+                   pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.663         \ForAll
+                     {$\mathcal{I}_t$ in $\mathcal{D'}$}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.11}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.664           \ForAll
+                       {$\{\ImageLandmark{i}{t}, \ImageLandmark{i}{t}',pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.666             \State
+                         $\Matrix{\Psi}, \nu\gets$ \Call{InferNoiseModel} {$...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.13}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.667             \State
+                         $g(\Transform) = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.14}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.670             \State
+                         $\mathcal{L} \gets \mathcal{L} +pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.15}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.674           \EndFor
+                       pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.16}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.675           \State
+                       $\Transform_t \gets \ArgMin{\Transform\in\text{SE}(3)}pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.17}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.677           \State
+                       $\Vector{e}_{i,t} = \ImageLandmark{i}{t} -pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.680           \State
+                       Update the error stored at $\Predictor{i}{t}$ in $\ma...pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.19}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.682         \EndFor
+                     
+<figures/probe-gk/sim_world.pdf, id=1215, 449.68pt x 338.26375pt>
+File: figures/probe-gk/sim_world.pdf Graphic file (type pdf)
+<use figures/probe-gk/sim_world.pdf>
+Package pdftex.def Info: figures/probe-gk/sim_world.pdf  used on input line 700.
+(pdftex.def)             Requested size: 225.84375pt x 169.88503pt.
+ [33]
+
+LaTeX Warning: Reference `sec:ssvo' on page 1 undefined on input line 707.
+
+<figures/probe-gk/simComparison_sim_rerun.pdf, id=1228, 496.85625pt x 396.48125pt>
+File: figures/probe-gk/simComparison_sim_rerun.pdf Graphic file (type pdf)
+<use figures/probe-gk/simComparison_sim_rerun.pdf>
+Package pdftex.def Info: figures/probe-gk/simComparison_sim_rerun.pdf  used on input line 715.
+(pdftex.def)             Requested size: 338.76563pt x 270.32965pt.
+<figures/probe-gk/KittiEnvironments.pdf, id=1235, 906.1415pt x 95.33878pt>
+File: figures/probe-gk/KittiEnvironments.pdf Graphic file (type pdf)
+<use figures/probe-gk/KittiEnvironments.pdf>
+Package pdftex.def Info: figures/probe-gk/KittiEnvironments.pdf  used on input line 733.
+(pdftex.def)             Requested size: 442.65182pt x 46.57382pt.
+<figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf, id=1240, 484.81125pt x 393.47pt>
+File: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf Graphic file (type pdf)
+<use figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>
+Package pdftex.def Info: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf  used on input line 751.
+(pdftex.def)             Requested size: 338.76563pt x 274.9528pt.
+[34 <./figures/probe-gk/sim_world.pdf>] [35 <./figures/probe-gk/simComparison_sim_rerun.pdf> <./figures/probe-gk/KittiEnvironments.pdf>]
+<figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf, id=1297, 487.8225pt x 393.47pt>
+File: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf Graphic file (type pdf)
+<use figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf>
+Package pdftex.def Info: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf  used on input line 768.
+(pdftex.def)             Requested size: 338.76563pt x 273.24771pt.
+<figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf, id=1298, 484.81125pt x 393.47pt>
+File: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf Graphic file (type pdf)
+<use figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>
+Package pdftex.def Info: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf  used on input line 776.
+(pdftex.def)             Requested size: 338.76563pt x 274.9528pt.
+
+
+LaTeX Warning: Reference `table:armse_errors' on page 1 undefined on input line 783.
+
+[36 <./figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>] [37 <./figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf> <./figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>]
+<figures/probe-gk/experiment_wide_border.pdf, id=1336, 610.61609pt x 421.44742pt>
+File: figures/probe-gk/experiment_wide_border.pdf Graphic file (type pdf)
+<use figures/probe-gk/experiment_wide_border.pdf>
+Package pdftex.def Info: figures/probe-gk/experiment_wide_border.pdf  used on input line 823.
+(pdftex.def)             Requested size: 338.76563pt x 233.82248pt.
+<figures/probe-gk/xb3_rtk_fig.pdf, id=1337, 490.83376pt x 380.42125pt>
+File: figures/probe-gk/xb3_rtk_fig.pdf Graphic file (type pdf)
+<use figures/probe-gk/xb3_rtk_fig.pdf>
+Package pdftex.def Info: figures/probe-gk/xb3_rtk_fig.pdf  used on input line 831.
+(pdftex.def)             Requested size: 338.76563pt x 262.56639pt.
+ [38 <./figures/probe-gk/experiment_wide_border.pdf>]
+<figures/probe-gk/trainingStats.pdf, id=1389, 499.8675pt x 402.50375pt>
+File: figures/probe-gk/trainingStats.pdf Graphic file (type pdf)
+<use figures/probe-gk/trainingStats.pdf>
+Package pdftex.def Info: figures/probe-gk/trainingStats.pdf  used on input line 863.
+(pdftex.def)             Requested size: 338.76563pt x 272.78995pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [39 <./figures/probe-gk/xb3_rtk_fig.pdf>]) [40 <./figures/probe-gk/trainingStats.pdf>] [41
+
+
+
+] (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.bbl [42
+
+] [43]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.152 ...n et~al., 2015a]{2015_Peretroukhin_PROBE}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_Get}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.166 ...hin et~al., 2015c]{2015_Peretroukhin_Get}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.Peretroukhin2016-om}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.174 ...oukhin et~al., 2016]{Peretroukhin2016-om}
+                                                   [44]) [45]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 261.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 261.
+ (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/math.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/vo.aux) (/Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/sections/probe.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 261.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 261.
+Package rerunfilecheck Info: File `vp-phd-thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 7214213A17ED3CEE918FFE9CE2C83177;474.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 261.
+ ) 
+Here is how much of TeX's memory you used:
+ 37120 strings out of 492616
+ 706549 string characters out of 6128982
+ 782862 words of memory out of 5000000
+ 40145 multiletter control sequences out of 15000+600000
+ 583654 words of font info for 126 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,23n,79p,981b,988s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (53 pages, 10805588 bytes).
+PDF statistics:
+ 1605 PDF objects out of 1728 (max. 8388607)
+ 1307 compressed objects within 14 object streams
+ 293 named destinations out of 1000 (max. 500000)
+ 392 words of extra memory for PDF output out of 10000 (max. 10000000)
+

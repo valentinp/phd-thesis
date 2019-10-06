@@ -93,74 +93,112 @@ where
 Here, $\{c_u, c_v\}$, $\{f_u, f_v\}$, and $b$ are the principal points, focal
 lengths and baseline of the stereo camera respectively. Note that in this
 formulation, the stereo camera frame is centered between the two individual
-lenses.  
+lenses. 
 
 
 \subsubsection{Outlier rejection}
 
 To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRANSAC:1981}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
   
-\subsection{Motion solution}
+\subsection{Maximum Likelihood Motion solution}
 
-To compute
-$\Transform\in\text{SE}(3)$, the rigid transform between two subsequent stereo camera poses, we assume we have a set
-of $N_t$ visual landmarks in each stereo pair at a time instance, $t$.
+We will define $\Transform_t \in\text{SE}(3)$, as the rigid transform between two subsequent stereo camera poses, 
+$\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$
 
-We triangulate landmarks in the first camera frame, $\ImageLandmark{i}{t}$, and re-project
-them into the second frame, $\ImageLandmark{i}{t}'$. We model errors due to sensor noise
-and quantization as a Gaussian distribution in image space with a covariance
-$\ImageCovariance_{i,t}$ that may change for each feature or may be constant, $\ImageCovariance_{i,t} = \ImageCovariance$,
 \begin{equation}
-  p(\ImageLandmark{i}{t}' \vert \ImageLandmark{i}{t}, \Transform,
-  \ImageCovariance_{i,t})
-  =\NormalDistribution\left(\Vector{e}_{i,t}(\Transform); \Vector 0, \ImageCovariance_{i,t}\right), 
+	\Transform_t = \Transform_{c_1w} \Transform^{-1}_{c_0w},
+\end{equation}
+
+where $\CoordinateFrame{w}$ is a privileged world frame. After data association, we assume we have a set
+of $N_t$ matches, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, between visual landmarks in the subsequent camera frames. For each match, we define an error function, $\Vector{e}_{i}(\Transform_t)$, that relates the rigid transform to these stereo feature matches. Throughout this dissertation, we assume that these errors are corrupted by zero-mean independent Gaussian noise with the (potentially heteroscedastic) covariance, $\Matrix{\Sigma}_{i,t}$;
+ \begin{equation}
+  \Vector{e}_{i}(\Transform_t) \sim
+ \NormalDistribution\left(\Vector 0, \GeneralCovariance_{i,t}\right). 
+\end{equation}
+Under this noise model, the maximum likelihood transform, $\Transform^*_t$, is given by 
+\begin{equation}
+\label{eq:vo_objective}
+  \Transform_t^* = \ArgMax{\Transform\in\text{SE}(3)}\prod_{i=1}^{N_t} p(\Vector{e}_{i}(\Transform_t)) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  \Transpose{\Vector{e}_{i}(\Transform_t)} \GeneralCovariance_{i,t}^{-1} \Vector{e}_{i}(\Transform_t).
+\end{equation}
+We will define the error function in two different ways.
+
+\subsubsection{Point Cloud Error}
+\label{sec:vo_point_cloud}
+First, we can follow classical approach \citep{Maimone2007-tc} and define $ \Vector{e}_{i}(\Transform_t) $ based on a three-dimensional point cloud error. To do this, we invert our stereo camera model to triangulate pairs of points in each frame, $\HomogeneousPoint{i}{c_0} = \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})$ and $\HomogeneousPoint{i}{c_1} = \ProjectionFunction^{-1}(\ImageLandmark{i}{c_1})$,
+\begin{align}
+	 \Vector{e}_{i}(\Transform_t) = \Matrix{D}(\HomogeneousPoint{i}{c_1} - \Transform_t \HomogeneousPoint{i}{c_0}),
+\end{align}
+where $\Matrix{D} = \bbm \IdentityMatrix_{3\times3} & \Vector{0} \ebm \in \Real{}^{3\times4}$ converts homogenous coordinates into Euclidian coordinates.
+
+We follow \cite{Maimone2007-tc} and assume each stereo projection is corrupted by additive Gaussian noise,
+
+\begin{equation}
+\ImageLandmark{i}{c} \sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c}, \ImageLandmarkCovariance{i}{c} \right), 
+\end{equation}  
+
+then we can compute a density on the error function itself through first order noise propagation as
+ \begin{equation}
+  \Vector{e}_{i}(\Transform_t) \sim
+ \NormalDistribution\left(\Vector 0, \GeneralCovariance_{i,t} \right), 
 \end{equation}
 where
 \begin{equation}
- \Vector{e}_{i,t} = \ImageLandmark{i}{t}' - \ProjectionFunction( \Transform 
-    \ProjectionFunction^{-1}( \ImageLandmark{i}{t} ) ).	
+	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \ImageLandmarkCovariance{i}{c_1}  \Matrix{G}_{i,c_1}^T \Matrix{D}^T + 
+ \Matrix{D}\Transform_t \Matrix{G}_{i,c_0}  \ImageLandmarkCovariance{i}{c_0} \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T
+\end{equation}
+with
+$\Matrix{G}_{i,c} = \at{\PartialDerivative{\ProjectionFunction^{-1}}{\Vector{y}}}{\ImageLandmark{i}{c}}$.
+
+\subsubsection{Reprojection Error}
+
+Alternatively, we can represent reprojection errors in the second frame directly as
+\begin{equation}
+  \Vector{e}_{i}(\Transform_t)  = \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
+    \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) ),
    \label{eq:image_error}
 \end{equation}
-  The maximum likelihood transform,
-$\Transform^*$, is then given by 
-\begin{equation}
-  \Transform^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  \Transpose{\Vector{e}_{i,t}} \ImageCovariance_{i,t}^{-1} \Vector{e}_{i,t}.
+\noindent and model reprojection errors directly as 
+ \begin{equation}
+  \Vector{e}_{i}(\Transform_t) \sim \NormalDistribution\left(\Vector 0, \GeneralCovariance_{i,t} \right) = 
+ \NormalDistribution\left(\Vector 0,  \ImageLandmarkCovariance{i}{t}\right), 
 \end{equation}
-This is a nonlinear least squares problem, and can be solved iteratively using
-standard techniques. During iteration $n$, we represent the transform as the
-product of an estimate $\Transform^{(n)}\in\text{SE}(3)$ and a perturbation
-$\delta\Vector{\xi}\in\RealNumbers[6]$ represented in exponential
+where we abuse notation (slightly) and replace the index for the camera frames $c_0$ or $c_1$ with $t$ to indicate that this covariance refers to the reprojection error that involves both sets of features.
+
+\subsubsection{Solution via Gauss-Newton Optimization}
+
+
+ In either case, we have now defined a weighted nonlinear least squares problem which can be solved iteratively using
+standard techniques. For our purposes, we opt to use Gauss-Newton optimization and follow \cite{Barfoot2017-ri} to optimize constrained poses.
+
+Namely, at a given iteration $n$, we linearize the error function $\Vector{e}_{i}(\Transform_t)$, about an operating point $\Transform_t^{(n)} \in \LieGroupSE{3}$, which results in a quadratic approximation to \Cref{eq:vo_objective}. To linearize, we consider the left perturbations $\delta\Vector{\xi}\in\RealNumbers[6]$ represented in exponential
 coordinates:
 \begin{equation}
-  \Transform = \exp{\left( \delta\Vector{\xi}^{\wedge}
-  \right)} \Mean{\Transform}.
+  \Transform_t = \MatExp{\delta\Vector{\xi}} \Transform_t^{(n)} \approx (\IdentityMatrix + \delta\Vector{\xi}^{\wedge}) \Transform_t^{(n)}.
 \end{equation}
-Linearizing the transform for small perturbations $\delta\Vector{\xi}$
-yields a linear least-squares problem:
+This allows us to transform \Cref{eq:vo_objective} into a linear least squares objective in $\delta\Vector{\xi}$:
 \begin{equation}
 \label{eq:vo_linleastsquares}
   \mathcal{L}(\delta \Vector{\xi}) = \frac{1}{2}\sum_{i=1}^{N_t} 
-  \Transpose{\left(\Vector{e}_{i,t}^{(n)}
-  - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)}
-\ImageCovariance_{i,t}^{-1}
- \left(\Vector{e}_{i,t}^{(n)}
- - \Matrix J_{i,t}^{(n)} \delta\Vector{\xi}\right)
+  \Transpose{\left(\Vector{e}_{i}
+  - \Matrix J_{i} \delta\Vector{\xi}\right)}
+\GeneralCovariance_{i}^{-1}
+ \left(\Vector{e}_{i}
+ - \Matrix J_{i} \delta\Vector{\xi}\right)
   \end{equation}
-Here, $\Matrix J_{i,t}^{(n)}$ is the Jacobian matrix of the reprojection error. 
-Rearranging, we see the minimizing perturbation is the solution to a
-linear system of equations:
+where $\Matrix J_{i} = \at{\PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}}}{\Transform_t^{(n)}}$, $\Vector{e}_{i} = \Vector{e}_{i}(\Transform_t^{(n)})$, and $\GeneralCovariance_{i} =  \GeneralCovariance_{i,t}(\Transform_t^{(n)})$. 
+The minimum to this objective can be solved for analytically by solving the normal equations. This results in the optimal parameters,  
 \begin{equation}
-  \delta\Vector{\xi}^{(n)} = 
-  \left( \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
-  \ImageLandmarkCovariance{}{}^{-1} \Matrix J_{i,t} \right)^{-1}
-  \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i,t}
-  \ImageCovariance_{i,t}^{-1} \Vector{e}_{i,t}^{(n)}. 
+  \delta\Vector{\xi}^{\star} = 
+  \left( \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i}
+  \GeneralCovariance_{i}^{-1} \Matrix J_{i} \right)^{-1}
+  \sum_{i=1}^{N_t} \Transpose{\Matrix J}_{i}
+  \GeneralCovariance_{i}^{-1} \Vector{e}_{i}. 
 \label{eq:least-squares-iteration}
 \end{equation}
-We then update the estimated transform and proceed to the next iteration,
+We then update the operating point and proceed to the next iteration,
 \begin{equation}
-  \Transform^{(n+1)} = \MatExp{\delta\Vector{\xi}^{(n)}} \Transform^{(n)}. \label{eq:update}
+  \Transform^{(n+1)} = \MatExp{\delta\Vector{\xi}^{\star}} \Transform^{(n)}. \label{eq:update}
 \end{equation}
 There are many reasonable choices for both the initial transform
 $\Transform^{(0)}$ and for the conditions under which we terminate
@@ -205,7 +243,7 @@ These robust cost functions are collectively known as M-estimators, and many var
 
 \begin{equation}
   \Transform^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  \rho\left(\Transpose{\Vector{e}_{i,t}} \ImageCovariance_{i,t}^{-1} \Vector{e}_{i,t}\right) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  \rho\left(\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i,t}^{-1} \Vector{e}_{i}\right) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
   \rho(\epsilon_i),
 \end{equation}
 

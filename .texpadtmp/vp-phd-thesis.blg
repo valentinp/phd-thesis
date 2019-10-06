@@ -1,6 +1,8 @@
 This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
+A level-1 auxiliary file: sections/math.aux
+A level-1 auxiliary file: sections/vo.aux
 A level-1 auxiliary file: sections/probe.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
@@ -12,47 +14,62 @@ I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Database file #4: ../pubs-sun_bcnn.bib
+Repeated entry---line 130 of file ../pubs-sun_bcnn.bib
+ : @article{Scaramuzza2011-qr
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 292 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Geiger2011-xe
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 322 of file ../pubs-sun_bcnn.bib
+ : @book{Barfoot2017-ri
+ :                     ,
+I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
+Warning--empty school in florez2010
+Warning--empty school in furgale_phd11
+Warning--empty journal in Sola2018-kg
 Warning--empty publisher in vega-brown2014nonparametric
-You've used 23 entries,
+You've used 40 entries,
             1935 wiz_defined-function locations,
-            617 strings with 8472 characters,
-and the built_in function-call counts, 11817 in all, are:
-= -- 1204
-> -- 434
-< -- 25
-+ -- 152
-- -- 146
-* -- 875
-:= -- 1822
-add.period$ -- 73
-call.type$ -- 23
-change.case$ -- 188
-chr.to.int$ -- 21
-cite$ -- 24
-duplicate$ -- 555
-empty$ -- 872
-format.name$ -- 183
-if$ -- 2545
-int.to.chr$ -- 3
+            724 strings with 11344 characters,
+and the built_in function-call counts, 18611 in all, are:
+= -- 1888
+> -- 668
+< -- 40
++ -- 235
+- -- 222
+* -- 1431
+:= -- 2972
+add.period$ -- 124
+call.type$ -- 40
+change.case$ -- 308
+chr.to.int$ -- 35
+cite$ -- 44
+duplicate$ -- 831
+empty$ -- 1365
+format.name$ -- 284
+if$ -- 3896
+int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 23
-newline$ -- 118
-num.names$ -- 69
-pop$ -- 242
+missing$ -- 39
+newline$ -- 202
+num.names$ -- 120
+pop$ -- 354
 preamble$ -- 1
-purify$ -- 188
+purify$ -- 311
 quote$ -- 0
-skip$ -- 437
+skip$ -- 651
 stack$ -- 0
-substring$ -- 851
-swap$ -- 187
-text.length$ -- 18
+substring$ -- 1370
+swap$ -- 235
+text.length$ -- 22
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 138
-warning$ -- 1
-while$ -- 93
+type$ -- 238
+warning$ -- 4
+while$ -- 154
 width$ -- 0
-write$ -- 306
-(There was 1 error message)
+write$ -- 521
+(There were 4 error messages)

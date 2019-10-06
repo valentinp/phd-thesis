@@ -6,6 +6,29 @@ Agarwal, P., Tipaldi, G.~D., Spinello, L., Stachniss, C., and Burgard, W.
 \newblock Robust map optimization using dynamic covariance scaling.
 \newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages 62--69.
 
+\bibitem[Altmann, 1989]{Altmann1989-ru}
+Altmann, S.~L. (1989).
+\newblock Hamilton, rodrigues, and the quaternion scandal.
+\newblock {\em Math. Mag.}, 62(5):291--308.
+
+\bibitem[Barfoot, 2017]{Barfoot2017-ri}
+Barfoot, T.~D. (2017).
+\newblock {\em State Estimation for Robotics}.
+\newblock Cambridge University Press.
+
+\bibitem[Barfoot and Furgale, 2014]{Barfoot2014-ac}
+Barfoot, T.~D. and Furgale, P.~T. (2014).
+\newblock Associating uncertainty with three-dimensional poses for use in
+  estimation problems.
+\newblock {\em IEEE Trans. Rob.}, 30(3):679--693.
+
+\bibitem[Cadena et~al., 2016]{Cadena2016-ds}
+Cadena, C., Carlone, L., Carrillo, H., Latif, Y., Scaramuzza, D., Neira, J.,
+  Reid, I., and Leonard, J.~J. (2016).
+\newblock Past, present, and future of simultaneous localization and mapping:
+  Toward the {Robust-Perception} age.
+\newblock {\em IEEE Trans. Rob.}, 32(6):1309--1332.
+
 \bibitem[Crete et~al., 2007]{crete2007blur}
 Crete, F., Dolmiere, T., Ladret, P., and Nicolas, M. (2007).
 \newblock The blur effect: perception and estimation with a new no-reference
@@ -19,11 +42,17 @@ Dempster, A., Laird, N., and Rubin, D. (1977).
 \newblock {\em Journal of the Royal Statistical Society. Series B
   (Methodological)}, pages 1--38.
 
-\bibitem[Fischler and Bolles, 1981]{fischler1981random}
-Fischler, M. and Bolles, R. (1981).
+\bibitem[Fischler and Bolles, 1981a]{fischler1981random}
+Fischler, M. and Bolles, R. (1981a).
 \newblock Random sample consensus: a paradigm for model fitting with
   applications to image analysis and automated cartography.
 \newblock {\em Comm. ACM}, 24(6):381--395.
+
+\bibitem[Fischler and Bolles, 1981b]{FischlerRANSAC:1981}
+Fischler, M.~A. and Bolles, R.~C. (1981b).
+\newblock Random sample consensus: A paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock {\em Commun. ACM}, 24(6):381--395.
 
 \bibitem[Fitzgibbon et~al., 2007]{fitzgibbon2007learning}
 Fitzgibbon, A.~W., Robertson, D.~P., Criminisi, A., Ramalingam, S., and Blake,
@@ -31,11 +60,23 @@ Fitzgibbon, A.~W., Robertson, D.~P., Criminisi, A., Ramalingam, S., and Blake,
 \newblock Learning priors for calibrating families of stereo cameras.
 \newblock In {\em Proc. IEEE Int. Conf. Computer Vision (ICCV)}, pages 1--8.
 
+\bibitem[Florez, 2010]{florez2010}
+Florez, S. A.~R. (2010).
+\newblock {\em Contributions by vision systems to multi-sensor object
+  localization and tracking for intelligent vehicles}.
+\newblock PhD thesis.
+
 \bibitem[Forster et~al., 2014]{forster2014svo}
 Forster, C., Pizzoli, M., and Scaramuzza, D. (2014).
 \newblock {{SVO}}: Fast semi-direct monocular visual odometry.
 \newblock In {\em Proc. IEEE Int. Conf. Robot. Automat.(ICRA)}, pages 15--22.
   IEEE.
+
+\bibitem[Furgale, 2011]{furgale_phd11}
+Furgale, P. (2011).
+\newblock {\em Extensions to the Visual Odometry Pipeline for the Exploration
+  of Planetary Surfaces}.
+\newblock PhD thesis.
 
 \bibitem[Furgale et~al., 2013]{Furgale2013-sl}
 Furgale, P., Rehder, J., and Siegwart, R. (2013).
@@ -54,6 +95,28 @@ Geiger, A., Lenz, P., and Urtasun, R. (2012).
   suite.
 \newblock In {\em Proc. IEEE Conf. on Computer Vision and Pattern Recognition
   (CVPR)}.
+
+\bibitem[Geiger et~al., 2011a]{Geiger2011-xe}
+Geiger, A., Ziegler, J., and Stiller, C. (2011a).
+\newblock {StereoScan}: Dense {3D} reconstruction in real-time.
+\newblock In {\em Proc. Intelligent Vehicles Symp. ({IV})}, pages 963--968.
+  IEEE.
+
+\bibitem[Geiger et~al., 2011b]{geiger2011stereoscan}
+Geiger, A., Ziegler, J., and Stiller, C. (2011b).
+\newblock {{StereoScan}}: Dense {{3D}} reconstruction in real-time.
+\newblock In {\em Proc. IEEE Intelligent Vehicles Symp. (IV)}, pages 963--968.
+
+\bibitem[Geman et~al., 1992]{geman1992nonlinear}
+Geman, S., McClure, D.~E., and Geman, D. (1992).
+\newblock A nonlinear filter for film restoration and other problems in image
+  processing.
+\newblock {\em CVGIP: Graphical models and image processing}, 54(4):281--289.
+
+\bibitem[Huber, 1964]{huber1964robust}
+Huber, P.~J. (1964).
+\newblock Robust estimation of a location parameter.
+\newblock {\em The Annals of Mathematical Statistics}, pages 73--101.
 
 \bibitem[Irani and Anandan, 2000]{irani2000direct}
 Irani, M. and Anandan, P. (2000).
@@ -74,6 +137,17 @@ Lucas, B.~D. and Kanade, T. (1981).
 \newblock In {\em Proceedings of the 7th International Joint Conference on
   Artificial Intelligence - Volume 2}, IJCAI'81, pages 674--679, San Francisco,
   CA, USA. Morgan Kaufmann Publishers Inc.
+
+\bibitem[MacTavish and Barfoot, 2015]{MacTavish2015-wt}
+MacTavish, K. and Barfoot, T.~D. (2015).
+\newblock At all costs: A comparison of robust cost functions for camera
+  correspondence outliers.
+\newblock In {\em Proc. Conf. on Comp. and Robot Vision ({CRV})}, pages 62--69.
+
+\bibitem[Maimone et~al., 2007]{Maimone2007-tc}
+Maimone, M., Cheng, Y., and Matthies, L. (2007).
+\newblock Two years of visual odometry on the mars exploration rovers.
+\newblock {\em J. Field Robot.}, 24(3):169--186.
 
 \bibitem[Peretroukhin et~al., 2015a]{2015_Peretroukhin_PROBE}
 Peretroukhin, V., Clement, L., Giamou, M., and Kelly, J. (2015a).
@@ -103,10 +177,24 @@ Peretroukhin, V., Vega-Brown, W., Roy, N., and Kelly, J. (2016).
 \newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
   817--824.
 
-\bibitem[Scaramuzza and Fraundorfer, 2011]{scaramuzza2011visual}
-Scaramuzza, D. and Fraundorfer, F. (2011).
+\bibitem[Scaramuzza and Fraundorfer, 2011a]{Scaramuzza2011-qr}
+Scaramuzza, D. and Fraundorfer, F. (2011a).
+\newblock Visual odometry [tutorial].
+\newblock {\em IEEE Robot. Autom. Mag.}, 18(4):80--92.
+
+\bibitem[Scaramuzza and Fraundorfer, 2011b]{scaramuzza2011visual}
+Scaramuzza, D. and Fraundorfer, F. (2011b).
 \newblock Visual odometry [tutorial].
 \newblock {\em {IEEE} Robot. Automat. Mag.}, 18(4):80--92.
+
+\bibitem[Sola, 2017]{Sola2017quaternion}
+Sola, J. (2017).
+\newblock Quaternion kinematics for the error-state kalman filter.
+\newblock {\em arXiv preprint arXiv:1711.02508}.
+
+\bibitem[Sol{\`a} et~al., 2018]{Sola2018-kg}
+Sol{\`a}, J., Deray, J., and Atchuthan, D. (2018).
+\newblock A micro lie theory for state estimation in robotics.
 
 \bibitem[S{\"u}nderhauf and Protzel, 2007]{sunderhauf2007stereo}
 S{\"u}nderhauf, N. and Protzel, P. (2007).
@@ -118,6 +206,12 @@ Tsotsos, K., Chiuso, A., and Soatto, S. (2015).
 \newblock Robust inference for visual-inertial sensor fusion.
 \newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages
   5203--5210.
+
+\bibitem[Umeyama, 1991]{Umeyama1991-ws}
+Umeyama, S. (1991).
+\newblock {Least-Squares} estimation of transformation parameters between two
+  point patterns.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 13(4):376--380.
 
 \bibitem[Vega-Brown et~al., 2013]{VegaBrown:ew}
 Vega-Brown, W., Bachrach, A., Bry, A., Kelly, J., and Roy, N. (2013).

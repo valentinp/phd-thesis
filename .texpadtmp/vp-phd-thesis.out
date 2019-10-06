@@ -1,0 +1,33 @@
+\BOOKMARK [0][-]{chapter.1}{Mathematical Foundations}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Coordinate Frames}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Rotations}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.2.1}{Unit Quaternions}{section.1.2}% 4
+\BOOKMARK [1][-]{section.1.3}{Spatial Transforms}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.3.1}{Applying Transforms}{section.1.3}% 6
+\BOOKMARK [1][-]{section.1.4}{Perturbations}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.5}{Uncertainty}{chapter.1}% 8
+\BOOKMARK [0][-]{chapter.2}{Classical Visual Odometry}{}% 9
+\BOOKMARK [1][-]{section.2.1}{A taxonomy of VO}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.2}{A classical VO pipeline}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.1}{Preprocessing}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.2}{Data association}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.3}{Maximum Likelihood Motion solution}{section.2.2}% 14
+\BOOKMARK [1][-]{section.2.3}{Robust Estimation}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.4}{Outstanding Issues}{chapter.2}% 16
+\BOOKMARK [0][-]{chapter.3}{Predictive Robust Estimation}{}% 17
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.2}{Motivation}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.3}{Related Work}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.4}{PROBE: Scalar k-Nearest Neighbours}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.4.1}{Mathematical Formulation}{section.3.4}% 22
+\BOOKMARK [2][-]{subsection.3.4.2}{Training}{section.3.4}% 23
+\BOOKMARK [2][-]{subsection.3.4.3}{Evaluation}{section.3.4}% 24
+\BOOKMARK [2][-]{subsection.3.4.4}{Prediction Space}{section.3.4}% 25
+\BOOKMARK [1][-]{section.3.5}{Generalized Kernels}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.5.1}{Predictive noise models for visual odometry}{section.3.5}% 27
+\BOOKMARK [2][-]{subsection.3.5.2}{Inference without ground truth}{section.3.5}% 28
+\BOOKMARK [2][-]{subsection.3.5.3}{Experiments}{section.3.5}% 29
+\BOOKMARK [2][-]{subsection.3.5.4}{KITTI}{section.3.5}% 30
+\BOOKMARK [1][-]{section.3.6}{Summary}{chapter.3}% 31
+\BOOKMARK [0][-]{section*.54}{Appendices}{}% 32
+\BOOKMARK [0][-]{section*.54}{Bibliography}{}% 33
