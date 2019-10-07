@@ -57,37 +57,37 @@
 \contentsline {subsection}{\numberline {5.4.1}Observation Model}{55}{subsection.5.4.1}% 
 \contentsline {subsection}{\numberline {5.4.2}Sliding Window Bundle Adjustment}{56}{subsection.5.4.2}% 
 \contentsline {section}{\numberline {5.5}Orientation Correction}{57}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}Indirect Sun Detection using a Bayesian Convolutional Neural Network}{59}{section.5.6}% 
-\contentsline {subsection}{\numberline {5.6.1}Cost Function}{60}{subsection.5.6.1}% 
-\contentsline {subsection}{\numberline {5.6.2}Uncertainty Estimation}{60}{subsection.5.6.2}% 
-\contentsline {subsection}{\numberline {5.6.3}Implementation and Training}{61}{subsection.5.6.3}% 
-\contentsline {subsubsection}{Data Preparation \& Transfer Learning}{62}{section*.59}% 
-\contentsline {subsubsection}{Model Precision}{62}{section*.60}% 
-\contentsline {subsubsection}{Data Partitioning}{62}{section*.61}% 
-\contentsline {section}{\numberline {5.7}Simulation Experiments}{62}{section.5.7}% 
+\contentsline {section}{\numberline {5.6}Indirect Sun Detection using a Bayesian Convolutional Neural Network}{58}{section.5.6}% 
+\contentsline {subsection}{\numberline {5.6.1}Cost Function}{59}{subsection.5.6.1}% 
+\contentsline {subsection}{\numberline {5.6.2}Uncertainty Estimation}{59}{subsection.5.6.2}% 
+\contentsline {subsection}{\numberline {5.6.3}Implementation and Training}{60}{subsection.5.6.3}% 
+\contentsline {subsubsection}{Data Preparation \& Transfer Learning}{61}{section*.10}% 
+\contentsline {subsubsection}{Model Precision}{61}{section*.11}% 
+\contentsline {subsubsection}{Data Partitioning}{61}{section*.12}% 
+\contentsline {section}{\numberline {5.7}Simulation Experiments}{61}{section.5.7}% 
 \contentsline {section}{\numberline {5.8}Urban Driving Experiments: The KITTI Odometry Benchmark}{69}{section.5.8}% 
 \contentsline {subsection}{\numberline {5.8.1}Sun-BCNN Test Results}{72}{subsection.5.8.1}% 
 \contentsline {subsection}{\numberline {5.8.2}Visual Odometry Experiments}{73}{subsection.5.8.2}% 
-\contentsline {subsubsection}{Simulated Sun Sensing}{73}{section*.76}% 
-\contentsline {subsubsection}{Vision-based Sun Sensing}{74}{section*.77}% 
+\contentsline {subsubsection}{Simulated Sun Sensing}{73}{section*.28}% 
+\contentsline {subsubsection}{Vision-based Sun Sensing}{74}{section*.29}% 
 \contentsline {section}{\numberline {5.9}Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{74}{section.5.9}% 
 \contentsline {subsection}{\numberline {5.9.1}Sun-BCNN Test Results}{77}{subsection.5.9.1}% 
 \contentsline {subsection}{\numberline {5.9.2}Visual Odometry Experiments}{78}{subsection.5.9.2}% 
 \contentsline {section}{\numberline {5.10}Sensitivity Analysis}{80}{section.5.10}% 
 \contentsline {subsection}{\numberline {5.10.1}Cloud Cover}{80}{subsection.5.10.1}% 
-\contentsline {subsubsection}{Procedure}{81}{section*.86}% 
-\contentsline {subsubsection}{Results}{81}{section*.87}% 
+\contentsline {subsubsection}{Procedure}{81}{section*.38}% 
+\contentsline {subsubsection}{Results}{81}{section*.39}% 
 \contentsline {subsection}{\numberline {5.10.2}Model Generalization}{83}{subsection.5.10.2}% 
-\contentsline {subsubsection}{Procedure}{83}{section*.89}% 
-\contentsline {subsubsection}{Results}{83}{section*.90}% 
+\contentsline {subsubsection}{Procedure}{83}{section*.41}% 
+\contentsline {subsubsection}{Results}{83}{section*.42}% 
 \contentsline {subsection}{\numberline {5.10.3}Mean and Covariance Computation}{86}{subsection.5.10.3}% 
-\contentsline {subsubsection}{Mean computation}{86}{section*.95}% 
-\contentsline {paragraph}{Procedure}{86}{section*.96}% 
-\contentsline {paragraph}{Results}{86}{section*.97}% 
-\contentsline {subsubsection}{Covariance Computation}{86}{section*.98}% 
-\contentsline {paragraph}{Procedure}{86}{section*.99}% 
-\contentsline {paragraph}{Results}{87}{section*.100}% 
-\contentsline {section}{\numberline {5.11}Summary}{87}{section.5.11}% 
+\contentsline {subsubsection}{Mean computation}{86}{section*.47}% 
+\contentsline {paragraph}{Procedure}{86}{section*.48}% 
+\contentsline {paragraph}{Results}{86}{section*.49}% 
+\contentsline {subsubsection}{Covariance Computation}{87}{section*.52}% 
+\contentsline {paragraph}{Procedure}{87}{section*.53}% 
+\contentsline {paragraph}{Results}{88}{section*.54}% 
+\contentsline {section}{\numberline {5.11}Summary}{88}{section.5.11}% 
 \contentsline {chapter}{\numberline {6}Learned Pose Corrections}{89}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Introduction}{89}{section.6.1}% 
 \contentsline {section}{\numberline {6.2}Motivation}{90}{section.6.2}% 
@@ -145,7 +145,7 @@
 \contentsline {section}{\numberline {8.2}Future Work}{131}{section.8.2}% 
 \contentsline {section}{\numberline {8.3}Final Remarks}{132}{section.8.3}% 
 \contentsline {section}{\numberline {8.4}Coda: In Search of Elegance}{132}{section.8.4}% 
-\contentsline {chapter}{Appendices}{135}{section*.26}% 
+\contentsline {chapter}{Appendices}{135}{section*.55}% 
 \contentsline {chapter}{\numberline {A}PROBE: Isotropic Covariance Models through K-NN}{136}{Appendix.1.A}% 
 \contentsline {section}{\numberline {A.1}Introduction}{136}{section.1.A.1}% 
 \contentsline {subsection}{\numberline {A.1.1}Theory}{136}{subsection.1.A.1.1}% 
@@ -153,4 +153,4 @@
 \contentsline {subsection}{\numberline {A.1.3}Testing}{138}{subsection.1.A.1.3}% 
 \contentsline {section}{\numberline {A.2}Experiments}{139}{section.1.A.2}% 
 \contentsline {chapter}{\numberline {B}Visual Odometry Implementation Details}{141}{Appendix.1.B}% 
-\contentsline {chapter}{Bibliography}{142}{section*.26}% 
+\contentsline {chapter}{Bibliography}{142}{section*.55}% 

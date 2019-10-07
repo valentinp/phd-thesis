@@ -18,7 +18,7 @@ This work was associated with three publications:
 \item \bibentry{2017_Peretroukhin_Reducing},
 \item \bibentry{2018_Peretroukhin_Inferring}.
 \end{enumerate}
-In this chapter, we summarize the latter journal publication.
+This chapter is largely a reproduction of the latter journal publication which summarizes the approach.
  
 
 \section{Motivation}
@@ -38,9 +38,7 @@ In such cases, it can be advantageous to rely on environmental cues such as the 
     \label{fig:sun-bcnn_global-gps}
 \end{figure}
 
-For visual odometry (VO) in particular, the addition of global orientation information can limit the growth of drift error to be linear rather than superlinear with distance traveled \citep{Olson2003-ax}.
-Sun-based orientation corrections have been successfully used in planetary analogue environments \citep{Furgale2011-zu,Lambert2012-sn} as well as on board the Mars Exploration Rovers (MERs) \citep{Eisenman2002-cg,Maimone2007-tc}.
-In particular, \citet{Lambert2012-sn} showed that incorporating sun sensor and inclinometer measurements directly into the motion estimation pipeline (as opposed to periodically updating the vehicle heading, as in earlier work) can significantly reduce VO drift over long trajectories.
+
 
 \begin{wrapfigure}{r}{0.5\textwidth}
     \centering
@@ -48,6 +46,12 @@ In particular, \citet{Lambert2012-sn} showed that incorporating sun sensor and i
       \caption{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph{virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.}
     \label{fig:sun-bcnn_system}
 \end{wrapfigure}
+
+For visual odometry (VO) in particular, the addition of global orientation information can limit the growth of drift error to be linear rather than superlinear with distance traveled \citep{Olson2003-ax}.
+
+Sun-based orientation corrections have been successfully used in planetary analogue environments \citep{Furgale2011-zu,Lambert2012-sn} as well as on board the Mars Exploration Rovers (MERs) \citep{Eisenman2002-cg,Maimone2007-tc}.
+In particular, \citet{Lambert2012-sn} showed that incorporating sun sensor and inclinometer measurements directly into the motion estimation pipeline (as opposed to periodically updating the vehicle heading, as in earlier work) can significantly reduce VO drift over long trajectories.
+
 
 In this work, we seek to answer the question of whether similar reductions in VO drift can be obtained solely from the image stream already being used to compute VO.
 The main idea here is that by reasoning over more than just the geometric information available from a standard RGB camera, we can improve existing VO techniques without needing to rely on a dedicated sun sensor or specially oriented camera.
@@ -57,8 +61,8 @@ Moreover, we show that our network, dubbed Sun-BCNN, can produce a covariance es
 
 
 
-The remainder of this paper begins with a discussion of related work, followed by an overview of the theory underlying BCNNs and a discussion of our model architecture, implementation, and training procedure.
-We then outline our chosen visual odometry pipeline, which is based on a two-frame bundle adjustment optimization, and describe how observations of the sun can be incorporated directly into the motion estimation problem following the technique of \citet{Lambert2012-sn}.
+The remainder of this chapter begins with a discussion of related work, followed by an overview of the theory underlying BCNNs and a discussion of our model architecture, implementation, and training procedure.
+We then outline our chosen visual odometry pipeline, which is based is an adapted version of the pipeline describe in \Cref{ch:vo}, and describe how observations of the sun can be incorporated directly into the motion estimation problem following the technique of \citet{Lambert2012-sn}.
 Finally, we present several sets of experiments designed to test and validate both Sun-BCNN and our sun-aided VO pipeline in variety of environments.
 These include experiments on 21.6~km of urban driving data from the KITTI odometry benchmark training set \citep{Geiger2013-ky}, as well as a further 10~km traverse through a planetary analogue site taken from the Devon Island Rover Navigation Dataset collected in a planetary analogue site in the Canadian High Arctic \citep{Furgale2012-kk}.
 We investigate the possibility of model generalization between different cameras and environments, and further explore the sensitivity of Sun-BCNN to cloud cover during training and testing, using data from the Oxford Robotcar Dataset \citep{Maddern2016-ng}.
@@ -88,12 +92,12 @@ We build on on previous work by \citet{2017_Clement_Improving}, who demonstrated
 We also build on the work of \citet{2017_Peretroukhin_Reducing}, who presented preliminary experimental results comparing Sun-BCNN against the method of \citet{Lalonde2011-jw} and its VO-informed variant \citep{2017_Clement_Improving} as well as the Sun-CNN of \citet{Ma2016-at} on the KITTI odometry benchmark \citep{Geiger2013-ky}, both in terms of raw measurement accuracy and in terms of their impact on VO accuracy.
 
 While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{2017_Clement_Improving}). 
-Furthermore, our Bayesian CNN includes a dropout layer after every convolutional and fully connected layer (as outlined by \citet{Gal2016-ny} but not done by \citet{Kendall2016-zf}), which produces more principled covariance outputs.
+Furthermore, our Bayesian CNN includes a dropout layer after every convolutional and fully connected layer (as outlined by \citet{Gal2016-ny} but not done by \citet{Kendall2016-zf}).
 
 
 \section{Sun-Aided Stereo Visual Odometry} 
 \label{sec:sun_bcnn-stereo-vo}
-We adopt a sliding window sparse stereo VO technique that has been used in a number of successful mobile robotics applications \citep{Cheng2006-nl,Furgale2010-to,Geiger2011-xe,Kelly2008-mh}.
+We adopt a sliding window sparse stereo VO technique (adopted based on the frame-to-frame pipeline described in \Cref{ch:vo}) that has been used in a number of successful mobile robotics applications \citep{Cheng2006-nl,Furgale2010-to,Geiger2011-xe,Kelly2008-mh}.
 Our task is to estimate a window of $\LieGroupSE{3}$ poses $\Set{\Transform_{k_1,0}, \Transform_{k_1+1,0}, \dots, \Transform_{k_2-1, 0}, \Transform_{k_2, 0}}$ expressed in a base coordinate frame $\CoordinateFrame{0}$, given a prior estimate of the transformation $\Transform_{k_1,0}$.
 We accomplish this by tracking keypoints across pairs of stereo images and computing an initial guess for each pose in the window using frame-to-frame point cloud alignment, which we then refine by solving a local bundle adjustment problem over the window.
 In our experiments we choose a window size of two, which we observed to provide good VO accuracy at low computational cost. 
@@ -116,7 +120,7 @@ If we take $\Keypoint_0^j$ to be the homogeneous 3D coordinates of keypoint $j$,
 where $\left(u,v\right)$ are the keypoint coordinates in the left image and $d$ is the disparity in pixels.
 
 \subsection{Sliding Window Bundle Adjustment}
-We use the open-source \texttt{libviso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
+Like with PROBE, we use the open-source \texttt{viso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
 Based on these keypoint tracks, a three-point Random Sample Consensus (RANSAC) algorithm \citep{fischler1981random} generates an initial guess of the interframe motion and rejects outlier keypoint tracks by thresholding their reprojection error.
 We compound these pose-to-pose transformation estimates through our chosen window and refine them using a local bundle adjustment, which we solve using the nonlinear least-squares solver Ceres \citep{ceres-solver}.
 The objective function to be minimized can be written as
@@ -157,34 +161,6 @@ where
 \end{equation}
 and $\BACost_\text{reprojection}$ and $\BACost_\text{prior}$ are defined in \Cref{eq:reprojection_cost,eq:prior_cost}, respectively.
 This additional term constrains the orientation of the camera, which helps limit drift in the VO result due to orientation error \citep{Lambert2012-sn}.
-
-\begin{table}[]
-\centering
-\caption{Comparison of translational and rotational average root mean squared errors (ARMSE) on simulated sequences.}
-\label{tab:sim_armse}
-\begin{tabular}{@{}lcccc@{}}
-\textbf{Loop Shape}                                  & Circle & Triangle & Square & Star   \\ \midrule
-\textbf{\# Loops}                             & 100    & 100      & 100    & 100    \\ \midrule
-\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE {[}m{]}}  } \\
-\quad Without Sun & 2.22 & 2.00 & 2.33 & 1.41 \T\B \\
-\quad GT-Sun-0    & 1.19 & 1.62 & 2.13 & 0.75 \T \\
-\quad GT-Sun-10   & 2.29 & 2.07 & 2.05 & 1.32 \\
-\quad GT-Sun-20   & 2.08 & 2.12 & 2.31 & 1.33 \\
-\quad GT-Sun-30   & 2.10 & 1.95 & 2.16 & 1.38 \\ \midrule
-\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE (EN-plane) {[}m{]}}} \\
-\quad Without Sun & 2.67 & 1.88 & 2.57 & 1.10 \T\B \\
-\quad GT-Sun-0    & 1.34 & 1.89 & 2.56 & 0.83 \T \\
-\quad GT-Sun-10   & 2.61 & 2.04 & 2.26 & 0.99 \\
-\quad GT-Sun-20   & 2.44 & 2.03 & 2.57 & 0.88 \\
-\quad GT-Sun-30   & 2.46 & 2.00 & 2.35 & 1.25 \\ \midrule
-\multicolumn{5}{@{}l@{}}{\textbf{Rot. ARMSE $\mathbf{(\times 10^{-3})}$ {[}axis-angle{]}}} \\
-\quad Without Sun & 115.32 & 144.56 & 107.27 & 111.19 \T\B \\
-\quad GT-Sun-0    & 14.10  & 113.58 & 59.21  & 30.69  \T \\
-\quad GT-Sun-10   & 55.22  & 115.03 & 75.62  & 39.17  \\
-\quad GT-Sun-20   & 65.02  & 121.11 & 80.41  & 49.75  \\
-\quad GT-Sun-30   & 78.73  & 145.22 & 100.91 & 72.39  \\ \bottomrule
-\end{tabular}
-\end{table}
 
 Since $\SunDirection_k$ is constrained to be unit length, there are only two underlying degrees of freedom.
 We therefore define $\Vector{f}\left(\cdot\right)$ to be a function that transforms a 3D unit vector in camera frame $\CoordinateFrame{k}$ to a zenith-azimuth parametrization:
@@ -343,6 +319,35 @@ As noted by \citet{Gal2016UncertaintyThesis}, the BCNN can be made heteroscedast
 \caption{Cumulative root mean squared error (CRMSE) of a simulated 100-loop circular trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The accumulated estimation error is greatly reduced by incorporating observations of the sun, and the benefit decreases as these observations become noisier.}
 \label{fig:sim_rmse}
 \end{figure*}
+
+\begin{table}[]
+\centering
+\caption{Comparison of translational and rotational average root mean squared errors (ARMSE) on simulated sequences.}
+\label{tab:sim_armse}
+\begin{tabular}{@{}lcccc@{}}
+\textbf{Loop Shape}                                  & Circle & Triangle & Square & Star   \\ \midrule
+\textbf{\# Loops}                             & 100    & 100      & 100    & 100    \\ \midrule
+\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE {[}m{]}}  } \\
+\quad Without Sun & 2.22 & 2.00 & 2.33 & 1.41 \T\B \\
+\quad GT-Sun-0    & 1.19 & 1.62 & 2.13 & 0.75 \T \\
+\quad GT-Sun-10   & 2.29 & 2.07 & 2.05 & 1.32 \\
+\quad GT-Sun-20   & 2.08 & 2.12 & 2.31 & 1.33 \\
+\quad GT-Sun-30   & 2.10 & 1.95 & 2.16 & 1.38 \\ \midrule
+\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE (EN-plane) {[}m{]}}} \\
+\quad Without Sun & 2.67 & 1.88 & 2.57 & 1.10 \T\B \\
+\quad GT-Sun-0    & 1.34 & 1.89 & 2.56 & 0.83 \T \\
+\quad GT-Sun-10   & 2.61 & 2.04 & 2.26 & 0.99 \\
+\quad GT-Sun-20   & 2.44 & 2.03 & 2.57 & 0.88 \\
+\quad GT-Sun-30   & 2.46 & 2.00 & 2.35 & 1.25 \\ \midrule
+\multicolumn{5}{@{}l@{}}{\textbf{Rot. ARMSE $\mathbf{(\times 10^{-3})}$ {[}axis-angle{]}}} \\
+\quad Without Sun & 115.32 & 144.56 & 107.27 & 111.19 \T\B \\
+\quad GT-Sun-0    & 14.10  & 113.58 & 59.21  & 30.69  \T \\
+\quad GT-Sun-10   & 55.22  & 115.03 & 75.62  & 39.17  \\
+\quad GT-Sun-20   & 65.02  & 121.11 & 80.41  & 49.75  \\
+\quad GT-Sun-30   & 78.73  & 145.22 & 100.91 & 72.39  \\ \bottomrule
+\end{tabular}
+\end{table}
+
 
 We assess the benefit of incorporating sun observations of varying quality by conducting a series of simulation experiments consisting of a stereo camera moving along loopy trajectories of varying shapes through a simulated field of point landmarks, with a single static directional landmark representing the sun.
 \Cref{fig:sim_environment} shows several such loopy trajectories.
@@ -970,25 +975,6 @@ We evaluated both methods using the same combined datasets and partitioning sche
 \Cref{tab:mean_estimation_comp} presents the azimuth, zenith and vector errors for the two mean computation methods. 
 \emph{Method I} produces lower vector errors and smaller standard deviations in azimuth and zenith on all three datasets.
 
-\subsubsection{Covariance Computation}
-\paragraph{Procedure}
-We further investigated two different covariance computation methods, which we also refer to as \emph{Method I} and \emph{Method II}. 
-
-\begin{enumerate} 
-\item In \emph{Method I}, we first evaluate \Cref{eq:bcnn_covar} directly on the constrained unit vectors produced by $N$ stochastic passes through the BCNN, yielding a $3 \times 3$ covariance. 
-We then compute a $2 \times 2$ covariance on azimuth and zenith by propagating the $3 \times 3$ covariance through a linearized \Cref{eq:vec-to-az-zen}.
-
-\item In \emph{Method II} (used in this work), we first convert each of the $N$ unit vectors produced by stochastic passes through the BCNN to azimuth and zenith angles, and then evaluate \Cref{eq:bcnn_covar} on the angles themselves.
-\end{enumerate}
-
-We once again re-used the transfer learning datasets with the same partitioning scheme, and evaluated covariances on the test sets corresponding to each of the three models. 
-To control for the effect of tuning the model precision $\tau$, we replace the diagonal elements of each covariance matrix with the diagonal elements of the empirical covariance corresponding to the entire test set (computed based ground truth azimuth and zenith errors). 
-We then compared the consistency of the cross-correlations of each method (i.e., the off-diagonal components of the covariance matrix) by computing ANEES values over the each model's corresponding test set using both mean computation methods.  
-
-\paragraph{Results}
-\Cref{tab:sun-bcnn_cov_estimation_comp} lists the ANEES values produced by each method of covariance computation when paired with each mean computation method. 
-\emph{Method I} covariances produced better ANEES values when paired with \emph{Method I} mean estimation, but \emph{Method II} covariances paired well with either mean estimation scheme. 
-
 \begin{table}[]
 \centering
 \caption{A comparison of prediction errors from different mean estimation methods.}
@@ -1031,6 +1017,29 @@ We then compared the consistency of the cross-correlations of each method (i.e.,
                         &                         &   Method II &  & 0.89  \\ \bottomrule
 \end{tabular}
 \end{table}
+
+\subsubsection{Covariance Computation}
+\paragraph{Procedure}
+We further investigated two different covariance computation methods, which we also refer to as \emph{Method I} and \emph{Method II}. 
+
+\begin{enumerate} 
+\item In \emph{Method I}, we first evaluate \Cref{eq:bcnn_covar} directly on the constrained unit vectors produced by $N$ stochastic passes through the BCNN, yielding a $3 \times 3$ covariance. 
+We then compute a $2 \times 2$ covariance on azimuth and zenith by propagating the $3 \times 3$ covariance through a linearized \Cref{eq:vec-to-az-zen}.
+
+\item In \emph{Method II} (used in this work), we first convert each of the $N$ unit vectors produced by stochastic passes through the BCNN to azimuth and zenith angles, and then evaluate \Cref{eq:bcnn_covar} on the angles themselves.
+\end{enumerate}
+
+We once again re-used the transfer learning datasets with the same partitioning scheme, and evaluated covariances on the test sets corresponding to each of the three models. 
+To control for the effect of tuning the model precision $\tau$, we replace the diagonal elements of each covariance matrix with the diagonal elements of the empirical covariance corresponding to the entire test set (computed based ground truth azimuth and zenith errors). 
+We then compared the consistency of the cross-correlations of each method (i.e., the off-diagonal components of the covariance matrix) by computing ANEES values over the each model's corresponding test set using both mean computation methods.  
+
+
+
+\paragraph{Results}
+\Cref{tab:sun-bcnn_cov_estimation_comp} lists the ANEES values produced by each method of covariance computation when paired with each mean computation method. 
+\emph{Method I} covariances produced better ANEES values when paired with \emph{Method I} mean estimation, but \emph{Method II} covariances paired well with either mean estimation scheme. 
+
+
 
 \section{Summary}
 
