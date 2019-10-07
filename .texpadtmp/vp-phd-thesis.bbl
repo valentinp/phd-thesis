@@ -522,6 +522,12 @@ Scaramuzza, D. and Fraundorfer, F. (2011).
 \newblock Visual odometry [tutorial].
 \newblock {\em IEEE Robot. Autom. Mag.}, 18(4):80--92.
 
+\bibitem[Sibley et~al., 2007]{Sibley2007}
+Sibley, G., Matthies, L., and Sukhatme, G. (2007).
+\newblock Bias reduction and filter convergence for long range stereo.
+\newblock In {\em Robotics Research}, pages 285--294. Springer Berlin
+  Heidelberg.
+
 \bibitem[Sola, 2017]{Sola2017quaternion}
 Sola, J. (2017).
 \newblock Quaternion kinematics for the error-state kalman filter.

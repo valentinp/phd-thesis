@@ -15,17 +15,17 @@ Visual odometry (VO) has a rich history in mobile robotics and computer vision. 
 
 \section{A taxonomy of VO}
 
-VO can be largely divided along two dimensions (c.f. \Cref{fig:vo_taxonomy}): the type of camera (monocular vs. stereo) and the type of data association (indirect, or feature-based vs. direct, or pixel intensity-based). 
+VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the type of camera used to capture images (monocular vs. stereo) and (2) the type of data association used to compute motion estimates (indirect, or feature-based vs. direct, or pixel intensity-based). 
 
-\textbf{Monocular vs. Stereo:}
-The first distinction is based on the type of camera used by the VO pipeline. Monocular VO methods use a single camera to infer motion and can use a single compact, low-power vision sensor. They do not require any extrinsic calibration but must rely on known visual cues or external information (e.g., wheel odometry, inertial measurements) to provide metric egomotion estimates. Conversely, stereo VO methods use a stereo camera to triangulate objects with metric scale. This allows stereo VO to provide metricaly-acurate egomotion estimates. However, stereo methods rely on accurate extrinsic calibration, and their ability to resolve depth is limited by the baseline distance between the stereo pair. 
+\textbf{Monocular vs. Stereo}:
+ Monocular VO methods use a single camera to infer motion and can use a single compact, low-power vision sensor. They do not require any extrinsic calibration but must rely on known visual cues or external information (e.g., wheel odometry, inertial measurements) to provide metric egomotion estimates. Conversely, stereo VO methods use a stereo camera to triangulate objects with metric scale. This allows stereo VO to provide metrically-acurate egomotion estimates. However, stereo methods rely on accurate extrinsic calibration, and their ability to resolve depth is limited by the baseline distance between the stereo pair and by the quality of stereo matches (which can be degraded by self-similar textures, occlusions, and foreshortening effects). 
 
-\textbf{Direct vs. Indirect:}
-The second distinction is based on the type of data association used to match sequential images. Direct methods make the assumption of brightness constancy, and attempt to \textit{directly} maximize the similarity of pixel intensities. Indirect methods, however, rely on image features detectors to extract a set of salient landmarks, and then match these landmarks across images (typically through some sort of invariant descriptor).
+\textbf{Direct vs. Indirect}:
+The second distinction is based on the type of data association used to match sequential images and infer motion. Direct methods make the assumption of brightness constancy, and attempt to \textit{directly} maximize the similarity of pixel intensities. Indirect methods, however, rely on image features detectors to extract a set of salient landmarks, and then match these landmarks across images (typically through some sort of invariant descriptor).
 
 \section{A classical VO pipeline}
 
-In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline largely based on the work of \cite{furgale_phd11}. We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the dpipeline here.
+In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline} largely based on the work of \cite{furgale_phd11}. We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
 
 \begin{figure}[h!]
 \begin{center}
@@ -42,18 +42,17 @@ In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indire
      \centering
      \begin{subfigure}[b]{0.48\textwidth}
          \centering
-     		\includegraphics[width=0.98\textwidth]{classical-vo/stereo_camera}
-			\caption{Ideal stereo camera.}
-			 \label{fig:vo_stereo_camera}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.48\textwidth}
-         \centering
          \includegraphics[width=0.75\textwidth]{classical-vo/stereo_rectification}
         \caption{Rectification and undistortion process. Figure adapted from \cite{florez2010}.}
          \label{fig:vo_undistort_recitfy}
 	 \end{subfigure}
-    \caption{Preprocessing components.}
+	 \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+     		\includegraphics[width=0.98\textwidth]{classical-vo/stereo_camera}
+			\caption{Ideal stereo camera.}
+			 \label{fig:vo_stereo_camera}
+     \end{subfigure}
+    \caption{We pre-process stereo images (left) to simulate an ideal stereo camera (right).}
         \label{fig:vo_preprocessing}
 \end{figure}
 
@@ -71,19 +70,19 @@ During preprocessing, we use a lens model (assumed to be known apriori) to undis
 \end{center}
 \end{figure}
 
-In this thesis, we focus on indirect stereo visual odometry for its computational efficiency. Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \texttt{viso2} \citep{Geiger2011-xe} image feature extraction and matching algorithm. In \texttt{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \texttt{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric of $11 \times 11$ windows of Sobel filter responses. Finally, features are matched across a stereo-pair and forward in time, to ensure that a single feature exists across two consecutive stereo camera poses. 
+In this thesis, we focus on indirect stereo visual odometry for its computational efficiency. Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \texttt{viso2} \citep{Geiger2011-xe} image feature extraction and matching algorithm as it is especially designed for sequential feature matching. In \texttt{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \texttt{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time to ensure that a single feature exists across two consecutive stereo camera poses. 
 
 Each extract feature corresponds to a
 point in space, expressed in homogeneous coordinates in the camera frame as
-$\HomogeneousPoint{i}{t} := \Transpose{\bbm p_1 & p_2 & p_3 & p_4 \ebm} \in
+$\HomogeneousPoint{i}{c} := \Transpose{\bbm p_1 & p_2 & p_3 & p_4 \ebm} \in
 \HomogeneousNumbers[3]$.  Given our intrinsics and extrinsic calibration parameters, our idealized stereo-camera model, $\ProjectionFunction$,
 projects a landmark expressed in homogeneous coordinates into image space, so
-that $\ImageLandmark{i}{t}$, the stereo pixel coordinates of landmark $i$ in the first camera pose at time $t$, is given
+that $\ImageLandmark{i}{c}$, the stereo pixel coordinates of landmark $i$ in the camera frame, is given
 by 
 \begin{equation}
-	\ImageLandmark{i}{t} = \bbm u_l \\ v_l \\ u_r \\ v_r \ebm 
-  = \ProjectionFunction(\HomogeneousPoint{i}{t}) 
-  = \Matrix{M} \frac{1}{p_3}\HomogeneousPoint{i}{t},
+	\ImageLandmark{i}{c} = \bbm u_l \\ v_l \\ u_r \\ v_r \ebm 
+  = \ProjectionFunction(\HomogeneousPoint{i}{c}) 
+  = \Matrix{M} \frac{1}{p_3}\HomogeneousPoint{i}{c},
 \end{equation}
 where
 \begin{equation}
@@ -91,9 +90,9 @@ where
                         & 0 & c_u & -f\frac{b}{2} \\ 0 & f & c_v & 0 \ebm.
 \end{equation}
 Here, $\{c_u, c_v\}$, $\{f_u, f_v\}$, and $b$ are the principal points, focal
-lengths and baseline of the stereo camera respectively. Note that in this
-formulation, the stereo camera frame is centered between the two individual
-lenses. 
+lengths and baseline of the stereo camera respectively (computed through intrinsic calibration). Note that in this
+formulation, the stereo camera frame is centred between the two individual
+cameras. 
 
 
 \subsubsection{Outlier Rejection}
@@ -101,9 +100,8 @@ lenses.
 To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{fischler1981random}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
   
 \subsection{Maximum Likelihood Motion Solution}
-We will define $\Transform_t \in\text{SE}(3)$, as the rigid transform between two subsequent stereo camera poses, 
-$\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$
-
+Finally, we compute the rigid-body transform between to stereo camera frames using maximum likelihood estimation. We define the rigid-body transform, $\Transform_t \in\text{SE}(3)$, to be the rigid-body transform between two subsequent stereo camera poses, 
+$\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$. In other words, 
 \begin{equation}
 	\Transform_t = \Transform_{c_1w} \Transform^{-1}_{c_0w},
 \end{equation}
@@ -129,12 +127,10 @@ First, we can follow classical approach \citep{Maimone2007-tc} and define $ \Vec
 \end{align}
 where $\Matrix{D} = \bbm \IdentityMatrix_{3\times3} & \Vector{0} \ebm \in \Real{}^{3\times4}$ converts homogenous coordinates into Euclidian coordinates.
 
-We follow \cite{Maimone2007-tc} and assume each stereo projection is corrupted by additive Gaussian noise,
-
+\noindent We can then follow \cite{Maimone2007-tc} and assume each stereo projection is corrupted by additive Gaussian noise,
 \begin{equation}
 \ImageLandmark{i}{c} \sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c}, \ImageLandmarkCovariance{i}{c} \right), 
 \end{equation}  
-
 then we can compute a density on the error function itself through first order noise propagation as
  \begin{equation}
   \Vector{e}_{i}(\Transform_t) \sim
@@ -150,23 +146,22 @@ $\Matrix{G}_{i,c} = \at{\PartialDerivative{\ProjectionFunction^{-1}}{\Vector{y}}
 
 \subsubsection{Reprojection Error}
 \label{sec:vo_reprojection}
-
 Alternatively, we can represent reprojection errors in the second frame directly as
 \begin{equation}
   \Vector{e}_{i}(\Transform_t)  = \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
     \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) ),
    \label{eq:image_error}
 \end{equation}
-\noindent and model reprojection errors directly as 
+\noindent and assume the following simple noise model
  \begin{equation}
   \Vector{e}_{i}(\Transform_t) \sim \NormalDistribution\left(\Vector 0, \GeneralCovariance_{i,t} \right) = 
  \NormalDistribution\left(\Vector 0,  \ImageLandmarkCovariance{i}{t}\right), 
 \end{equation}
-where we abuse notation (slightly) and replace the index for the camera frames $c_0$ or $c_1$ with $t$ to indicate that this covariance refers to the reprojection error that involves both sets of features.
+where we abuse notation (slightly) and replace the index for the camera frames $c_0$ or $c_1$ with $t$ to indicate that this covariance refers to the reprojection error that involves both sets of features. 
+
+Importantly, \cite{Sibley2007} show that using reprojection error (as compared to 3D point cloud error) results in less biased estimates for long-range stereo triangulation. Consequently, we favour this latter formulation in the large majority of our work (the one exception being the initial work on isotropic PROBE described in Appendix \ref{app:appendix_probe_knn}).
 
 \subsubsection{Solution via Gauss-Newton Optimization}
-
-
  In either case, we have now defined a weighted nonlinear least squares problem which can be solved iteratively using
 standard techniques. For our purposes, we opt to use Gauss-Newton optimization and follow \cite{Barfoot2017-ri} to optimize constrained poses.
 
@@ -195,14 +190,16 @@ The minimum to this objective can be solved for analytically by solving the norm
   \GeneralCovariance_{i}^{-1} \Vector{e}_{i}. 
 \label{eq:least-squares-iteration}
 \end{equation}
-We then update the operating point and proceed to the next iteration,
+Given $\delta\Vector{\xi}^{\star}$, we can update the operating point using the constraint-sensitive update
 \begin{equation}
-  \Transform^{(n+1)} = \MatExp{\delta\Vector{\xi}^{\star}} \Transform^{(n)}. \label{eq:update}
+  \Transform^{(n+1)} = \MatExp{\delta\Vector{\xi}^{\star}} \Transform^{(n)}, \label{eq:vo_se3_update}
 \end{equation}
+and iterate until convergence.
+
 There are many reasonable choices for both the initial transform
 $\Transform^{(0)}$ and for the conditions under which we terminate
-iteration. We initialize the estimated transform to identity, and iteratively
-perform the update given by \cref{eq:update} until we see a relative change in
+iteration. For most visual odometry applications, it suffices to initialize the estimated transform to identity, and iteratively
+perform the update given by \cref{eq:vo_se3_update} until we see a relative change in
 the squared error of less than one percent after an update. 
 
 %\newpage
@@ -236,7 +233,7 @@ the squared error of less than one percent after an update.
 
 
 \section{Robust Estimation}
-Since \cref{eq:vo_linleastsquares} assigns cost values that grow quadratically with measurement error, it is very sensitive to outlier measurements.
+Since \Cref{eq:vo_linleastsquares} assigns cost values that grow quadratically with measurement error, it is very sensitive to outlier measurements.
 A common solution to this problem is to replace the $L_2$ cost function with one that is less sensitive to large measurement errors \citep{MacTavish2015-wt}.
 These robust cost functions are collectively known as M-estimators, and many variants exist. Each uses a re-weighting function, $\rho(\cdot)$,
 
@@ -299,7 +296,7 @@ There are several outstanding limitations of classical visual odometry pipelines
 	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
 		\toprule
 		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
-		Stationary, homoscedastic noise in observation models can often reduce the consistency and accuracy of state estimates. This is especially true for complex, inferred measurement models. In visual data, inferred visual observations can be degraded not only due to sensor imperfections (e.g. poor intrinsic calibration, digitization effects, motion blur), but also as a result of the observed environment (e.g. self-similar scenes, specular surfaces, textureless environments). &  PROBE, Sun-BCNN, HydraNet \\
+		Stationary, homoscedastic noise in observation models can often reduce the consistency and accuracy of state estimates. This is especially true for complex, inferred measurement models. &  PROBE, Sun-BCNN, HydraNet \\
 		& \\
 		\bottomrule
 	\end{tabular}
