@@ -80,7 +80,7 @@ The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO
 \end{equation}
 
 \subsubsection{Active vs. Passive}
-An active (or \textit{alibi}) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or \textit{alias}) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this thesis are passive unless otherwise noted.  
+An active (or \textit{alibi}) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or \textit{alias}) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this dissertation are passive unless otherwise noted.  
 
 \subsubsection{Exponential and Logarithmic Maps}
 
@@ -92,7 +92,7 @@ Since rotations form a matrix Lie group (we refer the reader to \cite{Sola2018-k
 &= \cos{\phi} \IdentityMatrix + (1 - \cos{\phi}) \RotationAxisVector\RotationAxisVector^T + \sin{\phi} \RotationAxisVector^\wedge,
 \end{align}
 
-where the wedge operator $(\cdot)^\wedge$\footnote{This operator is often expressed as $(\cdot)^\times$ and is known as the skew-symmetric operator.} is defined as
+where the wedge operator $(\cdot)^\wedge$\footnote{This operator is sometimes also expressed as $(\cdot)^\times$ or $[\cdot]_\times$ and is known as the skew-symmetric operator.} is defined as
 \begin{equation}
 \RotationAxisVector^\wedge = \bbm a_0 \\ a_1 \\ a_2 \ebm^\wedge = \bbm 0 & -a_2 & a_1 \\ a_2 & 0 & -a_0 \\ -a_1 & a_0 & 0 \ebm.	
 \end{equation}
@@ -110,30 +110,27 @@ where $\phi = \arccos{\frac{\Trace{\Rotation} - 1}{2}}$ and the \textit{vee} ope
 	\MatLog{\Rotation} \approx (\Rotation - \IdentityMatrix)^\vee ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
 
-The latter case, (when $\phi = \pi$), defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$. This \textit{cut locus} is related to the idea that any three parameterization of $\LieGroupSO{3}$ will have singularities associated with it.
+The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$. This \textit{cut locus} is related to the idea that any three parameterization of $\LieGroupSO{3}$ will have singularities associated with it.
 
 \subsection{Unit Quaternions}
 
-Another way (and historically, the original way) to represent a general rotation is to use a unit quaternion, $\quat$. A unit quaternion has four parameters, a scalar $q_\omega$ and a three-dimensional vector component, $\quat_v$:
+Another way (and historically, the original way) to represent a general rotation is to use a unit quaternion, $\quat$. A unit quaternion has four parameters, a scalar value $q_\omega$, and a three-dimensional vector component, $\quat_v$:
 
 \begin{equation}
 	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
-
 Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. This manifold represents a double cover of $\LieGroupSO{3}$ (since both $\quat$ and $-\quat$ represent the same rotation). As with rotation matrices, we can define a surjective map from three parameters to the group itself,
 
 \begin{equation}
 \quat = \MatExp{\RotationVector} = \bbm \cos{\phi/2} \\ \RotationAxisVector \sin{\phi/2} \ebm.	
 \end{equation}
-
-Similarly, we can also define a logarithmic map,
-
+Similarly, we can also define a logarithmic map as
 \begin{align}
 \label{eq:math_quat_log}
 	\RotationVector =  \MatLog{\quat} = 2 \quat_v \frac{\arctan{(\Norm{\quat_v},  q_\omega})}{\Norm{\quat_v}}.
 \end{align}
 
-To avoid issues with the double cover, we replace $\quat$ with $-\quat$ if $q_\omega$ is negative before evaluating \Cref{eq:math_quat_log}. Also note again that \Cref{eq:math_quat_log} is undefined when $\phi = 0$, but, importantly, we do not face any issues when $\phi = \pi$ due to the half angle. As with rotation matrices, we can use small angle approximations to define:
+\noindent To avoid issues with the double cover, we replace $\quat$ with $-\quat$ if $q_\omega$ is negative before evaluating \Cref{eq:math_quat_log}. Also note again that \Cref{eq:math_quat_log} is undefined when $\phi = 0$, but, importantly, we do not face any issues when $\phi = \pi$ due to the half angle. As with rotation matrices, we can use small angle approximations to define:
 
 \begin{equation}
 	\MatLog{\quat} \approx \frac{\quat_v}{q_\omega} \left( 1 - \frac{\Norm{\quat_v}^2}{3 q_\omega^2}\right) ~~ \textrm{when} ~~ \phi \approx 0. 
@@ -180,7 +177,6 @@ Applying our notation for coordinate frames (and referring back to \Cref{fig:mat
 \begin{equation}
 \Transform_{vi} = \bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm.
 \end{equation}
-
 This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i$ and express the following relation:
 
 \begin{equation}
@@ -189,12 +185,12 @@ This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i
 which is numerically equivalent to  
 
 \begin{equation}
- \Vector{r}^{pi}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}  
+ \Vector{r}^{pi}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}.  
  \end{equation}
 
 \section{Perturbations}
 
-It is often useful to consider a small \textit{perturbation} about an operating point (whether that be a rotation or rigid-body transform). By leveraging a core property of Lie groups (that they are locally `Euclidian'), we can convert difficult non-linear problems into ones that have local linear approximations.
+When solving optimization problems that involve rotations or rigid-body transforms, it is often useful to consider a small \textit{perturbation} about an operating point. By leveraging a core property of Lie groups (that they are locally `Euclidian'), we can convert difficult non-linear problems into ones that have local linear approximations.
 
 Using rotations as an example, we can perturb an operating point, $\Mean{\Rotation} \definedtobe \MatExp{\Mean{\RotationVector}}$, in three different ways:
 \begin{align}
@@ -205,14 +201,12 @@ Using rotations as an example, we can perturb an operating point, $\Mean{\Rotati
 	\end{array}
 	\right.
 \end{align}
-
 We can relate all the left and middle perturbations through the left Jacobian of $\LieGroupSO{3}$ with the following useful identity,
 
 \begin{equation}
 \MatExp{( \RotationVector + \delta \RotationVector^m)} \approx \MatExp{\LeftJacobianSO(\RotationVector) \delta \RotationVector^m} \MatExp{\RotationVector}.	
 \end{equation}
-
-This allows us to write $\delta \RotationVector^\ell \approx \LeftJacobianSO(\RotationVector) \delta \RotationVector^m$ and elucidates why $\LeftJacobianSO$ is called the \textit{left} Jacobian. 
+From this it follows that $\delta \RotationVector^\ell \approx \LeftJacobianSO(\RotationVector) \delta \RotationVector^m$ and elucidates why $\LeftJacobianSO$ is called the \textit{left} Jacobian. 
 
 In this thesis, we will use the left and middle perturbations when appropriate. Using small angle approximations, the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) yields $\MatExp{\delta \RotationVector} \approx \IdentityMatrix + \delta \RotationVector^\wedge$, which allows us to write the useful formula for the left perturbation:
 
@@ -230,7 +224,7 @@ Similarly, we can write analogous expressions for a rigid body transform, $\Tran
 	\right.
 \end{align}
 
-Now, we can also note a similar identity for $\LieGroupSE{3}$,
+\noindent Now, we can also note a similar identity for $\LieGroupSE{3}$,
  
 \begin{equation}
 \MatExp{( \TransformVector + \delta \TransformVector^m)} \approx \MatExp{(\LeftJacobianSE(\TransformVector) \delta \TransformVector^m)} \MatExp{\TransformVector},
@@ -241,14 +235,12 @@ where $\LeftJacobianSE$ is the left Jacobian of $\LieGroupSE{3}$ and defined as
 \begin{equation}
 \LeftJacobianSE (\TransformVector) \definedtobe \bbm  \LeftJacobianSO(\RotationVector) & \Matrix{Q}(\TransformVector) \\ \Matrix{0} & \LeftJacobianSO(\RotationVector) \ebm,
 \end{equation}
-
 where $\Matrix{Q}(\TransformVector)$ can be evaluated analytically (see \cite{Barfoot2017-ri}). This again allows us to write $\delta \TransformVector^\ell \approx \LeftJacobianSE(\TransformVector) \delta \TransformVector^m$ and form a similar expression,
 
 \begin{equation}
 	\label{eq:math_se3_perturbations}
 	\Transform = (\IdentityMatrix + (\delta \TransformVector^\ell)^\wedge) \Mean{\Transform}.
 \end{equation}
-
 To derive locally linear systems from sets of rigid-body transforms, or `poses', we can apply \Cref{eq:math_se3_perturbations}. To update an operating point, we solve for $\delta \TransformVector^\ell$ and then use the constraint-sensitive update $\Transform \leftarrow \MatExp{\delta \TransformVector^\ell} \Mean{\Transform}$.
 
 
