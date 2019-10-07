@@ -55,7 +55,7 @@ on the problem of inferring egomotion from features extracted from sequential
 pairs of stereo images; see \citet{sunderhauf2007stereo} for a survey of
 techniques. The spectrum of alternative approaches to visual state estimation
 include monocular techniques, which may be feature-based
-\citep{scaramuzza2011visual}, direct \citep{irani2000direct}, or semi-direct
+\citep{Scaramuzza2011-qr}, direct \citep{irani2000direct}, or semi-direct
 \citep{forster2014svo}. 
 
 Apart from simply rejecting outliers, a number of recent approaches attempt to
@@ -576,7 +576,7 @@ Toronto.
 
 \subsection{Simulation}
 \subsubsection{Monte-Carlo Verification}
-To begin, we verified that PROBE-GK can predict increasingly accurate estimates of the true error covariance as more training data is added. We developed a basic simulation environment consisting of a large amount of point landmarks being observed by a stereo camera. In our simulation, the camera traversed a single step in one direction, and recorded  empirical reprojection errors based on ground truth poses. We simulated additive Gaussian noise on image coordinates, and used Monte Carlo simulations (propagating the additive noise through \Cref{eq:image_error}) to estimate the true covariances. \Cref{fig:probe_frobNorm} shows the mean Frobenius norm (as defined in \cite{barfoot2014associating}) between the covariances estimated by PROBE-GK and the true covariances for a test trial. The mean norm tends to zero as more landmarks are added, indicating that PROBE-GK does learn the correct covariances.
+To begin, we verified that PROBE-GK can predict increasingly accurate estimates of the true error covariance as more training data is added. We developed a basic simulation environment consisting of a large amount of point landmarks being observed by a stereo camera. In our simulation, the camera traversed a single step in one direction, and recorded  empirical reprojection errors based on ground truth poses. We simulated additive Gaussian noise on image coordinates, and used Monte Carlo simulations (propagating the additive noise through \Cref{eq:image_error}) to estimate the true covariances. \Cref{fig:probe_frobNorm} shows the mean Frobenius norm (as defined in \cite{Barfoot2014-ac}) between the covariances estimated by PROBE-GK and the true covariances for a test trial. The mean norm tends to zero as more landmarks are added, indicating that PROBE-GK does learn the correct covariances.
 
 
 \begin{figure}
@@ -642,7 +642,7 @@ by approximately 50\%. In our synthetic data, the Expectation Maximization appro
 \end{figure}
 
 To evaluate PROBE-GK on real environments, we trained and tested several models on
-the KITTI Vision Benchmark suite \citep{geiger2012kitti, geiger2013vision}, a series of datasets collected by a car outfitted with a number of
+the KITTI Vision Benchmark suite \citep{Geiger2013-ky}, a series of datasets collected by a car outfitted with a number of
 sensors driven around different parts of Karlsruhe, Germany. Within the dataset, ground truth pose information is
 provided by a high grade inertial navigation unit which also fuses measurements from differential GPS. Raw data
 is available for different types of environments through which the car was driving; for our

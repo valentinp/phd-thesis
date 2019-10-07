@@ -39,8 +39,8 @@ In such cases, it can be advantageous to rely on environmental cues such as the 
 \end{figure}
 
 For visual odometry (VO) in particular, the addition of global orientation information can limit the growth of drift error to be linear rather than superlinear with distance traveled \citep{Olson2003-ax}.
-Sun-based orientation corrections have been successfully used in planetary analogue environments \citep{Furgale2011-zu,Lambert2012-um} as well as on board the Mars Exploration Rovers (MERs) \citep{Eisenman2002-cg,Maimone2007-tc}.
-In particular, \citet{Lambert2012-um} showed that incorporating sun sensor and inclinometer measurements directly into the motion estimation pipeline (as opposed to periodically updating the vehicle heading, as in earlier work) can significantly reduce VO drift over long trajectories.
+Sun-based orientation corrections have been successfully used in planetary analogue environments \citep{Furgale2011-zu,Lambert2012-sn} as well as on board the Mars Exploration Rovers (MERs) \citep{Eisenman2002-cg,Maimone2007-tc}.
+In particular, \citet{Lambert2012-sn} showed that incorporating sun sensor and inclinometer measurements directly into the motion estimation pipeline (as opposed to periodically updating the vehicle heading, as in earlier work) can significantly reduce VO drift over long trajectories.
 
 \begin{wrapfigure}{r}{0.5\textwidth}
     \centering
@@ -58,9 +58,9 @@ Moreover, we show that our network, dubbed Sun-BCNN, can produce a covariance es
 
 
 The remainder of this paper begins with a discussion of related work, followed by an overview of the theory underlying BCNNs and a discussion of our model architecture, implementation, and training procedure.
-We then outline our chosen visual odometry pipeline, which is based on a two-frame bundle adjustment optimization, and describe how observations of the sun can be incorporated directly into the motion estimation problem following the technique of \citet{Lambert2012-um}.
+We then outline our chosen visual odometry pipeline, which is based on a two-frame bundle adjustment optimization, and describe how observations of the sun can be incorporated directly into the motion estimation problem following the technique of \citet{Lambert2012-sn}.
 Finally, we present several sets of experiments designed to test and validate both Sun-BCNN and our sun-aided VO pipeline in variety of environments.
-These include experiments on 21.6~km of urban driving data from the KITTI odometry benchmark training set \citep{Geiger2012-fq}, as well as a further 10~km traverse through a planetary analogue site taken from the Devon Island Rover Navigation Dataset collected in a planetary analogue site in the Canadian High Arctic \citep{Furgale2012-kk}.
+These include experiments on 21.6~km of urban driving data from the KITTI odometry benchmark training set \citep{Geiger2013-ky}, as well as a further 10~km traverse through a planetary analogue site taken from the Devon Island Rover Navigation Dataset collected in a planetary analogue site in the Canadian High Arctic \citep{Furgale2012-kk}.
 We investigate the possibility of model generalization between different cameras and environments, and further explore the sensitivity of Sun-BCNN to cloud cover during training and testing, using data from the Oxford Robotcar Dataset \citep{Maddern2016-ng}.
 We also examine the impact of different methods for computing the mean and covariance of a norm-constrained vector on the accuracy and consistency of the estimated sun directions.
 
@@ -68,26 +68,26 @@ We also examine the impact of different methods for computing the mean and covar
 
 Visual odometry (VO), a technique to estimate the motion of a moving platform equipped with one or more cameras, has a rich history of research including a notable implementation onboard the Mars Exploration Rovers (MERs) \citep{Scaramuzza2011-qr}. 
 Modern approaches to VO can achieve estimation errors below 1\% of total distance traveled  \citep{Geiger2013-ky}. 
-To achieve such accurate and robust estimates, modern techniques use careful visual feature pruning \citep{Cvisic2015-mt}, adaptive robust methods  \citep{Alcantarilla2016-fs,Peretroukhin2016-om}, or operate directly on pixel intensities \citep{Engel2015-il}.
+To achieve such accurate and robust estimates, modern techniques use careful visual feature pruning \citep{Cvisic2015-mt}, adaptive robust methods  \citep{Alcantarilla2016-kv,Peretroukhin2016-om}, or operate directly on pixel intensities \citep{Engel2015-il}.
 
 Independent of the estimator, VO exhibits superlinear error growth, and is particularly sensitive to errors in orientation \citep{Olson2003-ax, Cvisic2015-mt}. 
 One way to reduce orientation error is to incorporate observations of a landmark whose position or direction in the navigation frame is known \emph{a priori}. 
 The sun is an example of such a known directional landmark. 
-Accordingly, hardware sun sensors have been used to improve the accuracy of VO in planetary analogue environments (e.g., the Sinclair Interplanetary SS-411 sun sensor used by \citet{Furgale2011-zu} and \citet{Lambert2012-um}), while the MERs articulated their Pancam apparatus to directly image the sun~\citep{Maimone2007-tc,Eisenman2002-cg}. 
-More recently, software-based alternatives have been developed that can estimate the direction of the sun from a single image, making sun-aided navigation possible without additional sensors or a specially-oriented camera \citep{Clement2016-ir}. 
-Some of these methods have been based on hand-crafted illumination cues such as shadows and variation in sky brightness \citep{Lalonde2011-jw,Clement2016-ir}, while others have attempted to learn such cues from data using deep Convolutional Neural Networks (CNNs) \citep{Ma2016-at}.
+Accordingly, hardware sun sensors have been used to improve the accuracy of VO in planetary analogue environments (e.g., the Sinclair Interplanetary SS-411 sun sensor used by \citet{Furgale2011-zu} and \citet{Lambert2012-sn}), while the MERs articulated their Pancam apparatus to directly image the sun~\citep{Maimone2007-tc,Eisenman2002-cg}. 
+More recently, software-based alternatives have been developed that can estimate the direction of the sun from a single image, making sun-aided navigation possible without additional sensors or a specially-oriented camera \citep{2017_Clement_Improving}. 
+Some of these methods have been based on hand-crafted illumination cues such as shadows and variation in sky brightness \citep{Lalonde2011-jw,2017_Clement_Improving}, while others have attempted to learn such cues from data using deep Convolutional Neural Networks (CNNs) \citep{Ma2016-at}.
 
 Convolutional Neural Networks (CNNs) have been applied to a wide range of classification, segmentation, and learning tasks in computer vision \citep{LeCun2015-qf}. 
-Recent work has shown that CNNs can learn orientation information directly from images by modifying the loss functions of existing discrete classification-based CNN architectures into continuous regression losses \citep{Ma2016-at, kendall2015posenet, Kendall2016-zf}. 
+Recent work has shown that CNNs can learn orientation information directly from images by modifying the loss functions of existing discrete classification-based CNN architectures into continuous regression losses \citep{Ma2016-at, Kendall2015-ew, Kendall2016-zf}. 
 Despite their success in improving prediction accuracy, most existing CNN-based models do not report uncertainty estimates, which are important in the context of data fusion.
 
 For classification, it is possible to restrict CNN model outputs to a certain range (e.g., using a softmax function) and interpret these values as the model's confidence in its output. As \citet{Gal2016UncertaintyThesis} noted, however, this can be misleading because these  values can be unjustifiably large for test points far away from training data.  To address this, \citet{Gal2016-ny} showed that it is possible to achieve covariance outputs that better quantify model uncertainty for classification and regression tasks, with only minor modifications to existing CNN architectures. 
-An early application of this uncertainty quantification was presented by \citet{Kendall2016-zf} who used it to improve their prior work \citep{kendall2015posenet} on camera pose regression.
+An early application of this uncertainty quantification was presented by \citet{Kendall2016-zf} who used it to improve their prior work \citep{Kendall2015-ew} on camera pose regression.
 
-We build on on previous work by \citet{Clement2016-ir}, who demonstrated empirically that techniques for single-image sun estimation based on hand-crafted models \citep{Lalonde2011-jw} and Convolutional Neural Networks (CNNs) \citep{Ma2016-at} could be incorporated into a stereo visual odometry pipeline to reduce estimation error in the manner of \citet{Lambert2012-um}.
-We also build on the work of \citet{Peretroukhin2017-eb}, who presented preliminary experimental results comparing Sun-BCNN against the method of \citet{Lalonde2011-jw} and its VO-informed variant \citep{Clement2016-ir} as well as the Sun-CNN of \citet{Ma2016-at} on the KITTI odometry benchmark \citep{Geiger2012-fq,Geiger2013-ky}, both in terms of raw measurement accuracy and in terms of their impact on VO accuracy.
+We build on on previous work by \citet{2017_Clement_Improving}, who demonstrated empirically that techniques for single-image sun estimation based on hand-crafted models \citep{Lalonde2011-jw} and Convolutional Neural Networks (CNNs) \citep{Ma2016-at} could be incorporated into a stereo visual odometry pipeline to reduce estimation error in the manner of \citet{Lambert2012-sn}.
+We also build on the work of \citet{2017_Peretroukhin_Reducing}, who presented preliminary experimental results comparing Sun-BCNN against the method of \citet{Lalonde2011-jw} and its VO-informed variant \citep{2017_Clement_Improving} as well as the Sun-CNN of \citet{Ma2016-at} on the KITTI odometry benchmark \citep{Geiger2013-ky}, both in terms of raw measurement accuracy and in terms of their impact on VO accuracy.
 
-While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{Clement2016-ir}). 
+While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{2017_Clement_Improving}). 
 Furthermore, our Bayesian CNN includes a dropout layer after every convolutional and fully connected layer (as outlined by \citet{Gal2016-ny} but not done by \citet{Kendall2016-zf}), which produces more principled covariance outputs.
 
 
@@ -117,7 +117,7 @@ where $\left(u,v\right)$ are the keypoint coordinates in the left image and $d$ 
 
 \subsection{Sliding Window Bundle Adjustment}
 We use the open-source \texttt{libviso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
-Based on these keypoint tracks, a three-point Random Sample Consensus (RANSAC) algorithm \citep{Fischler1981-ue} generates an initial guess of the interframe motion and rejects outlier keypoint tracks by thresholding their reprojection error.
+Based on these keypoint tracks, a three-point Random Sample Consensus (RANSAC) algorithm \citep{fischler1981random} generates an initial guess of the interframe motion and rejects outlier keypoint tracks by thresholding their reprojection error.
 We compound these pose-to-pose transformation estimates through our chosen window and refine them using a local bundle adjustment, which we solve using the nonlinear least-squares solver Ceres \citep{ceres-solver}.
 The objective function to be minimized can be written as
 \begin{equation} \label{eq:cost_function}
@@ -141,7 +141,7 @@ The $6 \times 6$ matrix $\Covariance_{\Prior{\Transform}_{k_1,0}}$ is the covari
 This prior term allows consecutive windows of pose estimates to be combined in a principled way that appropriately propagates global pose uncertainty from window to window, which is essential in the context of optimal data fusion.
 
 \section{Orientation Correction}
-In order to combat drift in the VO estimate produced by accumulated orientation error, we adopt the technique of \citet{Lambert2012-um} to incorporate absolute orientation information from the sun directly into the estimation problem.
+In order to combat drift in the VO estimate produced by accumulated orientation error, we adopt the technique of \citet{Lambert2012-sn} to incorporate absolute orientation information from the sun directly into the estimation problem.
 We assume the initial camera pose and its timestamp are available from GPS and use them to determine the global direction of the sun $\Vector{s}_0$, expressed as a 3D unit vector, from ephemeris data.
 We define the world frame $\CoordinateFrame{0}$ to be a local ENU coordinate system with the initial GPS position as its origin.
 At each timestep we update $\SunDirection_0$ by querying the ephemeris model using the current timestamp and the initial camera pose, allowing our model to account for the apparent motion of the sun over long trajectories.
@@ -156,7 +156,7 @@ where
 	\BACost_\text{sun} = \sum_{k=k_1}^{k_2} \Transpose{\Error}_{\SunDirection_k} \Covariance^{-1}_{\SunDirection_k} \Error_{\SunDirection_k},
 \end{equation}
 and $\BACost_\text{reprojection}$ and $\BACost_\text{prior}$ are defined in \Cref{eq:reprojection_cost,eq:prior_cost}, respectively.
-This additional term constrains the orientation of the camera, which helps limit drift in the VO result due to orientation error \citep{Lambert2012-um}.
+This additional term constrains the orientation of the camera, which helps limit drift in the VO result due to orientation error \citep{Lambert2012-sn}.
 
 \begin{table}[]
 \centering
@@ -206,15 +206,15 @@ In practice, we also attempt to mitigate the effect of outlier sun predictions b
 \begin{figure}
     \centering
     \includegraphics[width=0.98\textwidth]{sun-bcnn/kitti_activations_horiz}
-    \caption{Three \texttt{conv1} layer activation maps superimposed on two images from the KITTI odometry benchmark \citep{Geiger2012-fq} \texttt{00} and \texttt{04} for three selected filters. Each filter picks out salient parts of the image that aid in sun direction inference.}
+    \caption{Three \texttt{conv1} layer activation maps superimposed on two images from the KITTI odometry benchmark \citep{Geiger2013-ky} \texttt{00} and \texttt{04} for three selected filters. Each filter picks out salient parts of the image that aid in sun direction inference.}
 %      \vspace{-0.5em}
     \label{fig:sun-bcnn_kitti_cnn_activations}
 \end{figure}
 
 We use a Bayesian Convolutional Neural Network (BCNN) to infer the direction of the sun and an associated uncertainty, and refer to our model as Sun-BCNN. 
-We motivate the choice of a deep model through the empirical findings of \citet{Clement2016-ir} and \citet{Ma2016-at}, who demonstrated that a CNN-based sun detector can substantially outperform hand-crafted models such as that of \citet{Lalonde2011-jw} both in terms of measurement accuracy and in its application to a VO task.
+We motivate the choice of a deep model through the empirical findings of \citet{2017_Clement_Improving} and \citet{Ma2016-at}, who demonstrated that a CNN-based sun detector can substantially outperform hand-crafted models such as that of \citet{Lalonde2011-jw} both in terms of measurement accuracy and in its application to a VO task.
 
-We choose a deep neural network structure based on GoogLeNet \citep{Szegedy2015-uw} due to its use in past work that adapted it for orientation regression \citep{Kendall2016-zf,kendall2015posenet}. 
+We choose a deep neural network structure based on GoogLeNet \citep{Szegedy2015-uw} due to its use in past work that adapted it for orientation regression \citep{Kendall2016-zf,Kendall2015-ew}. 
 Unlike \citet{Ma2016-at}, we choose to transfer weights trained on the MIT Places dataset \citep{zhou2014MITPlaces} rather than ImageNet \citep{deng2009imagenet}.
 We believe the MIT Places dataset is a more appropriate starting point for localization tasks than ImageNet since it includes outdoor scenes and is concerned with classifying physical locations rather than objects.
 
@@ -458,7 +458,7 @@ All                &  & -4.01  & -2.26  & 7.06           &  & 0.68   & 0.53   & 
      \label{fig:kitti-vo-sim-results}
 \end{figure}
 
-We investigated the performance of Sun-BCNN on the KITTI odometry benchmark training set \citep{Geiger2012-fq,Geiger2013-ky}, which consists of 21.6 km of urban driving data\footnote{Because we rely on the first pose reported by the GPS/INS system, we used the raw (rectified and synchronized) sequences corresponding to each odometry sequence. However, the raw sequence \texttt{2011\_09\_26\_drive\_0067} corresponding to odometry sequence \texttt{03} was not available on the KITTI website at the time of writing, so we omit sequence \texttt{03} from our analysis.}.
+We investigated the performance of Sun-BCNN on the KITTI odometry benchmark training set \citep{Geiger2013-ky}, which consists of 21.6 km of urban driving data\footnote{Because we rely on the first pose reported by the GPS/INS system, we used the raw (rectified and synchronized) sequences corresponding to each odometry sequence. However, the raw sequence \texttt{2011\_09\_26\_drive\_0067} corresponding to odometry sequence \texttt{03} was not available on the KITTI website at the time of writing, so we omit sequence \texttt{03} from our analysis.}.
 Importantly, the dataset includes 6-DOF ground truth poses obtained from an accurate GPS/INS tracking system, as well as calibrated transformations between this sensor and the colour stereo pair we use for sun estimation and VO in our experiments.
 This allows us to create a training set of ground truth sun vectors for each image by querying the solar ephemeris model at each ground truth pose and rotating the resulting vector from the GPS/INS frame $\CoordinateFrame{0}$ (which is an ENU coordinate system) into the camera coordinate frame $\CoordinateFrame{k}$.
 For each of our experiments, we trained Sun-BCNN on nine benchmark sequences and tested on the remaining sequence.
@@ -518,7 +518,7 @@ This procedure is consistent with that of \citet{Ma2016-at}, against whose Sun-C
         \caption{\texttt{08}: Rotational CRMSE}
     \end{subfigure}
     
-    \caption{VO results for KITTI odometry sequences \texttt{02}, \texttt{05}, and \texttt{08} using estimate sun directions at every tenth pose. \emph{Top row}: Estimated and ground truth trajectories in the Easting-Northing (EN) plane. \emph{Middle row}: Translational cumulative root mean squared error (CRMSE) in the EN-plane. \emph{Bottom row}: Rotational CRMSE. Sun-BCNN significantly reduces the estimation error on sequence \texttt{05}, while the Lalonde \citep{Lalonde2011-jw}, Lalonde-VO \citep{Clement2016-ir}, and Sun-CNN \citep{Ma2016-at} methods provide modest reductions in estimation error. The remaining sequences are less clear, but Sun-BCNN generally provides some benefit.}
+    \caption{VO results for KITTI odometry sequences \texttt{02}, \texttt{05}, and \texttt{08} using estimate sun directions at every tenth pose. \emph{Top row}: Estimated and ground truth trajectories in the Easting-Northing (EN) plane. \emph{Middle row}: Translational cumulative root mean squared error (CRMSE) in the EN-plane. \emph{Bottom row}: Rotational CRMSE. Sun-BCNN significantly reduces the estimation error on sequence \texttt{05}, while the Lalonde \citep{Lalonde2011-jw}, Lalonde-VO \citep{2017_Clement_Improving}, and Sun-CNN \citep{Ma2016-at} methods provide modest reductions in estimation error. The remaining sequences are less clear, but Sun-BCNN generally provides some benefit.}
      \label{fig:kitti-vo-results}
 \end{figure*}
 
@@ -597,7 +597,7 @@ We suspect this behaviour stems from the assumption of homoscedastic noise in th
 
 \subsection{Visual Odometry Experiments}
 We evaluated the influence of the estimated sun directions and covariances obtained from Sun-BCNN on the KITTI odometry benchmark using the sun-aided VO pipeline previously described.
-To place these results in context, we compare them against the results obtained using simulated sun measurements with varying levels of noise, the method of \citet{Lalonde2011-jw} and its VO-informed variant \citep{Clement2016-ir}, and the Sun-CNN of \citet{Ma2016-at}.
+To place these results in context, we compare them against the results obtained using simulated sun measurements with varying levels of noise, the method of \citet{Lalonde2011-jw} and its VO-informed variant \citep{2017_Clement_Improving}, and the Sun-CNN of \citet{Ma2016-at}.
 
 \subsubsection{Simulated Sun Sensing} \label{sec:kitti_vo_sim_sun}
 In order to gauge the effectiveness of incorporating sun information in each sequence, and to determine the impact of measurement error, we constructed several sets of simulated sun measurements by computing ground truth sun vectors and artificially corrupting them with varying levels of zero-mean Gaussian noise.
@@ -618,10 +618,10 @@ The two frames in the top row both contain strong shadows which typically result
 Conversely, the bottom row highlights two examples of rare situations where ambiguous shadows lead to very inaccurate predictions.
 As previously mentioned, we mitigate the influence of these outlier measurements by imposing a robust Huber loss on the sun measurement errors in our optimizer.
 
-\Cref{fig:kitti-vo-results} shows the results we obtained for sequences \texttt{02}, \texttt{05}, and \texttt{08} using the Sun-CNN of \citet{Ma2016-at}, which estimates only the azimuth angle of the sun, our Bayesian Sun-BCNN which provides full 3D estimates of the sun direction as well as a measure of the uncertainty associated with each estimate, and the method of \citet{Lalonde2011-jw} in its original and VO-informed \citep{Clement2016-ir} forms, which provide 3D estimates of the sun direction without reasoning about uncertainty.
+\Cref{fig:kitti-vo-results} shows the results we obtained for sequences \texttt{02}, \texttt{05}, and \texttt{08} using the Sun-CNN of \citet{Ma2016-at}, which estimates only the azimuth angle of the sun, our Bayesian Sun-BCNN which provides full 3D estimates of the sun direction as well as a measure of the uncertainty associated with each estimate, and the method of \citet{Lalonde2011-jw} in its original and VO-informed \citep{2017_Clement_Improving} forms, which provide 3D estimates of the sun direction without reasoning about uncertainty.
 A selection of results using simulated sun measurements are also displayed for reference.
 All four sun detection methods succeed in reducing the growth of total estimation error on this sequence, with Sun-BCNN reducing both translational and rotational error growth significantly more than the other three methods.
-Both Sun-CNN and Sun-BCNN outperform the two Lalonde variants, consistent with the results of \citet{Ma2016-at} and \citet{Clement2016-ir}.
+Both Sun-CNN and Sun-BCNN outperform the two Lalonde variants, consistent with the results of \citet{Ma2016-at} and \citet{2017_Clement_Improving}.
 
 \Cref{tab:sun-bcnn_kitti_armse} shows results for all ten sequences using each method.
 With few exceptions, the VO results using Sun-BCNN achieve improvements in rotational and translational ARMSE comparable to those achieved using the simulated sun measurements with between 10 and 30 degrees average error.
@@ -657,7 +657,7 @@ Nevertheless, these results indicate that CNN-based sun sensing is a valuable to
 In addition to urban driving, we further investigate the usefulness of Sun-BCNN in the context of planetary exploration using the Devon Island Rover Navigation Dataset \citep{Furgale2012-kk}, which consists of various sensor data collected using a mobile sensor platform traversing a 10~km loop on Devon Island in the Canadian High Arctic (\Cref{fig:devon_collage}).
 The rugged landscape of Devon Island (\Cref{fig:devon_collage}) is a significant departure from the structured urban environment of Karlsruhe.
 Unlike the KITTI odometry benchmark, the Devon Island dataset provides ground truth vehicle orientations for only a small number of images, which means that our previous method of generating ground truth sun vectors using ground truth poses is not applicable.
-However, the sensor platform used to collect the dataset was equipped with a hardware sun sensor and inclinometer, both of which were used by \citet{Lambert2012-um} to correct VO drift.
+However, the sensor platform used to collect the dataset was equipped with a hardware sun sensor and inclinometer, both of which were used by \citet{Lambert2012-sn} to correct VO drift.
 For our purposes, we ignore the inclinometer and use the sun sensor measurements as training targets for Sun-BCNN.
 
 The Devon Island environment contains many features one might expect to be amenable to visual sun detection.
@@ -725,7 +725,7 @@ Consistent with the results we observed in the KITTI experiments, the sequences 
 As in our KITTI benchmark experiments, we compare visual odometry results on each of our 11 test sequences both with sun-based orientation corrections and without.
 Notably, we do not report results using simulated sun measurements since we are unable to generate these measurements without ground truth vehicle orientations for every image.
 We also do not report results using the Sun-CNN of \citet{Ma2016-at} since we do not have access to their model.
-However, we do compare the results obtained using Sun-BCNN to those obtained using the hardware sun sensor as well as the Lalonde \citep{Lalonde2011-jw} and Lalonde-VO \citep{Clement2016-ir} methods.
+However, we do compare the results obtained using Sun-BCNN to those obtained using the hardware sun sensor as well as the Lalonde \citep{Lalonde2011-jw} and Lalonde-VO \citep{2017_Clement_Improving} methods.
 
 \begin{figure}
 	\centering
@@ -1039,7 +1039,7 @@ In summary, with Sun-BCNN, we applied learned \textit{pseudo-sensors} to the pro
 \item the application of a Bayesian CNN to the problem of sun direction estimation, incorporating the resulting covariance estimates into a visual odometry pipeline; 
 \item an empirical demonstration that a Bayesian CNN with dropout layers after each convolutional and fully-connected layer can achieve state-of-the-art accuracy at test time;
 \item a loss function that incorporated a 3D unit-length sun direction vector, appropriate for full 6-DOF pose estimation;
-\item experimental results on over 30~km of visual navigation data in urban \citep{Geiger2012-fq} and planetary analogue \citep{Furgale2012-kk} environments; 
+\item experimental results on over 30~km of visual navigation data in urban \citep{Geiger2013-ky} and planetary analogue \citep{Furgale2012-kk} environments; 
 \item an investigation into the sensitivity of the Bayesian CNN-based sun estimate to cloud cover, camera and environment changes, and measurement parameterization; and
 \item open-source software\footnote{\url{https://github.com/utiasSTARS/sun-bcnn-vo}.}.
 \end{enumerate}

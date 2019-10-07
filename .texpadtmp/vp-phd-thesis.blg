@@ -14,121 +14,96 @@ A level-1 auxiliary file: sections/appendix-vo.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
-Repeated entry---line 126 of file ../pubs-mine.bib
- : @article{2018_Peretroukhin_Deep
- :                                ,
-I'm skipping whatever remains of this entry
 Database file #3: ../pubs-probe.bib
-I was expecting a `,' or a `}'---line 31 of file ../pubs-probe.bib
+I was expecting a `,' or a `}'---line 25 of file ../pubs-probe.bib
  : 
  : ISSN={1050-4729},}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Database file #4: ../pubs-sun_bcnn.bib
-Repeated entry---line 9 of file ../pubs-sun_bcnn.bib
- : @article{LeCun2015-qf
- :                      ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 21 of file ../pubs-sun_bcnn.bib
+Repeated entry---line 1 of file ../pubs-sun_bcnn.bib
  : @article{Leutenegger2015-fk
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 99 of file ../pubs-sun_bcnn.bib
+Repeated entry---line 68 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Ma2016-at
  :                         ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 109 of file ../pubs-sun_bcnn.bib
+Repeated entry---line 78 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Cvisic2015-mt
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 119 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Forster2014-bm
- :                              ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 130 of file ../pubs-sun_bcnn.bib
- : @article{Scaramuzza2011-qr
- :                           ,
-I'm skipping whatever remains of this entry
 Warning--entry type for "ceres-solver" isn't style-file defined
---line 141 of file ../pubs-sun_bcnn.bib
-Repeated entry---line 161 of file ../pubs-sun_bcnn.bib
+--line 86 of file ../pubs-sun_bcnn.bib
+Repeated entry---line 106 of file ../pubs-sun_bcnn.bib
  : @article{Geiger2013-ky
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 292 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Geiger2011-xe
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 322 of file ../pubs-sun_bcnn.bib
+Repeated entry---line 211 of file ../pubs-sun_bcnn.bib
  : @book{Barfoot2017-ri
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 352 of file ../pubs-sun_bcnn.bib
+Repeated entry---line 241 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Kendall2016-zf
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 368 of file ../pubs-sun_bcnn.bib
- : @inproceedings{Peretroukhin2017-eb
- :                                   ,
-I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
+Warning--I didn't find a database entry for "Clark2017-zg"
+Warning--I didn't find a database entry for "Kendall2017-u"
 Warning--I didn't find a database entry for "Hornik2014-jw"
 Warning--I didn't find a database entry for "farneback2003two"
 Warning--I didn't find a database entry for "Peretroukhin2018"
 Warning--empty journal in Alcantarilla2016-kv
-Warning--empty journal in Alcantarilla2016-fs
-Warning--empty journal in Clark2017-zg
+Warning--empty booktitle in Clark2017
 Warning--empty journal in DeTone2016-ue
 Warning--can't use both volume and number fields in fisher1953dispersion
 Warning--empty school in florez2010
 Warning--empty booktitle in Forster2015-af
 Warning--empty school in furgale_phd11
-Warning--empty journal in Kendall2017-ix
 Warning--empty journal in Lee2015-af
 Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
-Warning--empty journal in Oliveira2017-lt
 Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 126 entries,
+You've used 107 entries,
             1935 wiz_defined-function locations,
-            1211 strings with 27715 characters,
-and the built_in function-call counts, 59792 in all, are:
-= -- 5934
-> -- 2558
-< -- 101
-+ -- 906
-- -- 873
-* -- 4795
-:= -- 9735
-add.period$ -- 379
-call.type$ -- 126
-change.case$ -- 1056
-chr.to.int$ -- 105
-cite$ -- 141
-duplicate$ -- 2528
-empty$ -- 4195
-format.name$ -- 1055
-if$ -- 12267
-int.to.chr$ -- 22
+            1143 strings with 25190 characters,
+and the built_in function-call counts, 52045 in all, are:
+= -- 5190
+> -- 2206
+< -- 92
++ -- 771
+- -- 755
+* -- 4177
+:= -- 8410
+add.period$ -- 324
+call.type$ -- 107
+change.case$ -- 902
+chr.to.int$ -- 103
+cite$ -- 119
+duplicate$ -- 2194
+empty$ -- 3652
+format.name$ -- 908
+if$ -- 10721
+int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 123
-newline$ -- 622
-num.names$ -- 382
-pop$ -- 1241
+missing$ -- 104
+newline$ -- 530
+num.names$ -- 325
+pop$ -- 1053
 preamble$ -- 1
-purify$ -- 1060
+purify$ -- 906
 quote$ -- 0
-skip$ -- 1900
+skip$ -- 1684
 stack$ -- 0
-substring$ -- 4135
-swap$ -- 643
-text.length$ -- 61
+substring$ -- 3715
+swap$ -- 589
+text.length$ -- 57
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 752
-warning$ -- 15
-while$ -- 475
+type$ -- 638
+warning$ -- 12
+while$ -- 420
 width$ -- 0
-write$ -- 1606
-(There were 13 error messages)
+write$ -- 1375
+(There were 7 error messages)

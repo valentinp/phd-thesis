@@ -71,7 +71,7 @@ During preprocessing, we use a lens model (assumed to be known apriori) to undis
 \end{center}
 \end{figure}
 
-In this thesis, we focus on indirect stereo visual odometry for its computational efficiency. Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \texttt{viso2} \citep{geiger2011stereoscan} image feature extraction and matching algorithm. In \texttt{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \texttt{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric of $11 \times 11$ windows of Sobel filter responses. Finally, features are matched across a stereo-pair and forward in time, to ensure that a single feature exists across two consecutive stereo camera poses. 
+In this thesis, we focus on indirect stereo visual odometry for its computational efficiency. Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \texttt{viso2} \citep{Geiger2011-xe} image feature extraction and matching algorithm. In \texttt{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \texttt{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric of $11 \times 11$ windows of Sobel filter responses. Finally, features are matched across a stereo-pair and forward in time, to ensure that a single feature exists across two consecutive stereo camera poses. 
 
 Each extract feature corresponds to a
 point in space, expressed in homogeneous coordinates in the camera frame as
@@ -98,7 +98,7 @@ lenses.
 
 \subsubsection{Outlier Rejection}
 
-To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{FischlerRANSAC:1981}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
+To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{fischler1981random}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
   
 \subsection{Maximum Likelihood Motion Solution}
 We will define $\Transform_t \in\text{SE}(3)$, as the rigid transform between two subsequent stereo camera poses, 
