@@ -177,7 +177,7 @@ To all those who encouraged (or, at least, \textit{never discouraged}) my intell
 %% This generates an "acknowledgements" section, if needed
 %% (uncomment to have it appear in the document).
 \begin{acknowledgements}
-This document would not have been possible without the generous support and guidance of my supervisor\footnote{as well as all of my collaborators and academic mentors}, the perennial love of my family and friends\footnote{especially the support and encouragement of Elyse}, and the limitless patience of my lab mates\footnote{in humouring my insatiable need for debate and banter}. Thank you all.
+This document would not have been possible without the generous support and guidance of my supervisor\footnote{as well as all of my collaborators and academic mentors (special thanks to Lee)}, the perennial love of my family and friends\footnote{especially the support and encouragement of Elyse}, and the limitless patience of my lab mates\footnote{in humouring my insatiable need for debate and banter (special thanks to Lee)}. Thank you all.
 \end{acknowledgements}
 
 %% This generates the Table of Contents (on a separate page).
@@ -210,7 +210,7 @@ This document would not have been possible without the generous support and guid
     
     \nitem{\Matrix 1 }{The identity matrix.}
     \nitem{\Matrix 0 }{The zero matrix.}
-    \nitem{ \Vector p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript). This vector can be in homogenous coordinates depending on context. }
+    \nitem{ \Vector p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript).}
     \nitem{ \Rotation_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector p_a^{c,b} = \Rotation_{a,b} \Vector p_b^{c,b}$. }
     \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector{p}_a^{c,a} = \Transform_{a,b} \Vector{p}_b^{c,b}$. }
 \end{notation}
@@ -230,16 +230,13 @@ This document would not have been possible without the generous support and guid
 \include{sections/math}
 \include{sections/vo}
 \include{sections/probe}
-%\include{sections/sun-bcnn}
-%\include{sections/dpc}
-%\include{sections/so3-learning}
-%\include{sections/conclusion}
+\include{sections/sun-bcnn}
+\include{sections/dpc}
+\include{sections/so3-learning}
+\include{sections/conclusion}
 \begin{appendices}
-%\include{sections/appendix-perturbations}
-%\include{sections/appendix-misc}
 \include{sections/appendix-probe-knn}
-%\include{sections/appendix-so3-learning}
-
+\include{sections/appendix-vo}
 \end{appendices}
 
 

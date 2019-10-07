@@ -1,6 +1,25 @@
 \chapter{Learned Probabilistic Rotations}
 \label{ch:hydranet}
-\epigraph{It is because Humanity has never known where it was going that it has been able to find its way.}{Oscar Wilde}
+\epigraph{I shall be telling this with a sigh
+Somewhere ages and ages hence: \\
+Two roads diverged in a wood, and I— \\
+I took the one less traveled by, \\
+And that has made all the difference.}{Robert Frost}
+
+\section{Introduction}
+ \begin{figure*}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{hydranet.pdf}
+ \caption{We use a network structure we name \textit{HydraNet} to learn rotations with associated uncertainty.}
+ \label{fig:dpc_intro_fig}
+\end{figure*}
+
+Finally, we take the lessons of Sun-BCNN and DPC-Net and present a method to learn probabilistic estimates of rotation. We show that this pseudo-sensor can extract relative rotation estimates which can be fused with a classical visual odometry egomotion estimate through pose graph optimization. To do this, we develop a network structure we call \textit{HydraNet} that can account for both epistemic and aleatoric sources of uncertainty and adapt it to the problem of estimating elements of $\LieGroupSO{3}$. This work is associated with one publication:
+
+\begin{itemize}
+\item \bibentry{2019_Peretroukhin_Deep}.
+\end{itemize}
+
 
 \begin{wrapfigure}{r}{0.6\textwidth}
 	\centering
@@ -15,14 +34,9 @@
 Accounting for position and orientation, or pose, is at the heart of computer vision. Many algorithms in image classification and feature tracking, for example, are explicitly concerned with output that is robust to camera orientation. Conversely, algorithms like visual odometry, structure from motion, and SLAM use visual sensors to estimate and track the pose of a camera as it moves through some environment. The algorithms in this latter category form the basis of visual localization pipelines in autonomous vehicles, aid in aerial vehicle navigation and mapping, and are often crucial to augmented reality applications.  
 
  
-Recent work  \citep{Clark2017, Melekhov2017-dl, Kendall2015-kh} has attempted to  transfer the success of deep neural networks in many areas of computer vision to the task of camera pose estimation. These approaches, however, can produce arbitrarily poor pose estimates if sensor data differs from what is observed during training (i.e., it is `out of training distribution') and their monolithic nature makes them difficult to debug. Further, despite much research effort, classical motion estimation algorithms, like stereo visual odometry, still achieve state-of-the-art performance in nominal conditions\footnote{Based on the KITTI odometry leaderboard \citep{Geiger2013-ky} at the time of writing.}. Nevertheless, the representational power of deep regression algorithms makes them an attractive option to complement classical motion estimation when these latter methods perform poorly (e.g., under diverse lighting conditions or low scene texture). By endowing deep regression models with a useful notion of uncertainty, we can account for out-of-training-distribution errors and fuse these models with classical methods using probabilistic factor graphs. In this work, we choose to focus on rotation regression, since many motion algorithms are sensitive to rotation errors \citep{Peretroukhin2018}, and good rotation initializations can be critical to robust optimization. Our novel contributions are
+Recent work  \citep{Clark2017, Melekhov2017-dl, Kendall2015-kh} has attempted to  transfer the success of deep neural networks in many areas of computer vision to the task of camera pose estimation. These approaches, however, can produce arbitrarily poor pose estimates if sensor data differs from what is observed during training (i.e., it is `out of training distribution') and their monolithic nature makes them difficult to debug. Further, despite much research effort, classical motion estimation algorithms, like stereo visual odometry, still achieve state-of-the-art performance in nominal conditions\footnote{Based on the KITTI odometry leaderboard \citep{Geiger2013-ky} at the time of writing.}. Nevertheless, the representational power of deep regression algorithms makes them an attractive option to complement classical motion estimation when these latter methods perform poorly (e.g., under diverse lighting conditions or low scene texture). By endowing deep regression models with a useful notion of uncertainty, we can account for out-of-training-distribution errors and fuse these models with classical methods using probabilistic factor graphs. In this work, we choose to focus on rotation regression, since many motion algorithms are sensitive to rotation errors \citep{2018_Peretroukhin_Inferring}, and good rotation initializations can be critical to robust optimization. 
 
-\vspace{-0.5em}
-\begin{enumerate}
-\item a deep network structure we call \textit{HydraNet} that builds on prior work \citep{Lakshminarayanan2017,Osband2016} to produce meaningful uncertainties over unconstrained targets,
-\item a loss formulation and mathematical framework that extends HydraNet to means and covariances of the rotation group $\LieGroupSO{3}$,
-\item and open source code for $\LieGroupSO{3}$ regression\footnote{Repository redacted to protect author anonymity.}.
-\end{enumerate}
+
 
 
 %Although I largely direct my focus to egomotion estimation, the HydraNet architecture can be readily modified to regress probabilistic pose and orientation estimates with other sensor modalities (e.g., lidar), and to improve non-sequential pose estimation (e.g., loop closure).
@@ -52,7 +66,7 @@ First, we motivate why learning elements of $\LieGroupSO{3}$ is particularly ger
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\textwidth]{so3_learning/kitti/so3_learning_with_flow}
+	\includegraphics[width=0.6\textwidth]{so3_learning/kitti/so3_learning_with_flow}
 	\caption{The HydraNet structure. Input data (in this case, pre-processed optical flow images) is passed through a main body and then through a number of heads. Outputs are combined to produce an average and an uncertainty.}
 	\label{fig:kitti_flow_hydranet}
 	\vspace{-1.5em}
@@ -105,6 +119,13 @@ To capture epistemic uncertainty, we train each head with random weight initiali
 
 %\noindent HydraNet produces its uncertainty estimate similar to that of ensemble methods, where multiple models are trained to produce independent predictions with uncertainty; each model is trained with the same data, but is initialized differently such that each model's weight distribution is unique.  The epistemic uncertainty is captured by computing the variance of the models' outputs, and is combined with the direct uncertainty estimates, resulting in a consistent uncertainty estimate \citep{Lakshminarayanan2017}. We note that HydraNet is significantly cheaper to train, as only a single model is needed: the increase in parameters due the addition of another head is significantly less than the increase in parameters due to training another complete model.  
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=0.98\textwidth]{so3_learning/supplementary/uncertainty_methods.pdf}
+	\vspace{-.5em}
+	\caption{Different scalable approaches to neural network uncertainty. }
+	\label{fig:nn-uncertainty}
+\end{figure*}
 
 \subsubsection{One-dimensional experiment}
 %Mention noise on targets
@@ -178,6 +199,45 @@ where $w \sim \mathcal{N}(\mu=0, \sigma^2=3^2)$. Our training set consisted of 1
 		\label{fig:1d_uncertainty}
 		%\vspace{-0.2cm}
 \end{figure*}
+
+%\begin{figure*}[h!]
+%	%replot images at /so3_learning/1D-uncertainty/replot_experiment_data.py
+%	%load *.pt to plot a specific run from the 100 run experiment
+%	\centering
+%	\begin{subfigure}[]{\textwidth}
+%		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_dropout.pdf}
+%		\caption{Dropout}
+%		\label{fig:1D_dropout}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}[]{\textwidth}
+%		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_sigma.pdf}
+%		\caption{Direct Uncertainty}
+%		\label{fig:1D_direct}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}[]{\textwidth}
+%		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_bagging.pdf}
+%		\caption{Bagging}
+%		\label{fig:1D_bagging}
+%	\end{subfigure}
+%	\hfill	
+%	\begin{subfigure}[]{\textwidth}
+%		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_hydranet.pdf}
+%		\caption{HydraNet (no direct uncertainty)}
+%		\label{fig:1D_hydranet_undirect}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}[]{\textwidth}
+%		\includegraphics[width=\textwidth]{so3_learning/supplementary/supp_hydranetsigma.pdf}
+%		\caption{HydraNet}
+%		\label{fig:1D_hydranet}
+%	\end{subfigure}
+%	\hfill		
+%	\caption{A comparison of different ways to extract uncertainty from deep networks. Each shade of blue represents one standard deviation $\sigma$ produced by the model.}
+%	\label{fig:1d_uncertainty}
+%	%\vspace{-0.2cm}
+%\end{figure*}
  
 
 The direct aleatoric uncertainty regression and HydraNet methods were trained using a negative log likelihood loss under the assumption of Gaussian likelihood, while the other methods were trained to minimize mean squared error.
@@ -246,7 +306,7 @@ There are several ways to approach uncertainty on $\LieGroupSO{3}$. One method \
 Instead, we opt to parametrize uncertainty over $\LieGroupSO{3}$ by injecting uncertainty onto the manifold \citep{Forster2015-af,Barfoot2014-ac,Barfoot2017-ri} from a local tangent space about some mean element, $\Mean{\quat}$,
 \begin{equation}
 \label{eq:quat_inject_density}
-\quat = \MatExp{\Vector{\epsilon}} \otimes \Mean{\quat}, ~~ \Vector{\epsilon} \sim \NormalDistribution{\Vector{0}}{\Matrix{\Sigma}},
+\quat = \MatExp{\Vector{\epsilon}} \otimes \Mean{\quat}, ~~ \Vector{\epsilon} \sim \NormalDistribution(\Vector{0}, \Matrix{\Sigma}),
 \end{equation}
  \noindent where $\otimes$ represents quaternion multiplication. In this formulation, $\Matrix{\Sigma}$ provides a $3\times 3$ covariance matrix that can express uncertainty in different directions. Further, given a mean rotation, $\Mean{\quat}$, and samples, $\quat_i$, we use the logarithmic map to compute a sample covariance matrix,\begin{equation}
 \label{eq:head_covariance}
@@ -313,19 +373,20 @@ This covariance estimate is designed to grow for out-of-training-distribution er
 \subsection{Uncertainty Evaluation: Synthetic Data}
 
 Before we embarked on training with real data, we analyzed our proposed HydraNet structure on a synthetic world. Our goal was to produce probabilistic estimates of camera orientation based on noisy pixel coordinates of a set of fixed point landmarks. To accomplish this, we simulated a monocular camera observing a planar grid of evenly spaced (see \Cref{fig:synthetic_world}) landmarks from a hemisphere surrounding the grid. We aligned the monocular camera's optical axis with the centre of the hemisphere so that all landmarks were visible in every camera pose. At each pose, we computed noisy pixel locations of the projection of every landmark, and stacked these 2D locations as an input vector. We generated 15000 training samples with poses that were randomly sampled from the hemisphere in the polar angle range of $[-60, 60]$ degrees. For testing, we sampled 500 poses in the range of $[-80, 80]$ degrees, purposely widening the range to include orientations that were not part of training. 
-\begin{figure}
-	\centering 
-	\includegraphics[width=0.9\textwidth]{so3_learning/synthetic/sim_world}
-	\caption{Synthetic world used to illustrate our method. A monocular camera observes a 6 $\times$ 6 grid of point landmarks from poses sampled on a semi-sphere. The test set includes poses that are outside the training distribution.}
-	\label{fig:synthetic_world}
-	\vspace{-1.5em}
-\end{figure}
 
 \begin{figure}
-	\centering
+	\centering 
+	\begin{subfigure}[]{\textwidth}
+		\includegraphics[width=0.9\textwidth]{so3_learning/synthetic/sim_world}
+	\caption{Synthetic world used to illustrate our method. A monocular camera observes a 6 $\times$ 6 grid of point landmarks from poses sampled on a semi-sphere. The test set includes poses that are outside the training distribution.}
+	\label{fig:synthetic_world}
+	\end{subfigure}
+	\begin{subfigure}[]{\textwidth}
 	\includegraphics[width=0.9\textwidth]{so3_learning/synthetic/sim_errors}
 	\caption{Rotation estimation errors for a deep network trained using our HydraNet approach on synthetic data (noisy pixel locations of 36 landmarks). We note that outside of the training distribution, our epistemic uncertainty ($\Covh$) grows, as expected.}
 	\label{fig:sim_errors}
+	\end{subfigure}
+	\caption{Synthetic experiments of probabilistic rotation regression with HydraNet.}
 \end{figure}
 
 To regress the camera orientation, we constructed a five layer residual network and attached 26 heads (25 + 1 for direct uncertainty learning) to regress a probabilistic estimate of $\quat_{c,w}$, the orientation of the camera with respect to the world frame. Refer to the supplementary materials for full experiment details. 
@@ -357,14 +418,47 @@ Next, we used HydraNet to regress absolute orientations from RGB images from the
 \end{table}
 
 
-
-\begin{figure}
+\begin{figure*}
 	\centering
-	\includegraphics[width=0.49\textwidth]{so3_learning/7scenes/7scenes_abs_best_model_chess_heads_25_epoch_13}
-	\caption{Orientation regression results for the 7scenes \textit{chess} test set. Our HydraNet structure paired with a \texttt{resnet-34} results mean errors of 6.3 degrees, with consistent uncertainty. We detail results for all seven scenes in \Cref{tab:7scenes_stats}.}
-	\label{fig:7scenes_chess_absolute}
-	\vspace{-1.5em}
-\end{figure}
+	\begin{subfigure}[]{0.43\textwidth}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13}
+		\caption{Chess}
+	\end{subfigure}
+	\begin{subfigure}[]{0.43\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4}
+		\caption{Fire}
+	\end{subfigure}
+	\begin{subfigure}[]{0.43\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11}
+		\caption{Heads}
+	\end{subfigure}
+	\begin{subfigure}[]{0.43\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_office_heads_25_epoch_15}
+		\caption{Office}
+	\end{subfigure}
+	\begin{subfigure}[]{0.43\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13}
+		\caption{Pumpkin}
+	\end{subfigure}
+	\begin{subfigure}[]{0.43\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2}
+		\caption{Kitchen}
+	\end{subfigure}
+	\begin{subfigure}[]{0.43\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11}
+		\caption{Stairs}
+	\end{subfigure}
+	\caption{Probabilistic regression plots for all seven datasets from the 7-Scenes dataset.}
+	\label{fig:7scenes_regression}
+\end{figure*}
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.49\textwidth]{so3_learning/7scenes/7scenes_abs_best_model_chess_heads_25_epoch_13}
+%	\caption{Orientation regression results for the 7scenes \textit{chess} test set. Our HydraNet structure paired with a \texttt{resnet-34} results mean errors of 6.3 degrees, with consistent uncertainty. We detail results for all seven scenes in \Cref{tab:7scenes_stats}.}
+%	\label{fig:7scenes_chess_absolute}
+%	\vspace{-1.5em}
+%\end{figure}
 
 %\begin{figure}
 %	\centering
@@ -415,22 +509,35 @@ Next, we used HydraNet to regress absolute orientations from RGB images from the
 }
 \end{table*}
 
-\begin{figure}
+\begin{figure*}[h!]
 	\centering
-	\includegraphics[width=0.9\textwidth]{so3_learning/kitti/kitti_abs_00_downsample_5_zoom}
-	\caption{Frame-to-frame rotation regression for KITTI odometry dataset sequence \texttt{00}. Note how the uncertainty increases when the car turns ($\phi_2$ represents the yaw angle). For plotting clarity, we downsample the data from 10Hz to 2Hz. Full statistics can be found in \Cref{tab:kitti_hydranet_stats}.}
-	\label{fig:kitti_topdown}
-	\vspace{-.5em}
-\end{figure}
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{so3_learning/kitti/kitti_00_topdown}
-	\caption{Top-down trajectory of KITTI odometry dataset sequence \texttt{00}.}
-	\label{fig:kitti_topdown}
-	\vspace{-.5em}
-\end{figure}
+	\begin{subfigure}[]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_abs_00_downsample_5}
+		\caption{\texttt{00}}
+	\end{subfigure}
+	\begin{subfigure}[]{0.45\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_abs_02_downsample_5}
+		\caption{\texttt{02}}
+	\end{subfigure}
+	\begin{subfigure}[]{0.45\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_abs_05_downsample_5}
+		\caption{\texttt{05}}
+	\end{subfigure}
+	\begin{subfigure}[]{0.45\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_00_topdown}
+		\caption{\texttt{00}}
+	\end{subfigure}
+	\begin{subfigure}[]{0.45\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_02_topdown}
+		\caption{\texttt{02}}
+	\end{subfigure}
+	\begin{subfigure}[]{0.45\textwidth} 
+		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_05_topdown}
+		\caption{\texttt{05}}
+	\end{subfigure}
+	\caption{KITTI frame-to-frame rotation probabilistic regression for sequences \texttt{00}, \texttt{02} and \texttt{05}. Top-down trajectory plots show localization improvements after fusion with a classical stereo visual odometry pipeline.}
+	\label{fig:hydranet_kitti_regression}
+\end{figure*}
 
 %\begin{table}[]
 %\caption{HydraNet regression results for the KITTI odometry dataset. We report mean angular errors and the negative log likelihood (lower is better).}
@@ -507,5 +614,13 @@ The estimates $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\E
 \Cref{tab:kitti_fusion_stats} summarizes the results when we perform this fusion - and \Cref{fig:kitti_topdown} shows the final effect on the trajectory for sequence \texttt{00}. Similar to \citep{2018_Peretroukhin_Deep} and \citep{Peretroukhin2018}, we found that fusing deep rotation regression with classical methods results in motion estimates that significantly out-perform other methods that rely on deep regression alone. However, we note that even with consistent estimates, a small bias can affect the final fused estimates (e.g., sequence \texttt{05}) and removing bias is an important avenue for future work. Further, the KITTI dataset contains few deleterious effects that negatively affect classical algorithms, and therefore we expect that this fusion would produce even more pronounced improvements on more varied visual data.
 
 \section{Summary}
-We presented a method to regress probabilistic estimates of rotation using a deep multi-headed network structure. We used the quaternionic metric on $\LieGroupSO{3}$ to define a rotation average, and extracted anisotropic covariances by modelling uncertainty through noise injection on the manifold.
+In this chapter, we described a method (our final \textit{pseudo-sensor}) to regress probabilistic estimates of rotation using a deep multi-headed network structure. We used the quaternionic metric on $\LieGroupSO{3}$ to define a rotation average, and extracted anisotropic covariances by modelling uncertainty through noise injection on the manifold. 
+
+Our novel contributions were
+\begin{enumerate}
+\item a deep network structure we call \textit{HydraNet} that builds on prior work \citep{Lakshminarayanan2017,Osband2016} to produce meaningful uncertainties over unconstrained targets,
+\item a loss formulation and mathematical framework that extends HydraNet to means and covariances of the rotation group $\LieGroupSO{3}$,
+\item and open source code for $\LieGroupSO{3}$ regression\footnote{\url{https://github.com/utiasSTARS/so3_learning}}.
+\end{enumerate}
+
 %Further avenues for future work include obviating the need for supervised training by embedding the HydraNet structure within a Bayesian filter (see for example, \citep{Haarnoja2016-ph}), applying a HydraNet $\LieGroupSO{3}$ regression to improve convergence in non-convex pose graphs, and using HydraNet outputs to improve direct keyframe-based visual localization within a tight optimization loop.

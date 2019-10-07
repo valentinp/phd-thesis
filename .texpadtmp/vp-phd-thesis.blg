@@ -5,7 +5,12 @@ A level-1 auxiliary file: sections/introduction.aux
 A level-1 auxiliary file: sections/math.aux
 A level-1 auxiliary file: sections/vo.aux
 A level-1 auxiliary file: sections/probe.aux
+A level-1 auxiliary file: sections/sun-bcnn.aux
+A level-1 auxiliary file: sections/dpc.aux
+A level-1 auxiliary file: sections/so3-learning.aux
+A level-1 auxiliary file: sections/conclusion.aux
 A level-1 auxiliary file: sections/appendix-probe-knn.aux
+A level-1 auxiliary file: sections/appendix-vo.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
@@ -28,6 +33,10 @@ Repeated entry---line 21 of file ../pubs-sun_bcnn.bib
  : @article{Leutenegger2015-fk
  :                            ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 99 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Ma2016-at
+ :                         ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 109 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Cvisic2015-mt
  :                             ,
@@ -40,6 +49,8 @@ Repeated entry---line 130 of file ../pubs-sun_bcnn.bib
  : @article{Scaramuzza2011-qr
  :                           ,
 I'm skipping whatever remains of this entry
+Warning--entry type for "ceres-solver" isn't style-file defined
+--line 141 of file ../pubs-sun_bcnn.bib
 Repeated entry---line 161 of file ../pubs-sun_bcnn.bib
  : @article{Geiger2013-ky
  :                       ,
@@ -56,53 +67,68 @@ Repeated entry---line 352 of file ../pubs-sun_bcnn.bib
  : @inproceedings{Kendall2016-zf
  :                              ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 368 of file ../pubs-sun_bcnn.bib
+ : @inproceedings{Peretroukhin2017-eb
+ :                                   ,
+I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
+Warning--I didn't find a database entry for "Hornik2014-jw"
+Warning--I didn't find a database entry for "farneback2003two"
+Warning--I didn't find a database entry for "Peretroukhin2018"
 Warning--empty journal in Alcantarilla2016-kv
+Warning--empty journal in Alcantarilla2016-fs
+Warning--empty journal in Clark2017-zg
 Warning--empty journal in DeTone2016-ue
+Warning--can't use both volume and number fields in fisher1953dispersion
 Warning--empty school in florez2010
+Warning--empty booktitle in Forster2015-af
 Warning--empty school in furgale_phd11
+Warning--empty journal in Kendall2017-ix
+Warning--empty journal in Lee2015-af
+Warning--empty journal in Li:2017
+Warning--empty journal in Ma2016-at
 Warning--empty journal in Oliveira2017-lt
 Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 66 entries,
+You've used 126 entries,
             1935 wiz_defined-function locations,
-            886 strings with 16677 characters,
-and the built_in function-call counts, 31254 in all, are:
-= -- 3134
-> -- 1267
-< -- 61
-+ -- 447
-- -- 430
-* -- 2480
-:= -- 5064
-add.period$ -- 203
-call.type$ -- 66
-change.case$ -- 540
-chr.to.int$ -- 59
-cite$ -- 73
-duplicate$ -- 1332
-empty$ -- 2203
-format.name$ -- 530
-if$ -- 6449
-int.to.chr$ -- 8
+            1211 strings with 27715 characters,
+and the built_in function-call counts, 59792 in all, are:
+= -- 5934
+> -- 2558
+< -- 101
++ -- 906
+- -- 873
+* -- 4795
+:= -- 9735
+add.period$ -- 379
+call.type$ -- 126
+change.case$ -- 1056
+chr.to.int$ -- 105
+cite$ -- 141
+duplicate$ -- 2528
+empty$ -- 4195
+format.name$ -- 1055
+if$ -- 12267
+int.to.chr$ -- 22
 int.to.str$ -- 0
-missing$ -- 65
-newline$ -- 329
-num.names$ -- 200
-pop$ -- 608
+missing$ -- 123
+newline$ -- 622
+num.names$ -- 382
+pop$ -- 1241
 preamble$ -- 1
-purify$ -- 543
+purify$ -- 1060
 quote$ -- 0
-skip$ -- 1038
+skip$ -- 1900
 stack$ -- 0
-substring$ -- 2223
-swap$ -- 359
-text.length$ -- 34
+substring$ -- 4135
+swap$ -- 643
+text.length$ -- 61
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 392
-warning$ -- 7
-while$ -- 255
+type$ -- 752
+warning$ -- 15
+while$ -- 475
 width$ -- 0
-write$ -- 854
-(There were 11 error messages)
+write$ -- 1606
+(There were 13 error messages)

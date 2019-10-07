@@ -2,11 +2,28 @@
 \label{ch:dpc}
 \epigraph{Life can only be understood backwards; but it must be lived forwards.}{Søren Kierkegaard}
 
+\section{Introduction}
+
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{dpc.pdf}
+ \caption{DPC-Net (Deep Pose Corrections) is a pseudo-sensor that learns to correct a `classical' VO pipeline.}
+ \label{fig:dpc_intro_fig}
+\end{figure*}
+
+If a pseudo-sensor like Sun-BCNN can extract useful orientation information directly from images, can we generalize this to correct more general $\LieGroupSE{3}$ poses? In this chapter, we explore this by training what we call a \textit{deep pose correction} (DPC) network to correct a classical pipeline.
+
+DPC is associated with one publication:
+\begin{itemize}
+\item \bibentry{2018_Peretroukhin_Deep}.
+\end{itemize}
+
+
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.48\textwidth]{dpc/dpc_high_level}
 	\caption{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE{3}$ \textit{corrections} to classical visual localizers.}
-	\label{fig:system_overview}
+	\label{fig:dpc_system_overview}
 	\vspace{-1.5em}
 \end{wrapfigure}
 
@@ -20,18 +37,10 @@ that include estimator biases \citep{Peretroukhin2014-db}, poor calibration, and
 
 
 We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from recent results \citep{Peretroukhin2017-eb} that demonstrate that CNNs can infer difficult-to-model geometric quantities (e.g., the direction of the sun) to improve an existing localization estimate.  
-In a similar vein, we propose a system (\Cref{fig:system_overview}) that takes as its starting point an efficient, classical localization algorithm that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
+In a similar vein, we propose a system (\Cref{fig:dpc_system_overview}) that takes as its starting point an efficient, classical localization algorithm that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
 
 % By applying the correction to the final $\LieGroupSE{3}$ pose, we design DPC-Net to learn effects that are often difficult to model by hand: estimator bias, environmental factors, and sensor mis-calibrations.
 Although in this work we focus on visual data, the DPC-Net architecture can be readily modified to learn $\LieGroupSE{3}$ corrections for estimators that operate with other sensor modalities (e.g., lidar). For this general task, we derive a pose regression loss function and a closed-form analytic expression for its Jacobian. Our loss permits a network to learn an unconstrained Lie algebra coordinate vector, but derives its Jacobian with respect to $\LieGroupSE{3}$ geodesic distance. 
-
-In summary, the main contributions of this work are
-\begin{enumerate}
-	\item the formulation of a novel deep corrective approach to egomotion estimation,
-	\item a novel cost function for deep $\LieGroupSE{3}$ regression that naturally balances translation and rotation errors, and
-	\item an open-source implementation of DPC-Net in \texttt{PyTorch}\footnote{See \url{https://github.com/utiasSTARS/dpc-net}.}.
-	
-\end{enumerate}
 
 
 
@@ -300,51 +309,55 @@ With this distorted dataset, we computed S-VO localization estimates and then tr
 
 
 \subsubsection{Dense Visual Odometry}
-Finally, we present localization estimates from a computationally-intensive keyframe-based dense, direct visual localization pipeline~\cite{Clement2018-cat} that computes relative camera poses by minimizing photometric error with respect to a keyframe image. To compute the photometric error, the pipeline relies on an inverse compositional approach to map the image coordinates of a tracking image to the image coordinates of the reference depth image. As the camera moves through an environment, a new keyframe depth image is computed and stored when the camera field-of-view differs sufficiently from the last keyframe. 
+Finally, we present localization estimates from a computationally-intensive keyframe-based dense, direct visual localization pipeline \citep{Clement2018-cat} that computes relative camera poses by minimizing photometric error with respect to a keyframe image. To compute the photometric error, the pipeline relies on an inverse compositional approach to map the image coordinates of a tracking image to the image coordinates of the reference depth image. As the camera moves through an environment, a new keyframe depth image is computed and stored when the camera field-of-view differs sufficiently from the last keyframe. 
 
 We used this dense, direct estimator as our benchmark for a state-of-the-art visual localizer, and compared its accuracy to that of a much less computationally expensive sparse estimator paired with DPC-Net.
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.8\textwidth}
 	   \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/00_cum_norms.pdf}
        \label{00-pose-cum}
        \caption{Sequence \texttt{00}: Cumulative Errors.}
     \end{subfigure}
     ~
-    \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/00_segs.pdf}
-        \label{00-pose-segs}
-        \caption{Sequence \texttt{00}: Segment Errors.}
-     \end{subfigure}
-     ~
-     \begin{subfigure}{0.48\textwidth}
+     \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/02_cum_norms.pdf}
         \label{02-pose-cum}
         \caption{Sequence \texttt{02}: Cumulative Errors.}
      \end{subfigure}
      ~
-     \begin{subfigure}{0.48\textwidth}
-         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/02_segs.pdf}
-         \label{02-pose-segs}
-         \caption{Sequence \texttt{02}: Segment Errors.}
-      \end{subfigure}
-      ~
-      \begin{subfigure}{0.48\textwidth}
+      \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/05_cum_norms.pdf}
         \label{05-pose-cum}
         \caption{Sequence \texttt{05}: Cumulative Errors.}
      \end{subfigure}
+   \caption{c-ATE for S-VO with and without DPC-Net.}
+  \label{fig:dpc-cum-errs} 
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.8\textwidth}
+        \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/00_segs.pdf}
+        \label{00-pose-segs}
+        \caption{Sequence \texttt{00}: Segment Errors.}
+     \end{subfigure}
      ~
-     \begin{subfigure}{0.48\textwidth}
+     \begin{subfigure}{0.8\textwidth}
+         \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/02_segs.pdf}
+         \label{02-pose-segs}
+         \caption{Sequence \texttt{02}: Segment Errors.}
+      \end{subfigure}
+     ~
+     \begin{subfigure}{0.8\textwidth}
          \includegraphics[width=\linewidth]{dpc/sparse-with-dense/combined/05_segs.pdf}
          \label{05-pose-segs}
          \caption{Sequence \texttt{05}: Segment Errors.}
       \end{subfigure}
-   \caption{c-ATE and mean segment errors for S-VO with and without DPC-Net.}
-  \label{fig:cum-seg-errs} 
+   \caption{Mean segment errors for S-VO with and without DPC-Net.}
+  \label{fig:dpc-seg-errs} 
 \end{figure}
-
 
 \begin{figure}
     \centering
@@ -395,19 +408,19 @@ where $N_s$ and $s_p$ (the number of segments of a given length, and the number 
 \section{Results \& Discussion}
 \begin{figure}
     \centering
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/00_segs.pdf}
         \label{00-pose-segs}
         \caption{Sequence \texttt{00} (Distorted): Segment Errors.}
     \end{subfigure} 
     ~
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/02_segs.pdf}
         \label{02-pose-segs}
         \caption{Sequence \texttt{02} (Distorted): Segment Errors.}
     \end{subfigure} 
     ~
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\linewidth]{dpc/distorted/combined/05_segs.pdf}
         \label{05-pose-segs}
         \caption{Sequence \texttt{05} (Distorted): Segment Errors.}
@@ -417,7 +430,7 @@ where $N_s$ and $s_p$ (the number of segments of a given length, and the number 
 \end{figure}
 
 \subsection{Correcting Sparse Visual Odometry}
-\Cref{fig:cum-seg-errs} plots c-ATE and mean segment errors for test sequences \texttt{00},  \texttt{02} and  \texttt{05} for three different DPC-Net models paired with our S-VO pipeline. \Cref{tab:nondistorted_stats} summarize the results quantitatively, while \Cref{fig:top-downs} plots the North-East projection of each trajectory.  On average, DPC-Net trained with the full $\LieGroupSE{3}$ loss reduced translational m-ATE by 72\%, rotational m-ATE by 75\%, translational mean segment errors by 40\% and rotational mean segment errors by 44\% (relative to the uncorrected estimator). Mean segment errors of the sparse estimator with DPC approached those observed from the dense estimator on sequence \texttt{00}, and outperformed the dense estimator on \texttt{02}. Sequence \texttt{05} produced two notable results: (1) although DPC-Net significantly reduced S-VO errors, the dense estimator still outperformed it in all statistics and (2) the full $\LieGroupSE{3}$ corrections performed slightly worse than their $\LieGroupSO{3}$ counterparts. We suspect the latter effect is a result of motion estimates with predominantly rotational errors which are easier to learn with an $\LieGroupSO{3}$ loss.
+\Cref{fig:dpc-cum-errs,fig:dpc-seg-errs} plot c-ATE and mean segment errors for test sequences \texttt{00},  \texttt{02} and  \texttt{05} for three different DPC-Net models paired with our S-VO pipeline. \Cref{tab:nondistorted_stats} summarize the results quantitatively, while \Cref{fig:top-downs} plots the North-East projection of each trajectory.  On average, DPC-Net trained with the full $\LieGroupSE{3}$ loss reduced translational m-ATE by 72\%, rotational m-ATE by 75\%, translational mean segment errors by 40\% and rotational mean segment errors by 44\% (relative to the uncorrected estimator). Mean segment errors of the sparse estimator with DPC approached those observed from the dense estimator on sequence \texttt{00}, and outperformed the dense estimator on \texttt{02}. Sequence \texttt{05} produced two notable results: (1) although DPC-Net significantly reduced S-VO errors, the dense estimator still outperformed it in all statistics and (2) the full $\LieGroupSE{3}$ corrections performed slightly worse than their $\LieGroupSO{3}$ counterparts. We suspect the latter effect is a result of motion estimates with predominantly rotational errors which are easier to learn with an $\LieGroupSO{3}$ loss.
 
 In general, coupling DPC-Net with a simple frame-to-frame sparse visual localizer yielded a final localization pipeline with accuracy similar to that of a dense pipeline while requiring significantly less visual data (recall that DPC-Net uses resized images).
 
@@ -460,12 +473,6 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
     }
 \end{table}
 
-\subsection{Distorted Images}
-
-\Cref{fig:cum-seg-errs-distorted} plots mean segment errors for the radially distorted dataset. On average, DPC-Net trained with the full $\LieGroupSE{3}$ loss reduced translational mean segment errors by 50\% and rotational mean segment errors by 35\% (relative to the uncorrected sparse estimator, see \Cref{tab:distorted_stats}). The yaw-only DPC-Net corrections did not produce consistent improvements (we suspect due to the presence of large errors in the remaining degrees of freedom as a result of the distortion procedure). Nevertheless, DPC-Net trained with $\LieGroupSE{3}$ and $\LieGroupSO{3}$ losses was able to significantly mitigate the effect of a poorly calibrated camera model. We are actively working on modifications to the network that would allow the corrected results to approach those of the undistorted case.
-%\vspace{-0.5em}  
-
-
 \begin{table}[h!]
     \centering
     \caption{m-ATE and Mean Segment Errors for VO results with and without DPC-Net for distorted images.}
@@ -492,6 +499,13 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
 	\end{threeparttable}
 	}
 \end{table}
+
+\subsection{Distorted Images}
+
+\Cref{fig:cum-seg-errs-distorted} plots mean segment errors for the radially distorted dataset. On average, DPC-Net trained with the full $\LieGroupSE{3}$ loss reduced translational mean segment errors by 50\% and rotational mean segment errors by 35\% (relative to the uncorrected sparse estimator, see \Cref{tab:distorted_stats}). The yaw-only DPC-Net corrections did not produce consistent improvements (we suspect due to the presence of large errors in the remaining degrees of freedom as a result of the distortion procedure). Nevertheless, DPC-Net trained with $\LieGroupSE{3}$ and $\LieGroupSO{3}$ losses was able to significantly mitigate the effect of a poorly calibrated camera model. We are actively working on modifications to the network that would allow the corrected results to approach those of the undistorted case.
+%\vspace{-0.5em}  
+
+
 
 \section{Summary}
 

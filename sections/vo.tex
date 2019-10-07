@@ -60,7 +60,7 @@ In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indire
 During preprocessing, we use a lens model (assumed to be known apriori) to undistort each stereo image. Further, using the camera extrinsic parameters (also assumed to be known), we \textit{rectify} the stereo pair such that the images can be assumed to come from two cameras whose principal axes are parallel (\Cref{fig:vo_preprocessing}). Finally, we also assume that the stereo camera intrinsics are known a priori or compute them through a calibration process \citep{Furgale2013-sl}.
 
 \subsection{Data Association}
-
+\label{sec:vo_data_extraction}
 \subsubsection{Feature Extraction and Matching}
 
 \begin{figure}[h!]

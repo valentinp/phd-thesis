@@ -11,6 +11,14 @@
 \section{Introduction}
 
 Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model to act as a \textit{virtual sun sensor} that mimics a hardware sun sensor (used in space-based applications to orient rovers and satellites) with no additional hardware.  This project was a collaboration between myself and Lee Clement. While we were equally responsible for its conception and dissemination, Lee lead the integration of sun information into a visual odometry pipeline, while I designed and implemented the learning components.
+
+This work was associated with three publications:
+\begin{enumerate}
+\item \bibentry{2017_Clement_Improving},
+\item \bibentry{2017_Peretroukhin_Reducing},
+\item \bibentry{2018_Peretroukhin_Inferring}.
+\end{enumerate}
+In this chapter, we summarize the latter journal publication.
  
 
 \section{Motivation}
@@ -82,6 +90,55 @@ We also build on the work of \citet{Peretroukhin2017-eb}, who presented prelimin
 While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{Clement2016-ir}). 
 Furthermore, our Bayesian CNN includes a dropout layer after every convolutional and fully connected layer (as outlined by \citet{Gal2016-ny} but not done by \citet{Kendall2016-zf}), which produces more principled covariance outputs.
 
+
+\section{Sun-Aided Stereo Visual Odometry} 
+\label{sec:sun_bcnn-stereo-vo}
+We adopt a sliding window sparse stereo VO technique that has been used in a number of successful mobile robotics applications \citep{Cheng2006-nl,Furgale2010-to,Geiger2011-xe,Kelly2008-mh}.
+Our task is to estimate a window of $\LieGroupSE{3}$ poses $\Set{\Transform_{k_1,0}, \Transform_{k_1+1,0}, \dots, \Transform_{k_2-1, 0}, \Transform_{k_2, 0}}$ expressed in a base coordinate frame $\CoordinateFrame{0}$, given a prior estimate of the transformation $\Transform_{k_1,0}$.
+We accomplish this by tracking keypoints across pairs of stereo images and computing an initial guess for each pose in the window using frame-to-frame point cloud alignment, which we then refine by solving a local bundle adjustment problem over the window.
+In our experiments we choose a window size of two, which we observed to provide good VO accuracy at low computational cost. 
+We select the initial pose $\Transform_{1,0}$ to be the first GPS ground truth pose such that $\CoordinateFrame{0}$ is a local East-North-Up (ENU) coordinate system with its origin at the first GPS position.
+
+\subsection{Observation Model}
+We assume that incoming stereo images have been undistorted and rectified in a pre-processing step, and model the stereo camera as a pair of perfect pinhole cameras with focal lengths $f_u, f_v$ and principal points $\left(c_u,c_v\right)$, separated by a fixed and known baseline $b$ (see \Cref{sec:vo_data_extraction}).
+
+If we take $\Keypoint_0^j$ to be the homogeneous 3D coordinates of keypoint $j$, expressed in our chosen base frame $\CoordinateFrame{0}$, we can transform the keypoint into the camera frame at pose $k$ to obtain $\Keypoint_k^j = \Transform_{k,0}\Keypoint_0^j = \Transpose{\bbm \KeypointComponent_{k,x}^j & \KeypointComponent_{k,y}^j & \KeypointComponent_{k,z}^j & 1 \ebm}$. Our observation model $\Vector{g}\left(\cdot\right)$ (defined with disparity, unlike the function $\Vector{f}(\cdot)$ in \Cref{sec:vo_data_extraction}) can then be formulated as
+\begin{align} \label{eq:cam_model}
+    \Vector{y}_{k,j} &= \CameraModel{\Keypoint_k^j}
+%                    = \CameraModel{\Transform_{k,0} \Keypoint_0^j}
+                    = \bbm u \\ v \T \\ d \T \ebm 
+                    = \bbm 
+			   		    f_u \KeypointComponent_{k,x}^j / \KeypointComponent_{k,z}^j + c_u \\
+			   		    f_v \KeypointComponent_{k,y}^j / \KeypointComponent_{k,z}^j + c_v \T \\
+			   		    f_u b / \KeypointComponent_{k,z}^j  \T
+			         \ebm,
+\end{align}
+where $\left(u,v\right)$ are the keypoint coordinates in the left image and $d$ is the disparity in pixels.
+
+\subsection{Sliding Window Bundle Adjustment}
+We use the open-source \texttt{libviso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
+Based on these keypoint tracks, a three-point Random Sample Consensus (RANSAC) algorithm \citep{Fischler1981-ue} generates an initial guess of the interframe motion and rejects outlier keypoint tracks by thresholding their reprojection error.
+We compound these pose-to-pose transformation estimates through our chosen window and refine them using a local bundle adjustment, which we solve using the nonlinear least-squares solver Ceres \citep{ceres-solver}.
+The objective function to be minimized can be written as
+\begin{equation} \label{eq:cost_function}
+    \BACost = \BACost_\text{reprojection} + \BACost_\text{prior},
+\end{equation}
+where
+\begin{equation} \label{eq:reprojection_cost}
+	\BACost_\text{reprojection} = \sum_{k=k_1}^{k_2} \sum_{j=1}^J \Transpose{\Error}_{\CameraObservation_{k,j}} \Covariance^{-1}_{\CameraObservation_{k,j}} \Error_{\CameraObservation_{k,j}}
+\end{equation}
+and 
+\begin{equation} \label{eq:prior_cost}
+	\BACost_\text{prior} = \Transpose{\Error}_{\Estimate{\Transform}_{k_1,0}} \Covariance^{-1}_{\Estimate{\Transform}_{k_1,0}} \Error_{\Estimate{\Transform}_{k_1,0}}.
+\end{equation}
+
+The quantity $\Error_{\CameraObservation_{k,j}} = \Estimate{\CameraObservation}_{k,j} - \CameraObservation_{k,j}$ represents the reprojection error of keypoint $j$ for camera pose $k$, with $\Covariance_{\CameraObservation_{k,j}}$ being the covariance of these errors.
+The predicted measurements are given by $\Estimate{\CameraObservation}_{k,j} = \CameraModel{\Estimate{\Transform}_{k,0} \Estimate{\Keypoint}^j_{0}}$, where $\Estimate{\Transform}_{k,0}$ and $\Estimate{\Keypoint}^j_{0}$ are the estimated poses and keypoint positions in base frame $\CoordinateFrame{0}$.
+
+The cost term $\BACost_\text{prior}$ imposes a normally distributed prior $\Prior{\Transform}_{k_1,0}$ on the first pose in the current window, based on the estimate of this pose in the previous window.
+The error in the current estimate $\Estimate{\Transform}_{k_1,0}$ of this pose compared to the prior can be computed via the $\LieGroupSE{3}$ matrix logarithm as $\Error_{\Prior{\Transform}_{k_1,0}} = \log \left( \Prior{\Transform}_{k_1,0}^{-1} \Estimate{\Transform}_{k_1,0} \right)^\vee \in \mathbb{R}^6$.
+The $6 \times 6$ matrix $\Covariance_{\Prior{\Transform}_{k_1,0}}$ is the covariance associated with $\Prior{\Transform}_{k_1,0}$ in its local tangent space, and is obtained as part of the previous window's bundle adjustment solution.
+This prior term allows consecutive windows of pose estimates to be combined in a principled way that appropriately propagates global pose uncertainty from window to window, which is essential in the context of optimal data fusion.
 
 \section{Orientation Correction}
 In order to combat drift in the VO estimate produced by accumulated orientation error, we adopt the technique of \citet{Lambert2012-um} to incorporate absolute orientation information from the sun directly into the estimation problem.
@@ -826,7 +883,7 @@ We randomly partitioned each dataset into training (90\%) and test (10\%) sets.
 We then trained three separate Sun-BCNN models on each training set, and evaluated each trained model on each of the three test sets.
  
 \subsubsection{Results}
-\Cref{fig:experiment-transfer-boxwhiskers} shows the results of these experiments with box and whisker plots for azimuth, zenith and vector angle errors while \Cref{tab:testBCNN_transfer_experiment} summarizes the results numerically. 
+\Cref{fig:sun-bcnn_experiment-transfer-boxwhiskers} shows the results of these experiments with box and whisker plots for azimuth, zenith and vector angle errors while \Cref{tab:sun-bcnn_testBCNN_oxford_weather} summarizes the results numerically. 
 We see that none of the three models generalize well to environments other than the one in which they were trained, yielding large and significantly biased test errors.
 We note, however, that the Oxford model was the least egregious offender, and speculate that this may be because the Oxford sequences contain significantly more training images than the other two datasets (approximately 3 times as many as the KITTI odometry benchmark and 5 times as many as the Devon Island dataset).
 
