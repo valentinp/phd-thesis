@@ -286,12 +286,6 @@ Huber, P.~J. (1964).
 \newblock Robust estimation of a location parameter.
 \newblock {\em The Annals of Mathematical Statistics}, pages 73--101.
 
-\bibitem[Irani and Anandan, 2000]{irani2000direct}
-Irani, M. and Anandan, P. (2000).
-\newblock About direct methods.
-\newblock In {\em {Vision Algorithms: Theory and Practice}}, pages 267--277.
-  Springer.
-
 \bibitem[Jia et~al., 2014]{jia2014caffe}
 Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick, R.,
   Guadarrama, S., and Darrell, T. (2014).
@@ -536,11 +530,6 @@ Sola, J. (2017).
 \bibitem[Sol{\`a} et~al., 2018]{Sola2018-kg}
 Sol{\`a}, J., Deray, J., and Atchuthan, D. (2018).
 \newblock A micro lie theory for state estimation in robotics.
-
-\bibitem[S{\"u}nderhauf and Protzel, 2007]{sunderhauf2007stereo}
-S{\"u}nderhauf, N. and Protzel, P. (2007).
-\newblock Stereo odometry: a review of approaches.
-\newblock {\em Chemnitz University of Technology Technical Report}.
 
 \bibitem[S{\"u}nderhauf et~al., 2015]{Sunderhauf2015-is}
 S{\"u}nderhauf, N., Shirazi, S., Dayoub, F., Upcroft, B., and Milford, M.

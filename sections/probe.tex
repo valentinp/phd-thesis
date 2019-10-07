@@ -52,11 +52,7 @@ There is a large and growing body of work on the problem of deriving accurate,
 consistent state estimates from visual data.  Although our approach to noise
 modelling is applicable in other domains, for simplicity we focus our attention
 on the problem of inferring egomotion from features extracted from sequential
-pairs of stereo images; see \citet{sunderhauf2007stereo} for a survey of
-techniques. The spectrum of alternative approaches to visual state estimation
-include monocular techniques, which may be feature-based
-\citep{Scaramuzza2011-qr}, direct \citep{irani2000direct}, or semi-direct
-\citep{forster2014svo}. 
+pairs of stereo images. 
 
 Apart from simply rejecting outliers, a number of recent approaches attempt to
 select the optimal set of features to produce an accurate localization estimate
@@ -83,8 +79,7 @@ monocular SLAM pipeline by selecting features with the highest \textit{informati
 %careful tuning to work in a given environment. 
 
 We present a principled, data-driven way to build a noise model
-for visual odometry. We combine our previous work
-on predictive robust estimation with isotropic covariances (Appendix \ref{app:appendix_probe_knn}) with work on covariance estimation
+for visual odometry. We leverage recent advances in covariance estimation
 \citep{VegaBrown:2013fv} to formulate a predictive robust estimator for a
 stereo visual odometry pipeline. We frame the traditional non-linear least
 squares optimization problem as a problem of maximum likelihood estimation with
@@ -109,7 +104,7 @@ Maximizing the likelihood of these errors is then equivalent to solving the foll
   &= \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
   \Transpose{\Vector{e}_{i,t}} \ImageLandmarkCovariance{i}{t}^{-1} \Vector{e}_{i,t}.
 \end{align}
-With PROBE, instead of treating $\ImageLandmarkCovariance{i}{t}$ as fixed, we build a model for it as a function of some useful \textit{predictor}, $\Predictor{i}{t}$. 
+With PROBE, instead of treating $\ImageLandmarkCovariance{i}{t}$ as fixed, we build a model for it as a function of some useful \textit{predictor}, $\Predictor{i}{t}$, 
 \begin{equation}
 \ImageLandmarkCovariance{i}{t} = \Covariance(\Predictor{i}{t}).	
 \end{equation}
@@ -121,11 +116,11 @@ $, we instead build a non-parametric model of covariance \textit{density} based 
 We will seek the transform that then maximizes the posterior predictive distribution of the errors, given this posterior:
 \begin{align}
 \label{eq:probe_vo_objective}
-  \Transform_t^* &=  \ArgMax{\Transform\in\text{SE}(3)} \prod_{i=1}^{N_t} \int p(\Vector{e}_{i,t}; \Transform_t |  \ImageLandmarkCovariance{i}{t}) p(\Covariance|\mathcal{D}, \Predictor{i}{t}) d\Covariance
+  \Transform_t^* &=  \ArgMax{\Transform\in\text{SE}(3)} \prod_{i=1}^{N_t} \int p(\Vector{e}_{i,t}; \Transform_t |  \ImageLandmarkCovariance{i}{t}) p(\Covariance|\mathcal{D}, \Predictor{i}{t}) d\Covariance.
 \end{align}
 Although at first this may seem unwieldy, we present an efficient method for computing the posterior and show that a particular formulation allows it to be marginalized out analytically to arrive at a simple posterior predictive distribution with a straight-forward objective for achieving a maximum likelihood egomotion transform.
 \subsection{Generalized Kernels}
-The technique of generalized kernels \citep{Vega-Brown2014-sb} combines the benefits of kernel density estimation with Bayesian inference. The basic idea is as follows. 
+To do this, we leverage Generalized Kernel (GK) estimation \citep{Vega-Brown2014-sb}. GK estimation combines the benefits of kernel density estimation with Bayesian inference. The basic idea is as follows. 
 Consider a dataset of inputs, $\Vector{x}$, and outputs, $\Vector{y}$,  and a dataset of independent observations $\mathcal{D} = \{(\Vector{x}_1, \Vector{y}_1), ..., (\Vector{x}_N, \Vector{y}_N) \}$. We are given a new `test' input $\Vector{x}^*$, and are asked to infer the likelihood of a observing a given output at this input:
 \begin{equation}
 p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}).
@@ -135,9 +130,7 @@ p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}).
 \begin{equation}
 p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}) = \int_{\Vector{\pi}} \underbrace{p(\Vector{y} | \Vector{\pi}^*)}_{\text{Known likelihood function}} \underbrace{p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D})}_{\text{Parameter posterior}} d\Vector{\pi}^*.
 \end{equation}
-
 This is called the posterior predictive distribution. Using Bayes rule, we can write
-
 \begin{equation}
 \label{eq:probe_posterior_bayes_rule}
 p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D}) \propto \int \left( \prod_{i=1}^N p(\Vector{y}_i | \Vector{\pi}_i)d\Vector{\pi}_i \right) p(\Vector{\pi}_{1:N}, \Vector{\pi}^*| \Vector{x}^*, \Vector{x}_{1:N})
@@ -147,14 +140,14 @@ p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D}) \propto \int \left( \prod_{i=1}^N 
 The technique of generalized kernels makes the assumption that the parameters $\Vector{\pi}_{1:N}$ are conditionally independent given the target parameters, $\Vector{\pi}^*$. This gives the distribution:
 
 \begin{equation}
- p(\Vector{\pi}_{1:N}, \Vector{\pi}^*| \Vector{x}^*, \Vector{x}_{1:N}) = \left( \prod_{i=1}^N  p(\Vector{\pi}_i | \Vector{\pi}^* \Vector{x}^*, \Vector{x}_i)  \right) p(\Vector{\pi}^* | \Vector{x}^*) 
+ p(\Vector{\pi}_{1:N}, \Vector{\pi}^*| \Vector{x}^*, \Vector{x}_{1:N}) = \left( \prod_{i=1}^N  p(\Vector{\pi}_i | \Vector{\pi}^* \Vector{x}^*, \Vector{x}_i)  \right) p(\Vector{\pi}^* | \Vector{x}^*), 
 \end{equation}
 which combined with \Cref{eq:probe_posterior_bayes_rule} results in
 \begin{equation}
 \label{eq:probe_extended_likelihood}
 p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D}) \propto \prod_{i=1}^N \underbrace{p(\Vector{y}_i | \Vector{\pi}^*, \Vector{x}_i, \Vector{x}^*)}_{\text{Extended likelihood}} \underbrace{p(\Vector{\pi}^*|\Vector{x}^*)}_{\text{Prior}}.
 \end{equation}
-Now, the piece-de-resistance of generalized kernels is that the \textit{extended} likelihood can be written as function of the known likelihood $p(\Vector{y}_i | \Vector{\pi}_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that in this case, the extended likelihood must have the form:
+Now, the pièce de résistance of generalized kernels is that the \textit{extended} likelihood can be written as function of the known likelihood $p(\Vector{y}_i | \Vector{\pi}_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that under these assumptions, the extended likelihood must have the form:
 \begin{equation}
 \label{eq:probe_kernel_likelihood}
 p(\Vector{y} | \Vector{\pi}^*, \Vector{x}, \Vector{x}^*) \propto p(\Vector{y} | \Vector{\pi})^{k(\Vector{x}^*, \Vector{x})},
@@ -252,7 +245,7 @@ Given a new landmark and predictor vector, we can infer a noise model by
 evaluating \cref{eq:compute-psi,eq:compute-nu}.  In order to accelerate this
 computation, it is helpful to choose a kernel function with finite support:
 that is, $k(\Vector{\phi},\Vector{\phi}')=0$ if $\Vert\Vector{\phi} -
-\Vector{\phi}'\Vert_2 > \rho$. Then, by indexing our training data in a spatial
+\Vector{\phi}'\Vert_2 > \gamma$ for some $\gamma$. Then, by indexing our training data in a spatial
 index such as a $k$-d tree, we can identify the subset of samples relevant to
 evaluating the sums in \cref{eq:compute-psi,eq:compute-nu} in $\mathcal{O}(\log
 N + \log N_t)$ time.  \Cref{alg:train-ground-truth} describes the procedure for
@@ -576,7 +569,7 @@ Toronto.
 
 \subsection{Simulation}
 \subsubsection{Monte-Carlo Verification}
-To begin, we verified that PROBE-GK can predict increasingly accurate estimates of the true error covariance as more training data is added. We developed a basic simulation environment consisting of a large amount of point landmarks being observed by a stereo camera. In our simulation, the camera traversed a single step in one direction, and recorded  empirical reprojection errors based on ground truth poses. We simulated additive Gaussian noise on image coordinates, and used Monte Carlo simulations (propagating the additive noise through \Cref{eq:image_error}) to estimate the true covariances. \Cref{fig:probe_frobNorm} shows the mean Frobenius norm (as defined in \cite{Barfoot2014-ac}) between the covariances estimated by PROBE-GK and the true covariances for a test trial. The mean norm tends to zero as more landmarks are added, indicating that PROBE-GK does learn the correct covariances.
+To begin, we verified that PROBE-GK can predict increasingly accurate estimates of the true error covariance as more training data is added. We developed a basic simulation environment consisting of a large amount of point landmarks being observed by a stereo camera. In our simulation, the camera traversed a single step in one direction, and recorded  empirical reprojection errors based on ground truth poses. We simulated additive Gaussian noise on image coordinates, and used Monte Carlo simulations to estimate the true covariances. \Cref{fig:probe_frobNorm} shows the mean Frobenius norm (as defined in \cite{Barfoot2014-ac}) between the covariances estimated by PROBE-GK and the true covariances for a test trial. The mean norm tends to zero as more landmarks are added, indicating that PROBE-GK does learn the correct covariances.
 
 
 \begin{figure}
@@ -607,7 +600,7 @@ the vertical and horizontal pixel locations in each of the stereo cameras.
 
 We simulated independent training and test traversals, where the camera moved for
 30 and 60 seconds respectively (at a forward speed of 3 metres per second for final path
-lengths of 90 and 180 meters).  \Cref{fig:sim_comparison} and \Cref{table:probe-gk_armse_errors} document the qualitative and quantitative comparisons of PROBE-GK (trained with and without ground-truth) against two baseline stereo odometry frameworks. Both baseline estimators were implemented based on \Cref{sec:ssvo}. The first utilized fixed covariances for all reprojection errors, while the second used a modified robust cost (i.e. M-estimation) based on Student's~$t$ weighting, with $\nu = 5$ (as suggested in \cite{kerl2013robust}).  These benchmarks served as baseline estimators (with and without robust costs) that used fixed covariance matrices and did not include a predictive component. 
+lengths of 90 and 180 meters).  \Cref{fig:probe_sim_comparison} and \Cref{table:probe-gk_armse_errors} document the qualitative and quantitative comparisons of PROBE-GK (trained with and without ground-truth) against two baseline stereo odometry frameworks. Both baseline estimators were implemented based on the reprojection-error-based VO pipeline described in  \Cref{ch:vo}. The first utilized fixed covariances for all reprojection errors, while the second used a modified robust cost (i.e. M-estimation) based on Student's~$t$ weighting, with $\nu = 5$ (as suggested in \cite{kerl2013robust}).  These benchmarks served as baseline estimators (with and without robust costs) that used fixed covariance matrices and did not include a predictive component. 
 
 Using PROBE-GK with ground truth data for training,
 we significantly reduced both the translation and rotational Average Root Mean Squared Error (ARMSE)
@@ -626,7 +619,7 @@ by approximately 50\%. In our synthetic data, the Expectation Maximization appro
     with \cref{alg:train-em} (GK-EM). Note in this experiment, the RMSE curves
     for GK-GT and GK-EM very nearly overlap. The overall translational and
     rotational ARMSE values are shown in Table \ref{table:probe-gk_armse_errors}.} 
-    \label{fig:sim_comparison}
+    \label{fig:probe_sim_comparison}
 \end{figure}
 
 \subsection{KITTI}
@@ -680,7 +673,7 @@ typical results; \Cref{table:probe-gk_armse_errors} presents a quantitative comp
 PROBE GK-GT produced significant reductions in ARMSE, reducing translational ARMSE by
 as much as 80\%. In contrast, GK-EM showed more modest improvements; this is
 unlike our synthetic experiments, where both GK-EM and GK-GT achieved similar
-performance. We are still actively exploring why this is the case; we note that although our simulated
+performance. We note that although our simulated
 data is drawn from a mixture of Gaussian distributions, the underlying
 noise distribution for real data may be far more complex. With no ground truth, EM has to jointly optimize the camera poses and sensor uncertainty. It is unclear whether this is feasible in the general case with no ground truth information.
 
