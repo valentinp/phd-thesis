@@ -494,7 +494,7 @@ Peretroukhin, V., Vega-Brown, W., Roy, N., and Kelly, J. (2016).
 
 \bibitem[Peretroukhin et~al., 2019]{2019_Peretroukhin_Deep}
 Peretroukhin, V., Wagstaff, B., and Kelly, J. (2019).
-\newblock Deep probabilistic regression of elements of so(3) using quaternion
+\newblock Deep probabilistic regression of elements of {SO(3)} using quaternion
   averaging and uncertainty injection.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition (CVPR'19) Workshop on Uncertainty and Robustness in Deep
