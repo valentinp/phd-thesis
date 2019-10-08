@@ -137,6 +137,12 @@ Engel, J., Stuckler, J., and Cremers, D. (2015).
 \newblock In {\em Proc. IEEE/RSJ Int. Conf. Intelligent Robots and Syst.
   (IROS)}, pages 1935--1942.
 
+\bibitem[Farneb{\"a}ck, 2003]{farneback2003}
+Farneb{\"a}ck, G. (2003).
+\newblock Two-frame motion estimation based on polynomial expansion.
+\newblock In {\em Scandinavian conference on Image analysis}, pages 363--370.
+  Springer.
+
 \bibitem[Fischler and Bolles, 1981]{fischler1981random}
 Fischler, M. and Bolles, R. (1981).
 \newblock Random sample consensus: a paradigm for model fitting with

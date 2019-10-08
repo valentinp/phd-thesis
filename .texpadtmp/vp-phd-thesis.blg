@@ -50,8 +50,6 @@ I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
 Warning--I didn't find a database entry for "Kendall2017-u"
 Warning--I didn't find a database entry for "Hornik2014-jw"
-Warning--I didn't find a database entry for "farneback2003two"
-Warning--I didn't find a database entry for "Peretroukhin2018"
 Warning--empty journal in Alcantarilla2016-kv
 Warning--empty booktitle in Clark2017
 Warning--empty journal in DeTone2016-ue
@@ -64,45 +62,45 @@ Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 106 entries,
+You've used 107 entries,
             1935 wiz_defined-function locations,
-            1138 strings with 25088 characters,
-and the built_in function-call counts, 51754 in all, are:
-= -- 5161
-> -- 2198
-< -- 90
-+ -- 769
-- -- 753
-* -- 4158
-:= -- 8357
-add.period$ -- 321
-call.type$ -- 106
-change.case$ -- 896
-chr.to.int$ -- 102
-cite$ -- 118
-duplicate$ -- 2181
-empty$ -- 3630
-format.name$ -- 901
-if$ -- 10663
+            1140 strings with 25180 characters,
+and the built_in function-call counts, 52245 in all, are:
+= -- 5216
+> -- 2205
+< -- 92
++ -- 771
+- -- 755
+* -- 4188
+:= -- 8428
+add.period$ -- 325
+call.type$ -- 107
+change.case$ -- 902
+chr.to.int$ -- 103
+cite$ -- 119
+duplicate$ -- 2208
+empty$ -- 3672
+format.name$ -- 904
+if$ -- 10775
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 103
-newline$ -- 525
-num.names$ -- 322
-pop$ -- 1049
+missing$ -- 104
+newline$ -- 530
+num.names$ -- 325
+pop$ -- 1057
 preamble$ -- 1
-purify$ -- 900
+purify$ -- 906
 quote$ -- 0
-skip$ -- 1672
+skip$ -- 1694
 stack$ -- 0
-substring$ -- 3703
-swap$ -- 588
-text.length$ -- 57
+substring$ -- 3747
+swap$ -- 598
+text.length$ -- 58
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 632
+type$ -- 638
 warning$ -- 12
-while$ -- 418
+while$ -- 423
 width$ -- 0
-write$ -- 1363
+write$ -- 1377
 (There were 7 error messages)

@@ -145,7 +145,7 @@
 \contentsline {section}{\numberline {8.2}Future Work}{131}{section.8.2}% 
 \contentsline {section}{\numberline {8.3}Final Remarks}{132}{section.8.3}% 
 \contentsline {section}{\numberline {8.4}Coda: In Search of Elegance}{132}{section.8.4}% 
-\contentsline {chapter}{Appendices}{135}{section*.28}% 
+\contentsline {chapter}{Appendices}{135}{section*.26}% 
 \contentsline {chapter}{\numberline {A}PROBE: Isotropic Covariance Models through K-NN}{136}{Appendix.1.A}% 
 \contentsline {section}{\numberline {A.1}Introduction}{136}{section.1.A.1}% 
 \contentsline {subsection}{\numberline {A.1.1}Theory}{136}{subsection.1.A.1.1}% 
@@ -153,4 +153,4 @@
 \contentsline {subsection}{\numberline {A.1.3}Testing}{138}{subsection.1.A.1.3}% 
 \contentsline {section}{\numberline {A.2}Experiments}{139}{section.1.A.2}% 
 \contentsline {chapter}{\numberline {B}Visual Odometry Implementation Details}{141}{Appendix.1.B}% 
-\contentsline {chapter}{Bibliography}{142}{section*.28}% 
+\contentsline {chapter}{Bibliography}{142}{section*.26}% 

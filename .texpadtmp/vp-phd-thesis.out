@@ -1,16 +1,22 @@
-\BOOKMARK [0][-]{chapter.7}{Learned Probabilistic Rotations}{}% 85
-\BOOKMARK [1][-]{section.7.1}{Introduction}{chapter.7}% 86
-\BOOKMARK [1][-]{section.7.2}{Motivation}{chapter.7}% 87
-\BOOKMARK [1][-]{section.7.3}{Related work}{chapter.7}% 88
-\BOOKMARK [1][-]{section.7.4}{Approach}{chapter.7}% 89
-\BOOKMARK [2][-]{subsection.7.4.1}{Why Rotations?}{section.7.4}% 90
-\BOOKMARK [2][-]{subsection.7.4.2}{Probabilistic Regression}{section.7.4}% 91
-\BOOKMARK [2][-]{subsection.7.4.3}{Deep Probabilistic \040SO\(3\) \040Regression}{section.7.4}% 92
-\BOOKMARK [2][-]{subsection.7.4.4}{Loss Function}{section.7.4}% 93
-\BOOKMARK [1][-]{section.7.5}{Experiments}{chapter.7}% 94
-\BOOKMARK [2][-]{subsection.7.5.1}{Uncertainty Evaluation: Synthetic Data}{section.7.5}% 95
-\BOOKMARK [2][-]{subsection.7.5.2}{Absolute Orientation: 7-Scenes}{section.7.5}% 96
-\BOOKMARK [2][-]{subsection.7.5.3}{Relative Rotation: KITTI Visual Odometry}{section.7.5}% 97
-\BOOKMARK [1][-]{section.7.6}{Summary}{chapter.7}% 98
-\BOOKMARK [0][-]{section*.28}{Appendices}{}% 108
-\BOOKMARK [0][-]{section*.28}{Bibliography}{}% 116
+\BOOKMARK [0][-]{chapter.4}{Predictive Robust Estimation}{}% 23
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.2}{Motivation}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.3}{Related Work}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.4}{Predictive Robust Estimation for VO}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.4.1}{Bayesian Noise Model for Visual Odometry}{section.4.4}% 28
+\BOOKMARK [2][-]{subsection.4.4.2}{Generalized Kernels}{section.4.4}% 29
+\BOOKMARK [2][-]{subsection.4.4.3}{Generalized Kernels for Visual Odometry}{section.4.4}% 30
+\BOOKMARK [2][-]{subsection.4.4.4}{Inference without ground truth}{section.4.4}% 31
+\BOOKMARK [1][-]{section.4.5}{Prediction Space}{chapter.4}% 32
+\BOOKMARK [2][-]{subsection.4.5.1}{Angular velocity and linear acceleration}{section.4.5}% 33
+\BOOKMARK [2][-]{subsection.4.5.2}{Local image entropy}{section.4.5}% 34
+\BOOKMARK [2][-]{subsection.4.5.3}{Blur}{section.4.5}% 35
+\BOOKMARK [2][-]{subsection.4.5.4}{Optical flow variance}{section.4.5}% 36
+\BOOKMARK [2][-]{subsection.4.5.5}{Image frequency composition}{section.4.5}% 37
+\BOOKMARK [1][-]{section.4.6}{Experiments}{chapter.4}% 38
+\BOOKMARK [2][-]{subsection.4.6.1}{Simulation}{section.4.6}% 39
+\BOOKMARK [2][-]{subsection.4.6.2}{KITTI}{section.4.6}% 40
+\BOOKMARK [2][-]{subsection.4.6.3}{UTIAS}{section.4.6}% 41
+\BOOKMARK [1][-]{section.4.7}{Summary}{chapter.4}% 42
+\BOOKMARK [0][-]{section*.26}{Appendices}{}% 108
+\BOOKMARK [0][-]{section*.26}{Bibliography}{}% 116
