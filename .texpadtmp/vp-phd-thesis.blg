@@ -10,7 +10,6 @@ A level-1 auxiliary file: sections/dpc.aux
 A level-1 auxiliary file: sections/so3-learning.aux
 A level-1 auxiliary file: sections/conclusion.aux
 A level-1 auxiliary file: sections/appendix-probe-knn.aux
-A level-1 auxiliary file: sections/appendix-vo.aux
 The style file: apalike.bst
 Database file #1: ../pubs-general.bib
 Database file #2: ../pubs-mine.bib
@@ -64,7 +63,7 @@ Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
 You've used 107 entries,
             1935 wiz_defined-function locations,
-            1140 strings with 25180 characters,
+            1139 strings with 25156 characters,
 and the built_in function-call counts, 52245 in all, are:
 = -- 5216
 > -- 2205

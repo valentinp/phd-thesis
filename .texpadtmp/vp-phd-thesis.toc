@@ -152,5 +152,4 @@
 \contentsline {subsection}{\numberline {A.1.2}Training}{138}{subsection.1.A.1.2}% 
 \contentsline {subsection}{\numberline {A.1.3}Testing}{139}{subsection.1.A.1.3}% 
 \contentsline {section}{\numberline {A.2}Experiments}{140}{section.1.A.2}% 
-\contentsline {chapter}{\numberline {B}Visual Odometry Implementation Details}{142}{Appendix.1.B}% 
-\contentsline {chapter}{Bibliography}{143}{Appendix.1.B}% 
+\contentsline {chapter}{Bibliography}{142}{table.caption.155}% 
