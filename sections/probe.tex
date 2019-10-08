@@ -26,15 +26,6 @@ We significantly extended this technique to full anisotropic covariances and gen
 
 We will present this latter technique in this chapter.
 
-
-%\begin{wrapfigure}{r}{0.5\textwidth}
-%    \centering
-%      \includegraphics[width=0.5\textwidth]{probe-gk/system_overview}
-%      \caption{PROBE builds a predictive noise model for stereo visual odometry.}
-%        \vspace{-1em}
-%    \label{fig:probe_gk_system}
-%\end{wrapfigure}
-
 \section{Motivation}
 
 Robot navigation relies on an accurate quantification of sensor noise or uncertainty in order to produce reliable state estimates.
@@ -64,6 +55,13 @@ monocular SLAM pipeline by selecting features with the highest \textit{informati
 
 
 \section{Predictive Robust Estimation for VO}
+
+\begin{figure}
+    \centering
+      \includegraphics[width=0.75\textwidth]{probe-gk/system_overview}
+      \caption{PROBE builds a predictive noise model for stereo visual odometry.}
+    \label{fig:probe_gk_system}
+\end{figure}
 
 %However, not all features are created equal; most feature-based methods rely on
 %random sample consensus algorithms \citep{fischler1981random} to partition the extracted features

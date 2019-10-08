@@ -1,6 +1,25 @@
 \chapter{Conclusion}
 \epigraph{Of what a strange nature is knowledge! It clings to a mind when it has once seized on it like a lichen on a rock.}{\textsc{Mary Shelley}, \textit{Frankenstein; or, The Modern Prometheus}}
 
+\begin{figure}
+\begin{subfigure}[]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{conclusion/probe}
+  \caption{PROBE \\ (\Cref{ch:probe}).}
+\end{subfigure}
+\begin{subfigure}[]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{conclusion/sun_bcnn}
+  \caption{Sun-BCNN \\ (\Cref{ch:sun-bcnn}).}
+\end{subfigure}
+\begin{subfigure}[]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{conclusion/dpc}
+  \caption{DPC-Net \\ (\Cref{ch:dpc}).}
+\end{subfigure}
+\begin{subfigure}[]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{conclusion/hydranet}
+  \caption{HydraNet \\ (\Cref{ch:hydranet}).}
+\end{subfigure}
+\caption{Four pseudo-sensors presented in this dissertation.}
+\end{figure}
 
 And thus, we have reached the end. This dissertation has dealt with the development of a general framework for improving the performance of model-based visual odometry pipelines through learned probabilistic pseudo-sensors that extract difficult-to-model latent information.  We presented four examples of such \textit{pseudo-sensors}. We close with a final summary of the contributions and list of publications, a discussion of potential future work, and some concluding remarks.
 
@@ -8,18 +27,7 @@ And thus, we have reached the end. This dissertation has dealt with the developm
 
 \subsection{Predictive Robust Estimation}
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-  \begin{center}
-  	\vspace{-25pt}
-    \includegraphics[width=0.28\textwidth]{conclusion/probe}
-     \vspace{-25pt}
-  \end{center}
-  \caption{PROBE (\Cref{ch:probe}).}
-  \vspace{-5pt}
-\end{wrapfigure}
-
-
-We began with a pseudo-sensor that used a heteroscedastic noise model to enable predictively robust estimation. PROBE and its follow-up work, PROBE-GK, contributed
+We began with a pseudo-sensor that used a heteroscedastic noise model to enable predictively robust estimation. PROBE contributed
 \begin{enumerate}
 \item a probabilistic model for indirect stereo visual odometry, leading to a predictive robust algorithm for inference on that model,
 \item two different approaches to constructing the robust algorithm: one baseds on k-nearest neighbours, and one based on Generalized Kernel (GK) estimation,
@@ -37,15 +45,7 @@ We began with a pseudo-sensor that used a heteroscedastic noise model to enable 
 
 \subsection{Sun BCNN}
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-  \begin{center}
-  	\vspace{-20pt}
-    \includegraphics[width=0.28\textwidth]{conclusion/sun_bcnn}
-     \vspace{-15pt}
-  \end{center}
-  \caption{Sun BCNN (\Cref{ch:sun-bcnn}).}
-  \vspace{-5pt}
-\end{wrapfigure}
+
 
 
 With Sun-BCNN, we applied learned \textit{pseudo-sensors} to the problem of illumination direction in outdoor environments. In sum, the novel contributions were:
@@ -68,17 +68,6 @@ With Sun-BCNN, we applied learned \textit{pseudo-sensors} to the problem of illu
 
 \subsection{Deep Pose Corrections}
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-  \begin{center}
-  	\vspace{-20pt}
-    \includegraphics[width=0.28\textwidth]{conclusion/dpc}
-     \vspace{-15pt}
-  \end{center}
-  \caption{DPC-Net (\Cref{ch:dpc}).}
-  \vspace{-5pt}
-\end{wrapfigure}
-
-
 Next, we generalized the results of Sun-BCNN to learn full six degree-of-freedom corrections for a particular egomotion pipeline and a given environment with DPC-Net. Our contributions included
 
 \begin{enumerate}
@@ -94,16 +83,6 @@ Next, we generalized the results of Sun-BCNN to learn full six degree-of-freedom
 
 
 \subsection{Deep Probabilistic Inference of $\LieGroupSO{3}$ with HydraNet}
-
-\begin{wrapfigure}{r}{0.3\textwidth}
-  \begin{center}
-  	\vspace{-20pt}
-    \includegraphics[width=0.28\textwidth]{conclusion/hydranet}
-     \vspace{-15pt}
-  \end{center}
-  \caption{HydraNet (\Cref{ch:hydranet}).}
-  \vspace{-5pt}
-\end{wrapfigure}
 
 
 Finally, we applied the lessons of DPC-Net and Sun-BCNN to learning only rotation estimates through a network structure that incorporated both aleatoric and epistemic uncertainty which can be fused with classical pipelines through pose graph optimization. With this work, we contributed
@@ -132,7 +111,7 @@ Finally, we applied the lessons of DPC-Net and Sun-BCNN to learning only rotatio
 
 There are many avenues for future work. For instance, although the fusion of pipelines with pseudo-sensors can significantly improve localization performance in a given environment, there are few guarantees that the final estimates are accurate and consistent.
 
-A potential thread of future work addresses this deficiency by developing more tightly-coupled perception systems that can be ‘certified’ to produce globally-optimal solutions while still being robust to adverse environmental effects. To do this, we propose that another way to fuse learned models with classical optimization techniques. Instead of treating the learning as a way to incorporate residuals (as much of this thesis is), we propose that we use learning as initializations, or priors, that are more invariant to effects like large view-point changes and have the ability to generalize to large-scale environments (\Cref{fig:conc_learning_as_prior}). By incorporating these learned ‘priors’ into an optimization framework, we can leverage recently-developed theory on convex relaxations (e.g., that presented in \cite{Rosen2019-kk}) to ensure that the final localization and mapping results are ‘optimal’, in the sense that they are the global minima of a maximum-likelihood-based loss, and ‘safe’, in the sense that they provide consistent uncertainty estimates even in the presence of unmodelled effects. 
+A potential thread of future work addresses this deficiency by developing more tightly-coupled perception systems that can be ‘certified’ to produce globally-optimal solutions while still being robust to adverse environmental effects. To do this, we propose that another way to fuse learned models with classical optimization techniques. Instead of treating the learning as a way to incorporate corrective residuals, we propose that we use learning as initializations, or priors, that are more invariant to effects like large view-point changes and have the ability to generalize to large-scale environments (\Cref{fig:conc_learning_as_prior}). By incorporating these learned ‘priors’ into an optimization framework, we can leverage recently-developed theory on convex relaxations (e.g., that presented in \cite{Rosen2019-kk}) to ensure that the final localization and mapping results are ‘optimal’, in the sense that they are the global minima of a maximum-likelihood-based loss, and ‘safe’, in the sense that they provide consistent uncertainty estimates even in the presence of unmodelled effects. 
 
 \section{Final Remarks}
 
