@@ -1,26 +1,16 @@
-\BOOKMARK [0][-]{chapter.5}{Learned Probabilistic Sun Sensor}{}% 43
-\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 44
-\BOOKMARK [1][-]{section.5.2}{Motivation}{chapter.5}% 45
-\BOOKMARK [1][-]{section.5.3}{Related Work}{chapter.5}% 46
-\BOOKMARK [1][-]{section.5.4}{Sun-Aided Stereo Visual Odometry}{chapter.5}% 47
-\BOOKMARK [2][-]{subsection.5.4.1}{Observation Model}{section.5.4}% 48
-\BOOKMARK [2][-]{subsection.5.4.2}{Sliding Window Bundle Adjustment}{section.5.4}% 49
-\BOOKMARK [1][-]{section.5.5}{Orientation Correction}{chapter.5}% 50
-\BOOKMARK [1][-]{section.5.6}{Indirect Sun Detection using a Bayesian Convolutional Neural Network}{chapter.5}% 51
-\BOOKMARK [2][-]{subsection.5.6.1}{Cost Function}{section.5.6}% 52
-\BOOKMARK [2][-]{subsection.5.6.2}{Uncertainty Estimation}{section.5.6}% 53
-\BOOKMARK [2][-]{subsection.5.6.3}{Implementation and Training}{section.5.6}% 54
-\BOOKMARK [1][-]{section.5.7}{Simulation Experiments}{chapter.5}% 55
-\BOOKMARK [1][-]{section.5.8}{Urban Driving Experiments: The KITTI Odometry Benchmark}{chapter.5}% 56
-\BOOKMARK [2][-]{subsection.5.8.1}{Sun-BCNN Test Results}{section.5.8}% 57
-\BOOKMARK [2][-]{subsection.5.8.2}{Visual Odometry Experiments}{section.5.8}% 58
-\BOOKMARK [1][-]{section.5.9}{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{chapter.5}% 59
-\BOOKMARK [2][-]{subsection.5.9.1}{Sun-BCNN Test Results}{section.5.9}% 60
-\BOOKMARK [2][-]{subsection.5.9.2}{Visual Odometry Experiments}{section.5.9}% 61
-\BOOKMARK [1][-]{section.5.10}{Sensitivity Analysis}{chapter.5}% 62
-\BOOKMARK [2][-]{subsection.5.10.1}{Cloud Cover}{section.5.10}% 63
-\BOOKMARK [2][-]{subsection.5.10.2}{Model Generalization}{section.5.10}% 64
-\BOOKMARK [2][-]{subsection.5.10.3}{Mean and Covariance Computation}{section.5.10}% 65
-\BOOKMARK [1][-]{section.5.11}{Summary}{chapter.5}% 66
-\BOOKMARK [0][-]{section*.55}{Appendices}{}% 108
-\BOOKMARK [0][-]{section*.55}{Bibliography}{}% 116
+\BOOKMARK [0][-]{chapter.7}{Learned Probabilistic Rotations}{}% 85
+\BOOKMARK [1][-]{section.7.1}{Introduction}{chapter.7}% 86
+\BOOKMARK [1][-]{section.7.2}{Motivation}{chapter.7}% 87
+\BOOKMARK [1][-]{section.7.3}{Related work}{chapter.7}% 88
+\BOOKMARK [1][-]{section.7.4}{Approach}{chapter.7}% 89
+\BOOKMARK [2][-]{subsection.7.4.1}{Why Rotations?}{section.7.4}% 90
+\BOOKMARK [2][-]{subsection.7.4.2}{Probabilistic Regression}{section.7.4}% 91
+\BOOKMARK [2][-]{subsection.7.4.3}{Deep Probabilistic \040SO\(3\) \040Regression}{section.7.4}% 92
+\BOOKMARK [2][-]{subsection.7.4.4}{Loss Function}{section.7.4}% 93
+\BOOKMARK [1][-]{section.7.5}{Experiments}{chapter.7}% 94
+\BOOKMARK [2][-]{subsection.7.5.1}{Uncertainty Evaluation: Synthetic Data}{section.7.5}% 95
+\BOOKMARK [2][-]{subsection.7.5.2}{Absolute Orientation: 7-Scenes}{section.7.5}% 96
+\BOOKMARK [2][-]{subsection.7.5.3}{Relative Rotation: KITTI Visual Odometry}{section.7.5}% 97
+\BOOKMARK [1][-]{section.7.6}{Summary}{chapter.7}% 98
+\BOOKMARK [0][-]{section*.28}{Appendices}{}% 108
+\BOOKMARK [0][-]{section*.28}{Bibliography}{}% 116
