@@ -281,6 +281,12 @@ He, K., Zhang, X., Ren, S., and Sun, J. (2016).
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 770--778.
 
+\bibitem[Holland and Welsch, 1977]{Holland1977}
+Holland, P.~W. and Welsch, R.~E. (1977).
+\newblock Robust regression using iteratively reweighted least-squares.
+\newblock {\em Communications in Statistics - Theory and Methods},
+  6(9):813--827.
+
 \bibitem[Hu and Kantor, 2015]{Hu2015-uw}
 Hu, H. and Kantor, G. (2015).
 \newblock Parametric covariance prediction for heteroscedastic noise.

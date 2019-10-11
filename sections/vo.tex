@@ -13,7 +13,7 @@
 
 Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to two seminal papers: \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds}.
 
-\section{A taxonomy of VO}
+\section{A Taxonomy of VO}
 
 VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the type of camera used to capture images (monocular vs. stereo) and (2) the type of data association used to compute motion estimates (indirect, or feature-based vs. direct, or pixel intensity-based). 
 
@@ -23,7 +23,7 @@ VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the
 \textbf{Direct vs. Indirect}:
 The second distinction is based on the type of data association used to match sequential images and infer motion. Direct methods make the assumption of brightness constancy, and attempt to \textit{directly} maximize the similarity of pixel intensities. Indirect methods, however, rely on image features detectors to extract a set of salient landmarks, and then match these landmarks across images (typically through some sort of invariant descriptor).
 
-\section{A classical VO pipeline}
+\section{A Classical VO Pipeline}
 
 In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline} largely based on the work of \cite{furgale_phd11}. We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
 
@@ -77,22 +77,20 @@ point in space, expressed in homogeneous coordinates in the camera frame as
 $\HomogeneousPoint{i}{c} := \Transpose{\bbm p_1 & p_2 & p_3 & p_4 \ebm} \in
 \HomogeneousNumbers[3]$.  Given our intrinsics and extrinsic calibration parameters, our idealized stereo-camera model, $\ProjectionFunction$,
 projects a landmark expressed in homogeneous coordinates into image space, so
-that $\ImageLandmark{i}{c}$, the stereo pixel coordinates of landmark $i$ in the camera frame, is given
+that $\ImageLandmark{i}{c}$, the stereo pixel coordinates of landmark $i$ in the camera frame, are given
 by 
-\begin{equation}
-	\ImageLandmark{i}{c} = \bbm u_l \\ v_l \\ u_r \\ v_r \ebm 
-  = \ProjectionFunction(\HomogeneousPoint{i}{c}) 
-  = \Matrix{M} \frac{1}{p_3}\HomogeneousPoint{i}{c},
+ \begin{equation}
+	\ImageLandmark{i}{c} = \bbm u_l \\ v_l \\ d  \ebm  
+  =\ProjectionFunction(\HomogeneousPoint{i}{c}) =  \ProjectionFunction(\bbm x \\ y \\ z \\ 1 \ebm) = 
+   \Matrix{M} \frac{1}{z} \HomogeneousPoint{i}{c},
 \end{equation}
 where
 \begin{equation}
- \Matrix{M} = \bbm f & 0 & c_u & f \frac{b}{2} \\ 0 & f & c_v & 0 \\ f 
-                        & 0 & c_u & -f\frac{b}{2} \\ 0 & f & c_v & 0 \ebm.
+\Matrix{M} = \bbm f & 0 & c_u & 0 \\ 0 & f & c_v & 0 \\ 0 & 0 & 0 & fb \ebm.
 \end{equation}
-Here, $\{c_u, c_v\}$, $\{f_u, f_v\}$, and $b$ are the principal points, focal
-lengths and baseline of the stereo camera respectively (computed through intrinsic calibration). Note that in this
-formulation, the stereo camera frame is centred between the two individual
-cameras. 
+Here, $\{c_u, c_v\}$, $f$, and $b$ are the principal points, focal
+length and baseline of the stereo camera respectively (computed through intrinsic calibration) and $d \definedtobe u_l - u_r$ is the \textit{disparity} of the feature. Note that in this
+formulation, the stereo camera frame is in the left optical centre.
 
 
 \subsubsection{Outlier Rejection}
@@ -162,6 +160,7 @@ where we abuse notation (slightly) and replace the index for the camera frames $
 Importantly, \cite{Sibley2007} show that using reprojection error (as compared to 3D point cloud error) results in less biased estimates for long-range stereo triangulation. Consequently, we favour this latter formulation in the large majority of our work (the one exception being the initial work on isotropic PROBE described in Appendix \ref{app:appendix_probe_knn}).
 
 \subsubsection{Solution via Gauss-Newton Optimization}
+\label{sec:vo_gauss_newton}
  In either case, we have now defined a weighted nonlinear least squares problem which can be solved iteratively using
 standard techniques. For our purposes, we opt to use Gauss-Newton optimization and follow \cite{Barfoot2017-ri} to optimize constrained poses.
 
@@ -234,28 +233,49 @@ the squared error of less than one percent after an update.
 
 \section{Robust Estimation}
 Since \Cref{eq:vo_linleastsquares} assigns cost values that grow quadratically with measurement error, it is very sensitive to outlier measurements.
-A common solution to this problem is to replace the $L_2$ cost function with one that is less sensitive to large measurement errors \citep{MacTavish2015-wt}.
-These robust cost functions are collectively known as M-estimators, and many variants exist. Each uses a re-weighting function, $\rho(\cdot)$,
+A common solution to this problem is to replace the quadratic loss function with one that is less sensitive to large measurement errors \citep{MacTavish2015-wt}.
+These robust cost functions are collectively known as M-estimators\footnote{M, for \textit{maximum-likelihood-type} since they generalize the basic maximum likelihood solution \citep{Barfoot2017-ri}.}, and many variants exist. Each uses a re-weighting function, $\rho(\cdot)$, to define a new optimization problem,
 
 \begin{equation}
-  \Transform^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  \rho\left(\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i,t}^{-1} \Vector{e}_{i}\right) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
-  \rho(\epsilon_i),
+	\label{eq:vo_robust_loss_problem}
+  \Transform^*_{\text{RLS}} = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N} 
+  \rho\left(\sqrt{\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1} \Vector{e}_{i}}\right) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N} 
+  \rho(\epsilon_i) = \ArgMin{\Transform\in\text{SE}(3)} \mathcal{L}_{\text{RLS}}(\Transform),
 \end{equation}
-
-where. given a parameter $c$, some common examples include:
-
+where we have defined $\epsilon_i \definedtobe \sqrt{\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1} \Vector{e}_{i}}$. The basic idea with M-estimation is to use a $\rho(\cdot)$ that reduces the influence of large $\epsilon$ below that of the quadratic $\rho(\epsilon) = \frac{1}{2} \epsilon^2$. There are several examples of such functions, including,
 \begin{align}
 \rho(\epsilon) &= \left\{  	\begin{array}{ll}
 		 \frac{c^2}{2} \log{\left(1 + \frac{\epsilon^2}{c^2}\right)}   & \mbox{Cauchy,} \\
 		 \frac{1}{2} \frac{\epsilon^2}{c^2 + \epsilon^2}  & \mbox{Geman-McClure \citep{geman1992nonlinear},} \\
 		 \\
-		\left\{  	\begin{array}{ll}  \frac{\epsilon^2}{2} & \mbox{if} \Norm{\epsilon} < c \\
-										c\Norm{\epsilon} - \frac{c^2}{2} & \mbox{if} \Norm{\epsilon} \geq c \end{array}
+		\left\{  	\begin{array}{ll}  \frac{\epsilon^2}{2} & \mbox{if} ~\epsilon < c \\
+										c\epsilon - \frac{c^2}{2} & \mbox{if} ~ \epsilon \geq c \end{array}
 																						 \right.   & \mbox{Huber \citep{huber1964robust}.} \\
 	\end{array}
 	\right.
 \end{align}
+where the constant $c$ can be set with reference to asymptotic efficiency relative to a unit Gaussian \citep{Holland1977}. To solve \Cref{eq:vo_robust_loss_problem}, it is common in the literature to apply the technique of \textit{iteratively reweighted least squares} (IRLS) \citep{Holland1977}. To do this, we define a new non-linear least squares minimization problem,
+\begin{equation}
+\Transform^*_{\text{IRLS}} = \ArgMin{\Transform\in\text{SE}(3)}\frac{1}{2} \sum_{i=1}^{N} 
+\Transpose{\Vector{e}_{i}} \Matrix{M}_{i} \Vector{e}_{i} = \ArgMin{\Transform\in\text{SE}(3)} \mathcal{L}_{\text{IRLS}}(\Transform)
+\end{equation}
+where we define these new weights, $\Matrix{M}_{i}$, based on an \textit{influence function}, $\psi(\cdot)$ as
+\begin{equation}
+	\Matrix{M}_i = \frac{1}{\epsilon_i} \underbrace{\at{\PartialDerivative{\rho}{\epsilon}}{\epsilon_i}}_{\psi(\cdot)} \GeneralCovariance_{i}^{-1},
+\end{equation}
+and solve it using the Gauss-Newton approach presented in \Cref{sec:vo_gauss_newton}. We claim that upon convergence, $\Transform^*_{\text{IRLS}}$ will also minimize \Cref{eq:vo_robust_loss_problem}. To see why, consider that
+\begin{equation}
+\PartialDerivative{\mathcal{L}_{\text{RLS}}}{\delta \Vector{\xi}} = 	\sum_i^N \PartialDerivative{\rho}{\epsilon_i} \PartialDerivative{\epsilon_i}{\Vector{e}_i} \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}} = 	\sum_i^N \frac{1}{\epsilon_i} \PartialDerivative{\rho}{\epsilon_i} \Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1} \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}}, 
+\end{equation} where he have used the fact that $\PartialDerivative{\epsilon_i}{\Vector{e}_i} = \frac{1}{\epsilon_i} 	\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1}$. Now using our definition of $\Matrix{M}_i$, we can write,
+\begin{equation}
+\PartialDerivative{\mathcal{L}_{\text{RLS}}}{\delta \Vector{\xi}}  = 	\sum_i^N \Transpose{\Vector{e}_{i}} \underbrace{\frac{1}{\epsilon_i} \PartialDerivative{\rho}{\epsilon_i}  \GeneralCovariance_{i}^{-1}}_{\Matrix{M}_i(\Transform)} \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}} = \sum_i^N \Transpose{\Vector{e}_{i}} \Matrix{M}_i(\Transform) \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}}. 
+\end{equation} where we have made the dependence on $\Transform$ explicit. We could potentially proceed to set this gradient to $\Vector{0}$ and attempt to solve for an optimal update $\delta \Vector{\xi}$. However, due to $\Matrix{M}_i(\Transform)$, this may be difficult in general.  Instead, we note that if we evaluate $\Matrix{M}_i{(\Transform})$ at the current operating point, $\Transform^{(n)}$, (i.e., we \textit{re-weight} the loss) we are then left with the equivalent normal equations that solve $\PartialDerivative{\mathcal{L}_{\text{IRLS}}}{\delta \Vector{\xi}} = \Vector{0}$.
+
+Furthermore, upon convergence, our solution to the iteratively re-weighted problem $\Transform^{(n)} = \Transform_\text{IRLS}^*$ will also minimize the robust objective \Cref{eq:vo_robust_loss_problem}, since we must have that,
+\begin{equation}
+	\at{\PartialDerivative{\mathcal{L}_{\text{IRLS}}}{\delta \Vector{\xi}}}{\Transform_\text{IRLS}^*} = \at{\PartialDerivative{\mathcal{L}_{\text{RLS}}}{\delta \Vector{\xi}}}{\Transform_\text{IRLS}^*} = \Vector{0}.
+\end{equation}
+ 
 
 
 

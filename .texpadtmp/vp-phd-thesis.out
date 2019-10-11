@@ -1,5 +1,5 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Autonomy and humanity through the ages}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.1}{Autonomy and Humanity}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Mobile Autonomy and State Estimation}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{The State of State Estimation}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{The Learned Pseudo-Sensor}{chapter.1}% 5
@@ -13,8 +13,8 @@
 \BOOKMARK [1][-]{section.2.4}{Perturbations}{chapter.2}% 13
 \BOOKMARK [1][-]{section.2.5}{Uncertainty}{chapter.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Classical Visual Odometry}{}% 15
-\BOOKMARK [1][-]{section.3.1}{A taxonomy of VO}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{A classical VO pipeline}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.1}{A Taxonomy of VO}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{A Classical VO Pipeline}{chapter.3}% 17
 \BOOKMARK [2][-]{subsection.3.2.1}{Preprocessing}{section.3.2}% 18
 \BOOKMARK [2][-]{subsection.3.2.2}{Data Association}{section.3.2}% 19
 \BOOKMARK [2][-]{subsection.3.2.3}{Maximum Likelihood Motion Solution}{section.3.2}% 20
@@ -112,4 +112,8 @@
 \BOOKMARK [2][-]{subsection.1.A.1.2}{Training}{section.1.A.1}% 112
 \BOOKMARK [2][-]{subsection.1.A.1.3}{Testing}{section.1.A.1}% 113
 \BOOKMARK [1][-]{section.1.A.2}{Experiments}{Appendix.1.A}% 114
-\BOOKMARK [0][-]{table.caption.155}{Bibliography}{}% 115
+\BOOKMARK [0][-]{Appendix.1.B}{Visual Odometry Implementation Details}{}% 115
+\BOOKMARK [1][-]{section.1.B.1}{Overview}{Appendix.1.B}% 116
+\BOOKMARK [1][-]{section.1.B.2}{Solution with Robust Loss}{Appendix.1.B}% 117
+\BOOKMARK [1][-]{section.1.B.3}{Deriving the Necessary Jacobians}{Appendix.1.B}% 118
+\BOOKMARK [0][-]{equation.1.B.3.19}{Bibliography}{}% 119

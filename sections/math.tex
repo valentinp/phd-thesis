@@ -119,7 +119,7 @@ Another way (and historically, the original way) to represent a general rotation
 \begin{equation}
 	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
-Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. This manifold represents a double cover of $\LieGroupSO{3}$ (since both $\quat$ and $-\quat$ represent the same rotation). As with rotation matrices, we can define a surjective map from three parameters to the group itself,
+Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. This manifold represents a double cover of $\LieGroupSO{3}$ (since both $\quat$ and $-\quat$ represent the same rotation)\footnote{$\LieGroupSO{3}$ is diffeomorphic to RP(3) (real projective space) which can be made by 'identifying' antipodal points in $S^3$ (unit sphere in $\RealNumbers^4$). Since unit quaternions belong to $S^3$, they represent a double cover of $\LieGroupSO{3}$ since we have not identified $\quat$ and $-\quat$.}. As with rotation matrices, we can define a surjective map from three parameters to the group itself,
 
 \begin{equation}
 \quat = \MatExp{\RotationVector} = \bbm \cos{\phi/2} \\ \RotationAxisVector \sin{\phi/2} \ebm.	
