@@ -90,7 +90,11 @@ where
 \end{equation}
 Here, $\{c_u, c_v\}$, $f$, and $b$ are the principal points, focal
 length and baseline of the stereo camera respectively (computed through intrinsic calibration) and $d \definedtobe u_l - u_r$ is the \textit{disparity} of the feature. Note that in this
-formulation, the stereo camera frame is in the left optical centre.
+formulation, the stereo camera frame is in the left optical centre. We can also define the inverse operation, $\ProjectionFunction^{-1}$, or triangulation as:
+ \begin{equation}
+	\HomogeneousPoint{i}{c} = \bbm x \\ y \\ z \\ 1 \ebm =  \ProjectionFunction^{-1}\left( \bbm u_l \\ v_l \\ d \ebm \right) =  \bbm  \frac{b}{d}(u_l - c_u) \\ \frac{b}{d}(v_l - c_v) \\ \frac{b}{d} f \\ 1 \ebm.
+\end{equation}
+
 
 
 \subsubsection{Outlier Rejection}

@@ -1,14 +1,15 @@
 \chapter{Visual Odometry Implementation Details}
 \label{chap:appendix_vo}
 
-This appendix presents some implementation details (including all Jacobians) for a standard VO pipeline. You can find a \texttt{python} implementation of this in \texttt{pyslam}. The math is largely based on \cite{Barfoot2017-ri}.
+This appendix presents further implementation details for a standard VO pipeline. You can find a \texttt{python} implementation of this in the open-source framework \texttt{pyslam}\footnote{\url{http://github.com/utiasSTARS/pyslam}} developed by myself and Lee Clement. 
 
 \section{Overview}
+In brief, the VO pipeline consists of the following steps.
 \begin{enumerate}
-\item Set the initial camera pose, $\Transform_{cw}$, to a known transform $\Transform_{c_0w}$ that defines a world coordinate frame of the first camera frame, $\CoordinateFrame{c_0}$, with respect to world frame $\CoordinateFrame{w}$.
-\item Match a set of $N_t$ landmarks that have been tracked between two stereo camera poses, $\CoordinateFrame{c_0}$ and a subsequent frame $\CoordinateFrame{c_1}$, and have the image coordinates $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$. This step is non-trivial in general, but for our work, we largely rely on the framework $\texttt{viso2}$ to provide these putative correspondences.
-\item Perform RANSAC using the method of \cite{Umeyama1991-ws} and described in \cite{Barfoot2017-ri} to reject outlying tracks.
-\item Select initial guess of the relative transform, $\Transform_{c_1c_0} =  \Transform_t$. Solve the M-estimation problem:  
+\item Define an initial camera pose, $\Transform_{cw}$, that relates the first camera frame, $\CoordinateFrame{c_0}$, to a world frame $\CoordinateFrame{w}$.
+\item Given an ideal calibrated stereo camera, stereo match and track a set of $N_t$ landmarks, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, between the initial stereo camera pose, $\CoordinateFrame{c_0}$, and a subsequent frame $\CoordinateFrame{c_1}$. This step is non-trivial in general, but for our work, we rely on the framework $\texttt{viso2}$ to provide these putative correspondences.
+\item Perform RANSAC to reject outlier tracks. Compute candidate transforms $\Transform_{c_1c_0}$ using the method of \cite{Umeyama1991-ws} (further elaborated in \cite{Barfoot2017-ri}) to reject outlying tracks.
+\item Select initial guess of the relative transform, $\Transform_{c_1c_0}^{(0)} =  \Transform_t^{(0)}$. This can either be set to $\IdentityMatrix$ or given by the model with the highest amount of inliers from the previous step. Starting at this initial operating point, use iterated reweighted least squares (IRLS) to solve the M-estimation problem,  
 \begin{equation}
 \label{eq:vo_app_robust_loss}
   \Transform_{c_1c_0}^* = \Transform_t^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N} 
@@ -19,22 +20,21 @@ where $\rho(\cdot)$ can be selected based on empirical performance, $\Vector{e}_
     \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) )$, and $\ProjectionFunction$ is the stereo camera model.
 \item Update the current camera pose as:
 \begin{equation}
-	\Transform_{cw} \leftarrow  \Transform_t \Transform_{cw}
+	\Transform_{cw} \leftarrow  \Transform_t^* \Transform_{cw}.
 \end{equation}
 \end{enumerate}
 
 \section{Solution with Robust Loss}
 
-In order to solve \Cref{eq:vo_app_robust_loss}, we use IRLS, and solve the problem,
-
+In order to solve \Cref{eq:vo_app_robust_loss}, we use the method of IRLS, and solve the transformed problem,
 \begin{equation}
 \Transform^* = \ArgMin{\Transform\in\text{SE}(3)}\frac{1}{2} \sum_{i=1}^{N} 
-\Transpose{\Vector{e}_{i}} \Matrix{M}_{i} \Vector{e}_{i} 
+\Transpose{\Vector{e}_{i}} \Matrix{M}_{i} \Vector{e}_{i},
 \end{equation}
-
 where $ \Matrix{M}_i(\Transform) \definedtobe \frac{1}{\epsilon_i} \PartialDerivative{\rho}{\epsilon_i}  \GeneralCovariance_{i}^{-1}$.
-To solve this, we begin at an operating point, we linearize about an operating point $\Transform_t^{(n)}$, as:
+To minimize this, we linearize about an operating point $\Transform_t^{(n)}$ and solve for an optimal update $\delta \Vector{\xi}^*$ by minimizing the linear least squares problem:
 \begin{equation}
+\label{eq:appendix_vo_lls}
  \delta \Vector{\xi}^* = \ArgMin{\delta \Vector{\xi} \in \RealNumbers{}^6} \mathcal{L}(\delta \Vector{\xi}) = \frac{1}{2}\sum_{i=1}^{N_t} 
   \Transpose{\left(\Vector{e}_{i}
   - \Matrix J_{i} \delta\Vector{\xi}\right)}
@@ -42,51 +42,52 @@ To solve this, we begin at an operating point, we linearize about an operating p
  \left(\Vector{e}_{i}
  - \Matrix J_{i} \delta\Vector{\xi}\right)
   \end{equation}
-where $\Vector{e}_{i} = \Vector{e}_{i}(\Transform_t^{(n)})$, $\Vector{J}_{i} = \Vector{J}_{i}(\Transform_t^{(n)})$ and $\Matrix{M}_{i} = \Matrix{M}_{i}(\Transform_t^{(n)})$. This is solved by the normal equations,
+where we note that all subscripted elements are functions of the operating point (i.e., $\Vector{e}_{i} = \Vector{e}_{i}(\Transform_t^{(n)})$, $\Vector{J}_{i} = \Vector{J}_{i}(\Transform_t^{(n)})$ and $\Matrix{M}_{i} = \Matrix{M}_{i}(\Transform_t^{(n)})$). This is solved by the normal equations,
 \begin{align}
+\label{eq:vo_appendix_irls_normal}
 \delta\Vector{\xi}^* &= \left( \sum_{i=1}^{N_t} \Matrix{J}_{i}^T \Matrix{M}_i \Matrix{J}_{i} \right)^{-1} \left( \sum_{i=1}^{N_t} \Matrix{J}_{i}^T\Matrix{M}_i \Vector{e}_i \right).
 \end{align}
-Given an optimal we update the operating point using:
+Given $\delta\Vector{\xi}^*$, we update the operating point as
 \begin{equation}
-	  \Transform_t^{(n+1)} = \MatExp{\delta\Vector{\xi}^*} \Transform_t^{(n)} 
+	  \Transform_t^{(n+1)} = \MatExp{\delta\Vector{\xi}^*} \Transform_t^{(n)}, 
 \end{equation}
+and iterate until convergence (the exact convergence criterion is typically not an important factor in relative egomotion estimation).
 
 \section{Deriving the Necessary Jacobians}
-
-We can compute $\Matrix{J}_{i}$ by beginning with $\Vector{e}_{i}(\Transform_t)  = \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
-    \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) )$ and making the following first order approximations:
+To evaluate \Cref{eq:vo_appendix_irls_normal}, we require the matrix $\Matrix{J}_{i}$. We can derive $\Matrix{J}_{i}$ for a reprojection error, $\Vector{e}_{i}(\Transform_t)  = \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
+    \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) )$, by and making the following first order approximations:
     \begin{align}
     	\Transform_t &\approx (\IdentityMatrix + \delta\Vector{\xi}^{\wedge}) \Transform_t^{(n)} \\
-    	\ProjectionFunction(\boldsymbol{p}) & \approx \ProjectionFunction(\boldsymbol{p}^{(n)}) + \Matrix{J}_p (\boldsymbol{p}^{(n)})  \delta \boldsymbol{p}.
+    	\ProjectionFunction(\boldsymbol{p}_i) & \approx \ProjectionFunction(\boldsymbol{p}_i^{(n)}) + \Matrix{J}_p (\boldsymbol{p}_i^{(n)})  \delta \boldsymbol{p},
     \end{align}
-    
-where $\Matrix{J}_p(\boldsymbol{p}^{(n)}) = \at{\PartialDerivative{\Vector{f}}{\boldsymbol{p}}}{\boldsymbol{p}^{(n)}}$ and $\boldsymbol{p}^{(n)} = \Transform_t^{(n)} 
-    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})$. Next we note that,
-
+where $\Matrix{J}_p(\boldsymbol{p}_i^{(n)}) = \at{\PartialDerivative{\Vector{f}}{\boldsymbol{p}}}{\boldsymbol{p}_i^{(n)}}$ and $\boldsymbol{p}_i^{(n)} = \Transform_t^{(n)} 
+    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})$. Using these definitions we can relate small perturbations of $\boldsymbol{p}_i^{(n)}$ to perturbations in our state $\Transform_t^{(n)}$,
 \begin{align}
-	\boldsymbol{p}^{(n)} + \delta \boldsymbol{p} &\approx (\IdentityMatrix + \delta\Vector{\xi}^{\wedge}) \Transform_t^{(n)} 
+	\boldsymbol{p}_i^{(n)} + \delta \boldsymbol{p} &\approx (\IdentityMatrix + \delta\Vector{\xi}^{\wedge}) \Transform_t^{(n)} 
     \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) \\
     &= \underbrace{\Transform_t^{(n)} 
-    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})}_{\boldsymbol{p}^{(n)}} + \delta\Vector{\xi}^{\wedge}\underbrace{\Transform_t^{(n)} 
-    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})}_{\boldsymbol{p}^{(n)}} \\
-    &= \boldsymbol{p}^{(n)} + \delta\Vector{\xi}^{\wedge} \boldsymbol{p}^{(n)} \\
-    &= \boldsymbol{p}^{(n)} + (\boldsymbol{p}^{(n)})^\odot \delta\Vector{\xi}
+    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})}_{\boldsymbol{p}_i^{(n)}} + \delta\Vector{\xi}^{\wedge}\underbrace{\Transform_t^{(n)} 
+    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})}_{\boldsymbol{p}_i^{(n)}} \\
+    &= \boldsymbol{p}_i^{(n)} + \delta\Vector{\xi}^{\wedge} \boldsymbol{p}_i^{(n)} \\
+    &= \boldsymbol{p}_i^{(n)} + (\boldsymbol{p}_i^{(n)})^\odot \delta\Vector{\xi}
 \end{align}
-
-
-which allows us to write $\delta \boldsymbol{p} = (\boldsymbol{p}^{(n)})^\odot \delta\Vector{\xi}$. Here we have used the notation from \cite{Barfoot2017-ri}, to define:
+which allows us to write $\delta \boldsymbol{p} = (\boldsymbol{p}_i^{(n)})^\odot \delta\Vector{\xi}$. Here we have used the notation from \cite{Barfoot2017-ri}, where the $(\cdot)^\odot$ operator is defined on homogeneous points as follows:
 \begin{equation}
 \boldsymbol{p}^\odot = \bbm \Vector{p} \\ 1 \ebm^\odot = \bbm \IdentityMatrix & -\Vector{p}^\wedge \\ \Vector{0}^T & \Vector{0}^T\ebm.
 \end{equation}
+This leads to the convenient expression, $\Vector{\xi}^\wedge \boldsymbol{p} = \boldsymbol{p}^\odot \Vector{\xi}$, that we use above.
 Combining everything, we have:
 \begin{align}
-	\Vector{e}_i (\delta \Vector{\xi})  &\approx \underbrace{\ImageLandmark{i}{c_1} - \ProjectionFunction(\boldsymbol{p}^{(n)})}_{\Vector{e}_i(\Transform_t^{(n)})} -  \Matrix{J}_p \delta \boldsymbol{p}\\
-	&=  \Vector{e}_i(\Transform_t^{(n)}) - \Matrix{J}_p(\boldsymbol{p}^{(n)}) (\boldsymbol{p}^{(n)})^\odot \delta\Vector{\xi} \\ 
-	&=  \Vector{e}_i(\Transform_t^{(n)}) - \underbrace{\Matrix{J}_p( \Transform_t^{(n)} 
-    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})) ( \Transform_t^{(n)} 
-    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0}))^\odot}_{\Matrix{J}_i} \delta\Vector{\xi} 
+	\Vector{e}_i (\delta \Vector{\xi})  &\approx \underbrace{\ImageLandmark{i}{c_1} -  \ProjectionFunction(\boldsymbol{p}_i^{(n)})}_{\Vector{e}_i(\Transform_t^{(n)})} -  \Matrix{J}_p(\boldsymbol{p}_i^{(n)})  \delta \boldsymbol{p}  \\
+	&=  \Vector{e}_i(\Transform_t^{(n)}) - \underbrace{\Matrix{J}_p(\boldsymbol{p}_i^{(n)}) (\boldsymbol{p}_i^{(n)})^\odot}_{\Matrix{J}_i} \delta\Vector{\xi} \\ 
 \end{align}
-which concludes our derivation. For a stereo camera model defined with the origin in the left camera frame,
+which concludes our derivation. In summary, to evaluate \Cref{eq:vo_appendix_irls_normal}, we use the expression,
+\begin{equation}
+\Matrix{J}_i = \Matrix{J}_p\left( \Transform_t^{(n)} 
+    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})\right) \left( \Transform_t^{(n)} 
+    \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})\right)^\odot.	
+\end{equation}
+Finally, for stereo camera model defined with the origin in the left camera frame,
  \begin{equation}
 	\ImageLandmark{i}{c} = \bbm u_l \\ v_l \\ d  \ebm  
   =\ProjectionFunction(\HomogeneousPoint{i}{c}) =  \ProjectionFunction(\bbm x \\ y \\ z \\ 1 \ebm) = 
@@ -96,7 +97,7 @@ where
 \begin{equation}
 \Matrix{M} = \bbm f & 0 & c_u & 0 \\ 0 & f & c_v & 0 \\ 0 & 0 & 0 & fb \ebm,
 \end{equation}
-the Jacobian, $\Matrix{J}_p$ is given by
+the Jacobian, $\Matrix{J}_p = \PartialDerivative{\Vector{f}}{\boldsymbol{p}}$ is given by
 \begin{equation}
 \Matrix{J}_p = \PartialDerivative{\Vector{f}}{\boldsymbol{p}} = \bbm \frac{f}{z} & 0 & -f \frac{x}{z^2} & 0 \\ 0 & \frac{f}{z} & -f \frac{y}{z^2} & 0 \\ 0 & 0 & -f \frac{b}{z^2} & 0 \ebm.
 \end{equation}

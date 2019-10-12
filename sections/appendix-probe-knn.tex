@@ -13,7 +13,7 @@ This initial work is associated with the following publication:
 \end{itemize}
 
 
-\subsection{Theory}
+\section{Theory}
 
 To solve for the relative egomotion, $\Transform_t$, between two camera frames, $\CoordinateFrame{c_0}$ and $\CoordinateFrame{c_1}$, we follow the technique described in \Cref{sec:vo_point_cloud} to convert stereo observations into point-clouds and then solve for the maximum likelihood $\LieGroupSE{3}$ transformation. We associate with each match $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}$ a vector of
 \emph{predictors}, $\Predictor{i}{t}$. We compute the covariance as a function of these predictors, so
@@ -47,7 +47,7 @@ with
 
 where $\{\PROBEPoseError_k\}_{k=1}^K$ are $K$ egomotion errors that are `nearest' to $\Predictor{i}{c}$, $\epsilon_\text{avg}$ is an average error, $\bar{\Covariance}$ is a baseline \textit{nominal} covariance, and $\gamma > 1$ is a hyper-parameter designed to exaggerate the effect of small changes in position error.
 
-\subsection{Training}
+\section{Training}
 Training proceeds by traversing the training path, selecting a subset of visual features at each step, and using them to compute an incremental position estimate. By comparing the estimated position to the ground truth position, we compute the translational Root Mean Squared Error (RMSE), $\epsilon$, and store it at each feature's position in the prediction space. The full algorithm is summarized in \Cref{alg:probe_train}. 
 %\begin{figure}[h]
 %\begin{center}
@@ -89,7 +89,7 @@ Training proceeds by traversing the training path, selecting a subset of visual 
   \end{algorithmic}
 \end{algorithm}
 
-	\subsection{Testing}
+\section{Testing}
 To use the PROBE model in a test environment, we compute the location of each observed visual feature in our prediction space, and then compute its relative weight $\beta_i$ as a function of its $K$ nearest neighbours in the training set.
 For efficiency, the $K$ nearest neighbours are found using a $k$-d tree.
 The final scaling factor $\beta_i$ is a function of the mean of the $\alpha$ values corresponding to the $K$ nearest neighbours, normalized by $\PROBEPoseError_\text{avg}$, the mean $\alpha$ value of the entire training set.
