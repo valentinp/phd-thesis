@@ -83,7 +83,7 @@ stereo visual odometry pipeline. We frame the traditional non-linear least
 squares optimization problem as a problem of maximum likelihood estimation with
 a Gaussian noise model, and infer a distribution over the covariance matrix of
 the Gaussian noise from a predictive model learned from training data. This
-results in a Student's~$t$ distribution over the noise, and naturally yields a
+results in a Student's~$t$ distribution for reprojection error, and naturally yields a
 robust nonlinear least-squares optimization problem.  In this way, we can predict,
 in a principled manner, how informative each visual feature is with respect to the final state
 estimate, which allows our approach to intelligently weight observations to
@@ -99,7 +99,7 @@ Maximizing the likelihood of these errors is then equivalent to solving the foll
 \begin{align}
 \label{eq:probe_vo_objective}
   \Transform_t^* &=  \ArgMax{\Transform\in\text{SE}(3)} \prod_{i=1}^{N_t} p(\Vector{e}_{i,t}; \Transform_t,  \ImageLandmarkCovariance{i}{t}) \\
-  &= \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  &= \ArgMin{\Transform\in\text{SE}(3)}\frac{1}{2} \sum_{i=1}^{N_t} 
   \Transpose{\Vector{e}_{i,t}} \ImageLandmarkCovariance{i}{t}^{-1} \Vector{e}_{i,t}.
 \end{align}
 With PROBE, instead of treating $\ImageLandmarkCovariance{i}{t}$ as fixed, we build a model for it as a function of some useful \textit{predictor}, $\Predictor{i}{t}$, 
@@ -119,7 +119,7 @@ We will seek the transform that then maximizes the posterior predictive distribu
 Although at first this may seem unwieldy, we present an efficient method for computing the posterior and show that a particular formulation allows it to be marginalized out analytically to arrive at a simple posterior predictive distribution with a straight-forward objective for achieving a maximum likelihood egomotion transform.
 \subsection{Generalized Kernels}
 To do this, we leverage Generalized Kernel (GK) estimation \citep{Vega-Brown2014-sb}. GK estimation combines the benefits of kernel density estimation with Bayesian inference. The basic idea is as follows. 
-Consider a dataset of inputs, $\Vector{x}$, and outputs, $\Vector{y}$,  and a dataset of independent observations $\mathcal{D} = \{(\Vector{x}_1, \Vector{y}_1), ..., (\Vector{x}_N, \Vector{y}_N) \}$. We are given a new `test' input $\Vector{x}^*$, and are asked to infer the likelihood of a observing a given output at this input:
+Consider a dataset of inputs, $\Vector{x}$, outputs, $\Vector{y}$,  and a dataset of independent observations $\mathcal{D} = \{(\Vector{x}_1, \Vector{y}_1), ..., (\Vector{x}_N, \Vector{y}_N) \}$. We are given a new `test' input $\Vector{x}^*$, and are asked to infer the likelihood of a observing a given output at this input:
 \begin{equation}
 p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}).
 \end{equation}
@@ -133,8 +133,6 @@ This is called the posterior predictive distribution. Using Bayes rule, we can w
 \label{eq:probe_posterior_bayes_rule}
 p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D}) \propto \int \left( \prod_{i=1}^N p(\Vector{y}_i | \Vector{\pi}_i)d\Vector{\pi}_i \right) p(\Vector{\pi}_{1:N}, \Vector{\pi}^*| \Vector{x}^*, \Vector{x}_{1:N})
 \end{equation}
-
-
 The technique of generalized kernels makes the assumption that the parameters $\Vector{\pi}_{1:N}$ are conditionally independent given the target parameters, $\Vector{\pi}^*$. This gives the distribution:
 
 \begin{equation}

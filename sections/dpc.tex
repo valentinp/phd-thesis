@@ -11,9 +11,9 @@
  \label{fig:dpc_intro_fig}
 \end{figure*}
 
-If a pseudo-sensor like Sun-BCNN can extract useful orientation information directly from images, can we create a more general approach that can more directly learn $\LieGroupSE{3}$ corrections to an existing VO estimate? In this chapter, we explore this by training what we call a \textit{deep pose correction} (DPC) network to correct a classical pipeline.
+If a pseudo-sensor like Sun-BCNN can extract useful orientation information directly from images, can we create a more general approach that can directly learn $\LieGroupSE{3}$ corrections to an existing VO estimate? In this chapter, we explore this by training what we call a \textit{deep pose correction} (DPC) network to do just that.
 
-DPC is associated with one publication:
+DPC is associated with the journal publication:
 \begin{itemize}
 \item \bibentry{2018_Peretroukhin_Deep}.
 \end{itemize}
@@ -91,7 +91,7 @@ In this work, we instead choose to parametrize our correction prediction as $\Tr
 	\label{eq:se3logmap_fn}
 	\LogMapFunction{\PredictionVector} \definedtobe \Matlog{\Matexp{\PredictionVector} \Inv{\TargetCorrection}}.
 \end{equation}
-Here, $\TransformCovariance$ is the covariance of our estimator (expressed using unconstrained Lie algebra coordinates), and $(\cdot)^\wedge$, $(\cdot)^\vee$ convert vectors of Lie algebra coordinates to matrix vectorspace quantities and back, respectively.
+Here, $\TransformCovariance$ is the covariance of our estimator (expressed using unconstrained Lie algebra coordinates), and $(\cdot)^\wedge$, $(\cdot)^\vee$ are defined as in \Cref{ch:math}.
 Given two stereo image pairs, we use the output of DPC-Net, $\PredictionVector$, to correct our estimator as follows:
 \begin{align}
 	\EstimatedVOTransformCorrectedNoSub = \Matexp{\PredictionVector} \EstimatedVOTransformNoSub,
@@ -504,7 +504,7 @@ In general, coupling DPC-Net with a simple frame-to-frame sparse visual localize
 
 \section{Summary}
 
-In summary, DPC-Net learns six degree-of-freedom corrections for a given egomotion pipeline and environment. Our contributions include
+In summary, we presented DPC-Net, an approach to learn six degree-of-freedom corrections for a canonical VO pipeline for a particular environment and camera. Our contributions included
 
 \begin{enumerate}
 	\item the formulation of a novel deep corrective approach to egomotion estimation,
