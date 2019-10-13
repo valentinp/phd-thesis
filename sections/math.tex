@@ -73,12 +73,10 @@ We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one 
 
 \section{Rotations} 
 
-The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO{3}$ (the Special Orthogonal group) and can be defined as a matrix as follows:
-
+The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO{3}$ (the Special Orthogonal group),
 \begin{equation}
 \LieGroupSO{3} = \{ \Rotation \in \Real{}^{3 \times 3} | ~ \Rotation^T\Rotation = \Matrix{1}, \det{\Rotation} = 1  \}.	
 \end{equation}
-
 \subsubsection{Active vs. Passive}
 An active (or \textit{alibi}) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or \textit{alias}) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this dissertation are passive unless otherwise noted.  
 
@@ -91,20 +89,16 @@ Since rotations form a matrix Lie group (we refer the reader to \cite{Sola2018-k
 \label{eq:euler_rodriguez}
 &= \cos{\phi} \IdentityMatrix + (1 - \cos{\phi}) \RotationAxisVector\RotationAxisVector^T + \sin{\phi} \RotationAxisVector^\wedge,
 \end{align}
-
 where the wedge operator $(\cdot)^\wedge$\footnote{This operator is sometimes also expressed as $(\cdot)^\times$ or $[\cdot]_\times$ and is known as the skew-symmetric operator.} is defined as
 \begin{equation}
 \RotationAxisVector^\wedge = \bbm a_0 \\ a_1 \\ a_2 \ebm^\wedge = \bbm 0 & -a_2 & a_1 \\ a_2 & 0 & -a_0 \\ -a_1 & a_0 & 0 \ebm.	
 \end{equation}
-
-\Cref{eq:euler_rodriguez} is known as the Euler-Rodriguez formula and it can also be derived geometrically, starting from Euler's theorem that any rotation can be expressed as an axis of rotation and an angle of rotation about that axis. Although  the map in \Cref{eq:so3_exp} is surjective, we can define an inverse map if we restrict its domain to $0 \leq \phi < \pi$:
-
+\Cref{eq:euler_rodriguez} is often referred to as the Euler-Rodriguez formula and it can also be derived geometrically, starting from Euler's theorem that any rotation can be expressed as an axis of rotation and an angle of rotation about that axis. Although  the map in \Cref{eq:so3_exp} is surjective, we can define an inverse map if we restrict its domain to $0 \leq \phi < \pi$:
 \begin{align}
 \label{eq:so3_log}
 \RotationVector =  \MatLog{\Rotation} = \Matlog{\Rotation} &= \frac{\phi (\Rotation - \Rotation^T)^\vee}{2 \sin{\phi}}, 
 \end{align}
-
-where $\phi = \arccos{\frac{\Trace{\Rotation} - 1}{2}}$ and the \textit{vee} operator, $(\cdot)^\vee : \Real{}^{3 \times 3} \rightarrow \Real{}^3$, is defined as the unique inverse of the wedge operator $(\cdot)^\wedge$. Note \Cref{eq:so3_log} is undefined at both $\phi = 0$ and at $\phi = \pi$. In the former case, we can use a small-angle approximation and define
+where $\phi = \arccos{\left(\frac{\Trace{\Rotation} - 1}{2}\right)}$ and the \textit{vee} operator, $(\cdot)^\vee : \Real{}^{3 \times 3} \rightarrow \Real{}^3$, is defined as the unique inverse of the wedge operator $(\cdot)^\wedge$. Note \Cref{eq:so3_log} is undefined at both $\phi = 0$ and at $\phi = \pi$. In the former case, we can use a small-angle approximation and define
 
 \begin{equation}
 	\MatLog{\Rotation} \approx (\Rotation - \IdentityMatrix)^\vee ~~ \textrm{when} ~~ \phi \approx 0. 
@@ -114,15 +108,15 @@ The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space 
 
 \subsection{Unit Quaternions}
 
-Another way (and historically, the original way) to represent a general rotation is to use a unit quaternion, $\quat$. A unit quaternion has four parameters, a scalar value $q_\omega$, and a three-dimensional vector component, $\quat_v$:
-
+Another way (and historically, the original way) to represent a general rotation is to use a unit quaternion, $\quat$. A unit quaternion consists of a scalar value $q_\omega$, and a three-dimensional vector component, $\quat_v$:
 \begin{equation}
 	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
-Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. This manifold represents a double cover of $\LieGroupSO{3}$ (since both $\quat$ and $-\quat$ represent the same rotation)\footnote{$\LieGroupSO{3}$ is diffeomorphic to RP(3) (real projective space) which can be made by 'identifying' antipodal points in $S^3$ (unit sphere in $\RealNumbers^4$). Since unit quaternions belong to $S^3$, they represent a double cover of $\LieGroupSO{3}$ since we have not identified $\quat$ and $-\quat$.}. As with rotation matrices, we can define a surjective map from three parameters to the group itself,
+
+Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. This manifold represents a double cover of $\LieGroupSO{3}$ (since both $\quat$ and $-\quat$ represent the same rotation)\footnote{$\LieGroupSO{3}$ is diffeomorphic to RP(3) (the real projective space) which can be made by `identifying' antipodal points in $S^3$ (unit sphere in $\RealNumbers^4$). Since unit quaternions belong to $S^3$, they represent a double cover of $\LieGroupSO{3}$ since we have not identified $\quat$ and $-\quat$.}. As with rotation matrices, we can define a surjective map from three parameters to the group itself,
 
 \begin{equation}
-\quat = \MatExp{\RotationVector} = \bbm \cos{\phi/2} \\ \RotationAxisVector \sin{\phi/2} \ebm.	
+\quat = \MatExp{\RotationVector} = \bbm \cos{(\phi/2)} \\ \RotationAxisVector \sin{(\phi/2)} \ebm.	
 \end{equation}
 Similarly, we can also define a logarithmic map as
 \begin{align}
@@ -130,7 +124,7 @@ Similarly, we can also define a logarithmic map as
 	\RotationVector =  \MatLog{\quat} = 2 \quat_v \frac{\arctan{(\Norm{\quat_v},  q_\omega})}{\Norm{\quat_v}}.
 \end{align}
 
-\noindent To avoid issues with the double cover, we replace $\quat$ with $-\quat$ if $q_\omega$ is negative before evaluating \Cref{eq:math_quat_log}. Also note again that \Cref{eq:math_quat_log} is undefined when $\phi = 0$, but, importantly, we do not face any issues when $\phi = \pi$ due to the half angle. As with rotation matrices, we can use small angle approximations to define:
+\noindent To avoid issues with the double cover, we replace $\quat$ with $-\quat$ if $q_\omega$ is negative before evaluating \Cref{eq:math_quat_log}. Also note again that \Cref{eq:math_quat_log} is undefined when $\phi = 0$, but, importantly, we do not face any issues when $\phi = \pi$ due to the half-angle. As with rotation matrices, we can use small angle approximations to define:
 
 \begin{equation}
 	\MatLog{\quat} \approx \frac{\quat_v}{q_\omega} \left( 1 - \frac{\Norm{\quat_v}^2}{3 q_\omega^2}\right) ~~ \textrm{when} ~~ \phi \approx 0. 
@@ -152,13 +146,11 @@ As a member of a matrix Lie group, it also admits a surjective exponential map,
 \begin{equation}
 \Transform = \MatExp{\Vector{\xi}} = \Matexp{\Vector{\xi}} = \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\xi}^\wedge)}^n	
 \end{equation}
-
 where $\TransformVector = \bbm \Vector \rho \\ \Vector \phi \ebm \in \Real{}^6$ and the wedge operator is overloaded (following \cite{Barfoot2017-ri}) as follows:
 \begin{equation}
   \Vector \xi^\wedge \triangleq \bbm \Vector \rho \\ \Vector \phi \ebm ^\wedge = \bbm
   \Vector \phi^\wedge & \Vector \rho \\ \Transpose{\Vector{0}} &  0 \ebm.	
 \end{equation}
-
 In practice, we can evaluate the exponential map through the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) and by computing the left-Jacobian of $\LieGroupSO{3}$,  $\LeftJacobianSO$, 
 
 \begin{equation}
@@ -178,12 +170,14 @@ Applying our notation for coordinate frames (and referring back to \Cref{fig:mat
 \Transform_{vi} = \bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm.
 \end{equation}
 This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i$ and express the following relation:
-
 \begin{equation}
-	\bbm \Vector{r}^{pi}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm
+	\boldsymbol{r}^{pi}_v = \Transform_{vi} \boldsymbol{r}^{pi}_i,
+\end{equation}
+or
+\begin{equation}
+	\bbm \Vector{r}^{pi}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm,
 \end{equation}
 which is numerically equivalent to  
-
 \begin{equation}
  \Vector{r}^{pi}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}.  
  \end{equation}
@@ -202,18 +196,15 @@ Using rotations as an example, we can perturb an operating point, $\Mean{\Rotati
 	\right.
 \end{align}
 We can relate all the left and middle perturbations through the left Jacobian of $\LieGroupSO{3}$ with the following useful identity,
-
 \begin{equation}
 \MatExp{( \RotationVector + \delta \RotationVector^m)} \approx \MatExp{\LeftJacobianSO(\RotationVector) \delta \RotationVector^m} \MatExp{\RotationVector}.	
 \end{equation}
 From this it follows that $\delta \RotationVector^\ell \approx \LeftJacobianSO(\RotationVector) \delta \RotationVector^m$ and elucidates why $\LeftJacobianSO$ is called the \textit{left} Jacobian. 
 
-In this thesis, we will use the left and middle perturbations when appropriate. Using small angle approximations, the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) yields $\MatExp{\delta \RotationVector} \approx \IdentityMatrix + \delta \RotationVector^\wedge$, which allows us to write the useful formula for the left perturbation:
-
+In this dissertation, we will use the left and middle perturbations when appropriate. Using small angle approximations, the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) yields $\MatExp{\delta \RotationVector} \approx \IdentityMatrix + \delta \RotationVector^\wedge$, which allows us to write the useful formula for the left perturbation:
 \begin{equation}
 	\Rotation = (\IdentityMatrix + (\delta \RotationVector^\ell)^\wedge) \Mean{\Rotation}.
 \end{equation}
-
 Similarly, we can write analogous expressions for a rigid body transform, $\Transform \in \LieGroupSE{3}$, as composed of an operating point $\Mean{\Transform} \definedtobe \MatExp{\Mean{\TransformVector}}$, and a small perturbation about that operating point:
 \begin{align}
 \Transform &= \left\{  	\begin{array}{ll}
@@ -225,24 +216,21 @@ Similarly, we can write analogous expressions for a rigid body transform, $\Tran
 \end{align}
 
 \noindent Now, we can also note a similar identity for $\LieGroupSE{3}$,
- 
 \begin{equation}
 \MatExp{( \TransformVector + \delta \TransformVector^m)} \approx \MatExp{(\LeftJacobianSE(\TransformVector) \delta \TransformVector^m)} \MatExp{\TransformVector},
 \end{equation}
-
 where $\LeftJacobianSE$ is the left Jacobian of $\LieGroupSE{3}$ and defined as
-
 \begin{equation}
 \LeftJacobianSE (\TransformVector) \definedtobe \bbm  \LeftJacobianSO(\RotationVector) & \Matrix{Q}(\TransformVector) \\ \Matrix{0} & \LeftJacobianSO(\RotationVector) \ebm,
 \end{equation}
 where $\Matrix{Q}(\TransformVector)$ can be evaluated analytically (see \cite{Barfoot2017-ri}). This again allows us to write $\delta \TransformVector^\ell \approx \LeftJacobianSE(\TransformVector) \delta \TransformVector^m$ and form a similar expression,
-
 \begin{equation}
 	\label{eq:math_se3_perturbations}
 	\Transform = (\IdentityMatrix + (\delta \TransformVector^\ell)^\wedge) \Mean{\Transform}.
 \end{equation}
 To derive locally linear systems from sets of rigid-body transforms, or `poses', we can apply \Cref{eq:math_se3_perturbations}. To update an operating point, we solve for $\delta \TransformVector^\ell$ and then use the constraint-sensitive update $\Transform \leftarrow \MatExp{\delta \TransformVector^\ell} \Mean{\Transform}$.
 
+Finally, we note that we will often drop the perturbation superscripts $(\cdot)^\ell$ and $(\cdot)^m$ after defining the perturbation scheme.
 
 \section{Uncertainty}
 
@@ -260,14 +248,13 @@ To derive locally linear systems from sets of rigid-body transforms, or `poses',
 
 We can also use perturbation theory to implicitly define uncertainty on constrained manifolds (see \cite{Barfoot2014-ac} for a thorough discussion). 
 
-Given a concentrated normal density, $\delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6})$, we can \textit{inject} this unconstrained density onto the Lie group through left perturbations about some mean:
+Given a concentrated normal density, $\delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6})$, we can \textit{inject} this unconstrained density onto the Lie group through left perturbations about some mean using
 \begin{align}
-\Transform &= \MatExp{\delta \TransformVector} \Mean{\Transform} 
+\Transform &= \MatExp{\delta \TransformVector} \Mean{\Transform}. 
 \end{align}
 This allows us to keep track of a random variable, $\Transform$, by keeping its mean in group form, $\Mean{\Transform}$, while its second statistical moment is stored as a standard $6 \times 6$ covariance matrix, $\Matrix{\Sigma}$.
 
 We can define an analogous density for rotation matrices given normal densities over rotation perturbations $\delta \RotationVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{3 \times 3})$,
-
 \begin{align}
 \Rotation &= \MatExp{\delta \RotationVector} \Mean{\Rotation}, 
 \end{align}

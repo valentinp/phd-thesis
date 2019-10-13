@@ -21,11 +21,11 @@ VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the
  Monocular VO methods use a single camera to infer motion and can use a single compact, low-power vision sensor. They do not require any extrinsic calibration but must rely on known visual cues or external information (e.g., wheel odometry, inertial measurements) to provide metric egomotion estimates. Conversely, stereo VO methods use a stereo camera to triangulate objects with metric scale. This allows stereo VO to provide metrically-acurate egomotion estimates. However, stereo methods rely on accurate extrinsic calibration, and their ability to resolve depth is limited by the baseline distance between the stereo pair and by the quality of stereo matches (which can be degraded by self-similar textures, occlusions, and foreshortening effects). 
 
 \textbf{Direct vs. Indirect}:
-The second distinction is based on the type of data association used to match sequential images and infer motion. Direct methods make the assumption of brightness constancy, and attempt to \textit{directly} maximize the similarity of pixel intensities. Indirect methods, however, rely on image features detectors to extract a set of salient landmarks, and then match these landmarks across images (typically through some sort of invariant descriptor).
+The second distinction is based on the type of data association used to match sequential images and infer motion. Direct methods make the assumption of brightness constancy, and attempt to find the egomotion estimate that \textit{directly} maximizes the similarity of pixel intensities between images. Indirect methods, conversely, rely on image features detectors to extract a set of salient landmarks or features, and then match these landmarks across images (typically by relying on a view-invariant descriptor).
 
-\section{A Classical VO Pipeline}
+\section{Canonical VO Pipeline}
 
-In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline} largely based on the work of \cite{furgale_phd11}. We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
+In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline}) largely based on the work of \cite{furgale_phd11}. We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
 
 \begin{figure}[h!]
 \begin{center}
@@ -56,7 +56,7 @@ In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indire
         \label{fig:vo_preprocessing}
 \end{figure}
 
-During preprocessing, we use a lens model (assumed to be known apriori) to undistort each stereo image. Further, using the camera extrinsic parameters (also assumed to be known), we \textit{rectify} the stereo pair such that the images can be assumed to come from two cameras whose principal axes are parallel (\Cref{fig:vo_preprocessing}). Finally, we also assume that the stereo camera intrinsics are known a priori or compute them through a calibration process \citep{Furgale2013-sl}.
+During preprocessing, we use a lens model (assumed to be known apriori) to undistort each stereo image. Next, using the camera extrinsic parameters (also assumed to be known), we \textit{rectify} the stereo pair such that the images can be assumed to come from two cameras whose principal axes are parallel (\Cref{fig:vo_preprocessing}). Finally, we also assume that the stereo camera intrinsics are known a priori or compute them through a calibration process \citep{Furgale2013-sl}.
 
 \subsection{Data Association}
 \label{sec:vo_data_extraction}
@@ -72,9 +72,9 @@ During preprocessing, we use a lens model (assumed to be known apriori) to undis
 
 In this thesis, we focus on indirect stereo visual odometry for its computational efficiency. Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \texttt{viso2} \citep{Geiger2011-xe} image feature extraction and matching algorithm as it is especially designed for sequential feature matching. In \texttt{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \texttt{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time to ensure that a single feature exists across two consecutive stereo camera poses. 
 
-Each extract feature corresponds to a
+The $i$th feature corresponds to a
 point in space, expressed in homogeneous coordinates in the camera frame as
-$\HomogeneousPoint{i}{c} := \Transpose{\bbm p_1 & p_2 & p_3 & p_4 \ebm} \in
+$\HomogeneousPoint{i}{c} \in
 \HomogeneousNumbers[3]$.  Given our intrinsics and extrinsic calibration parameters, our idealized stereo-camera model, $\ProjectionFunction$,
 projects a landmark expressed in homogeneous coordinates into image space, so
 that $\ImageLandmark{i}{c}$, the stereo pixel coordinates of landmark $i$ in the camera frame, are given
@@ -90,7 +90,7 @@ where
 \end{equation}
 Here, $\{c_u, c_v\}$, $f$, and $b$ are the principal points, focal
 length and baseline of the stereo camera respectively (computed through intrinsic calibration) and $d \definedtobe u_l - u_r$ is the \textit{disparity} of the feature. Note that in this
-formulation, the stereo camera frame is in the left optical centre. We can also define the inverse operation, $\ProjectionFunction^{-1}$, or triangulation as:
+formulation, the stereo camera frame is in the left optical centre. We can also define the inverse operation, $\ProjectionFunction^{-1}$ (triangulation) as:
  \begin{equation}
 	\HomogeneousPoint{i}{c} = \bbm x \\ y \\ z \\ 1 \ebm =  \ProjectionFunction^{-1}\left( \bbm u_l \\ v_l \\ d \ebm \right) =  \bbm  \frac{b}{d}(u_l - c_u) \\ \frac{b}{d}(v_l - c_v) \\ \frac{b}{d} f \\ 1 \ebm.
 \end{equation}
@@ -99,15 +99,15 @@ formulation, the stereo camera frame is in the left optical centre. We can also 
 
 \subsubsection{Outlier Rejection}
 
-To filter out any residual outlier matches, we use a three-point random sample consensus algorithm (RANSAC, \cite{fischler1981random}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws}.
+To filter out any stereo tracks that are \textit{outliers}, we use a three-point random sample consensus algorithm (RANSAC, \cite{fischler1981random}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws} (refer to Appendix \ref{app:appendix_vo} for more details).
   
 \subsection{Maximum Likelihood Motion Solution}
 Finally, we compute the rigid-body transform between to stereo camera frames using maximum likelihood estimation. We define the rigid-body transform, $\Transform_t \in\text{SE}(3)$, to be the rigid-body transform between two subsequent stereo camera poses, 
-$\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$. In other words, 
+$\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$, 
 \begin{equation}
 	\Transform_t = \Transform_{c_1w} \Transform^{-1}_{c_0w},
 \end{equation}
-where $\CoordinateFrame{w}$ is a privileged world frame. After data association, we assume we have a set
+where $\CoordinateFrame{w}$ is a predefined world frame. After data association, we assume we have a set
 of $N_t$ matches, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, between visual landmarks in the subsequent camera frames. For each match, we define an error function, $\Vector{e}_{i}(\Transform_t)$, that relates the rigid transform to these stereo feature matches. Throughout this dissertation, we assume that these errors are corrupted by zero-mean independent Gaussian noise with the (potentially heteroscedastic) covariance, $\Matrix{\Sigma}_{i,t}$;
  \begin{equation}
   \Vector{e}_{i}(\Transform_t) \sim
@@ -116,16 +116,16 @@ of $N_t$ matches, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t
 Under this noise model, the maximum likelihood transform, $\Transform^*_t$, is given by 
 \begin{equation}
 \label{eq:vo_objective}
-  \Transform_t^* = \ArgMax{\Transform\in\text{SE}(3)}\prod_{i=1}^{N_t} p(\Vector{e}_{i}(\Transform_t)) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
+  \Transform_t^* = \ArgMax{\Transform\in\text{SE}(3)}\prod_{i=1}^{N_t} p(\Vector{e}_{i}(\Transform_t)) = \ArgMin{\Transform\in\text{SE}(3)} \frac{1}{2} \sum_{i=1}^{N_t} 
   \Transpose{\Vector{e}_{i}(\Transform_t)} \GeneralCovariance_{i,t}^{-1} \Vector{e}_{i}(\Transform_t).
 \end{equation}
 We will define the error function in two different ways.
 
 \subsubsection{Point Cloud Error}
 \label{sec:vo_point_cloud}
-First, we can follow classical approach \citep{Maimone2007-tc} and define $ \Vector{e}_{i}(\Transform_t) $ based on a three-dimensional point cloud error. To do this, we invert our stereo camera model to triangulate pairs of points in each frame, $\HomogeneousPoint{i}{c_0} = \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})$ and $\HomogeneousPoint{i}{c_1} = \ProjectionFunction^{-1}(\ImageLandmark{i}{c_1})$,
+First, we can follow classical approach \citep{Maimone2007-tc} and define $ \Vector{e}_{i}(\Transform_t) $ based on a three-dimensional point cloud error. To do this, we invert our stereo camera model to triangulate pairs of points in each frame, $\HomogeneousPoint{i}{c_0} = \ProjectionFunction^{-1}(\ImageLandmark{i}{c_0})$ and $\HomogeneousPoint{i}{c_1} = \ProjectionFunction^{-1}(\ImageLandmark{i}{c_1})$, and then define a three-dimensional error,
 \begin{align}
-	 \Vector{e}_{i}(\Transform_t) = \Matrix{D}(\HomogeneousPoint{i}{c_1} - \Transform_t \HomogeneousPoint{i}{c_0}),
+	 \Vector{e}_{i}(\Transform_t) = \Matrix{D}(\HomogeneousPoint{i}{c_1} - \Transform_t \HomogeneousPoint{i}{c_0}) \in \Real{}^3,
 \end{align}
 where $\Matrix{D} = \bbm \IdentityMatrix_{3\times3} & \Vector{0} \ebm \in \Real{}^{3\times4}$ converts homogenous coordinates into Euclidian coordinates.
 
@@ -133,7 +133,7 @@ where $\Matrix{D} = \bbm \IdentityMatrix_{3\times3} & \Vector{0} \ebm \in \Real{
 \begin{equation}
 \ImageLandmark{i}{c} \sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c}, \ImageLandmarkCovariance{i}{c} \right), 
 \end{equation}  
-then we can compute a density on the error function itself through first order noise propagation as
+and compute a density on the error function itself through first order noise propagation. This gives the density
  \begin{equation}
   \Vector{e}_{i}(\Transform_t) \sim
  \NormalDistribution\left(\Vector 0, \GeneralCovariance_{i,t} \right), 
@@ -141,7 +141,7 @@ then we can compute a density on the error function itself through first order n
 where
 \begin{equation}
 	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \ImageLandmarkCovariance{i}{c_1}  \Matrix{G}_{i,c_1}^T \Matrix{D}^T + 
- \Matrix{D}\Transform_t \Matrix{G}_{i,c_0}  \ImageLandmarkCovariance{i}{c_0} \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T
+ \Matrix{D}\Transform_t \Matrix{G}_{i,c_0}  \ImageLandmarkCovariance{i}{c_0} \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T,
 \end{equation}
 with
 $\Matrix{G}_{i,c} = \at{\PartialDerivative{\ProjectionFunction^{-1}}{\Vector{y}}}{\ImageLandmark{i}{c}}$.
@@ -197,8 +197,8 @@ Given $\delta\Vector{\xi}^{\star}$, we can update the operating point using the 
 \begin{equation}
   \Transform^{(n+1)} = \MatExp{\delta\Vector{\xi}^{\star}} \Transform^{(n)}, \label{eq:vo_se3_update}
 \end{equation}
-and iterate until convergence.
-
+and iterate until convergence. See Appendix \ref{app:appendix_vo}
+for more details and an analytic expression for $\Matrix J_{i}$. 
 There are many reasonable choices for both the initial transform
 $\Transform^{(0)}$ and for the conditions under which we terminate
 iteration. For most visual odometry applications, it suffices to initialize the estimated transform to identity, and iteratively
@@ -246,7 +246,7 @@ These robust cost functions are collectively known as M-estimators\footnote{M, f
   \rho\left(\sqrt{\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1} \Vector{e}_{i}}\right) = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N} 
   \rho(\epsilon_i) = \ArgMin{\Transform\in\text{SE}(3)} \mathcal{L}_{\text{RLS}}(\Transform),
 \end{equation}
-where we have defined $\epsilon_i \definedtobe \sqrt{\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1} \Vector{e}_{i}}$. The basic idea with M-estimation is to use a $\rho(\cdot)$ that reduces the influence of large $\epsilon$ below that of the quadratic $\rho(\epsilon) = \frac{1}{2} \epsilon^2$. There are several examples of such functions, including,
+where we have defined $\epsilon_i \definedtobe \sqrt{\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1} \Vector{e}_{i}}$ (and dropped the $t$ subscript for clarity). The basic idea with M-estimation is to use a $\rho(\cdot)$ that reduces the influence of large $\epsilon$ below that of the quadratic $\rho(\epsilon) = \frac{1}{2} \epsilon^2$. There are several examples of such functions, including,
 \begin{align}
 \rho(\epsilon) &= \left\{  	\begin{array}{ll}
 		 \frac{c^2}{2} \log{\left(1 + \frac{\epsilon^2}{c^2}\right)}   & \mbox{Cauchy,} \\
@@ -272,7 +272,7 @@ and solve it using the Gauss-Newton approach presented in \Cref{sec:vo_gauss_new
 \PartialDerivative{\mathcal{L}_{\text{RLS}}}{\delta \Vector{\xi}} = 	\sum_i^N \PartialDerivative{\rho}{\epsilon_i} \PartialDerivative{\epsilon_i}{\Vector{e}_i} \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}} = 	\sum_i^N \frac{1}{\epsilon_i} \PartialDerivative{\rho}{\epsilon_i} \Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1} \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}}, 
 \end{equation} where he have used the fact that $\PartialDerivative{\epsilon_i}{\Vector{e}_i} = \frac{1}{\epsilon_i} 	\Transpose{\Vector{e}_{i}} \GeneralCovariance_{i}^{-1}$. Now using our definition of $\Matrix{M}_i$, we can write,
 \begin{equation}
-\PartialDerivative{\mathcal{L}_{\text{RLS}}}{\delta \Vector{\xi}}  = 	\sum_i^N \Transpose{\Vector{e}_{i}} \underbrace{\frac{1}{\epsilon_i} \PartialDerivative{\rho}{\epsilon_i}  \GeneralCovariance_{i}^{-1}}_{\Matrix{M}_i(\Transform)} \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}} = \sum_i^N \Transpose{\Vector{e}_{i}} \Matrix{M}_i(\Transform) \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}}. 
+\PartialDerivative{\mathcal{L}_{\text{RLS}}}{\delta \Vector{\xi}}  = 	\sum_i^N \Transpose{\Vector{e}_{i}} \underbrace{\frac{1}{\epsilon_i} \PartialDerivative{\rho}{\epsilon_i}  \GeneralCovariance_{i}^{-1}}_{\Matrix{M}_i(\Transform)} \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}} = \sum_i^N \Transpose{\Vector{e}_{i}} \Matrix{M}_i(\Transform) \PartialDerivative{\Vector{e}_i}{\delta \Vector{\xi}}, 
 \end{equation} where we have made the dependence on $\Transform$ explicit. We could potentially proceed to set this gradient to $\Vector{0}$ and attempt to solve for an optimal update $\delta \Vector{\xi}$. However, due to $\Matrix{M}_i(\Transform)$, this may be difficult in general.  Instead, we note that if we evaluate $\Matrix{M}_i{(\Transform})$ at the current operating point, $\Transform^{(n)}$, (i.e., we \textit{re-weight} the loss) we are then left with the equivalent normal equations that solve $\PartialDerivative{\mathcal{L}_{\text{IRLS}}}{\delta \Vector{\xi}} = \Vector{0}$.
 
 Furthermore, upon convergence, our solution to the iteratively re-weighted problem $\Transform^{(n)} = \Transform_\text{IRLS}^*$ will also minimize the robust objective \Cref{eq:vo_robust_loss_problem}, since we must have that,
@@ -285,7 +285,7 @@ Furthermore, upon convergence, our solution to the iteratively re-weighted probl
 
 
 \section{Outstanding Issues}
-There are several outstanding limitations of classical visual odometry pipelines that we can address with learned pseudo-sensors. 
+Finally, we summarize three high-level limitations of such a canonical visual odometry pipeline that we will address with learned pseudo-sensors: efficiency, systematic bias and homoscedastic uncertainnty.
 
 \begin{table}[h!]
 	\caption{\textbf{Data efficiency vs. computational efficiency}}	\begin{threeparttable}

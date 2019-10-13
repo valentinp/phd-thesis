@@ -92,7 +92,7 @@
 \department{Institute for Aerospace Studies}
 \gradyear{2019}
 \author{Valentin Peretroukhin}
-\title{On Learning Pseudo-Sensors to Improve Egomotion Estimation for Mobile Autonomy}
+\title{On learning pseudo-sensors to improve egomotion estimation for mobile autonomy}
 
 %% *** NOTE ***
 %% Put here all other formatting commands that belong in the preamble.
@@ -139,7 +139,7 @@
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
 The ability to estimate \textit{egomotion}, that is, to track one's own pose through an unknown environment, is at the heart of safe and reliable mobile autonomy. By inferring pose changes from sequential sensor measurements, egomotion estimation forms the basis of mapping and navigation pipelines, and permits mobile robots to self-localize within environments where external localization sources are intermittent or unavailable. 
 Visual and inertial egomotion estimation, in particular, have become ubiquitous in mobile robotics due to the availability of high-quality, compact, and inexpensive sensors that capture rich representations of the world.
- To remain computationally tractable, `classical' visual-inertial pipelines (like visual odometry and visual SLAM) make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error. In this thesis, we present several data-driven learned \textit{pseudo-sensors} that serve to augment conventional pipelines by inferring latent information from the same sensor data. Our approach retains much of the benefits of traditional pipelines, while leveraging high-capacity hyper-parametric models to extract complementary information that can be used to improve uncertainty quantification, correct for systematic bias, and improve robustness to difficult-to-model deleterious effects.
+ To remain computationally tractable, `classical' visual-inertial pipelines (like visual odometry and visual SLAM) make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error. In this thesis, we present several data-driven \textit{pseudo-sensors} that serve to augment conventional pipelines by inferring latent information from sensor data. Our approach retains much of the benefits of traditional pipelines, while leveraging high-capacity hyper-parametric models to extract complementary information that can be used to improve uncertainty quantification, correct for systematic bias, and improve robustness to difficult-to-model deleterious effects.
 We validate our pseudo-sensors on several kilometres of sensor data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the Canadian High Arctic.
 \end{abstract}
 
@@ -204,6 +204,7 @@ This document would not have been possible without the generous support and guid
 \begin{notation}
     \nitem{a}{Symbols in this font are real scalars.}
     \nitem{\Vector{a}   }{Symbols in this font are real column vectors.}
+    \nitem{\boldsymbol{a}   }{Symbols in this font are real column vectors in homogeneous coordinates.}
     \nitem{\Matrix{A}   }{Symbols in this font are real matrices.}
     \nitem{\mathcal{N}(\Vector{\mu}, \Matrix{R}) }{Normally distributed with mean $\Vector{\mu}$ and covariance $\Matrix{R}$.}
     \nitem{E[\cdot]}{The expectation operator.}
@@ -213,9 +214,9 @@ This document would not have been possible without the generous support and guid
     
     \nitem{\Matrix 1 }{The identity matrix.}
     \nitem{\Matrix 0 }{The zero matrix.}
-    \nitem{ \Vector p_{a}^{c,b} }{ A vector from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript).}
+    \nitem{ \Vector p_{a}^{c,b}}{ A vector (resp. homogenous coodrdinates) from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript).}
     \nitem{ \Rotation_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector p_a^{c,b} = \Rotation_{a,b} \Vector p_b^{c,b}$. }
-    \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector{p}_a^{c,a} = \Transform_{a,b} \Vector{p}_b^{c,b}$. }
+    \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\boldsymbol{p}_a^{c,a} = \Transform_{a,b} \boldsymbol {p}_b^{c,b}$. }
 \end{notation}
 %\printnomenclature
 
