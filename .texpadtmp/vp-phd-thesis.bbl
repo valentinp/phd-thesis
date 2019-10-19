@@ -433,11 +433,6 @@ Melekhov, I., Ylioinas, J., Kannala, J., and Rahtu, E. (2017).
 \newblock In {\em Proc. Int. Conf. on Advanced Concepts for Intel. Vision
   Syst.}, pages 675--687. Springer.
 
-\bibitem[Nilsson, 1984]{Nilsson1984-oc}
-Nilsson, N.~J. (1984).
-\newblock Shakey the robot.
-\newblock Technical report, SRI International.
-
 \bibitem[Oliveira et~al., 2017]{Oliveira2017-lt}
 Oliveira, G.~L., Radwan, N., Burgard, W., and Brox, T. (2017).
 \newblock Topometric localization with deep learning.
@@ -512,11 +507,6 @@ Punjani, A. and Abbeel, P. (2015).
 \newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
   3223--3230.
 
-\bibitem[Redfield, 2019]{Redfield2019-pi}
-Redfield, S. (2019).
-\newblock A definition for robotics as an academic discipline.
-\newblock {\em Nature Machine Intelligence}, 1(6):263--264.
-
 \bibitem[Rosen et~al., 2019]{Rosen2019-kk}
 Rosen, D.~M., Carlone, L., Bandeira, A.~S., and Leonard, J.~J. (2019).
 \newblock {SE-Sync}: A certifiably correct algorithm for synchronization over
@@ -564,15 +554,13 @@ Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D., Erhan, D.,
 \newblock In {\em Proc. {IEEE} Conf. Comput. Vision and Pattern Recognition,
   ({CVPR})}, pages 1--9.
 
-\bibitem[Thrun et~al., 2006]{Thrun2006-hb}
-Thrun, S., Montemerlo, M., Dahlkamp, H., Stavens, D., Aron, A., Diebel, J.,
-  Fong, P., Gale, J., Halpenny, M., Hoffmann, G., Lau, K., Oakley, C.,
-  Palatucci, M., Pratt, V., Stang, P., Strohband, S., Dupont, C., Jendrossek,
-  L.-E., Koelen, C., Markey, C., Rummel, C., van Niekerk, J., Jensen, E.,
-  Alessandrini, P., Bradski, G., Davies, B., Ettinger, S., Kaehler, A., Nefian,
-  A., and Mahoney, P. (2006).
-\newblock Stanley: The robot that won the {DARPA} grand challenge.
-\newblock {\em J. Field Robotics}, 23(9):661--692.
+\bibitem[Triggs et~al., 2000]{triggs_bundle_2000}
+Triggs, B., McLauchlan, P.~F., Hartley, R.~I., and Fitzgibbon, A.~W. (2000).
+\newblock Bundle {Adjustment} — {A} {Modern} {Synthesis}.
+\newblock In Goos, G., Hartmanis, J., van Leeuwen, J., Triggs, B., Zisserman,
+  A., and Szeliski, R., editors, {\em Vision {Algorithms}: {Theory} and
+  {Practice}}, volume 1883, pages 298--372. Springer Berlin Heidelberg, Berlin,
+  Heidelberg.
 
 \bibitem[Tsotsos et~al., 2015]{Tsotsos2015}
 Tsotsos, K., Chiuso, A., and Soatto, S. (2015).

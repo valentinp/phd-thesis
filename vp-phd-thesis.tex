@@ -92,7 +92,7 @@
 \department{Institute for Aerospace Studies}
 \gradyear{2019}
 \author{Valentin Peretroukhin}
-\title{On learning pseudo-sensors to improve egomotion estimation for mobile autonomy}
+\title{On learning pseudo-sensors to improve visual egomotion estimation}
 
 %% *** NOTE ***
 %% Put here all other formatting commands that belong in the preamble.
@@ -114,7 +114,7 @@
 
 
 %%%%%%%%%%%%      INCLUDE ONLY        %%%%%%%%%%%%
-%\includeonly{sections/vo}
+\includeonly{sections/introduction,sections/math}
 
 %%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
 
@@ -137,9 +137,9 @@
 \begin{abstract}
 %% *** Put your Abstract here. ***
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
-The ability to estimate \textit{egomotion}, that is, to track one's own pose through an unknown environment, is at the heart of safe and reliable mobile autonomy. By inferring pose changes from sequential sensor measurements, egomotion estimation forms the basis of mapping and navigation pipelines, and permits mobile robots to self-localize within environments where external localization sources are intermittent or unavailable. 
-Visual and inertial egomotion estimation, in particular, have become ubiquitous in mobile robotics due to the availability of high-quality, compact, and inexpensive sensors that capture rich representations of the world.
- To remain computationally tractable, `classical' visual-inertial pipelines (like visual odometry and visual SLAM) make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error. In this thesis, we present several data-driven \textit{pseudo-sensors} that serve to augment conventional pipelines by inferring latent information from sensor data. Our approach retains much of the benefits of traditional pipelines, while leveraging high-capacity hyper-parametric models to extract complementary information that can be used to improve uncertainty quantification, correct for systematic bias, and improve robustness to difficult-to-model deleterious effects.
+The ability to estimate \textit{egomotion} is at the heart of safe and reliable mobile autonomy. By inferring pose changes from sequential sensor measurements, egomotion estimation forms the basis of mapping and navigation pipelines, and permits mobile robots to self-localize within environments where external localization information may be intermittent or unavailable. 
+Visual egomotion estimation, also known as \textit{visual odometry}, has become ubiquitous in mobile robotics due to the availability of high-quality, compact, and inexpensive cameras that capture rich representations of the world.
+ To remain computationally tractable, `classical' visual odometry pipelines make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error. In this dissertation, we present several data-driven \textit{pseudo-sensors} that serve to augment conventional pipelines by inferring latent information from sensor data. Our approach retains many of the benefits of traditional pipelines, while leveraging high-capacity hyper-parametric models to extract complementary information that can be used to improve uncertainty quantification, correct for systematic bias, and improve robustness to difficult-to-model deleterious effects.
 We validate our pseudo-sensors on several kilometres of sensor data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the Canadian High Arctic.
 \end{abstract}
 
@@ -179,8 +179,7 @@ To all those who encouraged (or, at least, \textit{never discouraged}) my intell
 
 %% This generates an "acknowledgements" section, if needed
 %% (uncomment to have it appear in the document).
-\begin{acknowledgements}
-This document would not have been possible without the generous support and guidance of my supervisor\footnote{as well as all of my collaborators and academic mentors (special thanks to Lee)}, the perennial love of my family and friends\footnote{especially the support and encouragement of Elyse}, and the limitless patience of my lab mates\footnote{in humouring my insatiable need for debate and banter (special thanks to Lee)}. Thank you all.
+\begin{acknowledgements}\noindent This document would not have been possible without the generous support and guidance of my supervisor\footnote{as well as all of my collaborators and academic mentors (special thanks to Lee)}, the perennial love of my family and friends\footnote{especially the support and encouragement of Elyse}, and the limitless patience of my lab mates\footnote{in humouring my insatiable need for debate and banter (special thanks to Lee)}. Thank you all.
 \end{acknowledgements}
 
 %% This generates the Table of Contents (on a separate page).
@@ -210,13 +209,13 @@ This document would not have been possible without the generous support and guid
     \nitem{E[\cdot]}{The expectation operator.}
     \nitem{\CoordinateFrame{a}}{A reference frame in three dimensions.}
     \nitem{(\cdot)^\wedge }{An operator associated with the Lie algebra for rotations and poses. It produces a matrix from a column vector.}
-    \nitem{(\cdot)^\vee }{The inverse operation of $(\cdot)^\wedge$}
+    \nitem{(\cdot)^\vee }{The inverse operation of $(\cdot)^\wedge$.}
     
     \nitem{\Matrix 1 }{The identity matrix.}
     \nitem{\Matrix 0 }{The zero matrix.}
-    \nitem{ \Vector p_{a}^{c,b}}{ A vector (resp. homogenous coodrdinates) from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript).}
-    \nitem{ \Rotation_{a,b} }{The $3 \times 3$ rotation matrix that transforms vectors from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector p_a^{c,b} = \Rotation_{a,b} \Vector p_b^{c,b}$. }
-    \nitem{ \Transform_{a,b}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\boldsymbol{p}_a^{c,a} = \Transform_{a,b} \boldsymbol {p}_b^{c,b}$. }
+    \nitem{ \Vector p_{a}^{cb}}{ A vector (resp. homogenous coodrdinates) from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript).}
+    \nitem{ \Rotation_{ab} }{The $3 \times 3$ rotation matrix that transforms vectors from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector p_a^{cb} = \Rotation_{ab} \Vector p_b^{cb}$. }
+    \nitem{ \Transform_{ab}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\boldsymbol{p}_a^{ca} = \Transform_{ab} \boldsymbol {p}_b^{cb}$. }
 \end{notation}
 %\printnomenclature
 

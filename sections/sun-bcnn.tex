@@ -10,7 +10,7 @@
 \end{figure*}
 \section{Introduction}
 
-Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model to act as a \textit{virtual sun sensor} that mimics a hardware sun sensor (used in space-based applications to orient rovers and satellites) with no additional hardware.  This project was a collaboration between myself and Lee Clement. While we were equally responsible for its conception and dissemination, Lee lead the integration of sun information into a visual odometry pipeline, while I designed and implemented the learning components.
+Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model (a Bayesian Convolutional Neural Network) to act as a \textit{virtual sun sensor} that aims to reproduce the output of a dedicated sun sensor from a single RGB image.  This project was a collaboration with Lee Clement. While we both contributed to its formulation, Lee lead the integration of sun information into a visual odometry pipeline, while I designed and implemented the learning components.
 
 This work was associated with three publications:
 \begin{enumerate}

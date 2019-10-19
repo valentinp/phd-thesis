@@ -3,7 +3,7 @@
 \epigraph{By relieving the brain of all unnecessary work, a good notation sets it free to concentrate on more advanced problems, and, in effect, increases the mental power of the race.}{\textsc{Alfred North Whitehead}}
   \section{Coordinate Frames}
 
-Before we can present the main contributions of this thesis, it will be useful to first outline the notation and mathematical foundations that underly the work. Throughout this thesis, we largely follow the notation of \cite{Barfoot2017-ri} when dealing with three-dimensional rigid-body kinematics. 
+Before we can present the main contributions of this dissertation, it will be useful to first outline the notation and mathematical foundations that underly the work. Throughout this dissertation, we largely follow the notation of \cite{Barfoot2017-ri} when dealing with three-dimensional rigid-body kinematics. 
 
 \begin{figure}[h!]
 \center
@@ -73,11 +73,12 @@ We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one 
 
 \section{Rotations} 
 
-The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO{3}$ (the Special Orthogonal group),
+The rotation matrix $\Rotation$ is a member of the matrix Lie group\footnote{A Lie group is a group that is also a differentiable manifold. See \cite{Barfoot2017-ri} for more details.} $\LieGroupSO{3}$ (the Special Orthogonal group). We can define it as follows:
 \begin{equation}
+\label{eq:math_so3_defn}
 \LieGroupSO{3} = \{ \Rotation \in \Real{}^{3 \times 3} | ~ \Rotation^T\Rotation = \Matrix{1}, \det{\Rotation} = 1  \}.	
 \end{equation}
-\subsubsection{Active vs. Passive}
+\subsubsection{Active and Passive Representations}
 An active (or \textit{alibi}) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or \textit{alias}) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this dissertation are passive unless otherwise noted.  
 
 \subsubsection{Exponential and Logarithmic Maps}
@@ -108,23 +109,25 @@ The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space 
 
 \subsection{Unit Quaternions}
 
-Another way (and historically, the original way) to represent a general rotation is to use a unit quaternion, $\quat$. A unit quaternion consists of a scalar value $q_\omega$, and a three-dimensional vector component, $\quat_v$:
+We can also represent a rotation with unit quaternion, $\quat$. A unit quaternion consists of a scalar value $q_\omega$, and a three-dimensional vector component, $\quat_v$:
 \begin{equation}
 	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
 
-Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. This manifold represents a double cover of $\LieGroupSO{3}$ (since both $\quat$ and $-\quat$ represent the same rotation)\footnote{$\LieGroupSO{3}$ is diffeomorphic to RP(3) (the real projective space) which can be made by `identifying' antipodal points in $S^3$ (unit sphere in $\RealNumbers^4$). Since unit quaternions belong to $S^3$, they represent a double cover of $\LieGroupSO{3}$ since we have not identified $\quat$ and $-\quat$.}. As with rotation matrices, we can define a surjective map from three parameters to the group itself,
+Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. As with rotation matrices, we can define a surjective map from three parameters to the group itself,
 
 \begin{equation}
 \quat = \MatExp{\RotationVector} = \bbm \cos{(\phi/2)} \\ \RotationAxisVector \sin{(\phi/2)} \ebm.	
 \end{equation}
-Similarly, we can also define a logarithmic map as
+
+By inspection, we can see that both $\quat$ and $-\quat$ represent the same axis-angle pair, $\{\phi, \Vector{a}\}$. As a result, unit quaternions represent a \textit{double cover} of $\LieGroupSO{3}$ and we must be careful to account for this when using them as a rotation parametrization.
+In particular, when computing the logarithmic map,
 \begin{align}
 \label{eq:math_quat_log}
-	\RotationVector =  \MatLog{\quat} = 2 \quat_v \frac{\arctan{(\Norm{\quat_v},  q_\omega})}{\Norm{\quat_v}}.
+	\RotationVector =  \MatLog{\quat} = 2 \quat_v \frac{\arctan{(\Norm{\quat_v},  q_\omega})}{\Norm{\quat_v}},
 \end{align}
 
-\noindent To avoid issues with the double cover, we replace $\quat$ with $-\quat$ if $q_\omega$ is negative before evaluating \Cref{eq:math_quat_log}. Also note again that \Cref{eq:math_quat_log} is undefined when $\phi = 0$, but, importantly, we do not face any issues when $\phi = \pi$ due to the half-angle. As with rotation matrices, we can use small angle approximations to define:
+\noindent we can must account for the double cover by replacing $\quat$ with $-\quat$ if $q_\omega$ is negative. Also note that as with rotation matrices \Cref{eq:math_quat_log} is undefined when $\phi = 0$, but, importantly, we do not face any issues when $\phi = \pi$ due to the half-angle. In the former case, we can again rely on small angle approximations to define:
 
 \begin{equation}
 	\MatLog{\quat} \approx \frac{\quat_v}{q_\omega} \left( 1 - \frac{\Norm{\quat_v}^2}{3 q_\omega^2}\right) ~~ \textrm{when} ~~ \phi \approx 0. 
@@ -132,7 +135,14 @@ Similarly, we can also define a logarithmic map as
 
 A fantastic summary of the history of rotation parameterizations, unit quaternions and the story of Hamilton and Rodriguez can be found in \cite{Altmann1989-ru}.
 
+\subsection{Topology}
+Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parametrizations with $n=3$ (like Euler angles and axis-angle parameters) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parametrizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
+ 
+To see why this is the case, consider that according to Euler's theorem, we can represent any element in $\LieGroupSO{3}$ by the axis-angle pair $\{\Vector{a}, \phi\}$, $\Vector{a} \in S^2$, and $0 \leq \phi \leq \pi$. We can partially represent this space by the closed ball of radius $\pi$ in $\RealNumbers{}^3$ using the combined axis-angle coordinates $\RotationVector = \phi \RotationAxisVector$. However, at the boundary ($\phi = \pi$), we must account for the fact that rotations represented by $\{\Vector{a}, \pi\}$ are identical to those represented by $\{-\Vector{a}, \pi\}$. In other words, we must \textit{identify} all antipodal points, $\RotationVector$ and $-\RotationVector$ when $\Norm{\RotationVector} = \pi$. This closed 3-ball with identified antipodal points on its boundary is topologically equivalent to the 3-sphere ($S^3$) with its antipodal points identified. In turn, this space is equivalent to $\mathbb{RP}^3$ since any line passing through the origin in $\RealNumbers^4$ can be mapped to two unit normals, $\pm \Vector{n} \in S^3$.
 
+This \textit{identification} makes rotation representation particularly tricky in $\RealNumbers{}^3$ and clearly explains why unit quaternions, $\quat \in S^3$, are a \textit{double} cover of  $\LieGroupSO{3}$, since we must add the relation $\quat = -\quat$ to make these two spaces equivalent.
+
+Accordingly, in this dissertation, we parametrize rotations as the constrained quantities, $\quat$ or $\Rotation$. When dealing with perturbations about a given rotation (e.g., to compute updates to a state, or to propagate uncertainty), we use \textit{small} rotations, $\delta \Rotation$ or $\delta \quat$, parametrized using three unconstrained parameters (since, in this case, we can assume $\Norm{\RotationVector} << \pi$).
 
 \section{Spatial Transforms}
 The rigid body transform $\Transform$ is a also a member of the matrix Lie group, the Special Euclidian group $\LieGroupSE{3}$ and can be defined as a $4 \times 4$ matrix as follows:
@@ -171,15 +181,15 @@ Applying our notation for coordinate frames (and referring back to \Cref{fig:mat
 \end{equation}
 This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i$ and express the following relation:
 \begin{equation}
-	\boldsymbol{r}^{pi}_v = \Transform_{vi} \boldsymbol{r}^{pi}_i,
+	\boldsymbol{r}^{pv}_v = \Transform_{vi} \boldsymbol{r}^{pi}_i,
 \end{equation}
 or
 \begin{equation}
-	\bbm \Vector{r}^{pi}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm,
+	\bbm \Vector{r}^{pv}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm,
 \end{equation}
 which is numerically equivalent to  
 \begin{equation}
- \Vector{r}^{pi}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}.  
+ \Vector{r}^{pv}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}.  
  \end{equation}
 
 \section{Perturbations}
