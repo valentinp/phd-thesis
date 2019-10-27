@@ -114,7 +114,7 @@
 
 
 %%%%%%%%%%%%      INCLUDE ONLY        %%%%%%%%%%%%
-\includeonly{sections/introduction}
+\includeonly{sections/learning-background,sections/math,sections/vo}
 
 %%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
 
@@ -215,7 +215,7 @@ To all those who encouraged (or, at least, \textit{never discouraged}) my intell
     \nitem{\Matrix 0 }{The zero matrix.}
     \nitem{ \Vector p_{a}^{cb}}{ A vector (resp. homogenous coodrdinates) from point $b$ to point $c$ (denoted by the superscript) and expressed in $\CoordinateFrame{a}$ (denoted by the subscript).}
     \nitem{ \Rotation_{ab} }{The $3 \times 3$ rotation matrix that transforms vectors from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\Vector p_a^{cb} = \Rotation_{ab} \Vector p_b^{cb}$. }
-    \nitem{ \Transform_{ab}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{b}$ to $\CoordinateFrame{a}$: $\boldsymbol{p}_a^{ca} = \Transform_{ab} \boldsymbol {p}_b^{cb}$. }
+    \nitem{ \Transform_{ba}}{ The $4 \times 4$ transformation matrix that transforms homogeneous points from $\CoordinateFrame{a}$ to $\CoordinateFrame{b}$: $\boldsymbol{p}_b^{cb} = \Transform_{ba} \boldsymbol {p}_a^{ca}$. }
 \end{notation}
 %\printnomenclature
 
@@ -230,6 +230,7 @@ To all those who encouraged (or, at least, \textit{never discouraged}) my intell
 
 %% *** Include chapter files here. ***
 \include{sections/introduction}
+\include{sections/learning-background}
 \include{sections/math}
 \include{sections/vo}
 \include{sections/probe}
@@ -237,6 +238,7 @@ To all those who encouraged (or, at least, \textit{never discouraged}) my intell
 \include{sections/dpc}
 \include{sections/so3-learning}
 \include{sections/conclusion}
+
 \begin{appendices}
 \include{sections/appendix-probe-knn}
 \include{sections/appendix-vo}

@@ -24,6 +24,16 @@
 \usepackage{libertine}
 %\usepackage{palatino}
 
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{framed}
+
+\colorlet{shadecolor}{gray!10}
+\newtheorem{theorem}{remark}
+\newenvironment{remark}[1]
+   {\begin{shaded} \textbf{Remark} (#1).}
+   {\end{shaded}}
+   
  
 \usepackage{cleveref}
 \usepackage{hyperref}

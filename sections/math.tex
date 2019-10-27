@@ -136,13 +136,13 @@ In particular, when computing the logarithmic map,
 A fantastic summary of the history of rotation parameterizations, unit quaternions and the story of Hamilton and Rodriguez can be found in \cite{Altmann1989-ru}.
 
 \subsection{Topology}
-Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parametrizations with $n=3$ (like Euler angles and axis-angle parameters) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parametrizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
+Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$ \citep{Hartley2013-rc}. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parametrizations with $n=3$ (like Euler angles and axis-angle parameters) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parametrizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
  
+\begin{remark}{SO(3) Topology}
 To see why this is the case, consider that according to Euler's theorem, we can represent any element in $\LieGroupSO{3}$ by the axis-angle pair $\{\Vector{a}, \phi\}$, $\Vector{a} \in S^2$, and $0 \leq \phi \leq \pi$. We can partially represent this space by the closed ball of radius $\pi$ in $\RealNumbers{}^3$ using the combined axis-angle coordinates $\RotationVector = \phi \RotationAxisVector$. However, at the boundary ($\phi = \pi$), we must account for the fact that rotations represented by $\{\Vector{a}, \pi\}$ are identical to those represented by $\{-\Vector{a}, \pi\}$. In other words, we must \textit{identify} all antipodal points, $\RotationVector$ and $-\RotationVector$ when $\Norm{\RotationVector} = \pi$. This closed 3-ball with identified antipodal points on its boundary is topologically equivalent to the 3-sphere ($S^3$) with its antipodal points identified. In turn, this space is equivalent to $\mathbb{RP}^3$ since any line passing through the origin in $\RealNumbers^4$ can be mapped to two unit normals, $\pm \Vector{n} \in S^3$.
-
-This \textit{identification} makes rotation representation particularly tricky in $\RealNumbers{}^3$ and clearly explains why unit quaternions, $\quat \in S^3$, are a \textit{double} cover of  $\LieGroupSO{3}$, since we must add the relation $\quat = -\quat$ to make these two spaces equivalent.
-
-Accordingly, in this dissertation, we parametrize rotations as the constrained quantities, $\quat$ or $\Rotation$. When dealing with perturbations about a given rotation (e.g., to compute updates to a state, or to propagate uncertainty), we use \textit{small} rotations, $\delta \Rotation$ or $\delta \quat$, parametrized using three unconstrained parameters (since, in this case, we can assume $\Norm{\RotationVector} << \pi$).
+This \textit{identification} makes rotation representation particularly tricky in $\RealNumbers{}^3$ and clearly explains why unit quaternions, $\quat \in S^3$, are a \textit{double} cover of  $\LieGroupSO{3}$, since we must add the relation $\quat = -\quat$ to make these two spaces equivalent. We direct the reader to \cite{Hartley2013-rc} who use the \textit{gnonomic} projection to provide further geometric intuition for why $\LieGroupSO{3}$ is a projective space. 
+\end{remark}
+Accordingly, in this dissertation, we parametrize rotations as the constrained quantities, $\quat$ or $\Rotation$. When dealing with perturbations about a given rotation (e.g., to compute updates to a state, or to propagate uncertainty), we use \textit{small} rotations, $\delta \Rotation$ or $\delta \quat$, parametrized using three unconstrained parameters that we can assume are a one-to-one mapping to elements in $\LieGroupSO{3}$  (since, for small rotations, $\Norm{\RotationVector} << \pi$).
 
 \section{Spatial Transforms}
 The rigid body transform $\Transform$ is a also a member of the matrix Lie group, the Special Euclidian group $\LieGroupSE{3}$ and can be defined as a $4 \times 4$ matrix as follows:
@@ -242,7 +242,7 @@ To derive locally linear systems from sets of rigid-body transforms, or `poses',
 
 Finally, we note that we will often drop the perturbation superscripts $(\cdot)^\ell$ and $(\cdot)^m$ after defining the perturbation scheme.
 
-\section{Uncertainty}
+\section{Uncertainty through Injection}
 
 
 \begin{wrapfigure}{r}{0.35\textwidth}
@@ -273,6 +273,96 @@ and also, for unit quaternions,
 \quat &= \MatExp{\delta \RotationVector} \otimes \Mean{\quat} 
 \end{align}
 where $\otimes$ refers to the standard quaternion product operator \cite{Sola2017quaternion}. %\todo{Add discussion of banana density this induces for SE(3) and the impossibility of known position but unknown rotation}.
+
+
+\section{Deep Learning}
+Three of the four pseudo-sensors (Sun-BCNN, DPC, and HydraNet---\Cref{ch:dpc,ch:sun-bcnn,ch:hydranet}) in this dissertation are built using neural networks and the tools of \textit{deep learning} \citep{LeCun2015-qf}. We briefly summarize these concepts here and refer the reader to \cite{Goodfellow-et-al-2016} for a more thorough treatment.
+\subsection{Feed-forward Neural Networks} 
+The basic premise of deep learning is that certain kinds of data are naturally decomposed into hierarchical structure. For instance, images may have local textures (e.g. edges), which compose basic primitives (e.g., leaves), which then combine to form semantic objects (e.g, a tree). Consequently, for this type of data, latent information may be efficiently extracted through an analogous hierarchical model.  Typically, this is done through a neural network composed of multiple \textit{layers} (the term \textit{neural} comes from the loose biological basis for each layer, and \textit{deep} refers to the amount of layers contained in state-of-the-art models). A standard neural layer computes a non-linear transformation from an input $\Vector{z}_m$ to an output $\Vector{z}_{m+1}$ as  
+\begin{equation}
+\Vector{z}_{m+1} = \Vector{f}_m(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_m\Vector{z}_m + \Vector{b}_m\right),
+\end{equation}
+where $\Matrix{W}_m \in \Real^{D_{m_{out}} \times D_{m_{in}}}$ and $\Vector{b}_m \in \Real^{D_{m_{out}}}$ are the parameters of the layer (often referred to as the \textit{weight matrix} and \textit{bias}, respectively) and $\Vector{\sigma}(\cdot)$ is an element-wise \textit{non-linearity}.
+
+\begin{remark}{Non-linearities}
+	The optimal choice of non-linearity is an area of active research. Some common examples include,
+	\begin{align}
+\sigma_i(x) &= \left\{  	\begin{array}{ll}
+		 \frac{1}{1+e^{-x}}   & \mbox{Logistic,} \\
+		 \frac{e^x - e^{-x}}{e^x + e^{-x}}  & \mbox{Hyperbolic tangent, \textit{tanh},} \\
+		 \max(x, 0)  & \mbox{Rectified Linear Unit, \textit{ReLU},} \\
+		\left\{  	\begin{array}{ll}  x & \mbox{if} ~x \geq 0 \\
+										-\alpha x & \mbox{if} ~ x < 0 \end{array}
+		\right.   & \mbox{Parametric ReLU, \textit{PReLU}.} \end{array}\right.
+\end{align}
+\end{remark}
+To produce a \textit{feed-forward neural network}, $M$ layers are composed in a hierarchy to create a single parametric function,
+\begin{equation}
+ NN(\Vector{x}) = \Vector{f}_M \circ \Vector{f}_{M-1} \circ \cdots \circ \Vector{f}_{1}(\Vector{x}),
+\end{equation}
+where $f \circ g$ refers to function composition, $f (g(\cdot))$.
+
+
+\subsection{Convolutional Neural Networks}
+
+Convolutional Neural Networks \citep{lecun_backpropagation_1989}, or CNNs, are a particular form of neural network where at least one of the layers uses \textit{convolution} in place of matrix multiplication. Due to their efficiency in processing high-dimensional image data, they have become ubiquitous in computer vision applications \citep{LeCun2015-qf}.  Briefly, a convolution is an operation that transforms a continuous input signal $x(t)$ into a new signal $y(t)$ as
+\begin{equation}
+y(t) = \int x(s) k(t - s) ds,	
+\end{equation}
+where $k$ is often called the \textit{kernel} of the convolution. For two-dimensional discrete input signals, convolution is defined as
+\begin{equation}
+\label{eq:math_convolution}
+y(i, j) = \sum_p \sum_q I(i - p, j - q)	 K(p, q).
+\end{equation}
+\begin{remark}{Convolution vs. Cross-correlation} 
+Most deep learning libraries implement convolution as the cross-correlation operation
+\begin{equation}
+y(i, j) = \sum_p \sum_q I(i + p, j + q)	 K(p, q)
+\end{equation}
+which is convolution with the kernel `flipped.' Unlike convolution, cross-correlation is not commutative with respect to the input and kernel (but this is typically not important in deep learning contexts). We note that kernels learned with cross-correlation will be flipped relative to those learned with true convolution \citep{Goodfellow-et-al-2016}.
+\end{remark}
+In this discrete case, a kernel can be represented by a kernel matrix, $\Matrix{K}$, which can have different \textit{size} (e.g., $\Matrix{K} \in \Real^{3\times3}$), and we may  compute \Cref{eq:math_convolution} at different spatial intervals called \textit{strides}. To ensure that the convolution is defined at the boundaries of the signal, one can also use different \textit{padding} strategies. Please refer to \cite{Goodfellow-et-al-2016} for further information about these hyper-parameters. 
+
+ By limiting the size of a kernel, we can use convolutional layers (parametrized by $\Matrix{K}$) to efficiently process high-dimensional signals. For images, a standard feed-forward layer would require a scalar weight for every pixel. In contrast, a convolutional layer can rely on a single kernel (with significantly less parameters than a weight matrix) to process an entire image with \textit{shared weights}. This reduces the number of parameters of our network, but limits the type of spatial correlations we can model (since kernels can only capture local relations). To increase the potential modelling capacity of our network, we can use several independent kernels to process and output multiple \textit{channels} (\Cref{fig:math_cnn}). Finally, it is important to note that the convolution operator is particularly suited to visual data, as kernels can act as \textit{filters} that pick out salient visual features like corners and edges.
+
+% For example, given a grayscale square image of size $200 \times 200$ pixels, a standard feed forward formulation would require a weight matrix with $40 000$ parameters. Instead, a typical convolutional neural network will apply kernels of size $5 \times 5$. 
+
+\begin{figure}[h!]
+\begin{center}
+		\includegraphics[width=0.95\textwidth]{math/cnn}
+		\caption{A convolutional layer with two kernels that operate over different channels of a two-dimensional input. Figure from \cite{Gal2016UncertaintyThesis}.}
+  	\label{fig:math_cnn}
+\end{center}
+\end{figure}
+
+\subsection{Supervised Training}
+Given a (convolutional) neural network with a set of parameters $\Matrix{\Theta}$ (where $\Matrix{\Theta}$ may include weight and bias parameters, $\Matrix{W}_m, \Matrix{b}_m$, as well as convolutional kernel parameters, $\Matrix{K}_{km}$) we can use \textit{supervised training} to obtain an optimal parameter set $\Matrix{\Theta}^*$. Supervised training requires  set of training pairs $\{(\Vector{x}_1, \Vector{y}_1),...,(\Vector{x}_N, \Vector{y}_N) \}$ where $\Vector{x} \in \Real^{D_x}$ is an \textit{input} and $\Vector{y} \in \Real^{D_y}$ is a \textit{target} that corresponds to the desired output of our parametric model. To \textit{train} the network, we find the parameters which minimize a \textit{loss function} over this dataset,
+\begin{equation}
+\label{eq:math_nn_loss}
+ \Matrix{\Theta}^* = \ArgMin{\Matrix{\Theta}} \mathcal{L}\left(\{NN(\Vector{x}_i; \Matrix{\Theta}), \Vector{y}_i\right\}_{i=1}^N).
+\end{equation}
+For example, a common loss function for regression problems is \textit{mean squared error},
+\begin{equation}
+\Matrix{\Theta}^* = \ArgMin{\Matrix{\Theta}} \frac{1}{2N}\sum_{i=1}^N\Norm{NN(\Vector{x}_i; \Matrix{\Theta}) - \Vector{y}_i}_2^2.
+\end{equation}.
+In this dissertation, we will use supervised training in \Cref{ch:dpc,ch:sun-bcnn,ch:hydranet} and we will explore different forms of loss functions for geometric quantities that do not allow for a simple Euclidian norms. 
+\subsection{Practical Considerations}
+
+\subsubsection{Optimization}
+
+To train a deep network---that is, to solve \Cref{eq:math_nn_loss} for optimal parameters---modern approaches rely on stochastic gradient descent (SGD) through back-propagation \citep{LeCun2015-qf}. SGD avoids the computationally prohibitive task of computing a gradient over an entire dataset by approximating the gradient using a randomly selecting subset of training data called a \textit{mini-batch}. In the majority of this dissertation, we rely on Adam, a modern SGD-based approach that also maintains an estimate of second-order curvature \citep{kingma_adam_2017}.
+
+\subsubsection{Regularization}
+
+In order to prevent \textit{overfitting} to a dataset (i.e., to obtain a model that generalizes to unseen data), the literature provides a number of methods. An important approach that is used in this dissertation is \textit{dropout} \citep{srivastava_dropout_2014}. Dropout stochastically `zeros-out' inputs of a particular layer with probability $p$, 
+
+\begin{equation}
+	\Vector{z}_{m+1} = \Vector{f}_m(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_m\tilde{\Vector{z}}_m + \Vector{b}_m\right),
+\end{equation}
+where $\tilde{\Vector{z}}_m = \Vector{b} \circledcirc \Vector{z}_m$, $b_i \sim \text{Bernoulli}(p)$ and $\circledcirc$ refers to element-wise multiplication.
+The intuition behind dropout is that it effectively creates an ensemble of smaller-parameter networks that will generally be less prone to overfitting than a commensurately-sized monolithic network. Importantly, dropout has a fundamental connection variational inference, which we exploit in \Cref{ch:sun-bcnn}.
+\subsubsection{Pooling and Spatial Invariance}
+A common technique in convolutional neural networks is \textit{pooling} \citep{Goodfellow-et-al-2016}. Pooling is a non-parametric operation that summarizes the output of a kernel in a particular region. For example, \textit{max pooling} selects the maximum response of a kernel in demarcated regions of an input channel, thereby downsampling the resulting output. Pooling operations are designed to make convolution operations invariant to the spatial location of a particular kernel response. This is important in many classification tasks (e.g., a tree classifier should be invariant to the location of a particular leaf) but is a detriment to regression tasks where we would like to preserve spatial information. We explore building convolutional neural networks without pooling in \Cref{ch:dpc}.
 
 
 

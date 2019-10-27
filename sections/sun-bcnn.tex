@@ -2,15 +2,16 @@
 \epigraph{He stepped down, avoiding any long look at her as one avoids long looks at the sun, but seeing her as one sees the sun, without looking.}{Leo Tolstoy, \textit{Anna Karenina}}
 \label{ch:sun-bcnn}
 
+\section{Introduction}
+
+Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model (a Bayesian Convolutional Neural Network) to act as a \textit{virtual sun sensor} that aims to reproduce the output of a dedicated sun sensor from a single RGB image.  This project was a collaboration with Lee Clement. While we both contributed to its formulation, Lee lead the integration of sun information into a visual odometry pipeline, while I designed and implemented the learning components.
+
 \begin{figure*}[h!]
 \centering
 \includegraphics[width=0.8\textwidth]{sun-bcnn.pdf}
  \caption{Sun-BCNN is a learned virtual sun sensor that outputs sun direction with an associated uncertainty based on a single RGB image. We use this as a source of orientation information within a privileged reference frame.}
- \label{fig:probe_intro_fig}
+ \label{fig:sun-bcnn_intro_fig}
 \end{figure*}
-\section{Introduction}
-
-Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model (a Bayesian Convolutional Neural Network) to act as a \textit{virtual sun sensor} that aims to reproduce the output of a dedicated sun sensor from a single RGB image.  This project was a collaboration with Lee Clement. While we both contributed to its formulation, Lee lead the integration of sun information into a visual odometry pipeline, while I designed and implemented the learning components.
 
 This work was associated with three publications:
 \begin{enumerate}
@@ -93,6 +94,43 @@ We also build on the work of \citet{2017_Peretroukhin_Reducing}, who presented p
 
 While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{2017_Clement_Improving}). 
 Furthermore, our Bayesian CNN includes a dropout layer after every convolutional and fully connected layer (as outlined by \citet{Gal2016-ny} but not done by \citet{Kendall2016-zf}).
+
+\section{Background}
+\subsection{Neural Networks for Parametric Learning}
+
+
+\subsection{Convolutional Neural Networks}
+\subsection{Regularization and Dropout}
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.45\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcn}
+    \caption{Standard fully-connected neural network.}
+\end{subfigure}
+~
+\begin{subfigure}{0.45\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcnwdrop}
+    \caption{A neural network with dropout applied.}
+\end{subfigure}
+\caption{The technique of \textit{dropout} stochastically removes the contribution of certain neurons to regularize learning. Figures	 from \cite{srivastava_dropout_2014}.}
+\label{fig:sun-bcnn_dropout}
+\end{figure}
+
+
+
+\subsection{Dropout as Variational Inference}
+\begin{align}
+\label{eq:sun_direction_mean}
+\Expectation{\Optimal{\Estimate{\SunDirection}}}_k &= \Optimal{\Estimate{\Mean{\SunDirection}}}_k \approx \frac{1}{N} \sum_{n=1}^N \Optimal{\Estimate{\SunDirection}}_k (\Optimal{\SunImage}_k, \CNNVariationalWeight^n) \\
+\Expectation{\Optimal{\Estimate{\SunDirection}_k} \Transpose{\Optimal{\Estimate{\SunDirection}}}_k} &\approx \tau^{-1} \IdentityMatrix 
+ +  \frac{1}{N} \sum_{n=1}^N \Optimal{\Estimate{\SunDirection}}_k(\Optimal{\SunImage}_k, \CNNVariationalWeight^n) \Transpose{\Optimal{\Estimate{\SunDirection}_k}(\Optimal{\SunImage}_k, \CNNVariationalWeight^n)} \notag \\ 
+ &- \Optimal{\Estimate{\Mean{\SunDirection}}}_k \Transpose{\Optimal{\Estimate{\Mean{\SunDirection}}}_k},
+ \label{eq:bcnn_covar}
+\end{align}
+
 
 
 \section{Sun-Aided Stereo Visual Odometry} 

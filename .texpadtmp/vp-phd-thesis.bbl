@@ -251,6 +251,12 @@ Geman, S., McClure, D.~E., and Geman, D. (1992).
 \newblock In {\em 2013 IEEE International Symposium on Mixed and Augmented
   Reality (ISMAR)}, pages 173--179.
 
+\bibitem[Goodfellow et~al., 2016]{Goodfellow-et-al-2016}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016).
+\newblock {\em Deep Learning}.
+\newblock MIT Press.
+\newblock \url{http://www.deeplearningbook.org}.
+
 \bibitem[Grewal and Andrews, 2010]{Grewal2010-ts}
 Grewal, M.~S. and Andrews, A.~P. (2010).
 \newblock Applications of kalman filtering in aerospace 1960 to the present
@@ -336,6 +342,12 @@ Kerl, C., Sturm, J., and Cremers, D. (2013).
 \newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages
   3748--3754.
 
+\bibitem[Kingma and Ba, 2017]{kingma_adam_2017}
+Kingma, D.~P. and Ba, J. (2017).
+\newblock Adam: {A} {Method} for {Stochastic} {Optimization}.
+\newblock In {\em International {Conference} on {Learning} {Representations}}.
+\newblock arXiv: 1412.6980.
+
 \bibitem[Lakshminarayanan et~al., 2017]{Lakshminarayanan2017}
 Lakshminarayanan, B., Pritzel, A., and Blundell, C. (2017).
 \newblock Simple and scalable predictive uncertainty estimation using deep
@@ -360,6 +372,13 @@ Lambert, A., Furgale, P., Barfoot, T.~D., and Enright, J. (2012).
 LeCun, Y., Bengio, Y., and Hinton, G. (2015).
 \newblock Deep learning.
 \newblock {\em Nature}, 521(7553):436--444.
+
+\bibitem[LeCun et~al., 1989]{lecun_backpropagation_1989}
+LeCun, Y., Boser, B., Denker, J.~S., Henderson, D., Howard, R.~E., Hubbard, W.,
+  and Jackel, L.~D. (1989).
+\newblock Backpropagation {Applied} to {Handwritten} {Zip} {Code}
+  {Recognition}.
+\newblock {\em Neural Computation}, 1(4):541--551.
 
 \bibitem[Lee et~al., 2015]{Lee2015-af}
 Lee, S., Purushwalkam, S., Cogswell, M., Crandall, D., and Batra, D. (2015).
@@ -532,6 +551,13 @@ Sola, J. (2017).
 \bibitem[Sol{\`a} et~al., 2018]{Sola2018-kg}
 Sol{\`a}, J., Deray, J., and Atchuthan, D. (2018).
 \newblock A micro lie theory for state estimation in robotics.
+
+\bibitem[Srivastava et~al., 2014]{srivastava_dropout_2014}
+Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., and Salakhutdinov,
+  R. (2014).
+\newblock Dropout: {A} {Simple} {Way} to {Prevent} {Neural} {Networks} from
+  {Overfitting}.
+\newblock {\em Journal of Machine Learning Research}, 15:1929--1958.
 
 \bibitem[S{\"u}nderhauf et~al., 2015]{Sunderhauf2015-is}
 S{\"u}nderhauf, N., Shirazi, S., Dayoub, F., Upcroft, B., and Milford, M.

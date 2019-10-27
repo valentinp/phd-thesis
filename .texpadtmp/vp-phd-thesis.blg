@@ -2,6 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
 A level-1 auxiliary file: sections/introduction.aux
+A level-1 auxiliary file: sections/learning-background.aux
 A level-1 auxiliary file: sections/math.aux
 A level-1 auxiliary file: sections/vo.aux
 A level-1 auxiliary file: sections/probe.aux
@@ -62,45 +63,45 @@ Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 106 entries,
+You've used 110 entries,
             1935 wiz_defined-function locations,
-            1134 strings with 24764 characters,
-and the built_in function-call counts, 51446 in all, are:
-= -- 5158
-> -- 2094
-< -- 93
-+ -- 723
-- -- 709
-* -- 4090
-:= -- 8258
-add.period$ -- 323
-call.type$ -- 106
-change.case$ -- 870
-chr.to.int$ -- 102
-cite$ -- 118
-duplicate$ -- 2210
-empty$ -- 3669
-format.name$ -- 859
-if$ -- 10665
+            1157 strings with 25610 characters,
+and the built_in function-call counts, 53205 in all, are:
+= -- 5324
+> -- 2191
+< -- 94
++ -- 757
+- -- 743
+* -- 4246
+:= -- 8570
+add.period$ -- 337
+call.type$ -- 110
+change.case$ -- 906
+chr.to.int$ -- 106
+cite$ -- 122
+duplicate$ -- 2270
+empty$ -- 3782
+format.name$ -- 899
+if$ -- 11001
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 104
-newline$ -- 525
-num.names$ -- 324
-pop$ -- 1031
+missing$ -- 109
+newline$ -- 547
+num.names$ -- 336
+pop$ -- 1069
 preamble$ -- 1
-purify$ -- 875
+purify$ -- 912
 quote$ -- 0
-skip$ -- 1697
+skip$ -- 1735
 stack$ -- 0
-substring$ -- 3736
-swap$ -- 608
+substring$ -- 3840
+swap$ -- 612
 text.length$ -- 60
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 632
+type$ -- 654
 warning$ -- 12
-while$ -- 422
+while$ -- 434
 width$ -- 0
-write$ -- 1367
+write$ -- 1421
 (There were 7 error messages)

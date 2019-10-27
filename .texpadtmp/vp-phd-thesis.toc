@@ -3,30 +3,44 @@
 \contentsline {section}{\numberline {1.2}A Visual \textit {Pipeline}}{4}{section.1.2}% 
 \contentsline {section}{\numberline {1.3}The Learned Pseudo-Sensor}{7}{section.1.3}% 
 \contentsline {section}{\numberline {1.4}Original Contributions}{8}{section.1.4}% 
-\contentsline {chapter}{\numberline {2}Mathematical Foundations}{12}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Coordinate Frames}{12}{section.2.1}% 
-\contentsline {section}{\numberline {2.2}Rotations}{13}{section.2.2}% 
-\contentsline {subsubsection}{Active and Passive Representations}{13}{section*.16}% 
-\contentsline {subsubsection}{Exponential and Logarithmic Maps}{13}{section*.17}% 
-\contentsline {subsection}{\numberline {2.2.1}Unit Quaternions}{15}{subsection.2.2.1}% 
-\contentsline {subsection}{\numberline {2.2.2}Topology}{15}{subsection.2.2.2}% 
-\contentsline {section}{\numberline {2.3}Spatial Transforms}{16}{section.2.3}% 
-\contentsline {subsection}{\numberline {2.3.1}Applying Transforms}{17}{subsection.2.3.1}% 
-\contentsline {section}{\numberline {2.4}Perturbations}{17}{section.2.4}% 
-\contentsline {section}{\numberline {2.5}Uncertainty}{19}{section.2.5}% 
-\contentsline {chapter}{\numberline {3}Classical Visual Odometry}{19}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}A Taxonomy of VO}{20}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}Canonical VO Pipeline}{20}{section.3.2}% 
-\contentsline {subsection}{\numberline {3.2.1}Preprocessing}{20}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Data Association}{21}{subsection.3.2.2}% 
-\contentsline {subsubsection}{Feature Extraction and Matching}{21}{section*.15}% 
-\contentsline {subsubsection}{Outlier Rejection}{23}{section*.17}% 
-\contentsline {subsection}{\numberline {3.2.3}Maximum Likelihood Motion Solution}{23}{subsection.3.2.3}% 
-\contentsline {subsubsection}{Point Cloud Error}{23}{section*.18}% 
-\contentsline {subsubsection}{Reprojection Error}{24}{section*.19}% 
-\contentsline {subsubsection}{Solution via Gauss-Newton Optimization}{24}{section*.20}% 
-\contentsline {section}{\numberline {3.3}Robust Estimation}{25}{section.3.3}% 
-\contentsline {section}{\numberline {3.4}Outstanding Issues}{27}{section.3.4}% 
+\contentsline {chapter}{\numberline {2}Learned Probabilistic Sun Sensor}{12}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Background}{12}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Neural Networks for Parametric Learning}{12}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Convolutional Neural Networks}{12}{subsection.2.1.2}% 
+\contentsline {subsection}{\numberline {2.1.3}Regularization and Dropout}{12}{subsection.2.1.3}% 
+\contentsline {subsection}{\numberline {2.1.4}Dropout as Variational Inference}{12}{subsection.2.1.4}% 
+\contentsline {chapter}{\numberline {3}Mathematical Foundations}{14}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Coordinate Frames}{14}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Rotations}{15}{section.3.2}% 
+\contentsline {subsubsection}{Active and Passive Representations}{15}{section*.9}% 
+\contentsline {subsubsection}{Exponential and Logarithmic Maps}{15}{section*.10}% 
+\contentsline {subsection}{\numberline {3.2.1}Unit Quaternions}{17}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Topology}{17}{subsection.3.2.2}% 
+\contentsline {section}{\numberline {3.3}Spatial Transforms}{18}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}Applying Transforms}{19}{subsection.3.3.1}% 
+\contentsline {section}{\numberline {3.4}Perturbations}{20}{section.3.4}% 
+\contentsline {section}{\numberline {3.5}Uncertainty through Injection}{21}{section.3.5}% 
+\contentsline {section}{\numberline {3.6}Deep Learning}{22}{section.3.6}% 
+\contentsline {subsection}{\numberline {3.6.1}Feed-forward Neural Networks}{22}{subsection.3.6.1}% 
+\contentsline {subsection}{\numberline {3.6.2}Convolutional Neural Networks}{23}{subsection.3.6.2}% 
+\contentsline {subsection}{\numberline {3.6.3}Supervised Training}{24}{subsection.3.6.3}% 
+\contentsline {subsection}{\numberline {3.6.4}Practical Considerations}{25}{subsection.3.6.4}% 
+\contentsline {subsubsection}{Optimization}{25}{section*.13}% 
+\contentsline {subsubsection}{Regularization}{25}{section*.14}% 
+\contentsline {subsubsection}{Pooling and Spatial Invariance}{26}{section*.15}% 
+\contentsline {chapter}{\numberline {4}Classical Visual Odometry}{27}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}A Taxonomy of VO}{28}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Canonical VO Pipeline}{28}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Preprocessing}{28}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Data Association}{29}{subsection.4.2.2}% 
+\contentsline {subsubsection}{Feature Extraction and Matching}{29}{section*.19}% 
+\contentsline {subsubsection}{Outlier Rejection}{31}{section*.21}% 
+\contentsline {subsection}{\numberline {4.2.3}Maximum Likelihood Motion Solution}{31}{subsection.4.2.3}% 
+\contentsline {subsubsection}{Point Cloud Error}{31}{section*.22}% 
+\contentsline {subsubsection}{Reprojection Error}{32}{section*.23}% 
+\contentsline {subsubsection}{Solution via Gauss-Newton Optimization}{32}{section*.24}% 
+\contentsline {section}{\numberline {4.3}Robust Estimation}{33}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Outstanding Issues}{35}{section.4.4}% 
 \contentsline {chapter}{\numberline {4}Predictive Robust Estimation}{29}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Motivation}{30}{section.4.2}% 
@@ -50,44 +64,49 @@
 \contentsline {subsection}{\numberline {4.6.3}UTIAS}{48}{subsection.4.6.3}% 
 \contentsline {section}{\numberline {4.7}Summary}{51}{section.4.7}% 
 \contentsline {chapter}{\numberline {5}Learned Probabilistic Sun Sensor}{53}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Introduction}{54}{section.5.1}% 
+\contentsline {section}{\numberline {5.1}Introduction}{53}{section.5.1}% 
 \contentsline {section}{\numberline {5.2}Motivation}{54}{section.5.2}% 
 \contentsline {section}{\numberline {5.3}Related Work}{56}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}Sun-Aided Stereo Visual Odometry}{58}{section.5.4}% 
-\contentsline {subsection}{\numberline {5.4.1}Observation Model}{58}{subsection.5.4.1}% 
-\contentsline {subsection}{\numberline {5.4.2}Sliding Window Bundle Adjustment}{59}{subsection.5.4.2}% 
-\contentsline {section}{\numberline {5.5}Orientation Correction}{60}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}Indirect Sun Detection using a Bayesian Convolutional Neural Network}{61}{section.5.6}% 
-\contentsline {subsection}{\numberline {5.6.1}Cost Function}{62}{subsection.5.6.1}% 
-\contentsline {subsection}{\numberline {5.6.2}Uncertainty Estimation}{62}{subsection.5.6.2}% 
-\contentsline {subsection}{\numberline {5.6.3}Implementation and Training}{63}{subsection.5.6.3}% 
-\contentsline {subsubsection}{Data Preparation \& Transfer Learning}{64}{section*.59}% 
-\contentsline {subsubsection}{Model Precision}{64}{section*.60}% 
-\contentsline {subsubsection}{Data Partitioning}{64}{section*.61}% 
-\contentsline {section}{\numberline {5.7}Simulation Experiments}{64}{section.5.7}% 
-\contentsline {section}{\numberline {5.8}Urban Driving Experiments: The KITTI Odometry Benchmark}{72}{section.5.8}% 
-\contentsline {subsection}{\numberline {5.8.1}Sun-BCNN Test Results}{75}{subsection.5.8.1}% 
-\contentsline {subsection}{\numberline {5.8.2}Visual Odometry Experiments}{76}{subsection.5.8.2}% 
-\contentsline {subsubsection}{Simulated Sun Sensing}{76}{section*.77}% 
-\contentsline {subsubsection}{Vision-based Sun Sensing}{77}{section*.78}% 
-\contentsline {section}{\numberline {5.9}Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{77}{section.5.9}% 
-\contentsline {subsection}{\numberline {5.9.1}Sun-BCNN Test Results}{80}{subsection.5.9.1}% 
-\contentsline {subsection}{\numberline {5.9.2}Visual Odometry Experiments}{81}{subsection.5.9.2}% 
-\contentsline {section}{\numberline {5.10}Sensitivity Analysis}{83}{section.5.10}% 
-\contentsline {subsection}{\numberline {5.10.1}Cloud Cover}{83}{subsection.5.10.1}% 
-\contentsline {subsubsection}{Procedure}{84}{section*.87}% 
-\contentsline {subsubsection}{Results}{84}{section*.88}% 
-\contentsline {subsection}{\numberline {5.10.2}Model Generalization}{86}{subsection.5.10.2}% 
-\contentsline {subsubsection}{Procedure}{86}{section*.90}% 
-\contentsline {subsubsection}{Results}{86}{section*.91}% 
-\contentsline {subsection}{\numberline {5.10.3}Mean and Covariance Computation}{89}{subsection.5.10.3}% 
-\contentsline {subsubsection}{Mean computation}{89}{section*.96}% 
-\contentsline {paragraph}{Procedure}{89}{section*.97}% 
-\contentsline {paragraph}{Results}{89}{section*.98}% 
-\contentsline {subsubsection}{Covariance Computation}{90}{section*.101}% 
-\contentsline {paragraph}{Procedure}{90}{section*.102}% 
-\contentsline {paragraph}{Results}{91}{section*.103}% 
-\contentsline {section}{\numberline {5.11}Summary}{91}{section.5.11}% 
+\contentsline {section}{\numberline {5.4}Background}{59}{section.5.4}% 
+\contentsline {subsection}{\numberline {5.4.1}Neural Networks for Parametric Learning}{59}{subsection.5.4.1}% 
+\contentsline {subsection}{\numberline {5.4.2}Convolutional Neural Networks}{59}{subsection.5.4.2}% 
+\contentsline {subsection}{\numberline {5.4.3}Regularization and Dropout}{59}{subsection.5.4.3}% 
+\contentsline {subsection}{\numberline {5.4.4}Dropout as Variational Inference}{59}{subsection.5.4.4}% 
+\contentsline {section}{\numberline {5.5}Sun-Aided Stereo Visual Odometry}{59}{section.5.5}% 
+\contentsline {subsection}{\numberline {5.5.1}Observation Model}{59}{subsection.5.5.1}% 
+\contentsline {subsection}{\numberline {5.5.2}Sliding Window Bundle Adjustment}{60}{subsection.5.5.2}% 
+\contentsline {section}{\numberline {5.6}Orientation Correction}{61}{section.5.6}% 
+\contentsline {section}{\numberline {5.7}Indirect Sun Detection using a Bayesian Convolutional Neural Network}{62}{section.5.7}% 
+\contentsline {subsection}{\numberline {5.7.1}Cost Function}{63}{subsection.5.7.1}% 
+\contentsline {subsection}{\numberline {5.7.2}Uncertainty Estimation}{63}{subsection.5.7.2}% 
+\contentsline {subsection}{\numberline {5.7.3}Implementation and Training}{64}{subsection.5.7.3}% 
+\contentsline {subsubsection}{Data Preparation \& Transfer Learning}{65}{section*.11}% 
+\contentsline {subsubsection}{Model Precision}{65}{section*.12}% 
+\contentsline {subsubsection}{Data Partitioning}{65}{section*.13}% 
+\contentsline {section}{\numberline {5.8}Simulation Experiments}{65}{section.5.8}% 
+\contentsline {section}{\numberline {5.9}Urban Driving Experiments: The KITTI Odometry Benchmark}{73}{section.5.9}% 
+\contentsline {subsection}{\numberline {5.9.1}Sun-BCNN Test Results}{76}{subsection.5.9.1}% 
+\contentsline {subsection}{\numberline {5.9.2}Visual Odometry Experiments}{77}{subsection.5.9.2}% 
+\contentsline {subsubsection}{Simulated Sun Sensing}{77}{section*.29}% 
+\contentsline {subsubsection}{Vision-based Sun Sensing}{78}{section*.30}% 
+\contentsline {section}{\numberline {5.10}Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{78}{section.5.10}% 
+\contentsline {subsection}{\numberline {5.10.1}Sun-BCNN Test Results}{81}{subsection.5.10.1}% 
+\contentsline {subsection}{\numberline {5.10.2}Visual Odometry Experiments}{82}{subsection.5.10.2}% 
+\contentsline {section}{\numberline {5.11}Sensitivity Analysis}{84}{section.5.11}% 
+\contentsline {subsection}{\numberline {5.11.1}Cloud Cover}{84}{subsection.5.11.1}% 
+\contentsline {subsubsection}{Procedure}{85}{section*.39}% 
+\contentsline {subsubsection}{Results}{85}{section*.40}% 
+\contentsline {subsection}{\numberline {5.11.2}Model Generalization}{87}{subsection.5.11.2}% 
+\contentsline {subsubsection}{Procedure}{87}{section*.42}% 
+\contentsline {subsubsection}{Results}{87}{section*.43}% 
+\contentsline {subsection}{\numberline {5.11.3}Mean and Covariance Computation}{90}{subsection.5.11.3}% 
+\contentsline {subsubsection}{Mean computation}{90}{section*.48}% 
+\contentsline {paragraph}{Procedure}{90}{section*.49}% 
+\contentsline {paragraph}{Results}{90}{section*.50}% 
+\contentsline {subsubsection}{Covariance Computation}{91}{section*.53}% 
+\contentsline {paragraph}{Procedure}{91}{section*.54}% 
+\contentsline {paragraph}{Results}{92}{section*.55}% 
+\contentsline {section}{\numberline {5.12}Summary}{92}{section.5.12}% 
 \contentsline {chapter}{\numberline {6}Learned Pose Corrections}{92}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Introduction}{92}{section.6.1}% 
 \contentsline {section}{\numberline {6.2}Motivation}{93}{section.6.2}% 
@@ -123,18 +142,18 @@
 \contentsline {section}{\numberline {7.4}Approach}{115}{section.7.4}% 
 \contentsline {subsection}{\numberline {7.4.1}Why Rotations?}{115}{subsection.7.4.1}% 
 \contentsline {subsection}{\numberline {7.4.2}Probabilistic Regression}{116}{subsection.7.4.2}% 
-\contentsline {subsubsection}{HydraNet}{116}{section*.130}% 
-\contentsline {subsubsection}{One-dimensional experiment}{117}{section*.132}% 
+\contentsline {subsubsection}{HydraNet}{116}{section*.24}% 
+\contentsline {subsubsection}{One-dimensional experiment}{117}{section*.26}% 
 \contentsline {subsection}{\numberline {7.4.3}Deep Probabilistic $ \mathrm {SO}(3) $ Regression}{118}{subsection.7.4.3}% 
-\contentsline {subsubsection}{Rotation Averaging}{119}{section*.135}% 
-\contentsline {subsubsection}{SO(3) Uncertainty}{120}{section*.136}% 
+\contentsline {subsubsection}{Rotation Averaging}{119}{section*.29}% 
+\contentsline {subsubsection}{SO(3) Uncertainty}{120}{section*.30}% 
 \contentsline {subsection}{\numberline {7.4.4}Loss Function}{120}{subsection.7.4.4}% 
 \contentsline {section}{\numberline {7.5}Experiments}{122}{section.7.5}% 
 \contentsline {subsection}{\numberline {7.5.1}Uncertainty Evaluation: Synthetic Data}{122}{subsection.7.5.1}% 
 \contentsline {subsection}{\numberline {7.5.2}Absolute Orientation: 7-Scenes}{124}{subsection.7.5.2}% 
 \contentsline {subsection}{\numberline {7.5.3}Relative Rotation: KITTI Visual Odometry}{124}{subsection.7.5.3}% 
-\contentsline {subsubsection}{Classical VO}{128}{section*.147}% 
-\contentsline {subsubsection}{Fusion via Graph Relaxation}{129}{section*.148}% 
+\contentsline {subsubsection}{Classical VO}{128}{section*.41}% 
+\contentsline {subsubsection}{Fusion via Graph Relaxation}{129}{section*.42}% 
 \contentsline {section}{\numberline {7.6}Summary}{130}{section.7.6}% 
 \contentsline {chapter}{\numberline {8}Conclusion}{131}{chapter.8}% 
 \contentsline {section}{\numberline {8.1}Summary of Contributions}{132}{section.8.1}% 
@@ -145,7 +164,7 @@
 \contentsline {section}{\numberline {8.2}Future Work}{133}{section.8.2}% 
 \contentsline {section}{\numberline {8.3}Final Remarks}{134}{section.8.3}% 
 \contentsline {section}{\numberline {8.4}Coda: In Search of Elegance}{135}{section.8.4}% 
-\contentsline {chapter}{Appendices}{138}{section*.14}% 
+\contentsline {chapter}{Appendices}{138}{section*.31}% 
 \contentsline {chapter}{\numberline {A}PROBE: Isotropic Covariance Models through K-NN}{139}{Appendix.1.A}% 
 \contentsline {section}{\numberline {A.1}Introduction}{139}{section.1.A.1}% 
 \contentsline {section}{\numberline {A.2}Theory}{139}{section.1.A.2}% 
@@ -156,4 +175,4 @@
 \contentsline {section}{\numberline {B.1}Overview}{144}{section.1.B.1}% 
 \contentsline {section}{\numberline {B.2}Solution with Robust Loss}{145}{section.1.B.2}% 
 \contentsline {section}{\numberline {B.3}Deriving the Necessary Jacobians}{146}{section.1.B.3}% 
-\contentsline {chapter}{Bibliography}{148}{section*.14}% 
+\contentsline {chapter}{Bibliography}{148}{section*.31}% 
