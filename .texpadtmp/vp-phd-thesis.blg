@@ -63,45 +63,45 @@ Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 110 entries,
+You've used 116 entries,
             1935 wiz_defined-function locations,
-            1157 strings with 25610 characters,
-and the built_in function-call counts, 53205 in all, are:
-= -- 5324
-> -- 2191
-< -- 94
-+ -- 757
-- -- 743
-* -- 4246
-:= -- 8570
-add.period$ -- 337
-call.type$ -- 110
-change.case$ -- 906
-chr.to.int$ -- 106
-cite$ -- 122
-duplicate$ -- 2270
-empty$ -- 3782
-format.name$ -- 899
-if$ -- 11001
-int.to.chr$ -- 5
+            1195 strings with 26714 characters,
+and the built_in function-call counts, 55925 in all, are:
+= -- 5608
+> -- 2277
+< -- 99
++ -- 790
+- -- 771
+* -- 4468
+:= -- 9008
+add.period$ -- 357
+call.type$ -- 116
+change.case$ -- 950
+chr.to.int$ -- 111
+cite$ -- 128
+duplicate$ -- 2384
+empty$ -- 3985
+format.name$ -- 935
+if$ -- 11561
+int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 109
-newline$ -- 547
-num.names$ -- 336
-pop$ -- 1069
+missing$ -- 115
+newline$ -- 577
+num.names$ -- 354
+pop$ -- 1106
 preamble$ -- 1
-purify$ -- 912
+purify$ -- 956
 quote$ -- 0
-skip$ -- 1735
+skip$ -- 1825
 stack$ -- 0
-substring$ -- 3840
-swap$ -- 612
-text.length$ -- 60
+substring$ -- 4071
+swap$ -- 640
+text.length$ -- 62
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 654
+type$ -- 690
 warning$ -- 12
-while$ -- 434
+while$ -- 459
 width$ -- 0
-write$ -- 1421
+write$ -- 1503
 (There were 7 error messages)

@@ -123,36 +123,36 @@ Consider a dataset of inputs, $\Vector{x}$, outputs, $\Vector{y}$,  and a datase
 \begin{equation}
 p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}).
 \end{equation}
- If we associate a set of latent parameters, $\Vector{\pi}$, with each input $\Vector{x}$, and assume a known likelihood function $p(\Vector{y}|\Vector{\pi})$, we can infer a distribution over $\Vector{\pi}$ and then marginalize it out to arrive at the desired likelihood
+ If we associate a set of latent parameters, $\GenericParameters$, with each input $\Vector{x}$, and assume a known likelihood function $p(\Vector{y}|\GenericParameters)$, we can infer a distribution over $\GenericParameters$ and then marginalize it out to arrive at the desired likelihood
 
 \begin{equation}
-p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}) = \int_{\Vector{\pi}} \underbrace{p(\Vector{y} | \Vector{\pi}^*)}_{\text{Known likelihood function}} \underbrace{p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D})}_{\text{Parameter posterior}} d\Vector{\pi}^*.
+p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}) = \int_{\GenericParameters} \underbrace{p(\Vector{y} | \GenericParameters^*)}_{\text{Known likelihood function}} \underbrace{p(\GenericParameters^* | \Vector{x}^*, \mathcal{D})}_{\text{Parameter posterior}} d\GenericParameters^*.
 \end{equation}
 This is called the posterior predictive distribution. Using Bayes rule, we can write
 \begin{equation}
 \label{eq:probe_posterior_bayes_rule}
-p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D}) \propto \int \left( \prod_{i=1}^N p(\Vector{y}_i | \Vector{\pi}_i)d\Vector{\pi}_i \right) p(\Vector{\pi}_{1:N}, \Vector{\pi}^*| \Vector{x}^*, \Vector{x}_{1:N})
+p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) \propto \int \left( \prod_{i=1}^N p(\Vector{y}_i | \GenericParameters_i)d\GenericParameters_i \right) p(\GenericParameters_{1:N}, \GenericParameters^*| \Vector{x}^*, \Vector{x}_{1:N})
 \end{equation}
-The technique of generalized kernels makes the assumption that the parameters $\Vector{\pi}_{1:N}$ are conditionally independent given the target parameters, $\Vector{\pi}^*$. This gives the distribution:
+The technique of generalized kernels makes the assumption that the parameters $\GenericParameters_{1:N}$ are conditionally independent given the target parameters, $\GenericParameters^*$. This gives the distribution:
 
 \begin{equation}
- p(\Vector{\pi}_{1:N}, \Vector{\pi}^*| \Vector{x}^*, \Vector{x}_{1:N}) = \left( \prod_{i=1}^N  p(\Vector{\pi}_i | \Vector{\pi}^* \Vector{x}^*, \Vector{x}_i)  \right) p(\Vector{\pi}^* | \Vector{x}^*), 
+ p(\GenericParameters_{1:N}, \GenericParameters^*| \Vector{x}^*, \Vector{x}_{1:N}) = \left( \prod_{i=1}^N  p(\GenericParameters_i | \GenericParameters^* \Vector{x}^*, \Vector{x}_i)  \right) p(\GenericParameters^* | \Vector{x}^*), 
 \end{equation}
 which combined with \Cref{eq:probe_posterior_bayes_rule} results in
 \begin{equation}
 \label{eq:probe_extended_likelihood}
-p(\Vector{\pi}^* | \Vector{x}^*, \mathcal{D}) \propto \prod_{i=1}^N \underbrace{p(\Vector{y}_i | \Vector{\pi}^*, \Vector{x}_i, \Vector{x}^*)}_{\text{Extended likelihood}} \underbrace{p(\Vector{\pi}^*|\Vector{x}^*)}_{\text{Prior}}.
+p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) \propto \prod_{i=1}^N \underbrace{p(\Vector{y}_i | \GenericParameters^*, \Vector{x}_i, \Vector{x}^*)}_{\text{Extended likelihood}} \underbrace{p(\GenericParameters^*|\Vector{x}^*)}_{\text{Prior}}.
 \end{equation}
-Now, the pièce de résistance of generalized kernels is that the \textit{extended} likelihood can be written as function of the known likelihood $p(\Vector{y}_i | \Vector{\pi}_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that under these assumptions, the extended likelihood must have the form:
+Now, the pièce de résistance of generalized kernels is that the \textit{extended} likelihood can be written as function of the known likelihood $p(\Vector{y}_i | \GenericParameters_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that under these assumptions, the extended likelihood must have the form:
 \begin{equation}
 \label{eq:probe_kernel_likelihood}
-p(\Vector{y} | \Vector{\pi}^*, \Vector{x}, \Vector{x}^*) \propto p(\Vector{y} | \Vector{\pi})^{k(\Vector{x}^*, \Vector{x})},
+p(\Vector{y} | \GenericParameters^*, \Vector{x}, \Vector{x}^*) \propto p(\Vector{y} | \GenericParameters)^{k(\Vector{x}^*, \Vector{x})},
 \end{equation}
-where $k(\cdot, \cdot)$ is a kernel function\footnote{i.e., $k(\Vector{x}, \Vector{x}) = 1 \forall \Vector{x}$ and $k(\Vector{x}, \Vector{x}') \in [0,1] \forall \Vector{x}, \Vector{x}'$.} that is uniquely defined by $\rho$. The intuition behind this is that we expect the extended likelihood to equal the known likelihood if $\Vector{x}^*$ = $\Vector{x}_i$ (and therefore $\Vector{\pi}^* = \Vector{\pi}_i$, resulting in $p(\Vector{y}_i | \Vector{\pi}^*, \Vector{x}_i, \Vector{x}^*) = p(\Vector{y}_i | \Vector{\pi}_i)$) and diverge in some smooth way when $\Vector{x}^* \neq \Vector{x}_i$. 
+where $k(\cdot, \cdot)$ is a kernel function\footnote{i.e., $k(\Vector{x}, \Vector{x}) = 1 \forall \Vector{x}$ and $k(\Vector{x}, \Vector{x}') \in [0,1] \forall \Vector{x}, \Vector{x}'$.} that is uniquely defined by $\rho$. The intuition behind this is that we expect the extended likelihood to equal the known likelihood if $\Vector{x}^*$ = $\Vector{x}_i$ (and therefore $\GenericParameters^* = \GenericParameters_i$, resulting in $p(\Vector{y}_i | \GenericParameters^*, \Vector{x}_i, \Vector{x}^*) = p(\Vector{y}_i | \GenericParameters_i)$) and diverge in some smooth way when $\Vector{x}^* \neq \Vector{x}_i$. 
 Combining \Cref{eq:probe_extended_likelihood} with \Cref{eq:probe_kernel_likelihood}, we arrive at an expression for the posterior over parameters as 
 \begin{equation}
 \label{eq:probe_posterior}
-p(\Vector{\pi} | \Vector{x}, \mathcal{D}) \propto \prod_{i=1}^N p(\Vector{y} | \Vector{\pi})^{k(\Vector{x}, \Vector{x}_i)} p(\Vector{\pi} |\Vector{x}),
+p(\GenericParameters | \Vector{x}, \mathcal{D}) \propto \prod_{i=1}^N p(\Vector{y} | \GenericParameters)^{k(\Vector{x}, \Vector{x}_i)} p(\GenericParameters |\Vector{x}),
 \end{equation}
 which can be evaluated in closed form for appropriate an appropriate likelihood and prior. Namely, for PROBE, we will assume Gaussian likelihoods for the reprojection errors (and therefore the observations $\ImageLandmark{i}{c_1}$), and inverse Wishart priors for covariance matrices (this will result in inverse Wishart posteriors due to conjugacy). The input, $\Vector{x}$, will be the vector of predictors $\Vector{\phi}$.
 

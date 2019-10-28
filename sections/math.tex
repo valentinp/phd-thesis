@@ -278,11 +278,11 @@ where $\otimes$ refers to the standard quaternion product operator \cite{Sola201
 \section{Deep Learning}
 Three of the four pseudo-sensors (Sun-BCNN, DPC, and HydraNet---\Cref{ch:dpc,ch:sun-bcnn,ch:hydranet}) in this dissertation are built using neural networks and the tools of \textit{deep learning} \citep{LeCun2015-qf}. We briefly summarize these concepts here and refer the reader to \cite{Goodfellow-et-al-2016} for a more thorough treatment.
 \subsection{Feed-forward Neural Networks} 
-The basic premise of deep learning is that certain kinds of data are naturally decomposed into hierarchical structure. For instance, images may have local textures (e.g. edges), which compose basic primitives (e.g., leaves), which then combine to form semantic objects (e.g, a tree). Consequently, for this type of data, latent information may be efficiently extracted through an analogous hierarchical model.  Typically, this is done through a neural network composed of multiple \textit{layers} (the term \textit{neural} comes from the loose biological basis for each layer, and \textit{deep} refers to the amount of layers contained in state-of-the-art models). A standard neural layer computes a non-linear transformation from an input $\Vector{z}_m$ to an output $\Vector{z}_{m+1}$ as  
+The basic premise of deep learning is that certain kinds of data are naturally decomposed into hierarchical structure. For instance, images may have local textures (e.g. edges), which compose basic primitives (e.g., leaves), which then combine to form semantic objects (e.g, a tree). Consequently, for this type of data, latent information may be efficiently extracted through an analogous hierarchical model.  Typically, this is done through a neural network composed of multiple \textit{layers} (the term \textit{neural} comes from the loose biological basis for each layer, and \textit{deep} refers to the amount of layers contained in state-of-the-art models). A standard neural layer computes a non-linear transformation from an input $\Vector{z}_\ell$ to an output $\Vector{z}_{\ell+1}$ as  
 \begin{equation}
-\Vector{z}_{m+1} = \Vector{f}_m(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_m\Vector{z}_m + \Vector{b}_m\right),
+\Vector{z}_{\ell+1} = \Vector{f}_\ell(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_\ell\Vector{z}_\ell + \Vector{b}_\ell\right),
 \end{equation}
-where $\Matrix{W}_m \in \Real^{D_{m_{out}} \times D_{m_{in}}}$ and $\Vector{b}_m \in \Real^{D_{m_{out}}}$ are the parameters of the layer (often referred to as the \textit{weight matrix} and \textit{bias}, respectively) and $\Vector{\sigma}(\cdot)$ is an element-wise \textit{non-linearity}.
+where $\Matrix{W}_\ell \in \Real^{D_{\ell_{out}} \times D_{\ell_{in}}}$ and $\Vector{b}_\ell \in \Real^{D_{\ell_{out}}}$ are the parameters of the layer (often referred to as the \textit{weight matrix} and \textit{bias}, respectively) and $\Vector{\sigma}(\cdot)$ is an element-wise \textit{non-linearity}.
 
 \begin{remark}{Non-linearities}
 	The optimal choice of non-linearity is an area of active research. Some common examples include,
@@ -296,9 +296,9 @@ where $\Matrix{W}_m \in \Real^{D_{m_{out}} \times D_{m_{in}}}$ and $\Vector{b}_m
 		\right.   & \mbox{Parametric ReLU, \textit{PReLU}.} \end{array}\right.
 \end{align}
 \end{remark}
-To produce a \textit{feed-forward neural network}, $M$ layers are composed in a hierarchy to create a single parametric function,
+To produce a \textit{feed-forward neural network}, $L$ layers are composed in a hierarchy to create a single parametric function,
 \begin{equation}
- NN(\Vector{x}) = \Vector{f}_M \circ \Vector{f}_{M-1} \circ \cdots \circ \Vector{f}_{1}(\Vector{x}),
+ NN(\Vector{x}) = \Vector{f}_L \circ \Vector{f}_{L-1} \circ \cdots \circ \Vector{f}_{1}(\Vector{x}),
 \end{equation}
 where $f \circ g$ refers to function composition, $f (g(\cdot))$.
 
@@ -336,18 +336,18 @@ In this discrete case, a kernel can be represented by a kernel matrix, $\Matrix{
 \end{figure}
 
 \subsection{Supervised Training}
-Given a (convolutional) neural network with a set of parameters $\Matrix{\Theta}$ (where $\Matrix{\Theta}$ may include weight and bias parameters, $\Matrix{W}_m, \Matrix{b}_m$, as well as convolutional kernel parameters, $\Matrix{K}_{km}$) we can use \textit{supervised training} to obtain an optimal parameter set $\Matrix{\Theta}^*$. Supervised training requires  set of training pairs $\{(\Vector{x}_1, \Vector{y}_1),...,(\Vector{x}_N, \Vector{y}_N) \}$ where $\Vector{x} \in \Real^{D_x}$ is an \textit{input} and $\Vector{y} \in \Real^{D_y}$ is a \textit{target} that corresponds to the desired output of our parametric model. To \textit{train} the network, we find the parameters which minimize a \textit{loss function} over this dataset,
+Given a (convolutional) neural network with a set of parameters $\GenericParameters$ (where $\GenericParameters$ may include weight and bias parameters, $\Matrix{W}_\ell, \Matrix{b}_\ell$, as well as convolutional kernel parameters, $\Matrix{K}_{k\ell}$) we can use \textit{supervised training} to obtain an optimal parameter set $\GenericParameters^*$. Supervised training requires  set of training pairs $\{(\Vector{x}_1, \Vector{y}_1),...,(\Vector{x}_N, \Vector{y}_N) \}$ where $\Vector{x} \in \Real^{D_x}$ is an \textit{input} and $\Vector{y} \in \Real^{D_y}$ is a \textit{target} that corresponds to the desired output of our parametric model. To \textit{train} the network, we find the parameters which minimize a \textit{loss function} over this dataset,
 \begin{equation}
 \label{eq:math_nn_loss}
- \Matrix{\Theta}^* = \ArgMin{\Matrix{\Theta}} \mathcal{L}\left(\{NN(\Vector{x}_i; \Matrix{\Theta}), \Vector{y}_i\right\}_{i=1}^N).
+\GenericParameters^* = \ArgMin{\GenericParameters} \mathcal{L}\left(\{NN(\Vector{x}_i; \GenericParameters), \Vector{y}_i\right\}_{i=1}^N).
 \end{equation}
 For example, a common loss function for regression problems is \textit{mean squared error},
 \begin{equation}
-\Matrix{\Theta}^* = \ArgMin{\Matrix{\Theta}} \frac{1}{2N}\sum_{i=1}^N\Norm{NN(\Vector{x}_i; \Matrix{\Theta}) - \Vector{y}_i}_2^2.
+\GenericParameters^* = \ArgMin{\GenericParameters} \frac{1}{2N}\sum_{i=1}^N\Norm{NN(\Vector{x}_i; \GenericParameters) - \Vector{y}_i}_2^2.
 \end{equation}.
 In this dissertation, we will use supervised training in \Cref{ch:dpc,ch:sun-bcnn,ch:hydranet} and we will explore different forms of loss functions for geometric quantities that do not allow for a simple Euclidian norms. 
 \subsection{Practical Considerations}
-
+\label{section:math_dl_practical}
 \subsubsection{Optimization}
 
 To train a deep network---that is, to solve \Cref{eq:math_nn_loss} for optimal parameters---modern approaches rely on stochastic gradient descent (SGD) through back-propagation \citep{LeCun2015-qf}. SGD avoids the computationally prohibitive task of computing a gradient over an entire dataset by approximating the gradient using a randomly selecting subset of training data called a \textit{mini-batch}. In the majority of this dissertation, we rely on Adam, a modern SGD-based approach that also maintains an estimate of second-order curvature \citep{kingma_adam_2017}.
@@ -357,9 +357,9 @@ To train a deep network---that is, to solve \Cref{eq:math_nn_loss} for optimal p
 In order to prevent \textit{overfitting} to a dataset (i.e., to obtain a model that generalizes to unseen data), the literature provides a number of methods. An important approach that is used in this dissertation is \textit{dropout} \citep{srivastava_dropout_2014}. Dropout stochastically `zeros-out' inputs of a particular layer with probability $p$, 
 
 \begin{equation}
-	\Vector{z}_{m+1} = \Vector{f}_m(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_m\tilde{\Vector{z}}_m + \Vector{b}_m\right),
+	\Vector{z}_{\ell+1} = \Vector{f}_\ell(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_\ell\tilde{\Vector{z}}_\ell + \Vector{b}_\ell\right),
 \end{equation}
-where $\tilde{\Vector{z}}_m = \Vector{b} \circledcirc \Vector{z}_m$, $b_i \sim \text{Bernoulli}(p)$ and $\circledcirc$ refers to element-wise multiplication.
+where $\tilde{\Vector{z}}_\ell = \Vector{b} \circledcirc \Vector{z}_\ell$, $b_i \sim \text{Bernoulli}(p)$ and $\circledcirc$ refers to element-wise multiplication.
 The intuition behind dropout is that it effectively creates an ensemble of smaller-parameter networks that will generally be less prone to overfitting than a commensurately-sized monolithic network. Importantly, dropout has a fundamental connection variational inference, which we exploit in \Cref{ch:sun-bcnn}.
 \subsubsection{Pooling and Spatial Invariance}
 A common technique in convolutional neural networks is \textit{pooling} \citep{Goodfellow-et-al-2016}. Pooling is a non-parametric operation that summarizes the output of a kernel in a particular region. For example, \textit{max pooling} selects the maximum response of a kernel in demarcated regions of an input channel, thereby downsampling the resulting output. Pooling operations are designed to make convolution operations invariant to the spatial location of a particular kernel response. This is important in many classification tasks (e.g., a tree classifier should be invariant to the location of a particular leaf) but is a detriment to regression tasks where we would like to preserve spatial information. We explore building convolutional neural networks without pooling in \Cref{ch:dpc}.

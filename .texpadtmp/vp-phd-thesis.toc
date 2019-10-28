@@ -1,33 +1,32 @@
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}% 
-\contentsline {section}{\numberline {1.1}Egomotion Estimation}{3}{section.1.1}% 
-\contentsline {section}{\numberline {1.2}A Visual \textit {Pipeline}}{4}{section.1.2}% 
-\contentsline {section}{\numberline {1.3}The Learned Pseudo-Sensor}{7}{section.1.3}% 
-\contentsline {section}{\numberline {1.4}Original Contributions}{8}{section.1.4}% 
+\contentsline {section}{\numberline {1.1}A Visual \textit {Pipeline}}{4}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}The Pseudo-Sensor}{7}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Original Contributions}{8}{section.1.3}% 
 \contentsline {chapter}{\numberline {2}Learned Probabilistic Sun Sensor}{12}{chapter.2}% 
 \contentsline {section}{\numberline {2.1}Background}{12}{section.2.1}% 
-\contentsline {subsection}{\numberline {2.1.1}Neural Networks for Parametric Learning}{12}{subsection.2.1.1}% 
-\contentsline {subsection}{\numberline {2.1.2}Convolutional Neural Networks}{12}{subsection.2.1.2}% 
-\contentsline {subsection}{\numberline {2.1.3}Regularization and Dropout}{12}{subsection.2.1.3}% 
-\contentsline {subsection}{\numberline {2.1.4}Dropout as Variational Inference}{12}{subsection.2.1.4}% 
-\contentsline {chapter}{\numberline {3}Mathematical Foundations}{14}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Coordinate Frames}{14}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}Rotations}{15}{section.3.2}% 
-\contentsline {subsubsection}{Active and Passive Representations}{15}{section*.9}% 
-\contentsline {subsubsection}{Exponential and Logarithmic Maps}{15}{section*.10}% 
-\contentsline {subsection}{\numberline {3.2.1}Unit Quaternions}{17}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Topology}{17}{subsection.3.2.2}% 
-\contentsline {section}{\numberline {3.3}Spatial Transforms}{18}{section.3.3}% 
-\contentsline {subsection}{\numberline {3.3.1}Applying Transforms}{19}{subsection.3.3.1}% 
-\contentsline {section}{\numberline {3.4}Perturbations}{20}{section.3.4}% 
-\contentsline {section}{\numberline {3.5}Uncertainty through Injection}{21}{section.3.5}% 
-\contentsline {section}{\numberline {3.6}Deep Learning}{22}{section.3.6}% 
-\contentsline {subsection}{\numberline {3.6.1}Feed-forward Neural Networks}{22}{subsection.3.6.1}% 
-\contentsline {subsection}{\numberline {3.6.2}Convolutional Neural Networks}{23}{subsection.3.6.2}% 
-\contentsline {subsection}{\numberline {3.6.3}Supervised Training}{24}{subsection.3.6.3}% 
-\contentsline {subsection}{\numberline {3.6.4}Practical Considerations}{25}{subsection.3.6.4}% 
-\contentsline {subsubsection}{Optimization}{25}{section*.13}% 
-\contentsline {subsubsection}{Regularization}{25}{section*.14}% 
-\contentsline {subsubsection}{Pooling and Spatial Invariance}{26}{section*.15}% 
+\contentsline {subsection}{\numberline {2.1.1}Regularization and Dropout}{12}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Bayesian Modelling and Variational Inference}{12}{subsection.2.1.2}% 
+\contentsline {subsubsection}{Variational Inference}{13}{section*.14}% 
+\contentsline {subsection}{\numberline {2.1.3}Monte Carlo Dropout as Approximate Variational Inference}{14}{subsection.2.1.3}% 
+\contentsline {chapter}{\numberline {3}Mathematical Foundations}{16}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Coordinate Frames}{16}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Rotations}{17}{section.3.2}% 
+\contentsline {subsubsection}{Active and Passive Representations}{17}{section*.18}% 
+\contentsline {subsubsection}{Exponential and Logarithmic Maps}{17}{section*.19}% 
+\contentsline {subsection}{\numberline {3.2.1}Unit Quaternions}{19}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Topology}{19}{subsection.3.2.2}% 
+\contentsline {section}{\numberline {3.3}Spatial Transforms}{20}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}Applying Transforms}{21}{subsection.3.3.1}% 
+\contentsline {section}{\numberline {3.4}Perturbations}{22}{section.3.4}% 
+\contentsline {section}{\numberline {3.5}Uncertainty through Injection}{23}{section.3.5}% 
+\contentsline {section}{\numberline {3.6}Deep Learning}{24}{section.3.6}% 
+\contentsline {subsection}{\numberline {3.6.1}Feed-forward Neural Networks}{24}{subsection.3.6.1}% 
+\contentsline {subsection}{\numberline {3.6.2}Convolutional Neural Networks}{25}{subsection.3.6.2}% 
+\contentsline {subsection}{\numberline {3.6.3}Supervised Training}{26}{subsection.3.6.3}% 
+\contentsline {subsection}{\numberline {3.6.4}Practical Considerations}{27}{subsection.3.6.4}% 
+\contentsline {subsubsection}{Optimization}{27}{section*.22}% 
+\contentsline {subsubsection}{Regularization}{27}{section*.23}% 
+\contentsline {subsubsection}{Pooling and Spatial Invariance}{28}{section*.24}% 
 \contentsline {chapter}{\numberline {4}Classical Visual Odometry}{27}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}A Taxonomy of VO}{28}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Canonical VO Pipeline}{28}{section.4.2}% 
@@ -41,28 +40,28 @@
 \contentsline {subsubsection}{Solution via Gauss-Newton Optimization}{32}{section*.24}% 
 \contentsline {section}{\numberline {4.3}Robust Estimation}{33}{section.4.3}% 
 \contentsline {section}{\numberline {4.4}Outstanding Issues}{35}{section.4.4}% 
-\contentsline {chapter}{\numberline {4}Predictive Robust Estimation}{29}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Motivation}{30}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Related Work}{31}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Predictive Robust Estimation for VO}{32}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Bayesian Noise Model for Visual Odometry}{32}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Generalized Kernels}{33}{subsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.4.3}Generalized Kernels for Visual Odometry}{34}{subsection.4.4.3}% 
-\contentsline {subsection}{\numberline {4.4.4}Inference without ground truth}{37}{subsection.4.4.4}% 
-\contentsline {section}{\numberline {4.5}Prediction Space}{39}{section.4.5}% 
-\contentsline {subsection}{\numberline {4.5.1}Angular velocity and linear acceleration}{40}{subsection.4.5.1}% 
-\contentsline {subsection}{\numberline {4.5.2}Local image entropy}{40}{subsection.4.5.2}% 
-\contentsline {subsection}{\numberline {4.5.3}Blur}{40}{subsection.4.5.3}% 
-\contentsline {subsection}{\numberline {4.5.4}Optical flow variance}{42}{subsection.4.5.4}% 
-\contentsline {subsection}{\numberline {4.5.5}Image frequency composition}{43}{subsection.4.5.5}% 
-\contentsline {section}{\numberline {4.6}Experiments}{43}{section.4.6}% 
-\contentsline {subsection}{\numberline {4.6.1}Simulation}{44}{subsection.4.6.1}% 
-\contentsline {subsubsection}{Monte-Carlo Verification}{44}{section*.41}% 
-\contentsline {subsubsection}{Synthetic}{44}{section*.43}% 
-\contentsline {subsection}{\numberline {4.6.2}KITTI}{45}{subsection.4.6.2}% 
-\contentsline {subsection}{\numberline {4.6.3}UTIAS}{48}{subsection.4.6.3}% 
-\contentsline {section}{\numberline {4.7}Summary}{51}{section.4.7}% 
+\contentsline {chapter}{\numberline {5}Predictive Robust Estimation}{37}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Introduction}{37}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Motivation}{38}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Related Work}{39}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}Predictive Robust Estimation for VO}{40}{section.5.4}% 
+\contentsline {subsection}{\numberline {5.4.1}Bayesian Noise Model for Visual Odometry}{40}{subsection.5.4.1}% 
+\contentsline {subsection}{\numberline {5.4.2}Generalized Kernels}{41}{subsection.5.4.2}% 
+\contentsline {subsection}{\numberline {5.4.3}Generalized Kernels for Visual Odometry}{42}{subsection.5.4.3}% 
+\contentsline {subsection}{\numberline {5.4.4}Inference without ground truth}{45}{subsection.5.4.4}% 
+\contentsline {section}{\numberline {5.5}Prediction Space}{47}{section.5.5}% 
+\contentsline {subsection}{\numberline {5.5.1}Angular velocity and linear acceleration}{48}{subsection.5.5.1}% 
+\contentsline {subsection}{\numberline {5.5.2}Local image entropy}{48}{subsection.5.5.2}% 
+\contentsline {subsection}{\numberline {5.5.3}Blur}{48}{subsection.5.5.3}% 
+\contentsline {subsection}{\numberline {5.5.4}Optical flow variance}{50}{subsection.5.5.4}% 
+\contentsline {subsection}{\numberline {5.5.5}Image frequency composition}{51}{subsection.5.5.5}% 
+\contentsline {section}{\numberline {5.6}Experiments}{51}{section.5.6}% 
+\contentsline {subsection}{\numberline {5.6.1}Simulation}{52}{subsection.5.6.1}% 
+\contentsline {subsubsection}{Monte-Carlo Verification}{52}{section*.24}% 
+\contentsline {subsubsection}{Synthetic}{52}{section*.26}% 
+\contentsline {subsection}{\numberline {5.6.2}KITTI}{53}{subsection.5.6.2}% 
+\contentsline {subsection}{\numberline {5.6.3}UTIAS}{56}{subsection.5.6.3}% 
+\contentsline {section}{\numberline {5.7}Summary}{59}{section.5.7}% 
 \contentsline {chapter}{\numberline {5}Learned Probabilistic Sun Sensor}{53}{chapter.5}% 
 \contentsline {section}{\numberline {5.1}Introduction}{53}{section.5.1}% 
 \contentsline {section}{\numberline {5.2}Motivation}{54}{section.5.2}% 
@@ -164,7 +163,7 @@
 \contentsline {section}{\numberline {8.2}Future Work}{133}{section.8.2}% 
 \contentsline {section}{\numberline {8.3}Final Remarks}{134}{section.8.3}% 
 \contentsline {section}{\numberline {8.4}Coda: In Search of Elegance}{135}{section.8.4}% 
-\contentsline {chapter}{Appendices}{138}{section*.31}% 
+\contentsline {chapter}{Appendices}{138}{section*.25}% 
 \contentsline {chapter}{\numberline {A}PROBE: Isotropic Covariance Models through K-NN}{139}{Appendix.1.A}% 
 \contentsline {section}{\numberline {A.1}Introduction}{139}{section.1.A.1}% 
 \contentsline {section}{\numberline {A.2}Theory}{139}{section.1.A.2}% 
@@ -175,4 +174,4 @@
 \contentsline {section}{\numberline {B.1}Overview}{144}{section.1.B.1}% 
 \contentsline {section}{\numberline {B.2}Solution with Robust Loss}{145}{section.1.B.2}% 
 \contentsline {section}{\numberline {B.3}Deriving the Necessary Jacobians}{146}{section.1.B.3}% 
-\contentsline {chapter}{Bibliography}{148}{section*.31}% 
+\contentsline {chapter}{Bibliography}{148}{section*.25}% 
