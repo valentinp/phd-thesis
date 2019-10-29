@@ -22,12 +22,8 @@ that $\ImageLandmarkCovariance{i}{c_0} =\ImageLandmarkCovariance{i}{c_1} = \Imag
 	\ImageLandmark{i}{c_0} &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \ImageLandmarkCovariance{i}{t} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_0}, \Covariance( \Predictor{i}{t})\right) \\
 		\ImageLandmark{i}{c_1}, &\sim \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \ImageLandmarkCovariance{i}{t} \right) = \NormalDistribution\left(\bar{\Vector{y}}_{i,c_1}, \Covariance( \Predictor{i}{t})\right).
 \end{align}
-
-
 This then builds the following weighted least squares objective,
-
 \begin{equation}
-\label{eq:vo_objective}
   \Transform_t^* = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N_t} 
   \Transpose{\Vector{e}_{i}(\Transform_t)} \GeneralCovariance_{i,t}^{-1} \Vector{e}_{i}(\Transform_t).
 \end{equation}

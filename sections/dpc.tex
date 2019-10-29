@@ -4,35 +4,36 @@
 
 \section{Introduction}
 
-\begin{figure*}[h!]
-\centering
-\includegraphics[width=0.8\textwidth]{dpc.pdf}
- \caption{DPC-Net (Deep Pose Corrections) is a pseudo-sensor that learns to correct a `classical' VO pipeline.}
- \label{fig:dpc_intro_fig}
-\end{figure*}
-
-If a pseudo-sensor like Sun-BCNN can extract useful orientation information directly from images, can we create a more general approach that can directly learn $\LieGroupSE{3}$ corrections to an existing VO estimate? In this chapter, we explore this by training what we call a \textit{deep pose correction} (DPC) network to do just that.
-
-DPC is associated with the journal publication:
+If a pseudo-sensor like Sun-BCNN can extract useful orientation information directly from images, is it possible to create a more general approach that can learn full $\LieGroupSE{3}$ corrections to an existing egomotion estimate? In this chapter, we show that this is possible through what we call a \textit{deep pose correction} (DPC) network. DPC is associated with the journal publication:
 \begin{itemize}
 \item \bibentry{2018_Peretroukhin_Deep}.
 \end{itemize}
 
+%\begin{figure*}[h!]
+%\centering
+%\includegraphics[width=0.8\textwidth]{dpc.pdf}
+% \caption{DPC-Net (Deep Pose Corrections) is a pseudo-sensor that learns to correct a `classical' VO pipeline.}
+% \label{fig:dpc_intro_fig}
+%\end{figure*}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-	\centering
-	\includegraphics[width=0.48\textwidth]{dpc/dpc_high_level}
-	\caption{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE{3}$ \textit{corrections} to classical visual localizers.}
-	\label{fig:dpc_system_overview}
-	\vspace{-1.5em}
-\end{wrapfigure}
+
+
+
+
 
 \section{Motivation}
 Deep convolutional neural networks (CNNs) are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\citep{LeCun2015-qf}. 
 These CNN-based techniques achieve accuracies previously
 unattainable by classical methods. In mobile robotics and state estimation, however, it remains unclear to what extent these deep architectures can obviate the need for classical geometric modelling. 
-In this chapter, we focus on improving visual odometry (VO): the task of computing the egomotion of a camera through an unknown environment with no external positioning sources. Visual localization algorithms like VO can suffer from several systematic error sources
+Visual localization algorithms like VO can suffer from several systematic error sources
 that include estimator biases \citep{Peretroukhin2014-db}, poor calibration, and environmental factors (e.g., a lack of scene texture). While machine learning approaches can be used to better model specific subsystems of a localization pipeline (e.g., the heteroscedastic feature track error covariance modelling of \cite{Peretroukhin2016-om, 2015_Peretroukhin_PROBE}), much recent work \citep{Costante2016-hb, Clark2017, Kendall2015-ew, Melekhov2017-dl, Oliveira2017-lt} has been devoted to completely replacing the estimator with a CNN-based system.
+
+\begin{figure*}[h!]
+	\centering
+	\includegraphics[width=0.68\textwidth]{dpc/dpc_high_level}
+	\caption{We propose a Deep Pose Correction network (DPC-Net) that learns $\LieGroupSE{3}$ \textit{corrections} to classical visual localizers.}
+	\label{fig:dpc_system_overview}
+\end{figure*}
 
 
 
@@ -45,7 +46,7 @@ Although in this work we focus on visual data, the DPC-Net architecture can be r
 
 
 \section{Related Work}
-Visual state estimation has a rich history in mobile robotics. We direct the reader to \citep{Scaramuzza2011-qr} and \citep{Cadena2016-ds} for detailed surveys of what we call \textit{classical}, geometric approaches to visual odometry (VO) and visual simultaneous localization and mapping (SLAM).
+%Visual state estimation has a rich history in mobile robotics. We direct the reader to \citep{Scaramuzza2011-qr} and \citep{Cadena2016-ds} for detailed surveys of what we call \textit{classical}, geometric approaches to visual odometry (VO) and visual simultaneous localization and mapping (SLAM).
 
 In the past decade, much of machine learning and its sub-disciplines has been revolutionized by carefully constructed deep neural networks (DNNs)~\citep{LeCun2015-qf}. For tasks like image segmentation, classification, and natural language processing, most prior state-of-the-art algorithms have been replaced by their DNN alternatives.
 
@@ -80,7 +81,7 @@ from two pairs of stereo images (collectively referred to as $\ImageQuad_{t_{i},
 
 \subsection{Loss Function: Correcting $\LieGroupSE{3}$ Estimates}
 
-One possible approach to learning $\TargetCorrection$ is to break it into constituent parts and then compose a loss function as the weighted sum of translational and rotational error norms (as done in \cite{Kendall2017-u, Melekhov2017-dl, Oliveira2017-lt}). This however does not account for the possible correlation between the two losses, and requires the careful tuning of a scalar weight.
+One possible approach to learning $\TargetCorrection$ is to break it into constituent parts and then compose a loss function as the weighted sum of translational and rotational error norms (as done in \cite{Kendall2015-ew, Melekhov2017-dl, Oliveira2017-lt}). This however does not account for the possible correlation between the two losses, and requires the careful tuning of a scalar weight.
 
 In this work, we instead choose to parametrize our correction prediction as $\Transform = \Matexp{\PredictionVector}$, where $\PredictionVector \in \Real^6$, a vector of Lie algebra coordinates, is the output of our network (similar to \cite{Handa2016-hm}). We define a loss for $\PredictionVector$ as 
 \begin{equation}

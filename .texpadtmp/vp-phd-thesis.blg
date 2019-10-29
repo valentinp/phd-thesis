@@ -2,7 +2,6 @@ This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.aux
 A level-1 auxiliary file: sections/introduction.aux
-A level-1 auxiliary file: sections/learning-background.aux
 A level-1 auxiliary file: sections/math.aux
 A level-1 auxiliary file: sections/vo.aux
 A level-1 auxiliary file: sections/probe.aux
@@ -54,7 +53,6 @@ Warning--I didn't find a database entry for "Hornik2014-jw"
 Warning--empty journal in Alcantarilla2016-kv
 Warning--empty booktitle in Clark2017
 Warning--empty journal in DeTone2016-ue
-Warning--can't use both volume and number fields in fisher1953dispersion
 Warning--empty school in florez2010
 Warning--empty booktitle in Forster2015-af
 Warning--empty school in furgale_phd11
@@ -63,45 +61,45 @@ Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 116 entries,
+You've used 115 entries,
             1935 wiz_defined-function locations,
-            1195 strings with 26714 characters,
-and the built_in function-call counts, 55925 in all, are:
-= -- 5608
-> -- 2277
-< -- 99
-+ -- 790
-- -- 771
-* -- 4468
-:= -- 9008
-add.period$ -- 357
-call.type$ -- 116
-change.case$ -- 950
-chr.to.int$ -- 111
-cite$ -- 128
-duplicate$ -- 2384
-empty$ -- 3985
-format.name$ -- 935
-if$ -- 11561
-int.to.chr$ -- 6
+            1181 strings with 26339 characters,
+and the built_in function-call counts, 55176 in all, are:
+= -- 5522
+> -- 2265
+< -- 96
++ -- 787
+- -- 767
+* -- 4415
+:= -- 8910
+add.period$ -- 353
+call.type$ -- 115
+change.case$ -- 943
+chr.to.int$ -- 109
+cite$ -- 126
+duplicate$ -- 2346
+empty$ -- 3927
+format.name$ -- 932
+if$ -- 11387
+int.to.chr$ -- 7
 int.to.str$ -- 0
-missing$ -- 115
-newline$ -- 577
-num.names$ -- 354
-pop$ -- 1106
+missing$ -- 114
+newline$ -- 572
+num.names$ -- 351
+pop$ -- 1099
 preamble$ -- 1
-purify$ -- 956
+purify$ -- 949
 quote$ -- 0
-skip$ -- 1825
+skip$ -- 1787
 stack$ -- 0
-substring$ -- 4071
-swap$ -- 640
-text.length$ -- 62
+substring$ -- 3987
+swap$ -- 617
+text.length$ -- 59
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 690
-warning$ -- 12
-while$ -- 459
+type$ -- 684
+warning$ -- 11
+while$ -- 451
 width$ -- 0
-write$ -- 1503
+write$ -- 1487
 (There were 7 error messages)

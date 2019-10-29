@@ -11,19 +11,18 @@
  \label{fig:probe_intro_fig}
 \end{figure*}
 
-The first pseudo-sensor we present is a technique we call PRedictive ROBust Estimation, or PROBE. This approach uses non-parametric learning to build a model for anisotropic observation covariances for a stereo visual odometry pipeline. Namely, we apply the method of Generalized Kernels to a Bayesian treatment of covariance estimation. We show that by assuming a particular covariance prior over re-projection errors, we can then naturally derive a robust least squares objective that resembles the widely-used Cauchy loss. The parameters of this robust loss are predicted (hence \textit{predictive} robust estimation) for each error term as a function of a prediction space that we define.
+The first pseudo-sensor we present is a technique we call PRedictive ROBust Estimation, or PROBE. This approach uses non-parametric learning to build a model for anisotropic observation covariances for a stereo visual odometry pipeline. Namely, we apply the method of Generalized Kernel Estimation (GKE) to a Bayesian treatment of covariance estimation. We show that by assuming a particular covariance prior over re-projection errors, we can then naturally derive a robust least squares objective that resembles the widely-used Cauchy loss. The parameters of this robust loss are predicted (hence \textit{predictive} robust estimation) for each error term as a function of a prediction space that we define.
 
 PROBE was initially published as a simpler non-Bayesian technique that learned isotropic covariances through a k-nearest-neighbours approach (see Appendix \ref{app:appendix_probe_knn} for more details).  The following two publications summarize this initial technique:
 \begin{enumerate}
 \item \bibentry{2015_Peretroukhin_PROBE}
-\item \bibentry{2015_Peretroukhin_Get}
+\item \bibentry{2015_Peretroukhin_Get}.
 \end{enumerate}
 
-We significantly extended this technique to full anisotropic covariances and generalized kernels in the following publication:
+We significantly extended this technique to full anisotropic covariances and GKE in collaboration with William Vega-Brown at MIT. William was primarily responsible for the mathematical formulation of Generalized Kernels for VO and provided code to perform efficient GKE. I was responsible for the VO formulation, the integration of GKE into the VO pipeline, and all of the experimental work.
 \begin{enumerate}
 \item \bibentry{Peretroukhin2016-om}	.
 \end{enumerate}
-
 We will present this latter technique in this chapter.
 
 \section{Motivation}
@@ -49,7 +48,7 @@ Apart from simply rejecting outliers, a number of recent approaches attempt to
 select the optimal set of features to produce an accurate localization estimate
 from tracked visual features. For example, \citet{Tsotsos2015} amend Random
 Sample Consensus (RANSAC) with statistical hypothesis testing to ensure that tracked visual features have normally distributed residuals before including them in
-the estimator. Unlike our predictive approach, their technique relies on the availability of feature tracks, and requires scene overlap to work continuously. In a different
+the estimator. Unlike our predictive approach which can adjust covariances from a single observation, their technique requires features to be visible during several consecutive poses. In a different
 approach, \Citet{Zhang2015} choose an optimally observable feature subset for a
 monocular SLAM pipeline by selecting features with the highest \textit{informativeness} - a measure calculated based on the observability of the SLAM subsystem. Observability, however, is governed by the 3D location of the features, and therefore cannot predict systematic feature degradation due to environmental or sensor-based effects. 
 

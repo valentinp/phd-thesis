@@ -13,15 +13,17 @@
 
 Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to two seminal papers: \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds}.
 
-\section{A Taxonomy of VO}
+\begin{remark}{VO Taxonomy}
+VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the type of camera used to capture images and (2) the type of data association used to compute motion estimates. 
 
-VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the type of camera used to capture images (monocular vs. stereo) and (2) the type of data association used to compute motion estimates (indirect, or feature-based vs. direct, or pixel intensity-based). 
+\textbf{Monocular vs. Stereo Camera}:
+ Monocular VO methods \citep{engel_direct_2018,Tsotsos2015} use a single camera to infer motion and can use a single compact, low-power vision sensor. They do not require any extrinsic calibration but must rely on known visual cues or external information (e.g., wheel odometry, inertial measurements) to provide metric egomotion estimates. Conversely, stereo VO methods \citep{engel_direct_2018, Leutenegger2015-fk, Cvisic2015-mt} use a stereo camera to triangulate objects with metric scale. This allows stereo VO to provide metrically-accurate egomotion estimates. However, stereo methods rely on accurate extrinsic calibration, and their ability to resolve depth is limited by the baseline distance between the stereo pair and by the quality of stereo matches (which can be degraded by self-similar textures, occlusions, and foreshortening effects). 
 
-\textbf{Monocular vs. Stereo}:
- Monocular VO methods use a single camera to infer motion and can use a single compact, low-power vision sensor. They do not require any extrinsic calibration but must rely on known visual cues or external information (e.g., wheel odometry, inertial measurements) to provide metric egomotion estimates. Conversely, stereo VO methods use a stereo camera to triangulate objects with metric scale. This allows stereo VO to provide metrically-acurate egomotion estimates. However, stereo methods rely on accurate extrinsic calibration, and their ability to resolve depth is limited by the baseline distance between the stereo pair and by the quality of stereo matches (which can be degraded by self-similar textures, occlusions, and foreshortening effects). 
+\textbf{Direct vs. Indirect Data Association}:
+The second distinction is based on the type of data association used to match sequential images and infer motion. Direct methods \citep{engel_direct_2018,wang_stereo_2017} make the assumption of brightness constancy, and attempt to find the egomotion estimate that \textit{directly} maximizes the similarity of pixel intensities between images. Indirect methods\citep{Leutenegger2015-fk,Cvisic2015-mt}, conversely, rely on image features detectors to extract a set of salient landmarks or features, and then match these landmarks across images (typically by relying on a view-invariant descriptor).	
+\end{remark}
 
-\textbf{Direct vs. Indirect}:
-The second distinction is based on the type of data association used to match sequential images and infer motion. Direct methods make the assumption of brightness constancy, and attempt to find the egomotion estimate that \textit{directly} maximizes the similarity of pixel intensities between images. Indirect methods, conversely, rely on image features detectors to extract a set of salient landmarks or features, and then match these landmarks across images (typically by relying on a view-invariant descriptor).
+
 
 \section{Canonical VO Pipeline}
 

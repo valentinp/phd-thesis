@@ -147,12 +147,6 @@ Engel, J., Koltun, V., and Cremers, D. (2018).
 \newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
   40(3):611--625.
 
-\bibitem[Engel et~al., 2015]{Engel2015-il}
-Engel, J., Stuckler, J., and Cremers, D. (2015).
-\newblock Large-scale direct {SLAM} with stereo cameras.
-\newblock In {\em Proc. IEEE/RSJ Int. Conf. Intelligent Robots and Syst.
-  (IROS)}, pages 1935--1942.
-
 \bibitem[Farneb{\"a}ck, 2003]{farneback2003}
 Farneb{\"a}ck, G. (2003).
 \newblock Two-frame motion estimation based on polynomial expansion.
@@ -164,12 +158,6 @@ Fischler, M. and Bolles, R. (1981).
 \newblock Random sample consensus: a paradigm for model fitting with
   applications to image analysis and automated cartography.
 \newblock {\em Comm. ACM}, 24(6):381--395.
-
-\bibitem[Fisher, 1953]{fisher1953dispersion}
-Fisher, R. (1953).
-\newblock Dispersion on a sphere.
-\newblock In {\em Proc. Royal Society of London A: Mathematical, Physical and
-  Engineering Sciences}, volume 217, pages 295--305. The Royal Society.
 
 \bibitem[Fitzgibbon et~al., 2007]{fitzgibbon2007learning}
 Fitzgibbon, A.~W., Robertson, D.~P., Criminisi, A., Ramalingam, S., and Blake,
@@ -226,15 +214,22 @@ Gal, Y. (2016).
 \newblock {\em Uncertainty in Deep Learning}.
 \newblock PhD thesis, University of Cambridge.
 
-\bibitem[Gal and Ghahramani, 2016a]{Gal2016CNN}
+\bibitem[Gal and Ghahramani, 2016a]{Gal2015-bf}
 Gal, Y. and Ghahramani, Z. (2016a).
 \newblock Bayesian convolutional neural networks with {B}ernoulli approximate
   variational inference.
 \newblock In {\em Proc. Int. Conf. Learning Representations ({ICLR}), Workshop
   Track}.
 
-\bibitem[Gal and Ghahramani, 2016b]{Gal2016-ny}
+\bibitem[Gal and Ghahramani, 2016b]{Gal2016CNN}
 Gal, Y. and Ghahramani, Z. (2016b).
+\newblock Bayesian convolutional neural networks with {B}ernoulli approximate
+  variational inference.
+\newblock In {\em Proc. Int. Conf. Learning Representations ({ICLR}), Workshop
+  Track}.
+
+\bibitem[Gal and Ghahramani, 2016c]{Gal2016-ny}
+Gal, Y. and Ghahramani, Z. (2016c).
 \newblock Dropout as a bayesian approximation: Representing model uncertainty
   in deep learning.
 \newblock In {\em Proc. Int. Conf. Mach. Learning ({ICML})}, pages 1050--1059.

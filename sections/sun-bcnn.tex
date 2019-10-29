@@ -4,7 +4,7 @@
 
 \section{Introduction}
 
-Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model (a Bayesian Convolutional Neural Network) to act as a \textit{virtual sun sensor} that aims to reproduce the output of a dedicated sun sensor from a single RGB image.  This project was a collaboration with Lee Clement. While we both contributed to its formulation, Lee lead the integration of sun information into a visual odometry pipeline, while I designed and implemented the learning components.
+Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model (a Bayesian Convolutional Neural Network, or BCNN) to act as a \textit{virtual sun sensor} that aims to reproduce the output of a dedicated sun sensor from a single RGB image.  This project was a collaboration with Lee Clement. Lee lead the integration of sun information into a visual odometry pipeline, while I lead the design and implementation of the BCNN. 
 
 \begin{figure*}[h!]
 \centering
@@ -71,11 +71,11 @@ We also examine the impact of different methods for computing the mean and covar
 
 \section{Related Work}
 
-Visual odometry (VO), a technique to estimate the motion of a moving platform equipped with one or more cameras, has a rich history of research including a notable implementation onboard the Mars Exploration Rovers (MERs) \citep{Scaramuzza2011-qr}. 
-Modern approaches to VO can achieve estimation errors below 1\% of total distance traveled  \citep{Geiger2013-ky}. 
-To achieve such accurate and robust estimates, modern techniques use careful visual feature pruning \citep{Cvisic2015-mt}, adaptive robust methods  \citep{Alcantarilla2016-kv,Peretroukhin2016-om}, or operate directly on pixel intensities \citep{Engel2015-il}.
+%Visual odometry (VO), a technique to estimate the motion of a moving platform equipped with one or more cameras, has a rich history of research including a notable implementation onboard the Mars Exploration Rovers (MERs) \citep{Scaramuzza2011-qr}. 
+%Modern approaches to VO can achieve estimation errors below 1\% of total distance traveled  \citep{Geiger2013-ky}. 
+%To achieve such accurate and robust estimates, modern techniques use careful visual feature pruning \citep{Cvisic2015-mt}, adaptive robust methods  \citep{Alcantarilla2016-kv,Peretroukhin2016-om}, or operate directly on pixel intensities \citep{Engel2015-il}.
 
-Independent of the estimator, VO exhibits superlinear error growth, and is particularly sensitive to errors in orientation \citep{Olson2003-ax, Cvisic2015-mt}. 
+Independent of the type of estimator, VO exhibits superlinear error growth, and is particularly sensitive to errors in orientation \citep{Olson2003-ax, Cvisic2015-mt}. 
 One way to reduce orientation error is to incorporate observations of a landmark whose position or direction in the navigation frame is known \emph{a priori}. 
 The sun is an example of such a known directional landmark. 
 Accordingly, hardware sun sensors have been used to improve the accuracy of VO in planetary analogue environments (e.g., the Sinclair Interplanetary SS-411 sun sensor used by \citet{Furgale2011-zu} and \citet{Lambert2012-sn}), while the MERs articulated their Pancam apparatus to directly image the sun~\citep{Maimone2007-tc,Eisenman2002-cg}. 
@@ -94,43 +94,6 @@ We also build on the work of \citet{2017_Peretroukhin_Reducing}, who presented p
 
 While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{2017_Clement_Improving}). 
 Furthermore, our Bayesian CNN includes a dropout layer after every convolutional and fully connected layer (as outlined by \citet{Gal2016-ny} but not done by \citet{Kendall2016-zf}).
-
-\section{Background}
-\subsection{Neural Networks for Parametric Learning}
-
-
-\subsection{Convolutional Neural Networks}
-\subsection{Regularization and Dropout}
-
-\begin{figure}
-\centering
-\begin{subfigure}{0.45\textwidth}
-	\centering
-    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcn}
-    \caption{Standard fully-connected neural network.}
-\end{subfigure}
-~
-\begin{subfigure}{0.45\textwidth}
-	\centering
-    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcnwdrop}
-    \caption{A neural network with dropout applied.}
-\end{subfigure}
-\caption{The technique of \textit{dropout} stochastically removes the contribution of certain neurons to regularize learning. Figures	 from \cite{srivastava_dropout_2014}.}
-\label{fig:sun-bcnn_dropout}
-\end{figure}
-
-
-
-\subsection{Dropout as Variational Inference}
-\begin{align}
-\label{eq:sun_direction_mean}
-\Expectation{\Optimal{\Estimate{\SunDirection}}}_k &= \Optimal{\Estimate{\Mean{\SunDirection}}}_k \approx \frac{1}{N} \sum_{n=1}^N \Optimal{\Estimate{\SunDirection}}_k (\Optimal{\SunImage}_k, \CNNVariationalWeight^n) \\
-\Expectation{\Optimal{\Estimate{\SunDirection}_k} \Transpose{\Optimal{\Estimate{\SunDirection}}}_k} &\approx \tau^{-1} \IdentityMatrix 
- +  \frac{1}{N} \sum_{n=1}^N \Optimal{\Estimate{\SunDirection}}_k(\Optimal{\SunImage}_k, \CNNVariationalWeight^n) \Transpose{\Optimal{\Estimate{\SunDirection}_k}(\Optimal{\SunImage}_k, \CNNVariationalWeight^n)} \notag \\ 
- &- \Optimal{\Estimate{\Mean{\SunDirection}}}_k \Transpose{\Optimal{\Estimate{\Mean{\SunDirection}}}_k},
- \label{eq:bcnn_covar}
-\end{align}
-
 
 
 \section{Sun-Aided Stereo Visual Odometry} 
@@ -213,6 +176,121 @@ While $\Covariance_{\SunDirection_k}$ would generally be treated as an empirical
 In practice, we also attempt to mitigate the effect of outlier sun predictions by applying a robust Huber loss to the sun measurements in our optimizer.
 
 
+\section{Bayesian Convolutional Neural Networks}
+
+Recall from \Cref{section:math_dl_practical} that dropout (\Cref{fig:sun-bcnn_fcn_dropout}) is a stochastic regularization technique that was originally designed to improve the generalization performance of deep networks. \cite{Gal2015-bf} identified a link between applying dropout at test-time given a network trained with dropout (through a technique called \textit{Monte Carlo dropout}, or \textit{MC dropout}) and approximate variational inference in Bayesian Neural Networks. In this work, we leverage this insight to build a Bayesian Convolutional Neural Network through MC dropout. To elucidate the intuition behind this technique, we first review variational inference and then outline its connection to the technique of dropout. 
+
+\subsection{Bayesian Modelling and Variational Inference}
+
+Consider the goal of generating a function $f(\Vector{x}; \GenericParameters)$ that maps inputs $\Vector{x}$ to outputs $\Vector{y}$ a function of parameters $\GenericParameters$. Recall from \Cref{ch:probe}, that in Bayesian inference, we define a \textit{prior} on the space of parameters $p(\GenericParameters)$ and a \textit{likelihood function} that defines how likely we are to observe $\Vector{y}$ given an input $\Vector{x}$ and parameters $\GenericParameters$, $p(\Vector{y} | \Vector{x}, \GenericParameters)$. For example, in regression problems, we often define the Gaussian likelihood
+\begin{equation}
+	p(\Vector{y} | \Vector{x}, \GenericParameters) = \NormalDistribution(f(\Vector{x}; \GenericParameters),\tau^{-1}\IdentityMatrix)
+\end{equation}
+where $\tau$ is a model \textit{precision}. Given a dataset $\mathcal{D} = \{\Matrix{X}, \Matrix{Y}\} = \{\{\Vector{x}_1, ... \Vector{x}_N\},\{\Vector{y}_1, ..., \Vector{y}_N)\} \}$, the Bayesian formulation seeks a posterior over the parameters $\GenericParameters$:
+\begin{equation}
+\label{eq:sun_bcnn_param_posterior}
+	p(\GenericParameters | \mathcal{D}) = \frac{p(\Matrix{Y}|\Matrix{X}, \GenericParameters) p(\GenericParameters)}{p(\Matrix{Y} | \Matrix{X})}
+\end{equation}
+where we may think of this posterior as evaluating the sentence `the likelihood of the observed outputs given a particular set of parameters (weighted by a prior) compared to how likely they are in general'. This latter `in general' quantity is the marginal likelihood (also known as the model \textit{evidence}) over the space of parameters,
+\begin{equation}
+	p(\Matrix{Y} | \Matrix{X}) = \int_{\GenericParameters}  p(\Matrix{Y} | \Matrix{X}, \GenericParameters) p(\GenericParameters) d\GenericParameters.
+\end{equation}
+For a given test input $\Vector{x}^*$, we can then \textit{infer} a predictive distribution over the space of outputs by integrating over the posterior of model parameters:
+\begin{equation}
+	p(\Vector{y}^* | \Vector{x}^*, \mathcal{D}) = \int_{\GenericParameters}  p(\Vector{y}^* | \Vector{x}^*, \GenericParameters) p(\GenericParameters | \mathcal{D}) d\GenericParameters.
+\end{equation}
+For most problems, evaluating the posterior (\Cref{eq:sun_bcnn_param_posterior}) analytically is not feasible. In such cases, we can turn to the technique of \textit{variational inference} \citep{Gal2016UncertaintyThesis}.
+
+\subsubsection{Variational Inference}
+In variational inference, we define a simpler variational density $q(\GenericParameters; \Vector{\theta})$ based on the auxiliary parameters $\Vector{\theta}$. We then seek to minimize the Kullback-Leibler (KL) divergence between $q(\GenericParameters; \Vector{\theta})$ and the true posterior $p(\GenericParameters | \mathcal{D})$:
+\begin{equation}
+\label{eq:sun_bcnn_KL}
+	\Vector{\theta}^* = \ArgMin{\Vector{\theta}}\text{KL}(q(\GenericParameters; \Vector{\theta}) || p(\GenericParameters | \mathcal{D})),
+\end{equation}
+which then allows us to compute the approximate predictive distribution as
+\begin{equation}
+	p(\Vector{y}^* | \Vector{x}^*, \mathcal{D}) \approx \int_{\GenericParameters}  p(\Vector{y}^* | \Vector{x}^*, \GenericParameters) q(\GenericParameters; \Vector{\theta}^*) d\GenericParameters.
+\end{equation}
+One can show that minimizing KL divergence (\Cref{eq:sun_bcnn_KL}) is the same as maximizing the evidence lower bound (ELBO)\footnote{KL divergence and the ELBO differ by a constant that is not dependent on the auxiliary variables.} 
+\begin{equation}
+\label{eq:sun_bcnn_ELBO}
+	\Vector{\theta}^* = \ArgMax{\Vector{\theta}} -\mathcal{L}_{\text{ELBO}} = \ArgMax{\Vector{\theta}} \int_{\GenericParameters}  \log p(\Matrix{Y} | \Matrix{X}, \GenericParameters)  q(\GenericParameters; \Vector{\theta}) d\GenericParameters -  \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters)).
+\end{equation}
+Intuitively, maximizing the first term above (referred to as the expected log likelihood) ensures that $q(\GenericParameters; \Vector{\theta})$ explains the dataset well, while minimizing the latter term regularizes the optimization so that $q(\GenericParameters; \Vector{\theta})$ does not stray too far away from a prior.
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.45\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcn}
+    \caption{Standard fully-connected neural network.}
+\end{subfigure}
+~
+\begin{subfigure}{0.45\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcnwdrop}
+    \caption{A neural network with dropout applied.}
+\end{subfigure}
+\caption{The technique of \textit{dropout} stochastically removes the contribution of certain neurons to regularize learning. Figures	 from \cite{srivastava_dropout_2014}.}
+\label{fig:sun-bcnn_fcn_dropout}
+\end{figure}
+
+
+
+\subsection{Monte Carlo Dropout as Approximate Variational Inference}
+A key insight of \cite{Gal2016UncertaintyThesis, Gal2016-ny} was that the training objective of a neural network with dropout resembles the ELBO optimization of \Cref{eq:sun_bcnn_ELBO} with a careful choice of $q(\GenericParameters; \Vector{\theta})$.
+Namely, consider training a neural network with dropout and with \textit{weight decay} (as is commonly done). The loss function for supervised training in this scenario can be written as
+\begin{equation}
+\label{eq:sun_bcnn_dropout_obj}
+\mathcal{L}_{\text{dropout}}(\GenericParameters) = \underbrace{\frac{1}{N} \sum_{i=1}^N \mathcal{E}(\Vector{y}_i, \tilde{\Vector{y}}_i)}_{\text{error function}} + \underbrace{\lambda \sum_{\ell=1}^L	\left( \Norm{\Matrix{W}_\ell}_2^2 +  \Norm{\Vector{b}_\ell}_2^2\right)}_{\text{weight decay}},
+\end{equation}
+where $\Vector{y}_i$ is the target output and $\tilde{\Vector{y}}_i = NN(\Vector{x}_i)$ is a stochastic sample of the network output.Now if we define $q(\GenericParameters)$ to be a \textit{Bernoulli variational distribution}  over the network parameters as the re-parametrized density,
+\begin{align}
+	q(\GenericParameters; \Vector{\theta}) &= \{\text{diag} (\{ \epsilon_{i\ell} \}) \Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L \\
+	\epsilon_{i\ell} &\sim \text{Bernoulli}(p) 
+\end{align}
+where the auxiliary variables become the network parameters themselves, $\Vector{\theta} = \{\Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L$. We can show an equivalence between optimizing the variational inference ELBO loss function,
+\begin{align}
+\mathcal{L}_{\text{ELBO}}(\Vector{\theta}) &= -\int_{\GenericParameters}  \log p(\Matrix{Y} | \Matrix{X}, \GenericParameters)  q(\GenericParameters; \Vector{\theta}) d\GenericParameters +  \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters))\\
+&= - \sum_{i=1}^N \int_{\GenericParameters}  \log p(\Vector{y}_i | \Vector{x}_i, \GenericParameters)  q(\GenericParameters; \Vector{\theta}) d\GenericParameters + \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters))
+\end{align}
+and optimizing \Cref{eq:sun_bcnn_dropout_obj} above as follows. First, the first term above can be approximated through Monte Carlo integration with a single sample\footnote{In practice, stochastic gradient descent will select a mini-batch of these samples to give an unbiased estimate.} $\tilde{\GenericParameters}$ of $q(\GenericParameters; \Vector{\theta})$ such that, 
+\begin{align}
+	&= - \sum_{i=1}^N \log p(\Vector{y}_i | \Vector{x}_i, \tilde{\GenericParameters})  + \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters)).
+\end{align}
+Second, it is possible to show that there exist a Gaussian prior $p(\GenericParameters)$ such that the condition (Eq. 3.12, \cite{Gal2016UncertaintyThesis})
+\begin{align}
+\PartialDerivative{\text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters))}{\Vector{\theta}} \approx \PartialDerivative{\lambda \sum_{\ell=1}^L	\left( \Norm{\Matrix{W}_\ell}_2^2 +  \Norm{\Vector{b}_\ell}_2^2\right)}{\Vector{\theta}}	
+\end{align}
+holds. Finally, if we interpret $-\log p(\Vector{y}_i | \Vector{x}_i, \tilde{\GenericParameters})$ as $\mathcal{E}(\Vector{y}_i, \tilde{\Vector{y}}_i)$ then it follows that
+\begin{align}
+\PartialDerivative{\mathcal{L}_{\text{ELBO}}}{\Vector{\theta}} \propto \PartialDerivative{\mathcal{L}_{\text{Dropout}}}{\Vector{\theta}}
+\end{align} where the proportional constant can be written down analytically \citep{Gal2016UncertaintyThesis}. Thus the two objectives result in the same optimal parameters!
+\subsubsection{Computing Moments}
+The results above indicate that, once trained, a neural network with dropout gives us access to a predictive distribution over outputs $\Vector{y}$. An unbiased estimator for its mean and covariance are given by:
+\begin{equation}
+\label{eq:sun_bcnn_mc_dropout_mean}
+	\Expectation{\Vector{y}^*} = \frac{1}{T} \sum_{t=1}^T \tilde{\Vector{y}}^*_t,
+\end{equation}
+where $\tilde{\Vector{y}}^*_t = NN(\Vector{x}^*; \tilde{\GenericParameters}_t)$ and
+\begin{equation}
+\label{eq:sun_bcnn_mc_dropout_variance}
+	\text{Var}(\Vector{y}^*) = \tau^{-1} \IdentityMatrix +  \frac{1}{T} \sum_{t=1}^T \tilde{\Vector{y}}^*_t (\tilde{\Vector{y}}^*_t)^T - \Expectation{\Vector{y}^*} \Expectation{\Vector{y}^*}^T,
+\end{equation}
+where the precision $\tau$ defines the likelihood 
+\begin{equation}
+	p(\Vector{y} | \Vector{x}, \GenericParameters) = \NormalDistribution(NN(\Vector{x}; \GenericParameters),\tau^{-1}\IdentityMatrix)	
+\end{equation}
+and can be alternatively modelled as
+\begin{equation}
+	\tau = \frac{l^2 (1 - p)}{2N\lambda},
+\end{equation} 
+where $l$ defines a characteristic length scale \cite{Gal2016UncertaintyThesis}.
+This process is referred to as Monte Carlo dropout.
+
+\subsection{Extension to Convolutional Neural Networks}
+Although the derivation is more tedious, \cite{Gal2016UncertaintyThesis,Gal2016CNN} show that the same approximate variational inference can be carried out for convolutional neural networks by applying dropout after every convolution (and before pooling) during training and using MC dropout during testing.
+
 
 
 \section{Indirect Sun Detection using a Bayesian Convolutional Neural Network} \label{sec:sun-bcnn}
@@ -225,7 +303,7 @@ In practice, we also attempt to mitigate the effect of outlier sun predictions b
     \label{fig:sun-bcnn_kitti_cnn_activations}
 \end{figure}
 
-We use a Bayesian Convolutional Neural Network (BCNN) to infer the direction of the sun and an associated uncertainty, and refer to our model as Sun-BCNN. 
+Leveraging the work of \cite{Gal2016CNN}, we apply a Bayesian Convolutional Neural Network (BCNN) to infer the direction of the sun and an associated uncertainty, and refer to our model as Sun-BCNN. 
 We motivate the choice of a deep model through the empirical findings of \citet{2017_Clement_Improving} and \citet{Ma2016-at}, who demonstrated that a CNN-based sun detector can substantially outperform hand-crafted models such as that of \citet{Lalonde2011-jw} both in terms of measurement accuracy and in its application to a VO task.
 
 We choose a deep neural network structure based on GoogLeNet \citep{Szegedy2015-uw} due to its use in past work that adapted it for orientation regression \citep{Kendall2016-zf,Kendall2015-ew}. 
@@ -247,34 +325,16 @@ Note that in our implementation, we do not formulate the cosine distance loss ex
 We ensure that our network output, $\Estimate{\SunDirection}_k$, has a unit norm by appending a normalization layer to the network.
 
 \subsection{Uncertainty Estimation}
-Following recent work on Bayesian Convolutional Neural Networks (BCNNs) \citep{Gal2016CNN,Gal2016-ny,Gal2016UncertaintyThesis}, we modify our model architecture to enable the computation of principled covariance estimates associated with each predicted sun direction. 
-To achieve computationally tractable Bayesian inference with a CNN architecture, BCNNs exploit a connection between stochastic regularization (e.g., dropout, a widely used technique in deep learning to mitigate overfitting) and approximate variational inference of a Bayesian Neural Network.
-We outline the technique here briefly, and refer the reader to \citet{Gal2016CNN} for more details. 
-
-The method begins with a prior $p(\CNNVariationalWeight)$ on the weights in a deep neural network and attempts to compute a posterior distribution $p(\CNNVariationalWeight | \SunImageAll, \SunDirectionAll)$ given training inputs $\SunImageAll = \Set{\SunImage_k}$ and targets $\SunDirectionAll = \Set{\SunDirection_k}$. This posterior can be used to compute a predictive distribution for test samples but is generally intractable. To overcome this, the BCNN approach notes that CNN training with stochastic regularization can be viewed as variational inference if we define a variational distribution $q(\CNNVariationalWeight)$ as:
-\begin{align}
-	q(\CNNVariationalWeight_i) &= \CNNWeightAll_i \Diag{\{b^i_j\}_{j=1}^{K_i}}, \\
-    b^i_j &\in \mathrm{Bernoulli}(p_i).
-\end{align}
-Here, $i$ indexes a particular layer in the neural network with $K_i$ weights, $\CNNWeightAll$ are the weights to be optimized, $b^i_j$ are Bernoulli distributed binary variables, and $p_i$ is the dropout probability for weights in layer $i$.
-
-With this variational distribution $q(\CNNVariationalWeight)$, training a CNN with dropout is analogous to minimizing $\text{KL}(p(\CNNVariationalWeight | \SunImageAll, \SunDirectionAll)~||~q(\CNNVariationalWeight))$, the Kullback-Leibler (KL) divergence  between the variational distribution and the true posterior.
-At test time, the first two moments of the predictive distribution are approximated using Monte Carlo integration over the weights $\CNNVariationalWeight$:
+Using our notation for sun direction, we obtain the first two moments of the predictive distribution from our BCNN as (c.f. \Cref{eq:sun_bcnn_mc_dropout_mean,eq:sun_bcnn_mc_dropout_variance}):
 \begin{align}
 \label{eq:sun_direction_mean}
 \Expectation{\Optimal{\Estimate{\SunDirection}}}_k &= \Optimal{\Estimate{\Mean{\SunDirection}}}_k \approx \frac{1}{N} \sum_{n=1}^N \Optimal{\Estimate{\SunDirection}}_k (\Optimal{\SunImage}_k, \CNNVariationalWeight^n) \\
-\Expectation{\Optimal{\Estimate{\SunDirection}_k} \Transpose{\Optimal{\Estimate{\SunDirection}}}_k} &\approx \tau^{-1} \IdentityMatrix 
+\text{Var}(\Optimal{\Estimate{\SunDirection}_k}) &\approx \tau^{-1} \IdentityMatrix 
  +  \frac{1}{N} \sum_{n=1}^N \Optimal{\Estimate{\SunDirection}}_k(\Optimal{\SunImage}_k, \CNNVariationalWeight^n) \Transpose{\Optimal{\Estimate{\SunDirection}_k}(\Optimal{\SunImage}_k, \CNNVariationalWeight^n)} \notag \\ 
  &- \Optimal{\Estimate{\Mean{\SunDirection}}}_k \Transpose{\Optimal{\Estimate{\Mean{\SunDirection}}}_k},
  \label{eq:bcnn_covar}
 \end{align}
-where $\IdentityMatrix$ is the identity matrix, and $\CNNVariationalWeight^n$ is a sample from $q(\CNNVariationalWeight)$ (obtained by sampling the network with dropout). The model precision, $\tau$, is computed as
-\begin{equation}
-	\label{eq:model_precision}
-	\tau = \frac{p l^2}{2 M \lambda}, 
-\end{equation} 
-where $p$ is the dropout probability, $l$ is the characteristic length scale, $M$ is the number of samples in the training data, and $\lambda$ is the weight decay. 
-
+where $\IdentityMatrix$ is the identity matrix, and $\CNNVariationalWeight^n$ is a weight sample obtained indirectly by performing a forward pass with dropout.
 Following \citet{Gal2016CNN}, we build our BCNN by adding dropout layers after every convolutional and fully connected layer in the network. 
 We then retain these layers at test time to sample the network stochastically, following the technique of Monte Carlo Dropout, and obtain the relevant statistical quantities using \Cref{eq:bcnn_covar,eq:sun_direction_mean}. 
 
@@ -300,124 +360,124 @@ As noted by \citet{Gal2016UncertaintyThesis}, the BCNN can be made heteroscedast
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EXPERIMENTS: Simulated VO
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Simulation Experiments} \label{sec:sim_vo}
-\begin{figure*}
-\centering
-% \begin{subfigure}{0.4\textwidth}
-%     \includegraphics[width=\textwidth]{sims_circle200_environment}
-%     \caption{``Circle'' trajectory}
-% \end{subfigure}
-\begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{sun-bcnn/sims/sims_triangle200_environment}
-    \caption{``Triangle'' trajectory}
-\end{subfigure}
-~
-\begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{sun-bcnn/sims/sims_square200_environment}
-    \caption{``Square'' trajectory}
-\end{subfigure}
-~
-\begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{sun-bcnn/sims/sims_penta200_environment}
-    \caption{``Star'' trajectory}
-\end{subfigure}
-\caption{One loop of the ``Triangle'', ``Square'', and ``Star'' trajectories, consisting primarily of translation and yaw rotation. Landmarks are shown as black asterisks, and the simulated sun direction is indicated with a yellow arrow along with its projection, in grey, on the EN-plane.}
-\label{fig:sim_environment}
-\end{figure*}
-
-\begin{figure*}
-\centering
-\includegraphics[width=0.98\textwidth]{sun-bcnn/sims/sims_circle200_traj}
-\caption{Selected segments of a 100-loop ``Circle'' trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The effect of VO drift can be clearly seen, as well as the benefit of incorporating observations of a directional landmark such as the sun.}
-\label{fig:sim_topdown}
-\end{figure*}
-
-\begin{figure*}
-\centering
-	 \begin{subfigure}{0.42\textwidth}
-	 	\vspace{-5pt}
-    	\includegraphics[width=\textwidth]{sun-bcnn/sims/sims_circle200_enu_rmse}
-        \caption{Translational CRMSE (ENU)}
-        \label{fig:sim_traj}
-    \end{subfigure}
-    ~
-    \begin{subfigure}{0.42\textwidth}
-    	\vspace{-5pt}
-    	\includegraphics[width=\textwidth]{sun-bcnn/sims/sims_circle200_en_rmse}
-        \caption{Translational CRMSE (EN plane)}
-        \label{fig:sim_en_rmse}
-    \end{subfigure}
-    ~
-    \begin{subfigure}{0.42\textwidth}
-    	\includegraphics[width=\textwidth]{sun-bcnn/sims/sims_circle200_rot_rmse}
-        \caption{Rotational CRMSE}
-        \label{fig:sim_rot_rmse}
-    \end{subfigure}
-
-\caption{Cumulative root mean squared error (CRMSE) of a simulated 100-loop circular trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The accumulated estimation error is greatly reduced by incorporating observations of the sun, and the benefit decreases as these observations become noisier.}
-\label{fig:sim_rmse}
-\end{figure*}
-
-\begin{table}[]
-\centering
-\caption{Comparison of translational and rotational average root mean squared errors (ARMSE) on simulated sequences.}
-\label{tab:sim_armse}
-\begin{tabular}{@{}lcccc@{}}
-\textbf{Loop Shape}                                  & Circle & Triangle & Square & Star   \\ \midrule
-\textbf{\# Loops}                             & 100    & 100      & 100    & 100    \\ \midrule
-\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE {[}m{]}}  } \\
-\quad Without Sun & 2.22 & 2.00 & 2.33 & 1.41 \T\B \\
-\quad GT-Sun-0    & 1.19 & 1.62 & 2.13 & 0.75 \T \\
-\quad GT-Sun-10   & 2.29 & 2.07 & 2.05 & 1.32 \\
-\quad GT-Sun-20   & 2.08 & 2.12 & 2.31 & 1.33 \\
-\quad GT-Sun-30   & 2.10 & 1.95 & 2.16 & 1.38 \\ \midrule
-\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE (EN-plane) {[}m{]}}} \\
-\quad Without Sun & 2.67 & 1.88 & 2.57 & 1.10 \T\B \\
-\quad GT-Sun-0    & 1.34 & 1.89 & 2.56 & 0.83 \T \\
-\quad GT-Sun-10   & 2.61 & 2.04 & 2.26 & 0.99 \\
-\quad GT-Sun-20   & 2.44 & 2.03 & 2.57 & 0.88 \\
-\quad GT-Sun-30   & 2.46 & 2.00 & 2.35 & 1.25 \\ \midrule
-\multicolumn{5}{@{}l@{}}{\textbf{Rot. ARMSE $\mathbf{(\times 10^{-3})}$ {[}axis-angle{]}}} \\
-\quad Without Sun & 115.32 & 144.56 & 107.27 & 111.19 \T\B \\
-\quad GT-Sun-0    & 14.10  & 113.58 & 59.21  & 30.69  \T \\
-\quad GT-Sun-10   & 55.22  & 115.03 & 75.62  & 39.17  \\
-\quad GT-Sun-20   & 65.02  & 121.11 & 80.41  & 49.75  \\
-\quad GT-Sun-30   & 78.73  & 145.22 & 100.91 & 72.39  \\ \bottomrule
-\end{tabular}
-\end{table}
-
-
-We assess the benefit of incorporating sun observations of varying quality by conducting a series of simulation experiments consisting of a stereo camera moving along loopy trajectories of varying shapes through a simulated field of point landmarks, with a single static directional landmark representing the sun.
-\Cref{fig:sim_environment} shows several such loopy trajectories.
-
-We simulate the sun at $45^\circ$ of zenith and an arbitrary azimuth angle, and corrupt observations of the ground truth sun vector with artificial noise such that the mean angular distance (a non-negative quantity) between the observed and true sun direction is $0^\circ$, $10^\circ$, $20^\circ$, and $30^\circ$, labeling these conditions \emph{GT-Sun-0}, \emph{GT-Sun-10}, \emph{GT-Sun-20}, and \emph{GT-Sun-30}, respectively.
-In our experiments, we treated the measurement noise as an additive quantity sampled from a zero-mean isotropic 3D Gaussian distribution, and renormalized the resulting vectors to enforce the unit-norm constraint.
-
-
-We simulate the sun at $45^\circ$ of zenith and an arbitrary azimuth angle, and corrupt observations of the ground truth sun vector with artificial noise such that the mean angular distance (a non-negative quantity computed from the dot product) between the ground truth and noisy sun vectors is $0^\circ$, $10^\circ$, $20^\circ$, or $30^\circ$.
-We label these conditions \emph{GT-Sun-0}, \emph{GT-Sun-10}, \emph{GT-Sun-20}, and \emph{GT-Sun-30}, respectively.
-We generated these noisy measurements by first sampling \mbox{3-vectors} from an isotropic zero-mean multivariate Gaussian distribution, then adding these vectors to the ground truth sun vector, and finally normalizing the result to unit length. 
-We chose the covariance of this distribution to yield the desired average angular distance in each case.
-Note that although the distribution from which we sample noise vectors is zero-mean, the average angular distances will not be zero-mean because angular distance is non-negative.
-
-
-Our choice to add noise in $\Real^3$ and re-normalize was motivated by the fact that this process yields approximately Gaussian error distributions over the azimuth and zenith error angles, which is an important property assumed by our VO pipeline to produce maximum likelihood motion estimates based on the fusion of multiple data sources.
-We note that these distributions are less Gaussian-like for larger covariances (due to the geometry of the unit 2-sphere) and for ground truth vectors near singularities (e.g., zero zenith).
-
-We also experimented with sampling simulated measurements from a Von Mises-Fisher distribution \citep{fisher1953dispersion}, which is approximately analogous to an isotropic Gaussian distribution that respects the geodesics on the unit 2-sphere.
-However, we observed that the resulting distributions on azimuth and zenith error were severely non-Gaussian, which violated the assumption of zero-mean Gaussian noise in our VO pipeline and interfered with our VO experiments.
-
-Since our VO pipeline does not incorporate loop closures, the effects of drift in the VO solution can be clearly seen by examining individual loops in the camera trajectory. 
-\Cref{fig:sim_topdown} shows three loops from the ``Circle'' trajectory, demonstrating that the VO solution drifts significantly from the true trajectory by the 100th loop.
-\Cref{fig:sim_rmse} plots the translational and rotational cumulative root mean squared error (CRMSE) for this trajectory, which measures the growth in total estimation error over time.
-\Cref{fig:sim_rot_rmse} in particular highlights the significant effect of sun sensing on rotational error, where we see a clear progression in estimation error as the sun direction observations become more noisy.
-
-\Cref{tab:sim_armse} shows that while all four simulation trajectories display consistent and predictable reductions in rotational average root mean squared error (ARMSE), this is not always the case for translational ARMSE.
-This is because translational errors are only partially induced by rotational errors, with the remainder made up of `sliding' motions orthogonal to the direction of travel.
-These non-rotational errors are highly dependent on the specific trajectory, where more or less of the observed feature tracks can be explained by a sliding motion instead of a rotation.
-Due to the coupling of translational and rotational errors, correcting for rotational error in such cases may actually worsen the translational error (e.g., on the ``Triangle'' sequence).
-
-While we do not implement this in our work, we speculate that incorporating an appropriate motion model into our VO formulation would significantly mitigate the impact of these errors by, for example, imposing a nonholonomic constraint on a ground vehicle or accounting for the dynamics of a quadcopter.
+%\section{Simulation Experiments} \label{sec:sim_vo}
+%\begin{figure*}
+%\centering
+%% \begin{subfigure}{0.4\textwidth}
+%%     \includegraphics[width=\textwidth]{sims_circle200_environment}
+%%     \caption{``Circle'' trajectory}
+%% \end{subfigure}
+%\begin{subfigure}{0.45\textwidth}
+%    \includegraphics[width=\textwidth]{sun-bcnn/sims/sims_triangle200_environment}
+%    \caption{``Triangle'' trajectory}
+%\end{subfigure}
+%~
+%\begin{subfigure}{0.45\textwidth}
+%    \includegraphics[width=\textwidth]{sun-bcnn/sims/sims_square200_environment}
+%    \caption{``Square'' trajectory}
+%\end{subfigure}
+%~
+%\begin{subfigure}{0.45\textwidth}
+%    \includegraphics[width=\textwidth]{sun-bcnn/sims/sims_penta200_environment}
+%    \caption{``Star'' trajectory}
+%\end{subfigure}
+%\caption{One loop of the ``Triangle'', ``Square'', and ``Star'' trajectories, consisting primarily of translation and yaw rotation. Landmarks are shown as black asterisks, and the simulated sun direction is indicated with a yellow arrow along with its projection, in grey, on the EN-plane.}
+%\label{fig:sim_environment}
+%\end{figure*}
+%
+%\begin{figure*}
+%\centering
+%\includegraphics[width=0.98\textwidth]{sun-bcnn/sims/sims_circle200_traj}
+%\caption{Selected segments of a 100-loop ``Circle'' trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The effect of VO drift can be clearly seen, as well as the benefit of incorporating observations of a directional landmark such as the sun.}
+%\label{fig:sim_topdown}
+%\end{figure*}
+%
+%\begin{figure*}
+%\centering
+%	 \begin{subfigure}{0.42\textwidth}
+%	 	\vspace{-5pt}
+%    	\includegraphics[width=\textwidth]{sun-bcnn/sims/sims_circle200_enu_rmse}
+%        \caption{Translational CRMSE (ENU)}
+%        \label{fig:sim_traj}
+%    \end{subfigure}
+%    ~
+%    \begin{subfigure}{0.42\textwidth}
+%    	\vspace{-5pt}
+%    	\includegraphics[width=\textwidth]{sun-bcnn/sims/sims_circle200_en_rmse}
+%        \caption{Translational CRMSE (EN plane)}
+%        \label{fig:sim_en_rmse}
+%    \end{subfigure}
+%    ~
+%    \begin{subfigure}{0.42\textwidth}
+%    	\includegraphics[width=\textwidth]{sun-bcnn/sims/sims_circle200_rot_rmse}
+%        \caption{Rotational CRMSE}
+%        \label{fig:sim_rot_rmse}
+%    \end{subfigure}
+%
+%\caption{Cumulative root mean squared error (CRMSE) of a simulated 100-loop circular trajectory, without sun corrections, and with sun corrections corrupted by varying levels of artificial Gaussian noise. The accumulated estimation error is greatly reduced by incorporating observations of the sun, and the benefit decreases as these observations become noisier.}
+%\label{fig:sim_rmse}
+%\end{figure*}
+%
+%\begin{table}[]
+%\centering
+%\caption{Comparison of translational and rotational average root mean squared errors (ARMSE) on simulated sequences.}
+%\label{tab:sim_armse}
+%\begin{tabular}{@{}lcccc@{}}
+%\textbf{Loop Shape}                                  & Circle & Triangle & Square & Star   \\ \midrule
+%\textbf{\# Loops}                             & 100    & 100      & 100    & 100    \\ \midrule
+%\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE {[}m{]}}  } \\
+%\quad Without Sun & 2.22 & 2.00 & 2.33 & 1.41 \T\B \\
+%\quad GT-Sun-0    & 1.19 & 1.62 & 2.13 & 0.75 \T \\
+%\quad GT-Sun-10   & 2.29 & 2.07 & 2.05 & 1.32 \\
+%\quad GT-Sun-20   & 2.08 & 2.12 & 2.31 & 1.33 \\
+%\quad GT-Sun-30   & 2.10 & 1.95 & 2.16 & 1.38 \\ \midrule
+%\multicolumn{5}{@{}l@{}}{\textbf{Trans. ARMSE (EN-plane) {[}m{]}}} \\
+%\quad Without Sun & 2.67 & 1.88 & 2.57 & 1.10 \T\B \\
+%\quad GT-Sun-0    & 1.34 & 1.89 & 2.56 & 0.83 \T \\
+%\quad GT-Sun-10   & 2.61 & 2.04 & 2.26 & 0.99 \\
+%\quad GT-Sun-20   & 2.44 & 2.03 & 2.57 & 0.88 \\
+%\quad GT-Sun-30   & 2.46 & 2.00 & 2.35 & 1.25 \\ \midrule
+%\multicolumn{5}{@{}l@{}}{\textbf{Rot. ARMSE $\mathbf{(\times 10^{-3})}$ {[}axis-angle{]}}} \\
+%\quad Without Sun & 115.32 & 144.56 & 107.27 & 111.19 \T\B \\
+%\quad GT-Sun-0    & 14.10  & 113.58 & 59.21  & 30.69  \T \\
+%\quad GT-Sun-10   & 55.22  & 115.03 & 75.62  & 39.17  \\
+%\quad GT-Sun-20   & 65.02  & 121.11 & 80.41  & 49.75  \\
+%\quad GT-Sun-30   & 78.73  & 145.22 & 100.91 & 72.39  \\ \bottomrule
+%\end{tabular}
+%\end{table}
+%
+%
+%We assess the benefit of incorporating sun observations of varying quality by conducting a series of simulation experiments consisting of a stereo camera moving along loopy trajectories of varying shapes through a simulated field of point landmarks, with a single static directional landmark representing the sun.
+%\Cref{fig:sim_environment} shows several such loopy trajectories.
+%
+%We simulate the sun at $45^\circ$ of zenith and an arbitrary azimuth angle, and corrupt observations of the ground truth sun vector with artificial noise such that the mean angular distance (a non-negative quantity) between the observed and true sun direction is $0^\circ$, $10^\circ$, $20^\circ$, and $30^\circ$, labeling these conditions \emph{GT-Sun-0}, \emph{GT-Sun-10}, \emph{GT-Sun-20}, and \emph{GT-Sun-30}, respectively.
+%In our experiments, we treated the measurement noise as an additive quantity sampled from a zero-mean isotropic 3D Gaussian distribution, and renormalized the resulting vectors to enforce the unit-norm constraint.
+%
+%
+%We simulate the sun at $45^\circ$ of zenith and an arbitrary azimuth angle, and corrupt observations of the ground truth sun vector with artificial noise such that the mean angular distance (a non-negative quantity computed from the dot product) between the ground truth and noisy sun vectors is $0^\circ$, $10^\circ$, $20^\circ$, or $30^\circ$.
+%We label these conditions \emph{GT-Sun-0}, \emph{GT-Sun-10}, \emph{GT-Sun-20}, and \emph{GT-Sun-30}, respectively.
+%We generated these noisy measurements by first sampling \mbox{3-vectors} from an isotropic zero-mean multivariate Gaussian distribution, then adding these vectors to the ground truth sun vector, and finally normalizing the result to unit length. 
+%We chose the covariance of this distribution to yield the desired average angular distance in each case.
+%Note that although the distribution from which we sample noise vectors is zero-mean, the average angular distances will not be zero-mean because angular distance is non-negative.
+%
+%
+%Our choice to add noise in $\Real^3$ and re-normalize was motivated by the fact that this process yields approximately Gaussian error distributions over the azimuth and zenith error angles, which is an important property assumed by our VO pipeline to produce maximum likelihood motion estimates based on the fusion of multiple data sources.
+%We note that these distributions are less Gaussian-like for larger covariances (due to the geometry of the unit 2-sphere) and for ground truth vectors near singularities (e.g., zero zenith).
+%
+%We also experimented with sampling simulated measurements from a Von Mises-Fisher distribution \citep{fisher1953dispersion}, which is approximately analogous to an isotropic Gaussian distribution that respects the geodesics on the unit 2-sphere.
+%However, we observed that the resulting distributions on azimuth and zenith error were severely non-Gaussian, which violated the assumption of zero-mean Gaussian noise in our VO pipeline and interfered with our VO experiments.
+%
+%Since our VO pipeline does not incorporate loop closures, the effects of drift in the VO solution can be clearly seen by examining individual loops in the camera trajectory. 
+%\Cref{fig:sim_topdown} shows three loops from the ``Circle'' trajectory, demonstrating that the VO solution drifts significantly from the true trajectory by the 100th loop.
+%\Cref{fig:sim_rmse} plots the translational and rotational cumulative root mean squared error (CRMSE) for this trajectory, which measures the growth in total estimation error over time.
+%\Cref{fig:sim_rot_rmse} in particular highlights the significant effect of sun sensing on rotational error, where we see a clear progression in estimation error as the sun direction observations become more noisy.
+%
+%\Cref{tab:sim_armse} shows that while all four simulation trajectories display consistent and predictable reductions in rotational average root mean squared error (ARMSE), this is not always the case for translational ARMSE.
+%This is because translational errors are only partially induced by rotational errors, with the remainder made up of `sliding' motions orthogonal to the direction of travel.
+%These non-rotational errors are highly dependent on the specific trajectory, where more or less of the observed feature tracks can be explained by a sliding motion instead of a rotation.
+%Due to the coupling of translational and rotational errors, correcting for rotational error in such cases may actually worsen the translational error (e.g., on the ``Triangle'' sequence).
+%
+%While we do not implement this in our work, we speculate that incorporating an appropriate motion model into our VO formulation would significantly mitigate the impact of these errors by, for example, imposing a nonholonomic constraint on a ground vehicle or accounting for the dynamics of a quadcopter.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EXPERIMENTS: KITTI
@@ -617,7 +677,7 @@ This procedure is consistent with that of \citet{Ma2016-at}, against whose Sun-C
 Once trained, we analyzed the accuracy and consistency of the Sun-BCNN mean and covariance estimates.
 We obtained the mean estimated sun vector by evaluating \Cref{eq:sun_direction_mean} with $N=25$ and then re-normalized the resulting vector to preserve unit length. 
 To obtain the required covariance on azimuth and zenith angles, we sampled the vector outputs, converted them to azimuth and zenith angles using \Cref{eq:vec-to-az-zen}, and then applied \Cref{eq:bcnn_covar}.
-We investigate the impact of this parametrization (as opposed to working in azimuth and zenith coordinates directly) later in this paper.
+We investigate the impact of this parametrization (as opposed to working in azimuth and zenith coordinates directly) later in this chapter.
 As shown in \Cref{tab:kitti_test_cnn}, we chose a value for the model precision $\tau$ such that the Average Normalized Estimation Error Squared (ANEES) of each test sequence is close to one (i.e., the estimator is consistent).
 
 \Cref{fig:kitti_test_error_whiskers,fig:sun-bcnn_kitti_cnn_testerrors} plot the error distributions for azimuth, zenith, and angular distance for all ten KITTI odometry sequences, while \Cref{fig:sun-bcnn_kitti_error_over_time} shows three characteristic plots of the azimuth and zenith predictions over time. 
@@ -881,7 +941,7 @@ Accordingly, we investigated the effect of cloud cover on Sun-BCNN using selecte
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\textwidth]{sun-bcnn/oxford/oxford_oxford-sun-cloud}
+    \includegraphics[width=0.7\textwidth]{sun-bcnn/oxford/oxford_oxford-sun-cloud}
     \caption{Sample images of approximately the same location taken from three different Oxford Robotcar sequences we used to investigate the effect of cloud cover on Sun-BCNN.}
     \label{fig:oxford-images}
 \end{figure}

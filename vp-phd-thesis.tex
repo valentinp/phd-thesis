@@ -114,7 +114,7 @@
 
 
 %%%%%%%%%%%%      INCLUDE ONLY        %%%%%%%%%%%%
-\includeonly{sections/introduction,sections/learning-background,sections/math}
+%\includeonly{sections/sun-bcnn}
 
 %%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
 
@@ -139,8 +139,8 @@
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
 The ability to estimate \textit{egomotion} is at the heart of safe and reliable mobile autonomy. By inferring pose changes from sequential sensor measurements, egomotion estimation forms the basis of mapping and navigation pipelines, and permits mobile robots to self-localize within environments where external localization information may be intermittent or unavailable. 
 Visual egomotion estimation, also known as \textit{visual odometry}, has become ubiquitous in mobile robotics due to the availability of high-quality, compact, and inexpensive cameras that capture rich representations of the world.
- To remain computationally tractable, `classical' visual odometry pipelines make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error. In this dissertation, we present several ways in which conventional pipelines can be improved through the addition of a \textit{pseudo-sensor}. In this context, a \textit{pseudo-sensor} is a data-driven model that infers latent information that is difficult to extract through analytic measurement models. By fusing the output of such pseudo-sensors with traditional pipelines, we retain the performance of conventional techniques in nominal conditions while leveraging modern high-capacity data-driven models to improve uncertainty quantification, correct for systematic bias, and improve robustness to deleterious effects.
-We validate our approach on data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the Canadian High Arctic.
+ To remain computationally tractable, `classical' visual odometry pipelines make simplifying assumptions that, while permitting reliable operation in ideal conditions, often lead to systematic error. In this dissertation, we present four ways in which conventional pipelines can be improved through the addition of a \textit{pseudo-sensor}. In this context, a \textit{pseudo-sensor} is a learned hyper-parametric model that infers latent information from sensor data. By fusing the output of such pseudo-sensors with traditional pipelines, we retain the performance of conventional techniques in nominal conditions while leveraging modern high-capacity data-driven models to improve uncertainty quantification, correct for systematic bias, and improve robustness to deleterious effects.
+We demonstrate the improvements derived from pseudo-sensors on data collected in sundry settings such as urban roads, indoor labs, and planetary analogue sites in the Canadian High Arctic.
 \end{abstract}
 
 %% Anything placed between the abstract and table of contents will
@@ -230,7 +230,6 @@ To all those who encouraged (or, at least, \textit{never discouraged}) my intell
 
 %% *** Include chapter files here. ***
 \include{sections/introduction}
-\include{sections/learning-background}
 \include{sections/math}
 \include{sections/vo}
 \include{sections/probe}
