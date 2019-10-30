@@ -4,7 +4,8 @@
 
 \section{Introduction}
 
-Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that can do just that. Namely, we train a deep parametric model (a Bayesian Convolutional Neural Network, or BCNN) to act as a \textit{virtual sun sensor} that aims to reproduce the output of a dedicated sun sensor from a single RGB image.  This project was a collaboration with Lee Clement. Lee lead the integration of sun information into a visual odometry pipeline, while I lead the design and implementation of the BCNN. 
+Given that we can infer useful uncertainty information from images, is it possible to infer both uncertainty and some other geometric quantity that can aid in egomotion estimation? In this chapter, we present a pseudo-sensor that addresses that question. Namely, we train a deep parametric model (a Bayesian Convolutional Neural Network, or BCNN) to act as a \textit{virtual sun sensor} that aims to reproduce the output of a dedicated sun sensor from a single RGB image. 
+
 
 \begin{figure*}[h!]
 \centering
@@ -13,18 +14,30 @@ Given that we can infer useful uncertainty information from images, is it possib
  \label{fig:sun-bcnn_intro_fig}
 \end{figure*}
 
-This work was associated with three publications:
+\begin{remark}{Associated Publications}
+This project was a collaboration with Lee Clement. Broadly, Lee lead the integration of sun information into a visual odometry pipeline, while I lead the design and implementation of the BCNN. It is associated with three publications. The first publication was exploratory work on (non-probabilistic) virtual sun sensors lead by Lee,
 \begin{enumerate}
 \item \bibentry{2017_Clement_Improving},
+\end{enumerate}
+while the latter two publications were a joint collaboration where I developed and investigated the BCNN formulation and while we collaborated on the experimental validation,
+\begin{enumerate}[resume]
 \item \bibentry{2017_Peretroukhin_Reducing},
 \item \bibentry{2018_Peretroukhin_Inferring}.
 \end{enumerate}
 This chapter is largely a reproduction of the latter journal publication which summarizes the approach.
- 
+\end{remark} 
 
 \section{Motivation}
 A crucial competency of any autonomous mobile robot is the ability to estimate its own motion through an operating environment.
 While there exists a rich body of literature on the topic of motion estimation using a variety of techniques such as lidar-based point cloud matching \citep{Zhang2015} and visual-inertial odometry \citep{Leutenegger2015-fk}, egomotion estimation is fundamentally a process of dead-reckoning and will accumulate unbounded error over time.
+
+%\begin{wrapfigure}{r}{0.5\textwidth}
+%    \centering
+%      \includegraphics[width=0.48\columnwidth]{sun-bcnn/system_overview}
+%      \caption{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph{virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.}
+%    \label{fig:sun-bcnn_system}
+%\end{wrapfigure}
+
 This accumulated error, or drift, can be limited by incorporating global information into the motion estimation problem.
 This frequently takes the form of a globally consistent map, loop closure detection, or reliance on additional sensors such as GPS to make corrections to the estimated trajectory.
 In many situations, however, a globally consistent map may be unavailable or prohibitively expensive to compute, loop closures may not occur, or GPS may be unavailable or inaccurate.
@@ -41,12 +54,7 @@ In such cases, it can be advantageous to rely on environmental cues such as the 
 
 
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \centering
-      \includegraphics[width=0.48\columnwidth]{sun-bcnn/system_overview}
-      \caption{Our method uses a Bayesian Convolutional Neural Network (BCNN) to estimate the direction of the sun and to produce a principled uncertainty estimate for each prediction. We incorporate this \emph{virtual sun sensor} into a stereo visual odometry pipeline to reduce estimation error.}
-    \label{fig:sun-bcnn_system}
-\end{wrapfigure}
+
 
 For visual odometry (VO) in particular, the addition of global orientation information can limit the growth of drift error to be linear rather than superlinear with distance traveled \citep{Olson2003-ax}.
 

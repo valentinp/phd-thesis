@@ -10,7 +10,7 @@
 \usepackage{threeparttable}
 \usepackage{multirow}
 \usepackage{tabularx}
-
+\usepackage{enumitem}
 
 \usepackage{tikz}
 \usepackage{venndiagram}
@@ -29,9 +29,8 @@
 \usepackage{framed}
 
 \colorlet{shadecolor}{gray!10}
-\newtheorem{theorem}{remark}
 \newenvironment{remark}[1]
-   {\begin{shaded} \textbf{Remark} (#1).}
+   {\begin{shaded}\noindent\textbf{Remark} (\textit{#1}).}
    {\end{shaded}}
    
  

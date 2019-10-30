@@ -3,27 +3,29 @@
 \epigraph{Anyone who has ever used any other parametrization of the rotation group will, within hours of taking up the quaternion parametrization, lament his or her misspent youth.}{Simon Altmann}
 
 \section{Introduction}
- \begin{figure*}[h!]
-\centering
-\includegraphics[width=0.8\textwidth]{hydranet.pdf}
- \caption{We use a network structure we name \textit{HydraNet} to learn rotations with associated uncertainty.}
- \label{fig:dpc_intro_fig}
-\end{figure*}
+% \begin{figure*}[h!]
+%\centering
+%\includegraphics[width=0.8\textwidth]{hydranet.pdf}
+% \caption{We use a network structure we name \textit{HydraNet} to learn rotations with associated uncertainty.}
+% \label{fig:dpc_intro_fig}
+%\end{figure*}
 
-Finally, we take the lessons of Sun-BCNN and DPC-Net and present a method to learn probabilistic estimates of rotation. We show that this pseudo-sensor can extract relative rotation estimates which can be fused with full pose estimates from a canonical VO pipeline estimates through pose graph optimization. To do this, we develop a network structure we call \textit{HydraNet} that can account for both epistemic and aleatoric sources of uncertainty and adapt it to the problem of estimating elements of $\LieGroupSO{3}$. This work is associated with one publication:
+Finally, we take the lessons of Sun-BCNN and DPC-Net and present a method to learn probabilistic estimates of rotation. We show that this pseudo-sensor can extract relative rotation estimates which can be fused with full pose estimates from a canonical VO pipeline estimates through pose graph optimization. To do this, we develop a network structure we call \textit{HydraNet} that can account for both epistemic and aleatoric sources of uncertainty and adapt it to the problem of estimating elements of $\LieGroupSO{3}$. 
 
+\begin{remark}{Associated Publications}
+This work is associated with the publication
 \begin{itemize}
 \item \bibentry{2019_Peretroukhin_Deep}.
 \end{itemize}
+In this chapter we elaborate on the formulation and experimental validation presented within that publication.
+\end{remark}
 
-
-\begin{wrapfigure}{r}{0.6\textwidth}
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.58\textwidth]{so3_learning/main_fig}
-	\caption{We improve classical pose estimation by fusing it with deep probabilistic models.}
-	\label{fig:fusion_fig}
-	\vspace{-1em}
-\end{wrapfigure}
+	\includegraphics[width=0.68\textwidth]{so3_learning/main_fig}
+	\caption{HydraNet produces an estimate of relative rotation (with a principled covariance matrix) that can be fused with existing egomotion pipelines through pose graph optimization.}
+	\label{fig:hydranet_fusion_fig}
+\end{figure}
 
 \section{Motivation}
 %%%%%%%%% BODY TEXT

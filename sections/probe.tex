@@ -13,6 +13,7 @@
 
 The first pseudo-sensor we present is a technique we call PRedictive ROBust Estimation, or PROBE. This approach uses non-parametric learning to build a model for anisotropic observation covariances for a stereo visual odometry pipeline. Namely, we apply the method of Generalized Kernel Estimation (GKE) to a Bayesian treatment of covariance estimation. We show that by assuming a particular covariance prior over re-projection errors, we can then naturally derive a robust least squares objective that resembles the widely-used Cauchy loss. The parameters of this robust loss are predicted (hence \textit{predictive} robust estimation) for each error term as a function of a prediction space that we define.
 
+\begin{remark}{Associated Publications}
 PROBE was initially published as a simpler non-Bayesian technique that learned isotropic covariances through a k-nearest-neighbours approach (see Appendix \ref{app:appendix_probe_knn} for more details).  The following two publications summarize this initial technique:
 \begin{enumerate}
 \item \bibentry{2015_Peretroukhin_PROBE}
@@ -20,10 +21,11 @@ PROBE was initially published as a simpler non-Bayesian technique that learned i
 \end{enumerate}
 
 We significantly extended this technique to full anisotropic covariances and GKE in collaboration with William Vega-Brown at MIT. William was primarily responsible for the mathematical formulation of Generalized Kernels for VO and provided code to perform efficient GKE. I was responsible for the VO formulation, the integration of GKE into the VO pipeline, and all of the experimental work.
-\begin{enumerate}
+\begin{enumerate}[resume]
 \item \bibentry{Peretroukhin2016-om}	.
 \end{enumerate}
 We will present this latter technique in this chapter.
+\end{remark}
 
 \section{Motivation}
 
