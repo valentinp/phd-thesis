@@ -50,57 +50,57 @@ I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
 Warning--I didn't find a database entry for "2015_Peretroukhin_Get;Peretroukhin2016-om"
 Warning--I didn't find a database entry for "Kendall2017-u"
-Warning--I didn't find a database entry for "Hornik2014-jw"
 Warning--empty journal in Alcantarilla2016-kv
 Warning--empty booktitle in Clark2017
 Warning--empty journal in DeTone2016-ue
 Warning--empty school in florez2010
 Warning--empty booktitle in Forster2015-af
 Warning--empty school in furgale_phd11
+Warning--empty journal in Kendall2017-vs
 Warning--empty journal in Lee2015-af
 Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
-You've used 115 entries,
+You've used 116 entries,
             1935 wiz_defined-function locations,
-            1183 strings with 26421 characters,
-and the built_in function-call counts, 55176 in all, are:
-= -- 5522
-> -- 2265
-< -- 96
-+ -- 787
-- -- 767
-* -- 4415
-:= -- 8910
-add.period$ -- 353
-call.type$ -- 115
-change.case$ -- 943
-chr.to.int$ -- 109
-cite$ -- 126
-duplicate$ -- 2346
-empty$ -- 3927
-format.name$ -- 932
-if$ -- 11387
-int.to.chr$ -- 7
+            1193 strings with 26689 characters,
+and the built_in function-call counts, 55652 in all, are:
+= -- 5574
+> -- 2278
+< -- 99
++ -- 790
+- -- 771
+* -- 4454
+:= -- 8982
+add.period$ -- 356
+call.type$ -- 116
+change.case$ -- 950
+chr.to.int$ -- 111
+cite$ -- 128
+duplicate$ -- 2369
+empty$ -- 3957
+format.name$ -- 939
+if$ -- 11489
+int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 114
-newline$ -- 572
-num.names$ -- 351
-pop$ -- 1099
+missing$ -- 115
+newline$ -- 576
+num.names$ -- 354
+pop$ -- 1104
 preamble$ -- 1
-purify$ -- 949
+purify$ -- 956
 quote$ -- 0
-skip$ -- 1787
+skip$ -- 1811
 stack$ -- 0
-substring$ -- 3987
-swap$ -- 617
-text.length$ -- 59
+substring$ -- 4019
+swap$ -- 628
+text.length$ -- 61
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 684
-warning$ -- 11
-while$ -- 451
+type$ -- 690
+warning$ -- 12
+while$ -- 456
 width$ -- 0
-write$ -- 1487
+write$ -- 1500
 (There were 7 error messages)

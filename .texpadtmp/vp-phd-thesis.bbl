@@ -18,6 +18,14 @@ Altmann, S.~L. (1989).
 \newblock Hamilton, rodrigues, and the quaternion scandal.
 \newblock {\em Math. Mag.}, 62(5):291--308.
 
+\bibitem[Amos and Kolter, 2017]{amos2017optnet}
+Amos, B. and Kolter, J.~Z. (2017).
+\newblock {O}pt{N}et: Differentiable optimization as a layer in neural
+  networks.
+\newblock In {\em Proceedings of the 34th International Conference on Machine
+  Learning}, volume~70 of {\em Proceedings of Machine Learning Research}, pages
+  136--145. PMLR.
+
 \bibitem[Barfoot, 2017]{Barfoot2017-ri}
 Barfoot, T.~D. (2017).
 \newblock {\em State Estimation for Robotics}.
@@ -78,12 +86,6 @@ Cheng, Y., Maimone, M.~W., and Matthies, L. (2006).
 Clark, R., Wang, S., Wen, H., Markham, A., and Trigoni, N. (2017).
 \newblock Vinet: Visual-inertial odometry as a sequence-to-sequence learning
   problem.
-
-\bibitem[Clement and Kelly, 2018]{Clement2018-cat}
-Clement, L. and Kelly, J. (2018).
-\newblock How to train a {CAT}: learning canonical appearance transformations
-  for direct visual localization under illumination change.
-\newblock {\em IEEE Robotics and Automation Letters}, 3(3):2447--2454.
 
 \bibitem[Clement et~al., 2017]{2017_Clement_Improving}
 Clement, L., Peretroukhin, V., and Kelly, J. (2017).
@@ -214,22 +216,15 @@ Gal, Y. (2016).
 \newblock {\em Uncertainty in Deep Learning}.
 \newblock PhD thesis, University of Cambridge.
 
-\bibitem[Gal and Ghahramani, 2016a]{Gal2015-bf}
+\bibitem[Gal and Ghahramani, 2016a]{Gal2016CNN}
 Gal, Y. and Ghahramani, Z. (2016a).
 \newblock Bayesian convolutional neural networks with {B}ernoulli approximate
   variational inference.
 \newblock In {\em Proc. Int. Conf. Learning Representations ({ICLR}), Workshop
   Track}.
 
-\bibitem[Gal and Ghahramani, 2016b]{Gal2016CNN}
+\bibitem[Gal and Ghahramani, 2016b]{Gal2016-ny}
 Gal, Y. and Ghahramani, Z. (2016b).
-\newblock Bayesian convolutional neural networks with {B}ernoulli approximate
-  variational inference.
-\newblock In {\em Proc. Int. Conf. Learning Representations ({ICLR}), Workshop
-  Track}.
-
-\bibitem[Gal and Ghahramani, 2016c]{Gal2016-ny}
-Gal, Y. and Ghahramani, Z. (2016c).
 \newblock Dropout as a bayesian approximation: Representing model uncertainty
   in deep learning.
 \newblock In {\em Proc. Int. Conf. Mach. Learning ({ICML})}, pages 1050--1059.
@@ -340,6 +335,11 @@ Kendall, A. and Cipolla, R. (2017).
 \newblock In {\em 2017 {IEEE} Conference on Computer Vision and Pattern
   Recognition ({CVPR})}, pages 6555--6564.
 
+\bibitem[Kendall and Gal, 2017]{Kendall2017-vs}
+Kendall, A. and Gal, Y. (2017).
+\newblock What uncertainties do we need in bayesian deep learning for computer
+  vision?
+
 \bibitem[Kendall et~al., 2015]{Kendall2015-ew}
 Kendall, A., Grimes, M., and Cipolla, R. (2015).
 \newblock {PoseNet}: A convolutional network for {Real-Time} {6-DOF} camera
@@ -358,6 +358,11 @@ Kingma, D.~P. and Ba, J. (2017).
 \newblock Adam: {A} {Method} for {Stochastic} {Optimization}.
 \newblock In {\em International {Conference} on {Learning} {Representations}}.
 \newblock arXiv: 1412.6980.
+
+\bibitem[Kullback and Leibler, 1951]{kullback1951information}
+Kullback, S. and Leibler, R.~A. (1951).
+\newblock On information and sufficiency.
+\newblock {\em The annals of mathematical statistics}, 22(1):79--86.
 
 \bibitem[Lakshminarayanan et~al., 2017]{Lakshminarayanan2017}
 Lakshminarayanan, B., Pritzel, A., and Blundell, C. (2017).

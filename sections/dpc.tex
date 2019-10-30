@@ -27,7 +27,7 @@ This chapter is largely a reproduction of that publication.
 
 
 \section{Motivation}
-Deep convolutional neural networks (CNNs) are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\citep{LeCun2015-qf}. 
+As we saw noted in the previous chapter, convolutional neural networks (CNNs) are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\citep{LeCun2015-qf}. 
 These CNN-based techniques achieve accuracies previously
 unattainable by classical methods. In mobile robotics and state estimation, however, it remains unclear to what extent these deep architectures can obviate the need for classical geometric modelling. 
 Visual localization algorithms like VO can suffer from several systematic error sources
@@ -42,11 +42,11 @@ that include estimator biases \citep{Peretroukhin2014-db}, poor calibration, and
 
 
 
-We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from recent results \citep{2017_Peretroukhin_Reducing} that demonstrate that CNNs can infer difficult-to-model geometric quantities (e.g., the direction of the sun) to improve an existing localization estimate.  
+We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from Sun-BCNN that demonstrates that CNNs can infer difficult-to-model geometric quantities to improve an existing localization estimate.  
 In a similar vein, we propose a system (\Cref{fig:dpc_system_overview}) that takes as its starting point an efficient, classical localization algorithm that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
 
 % By applying the correction to the final $\LieGroupSE{3}$ pose, we design DPC-Net to learn effects that are often difficult to model by hand: estimator bias, environmental factors, and sensor mis-calibrations.
-Although in this work we focus on visual data, the DPC-Net architecture can be readily modified to learn $\LieGroupSE{3}$ corrections for estimators that operate with other sensor modalities (e.g., lidar). For this general task, we derive a pose regression loss function and a closed-form analytic expression for its Jacobian. Our loss permits a network to learn an unconstrained Lie algebra coordinate vector, but derives its Jacobian with respect to $\LieGroupSE{3}$ geodesic distance. 
+Although in this chapter we focus on visual data, the DPC-Net architecture can be readily modified to learn $\LieGroupSE{3}$ corrections for estimators that operate with other sensor modalities (e.g., lidar). For this general task, we derive a pose regression loss function and a closed-form analytic expression for its Jacobian. Our loss permits a network to learn an unconstrained Lie algebra coordinate vector, but derives its Jacobian with respect to $\LieGroupSE{3}$ geodesic distance. 
 
 
 
@@ -59,7 +59,8 @@ In mobile robotics, deep neural networks have ushered in a new paradigm of end-t
 
 Nevertheless, a number of recent approaches have presented convolutional neural network architectures that purport to obviate the need for classical visual localization algorithms. For example, Kendall et al.~\citep{Kendall2015-ew, Kendall2017-ud} presented extensive work on PoseNet, a CNN-based camera re-localization approach that regresses the 6-DOF pose of a camera within a previously explored environment. Building upon PoseNet, Melekhov~\citep{Melekhov2017-dl} applied a similar CNN learning paradigm to relative camera motion. In related work, Costante et al. \citep{Costante2016-hb} presented a CNN-based VO technique that uses pre-processed dense optical flow images. By focusing on RGB-D odometry, Handa et al.~\cite{Handa2016-hm}, detailed an approach to learning relative poses with \textit{3D Spatial Transformer} modules and a dense photometric loss. Finally, Oliviera et al. \citep{Oliveira2017-lt} and Clark et al.~\citep{Clark2017} described techniques for more general sensor fusion and mapping. The former work outlined a DNN-based topometric localization pipeline with separate VO and place recognition modules while the latter presented VINet, a CNN paired with a recurrent neural network for visual-inertial sensor fusion and online calibration.
 
-With this recent surge of work in end-to-end learning for visual localization, one may be tempted to think this is the only way forward. It is important to note, however, that these deep CNN-based approaches do not yet report state-of-the-art localization accuracy, focusing instead on proof-of-concept validation. Indeed, at the time of writing, the most accurate visual odometry approach on the KITTI odometry benchmark leaderboard\footnote{See \url{http://www.cvlibs.net/datasets/kitti/eval_odometry.php}.} remains a variant of a sparse feature-based pipeline with carefully hand-tuned optimization~\citep{Cvisic2015-mt}. 
+With this recent surge of work in end-to-end learning for visual localization, one may be tempted to think this is the only way forward. It is important to note, however (as noted in the introduction), that these deep CNN-based approaches do not yet report state-of-the-art localization accuracy, focusing instead on proof-of-concept validation. 
+%Indeed, at the time of writing, the most accurate visual odometry approach on the KITTI odometry benchmark leaderboard\footnote{See \url{http://www.cvlibs.net/datasets/kitti/eval_odometry.php}.} remains a variant of a sparse feature-based pipeline with carefully hand-tuned optimization~\citep{Cvisic2015-mt}. 
 
 Taking inspiration from Sun-BCNN (\Cref{ch:sun-bcnn}) that shows that CNNs can be used to inject global orientation information into a visual localization pipeline, and leveraging ideas from recent approaches to trajectory tracking in the field of controls~\citep{2017_Li_Deep, Punjani2015-pj}, we formulate a system that learns \textit{pose corrections} to an existing estimator, instead of learning the entire localization problem \textit{ab initio}.
 
@@ -82,16 +83,15 @@ Given two coordinate frames $\CoordinateFrame{i}$, $\CoordinateFrame{i+\deltap}$
 \begin{equation}
 	\TargetCorrectionIndex = \TargetVOTransform \Inv{\EstimatedVOTransform},
 \end{equation}
-from two pairs of stereo images (collectively referred to as $\ImageQuad_{t_{i}, t_{i+\deltap}}$) captured at $t_{i}$ and $t_{i+\deltap}$\footnote{Note that the visual estimator does not necessarily compute $\EstimatedVOTransform$ directly. $\EstimatedVOTransform$ may be compounded from several estimates.}. Given a dataset, $\{ \TargetCorrectionIndex, \ImageQuad_{t_{i}, t_{i+\deltap}} \}^N_{i=1}$,  we now turn to the problem of selecting an appropriate loss function for learning $\LieGroupSE{3}$ corrections.
+from two pairs of stereo images (collectively referred to as $\ImageQuad_{t_{i}, t_{i+\deltap}}$) captured at $t_{i}$ and $t_{i+\deltap}$. Note that the visual estimator does not necessarily compute $\EstimatedVOTransform$ directly. $\EstimatedVOTransform$ may be compounded from several estimates. Given a dataset, $\{ \TargetCorrectionIndex, \ImageQuad_{t_{i}, t_{i+\deltap}} \}^N_{i=1}$,  we now turn to the problem of selecting an appropriate loss function for learning $\LieGroupSE{3}$ corrections.
 
 \subsection{Loss Function: Correcting $\LieGroupSE{3}$ Estimates}
 
-One possible approach to learning $\TargetCorrection$ is to break it into constituent parts and then compose a loss function as the weighted sum of translational and rotational error norms (as done in \cite{Kendall2015-ew, Melekhov2017-dl, Oliveira2017-lt}). This however does not account for the possible correlation between the two losses, and requires the careful tuning of a scalar weight.
 
-In this work, we instead choose to parametrize our correction prediction as $\Transform = \Matexp{\PredictionVector}$, where $\PredictionVector \in \Real^6$, a vector of Lie algebra coordinates, is the output of our network (similar to \cite{Handa2016-hm}). We define a loss for $\PredictionVector$ as 
+In this work, we choose to parametrize our correction prediction as $\Transform = \Matexp{\PredictionVector}$, where $\PredictionVector \in \Real^6$, a vector of Lie algebra coordinates, is the output of our network (similar to \cite{Handa2016-hm}). We define a loss for $\PredictionVector$ as 
 \begin{equation}
 	\label{eq:se3loss_fn}
-\CostFunction (\PredictionVector) = \frac{1}{2} \LogMapFunction{\PredictionVector}^T \Inv{\TransformCovariance} \LogMapFunction{\PredictionVector},
+\CostFunction (\Transform, \TargetCorrection) = \CostFunction (\PredictionVector, \TargetCorrection) = \frac{1}{2} \LogMapFunction{\PredictionVector}^T \Inv{\TransformCovariance} \LogMapFunction{\PredictionVector},
 \end{equation} where 
 \begin{equation}
 	\label{eq:se3logmap_fn}
@@ -103,10 +103,17 @@ Given two stereo image pairs, we use the output of DPC-Net, $\PredictionVector$,
 	\EstimatedVOTransformCorrectedNoSub = \Matexp{\PredictionVector} \EstimatedVOTransformNoSub,
 \end{align}
 where we have dropped subscripts for clarity.
+\begin{remark}{Loss Functions over $\LieGroupSE{3}$}
+An alternative possible approach to learning $\TargetCorrection$ is to break it into constituent parts and then compose a loss function as the weighted sum of translational and rotational error norms (as done in \cite{Kendall2015-ew, Melekhov2017-dl, Oliveira2017-lt}). That is,
+\begin{equation}
+	\CostFunction (\Transform, \Transform^*) = \CostFunction_{\text{rot}}(\Rotation, \Rotation^*) + \beta \CostFunction_{\text{trans}}(\Vector{r},\Vector{r}^*).
+\end{equation}
+This however does not account for the possible correlation between the two losses, and requires the careful tuning of a scalar weight $\beta$.
+\end{remark}
 
 \subsection{Loss Function: $\LieGroupSE{3}$ Covariance}
 
-Since we are learning estimator \textit{corrections}, we can compute an empirical covariance over the training set as
+Importantly, since we are learning small estimator \textit{corrections}, we can compute an empirical covariance over the training set as
 %\footnote{This calculation assumes a zero mean for $\TargetCorrectionVector$, though this is not necessary.}
 
 \begin{equation}
@@ -126,7 +133,7 @@ In order to use \Cref{eq:se3loss_fn} to train DPC-Net with back-propagation, we 
 	\label{eq:se3_jacobchainrule}
 	\PartialDerivative{\CostFunction (\PredictionVector) }{ \PredictionVector} =  \LogMapFunction{\PredictionVector}^T \Inv{\TransformCovariance} \PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}.
 \end{equation}
-The term $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ is of importance. We can derive it in two ways. To start, note two important identities \cite{Barfoot2017-ri}. First,
+The term $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ is of importance. We can derive it in two ways. To start, note two important identities \cite{Barfoot2017-ri}. First, recalling the identity introduced in \Cref{ch:math},
 \begin{equation}
 	\label{eq:delta_xi_exp}
 \Matexp{( \TransformVector + \delta \TransformVector)} \approx \Matexp{(\LeftJacobianSE \delta \TransformVector)} \Matexp{\TransformVector},
@@ -141,20 +148,9 @@ Second, if $\Transform_1 \definedtobe \Matexp{\TransformVector_1}$ and $\Transfo
 		\Inv{\LeftJacobianSE(\TransformVector_2)} \TransformVector_1 + \TransformVector_2   & \mbox{if } \PredictionVector_1 ~ \mbox{small} \\
 		\TransformVector_1 + \Inv{\LeftJacobianSE(-\TransformVector_1)} \TransformVector_2 & \mbox{if } \PredictionVector_2 ~ \mbox{small}.
 	\end{array}
-\right\}
+\right.
 \end{align}
-See \cite{Barfoot2017-ri} for a detailed treatment of matrix Lie groups and their use in state estimation.
-\subsubsection{Deriving $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$, Method I}
-If we assume that only $\TransformVector$ is `small', we can apply \Cref{eq:jacobian_xi_small} directly to define
-\begin{equation}
-	\label{eq:logjacob_method1}
-	\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector} = \Inv{\LeftJacobianSE(-\TargetCorrectionVector)}, 
-\end{equation}
-with $	\TargetCorrectionVector \definedtobe \Matlog{\TargetCorrection}$. Although attractively compact, note that this expression for $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ assumes that $\PredictionVector$ is small, and may be inaccurate for `larger' $\TargetCorrection$ (since we will therefore require $\PredictionVector$ to be commensurately `large').
-
-\subsubsection{Deriving $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$, Method II}
-
-Alternatively, we can linearize \Cref{eq:se3logmap_fn} about $\PredictionVector$, by considering a small change $\delta \PredictionVector$ and applying \Cref{eq:delta_xi_exp}:
+To derive $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$, we can linearize \Cref{eq:se3logmap_fn} about $\PredictionVector$, by considering a small change $\delta \PredictionVector$ and applying \Cref{eq:delta_xi_exp}:
 \begin{align}
 	\LogMapFunction{\PredictionVector + \delta \PredictionVector} &=  \Matlog{\Matexp{( \TransformVector + \delta \TransformVector)} \Inv{\TargetCorrection}} \\
 	&\approx \Matlog{\Matexp{(\LeftJacobianSE \delta \TransformVector)} \Matexp{\TransformVector} \Inv{\TargetCorrection}}.
@@ -169,16 +165,22 @@ Comparing this to the first order Taylor expansion: $\LogMapFunction{\Prediction
 	\label{eq:logjacob_method2}
 	\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector} = \Inv{\LeftJacobianSE(\LogMapFunction{\PredictionVector})} \LeftJacobianSE( \TransformVector).
 \end{equation}
-Although slightly more computationally expensive, this expression makes no assumptions about the `magnitude` of our correction and works reliably for any target. Note further that if $\PredictionVector$ is small, then $\LeftJacobianSE( \TransformVector) \approx \IdentityMatrix$ and $\Matexp{\TransformVector} \approx \IdentityMatrix$. Thus,
+This expression makes no assumptions about the `magnitude` of our correction and works reliably for any target. To summarize, to apply back-propagation to \Cref{eq:se3loss_fn}, we use \Cref{eq:se3_jacobchainrule} and \Cref{eq:logjacob_method2}.
+\begin{remark}{Alternative Derivation of $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$}
+If we assume that only $\TransformVector$ is `small', we can apply \Cref{eq:jacobian_xi_small} directly to define
+\begin{equation}
+	\label{eq:logjacob_method1}
+	\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector} = \Inv{\LeftJacobianSE(-\TargetCorrectionVector)}, 
+\end{equation}
+with $	\TargetCorrectionVector \definedtobe \Matlog{\TargetCorrection}$. Although attractively compact, note that this expression for $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ assumes that $\PredictionVector$ is small, and may be inaccurate for `larger' $\TargetCorrection$ (since we will therefore require $\PredictionVector$ to be commensurately `large'). Note further that if $\PredictionVector$ is small, then $\LeftJacobianSE( \TransformVector) \approx \IdentityMatrix$ and $\Matexp{\TransformVector} \approx \IdentityMatrix$. Thus,
 \begin{equation}
 	\LogMapFunction{\PredictionVector} \approx \Matlog{\Inv{\TargetCorrection}} = -\TargetCorrectionVector,
 \end{equation}
 and \Cref{eq:logjacob_method2} becomes
 \begin{equation}
-	\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector} = \Inv{\LeftJacobianSE(-\TargetCorrectionVector)}, 
-\end{equation}
-which matches \textit{Method I}. To summarize, to apply back-propagation to \Cref{eq:se3loss_fn}, we use \Cref{eq:se3_jacobchainrule} and \Cref{eq:logjacob_method2}.
-
+	\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector} = \Inv{\LeftJacobianSE(-\TargetCorrectionVector)}. 
+\end{equation}.
+\end{remark}
 % \subsection{Practicalities}
 % In practice, we amend our loss function, without altering its Jacobians, to indicate when DPC-Net learns corrections that are `closer' (in the sense of \Cref{eq:se3loss_fn}) to our targets than the original estimator (when $\PredictionVector = \Vector{0}$):
 % \begin{align}
@@ -253,7 +255,7 @@ with the pose error defined as
 We refer the reader to \cite{Barfoot2017-ri} for a detailed treatment of pose-graph relaxation.
 
 \section{Experiments}
-To assess the power of our proposed deep corrective paradigm, we trained DPC-Net on visual data with localization estimates from a sparse stereo visual odometry (S-VO) estimator. In addition to training the full $\LieGroupSE{3}$ DPC-Net, we modified the loss function and input data to learn simpler $\LieGroupSO{3}$ rotation corrections, and simpler still, yaw angle corrections. For reference, we compared S-VO with different DPC-Net corrections to a state-of-the-art dense estimator. Finally, we trained DPC-Net on visual data and localization estimates from radially-distorted and cropped images. 
+To assess the power of our proposed deep corrective paradigm, we trained DPC-Net on visual data with localization estimates from the canonical indirect stereo visual odometry (S-VO) estimator we presented in \Cref{ch:vo}. In addition to training the full $\LieGroupSE{3}$ DPC-Net, we modified the loss function and input data to learn simpler $\LieGroupSO{3}$ rotation corrections, and simpler still, yaw angle corrections. For reference, we compared S-VO with different DPC-Net corrections to a state-of-the-art dense estimator. Finally, we trained DPC-Net on visual data and localization estimates from radially-distorted and cropped images. 
 
 \subsection{Training \& Testing}
 For all experiments, we used the KITTI odometry benchmark training set \cite{Geiger2013-ky}. Specifically, our data consisted of the eight sequences \texttt{00},\texttt{02} and \texttt{05}-\texttt{10} (we removed sequences \texttt{01}, \texttt{03}, \texttt{04} to ensure that all data originated from the `residential' category for training and test consistency).
@@ -281,7 +283,7 @@ Our baseline estimator is based on the reprojection-error based maximum likeliho
     \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) ) \\ &\sim \NormalDistribution{}(\Vector{0},\Covariance),
    \label{eq:dpc_image_error}
 \end{align}
-where $\ProjectionFunction(\cdot)$ is the stereo camera projection function. To generate an initial guess and to reject outliers, we use three point Random Sample Consensus (RANSAC) based on stereo reprojection error.
+where $\ProjectionFunction(\cdot)$ is the stereo camera projection function and we set $\Covariance = \text{diag}(\begin{smallmatrix} 1& 1 &4\end{smallmatrix})~\text{px}^2$. To generate an initial guess and to reject outliers, we use three point Random Sample Consensus (RANSAC) based on stereo reprojection error.
 Finally, we solve for the maximum likelihood transform, $\Transform_t^*$, through a Gauss-Newton minimization:
 \begin{equation}
   \Transform_t^* = \ArgMin{\Transform_t\in\text{SE}(3)}\sum_{i=1}^{N_{t}} 
@@ -309,10 +311,10 @@ With this distorted dataset, we computed S-VO localization estimates and then tr
 
 
 
-\subsubsection{Dense Visual Odometry}
-Finally, we present localization estimates from a computationally-intensive keyframe-based dense, direct visual localization pipeline \citep{Clement2018-cat} that computes relative camera poses by minimizing photometric error with respect to a keyframe image. To compute the photometric error, the pipeline relies on an inverse compositional approach to map the image coordinates of a tracking image to the image coordinates of the reference depth image. As the camera moves through an environment, a new keyframe depth image is computed and stored when the camera field-of-view differs sufficiently from the last keyframe. 
+\subsubsection{Direct Keyframe-Based Visual Odometry}
+Finally, we present localization estimates from a computationally-intensive keyframe-based direct visual localization pipeline largely based on the framework presented in \cite{engel_direct_2018}. This pipeline computes relative camera poses by minimizing photometric error with respect to a keyframe image. To compute the photometric error, the pipeline relies on an inverse compositional approach to map the image coordinates of a tracking image to the image coordinates of the reference depth image. As the camera moves through an environment, a new keyframe depth image is computed and stored when the camera field-of-view differs sufficiently from the last keyframe. 
 
-We used this dense, direct estimator as our benchmark for a state-of-the-art visual localizer, and compared its accuracy to that of a much less computationally expensive sparse estimator paired with DPC-Net.
+We used this expensive direct estimator as our benchmark for a state-of-the-art visual localizer, and compared its accuracy to that of a much less computationally expensive sparse estimator paired with DPC-Net.
 
 \begin{figure}
     \centering

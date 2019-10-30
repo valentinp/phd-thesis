@@ -240,18 +240,6 @@ with $\Matrix{Q}(\TransformVector)$ having an analytic expression (see \cite{Bar
 
 \section{Uncertainty through Injection}
 
-
-\begin{wrapfigure}{r}{0.35\textwidth}
-  \vspace{-20pt}
-  \begin{center}
-	\includegraphics[width=0.33\textwidth]{math/quaternion_uncertainty.pdf}
-  \end{center}
-    \vspace{-20pt}
-	\label{fig:math_quat_uncertainty}
-	\caption{We can define uncertainty in the left tangent space of a mean element of a Lie group (here illustrated for unit quaternions).}
-\end{wrapfigure} 
-
-
 We can also use perturbation theory to implicitly define uncertainty on constrained manifolds (see \cite{Barfoot2014-ac} for a thorough discussion). Given a concentrated normal density, $\delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6})$, we can \textit{inject} this unconstrained density onto the Lie group through left perturbations about some mean using
 \begin{align}
 \Transform &= \MatExp{\delta \TransformVector} \Mean{\Transform}. 

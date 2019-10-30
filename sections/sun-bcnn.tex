@@ -106,7 +106,7 @@ Furthermore, our Bayesian CNN includes a dropout layer after every convolutional
 
 \section{Sun-Aided Stereo Visual Odometry} 
 \label{sec:sun_bcnn-stereo-vo}
-We adopt a sliding window sparse stereo VO technique (adopted based on the frame-to-frame pipeline described in \Cref{ch:vo}) that has been used in a number of successful mobile robotics applications \citep{Cheng2006-nl,Furgale2010-to,Geiger2011-xe,Kelly2008-mh}.
+For this work, we adopt a sliding window sparse stereo VO technique (derived from the frame-to-frame pipeline described in \Cref{ch:vo}) that has been used in a number of successful mobile robotics applications \citep{Cheng2006-nl,Furgale2010-to,Geiger2011-xe,Kelly2008-mh}.
 Our task is to estimate a window of $\LieGroupSE{3}$ poses $\Set{\Transform_{k_1,0}, \Transform_{k_1+1,0}, \dots, \Transform_{k_2-1, 0}, \Transform_{k_2, 0}}$ expressed in a base coordinate frame $\CoordinateFrame{0}$, given a prior estimate of the transformation $\Transform_{k_1,0}$.
 We accomplish this by tracking keypoints across pairs of stereo images and computing an initial guess for each pose in the window using frame-to-frame point cloud alignment, which we then refine by solving a local bundle adjustment problem over the window.
 In our experiments we choose a window size of two, which we observed to provide good VO accuracy at low computational cost. 
@@ -186,11 +186,29 @@ In practice, we also attempt to mitigate the effect of outlier sun predictions b
 
 \section{Bayesian Convolutional Neural Networks}
 
-Recall from \Cref{section:math_dl_practical} that dropout (\Cref{fig:sun-bcnn_fcn_dropout}) is a stochastic regularization technique that was originally designed to improve the generalization performance of deep networks. \cite{Gal2015-bf} identified a link between applying dropout at test-time given a network trained with dropout (through a technique called \textit{Monte Carlo dropout}, or \textit{MC dropout}) and approximate variational inference in Bayesian Neural Networks. In this work, we leverage this insight to build a Bayesian Convolutional Neural Network through MC dropout. To elucidate the intuition behind this technique, we first review variational inference and then outline its connection to the technique of dropout. 
+Recall from \Cref{section:math_dl_practical} that dropout (\Cref{fig:sun-bcnn_fcn_dropout}) is a stochastic regularization technique that was originally designed to improve the generalization performance of deep networks. Dropout works by randomly `turning off' certain inputs of layers to simulate an ensemble of smaller networks during training. \cite{Gal2016CNN} identified a link between applying dropout at test-time given a network trained with dropout (through a technique called \textit{Monte Carlo dropout}, or \textit{MC dropout}) and approximate variational inference for a particular type of Bayesian Neural Network. In this work, we leverage this insight to build a Bayesian Convolutional Neural Network through MC dropout. To elucidate the intuition behind this technique, we first review variational inference and then outline its connection to the technique of dropout. 
+
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.45\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcn}
+    \caption{Standard fully-connected neural network.}
+\end{subfigure}
+~
+\begin{subfigure}{0.45\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcnwdrop}
+    \caption{A neural network with dropout applied.}
+\end{subfigure}
+\caption{The technique of \textit{dropout} stochastically removes the contribution of certain neurons to regularize learning. Figures	 from \cite{srivastava_dropout_2014}.}
+\label{fig:sun-bcnn_fcn_dropout}
+\end{figure}
 
 \subsection{Bayesian Modelling and Variational Inference}
 
-Consider the goal of generating a function $f(\Vector{x}; \GenericParameters)$ that maps inputs $\Vector{x}$ to outputs $\Vector{y}$ a function of parameters $\GenericParameters$. Recall from \Cref{ch:probe}, that in Bayesian inference, we define a \textit{prior} on the space of parameters $p(\GenericParameters)$ and a \textit{likelihood function} that defines how likely we are to observe $\Vector{y}$ given an input $\Vector{x}$ and parameters $\GenericParameters$, $p(\Vector{y} | \Vector{x}, \GenericParameters)$. For example, in regression problems, we often define the Gaussian likelihood
+Consider the goal of generating a function $f(\Vector{x}; \GenericParameters)$ that maps inputs $\Vector{x}$ to outputs $\Vector{y}$ as a function of parameters $\GenericParameters$. Recall from \Cref{ch:probe} that in Bayesian inference we define a \textit{prior} on the space of parameters $p(\GenericParameters)$ and a \textit{likelihood function} that defines how likely we are to observe $\Vector{y}$ given an input $\Vector{x}$ and parameters $\GenericParameters$, $p(\Vector{y} | \Vector{x}, \GenericParameters)$. For example, in regression problems, we often define the Gaussian likelihood
 \begin{equation}
 	p(\Vector{y} | \Vector{x}, \GenericParameters) = \NormalDistribution(f(\Vector{x}; \GenericParameters),\tau^{-1}\IdentityMatrix)
 \end{equation}
@@ -210,49 +228,33 @@ For a given test input $\Vector{x}^*$, we can then \textit{infer} a predictive d
 For most problems, evaluating the posterior (\Cref{eq:sun_bcnn_param_posterior}) analytically is not feasible. In such cases, we can turn to the technique of \textit{variational inference} \citep{Gal2016UncertaintyThesis}.
 
 \subsubsection{Variational Inference}
-In variational inference, we define a simpler variational density $q(\GenericParameters; \Vector{\theta})$ based on the auxiliary parameters $\Vector{\theta}$. We then seek to minimize the Kullback-Leibler (KL) divergence between $q(\GenericParameters; \Vector{\theta})$ and the true posterior $p(\GenericParameters | \mathcal{D})$:
+In variational inference, we define a simpler variational density $q(\GenericParameters; \Vector{\theta})$ based on the auxiliary parameters $\Vector{\theta}$. We then seek to minimize the Kullback-Leibler (KL) divergence \citep{kullback1951information} between $q(\GenericParameters; \Vector{\theta})$ and the true posterior $p(\GenericParameters | \mathcal{D})$:
 \begin{equation}
 \label{eq:sun_bcnn_KL}
-	\Vector{\theta}^* = \ArgMin{\Vector{\theta}}\text{KL}(q(\GenericParameters; \Vector{\theta}) || p(\GenericParameters | \mathcal{D})),
+	\Vector{\theta}^* = \ArgMin{\Vector{\theta}}\text{KL}(q(\GenericParameters; \Vector{\theta}) || p(\GenericParameters | \mathcal{D})) = \ArgMin{\Vector{\theta}} \int q(\GenericParameters; \Vector{\theta}) \log \frac{q(\GenericParameters; \Vector{\theta})}{p(\GenericParameters | \mathcal{D})} d \GenericParameters,
 \end{equation}
 which then allows us to compute the approximate predictive distribution as
 \begin{equation}
 	p(\Vector{y}^* | \Vector{x}^*, \mathcal{D}) \approx \int_{\GenericParameters}  p(\Vector{y}^* | \Vector{x}^*, \GenericParameters) q(\GenericParameters; \Vector{\theta}^*) d\GenericParameters.
 \end{equation}
-One can show that minimizing KL divergence (\Cref{eq:sun_bcnn_KL}) is the same as maximizing the evidence lower bound (ELBO)\footnote{KL divergence and the ELBO differ by a constant that is not dependent on the auxiliary variables.} 
+One can show (see, for example, \cite{Gal2016UncertaintyThesis}) that minimizing KL divergence (\Cref{eq:sun_bcnn_KL}) is the same as maximizing the evidence lower bound (ELBO)\footnote{KL divergence and the ELBO differ by a constant that is not dependent on the auxiliary variables.} 
 \begin{equation}
 \label{eq:sun_bcnn_ELBO}
 	\Vector{\theta}^* = \ArgMax{\Vector{\theta}} -\mathcal{L}_{\text{ELBO}} = \ArgMax{\Vector{\theta}} \int_{\GenericParameters}  \log p(\Matrix{Y} | \Matrix{X}, \GenericParameters)  q(\GenericParameters; \Vector{\theta}) d\GenericParameters -  \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters)).
 \end{equation}
 Intuitively, maximizing the first term above (referred to as the expected log likelihood) ensures that $q(\GenericParameters; \Vector{\theta})$ explains the dataset well, while minimizing the latter term regularizes the optimization so that $q(\GenericParameters; \Vector{\theta})$ does not stray too far away from a prior.
 
-\begin{figure}
-\centering
-\begin{subfigure}{0.45\textwidth}
-	\centering
-    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcn}
-    \caption{Standard fully-connected neural network.}
-\end{subfigure}
-~
-\begin{subfigure}{0.45\textwidth}
-	\centering
-    \includegraphics[width=0.8\textwidth]{sun-bcnn/dropout_fcnwdrop}
-    \caption{A neural network with dropout applied.}
-\end{subfigure}
-\caption{The technique of \textit{dropout} stochastically removes the contribution of certain neurons to regularize learning. Figures	 from \cite{srivastava_dropout_2014}.}
-\label{fig:sun-bcnn_fcn_dropout}
-\end{figure}
 
 
 
 \subsection{Monte Carlo Dropout as Approximate Variational Inference}
 A key insight of \cite{Gal2016UncertaintyThesis, Gal2016-ny} was that the training objective of a neural network with dropout resembles the ELBO optimization of \Cref{eq:sun_bcnn_ELBO} with a careful choice of $q(\GenericParameters; \Vector{\theta})$.
-Namely, consider training a neural network with dropout and with \textit{weight decay} (as is commonly done). The loss function for supervised training in this scenario can be written as
+Namely, consider training a neural network with dropout and with another form of regularization called \textit{weight decay} (which penalizes large weight magnitudes). The loss function for supervised training in this scenario can be written as
 \begin{equation}
 \label{eq:sun_bcnn_dropout_obj}
 \mathcal{L}_{\text{dropout}}(\GenericParameters) = \underbrace{\frac{1}{N} \sum_{i=1}^N \mathcal{E}(\Vector{y}_i, \tilde{\Vector{y}}_i)}_{\text{error function}} + \underbrace{\lambda \sum_{\ell=1}^L	\left( \Norm{\Matrix{W}_\ell}_2^2 +  \Norm{\Vector{b}_\ell}_2^2\right)}_{\text{weight decay}},
 \end{equation}
-where $\Vector{y}_i$ is the target output and $\tilde{\Vector{y}}_i = NN(\Vector{x}_i)$ is a stochastic sample of the network output.Now if we define $q(\GenericParameters)$ to be a \textit{Bernoulli variational distribution}  over the network parameters as the re-parametrized density,
+where $\Vector{y}_i$ is the target output, $\lambda$ is a scalar weight decay hyper-parameter, and $\tilde{\Vector{y}}_i = NN(\Vector{x}_i)$ is a stochastic sample of the network output with dropout applied. Now if we define $q(\GenericParameters)$ to be a \textit{Bernoulli variational distribution}  over the network parameters as the re-parametrized density,
 \begin{align}
 	q(\GenericParameters; \Vector{\theta}) &= \{\text{diag} (\{ \epsilon_{i\ell} \}) \Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L \\
 	\epsilon_{i\ell} &\sim \text{Bernoulli}(p) 
@@ -275,7 +277,7 @@ holds. Finally, if we interpret $-\log p(\Vector{y}_i | \Vector{x}_i, \tilde{\Ge
 \PartialDerivative{\mathcal{L}_{\text{ELBO}}}{\Vector{\theta}} \propto \PartialDerivative{\mathcal{L}_{\text{Dropout}}}{\Vector{\theta}}
 \end{align} where the proportional constant can be written down analytically \citep{Gal2016UncertaintyThesis}. Thus the two objectives result in the same optimal parameters!
 \subsubsection{Computing Moments}
-The results above indicate that, once trained, a neural network with dropout gives us access to a predictive distribution over outputs $\Vector{y}$. An unbiased estimator for its mean and covariance are given by:
+The results above indicate that, once trained, a neural network with dropout gives us access to a predictive distribution over outputs $\Vector{y}$. An unbiased estimator for its mean and covariance are given by applying dropout at test time and computing statistics over $T$ samples:
 \begin{equation}
 \label{eq:sun_bcnn_mc_dropout_mean}
 	\Expectation{\Vector{y}^*} = \frac{1}{T} \sum_{t=1}^T \tilde{\Vector{y}}^*_t,
@@ -293,8 +295,7 @@ and can be alternatively modelled as
 \begin{equation}
 	\tau = \frac{l^2 (1 - p)}{2N\lambda},
 \end{equation} 
-where $l$ defines a characteristic length scale \cite{Gal2016UncertaintyThesis}.
-This process is referred to as Monte Carlo dropout.
+where $l$ defines a characteristic length scale \citep{Gal2016UncertaintyThesis}. This test-time stochastic sampling through dropout is referred to as Monte Carlo dropout.
 
 \subsection{Extension to Convolutional Neural Networks}
 Although the derivation is more tedious, \cite{Gal2016UncertaintyThesis,Gal2016CNN} show that the same approximate variational inference can be carried out for convolutional neural networks by applying dropout after every convolution (and before pooling) during training and using MC dropout during testing.
@@ -311,7 +312,7 @@ Although the derivation is more tedious, \cite{Gal2016UncertaintyThesis,Gal2016C
     \label{fig:sun-bcnn_kitti_cnn_activations}
 \end{figure}
 
-Leveraging the work of \cite{Gal2016CNN}, we apply a Bayesian Convolutional Neural Network (BCNN) to infer the direction of the sun and an associated uncertainty, and refer to our model as Sun-BCNN. 
+Leveraging the work of \cite{Gal2016CNN}, we apply MC dropout to a Convolutional Neural Network (CNN) (approximating a BCNN, or Bayesian CNNN) to infer the direction of the sun and an associated uncertainty, and refer to our model as Sun-BCNN. 
 We motivate the choice of a deep model through the empirical findings of \citet{2017_Clement_Improving} and \citet{Ma2016-at}, who demonstrated that a CNN-based sun detector can substantially outperform hand-crafted models such as that of \citet{Lalonde2011-jw} both in terms of measurement accuracy and in its application to a VO task.
 
 We choose a deep neural network structure based on GoogLeNet \citep{Szegedy2015-uw} due to its use in past work that adapted it for orientation regression \citep{Kendall2016-zf,Kendall2015-ew}. 

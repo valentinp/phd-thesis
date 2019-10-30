@@ -485,7 +485,7 @@ The apparatus underwent both slow and fast translational and rotational motion, 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.4\textwidth]{probe/tricifix2}
+    \includegraphics[width=0.5\textwidth]{probe/tricifix2}
     \caption{The Skybotix VI-Sensor, Point Grey Flea3, and checkerboard target used in our motion blur experiments.}
     \label{fig:probe_tricifix}
 \end{figure}
@@ -639,31 +639,30 @@ is available for different types of environments through which the car was drivi
 work, we focused on the city, residential and road categories
 (\Cref{fig:kitti_environments}).  From each category, we chose two separate trials for training and testing.
 
+
 \begin{figure}
-    \centering
-    \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0011-0009-15-Sep-2015-4way}}
-    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the city category in the KITTI dataset. See \Cref{table:probe-gk_armse_errors} for a quantitative summary.}
-    \vspace{-0.4em}
+	\centering
+	 \begin{subfigure}{0.48\textwidth}
+	 \includegraphics[width=\textwidth]{probe-gk/{kittiComparison-0011-0009-15-Sep-2015-4way}}
+    \caption{City category.}
     \label{fig:probe-gk_kitti_comparison1}
-\end{figure}
-
-
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0035-0036-15-Sep-2015-4way}}
-    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the residential category in the KITTI dataset.}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.48\textwidth}
+    	\includegraphics[width=\textwidth]{probe-gk/{kittiComparison-0035-0036-15-Sep-2015-4way}}
+    \caption{Residential category.}
+    \label{fig:probe-gk_kitti_comparison2}    \end{subfigure}
+    ~
+    \begin{subfigure}{0.48\textwidth}
+    	\includegraphics[width=\textwidth]{probe-gk/{kittiComparison-0070-0028-15-Sep-2015-4way}}
+    \caption{Road category.}
     \vspace{-0.4em}
-    \label{fig:probe-gk_kitti_comparison2}
+    \label{fig:probe-gk_kitti_comparison3}    \end{subfigure}
+
+    \caption{RMSE comparison of stereo VO estimators evaluated on data in the KITTI odometry benchmark. See \Cref{table:probe-gk_armse_errors} for a quantitative summary.}
+     \label{fig:probe-gk_kitti_comparison_overall}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\textwidth]{probe-gk/{kittiComparison-0070-0028-15-Sep-2015-4way}}
-    \caption{RMSE comparison of stereo odometry estimators evaluated on data from the road category in the KITTI dataset.}
-    \vspace{-0.4em}
-    \label{fig:probe-gk_kitti_comparison3}
-\end{figure}
 
 \Cref{fig:probe-gk_kitti_comparison1,fig:probe-gk_kitti_comparison2,fig:probe-gk_kitti_comparison3} show
 typical results; \Cref{table:probe-gk_armse_errors} presents a quantitative comparison.
@@ -701,21 +700,22 @@ Road & 723.8 & 17.69 & 9.38 & 5.24 & 8.87 & 0.060 & 0.027 & 0.015 & 0.024
 \end{table}
 
 \begin{figure}
-    \centering
-    \hspace*{0.25cm}
-    \includegraphics[width=0.75\textwidth]{probe-gk/experiment_wide_border}
+	\centering
+	 \begin{subfigure}{0.49\textwidth}
+	 \includegraphics[width=\textwidth]{probe-gk/experiment_wide_border}
     \caption{Our experimental apparatus: a Clearpath Husky rover outfitted with a PointGrey XB3 stereo camera and a differential GPS receiver and base station.}
       \vspace{-0.5em}
    	    \label{fig:probe-gk_experiments}
-\end{figure}
-
-\begin{figure}
-    \centering
-	\includegraphics[width=0.75\textwidth]{probe-gk/xb3_rtk_fig}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.49\textwidth}
+    	\includegraphics[width=\textwidth]{probe-gk/xb3_rtk_fig}
     \caption{GPS ground truth for 5 experimental trials collected
       near the UTIAS Mars Dome. Each trial is approximately 250 m long.}
       \vspace{-0.5em}
-    \label{fig:probe-gk_experiment_groundtruth}
+    \label{fig:probe-gk_experiment_groundtruth}   \end{subfigure}
+    \caption{Our experimental setup.}
+     \label{fig:probe-gk_experiments_overall}
 \end{figure}
 
 \begin{figure}
