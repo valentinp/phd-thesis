@@ -48,7 +48,6 @@ Repeated entry---line 241 of file ../pubs-sun_bcnn.bib
  :                              ,
 I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
-Warning--I didn't find a database entry for "2015_Peretroukhin_Get;Peretroukhin2016-om"
 Warning--I didn't find a database entry for "Kendall2017-u"
 Warning--empty journal in Alcantarilla2016-kv
 Warning--empty booktitle in Clark2017
@@ -64,7 +63,7 @@ Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
 You've used 116 entries,
             1935 wiz_defined-function locations,
-            1193 strings with 26689 characters,
+            1191 strings with 26607 characters,
 and the built_in function-call counts, 55652 in all, are:
 = -- 5574
 > -- 2278
