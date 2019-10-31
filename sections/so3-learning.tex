@@ -106,7 +106,7 @@ The head structure, however, provides several key advantages toward the goal of 
 
 To account for aleatoric uncertainty, we follow prior work \citep{Haarnoja2016-ph,Lakshminarayanan2017} and dedicate one head of the network to regressing a variance directly through a negative log likelihood loss under the assumption of Gaussian likelihood. That is, we define a supervised loss,
 \begin{equation}
-\GenericParameters_i^*, \GenericParameters_b^* = \ArgMin{\GenericParameters_i, \GenericParameters_b} \mathcal{L}(y_i, \sigma_a^2, y_t) = \ArgMin{\GenericParameters} \frac{1}{2\sigma_a^2}(y-y_t)^2 	+ \log(\sigma_a^2),
+\GenericParameters_{h_i}^*, \GenericParameters_b^* = \ArgMin{\GenericParameters_i, \GenericParameters_b} \mathcal{L}(y_i, \sigma_a^2, y_t) = \ArgMin{\GenericParameters} \frac{1}{2\sigma_a^2}(y-y_t)^2 	+ \log(\sigma_a^2),
 \end{equation}
 where $y_t$ is a target output.
 

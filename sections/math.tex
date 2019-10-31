@@ -73,18 +73,22 @@ We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one 
 
 \section{Rotations} 
 
-The rotation matrix $\Rotation$ is a member of the matrix Lie group\footnote{A Lie group is a group that is also a differentiable manifold. See \cite{Barfoot2017-ri} for more details.} $\LieGroupSO{3}$ (the Special Orthogonal group). We can define it as follows:
+The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO{3}$ (the Special Orthogonal group). We can define it as follows:
 \begin{equation}
 \label{eq:math_so3_defn}
 \LieGroupSO{3} = \{ \Rotation \in \Real{}^{3 \times 3} | ~ \Rotation^T\Rotation = \Matrix{1}, \det{\Rotation} = 1  \}.	
 \end{equation}
 %
+\begin{remark}{Matrix Lie Groups}
+	A group is a set with an operation (which combines two elements to form a third element that is part of the group) that satisfies the four group axioms: closure, associativity, identity and invertibility. A Lie group is a group that is also a differentiable manifold. Finally, a \textit{matrix} Lie group is a group whose elements are matrices and whose operation is matrix multiplication.  See \cite{Barfoot2017-ri, Sola2018-kg} for more details.
+\end{remark}
+
 %\subsubsection{Active and Passive Representations}
 %An active (or \textit{alibi}) rotation changes the coordinates of a position directly while implicitly assuming that the reference frame is fixed. A passive (or \textit{alias}) rotation rotates the reference frame. Following \cite{Barfoot2017-ri}, all rotation matrices in this dissertation are passive unless otherwise noted.  
 
-\subsubsection{Exponential and Logarithmic Maps}
+\subsection{Axis-Angle Parameters}
 
-Since rotations form a matrix Lie group (we refer the reader to \cite{Sola2018-kg} and \cite{Barfoot2017-ri} for a thorough treatment of Lie groups for state estimation), we can define a surjective exponential map\footnote{We follow \cite{Sola2018-kg} and also define \textit{capitalized} map for notational clarity.} from three axis-angle parameters, $\RotationVector = \phi \RotationAxisVector, ~~ \phi \in \Real{}, \RotationAxisVector \in S^2$, to a rotation matrix, $\Rotation$: 
+Any rotation can be represented (non-uniquely) as a rotation of angle $\phi$ about an axis $\RotationAxisVector$ \citep{Hartley2013-rc}. Concretely, we can map an axis-angle vector, $\RotationVector = \phi \RotationAxisVector, ~~ \phi \in \Real{}, \RotationAxisVector \in S^2$, to a rotation matrix, $\Rotation$, using the surjective exponential map 
 \begin{align}
 \label{eq:so3_exp}
 \Rotation = \MatExp{\Vector{\phi}} = \Matexp{\Vector{\phi}} &= \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\phi}^\wedge)}^n\\
@@ -95,7 +99,7 @@ where the wedge operator $(\cdot)^\wedge$\footnote{This operator is sometimes al
 \begin{equation}
 \RotationAxisVector^\wedge = \bbm a_0 \\ a_1 \\ a_2 \ebm^\wedge = \bbm 0 & -a_2 & a_1 \\ a_2 & 0 & -a_0 \\ -a_1 & a_0 & 0 \ebm.	
 \end{equation}
-\Cref{eq:euler_rodriguez} is often referred to as the Euler-Rodriguez formula and it can also be derived geometrically, starting from Euler's theorem that any rotation can be expressed as an axis of rotation and an angle of rotation about that axis. Although  the map in \Cref{eq:so3_exp} is surjective, we can define an inverse map if we restrict its domain to $0 \leq \phi < \pi$:
+The vector $\RotationVector$ is sometimes called the \textit{rotation vector} \citep{Barfoot2017-ri} or referred to as the \textit{exponential coordinates} \citep{Gallego2015} of rotation. \Cref{eq:euler_rodriguez} is often referred to as the Euler-Rodriguez formula. Although the map in \Cref{eq:so3_exp} is surjective, we can define an inverse map if we restrict its domain to $0 \leq \phi < \pi$:
 \begin{align}
 \label{eq:so3_log}
 \RotationVector =  \MatLog{\Rotation} = \Matlog{\Rotation} &= \frac{\phi (\Rotation - \Rotation^T)^\vee}{2 \sin{\phi}}, 
@@ -106,7 +110,7 @@ where $\phi = \arccos{\left(\frac{\Trace{\Rotation} - 1}{2}\right)}$ and the \te
 	\MatLog{\Rotation} \approx (\Rotation - \IdentityMatrix)^\vee ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
 
-The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$. This \textit{cut locus} is related to the idea that any three parameterization of $\LieGroupSO{3}$ will have singularities associated with it.
+The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$. This is a fundamental drawback of using three parameters to represent rotation.
 
 \subsection{Unit Quaternions}
 
@@ -115,14 +119,12 @@ We can also represent a rotation with unit quaternion, $\quat$. A unit quaternio
 	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
 
-Unit quaternions also form a Lie group \citep{Sola2018-kg} and and lie on a three-dimensional unit sphere within $\Real{}^4$. As with rotation matrices, we can define a surjective map from three parameters to the group itself,
-
+Unit quaternions also form a Lie group \citep{Sola2018-kg} (but not a matrix Lie group) and and lie on a three-dimensional unit sphere within $\Real{}^4$. We will overload our exponential map operator to use the same notation to define a surjective map from three parameters to unit quaternions,
 \begin{equation}
 \quat = \MatExp{\RotationVector} = \bbm \cos{(\phi/2)} \\ \RotationAxisVector \sin{(\phi/2)} \ebm.	
 \end{equation}
-
 By inspection, we can see that both $\quat$ and $-\quat$ represent the same axis-angle pair, $\{\phi, \Vector{a}\}$. As a result, unit quaternions represent a \textit{double cover} of $\LieGroupSO{3}$ and we must be careful to account for this when using them as a rotation parametrization.
-In particular, when computing the logarithmic map,
+In particular, when computing the (also overloaded) logarithmic map,
 \begin{align}
 \label{eq:math_quat_log}
 	\RotationVector =  \MatLog{\quat} = 2 \quat_v \frac{\arctan{(\Norm{\quat_v},  q_\omega})}{\Norm{\quat_v}},
@@ -136,11 +138,11 @@ In particular, when computing the logarithmic map,
 
 A fantastic summary of the history of rotation parameterizations, unit quaternions and the story of Hamilton and Rodriguez can be found in \cite{Altmann1989-ru}.
 
-\subsection{Topology}
-Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$ \citep{Hartley2013-rc}. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parametrizations with $n=3$ (like Euler angles and axis-angle parameters) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parametrizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
+\subsection{Rotation Parametrizations}
+Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$ \citep{Hartley2013-rc}. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parameterizations with $n=3$ (like axis-angle parameters or Euler angles) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parameterizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
  
 \begin{remark}{SO(3) Topology}
-To see why this is the case, consider that according to Euler's theorem, we can represent any element in $\LieGroupSO{3}$ by the axis-angle pair $\{\Vector{a}, \phi\}$, $\Vector{a} \in S^2$, and $0 \leq \phi \leq \pi$. We can partially represent this space by the closed ball of radius $\pi$ in $\RealNumbers{}^3$ using the combined axis-angle coordinates $\RotationVector = \phi \RotationAxisVector$. However, at the boundary ($\phi = \pi$), we must account for the fact that rotations represented by $\{\Vector{a}, \pi\}$ are identical to those represented by $\{-\Vector{a}, \pi\}$. In other words, we must \textit{identify} all antipodal points, $\RotationVector$ and $-\RotationVector$ when $\Norm{\RotationVector} = \pi$. This closed 3-ball with identified antipodal points on its boundary is topologically equivalent to the 3-sphere ($S^3$) with its antipodal points identified. In turn, this space is equivalent to $\mathbb{RP}^3$ since any line passing through the origin in $\RealNumbers^4$ can be mapped to two unit normals, $\pm \Vector{n} \in S^3$.
+To see why this is the case, consider that a direct result of Euler's rotation theorem is that we can represent any element in $\LieGroupSO{3}$ by a (non-unique) axis-angle pair $\{\Vector{a}, \phi\}$, $\Vector{a} \in S^2$, and $0 \leq \phi \leq \pi$. We can partially represent this space by the closed ball of radius $\pi$ in $\RealNumbers{}^3$ using the combined axis-angle coordinates $\RotationVector = \phi \RotationAxisVector$. However, at the boundary ($\phi = \pi$), we must account for the fact that rotations represented by $\{\Vector{a}, \pi\}$ are identical to those represented by $\{-\Vector{a}, \pi\}$. In other words, we must \textit{identify} all antipodal points, $\RotationVector$ and $-\RotationVector$ when $\Norm{\RotationVector} = \pi$. This closed 3-ball with identified antipodal points on its boundary is topologically equivalent to the 3-sphere ($S^3$) with its antipodal points identified. In turn, this space is equivalent to $\mathbb{RP}^3$ since any line passing through the origin in $\RealNumbers^4$ can be mapped to two unit normals, $\pm \Vector{n} \in S^3$.
 This \textit{identification} makes rotation representation particularly tricky in $\RealNumbers{}^3$ and clearly explains why unit quaternions, $\quat \in S^3$, are a \textit{double} cover of  $\LieGroupSO{3}$, since we must add the relation $\quat = -\quat$ to make these two spaces equivalent. We direct the reader to \cite{Hartley2013-rc} who use the \textit{gnonomic} projection to provide further geometric intuition for why $\LieGroupSO{3}$ is a projective space. 
 \end{remark}
 Accordingly, in this dissertation, we parametrize rotations as the constrained quantities, $\quat$ or $\Rotation$. When dealing with perturbations about a given rotation (e.g., to compute updates to a state, or to propagate uncertainty), we use \textit{small} rotations, $\delta \Rotation$ or $\delta \quat$, parametrized using three unconstrained parameters that we can assume are a one-to-one mapping to elements in $\LieGroupSO{3}$  (since, for small rotations, $\Norm{\RotationVector} << \pi$).
@@ -151,13 +153,11 @@ The rigid body transform $\Transform$ is a also a member of the matrix Lie group
 \begin{equation}
 \LieGroupSE{3} = \{ \Transform = \bbm \Rotation & \Vector{t} \\ \Vector{0}^T & 1 \ebm \in \Real{}^{4 \times 4} | ~  \Rotation \in \LieGroupSO{3},  \Vector{t} \in \Real{}^3  \}.
 \end{equation}
-
 As a member of a matrix Lie group, it also admits a surjective exponential map,
-
 \begin{equation}
 \Transform = \MatExp{\Vector{\xi}} = \Matexp{\Vector{\xi}} = \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\xi}^\wedge)}^n	
 \end{equation}
-where $\TransformVector = \bbm \Vector \rho \\ \Vector \phi \ebm \in \Real{}^6$ and the wedge operator is overloaded (following \cite{Barfoot2017-ri}) as follows:
+where $\TransformVector = \bbm \Vector{\rho}^T & \Vector{\phi}^T \ebm^T \in \Real{}^6$ are the exponential coordinates of rigid-body transforms and the wedge operator is overloaded (following \cite{Barfoot2017-ri}) as follows:
 \begin{equation}
   \Vector \xi^\wedge \triangleq \bbm \Vector \rho \\ \Vector \phi \ebm ^\wedge = \bbm
   \Vector \phi^\wedge & \Vector \rho \\ \Transpose{\Vector{0}} &  0 \ebm.	
@@ -189,7 +189,7 @@ which is numerically equivalent to
  \Vector{r}^{pv}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}.  
  \end{equation}
 
-\section{Perturbations}
+\section{Perturbations and Tangent Spaces}
 
 When solving optimization problems that involve rotations or rigid-body transforms, it is often useful to consider a small \textit{perturbation} about an operating point. By leveraging a core property of Lie groups (that they are locally `Euclidian'), we can construct an iterative algorithm that successively updates an operating point through optimal perturbations in some unconstrained tangent space.
 
@@ -238,7 +238,7 @@ where $\LeftJacobianSE$, the left Jacobian of $\LieGroupSE{3}$, is defined as
 with $\Matrix{Q}(\TransformVector)$ having an analytic expression (see \cite{Barfoot2017-ri}).
 \end{remark}
 
-\section{Uncertainty through Injection}
+\section{Uncertainty Through Injection}
 
 We can also use perturbation theory to implicitly define uncertainty on constrained manifolds (see \cite{Barfoot2014-ac} for a thorough discussion). Given a concentrated normal density, $\delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6})$, we can \textit{inject} this unconstrained density onto the Lie group through left perturbations about some mean using
 \begin{align}
@@ -280,9 +280,9 @@ where $\Matrix{W}_\ell \in \Real^{D_{\ell_{out}} \times D_{\ell_{in}}}$ and $\Ve
 \end{remark}
 To produce a \textit{feed-forward neural network}, $L$ layers are composed in a hierarchy to create a single parametric function,
 \begin{equation}
- NN(\Vector{x}) = \Vector{f}_L \circ \Vector{f}_{L-1} \circ \cdots \circ \Vector{f}_{1}(\Vector{x}),
+ NN(\Vector{x}; \GenericParameters) = \Vector{f}_L \circ \Vector{f}_{L-1} \circ \cdots \circ \Vector{f}_{1}(\Vector{x}),
 \end{equation}
-where $f \circ g$ refers to function composition, $f (g(\cdot))$.
+where $f \circ g$ refers to function composition, $f \circ g \triangleq f (g(\cdot))$, and $\GenericParameters = \{\Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L$ are the parameters of the network.
 
 
 \subsection{Convolutional Neural Networks}
@@ -341,7 +341,7 @@ In order to prevent \textit{overfitting} to a dataset (i.e., to obtain a model t
 \begin{equation}
 	\Vector{z}_{\ell+1} = \Vector{f}_\ell(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_\ell\tilde{\Vector{z}}_\ell + \Vector{b}_\ell\right),
 \end{equation}
-where $\tilde{\Vector{z}}_\ell = \Vector{b} \circledcirc \Vector{z}_\ell$, $b_i \sim \text{Bernoulli}(p)$ and $\circledcirc$ refers to element-wise multiplication.
+where $\tilde{\Vector{z}}_\ell = \Vector{b} \circledcirc \Vector{z}_\ell$, $b_i \sim \text{Bernoulli}(p)$ and $\circledcirc$ refers to element-wise multiplication, also known as the Hadamard product.
 The intuition behind dropout is that it effectively creates an ensemble of smaller-parameter networks that will generally be less prone to overfitting than a commensurately-sized monolithic network. Importantly, dropout has a fundamental connection variational inference, which we exploit in \Cref{ch:sun-bcnn}.
 \subsubsection{Pooling and Spatial Invariance}
 A common technique in convolutional neural networks is \textit{pooling} \citep{Goodfellow-et-al-2016}. Pooling is a non-parametric operation that summarizes the output of a kernel in a particular region. For example, \textit{max pooling} selects the maximum response of a kernel in demarcated regions of an input channel, thereby downsampling the resulting output. Pooling operations are designed to make convolution operations invariant to the spatial location of a particular kernel response. This is important in many classification tasks (e.g., a tree classifier should be invariant to the location of a particular leaf) but is a detriment to regression tasks where we would like to preserve spatial information. We explore building convolutional neural networks without pooling in \Cref{ch:dpc}.

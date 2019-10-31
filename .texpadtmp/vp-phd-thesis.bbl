@@ -184,12 +184,6 @@ Forster, C., Pizzoli, M., and Scaramuzza, D. (2014).
 \newblock In {\em Proc. IEEE Int. Conf. Robot. Automat.(ICRA)}, pages 15--22.
   IEEE.
 
-\bibitem[Furgale, 2011]{furgale_phd11}
-Furgale, P. (2011).
-\newblock {\em Extensions to the Visual Odometry Pipeline for the Exploration
-  of Planetary Surfaces}.
-\newblock PhD thesis.
-
 \bibitem[Furgale and Barfoot, 2010]{Furgale2010-to}
 Furgale, P. and Barfoot, T.~D. (2010).
 \newblock Visual teach and repeat for long-range rover autonomy.
@@ -228,6 +222,12 @@ Gal, Y. and Ghahramani, Z. (2016b).
 \newblock Dropout as a bayesian approximation: Representing model uncertainty
   in deep learning.
 \newblock In {\em Proc. Int. Conf. Mach. Learning ({ICML})}, pages 1050--1059.
+
+\bibitem[Gallego and Yezzi, 2015]{Gallego2015}
+Gallego, G. and Yezzi, A. (2015).
+\newblock A compact formula for the derivative of a {3-D} rotation in
+  exponential coordinates.
+\newblock {\em J. Math. Imaging Vis.}, 51(3):378--384.
 
 \bibitem[Garg et~al., 2016]{Garg2016-ip}
 Garg, R., Carneiro, G., and Reid, I. (2016).

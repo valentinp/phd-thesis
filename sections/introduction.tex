@@ -1,19 +1,10 @@
 \chapter{Introduction}
 \label{ch:intro}
-\epigraph{To be sure, a writer cannot begin with a thesis; he must rather use his writerly sensitivity to intuit what is going on, even if he cannot understand its implications.}{\textsc{Gary Morson}, \textit{How the great truth dawned}}
-%\epigraph{If you do not know where you come from, then you don't know where you are, and if you don't know where you are, then you don't know where you're going. And if you don't know where you're going, you're probably going wrong.}{Terry Pratchett}
- 
-%Gary Saul Morson, How the great truth dawned
-%https://www.newcriterion.com/issues/2019/9/how-the-great-truth-dawned
-
-%Taken from https://en.wikipedia.org/wiki/R.U.R.
-
-%The Indian king Ajatashatru, who reigned in the fifth century BCE, 
-
+\epigraph{What we call the beginning is often the end. And to make an end is to make a beginning.}{\textsc{T.S. Eliot}}
 
 
 This dissertation presents a general approach to improve visual egomotion estimation for mobile autonomous platforms.  In the broadest sense, \textit{egomotion estimation} refers to the process of computing the motion of a rigid body---relative to a fixed frame of reference---using measurements from sensors attached to the body (hence \textit{ego}motion\footnote{To the best of the author's knowledge, this term originates from experimental psychology \citep{warren1976perception}, and was also referred to as \textit{passive navigation} in the context of camera motion \citep{bruss_passive_1983}.}).  
-\begin{remark}{Autonomy Through History}
+\begin{remark}{Autonomy through history}
 Mobile \textit{automata} have been a part of human culture since antiquity. In ancient India, the king Ajatashatru was said to use \textit{bhuta vahana yanta} (`spirit movement machines') to protect the relics of Gautama Buddha after his death in the fourth century BCE. According to Burmese legend, the bhuta vahana yanta of Ajatashatru were made with stolen secrets from a group of Greco-Roman `roboticists' named the \textit{yantakara}. The methods of the yantakara were closely guarded, and mechanical assassins were said to pursue those who attempted to disseminate them \citep{MayorGodsRobots2019}.
 
 In the millennia since, mobile automata were relegated to isolated demonstrations (e.g., the programmable cart of Hero of Alexandria or the `autonomous' knight of Leonardo da Vinci) or to imagined forms in cautionary tales (e.g., Mary Shelley's \textit{Frankenstein}). Although the secrets of the yantakara may never be rediscovered, the ancient pursuit of helpful automata has found new life towards the turn of the twenty-first century and yielded machinery and algorithms that show great promise in aiding humanity.
@@ -24,22 +15,24 @@ In the millennia since, mobile automata were relegated to isolated demonstration
 	\includegraphics[width=0.48\textwidth]{introduction/chip_log}
 	\caption{A \textit{chip log} is a historical tool used to measure ship speed. The \textit{log} or \textit{chip} was tossed into the water, and speed was measured by the amount of \textit{knots} that unravelled in a set time interval (\textit{credit: oceonmotion.org}).}
 	\label{fig:intro_chip_log}
-	\vspace{-1em}
 \end{wrapfigure}
 
  One way to estimate egomotion is to measure rates (e.g., linear or rotational velocities) and integrate them to compute changes in position and orientation. This method, referred to as \textit{dead reckoning}, was used by marine navigators of ancient times to determine the longitude of a ship at sea. Unlike latitude, which navigators could determine by measuring the altitude of the noon Sun, or the altitude of Polaris (the North Star) at night, longitude was not reliably computed from celestial measurements until the development of the marine chronometer in the 18th century \citep{Barfoot2017-ri}. As a result, early seafarers could only \textit{dead reckon} east-west motion by relying on estimates of local water currents, and by measuring the ship's magnetic heading and its speed relative to water (through a tool called a \textit{chip log}, \Cref{fig:intro_chip_log}). 
 
-In a similar process, early aviators computed egomotion through magnetic heading, airspeed, and an estimate of prevailing winds. While even modern egomotion estimation methods exhibit unbounded error growth \citep{Olson2003-ax}, these early techniques were particularly inaccurate and required regular corrections through known landmarks.\footnote{Perhaps the most famous example of dead-reckoning error was made by Christopher Columbus in 1492. He believed he had reached the \textit{Indies} (modern Indonesia) but had really arrived in the Bahamas.} In the mid twentieth century, the goals of inter-continental flight and space exploration necessitated the development of more accurate egomotion sensors (e.g., gimballed inertial sensors including accelerometers and gyroscopes) and an associated set of estimation techniques that could compute egomotion without human intervention (e.g., the Kalman filter \citep{Grewal2010-ts}).
+In a similar process, early aviators computed egomotion through magnetic heading, airspeed, and an estimate of prevailing winds. While even modern egomotion estimation methods exhibit unbounded error growth \citep{Olson2003-ax}, these early techniques were particularly inaccurate and required regular corrections through observations of known landmarks.\footnote{Perhaps the most famous example of dead-reckoning error was made by Christopher Columbus in 1492. He believed he had reached the \textit{Indies} (modern Indonesia) but had really arrived in the Bahamas.} In the mid twentieth century, the goals of inter-continental flight and space exploration necessitated the development of more accurate egomotion sensors (e.g., gimballed inertial platforms including accelerometers and gyroscopes) and an associated set of estimation techniques that could compute egomotion without human intervention (e.g., the Kalman filter \citep{Grewal2010-ts}).
 
-By the late twentieth century, unmanned Lunar and Martian exploration motivated the development of a new approach to egomotion estimation. Although ground vehicles like extra-planetary rovers could infer egomotion through \textit{wheel odometry} (integrating wheel rates and using wheel orientation to drive a kinematic model), this approach was highly inaccurate on surfaces that induce wheel slip (e.g., the rock and sand covered surface of Mars, \Cref{fig:intro_endeavour_crater}). To address this, a number of researchers in the 1980s developed the technique of \textit{visual} odometry \citep{Scaramuzza2011-qr} (or VO), as a way to infer egomotion from sequentially-collected images. The mathematical basis of VO is closely tied to the technique of photogrammetric \textit{bundle adjustment} \citep{triggs_bundle_2000} which originates from 19th century photogrammetry \citep{albertz_look_2007}.
 
-\begin{wrapfigure}{r}{0.5\textwidth}
+By the late twentieth century, unmanned Lunar and Martian exploration motivated the development of a new approach to egomotion estimation. Although ground vehicles like extra-planetary rovers could infer egomotion through \textit{wheel odometry} (integrating wheel rates and using wheel orientation to drive a kinematic model), this approach was highly inaccurate on surfaces that induce wheel slip (e.g., the rock and sand covered surface of Mars, \Cref{fig:intro_endeavour_crater}). 
+
+\begin{wrapfigure}{r}{0.45\textwidth}
 	\centering
-	\includegraphics[width=0.48\textwidth]{introduction/venn_perception}
+	\includegraphics[width=0.45\textwidth]{introduction/venn_perception}
 	\caption{Visual egomotion estimation can be useful to create maps and to detect and track other objects.}
+	\vspace{1.2em}
 	\label{fig:intro_state_venn}
-	\vspace{-1.5em}
 \end{wrapfigure}
+
+To address this, a number of researchers in the 1980s developed the technique of \textit{visual} odometry \citep{Scaramuzza2011-qr} (or VO), as a way to infer egomotion from sequentially-collected images. The mathematical basis of VO is closely tied to the technique of photogrammetric \textit{bundle adjustment} \citep{triggs_bundle_2000} which originates from 19th century photogrammetry \citep{albertz_look_2007}.
 
 
 
@@ -48,9 +41,7 @@ By the late twentieth century, unmanned Lunar and Martian exploration motivated 
 %https://mars.nasa.gov/resources/22342/opportunity-legacy-pan-true-color/
 \begin{figure}
   \begin{center}
-  	\vspace{-10pt}
-    \includegraphics[width=0.95\textwidth]{introduction/pancam-panorama-opportunity}
-     \vspace{-15pt}
+    \includegraphics[width=\textwidth]{introduction/pancam-panorama-opportunity}
   \end{center}
   \caption{The last 360 degree panorama of the rocky Martian surface taken by the Pancam apparatus of the Mars Exploration Rover, \textit{Opportunity}, at its final resting place, the western rim of the Endeavour Crater (\textit{credit: NASA/JPL-Caltech/Cornell/ASU}).}
     \label{fig:intro_endeavour_crater}
@@ -85,7 +76,7 @@ By the late twentieth century, unmanned Lunar and Martian exploration motivated 
 
  %Add some discussion about computer science vs. robotics research
  
-In the nearly four decades since the first development of VO, the proliferation of compact, relatively-inexpensive, high-resolution cameras has made vision-based sensing techniques ubiquitous in mobile autonomous applications. In addition to computing egomotion, camera data can be used to build detailed maps of an environment (which can be computed in tandem with egomotion through a technique called Simultaneous Localization and Mapping, or SLAM \citep{Cadena2016-ds}), as well as detect, track and avoid other objects (\Cref{fig:intro_state_venn}). 
+In the nearly four decades since the first development of VO, the proliferation of compact, relatively-inexpensive, high-resolution cameras has made vision-based sensing techniques ubiquitous in mobile autonomous applications. In addition to computing egomotion, camera data can be used to build detailed maps of an environment (which can be computed in tandem with egomotion through a technique called simultaneous localization and mapping, or SLAM \citep{Cadena2016-ds}), as well as detect, track and avoid other objects (\Cref{fig:intro_state_venn}). 
 
 \section{A Visual \textit{Pipeline}}
 
@@ -144,7 +135,7 @@ In contrast, deep networks built on basic image operations with modern computati
 
 \section{The Pseudo-Sensor}
 
-As mobile autonomy enters the robust-perception age \citep{Cadena2016-ds}, classical pipelines that work in limited contexts will need to be adapted and augmented to ensure they can operate over longer time-periods, and through challenging environments. However, replacing these performant pipelines completely with learned approaches, is in our view, unnecessary. Instead, we propose the paradigm of the  \textit{pseudo-sensor} (\Cref{fig:intro_pseudo_sensor}). A \textit{pseudo-sensor} is a machine-learning-based (hyper-)parametric model that extracts latent information from sensor data that is difficult to model analytically. Pseudo-sensors leverage the representational power of modern data-driven learning techniques to extract useful quantities that make existing classical pipelines more consistent and accurate in a given environment. In this dissertation, we present four such pseudo-sensors. In each case, the output of the pseudo-sensor is fused with a classical visual odometry pipeline to produce better motion estimates. To accomplish this fusion, we rely on two approaches. The first (Predictive Robust Estimation, or PROBE, \Cref{ch:probe}), uses the paradigm of a pseudo-sensor to build a heteroscedastic noise model from extant sensor data. By predicting uncertainty information, PROBE effectively re-scales a robust loss function to better account for deleterious visual effects. The second approach (used by Sun-BCNN, DPC-Net, and HydraNet,  \Cref{ch:sun-bcnn,ch:dpc,ch:hydranet} respectively) produces geometric quantities (probabilistic estimates of an illumination source, $\LieGroupSE{3}$ corrections to existing egomotion estimates, and independent probabilistic rotation estimates, respectively), that can be fused with the original egomotion estimate through pose graph optimization.
+As mobile autonomy enters the robust-perception age \citep{Cadena2016-ds}, classical pipelines that work in limited contexts will need to be adapted and augmented to ensure they can operate over longer time periods, and through challenging environments. However, replacing these performant pipelines completely with learned approaches, is in our view, unnecessary. Instead, we propose the paradigm of the  \textit{pseudo-sensor} (\Cref{fig:intro_pseudo_sensor}). A \textit{pseudo-sensor} is a machine-learning-based (hyper-)parametric model that extracts latent information from existing sensor data that is difficult to model analytically. Pseudo-sensors leverage the representational power of modern data-driven learning techniques to extract useful quantities that make existing classical pipelines more consistent and accurate in a given environment. In this dissertation, we present four such pseudo-sensors. In each case, the output of the pseudo-sensor is fused with a classical visual odometry pipeline to produce better motion estimates. To accomplish this fusion, we rely on two approaches. The first (Predictive Robust Estimation, or PROBE, \Cref{ch:probe}), uses the paradigm of a pseudo-sensor to infer a heteroscedastic noise model based on sensor data. By predicting uncertainty information, PROBE effectively re-scales a robust loss function to better account for deleterious visual effects. The second approach (used by Sun-BCNN, DPC-Net, and HydraNet,  \Cref{ch:sun-bcnn,ch:dpc,ch:hydranet} respectively) produces geometric quantities (probabilistic estimates of an illumination source, $\LieGroupSE{3}$ corrections to existing egomotion estimates, and independent probabilistic rotation estimates, respectively), that can be fused with the original egomotion estimate through pose graph optimization.
 
 %\section{Outstanding Issues in the Field}
 
@@ -175,7 +166,7 @@ As mobile autonomy enters the robust-perception age \citep{Cadena2016-ds}, class
 
 This dissertation consists of several published contributions under the umbrella of \textit{learned pseudo-sensors} that improve a canonical visual egomotion pipeline. Before detailing each pseudo-sensor, we present some mathematical foundations (\Cref{ch:math}) and a common baseline for a feature-based stereo visual odometry pipeline (\Cref{ch:vo}) which all four methods build upon. In total, there are two journal papers and five conference papers associated with our work. Below, we briefly summarize each of the pseudo-sensors and list the publications that are associated with each.
 \begin{enumerate}
-\item \textbf{Predictive Robust Estimation (PROBE)},  \\
+\item \textbf{PROBE: Predictive Robust Estimation},  \\
 Predictive Robust Estimation (\Cref{ch:probe}, Appendix \ref{app:appendix_probe_knn}) builds a predictive model for observation uncertainty from training data. To do this, we collaborate with William Vega-Brown at MIT to adapt the technique of Generalized Kernel (GK) estimation \citep{Vega-Brown2014-sb} to visual odometry. Generalized Kernel estimation allows us to build an efficient Bayesian model for stereo tracking uncertainty. By setting a prior on covariance, we derive a `robust' objective that can be \textit{predictively} scaled to improve the accuracy and consistency of a feature-based stereo visual odometry pipeline. PROBE is associated with three publications: \cite{2015_Peretroukhin_PROBE,2015_Peretroukhin_Get,Peretroukhin2016-om}. The first two publications explore useful predictors for uncertainty and build a non-Bayesian isotropic covariance model. The latter publication presents the Bayesian GK approach.
 %\begin{itemize}
 %\item \bibentry{2015_Peretroukhin_PROBE},
@@ -184,7 +175,7 @@ Predictive Robust Estimation (\Cref{ch:probe}, Appendix \ref{app:appendix_probe_
 %\end{itemize}
 
 \item \textbf{Sun-BCNN: Learned Probabilistic Sun Sensor} \\ 
-Sun-BCNN (\Cref{ch:sun-bcnn}) is a virtual sun sensor based on a Bayesian Convolutional Neural Network (BCNN) that was developed in collaboration with Lee Clement. Much like a dedicated hardware sun sensor, Sun-BCNN infers a probabilistic estimate of the direction of the sun that can be used to inject orientation information into an egomotion pipeline. However, unlike dedicated sensors, Sun-BCNN requires no additional hardware and can predict both a mean and uncertainty from a single RGB image. It is associated with three publications: \cite{2017_Clement_Improving,2017_Peretroukhin_Reducing,2018_Peretroukhin_Inferring}. The first publication consists of initial exploratory work on virtual sun sensors, while the second presents the BCNN formulation. The final publication is an extended journal article that summarizes the results of the prior two conference publications and adds experiments from data collected in the Canadian High Arctic and around Oxford, UK, as well as investigating the effect of cloud cover and transfer learning. 
+Sun-BCNN (\Cref{ch:sun-bcnn}) is a virtual sun sensor based on a Bayesian Convolutional Neural Network (BCNN) that was developed in collaboration with Lee Clement. Much like a dedicated hardware sun sensor, Sun-BCNN infers a probabilistic estimate of the direction of the sun that can be used to inject orientation information into an egomotion pipeline. However, unlike dedicated sensors, Sun-BCNN requires no additional hardware and can predict both a mean and uncertainty from a single RGB image. It is associated with three publications: \cite{2017_Clement_Improving,2017_Peretroukhin_Reducing,2018_Peretroukhin_Inferring}. The first publication consists of initial exploratory work on virtual sun sensors, while the second presents the BCNN formulation. The final publication is an extended journal article that summarizes the results of the prior two conference publications and adds two novel contributions: (1) further experimental validation on visual data collected in the Canadian High Arctic and around Oxford, UK, and (2) investigations into the effect of cloud cover and the possibility of generalization across datasets. 
 
 
 \item \textbf{DPC-Net: Learned Pose Corrections} \\

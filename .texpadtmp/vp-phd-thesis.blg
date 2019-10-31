@@ -54,7 +54,6 @@ Warning--empty booktitle in Clark2017
 Warning--empty journal in DeTone2016-ue
 Warning--empty school in florez2010
 Warning--empty booktitle in Forster2015-af
-Warning--empty school in furgale_phd11
 Warning--empty journal in Kendall2017-vs
 Warning--empty journal in Lee2015-af
 Warning--empty journal in Li:2017
@@ -63,43 +62,43 @@ Warning--empty journal in Sola2018-kg
 Warning--empty journal in Zhou2019-se
 You've used 116 entries,
             1935 wiz_defined-function locations,
-            1191 strings with 26607 characters,
-and the built_in function-call counts, 55652 in all, are:
-= -- 5574
-> -- 2278
+            1194 strings with 26650 characters,
+and the built_in function-call counts, 55796 in all, are:
+= -- 5590
+> -- 2284
 < -- 99
-+ -- 790
-- -- 771
-* -- 4454
-:= -- 8982
++ -- 794
+- -- 773
+* -- 4471
+:= -- 8998
 add.period$ -- 356
 call.type$ -- 116
-change.case$ -- 950
+change.case$ -- 952
 chr.to.int$ -- 111
-cite$ -- 128
-duplicate$ -- 2369
-empty$ -- 3957
-format.name$ -- 939
-if$ -- 11489
+cite$ -- 127
+duplicate$ -- 2371
+empty$ -- 3970
+format.name$ -- 943
+if$ -- 11521
 int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 115
+missing$ -- 116
 newline$ -- 576
 num.names$ -- 354
-pop$ -- 1104
+pop$ -- 1103
 preamble$ -- 1
-purify$ -- 956
+purify$ -- 957
 quote$ -- 0
-skip$ -- 1811
+skip$ -- 1812
 stack$ -- 0
-substring$ -- 4019
+substring$ -- 4046
 swap$ -- 628
 text.length$ -- 61
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 690
-warning$ -- 12
-while$ -- 456
+warning$ -- 11
+while$ -- 458
 width$ -- 0
-write$ -- 1500
+write$ -- 1501
 (There were 7 error messages)
