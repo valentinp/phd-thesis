@@ -655,7 +655,7 @@ The estimates $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\E
 	There are several salient extensions to the work presented here. 
 	\begin{enumerate}
 	\item 	In order to ensure that the output of HydraNet and the output of the canonical VO pipeline are fused optimally, we can apply the method of \textit{covariance intersection} (CI) \citep{julier2007using}. CI is a technique to fuse measurements when the correlation between them is unknown and provides provably consistent estimates.
-	\item To improve epistemic uncertainty, we can investigate the application of a \textit{gradient blockade} between the heads and body of HydraNet. A gradient blockade would ensure that each head learns independently. At present, the $H+1$th head (which outputs \textit{aleatoric} covariance) indirectly connects the gradients of the remaining heads by weighting the likelihood loss \citep{brachmann2019ngransac} for each.
+	\item To improve epistemic uncertainty, we can investigate the application of a \textit{gradient blockade} \citep{brachmann2019ngransac} between the heads and body of HydraNet. A gradient blockade would ensure that each head learns independently. At present, the $H+1$th head (which outputs \textit{aleatoric} covariance) indirectly connects the gradients of the remaining heads by weighting the likelihood loss for each.
 	\item To further improve epistemic uncertainty, it is possible (as in \cite{Osband2016}) to train each head with a subset of training examples (mimicking the method of the statistical bootstrap, instead of relying solely on random initializations).
 	\end{enumerate}
  \end{remark}

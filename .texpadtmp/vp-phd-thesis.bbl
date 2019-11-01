@@ -509,6 +509,12 @@ Melkumyan, A. and Ramos, F. (2011).
 \newblock In {\em Twenty-Second International Joint Conference on Artificial
   Intelligence}.
 
+\bibitem[Moravec, 1980]{moravec1980obstacle}
+Moravec, H.~P. (1980).
+\newblock Obstacle avoidance and navigation in the real world by a seeing robot
+  rover.
+\newblock Technical report, Stanford Univ CA Dept of Computer Science.
+
 \bibitem[Oliveira et~al., 2017]{Oliveira2017-lt}
 Oliveira, G.~L., Radwan, N., Burgard, W., and Brox, T. (2017).
 \newblock Topometric localization with deep learning.

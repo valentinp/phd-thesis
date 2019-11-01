@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  1 NOV 2019 11:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  1 NOV 2019 14:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1326,7 +1326,7 @@ Underfull \hbox (badness 3525) in paragraph at lines 80--81
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/it' will be
 (Font)              scaled to size 14.4pt on input line 82.
-<figures/introduction/vo_pipeline.pdf, id=469, 979.04834pt x 348.3679pt>
+<figures/introduction/vo_pipeline.pdf, id=470, 979.04834pt x 348.3679pt>
 File: figures/introduction/vo_pipeline.pdf Graphic file (type pdf)
 <use figures/introduction/vo_pipeline.pdf>
 Package pdftex.def Info: figures/introduction/vo_pipeline.pdf  used on input line 91.
@@ -1381,36 +1381,39 @@ Underfull \hbox (badness 1769) in paragraph at lines 106--106
 [][]\OT1/LinuxLibertineT-TLF/m/n/9 Based on the KITTI Odom-e-try bench-mark leader-board at [][]$\OT1/LinuxLibertineMonoT-TLF/m/n/7.50002 http : / / www . cvlibs . net / datasets / kitti / eval[]
  []
 
-<figures/introduction/pseudo_sensor.pdf, id=683, 1007.63947pt x 307.26904pt>
-File: figures/introduction/pseudo_sensor.pdf Graphic file (type pdf)
-<use figures/introduction/pseudo_sensor.pdf>
-Package pdftex.def Info: figures/introduction/pseudo_sensor.pdf  used on input line 110.
-(pdftex.def)             Requested size: 442.65182pt x 134.98312pt.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sc' will be
+(Font)              scaled to size 10.95pt on input line 115.
 
-Underfull \hbox (badness 6188) in paragraph at lines 125--125
+Underfull \hbox (badness 6188) in paragraph at lines 118--118
 []|\OT1/LinuxLibertineT-TLF/m/n/10.95 Good, each com-po-nent has in-ter-
  []
 
 
-Underfull \hbox (badness 4391) in paragraph at lines 127--128
+Underfull \hbox (badness 4391) in paragraph at lines 120--121
 []|\OT1/LinuxLibertineT-TLF/m/n/10.95 Few nascent meth-ods (Monte-carlo
  []
 
 
-Overfull \hbox (8.89981pt too wide) in paragraph at lines 120--136
+Overfull \hbox (8.89981pt too wide) in paragraph at lines 113--127
 []
  []
+
+<figures/introduction/pseudo_sensor.pdf, id=688, 1007.63947pt x 307.26904pt>
+File: figures/introduction/pseudo_sensor.pdf Graphic file (type pdf)
+<use figures/introduction/pseudo_sensor.pdf>
+Package pdftex.def Info: figures/introduction/pseudo_sensor.pdf  used on input line 133.
+(pdftex.def)             Requested size: 442.65182pt x 134.98312pt.
+[6]
+<figures/introduction/all_pseudo_sensors.pdf, id=708, 1014.62572pt x 570.10489pt>
+File: figures/introduction/all_pseudo_sensors.pdf Graphic file (type pdf)
+<use figures/introduction/all_pseudo_sensors.pdf>
+Package pdftex.def Info: figures/introduction/all_pseudo_sensors.pdf  used on input line 160.
+(pdftex.def)             Requested size: 442.65182pt x 248.72435pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6 <./figures/introduction/pseudo_sensor.pdf>] [7]
-<figures/introduction/all_pseudo_sensors.pdf, id=756, 1014.62572pt x 570.10489pt>
-File: figures/introduction/all_pseudo_sensors.pdf Graphic file (type pdf)
-<use figures/introduction/all_pseudo_sensors.pdf>
-Package pdftex.def Info: figures/introduction/all_pseudo_sensors.pdf  used on input line 162.
-(pdftex.def)             Requested size: 442.65182pt x 248.72435pt.
- [8 <./figures/introduction/all_pseudo_sensors.pdf>]) [9]
+[7 <./figures/introduction/pseudo_sensor.pdf>] [8 <./figures/introduction/all_pseudo_sensors.pdf>]) [9]
 \openout2 = `sections/math.aux'.
 
  (./sections/math.tex
@@ -1422,25 +1425,30 @@ Chapter 2.
 ]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 89.
- [11] [12] [13] [14] [15]
+ [11]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [16] [17]
-<figures/math/cnn.png, id=1312, 630.355pt x 274.02374pt>
+ [12] [13]
+Underfull \vbox (badness 5862) has occurred while \output is active []
+
+ [14]
+Underfull \vbox (badness 2065) has occurred while \output is active []
+
+ [15] [16] [17] [18]
+<figures/math/cnn.png, id=1325, 630.355pt x 274.02374pt>
 File: figures/math/cnn.png Graphic file (type png)
 <use figures/math/cnn.png>
 Package pdftex.def Info: figures/math/cnn.png  used on input line 310.
 (pdftex.def)             Requested size: 429.10176pt x 186.53856pt.
 
+Underfull \vbox (badness 1635) has occurred while \output is active []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[18] [19 <./figures/math/cnn.png>]) [20]
+ [19 <./figures/math/cnn.png>]) [20]
 \openout2 = `sections/vo.aux'.
 
  (./sections/vo.tex
 Chapter 3.
-<figures/classical-vo/vo_taxonomy.pdf, id=1360, 797.7925pt x 355.65161pt>
+<figures/classical-vo/vo_taxonomy.pdf, id=1366, 797.7925pt x 355.65161pt>
 File: figures/classical-vo/vo_taxonomy.pdf Graphic file (type pdf)
 <use figures/classical-vo/vo_taxonomy.pdf>
 Package pdftex.def Info: figures/classical-vo/vo_taxonomy.pdf  used on input line 7.
@@ -1450,19 +1458,19 @@ Package pdftex.def Info: figures/classical-vo/vo_taxonomy.pdf  used on input lin
 
 
  <./figures/classical-vo/vo_taxonomy.pdf>]
-<figures/classical-vo/stereo_vo_pipeline.pdf, id=1432, 1011.65453pt x 255.623pt>
+<figures/classical-vo/stereo_vo_pipeline.pdf, id=1439, 1011.65453pt x 255.623pt>
 File: figures/classical-vo/stereo_vo_pipeline.pdf Graphic file (type pdf)
 <use figures/classical-vo/stereo_vo_pipeline.pdf>
 Package pdftex.def Info: figures/classical-vo/stereo_vo_pipeline.pdf  used on input line 32.
 (pdftex.def)             Requested size: 442.65182pt x 111.85039pt.
-<figures/classical-vo/stereo_rectification.pdf, id=1434, 614.295pt x 794.97pt>
+<figures/classical-vo/stereo_rectification.pdf, id=1441, 614.295pt x 794.97pt>
 File: figures/classical-vo/stereo_rectification.pdf Graphic file (type pdf)
 <use figures/classical-vo/stereo_rectification.pdf>
 Package pdftex.def Info: figures/classical-vo/stereo_rectification.pdf  used on input line 49.
 (pdftex.def)             Requested size: 162.60605pt x 210.42343pt.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 9.0pt on input line 50.
-<figures/classical-vo/stereo_camera.pdf, id=1439, 728.7225pt x 640.3925pt>
+<figures/classical-vo/stereo_camera.pdf, id=1446, 728.7225pt x 640.3925pt>
 File: figures/classical-vo/stereo_camera.pdf Graphic file (type pdf)
 <use figures/classical-vo/stereo_camera.pdf>
 Package pdftex.def Info: figures/classical-vo/stereo_camera.pdf  used on input line 55.
@@ -1475,59 +1483,55 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22 <./figures/classical-vo/stereo_vo_pipeline.pdf>]
-<figures/classical-vo/libviso2_scan.png, id=1526, 713.66624pt x 221.82875pt>
+<figures/classical-vo/libviso2_scan.png, id=1533, 713.66624pt x 221.82875pt>
 File: figures/classical-vo/libviso2_scan.png Graphic file (type png)
 <use figures/classical-vo/libviso2_scan.png>
 Package pdftex.def Info: figures/classical-vo/libviso2_scan.png  used on input line 70.
 (pdftex.def)             Requested size: 447.17311pt x 138.99463pt.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 71.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 LaTeX Font Info:    Try loading font information for OT1+LinuxBiolinumT-TLF on input line 75.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
+(/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
 File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 10.95pt on input line 75.
- [23 <./figures/classical-vo/stereo_rectification.pdf> <./figures/classical-vo/stereo_camera.pdf> <./figures/classical-vo/libviso2_scan.png>] [24]
-Underfull \vbox (badness 3209) has occurred while \output is active []
+ [23 <./figures/classical-vo/stereo_rectification.pdf> <./figures/classical-vo/stereo_camera.pdf>] [24 <./figures/classical-vo/libviso2_scan.png>] [25] [26]
+Underfull \vbox (badness 1320) has occurred while \output is active []
 
- [25] [26] [27]
+ [27] [28]
+Underfull \hbox (badness 7397) in paragraph at lines 296--297
+\OT1/LinuxLibertineT-TLF/m/n/10.95 (Chap-ter [][]6[][]) , Sun-BCNN
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 296--297
-[]|\OT1/LinuxLibertineT-TLF/m/n/10.95 PROBE, DPC-Net, Sun-
+\OT1/LinuxLibertineT-TLF/m/n/10.95 (Chap-ter [][]5[][]), Hy-draNet
  []
 
 
-Overfull \hbox (5.92862pt too wide) in paragraph at lines 293--301
+Underfull \hbox (badness 7099) in paragraph at lines 300--301
+[]|\OT1/LinuxLibertineT-TLF/m/n/10.95 DPC (Chap-ter [][]6[][]) , Sun-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
+\OT1/LinuxLibertineT-TLF/m/n/10.95 BCNN (Chap-ter [][]5[][]), Hy-
+ []
+
+
+Overfull \hbox (5.92862pt too wide) in paragraph at lines 293--306
 [] 
  []
 
-
-Overfull \hbox (5.92862pt too wide) in paragraph at lines 307--315
-[] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
-[]|\OT1/LinuxLibertineT-TLF/m/n/10.95 PROBE, Sun-BCNN, Hy-
- []
-
-
-Overfull \hbox (5.92862pt too wide) in paragraph at lines 321--329
-[] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [28] [29]
+) [29]
 \openout2 = `sections/probe.aux'.
 
  (./sections/probe.tex
 Chapter 4.
-<figures/probe.pdf, id=1766, 1016.31648pt x 517.59003pt>
+<figures/probe.pdf, id=1779, 1016.31648pt x 517.59003pt>
 File: figures/probe.pdf Graphic file (type pdf)
 <use figures/probe.pdf>
 Package pdftex.def Info: figures/probe.pdf  used on input line 9.
@@ -1537,7 +1541,7 @@ Package pdftex.def Info: figures/probe.pdf  used on input line 9.
 
 
  <./figures/probe.pdf>] [31]
-<figures/probe-gk/system_overview.pdf, id=1955, 702.83539pt x 543.80386pt>
+<figures/probe-gk/system_overview.pdf, id=1968, 702.83539pt x 543.80386pt>
 File: figures/probe-gk/system_overview.pdf Graphic file (type pdf)
 <use figures/probe-gk/system_overview.pdf>
 Package pdftex.def Info: figures/probe-gk/system_overview.pdf  used on input line 57.
@@ -1553,8 +1557,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [36]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 247.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 250.
 
 Overfull \hbox (24.15573pt too wide) in paragraph at lines 273--285
 \OT1/LinuxLibertineT-TLF/m/n/10.95 com-mon ro-bust loss func-tion which is ap-prox-i-mately quadratic in the re-pro-jec-tion er-ror for $[][] [][][][] \OMS/cmsy/m/n/10.95 ^^\
@@ -1676,17 +1678,17 @@ l.432           \State
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.95pt on input line 449.
  [39] [40]
-<figures/probe/tricifix2.jpg, id=2172, 803.0pt x 534.99875pt>
+<figures/probe/tricifix2.jpg, id=2185, 803.0pt x 534.99875pt>
 File: figures/probe/tricifix2.jpg Graphic file (type jpg)
 <use figures/probe/tricifix2.jpg>
 Package pdftex.def Info: figures/probe/tricifix2.jpg  used on input line 483.
 (pdftex.def)             Requested size: 225.84375pt x 150.46802pt.
-<figures/probe/reprojectionError.pdf, id=2173, 485.31891pt x 193.12715pt>
+<figures/probe/reprojectionError.pdf, id=2186, 485.31891pt x 193.12715pt>
 File: figures/probe/reprojectionError.pdf Graphic file (type pdf)
 <use figures/probe/reprojectionError.pdf>
 Package pdftex.def Info: figures/probe/reprojectionError.pdf  used on input line 498.
 (pdftex.def)             Requested size: 383.93713pt x 152.78387pt.
-<figures/probe/trackingError.pdf, id=2178, 485.31891pt x 193.12715pt>
+<figures/probe/trackingError.pdf, id=2191, 485.31891pt x 193.12715pt>
 File: figures/probe/trackingError.pdf Graphic file (type pdf)
 <use figures/probe/trackingError.pdf>
 Package pdftex.def Info: figures/probe/trackingError.pdf  used on input line 505.
@@ -1695,12 +1697,12 @@ Package pdftex.def Info: figures/probe/trackingError.pdf  used on input line 505
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/probe/trackingError.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<figures/probe/flowPredictorCombined.png, id=2250, 492.84125pt x 162.10562pt>
+<figures/probe/flowPredictorCombined.png, id=2263, 492.84125pt x 162.10562pt>
 File: figures/probe/flowPredictorCombined.png Graphic file (type png)
 <use figures/probe/flowPredictorCombined.png>
 Package pdftex.def Info: figures/probe/flowPredictorCombined.png  used on input line 536.
 (pdftex.def)             Requested size: 442.65182pt x 145.60431pt.
-<figures/probe/highFreqPredictor.png, id=2252, 492.84125pt x 162.10562pt>
+<figures/probe/highFreqPredictor.png, id=2265, 492.84125pt x 162.10562pt>
 File: figures/probe/highFreqPredictor.png Graphic file (type png)
 <use figures/probe/highFreqPredictor.png>
 Package pdftex.def Info: figures/probe/highFreqPredictor.png  used on input line 551.
@@ -1715,54 +1717,54 @@ Package epstopdf Info: Source file: <figures/probe-gk/frobNorm.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/probe-gk/frobNorm-eps-converted-to.pdf figures/probe-gk/frobNorm.eps>
 (epstopdf)             \includegraphics on input line 569.
 Package epstopdf Info: Output file is already uptodate.
-<figures/probe-gk/frobNorm-eps-converted-to.pdf, id=2276, 501.875pt x 280.04625pt>
+<figures/probe-gk/frobNorm-eps-converted-to.pdf, id=2289, 501.875pt x 280.04625pt>
 File: figures/probe-gk/frobNorm-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/probe-gk/frobNorm-eps-converted-to.pdf>
 Package pdftex.def Info: figures/probe-gk/frobNorm-eps-converted-to.pdf  used on input line 569.
 (pdftex.def)             Requested size: 203.258pt x 113.41809pt.
-<figures/probe-gk/sim_world.pdf, id=2277, 449.68pt x 338.26375pt>
+<figures/probe-gk/sim_world.pdf, id=2290, 449.68pt x 338.26375pt>
 File: figures/probe-gk/sim_world.pdf Graphic file (type pdf)
 <use figures/probe-gk/sim_world.pdf>
 Package pdftex.def Info: figures/probe-gk/sim_world.pdf  used on input line 588.
 (pdftex.def)             Requested size: 225.84375pt x 169.88503pt.
  [45 <./figures/probe-gk/frobNorm-eps-converted-to.pdf> <./figures/probe-gk/sim_world.pdf>]
-<figures/probe-gk/simComparison_sim_rerun.pdf, id=2302, 496.85625pt x 396.48125pt>
+<figures/probe-gk/simComparison_sim_rerun.pdf, id=2315, 496.85625pt x 396.48125pt>
 File: figures/probe-gk/simComparison_sim_rerun.pdf Graphic file (type pdf)
 <use figures/probe-gk/simComparison_sim_rerun.pdf>
 Package pdftex.def Info: figures/probe-gk/simComparison_sim_rerun.pdf  used on input line 603.
 (pdftex.def)             Requested size: 338.76563pt x 270.32965pt.
-<figures/probe-gk/KittiEnvironments.pdf, id=2309, 906.1415pt x 95.33878pt>
+<figures/probe-gk/KittiEnvironments.pdf, id=2322, 906.1415pt x 95.33878pt>
 File: figures/probe-gk/KittiEnvironments.pdf Graphic file (type pdf)
 <use figures/probe-gk/KittiEnvironments.pdf>
 Package pdftex.def Info: figures/probe-gk/KittiEnvironments.pdf  used on input line 621.
 (pdftex.def)             Requested size: 442.65182pt x 46.57382pt.
  [46 <./figures/probe-gk/simComparison_sim_rerun.pdf>]
-<figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf, id=2327, 484.81125pt x 393.47pt>
+<figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf, id=2340, 484.81125pt x 393.47pt>
 File: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf Graphic file (type pdf)
 <use figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf>
 Package pdftex.def Info: figures/probe-gk/kittiComparison-0011-0009-15-Sep-2015-4way.pdf  used on input line 641.
 (pdftex.def)             Requested size: 216.80807pt x 175.96115pt.
-<figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf, id=2328, 487.8225pt x 393.47pt>
+<figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf, id=2341, 487.8225pt x 393.47pt>
 File: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf Graphic file (type pdf)
 <use figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf>
 Package pdftex.def Info: figures/probe-gk/kittiComparison-0035-0036-15-Sep-2015-4way.pdf  used on input line 647.
 (pdftex.def)             Requested size: 216.80807pt x 174.87445pt.
-<figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf, id=2329, 484.81125pt x 393.47pt>
+<figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf, id=2342, 484.81125pt x 393.47pt>
 File: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf Graphic file (type pdf)
 <use figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf>
 Package pdftex.def Info: figures/probe-gk/kittiComparison-0070-0028-15-Sep-2015-4way.pdf  used on input line 652.
 (pdftex.def)             Requested size: 216.80807pt x 175.96115pt.
-<figures/probe-gk/experiment_wide_border.pdf, id=2335, 610.61609pt x 421.44742pt>
+<figures/probe-gk/experiment_wide_border.pdf, id=2348, 610.61609pt x 421.44742pt>
 File: figures/probe-gk/experiment_wide_border.pdf Graphic file (type pdf)
 <use figures/probe-gk/experiment_wide_border.pdf>
 Package pdftex.def Info: figures/probe-gk/experiment_wide_border.pdf  used on input line 700.
 (pdftex.def)             Requested size: 221.32936pt x 152.76273pt.
-<figures/probe-gk/xb3_rtk_fig.pdf, id=2336, 490.83376pt x 380.42125pt>
+<figures/probe-gk/xb3_rtk_fig.pdf, id=2349, 490.83376pt x 380.42125pt>
 File: figures/probe-gk/xb3_rtk_fig.pdf Graphic file (type pdf)
 <use figures/probe-gk/xb3_rtk_fig.pdf>
 Package pdftex.def Info: figures/probe-gk/xb3_rtk_fig.pdf  used on input line 707.
 (pdftex.def)             Requested size: 221.32936pt x 171.54205pt.
-<figures/probe-gk/trainingStats.pdf, id=2337, 499.8675pt x 402.50375pt>
+<figures/probe-gk/trainingStats.pdf, id=2350, 499.8675pt x 402.50375pt>
 File: figures/probe-gk/trainingStats.pdf Graphic file (type pdf)
 <use figures/probe-gk/trainingStats.pdf>
 Package pdftex.def Info: figures/probe-gk/trainingStats.pdf  used on input line 718.
@@ -1772,7 +1774,7 @@ Package pdftex.def Info: figures/probe-gk/trainingStats.pdf  used on input line 
 
  (./sections/sun-bcnn.tex
 Chapter 5.
-<figures/sun-bcnn.pdf, id=2473, 1005.2982pt x 528.15837pt>
+<figures/sun-bcnn.pdf, id=2486, 1005.2982pt x 528.15837pt>
 File: figures/sun-bcnn.pdf Graphic file (type pdf)
 <use figures/sun-bcnn.pdf>
 Package pdftex.def Info: figures/sun-bcnn.pdf  used on input line 12.
@@ -1791,12 +1793,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
 (Font)              scaled to size 10.95pt on input line 120.
  [55] [56]
-<figures/sun-bcnn/dropout_fcn.png, id=2744, 264.48813pt x 298.11375pt>
+<figures/sun-bcnn/dropout_fcn.png, id=2757, 264.48813pt x 298.11375pt>
 File: figures/sun-bcnn/dropout_fcn.png Graphic file (type png)
 <use figures/sun-bcnn/dropout_fcn.png>
 Package pdftex.def Info: figures/sun-bcnn/dropout_fcn.png  used on input line 184.
 (pdftex.def)             Requested size: 162.60701pt x 183.282pt.
-<figures/sun-bcnn/dropout_fcnwdrop.png, id=2745, 274.02374pt x 307.1475pt>
+<figures/sun-bcnn/dropout_fcnwdrop.png, id=2758, 274.02374pt x 307.1475pt>
 File: figures/sun-bcnn/dropout_fcnwdrop.png Graphic file (type png)
 <use figures/sun-bcnn/dropout_fcnwdrop.png>
 Package pdftex.def Info: figures/sun-bcnn/dropout_fcnwdrop.png  used on input line 190.
@@ -1805,12 +1807,14 @@ Package pdftex.def Info: figures/sun-bcnn/dropout_fcnwdrop.png  used on input li
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [59] [60]
-<figures/sun-bcnn/kitti_activations_horiz.pdf, id=2827, 885.53093pt x 184.6922pt>
+<figures/sun-bcnn/kitti_activations_horiz.pdf, id=2840, 885.53093pt x 184.6922pt>
 File: figures/sun-bcnn/kitti_activations_horiz.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti_activations_horiz.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti_activations_horiz.pdf  used on input line 297.
 (pdftex.def)             Requested size: 442.65182pt x 92.32332pt.
-<figures/sun-bcnn/googlenet.pdf, id=2832, 591.01694pt x 154.38266pt>
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 298.
+<figures/sun-bcnn/googlenet.pdf, id=2845, 591.01694pt x 154.38266pt>
 File: figures/sun-bcnn/googlenet.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/googlenet.pdf>
 Package pdftex.def Info: figures/sun-bcnn/googlenet.pdf  used on input line 305.
@@ -1819,37 +1823,37 @@ Package pdftex.def Info: figures/sun-bcnn/googlenet.pdf  used on input line 305.
 Underfull \vbox (badness 3291) has occurred while \output is active []
 
  [62]
-<figures/sun-bcnn/kitti/kitti_cdf.pdf, id=2976, 765.86125pt x 242.9075pt>
+<figures/sun-bcnn/kitti/kitti_cdf.pdf, id=2989, 765.86125pt x 242.9075pt>
 File: figures/sun-bcnn/kitti/kitti_cdf.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_cdf.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_cdf.pdf  used on input line 495.
 (pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
-<figures/sun-bcnn/kitti/kitti_hist_azzen.pdf, id=2977, 779.91376pt x 236.885pt>
+<figures/sun-bcnn/kitti/kitti_hist_azzen.pdf, id=2990, 779.91376pt x 236.885pt>
 File: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_hist_azzen.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_hist_azzen.pdf  used on input line 498.
 (pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
-<figures/sun-bcnn/kitti/kitti_error_over_time.pdf, id=2978, 539.01375pt x 467.7475pt>
+<figures/sun-bcnn/kitti/kitti_error_over_time.pdf, id=2991, 539.01375pt x 467.7475pt>
 File: figures/sun-bcnn/kitti/kitti_error_over_time.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_error_over_time.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_error_over_time.pdf  used on input line 506.
 (pdftex.def)             Requested size: 338.76563pt x 293.97588pt.
-<figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf, id=2979, 1120.185pt x 247.92625pt>
+<figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf, id=2992, 1120.185pt x 247.92625pt>
 File: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf  used on input line 542.
 (pdftex.def)             Requested size: 442.65182pt x 97.96951pt.
-<figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf, id=2982, 425.59pt x 340.27126pt>
+<figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf, id=2995, 425.59pt x 340.27126pt>
 File: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf  used on input line 551.
 (pdftex.def)             Requested size: 216.80807pt x 173.34393pt.
-<figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf, id=2983, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf, id=2996, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf  used on input line 557.
 (pdftex.def)             Requested size: 216.80807pt x 175.34055pt.
-<figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf, id=2984, 439.6425pt x 338.26375pt>
+<figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf, id=2997, 439.6425pt x 338.26375pt>
 File: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf  used on input line 562.
@@ -1858,52 +1862,52 @@ Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf  used 
 Underfull \vbox (badness 4291) has occurred while \output is active []
 
  [63] [64 <./figures/sun-bcnn/kitti/kitti_cdf.pdf> <./figures/sun-bcnn/kitti/kitti_hist_azzen.pdf> <./figures/sun-bcnn/kitti/kitti_error_over_time.pdf>] [65 <./figures/sun-bcnn/kitti/kitti_testStatsBoxPlot.pdf>] [66 <./figures/sun-bcnn/kitti/kitti_05_traj_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse_sim.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse_sim.pdf>]
-<figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf, id=3063, 833.49754pt x 386.21689pt>
+<figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf, id=3076, 833.49754pt x 386.21689pt>
 File: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf  used on input line 578.
 (pdftex.def)             Requested size: 442.65182pt x 205.11238pt.
-<figures/sun-bcnn/kitti/kitti_02_traj.pdf, id=3064, 430.60875pt x 339.2675pt>
+<figures/sun-bcnn/kitti/kitti_02_traj.pdf, id=3077, 430.60875pt x 339.2675pt>
 File: figures/sun-bcnn/kitti/kitti_02_traj.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_02_traj.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_traj.pdf  used on input line 586.
 (pdftex.def)             Requested size: 135.50763pt x 106.76628pt.
-<figures/sun-bcnn/kitti/kitti_05_traj.pdf, id=3065, 425.59pt x 342.27875pt>
+<figures/sun-bcnn/kitti/kitti_05_traj.pdf, id=3078, 425.59pt x 342.27875pt>
 File: figures/sun-bcnn/kitti/kitti_05_traj.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_05_traj.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_traj.pdf  used on input line 591.
 (pdftex.def)             Requested size: 135.50763pt x 108.98303pt.
-<figures/sun-bcnn/kitti/kitti_08_traj.pdf, id=3066, 439.6425pt x 336.25626pt>
+<figures/sun-bcnn/kitti/kitti_08_traj.pdf, id=3079, 439.6425pt x 336.25626pt>
 File: figures/sun-bcnn/kitti/kitti_08_traj.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_08_traj.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_traj.pdf  used on input line 596.
 (pdftex.def)             Requested size: 135.50763pt x 103.63805pt.
-<figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf, id=3067, 430.60875pt x 352.31625pt>
+<figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf, id=3080, 430.60875pt x 352.31625pt>
 File: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf  used on input line 601.
 (pdftex.def)             Requested size: 135.50763pt x 110.87268pt.
-<figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf, id=3068, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf, id=3081, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf  used on input line 606.
 (pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-<figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf, id=3069, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf, id=3082, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf  used on input line 611.
 (pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-<figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf, id=3070, 439.6425pt x 338.26375pt>
+<figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf, id=3083, 439.6425pt x 338.26375pt>
 File: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf  used on input line 616.
 (pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
-<figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf, id=3071, 439.6425pt x 338.26375pt>
+<figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf, id=3084, 439.6425pt x 338.26375pt>
 File: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf  used on input line 621.
 (pdftex.def)             Requested size: 135.50763pt x 104.25677pt.
-<figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf, id=3072, 444.66125pt x 338.26375pt>
+<figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf, id=3085, 444.66125pt x 338.26375pt>
 File: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf  used on input line 626.
@@ -1917,23 +1921,23 @@ LaTeX Warning: No positions in optional float specifier.
 LaTeX Warning: Float too large for page by 7.73445pt on input line 680.
 
 [67 <./figures/sun-bcnn/kitti/kitti_kitti_arrow_fig.pdf>] [68 <./figures/sun-bcnn/kitti/kitti_02_traj.pdf> <./figures/sun-bcnn/kitti/kitti_05_traj.pdf> <./figures/sun-bcnn/kitti/kitti_08_traj.pdf> <./figures/sun-bcnn/kitti/kitti_02_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_en_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_02_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_05_rot_rmse.pdf> <./figures/sun-bcnn/kitti/kitti_08_rot_rmse.pdf>] [69]
-<figures/sun-bcnn/devon/devon_collage.pdf, id=3208, 1440.76855pt x 306.44054pt>
+<figures/sun-bcnn/devon/devon_collage.pdf, id=3221, 1440.76855pt x 306.44054pt>
 File: figures/sun-bcnn/devon/devon_collage.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_collage.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_collage.pdf  used on input line 702.
 (pdftex.def)             Requested size: 447.17311pt x 95.1078pt.
  [70 <./figures/sun-bcnn/devon/devon_collage.pdf>] [71]
-<figures/sun-bcnn/devon/devon_cdf.pdf, id=3284, 765.86125pt x 242.9075pt>
+<figures/sun-bcnn/devon/devon_cdf.pdf, id=3297, 765.86125pt x 242.9075pt>
 File: figures/sun-bcnn/devon/devon_cdf.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_cdf.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_cdf.pdf  used on input line 751.
 (pdftex.def)             Requested size: 338.76563pt x 107.4467pt.
-<figures/sun-bcnn/devon/devon_hist_azzen.pdf, id=3285, 779.91376pt x 236.885pt>
+<figures/sun-bcnn/devon/devon_hist_azzen.pdf, id=3298, 779.91376pt x 236.885pt>
 File: figures/sun-bcnn/devon/devon_hist_azzen.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_hist_azzen.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_hist_azzen.pdf  used on input line 754.
 (pdftex.def)             Requested size: 338.76563pt x 102.89232pt.
-<figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf, id=3286, 539.01375pt x 467.7475pt>
+<figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf, id=3299, 539.01375pt x 467.7475pt>
 File: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.pdf  used on input line 764.
@@ -1943,7 +1947,7 @@ Package pdftex.def Info: figures/sun-bcnn/devon/devon_error_over_time_00_01_02.p
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 785.
 
-<figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf, id=3325, 1120.185pt x 247.92625pt>
+<figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf, id=3338, 1120.185pt x 247.92625pt>
 File: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf  used on input line 816.
@@ -1952,47 +1956,47 @@ Package pdftex.def Info: figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf  used
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [74] [75 <./figures/sun-bcnn/devon/devon_testStatsBoxPlot.pdf>]
-<figures/sun-bcnn/devon/devon_c00_traj.pdf, id=3364, 425.59pt x 343.2825pt>
+<figures/sun-bcnn/devon/devon_c00_traj.pdf, id=3377, 425.59pt x 343.2825pt>
 File: figures/sun-bcnn/devon/devon_c00_traj.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c00_traj.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_traj.pdf  used on input line 848.
 (pdftex.def)             Requested size: 135.50763pt x 109.30264pt.
-<figures/sun-bcnn/devon/devon_c01_traj.pdf, id=3365, 433.62pt x 342.27875pt>
+<figures/sun-bcnn/devon/devon_c01_traj.pdf, id=3378, 433.62pt x 342.27875pt>
 File: figures/sun-bcnn/devon/devon_c01_traj.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c01_traj.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_traj.pdf  used on input line 855.
 (pdftex.def)             Requested size: 135.50763pt x 106.96184pt.
-<figures/sun-bcnn/devon/devon_c05_traj.pdf, id=3366, 425.59pt x 339.2675pt>
+<figures/sun-bcnn/devon/devon_c05_traj.pdf, id=3379, 425.59pt x 339.2675pt>
 File: figures/sun-bcnn/devon/devon_c05_traj.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c05_traj.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_traj.pdf  used on input line 862.
 (pdftex.def)             Requested size: 135.50763pt x 108.02425pt.
-<figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf, id=3367, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf, id=3380, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf  used on input line 868.
 (pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-<figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf, id=3368, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf, id=3381, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf  used on input line 874.
 (pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-<figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf, id=3369, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf, id=3382, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf  used on input line 880.
 (pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-<figures/sun-bcnn/devon/devon_c00_en_rmse.pdf, id=3370, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/devon/devon_c00_en_rmse.pdf, id=3383, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c00_en_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c00_en_rmse.pdf  used on input line 886.
 (pdftex.def)             Requested size: 135.50763pt x 109.58784pt.
-<figures/sun-bcnn/devon/devon_c01_en_rmse.pdf, id=3371, 421.575pt x 352.31625pt>
+<figures/sun-bcnn/devon/devon_c01_en_rmse.pdf, id=3384, 421.575pt x 352.31625pt>
 File: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c01_en_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c01_en_rmse.pdf  used on input line 892.
 (pdftex.def)             Requested size: 135.50763pt x 113.24345pt.
-<figures/sun-bcnn/devon/devon_c05_en_rmse.pdf, id=3372, 435.6275pt x 352.31625pt>
+<figures/sun-bcnn/devon/devon_c05_en_rmse.pdf, id=3385, 435.6275pt x 352.31625pt>
 File: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>
 Package pdftex.def Info: figures/sun-bcnn/devon/devon_c05_en_rmse.pdf  used on input line 898.
@@ -2008,7 +2012,7 @@ LaTeX Warning: Reference `tab:devon_armse' on page 1 undefined on input line 902
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [76 <./figures/sun-bcnn/devon/devon_c00_traj.pdf> <./figures/sun-bcnn/devon/devon_c01_traj.pdf> <./figures/sun-bcnn/devon/devon_c05_traj.pdf> <./figures/sun-bcnn/devon/devon_c00_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_enu_rmse.pdf> <./figures/sun-bcnn/devon/devon_c00_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c01_en_rmse.pdf> <./figures/sun-bcnn/devon/devon_c05_en_rmse.pdf>]
-<figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf, id=3454, 477.74554pt x 367.2372pt>
+<figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf, id=3467, 477.74554pt x 367.2372pt>
 File: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>
 Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf  used on input line 955.
@@ -2017,13 +2021,13 @@ Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf  us
 Underfull \vbox (badness 4205) has occurred while \output is active []
 
  [77]
-<figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf, id=3462, 437.635pt x 417.56pt>
+<figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf, id=3475, 437.635pt x 417.56pt>
 File: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>
 Package pdftex.def Info: figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf  used on input line 969.
 (pdftex.def)             Requested size: 225.84375pt x 215.48224pt.
  [78 <./figures/sun-bcnn/oxford/oxford_oxford-sun-cloud.pdf>] [79 <./figures/sun-bcnn/oxford/oxford_boxwhiskers_cloudsunny_comp.pdf>]
-<figures/sun-bcnn/boxwhiskers_transfer_comp.pdf, id=3527, 437.635pt x 417.56pt>
+<figures/sun-bcnn/boxwhiskers_transfer_comp.pdf, id=3540, 437.635pt x 417.56pt>
 File: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf Graphic file (type pdf)
 <use figures/sun-bcnn/boxwhiskers_transfer_comp.pdf>
 Package pdftex.def Info: figures/sun-bcnn/boxwhiskers_transfer_comp.pdf  used on input line 1010.
@@ -2065,13 +2069,13 @@ Chapter 6.
 
 
 ]
-<figures/dpc/dpc_high_level.pdf, id=3619, 578.48874pt x 554.09181pt>
+<figures/dpc/dpc_high_level.pdf, id=3632, 578.48874pt x 554.09181pt>
 File: figures/dpc/dpc_high_level.pdf Graphic file (type pdf)
 <use figures/dpc/dpc_high_level.pdf>
 Package pdftex.def Info: figures/dpc/dpc_high_level.pdf  used on input line 38.
 (pdftex.def)             Requested size: 307.1442pt x 294.1999pt.
  [86 <./figures/dpc/dpc_high_level.pdf>]
-<figures/dpc/siamese_dpc_net.pdf, id=3740, 569.62813pt x 579.26881pt>
+<figures/dpc/siamese_dpc_net.pdf, id=3753, 569.62813pt x 579.26881pt>
 File: figures/dpc/siamese_dpc_net.pdf Graphic file (type pdf)
 <use figures/dpc/siamese_dpc_net.pdf>
 Package pdftex.def Info: figures/dpc/siamese_dpc_net.pdf  used on input line 69.
@@ -2087,7 +2091,7 @@ Package natbib Warning: Citation `Kendall2017-u' on page 90 undefined on input l
 Underfull \vbox (badness 1178) has occurred while \output is active []
 
  [90] [91]
-<figures/dpc/pose_relaxation.pdf, id=3916, 257.3075pt x 116.0335pt>
+<figures/dpc/pose_relaxation.pdf, id=3929, 257.3075pt x 116.0335pt>
 File: figures/dpc/pose_relaxation.pdf Graphic file (type pdf)
 <use figures/dpc/pose_relaxation.pdf>
 Package pdftex.def Info: figures/dpc/pose_relaxation.pdf  used on input line 237.
@@ -2097,7 +2101,7 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 5.0pt on input line 238.
  [92 <./figures/dpc/pose_relaxation.pdf>] [93]
-<figures/dpc/distorted_images_horiz.pdf, id=4031, 1223.70775pt x 125.35814pt>
+<figures/dpc/distorted_images_horiz.pdf, id=4044, 1223.70775pt x 125.35814pt>
 File: figures/dpc/distorted_images_horiz.pdf Graphic file (type pdf)
 <use figures/dpc/distorted_images_horiz.pdf>
 Package pdftex.def Info: figures/dpc/distorted_images_horiz.pdf  used on input line 297.
@@ -2106,47 +2110,47 @@ Package pdftex.def Info: figures/dpc/distorted_images_horiz.pdf  used on input l
 Underfull \vbox (badness 4608) has occurred while \output is active []
 
  [94]
-<figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf, id=4054, 578.16pt x 216.81pt>
+<figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf, id=4068, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/00_cum_norms.pdf  used on input line 322.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf, id=4055, 578.16pt x 216.81pt>
+<figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf, id=4069, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/02_cum_norms.pdf  used on input line 328.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf, id=4056, 578.16pt x 216.81pt>
+<figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf, id=4070, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/05_cum_norms.pdf  used on input line 334.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/sparse-with-dense/combined/00_segs.pdf, id=4057, 578.16pt x 216.81pt>
+<figures/dpc/sparse-with-dense/combined/00_segs.pdf, id=4071, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/00_segs.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/combined/00_segs.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/00_segs.pdf  used on input line 345.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/sparse-with-dense/combined/02_segs.pdf, id=4058, 578.16pt x 216.81pt>
+<figures/dpc/sparse-with-dense/combined/02_segs.pdf, id=4072, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/02_segs.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/combined/02_segs.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/02_segs.pdf  used on input line 351.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/sparse-with-dense/combined/05_segs.pdf, id=4059, 578.16pt x 216.81pt>
+<figures/dpc/sparse-with-dense/combined/05_segs.pdf, id=4073, 578.16pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/combined/05_segs.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/combined/05_segs.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/combined/05_segs.pdf  used on input line 357.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/sparse-with-dense/pose/00_topdown.pdf, id=4060, 289.08pt x 216.81pt>
+<figures/dpc/sparse-with-dense/pose/00_topdown.pdf, id=4074, 289.08pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/pose/00_topdown.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/pose/00_topdown.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/00_topdown.pdf  used on input line 368.
 (pdftex.def)             Requested size: 216.80807pt x 162.60378pt.
-<figures/dpc/sparse-with-dense/pose/02_topdown.pdf, id=4061, 289.08pt x 216.81pt>
+<figures/dpc/sparse-with-dense/pose/02_topdown.pdf, id=4075, 289.08pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/pose/02_topdown.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/pose/02_topdown.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/02_topdown.pdf  used on input line 374.
 (pdftex.def)             Requested size: 216.80807pt x 162.60378pt.
-<figures/dpc/sparse-with-dense/pose/05_topdown.pdf, id=4062, 289.08pt x 216.81pt>
+<figures/dpc/sparse-with-dense/pose/05_topdown.pdf, id=4076, 289.08pt x 216.81pt>
 File: figures/dpc/sparse-with-dense/pose/05_topdown.pdf Graphic file (type pdf)
 <use figures/dpc/sparse-with-dense/pose/05_topdown.pdf>
 Package pdftex.def Info: figures/dpc/sparse-with-dense/pose/05_topdown.pdf  used on input line 380.
@@ -2170,17 +2174,17 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-den
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/sparse-with-dense/pose/05_topdown.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<figures/dpc/distorted/combined/00_segs.pdf, id=4233, 578.16pt x 216.81pt>
+<figures/dpc/distorted/combined/00_segs.pdf, id=4246, 578.16pt x 216.81pt>
 File: figures/dpc/distorted/combined/00_segs.pdf Graphic file (type pdf)
 <use figures/dpc/distorted/combined/00_segs.pdf>
 Package pdftex.def Info: figures/dpc/distorted/combined/00_segs.pdf  used on input line 415.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/distorted/combined/02_segs.pdf, id=4234, 578.16pt x 216.81pt>
+<figures/dpc/distorted/combined/02_segs.pdf, id=4247, 578.16pt x 216.81pt>
 File: figures/dpc/distorted/combined/02_segs.pdf Graphic file (type pdf)
 <use figures/dpc/distorted/combined/02_segs.pdf>
 Package pdftex.def Info: figures/dpc/distorted/combined/02_segs.pdf  used on input line 421.
 (pdftex.def)             Requested size: 361.35138pt x 135.5059pt.
-<figures/dpc/distorted/combined/05_segs.pdf, id=4235, 578.16pt x 216.81pt>
+<figures/dpc/distorted/combined/05_segs.pdf, id=4248, 578.16pt x 216.81pt>
 File: figures/dpc/distorted/combined/05_segs.pdf Graphic file (type pdf)
 <use figures/dpc/distorted/combined/05_segs.pdf>
 Package pdftex.def Info: figures/dpc/distorted/combined/05_segs.pdf  used on input line 427.
@@ -2222,7 +2226,7 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/dpc/distorted/combi
 
  (./sections/so3-learning.tex
 Chapter 7.
-<figures/so3_learning/main_fig.pdf, id=4332, 681.81226pt x 384.44547pt>
+<figures/so3_learning/main_fig.pdf, id=4345, 681.81226pt x 384.44547pt>
 File: figures/so3_learning/main_fig.pdf Graphic file (type pdf)
 <use figures/so3_learning/main_fig.pdf>
 Package pdftex.def Info: figures/so3_learning/main_fig.pdf  used on input line 25.
@@ -2235,7 +2239,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ] [104 <./figures/so3_learning/main_fig.pdf>]
-<figures/so3_learning/kitti/so3_learning_with_flow.pdf, id=4654, 547.34866pt x 232.57028pt>
+<figures/so3_learning/kitti/so3_learning_with_flow.pdf, id=4667, 547.34866pt x 232.57028pt>
 File: figures/so3_learning/kitti/so3_learning_with_flow.pdf Graphic file (type pdf)
 <use figures/so3_learning/kitti/so3_learning_with_flow.pdf>
 Package pdftex.def Info: figures/so3_learning/kitti/so3_learning_with_flow.pdf  used on input line 67.
@@ -2248,7 +2252,7 @@ Overfull \hbox (2.22488pt too wide) in paragraph at lines 103--104
 []\OT1/LinuxLibertineT-TLF/m/n/10.95 To ac-count for aleatoric un-cer-tainty, we fol-low prior work ([][]Haarnoja et al.[][], [][]2016[][]; [][]Lak-sh-mi-narayanan
  []
 
-<figures/so3_learning/supplementary/uncertainty_methods.pdf, id=4897, 854.49156pt x 193.25099pt>
+<figures/so3_learning/supplementary/uncertainty_methods.pdf, id=4910, 854.49156pt x 193.25099pt>
 File: figures/so3_learning/supplementary/uncertainty_methods.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/uncertainty_methods.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/uncertainty_methods.pdf  used on input line 119.
@@ -2257,61 +2261,61 @@ Package pdftex.def Info: figures/so3_learning/supplementary/uncertainty_methods.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [107]
-<figures/so3_learning/1D/1D_raw_data.pdf, id=4915, 515.33868pt x 279.26605pt>
+<figures/so3_learning/1D/1D_raw_data.pdf, id=4928, 515.33868pt x 279.26605pt>
 File: figures/so3_learning/1D/1D_raw_data.pdf Graphic file (type pdf)
 <use figures/so3_learning/1D/1D_raw_data.pdf>
 Package pdftex.def Info: figures/so3_learning/1D/1D_raw_data.pdf  used on input line 159.
 (pdftex.def)             Requested size: 144.5433pt x 78.3303pt.
-<figures/so3_learning/1D/sigma_uncertainty.png, id=4916, 514.0806pt x 279.6849pt>
+<figures/so3_learning/1D/sigma_uncertainty.png, id=4929, 514.0806pt x 279.6849pt>
 File: figures/so3_learning/1D/sigma_uncertainty.png Graphic file (type png)
 <use figures/so3_learning/1D/sigma_uncertainty.png>
 Package pdftex.def Info: figures/so3_learning/1D/sigma_uncertainty.png  used on input line 165.
 (pdftex.def)             Requested size: 144.5433pt x 78.63557pt.
-<figures/so3_learning/1D/dropout_uncertainty.png, id=4917, 514.0806pt x 279.6849pt>
+<figures/so3_learning/1D/dropout_uncertainty.png, id=4930, 514.0806pt x 279.6849pt>
 File: figures/so3_learning/1D/dropout_uncertainty.png Graphic file (type png)
 <use figures/so3_learning/1D/dropout_uncertainty.png>
 Package pdftex.def Info: figures/so3_learning/1D/dropout_uncertainty.png  used on input line 171.
 (pdftex.def)             Requested size: 144.5433pt x 78.63557pt.
-<figures/so3_learning/1D/ensemble_uncertainty.png, id=4918, 514.0806pt x 279.6849pt>
+<figures/so3_learning/1D/ensemble_uncertainty.png, id=4931, 514.0806pt x 279.6849pt>
 File: figures/so3_learning/1D/ensemble_uncertainty.png Graphic file (type png)
 <use figures/so3_learning/1D/ensemble_uncertainty.png>
 Package pdftex.def Info: figures/so3_learning/1D/ensemble_uncertainty.png  used on input line 176.
 (pdftex.def)             Requested size: 144.5433pt x 78.63557pt.
-<figures/so3_learning/1D/hydranet_uncertainty.png, id=4919, 514.0806pt x 279.6849pt>
+<figures/so3_learning/1D/hydranet_uncertainty.png, id=4932, 514.0806pt x 279.6849pt>
 File: figures/so3_learning/1D/hydranet_uncertainty.png Graphic file (type png)
 <use figures/so3_learning/1D/hydranet_uncertainty.png>
 Package pdftex.def Info: figures/so3_learning/1D/hydranet_uncertainty.png  used on input line 182.
 (pdftex.def)             Requested size: 144.5433pt x 78.63557pt.
-<figures/so3_learning/1D/hydranetsigma_uncertainty.png, id=4920, 514.0806pt x 279.6849pt>
+<figures/so3_learning/1D/hydranetsigma_uncertainty.png, id=4933, 514.0806pt x 279.6849pt>
 File: figures/so3_learning/1D/hydranetsigma_uncertainty.png Graphic file (type png)
 <use figures/so3_learning/1D/hydranetsigma_uncertainty.png>
 Package pdftex.def Info: figures/so3_learning/1D/hydranetsigma_uncertainty.png  used on input line 188.
 (pdftex.def)             Requested size: 144.5433pt x 78.63557pt.
  [108 <./figures/so3_learning/supplementary/uncertainty_methods.pdf> <./figures/so3_learning/1D/1D_raw_data.pdf> <./figures/so3_learning/1D/sigma_uncertainty.png> <./figures/so3_learning/1D/dropout_uncertainty.png> <./figures/so3_learning/1D/ensemble_uncertainty.png> <./figures/so3_learning/1D/hydranet_uncertainty.png> <./figures/so3_learning/1D/hydranetsigma_uncertainty.png>]
-<figures/so3_learning/1D/nll.pdf, id=5001, 275.92043pt x 168.04369pt>
+<figures/so3_learning/1D/nll.pdf, id=5014, 275.92043pt x 168.04369pt>
 File: figures/so3_learning/1D/nll.pdf Graphic file (type pdf)
 <use figures/so3_learning/1D/nll.pdf>
 Package pdftex.def Info: figures/so3_learning/1D/nll.pdf  used on input line 244.
 (pdftex.def)             Requested size: 261.97958pt x 159.55853pt.
  [109 <./figures/so3_learning/1D/nll.pdf>]
-<figures/math/quaternion_uncertainty.pdf, id=5065, 296.0395pt x 250.15337pt>
+<figures/math/quaternion_uncertainty.pdf, id=5078, 296.0395pt x 250.15337pt>
 File: figures/math/quaternion_uncertainty.pdf Graphic file (type pdf)
 <use figures/math/quaternion_uncertainty.pdf>
 Package pdftex.def Info: figures/math/quaternion_uncertainty.pdf  used on input line 304.
 (pdftex.def)             Requested size: 149.0577pt x 125.95428pt.
  [110]
-<figures/so3_learning/quat_logll.pdf, id=5085, 275.6943pt x 246.68843pt>
+<figures/so3_learning/quat_logll.pdf, id=5098, 275.6943pt x 246.68843pt>
 File: figures/so3_learning/quat_logll.pdf Graphic file (type pdf)
 <use figures/so3_learning/quat_logll.pdf>
 Package pdftex.def Info: figures/so3_learning/quat_logll.pdf  used on input line 326.
 (pdftex.def)             Requested size: 149.0577pt x 133.37538pt.
  [111 <./figures/math/quaternion_uncertainty.pdf> <./figures/so3_learning/quat_logll.pdf>]
-<figures/so3_learning/train_summary.pdf, id=5259, 436.13477pt x 571.85115pt>
+<figures/so3_learning/train_summary.pdf, id=5272, 436.13477pt x 571.85115pt>
 File: figures/so3_learning/train_summary.pdf Graphic file (type pdf)
 <use figures/so3_learning/train_summary.pdf>
 Package pdftex.def Info: figures/so3_learning/train_summary.pdf  used on input line 351.
 (pdftex.def)             Requested size: 221.32936pt x 290.20047pt.
-<figures/so3_learning/test_summary.pdf, id=5262, 434.22385pt x 566.95009pt>
+<figures/so3_learning/test_summary.pdf, id=5275, 434.22385pt x 566.95009pt>
 File: figures/so3_learning/test_summary.pdf Graphic file (type pdf)
 <use figures/so3_learning/test_summary.pdf>
 Package pdftex.def Info: figures/so3_learning/test_summary.pdf  used on input line 358.
@@ -2397,12 +2401,12 @@ l.404 	\State
                    \relax 
 l.405     \EndFunction
                        [112 <./figures/so3_learning/train_summary.pdf> <./figures/so3_learning/test_summary.pdf>] [113]
-<figures/so3_learning/synthetic/sim_world.pdf, id=5765, 448.07399pt x 303.534pt>
+<figures/so3_learning/synthetic/sim_world.pdf, id=5778, 448.07399pt x 303.534pt>
 File: figures/so3_learning/synthetic/sim_world.pdf Graphic file (type pdf)
 <use figures/so3_learning/synthetic/sim_world.pdf>
 Package pdftex.def Info: figures/so3_learning/synthetic/sim_world.pdf  used on input line 417.
 (pdftex.def)             Requested size: 406.516pt x 275.38731pt.
-<figures/so3_learning/synthetic/sim_errors.pdf, id=5766, 391.42522pt x 268.71109pt>
+<figures/so3_learning/synthetic/sim_errors.pdf, id=5779, 391.42522pt x 268.71109pt>
 File: figures/so3_learning/synthetic/sim_errors.pdf Graphic file (type pdf)
 <use figures/so3_learning/synthetic/sim_errors.pdf>
 Package pdftex.def Info: figures/so3_learning/synthetic/sim_errors.pdf  used on input line 422.
@@ -2412,37 +2416,37 @@ Package pdftex.def Info: figures/so3_learning/synthetic/sim_errors.pdf  used on 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 438.
 
-<figures/so3_learning/supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13.pdf, id=5786, 412.4676pt x 313.89607pt>
+<figures/so3_learning/supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13.pdf, id=5799, 412.4676pt x 313.89607pt>
 File: figures/so3_learning/supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/7scenes_abs_best_model_chess_heads_25_epoch_13.pdf  used on input line 462.
 (pdftex.def)             Requested size: 194.22232pt x 147.80896pt.
-<figures/so3_learning/supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4.pdf, id=5787, 415.2454pt x 313.89607pt>
+<figures/so3_learning/supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4.pdf, id=5800, 415.2454pt x 313.89607pt>
 File: figures/so3_learning/supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/7scenes_abs_best_model_fire_heads_25_epoch_4.pdf  used on input line 466.
 (pdftex.def)             Requested size: 194.22232pt x 146.8175pt.
-<figures/so3_learning/supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11.pdf, id=5788, 415.2454pt x 313.89607pt>
+<figures/so3_learning/supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11.pdf, id=5801, 415.2454pt x 313.89607pt>
 File: figures/so3_learning/supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/7scenes_abs_best_model_heads_heads_25_epoch_11.pdf  used on input line 470.
 (pdftex.def)             Requested size: 194.22232pt x 146.8175pt.
-<figures/so3_learning/supplementary/7scenes_abs_best_model_office_heads_25_epoch_15.pdf, id=5789, 420.24542pt x 313.89607pt>
+<figures/so3_learning/supplementary/7scenes_abs_best_model_office_heads_25_epoch_15.pdf, id=5802, 420.24542pt x 313.89607pt>
 File: figures/so3_learning/supplementary/7scenes_abs_best_model_office_heads_25_epoch_15.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/7scenes_abs_best_model_office_heads_25_epoch_15.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/7scenes_abs_best_model_office_heads_25_epoch_15.pdf  used on input line 474.
 (pdftex.def)             Requested size: 194.22232pt x 145.07407pt.
-<figures/so3_learning/supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13.pdf, id=5790, 415.2454pt x 313.89607pt>
+<figures/so3_learning/supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13.pdf, id=5803, 415.2454pt x 313.89607pt>
 File: figures/so3_learning/supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/7scenes_abs_best_model_pumpkin_heads_25_epoch_13.pdf  used on input line 478.
 (pdftex.def)             Requested size: 194.22232pt x 146.8175pt.
-<figures/so3_learning/supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2.pdf, id=5791, 420.24542pt x 313.89607pt>
+<figures/so3_learning/supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2.pdf, id=5804, 420.24542pt x 313.89607pt>
 File: figures/so3_learning/supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/7scenes_abs_best_model_redkitchen_heads_25_epoch_2.pdf  used on input line 482.
 (pdftex.def)             Requested size: 194.22232pt x 145.07407pt.
-<figures/so3_learning/supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11.pdf, id=5792, 415.2454pt x 313.89607pt>
+<figures/so3_learning/supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11.pdf, id=5805, 415.2454pt x 313.89607pt>
 File: figures/so3_learning/supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/7scenes_abs_best_model_stairs_heads_25_epoch_11.pdf  used on input line 486.
@@ -2454,32 +2458,32 @@ LaTeX Warning: Float too large for page by 30.83147pt on input line 491.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 512.
 
-<figures/so3_learning/supplementary/kitti_abs_00_downsample_5.pdf, id=5799, 410.24538pt x 314.05618pt>
+<figures/so3_learning/supplementary/kitti_abs_00_downsample_5.pdf, id=5812, 410.24538pt x 314.05618pt>
 File: figures/so3_learning/supplementary/kitti_abs_00_downsample_5.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/kitti_abs_00_downsample_5.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/kitti_abs_00_downsample_5.pdf  used on input line 553.
 (pdftex.def)             Requested size: 203.258pt x 155.59964pt.
-<figures/so3_learning/supplementary/kitti_abs_02_downsample_5.pdf, id=5800, 418.0232pt x 313.89607pt>
+<figures/so3_learning/supplementary/kitti_abs_02_downsample_5.pdf, id=5813, 418.0232pt x 313.89607pt>
 File: figures/so3_learning/supplementary/kitti_abs_02_downsample_5.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/kitti_abs_02_downsample_5.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/kitti_abs_02_downsample_5.pdf  used on input line 557.
 (pdftex.def)             Requested size: 203.258pt x 152.62737pt.
-<figures/so3_learning/supplementary/kitti_abs_05_downsample_5.pdf, id=5801, 410.24538pt x 313.89607pt>
+<figures/so3_learning/supplementary/kitti_abs_05_downsample_5.pdf, id=5814, 410.24538pt x 313.89607pt>
 File: figures/so3_learning/supplementary/kitti_abs_05_downsample_5.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/kitti_abs_05_downsample_5.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/kitti_abs_05_downsample_5.pdf  used on input line 561.
 (pdftex.def)             Requested size: 203.258pt x 155.52032pt.
-<figures/so3_learning/supplementary/kitti_00_topdown.pdf, id=5802, 285.82323pt x 224.29478pt>
+<figures/so3_learning/supplementary/kitti_00_topdown.pdf, id=5815, 285.82323pt x 224.29478pt>
 File: figures/so3_learning/supplementary/kitti_00_topdown.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/kitti_00_topdown.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/kitti_00_topdown.pdf  used on input line 565.
 (pdftex.def)             Requested size: 203.258pt x 159.50708pt.
-<figures/so3_learning/supplementary/kitti_02_topdown.pdf, id=5803, 285.82323pt x 224.29478pt>
+<figures/so3_learning/supplementary/kitti_02_topdown.pdf, id=5816, 285.82323pt x 224.29478pt>
 File: figures/so3_learning/supplementary/kitti_02_topdown.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/kitti_02_topdown.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/kitti_02_topdown.pdf  used on input line 569.
 (pdftex.def)             Requested size: 203.258pt x 159.50708pt.
-<figures/so3_learning/supplementary/kitti_05_topdown.pdf, id=5804, 285.82323pt x 224.29478pt>
+<figures/so3_learning/supplementary/kitti_05_topdown.pdf, id=5817, 285.82323pt x 224.29478pt>
 File: figures/so3_learning/supplementary/kitti_05_topdown.pdf Graphic file (type pdf)
 <use figures/so3_learning/supplementary/kitti_05_topdown.pdf>
 Package pdftex.def Info: figures/so3_learning/supplementary/kitti_05_topdown.pdf  used on input line 573.
@@ -2491,7 +2495,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 604.
 
-<figures/so3_learning/kitti/kitti_so3_hist.pdf, id=5805, 376.04893pt x 170.03575pt>
+<figures/so3_learning/kitti/kitti_so3_hist.pdf, id=5818, 376.04893pt x 170.03575pt>
 File: figures/so3_learning/kitti/kitti_so3_hist.pdf Graphic file (type pdf)
 <use figures/so3_learning/kitti/kitti_so3_hist.pdf>
 Package pdftex.def Info: figures/so3_learning/kitti/kitti_so3_hist.pdf  used on input line 621.
@@ -2546,22 +2550,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  (./sections/conclusion.tex
 Chapter 8.
-<figures/conclusion/probe.pdf, id=9254, 214.3947pt x 221.69334pt>
+<figures/conclusion/probe.pdf, id=9267, 214.3947pt x 221.69334pt>
 File: figures/conclusion/probe.pdf Graphic file (type pdf)
 <use figures/conclusion/probe.pdf>
 Package pdftex.def Info: figures/conclusion/probe.pdf  used on input line 5.
 (pdftex.def)             Requested size: 108.40747pt x 112.098pt.
-<figures/conclusion/sun_bcnn.pdf, id=9257, 206.53842pt x 206.98279pt>
+<figures/conclusion/sun_bcnn.pdf, id=9270, 206.53842pt x 206.98279pt>
 File: figures/conclusion/sun_bcnn.pdf Graphic file (type pdf)
 <use figures/conclusion/sun_bcnn.pdf>
 Package pdftex.def Info: figures/conclusion/sun_bcnn.pdf  used on input line 9.
 (pdftex.def)             Requested size: 108.40747pt x 108.64232pt.
-<figures/conclusion/dpc.pdf, id=9260, 189.62915pt x 215.96313pt>
+<figures/conclusion/dpc.pdf, id=9273, 189.62915pt x 215.96313pt>
 File: figures/conclusion/dpc.pdf Graphic file (type pdf)
 <use figures/conclusion/dpc.pdf>
 Package pdftex.def Info: figures/conclusion/dpc.pdf  used on input line 13.
 (pdftex.def)             Requested size: 108.40747pt x 123.46274pt.
-<figures/conclusion/hydranet.pdf, id=9263, 184.60759pt x 209.1814pt>
+<figures/conclusion/hydranet.pdf, id=9276, 184.60759pt x 209.1814pt>
 File: figures/conclusion/hydranet.pdf Graphic file (type pdf)
 <use figures/conclusion/hydranet.pdf>
 Package pdftex.def Info: figures/conclusion/hydranet.pdf  used on input line 17.
@@ -2571,7 +2575,7 @@ Package pdftex.def Info: figures/conclusion/hydranet.pdf  used on input line 17.
 
 
  <./figures/conclusion/probe.pdf> <./figures/conclusion/sun_bcnn.pdf> <./figures/conclusion/dpc.pdf> <./figures/conclusion/hydranet.pdf>] [123]
-<figures/conclusion/learning_as_prior.pdf, id=10445, 970.96742pt x 464.63036pt>
+<figures/conclusion/learning_as_prior.pdf, id=10458, 970.96742pt x 464.63036pt>
 File: figures/conclusion/learning_as_prior.pdf Graphic file (type pdf)
 <use figures/conclusion/learning_as_prior.pdf>
 Package pdftex.def Info: figures/conclusion/learning_as_prior.pdf  used on input line 104.
@@ -2685,12 +2689,12 @@ l.106       \State
                    \relax 
 l.107     \EndFunction
                        [130] [131]
-<figures/probe/city-res-road.png, id=10579, 1003.75pt x 125.46875pt>
+<figures/probe/city-res-road.png, id=10591, 1003.75pt x 125.46875pt>
 File: figures/probe/city-res-road.png Graphic file (type png)
 <use figures/probe/city-res-road.png>
 Package pdftex.def Info: figures/probe/city-res-road.png  used on input line 118.
 (pdftex.def)             Requested size: 451.68752pt x 56.46231pt.
-<figures/probe/husky2.jpg, id=10583, 192.72pt x 128.3997pt>
+<figures/probe/husky2.jpg, id=10595, 192.72pt x 128.3997pt>
 File: figures/probe/husky2.jpg Graphic file (type jpg)
 <use figures/probe/husky2.jpg>
 Package pdftex.def Info: figures/probe/husky2.jpg  used on input line 134.
@@ -2730,31 +2734,31 @@ l.102 ...ent et~al., 2017]{2017_Clement_Improving}
                                                    [139] [140] [141] [142] [143]pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_PROBE}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.528 ...n et~al., 2015a]{2015_Peretroukhin_PROBE}
+l.534 ...n et~al., 2015a]{2015_Peretroukhin_PROBE}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2015_Peretroukhin_Get}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.535 ...hin et~al., 2015b]{2015_Peretroukhin_Get}
+l.541 ...hin et~al., 2015b]{2015_Peretroukhin_Get}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2017_Peretroukhin_Reducing}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.543 ...et~al., 2017]{2017_Peretroukhin_Reducing}
+l.549 ...et~al., 2017]{2017_Peretroukhin_Reducing}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Inferring}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.550 ...t~al., 2018]{2018_Peretroukhin_Inferring}
+l.556 ...t~al., 2018]{2018_Peretroukhin_Inferring}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2018_Peretroukhin_Deep}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.556 ... and Kelly, 2018]{2018_Peretroukhin_Deep}
+l.562 ... and Kelly, 2018]{2018_Peretroukhin_Deep}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.Peretroukhin2016-om}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.566 ...oukhin et~al., 2016]{Peretroukhin2016-om}
+l.572 ...oukhin et~al., 2016]{Peretroukhin2016-om}
                                                   pdfTeX warning (ext4): destination with the same identifier (name{cite.2019_Peretroukhin_Deep}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.572 ...hin et~al., 2019]{2019_Peretroukhin_Deep}
+l.578 ...hin et~al., 2019]{2019_Peretroukhin_Deep}
                                                    [144] [145])
 
 Package natbib Warning: There were undefined citations.
@@ -2781,13 +2785,17 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
  ) 
 Here is how much of TeX's memory you used:
- 39630 strings out of 492616
- 769701 string characters out of 6128982
- 866672 words of memory out of 5000000
- 41862 multiletter control sequences out of 15000+600000
+ 39635 strings out of 492616
+ 769845 string characters out of 6128982
+ 867065 words of memory out of 5000000
+ 41868 multiletter control sequences out of 15000+600000
  603810 words of font info for 167 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,23n,79p,1991b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.38} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.37} has been referenced but does not exist, replaced by a fixed one
+
 pdfTeX warning (dest): name{Hfootnote.36} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.35} has been referenced but does not exist, replaced by a fixed one
@@ -2861,11 +2869,11 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_ks2ukx.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (154 pages, 39835073 bytes).
+/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (154 pages, 39847277 bytes).
 PDF statistics:
- 10988 PDF objects out of 12825 (max. 8388607)
- 7787 compressed objects within 78 object streams
- 880 named destinations out of 1000 (max. 500000)
+ 11004 PDF objects out of 12825 (max. 8388607)
+ 7801 compressed objects within 79 object streams
+ 879 named destinations out of 1000 (max. 500000)
  1146 words of extra memory for PDF output out of 10000 (max. 10000000)
 

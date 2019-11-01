@@ -11,7 +11,7 @@
 \end{figure}
 
 
-Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to two seminal papers: \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds}.
+Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to \cite{Scaramuzza2011-qr,Cadena2016-ds}.
 \newpage
 \begin{remark}{VO Taxonomy}
 VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the type of camera used to capture images and (2) the type of data association used to compute motion estimates. 
@@ -59,7 +59,7 @@ In this dissertation, we apply our learned pseudo-sensors to a baseline stereo, 
     \caption{We pre-process stereo images (left) to simulate an ideal stereo camera (right).}
         \label{fig:vo_preprocessing}
 \end{figure}
-During preprocessing, we use a lens model (assumed to be known apriori) to undistort each stereo image. Next, using the camera extrinsic parameters (also assumed to be known), we \textit{rectify} the stereo pair such that the images can be assumed to come from two cameras whose principal axes are parallel (\Cref{fig:vo_preprocessing}). Finally, we also assume that the stereo camera intrinsics are known a priori or compute them through a calibration process \citep{Furgale2013-sl}.
+During preprocessing, we use a lens model to undistort each stereo image. Next, using known camera parameters (i.e., the intrinsic parameters of each camera and the extrinsic parameters defining the transform $\Transform \in \LieGroupSE{3}$ between the two camera reference frames), we \textit{rectify, interpolate and crop} the images from the stereo pair such that we can assume a \textit{ideal frontoparallel stereo camera} model with a single focal length (\Cref{fig:vo_preprocessing}). That is, a stereo camera in which we can assume that any feature in one camera can be found in the same vertical location in the other (i.e., the epipolar line is horizontal). We assume the lens model, intrinsic and extrinsic parameters are constant and given by the dataset, or defined by a calibration process prior to data collection (e.g., given by the calibration tool detailed in \cite{Furgale2013-sl}).
 
 \subsection{Data Association}
 \label{sec:vo_data_extraction}
@@ -68,7 +68,7 @@ During preprocessing, we use a lens model (assumed to be known apriori) to undis
 \begin{figure}[h!]
 \begin{center}
 		\includegraphics[width=0.99\textwidth]{classical-vo/libviso2_scan}
-		\caption{Feature tracking using \texttt{libviso2}, taken from \cite{Geiger2011-xe}. Colours correspond to depth.}
+		\caption{Feature tracking using \textsc{viso2}, taken from \cite{Geiger2011-xe}. Colours correspond to depth.}
   	\label{fig:vo_feature_tracking}
 \end{center}
 \end{figure}
@@ -284,49 +284,27 @@ Furthermore, upon convergence, our solution to the iteratively re-weighted probl
 
 
 
-
+\newpage
 \section{Outstanding Issues}
-Finally, we summarize three high-level limitations of such a canonical visual odometry pipeline that we will address with learned pseudo-sensors: efficiency, systematic bias and homoscedastic uncertainnty.
+Finally, we summarize (\Cref{tab:vo_outstanding_issues}) several limitations of such a canonical visual odometry pipeline: efficiency, systematic bias and homoscedastic uncertainty. For each limitation, we build a pseudo-sensor that improves the pipeline within a given environment (defined by the training data) without replacing the interpretability and generalizability of the pipeline itself.
 
 \begin{table}[h!]
-	\caption{\textbf{Data efficiency vs. computational efficiency}}	\begin{threeparttable}
+	\caption{Issues that can be addressed by pseudo-sensors.}	\begin{threeparttable}
 	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
 		\toprule
-		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
-		Classical VO pipelines face a difficult-to-optimize trade-off between using all of the information contained within image and while still remaining computationally tractable.  & PROBE, DPC-Net, Sun-BCNN, HydraNet \\
+		\textsc{Synopsis} & \textsc{Addressed by} \\ \midrule  
+		\textbf{Computational efficiency}: classical VO pipelines face a difficult-to-optimize trade-off between using all of the information contained within image while still remaining computationally tractable.  & PROBE (\Cref{ch:probe}) , DPC (\Cref{ch:dpc}) , Sun-BCNN (\Cref{ch:sun-bcnn}), HydraNet (\Cref{ch:hydranet}) \\
+		& \\
+		\textbf{Systematic bias}: Stereo visual odometry can incur systematic bias through poor extrinsic or intrinsic calibration, stereo triangulation errors, poor feature \textit{spread} (i.e., concentration of features on one side of an image), and poor data association due self-similar textures. &  DPC (\Cref{ch:dpc}), HydraNet (\Cref{ch:hydranet}) \\
+		& \\
+		\textbf{Homoscedastic uncertainty}: Stationary, homoscedastic noise in observation models can often reduce the consistency and accuracy of state estimates. This is especially true for complex, inferred measurement models. &  DPC (\Cref{ch:dpc}) , Sun-BCNN (\Cref{ch:sun-bcnn}), HydraNet (\Cref{ch:hydranet})\\
 		& \\
 		\bottomrule
 	\end{tabular}
+	\label{tab:vo_outstanding_issues}
 \end{threeparttable}
 \end{table}
 
-
-\begin{table}[h!]
-	\caption{\textbf{Systematic bias}}
-	\begin{threeparttable}
-	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
-		\toprule
-		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
-		Stereo visual odometry can incur systematic bias through poor extrinsic or intrinsic calibration, stereo triangulation errors, poor feature \textit{spread} (i.e., concentration of features on one side of an image), and poor data association due self-similar textures. &  DPC-Net \\
-		& \\
-		\bottomrule
-	\end{tabular}
-\end{threeparttable}
-\end{table}
-
-
-\begin{table}[h!]
-	\caption{\textbf{Homoscedastic uncertainty}}
-	\begin{threeparttable}
-	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
-		\toprule
-		\textbf{Synopsis} & \textbf{Addressed by} \\ \midrule  
-		Stationary, homoscedastic noise in observation models can often reduce the consistency and accuracy of state estimates. This is especially true for complex, inferred measurement models. &  PROBE, Sun-BCNN, HydraNet \\
-		& \\
-		\bottomrule
-	\end{tabular}
-\end{threeparttable}
-\end{table}
 
 %
 %

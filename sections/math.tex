@@ -109,7 +109,7 @@ where $\phi = \arccos{\left(\frac{\Trace{\Rotation} - 1}{2}\right)}$ and the \te
 \begin{equation}
 	\MatLog{\Rotation} \approx (\Rotation - \IdentityMatrix)^\vee ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
-The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$. This is a fundamental drawback of using three parameters to represent rotation.
+The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$ (thus, we can define the logarithmic map only up to a sign ambiguity). This is a fundamental drawback of using three parameters to represent rotation.
 
 \subsection{Unit Quaternions}
 
@@ -121,7 +121,7 @@ Unit quaternions also form a Lie group \citep{Sola2018-kg} (but not a matrix Lie
 \begin{equation}
 \quat = \MatExp{\RotationVector} = \bbm \cos{(\phi/2)} \\ \RotationAxisVector \sin{(\phi/2)} \ebm.	
 \end{equation}
-By inspection, we can see that both $\quat$ and $-\quat$ represent the same axis-angle pair, $\{\phi, \Vector{a}\}$. As a result, unit quaternions represent a \textit{double cover} of $\LieGroupSO{3}$ and we must be careful to account for this when using them as a rotation parametrization.
+By inspection\footnote{Using the property that $\{\phi, \Vector{a}\}$ represents the same rotation as $\{-\phi, -\Vector{a}\}$ and the fact that $\sin$ and $\cos$ are odd and even functions, respectively.}, we can see that both $\quat$ and $-\quat$ represent the same axis-angle pair, $\{\phi, \Vector{a}\}$. As a result, unit quaternions represent a \textit{double cover} of $\LieGroupSO{3}$ and we must be careful to account for this when using them as a rotation parametrization.
 In particular, when computing the (also overloaded) logarithmic map,
 \begin{align}
 \label{eq:math_quat_log}
@@ -133,14 +133,14 @@ In particular, when computing the (also overloaded) logarithmic map,
 \begin{equation}
 	\MatLog{\quat} \approx \frac{\quat_v}{q_\omega} \left( 1 - \frac{\Norm{\quat_v}^2}{3 q_\omega^2}\right) ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
-A fantastic summary of the history of rotation parameterizations, unit quaternions and the story of Hamilton and Rodriguez can be found in \cite{Altmann1989-ru}.
+A fantastic summary of the origins of rotation parameterizations and quaternion algebra can be found in \cite{Altmann1989-ru}.
 
 \subsection{Topology and Parameterizations}
 Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$ \citep{Hartley2013-rc}. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parameterizations with $n=3$ (like axis-angle parameters or Euler angles) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parameterizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
  
 \begin{remark}{SO(3) Topology}
-To see why this is the case, consider that a direct result of Euler's rotation theorem is that we can represent any element in $\LieGroupSO{3}$ by a (non-unique) axis-angle pair $\{\Vector{a}, \phi\}$, $\Vector{a} \in S^2$, and $0 \leq \phi \leq \pi$. We can partially represent this space by the closed ball of radius $\pi$ in $\RealNumbers{}^3$ using the combined axis-angle coordinates $\RotationVector = \phi \RotationAxisVector$. However, at the boundary ($\phi = \pi$), we must account for the fact that rotations represented by $\{\Vector{a}, \pi\}$ are identical to those represented by $\{-\Vector{a}, \pi\}$. In other words, we must \textit{identify} all antipodal points, $\RotationVector$ and $-\RotationVector$ when $\Norm{\RotationVector} = \pi$. This closed 3-ball with identified antipodal points on its boundary is topologically equivalent to the 3-sphere ($S^3$) with its antipodal points identified. In turn, this space is equivalent to $\mathbb{RP}^3$ since any line passing through the origin in $\RealNumbers^4$ can be mapped to two unit normals, $\pm \Vector{n} \in S^3$.
-This \textit{identification} makes rotation representation particularly tricky in $\RealNumbers{}^3$ and clearly explains why unit quaternions, $\quat \in S^3$, are a \textit{double} cover of  $\LieGroupSO{3}$, since we must add the relation $\quat = -\quat$ to make these two spaces equivalent. We direct the reader to \cite{Hartley2013-rc} who use the \textit{gnonomic} projection to provide further geometric intuition for why $\LieGroupSO{3}$ is a projective space. 
+Since we can represent any element in $\LieGroupSO{3}$ by a (non-unique) axis-angle pair $\{\Vector{a}, \phi\}$, $\Vector{a} \in S^2$, and $0 \leq \phi \leq \pi$, this space can be visualized as the closed ball of radius $\pi$ in $\RealNumbers{}^3$ using the combined axis-angle coordinates $\RotationVector = \phi \RotationAxisVector$. However, at the boundary ($\phi = \pi$), we must account for the fact that rotations represented by $\{\Vector{a}, \pi\}$ are identical to those represented by $\{-\Vector{a}, \pi\}$. In other words, we must \textit{identify} all antipodal points, $\RotationVector$ and $-\RotationVector$ when $\Norm{\RotationVector} = \pi$. This closed 3-ball with identified antipodal points on its boundary is topologically equivalent to the 3-sphere ($S^3$) with its antipodal points identified. In turn, this space is equivalent to $\mathbb{RP}^3$ since any line passing through the origin in $\RealNumbers^4$ can be mapped to two unit normals, $\pm \Vector{n} \in S^3$.
+This \textit{identification} makes rotation representation particularly tricky in $\RealNumbers{}^3$ and clearly explains why unit quaternions, $\quat \in S^3$, are a \textit{double} cover of  $\LieGroupSO{3}$, since we must add the relation $\quat = -\quat$ to make these two spaces equivalent. Alternatively, one can use the \textit{gnonomic} projection \citep{Hartley2013-rc} to provide geometric intuition for why $\LieGroupSO{3}$ is a projective space. 
 \end{remark}
 Accordingly, in this dissertation, we parametrize rotations as the constrained quantities, $\quat$ or $\Rotation$. When dealing with perturbations about a given rotation (e.g., to compute updates to a state, or to propagate uncertainty), we use \textit{small} rotations, $\delta \Rotation$ or $\delta \quat$, parametrized using three unconstrained parameters that we can assume are a one-to-one mapping to elements in $\LieGroupSO{3}$  (since, for small rotations, $\Norm{\RotationVector} << \pi$).
 
@@ -188,8 +188,8 @@ which is numerically equivalent to
 
 \section{Perturbations and Tangent Spaces}
 
-When solving optimization problems that involve rotations or rigid-body transforms, it is often useful to consider a small \textit{perturbation} about an operating point. By leveraging a core property of Lie groups (that they are locally `Euclidian'), we can construct an iterative algorithm that successively updates an operating point through optimal perturbations in some unconstrained tangent space.
-Using rotations as an example, we can perturb an operating point, $\Mean{\Rotation} \definedtobe \MatExp{\Mean{\RotationVector}}$, in three different ways:
+When solving optimization problems that involve rotations or rigid-body transforms, it is often useful to consider a small \textit{perturbation} about an operating point. By leveraging a core property of Lie groups (that the admit a local, or `tangent', Euclidian parameterization), we can construct an iterative algorithm that successively updates an operating point through optimal perturbations in an unconstrained tangent space.
+Using rotations as an example, we can decompose a rotation into a mean, $\Mean{\Rotation} \definedtobe \MatExp{\Mean{\RotationVector}}$, and a small perturbation $\delta \RotationVector$ in three different ways \citep{Barfoot2017-ri}:
 \begin{align}
 \Rotation &\leftarrow \left\{  	\begin{array}{ll}
 		\MatExp{\delta \RotationVector^\ell} \Mean{\Rotation}   & \mbox{left perturbation,} \\
@@ -198,11 +198,11 @@ Using rotations as an example, we can perturb an operating point, $\Mean{\Rotati
 	\end{array}
 	\right.
 \end{align}
-In this dissertation, we will use the left and middle perturbations when appropriate. Using small angle approximations, the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) yields $\MatExp{\delta \RotationVector} \approx \IdentityMatrix + \delta \RotationVector^\wedge$, which allows us to write the useful approximation for the left perturbation:
+In this dissertation, we will rely on the left and middle perturbations when appropriate. Using small angle approximations, the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) yields $\MatExp{\delta \RotationVector} \approx \IdentityMatrix + \delta \RotationVector^\wedge$, which allows us to write the useful approximation for the left perturbation:
 \begin{equation}
 	\Rotation \leftarrow \MatExp{\delta \RotationVector^\ell} \Mean{\Rotation} \approx (\IdentityMatrix + (\delta \RotationVector^\ell)^\wedge) \Mean{\Rotation}.
 \end{equation}
-Similarly, we can write analogous expressions for a rigid body transform, $\Transform \in \LieGroupSE{3}$, as composed of an operating point $\Mean{\Transform} \definedtobe \MatExp{\Mean{\TransformVector}}$, and a small perturbation about that operating point:
+Similarly, we can write analogous expressions for a rigid body transform, $\Transform \in \LieGroupSE{3}$, as composed of a mean $\Mean{\Transform} \definedtobe \MatExp{\Mean{\TransformVector}}$, and a small perturbation about that mean $\delta \TransformVector$,
 \begin{align}
 \Transform &\leftarrow \left\{  	\begin{array}{ll}
 		\MatExp{\delta \TransformVector^\ell} \Mean{\Transform}   & \mbox{left perturbation,} \\
@@ -211,12 +211,12 @@ Similarly, we can write analogous expressions for a rigid body transform, $\Tran
 	\end{array}
 	\right.
 \end{align}
-We may form a similar expression,
+and form a similar approximation to the left perturbation:
 \begin{equation}
 	\label{eq:math_se3_perturbations}
 	\Transform \leftarrow \MatExp{\delta \TransformVector^\ell} \Mean{\Transform} = (\IdentityMatrix + (\delta \TransformVector^\ell)^\wedge) \Mean{\Transform}.
 \end{equation}
-To derive locally linear systems from sets of rigid-body transforms, or `poses', we can apply \Cref{eq:math_se3_perturbations}. To update an operating point, we solve for $\delta \TransformVector^\ell$ and then use the constraint-sensitive update $\Transform \leftarrow \MatExp{\delta \TransformVector^\ell} \Mean{\Transform}$. Finally, we note that we will often drop the perturbation superscripts $(\cdot)^\ell$ and $(\cdot)^m$ after defining the perturbation scheme.
+We will rely on \Cref{eq:math_se3_perturbations} to convert non-linear expressions that involve $\Transform$ into linear expressions that involve $\delta \TransformVector^\ell$ by decomposing it into a known operating point $\Transform_\text{op}$ and an unknown perturbation $\delta \TransformVector^\ell$. Given an optimal $\delta \TransformVector^\ell_*$ we can update our operating point with the constraint-sensitive update $\Transform_\text{op} \leftarrow \MatExp{\delta \TransformVector^\ell} \Transform_\text{op}$. We note that we will often drop the perturbation superscripts $(\cdot)^\ell$ and $(\cdot)^m$ for notational brevity.
 
 \begin{remark}{Relating Pertubations}
 	We can relate all the left and middle perturbations through the left Jacobian of $\LieGroupSO{3}$ with the following useful identity \citep{Barfoot2017-ri},
@@ -236,21 +236,21 @@ with $\Matrix{Q}(\TransformVector)$ having an analytic expression (see \cite{Bar
 
 \section{Uncertainty Through Injection}
 
-We can also use perturbation theory to implicitly define uncertainty on constrained manifolds (see \cite{Barfoot2014-ac} for a thorough discussion). Given a concentrated normal density, $\delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6})$, we can \textit{inject} this unconstrained density onto the Lie group through left perturbations about some mean using
+We can also use perturbation theory to implicitly define uncertainty on constrained manifolds (see \cite{Barfoot2014-ac} for a thorough discussion). Given a concentrated\footnote{In this context, concentrated means that the chances of sampling $\tilde{\delta \TransformVector}$ such that $\delta \phi \geq \pi$ is near $0$ to avoid issues with singularities.} normal density, $\delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6})$, we can \textit{inject} this unconstrained density onto the Lie group through left perturbations about some mean using
 \begin{align}
-\Transform &= \MatExp{\delta \TransformVector} \Mean{\Transform}. 
+\Transform &= \MatExp{\delta \TransformVector} \Mean{\Transform},\quad  \delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6}).
 \end{align}
 This allows us to keep track of a random variable, $\Transform$, by keeping its mean in group form, $\Mean{\Transform}$, while its second statistical moment is stored as a standard $6 \times 6$ covariance matrix, $\Matrix{\Sigma}$.
 
-We can define an analogous density for rotation matrices given normal densities over rotation perturbations $\delta \RotationVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{3 \times 3})$,
+We can define an analogous density for rotation matrices given normal densities over rotation perturbations,
 \begin{align}
-\Rotation &= \MatExp{\delta \RotationVector} \Mean{\Rotation}, 
+\Rotation &= \MatExp{\delta \RotationVector} \Mean{\Rotation}, \quad \delta \RotationVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{3 \times 3}), 
 \end{align}
 and also, for unit quaternions,
 \begin{align}
-\quat &= \MatExp{\delta \RotationVector} \otimes \Mean{\quat} 
+\quat &= \MatExp{\delta \RotationVector} \otimes \Mean{\quat}, \quad \delta \RotationVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{3 \times 3}),
 \end{align}
-where $\otimes$ refers to the standard quaternion product operator \cite{Sola2017quaternion}. %\todo{Add discussion of banana density this induces for SE(3) and the impossibility of known position but unknown rotation}.
+where $\otimes$ refers to the standard quaternion product operator \citep{Sola2017quaternion}. %\todo{Add discussion of banana density this induces for SE(3) and the impossibility of known position but unknown rotation}.
 
 
 \section{Deep Learning}
@@ -260,12 +260,12 @@ The basic premise of deep learning is that certain kinds of data are naturally d
 \begin{equation}
 \Vector{z}_{\ell+1} = \Vector{f}_\ell(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_\ell\Vector{z}_\ell + \Vector{b}_\ell\right),
 \end{equation}
-where $\Matrix{W}_\ell \in \Real^{D_{\ell_{out}} \times D_{\ell_{in}}}$ and $\Vector{b}_\ell \in \Real^{D_{\ell_{out}}}$ are the parameters of the layer (often referred to as the \textit{weight matrix} and \textit{bias}, respectively) and $\Vector{\sigma}(\cdot)$ is an element-wise \textit{non-linearity}.
+where $\Matrix{W}_\ell \in \Real^{D_{\ell_{out}} \times D_{\ell_{in}}}$ and $\Vector{b}_\ell \in \Real^{D_{\ell_{out}}}$ are the parameters of the layer (often referred to as the \textit{weight matrix} and \textit{bias}, respectively) and $\Vector{\sigma}(\cdot)$ is an element-wise \textit{non-linearity} function.
 
 \begin{remark}{Non-linearities}
-	The optimal choice of non-linearity is an area of active research. Some common examples include,
+	The optimal choice of non-linearity is an area of active research. Some common examples include, 
 	\begin{align}
-\sigma_i(x) &= \left\{  	\begin{array}{ll}
+\sigma(x) &= \left\{  	\begin{array}{ll}
 		 \frac{1}{1+e^{-x}}   & \mbox{Logistic,} \\
 		 \frac{e^x - e^{-x}}{e^x + e^{-x}}  & \mbox{Hyperbolic tangent, \textit{tanh},} \\
 		 \max(x, 0)  & \mbox{Rectified Linear Unit, \textit{ReLU},} \\
@@ -314,7 +314,7 @@ In this discrete case, a kernel can be represented by a kernel matrix, $\Matrix{
 \end{figure}
 
 \subsection{Supervised Training}
-Given a (convolutional) neural network with a set of parameters $\GenericParameters$ (where $\GenericParameters$ may include weight and bias parameters, $\Matrix{W}_\ell, \Matrix{b}_\ell$, as well as convolutional kernel parameters, $\Matrix{K}_{k\ell}$) we can use \textit{supervised training} to obtain an optimal parameter set $\GenericParameters^*$. Supervised training requires  set of training pairs $\{(\Vector{x}_1, \Vector{y}_1),...,(\Vector{x}_N, \Vector{y}_N) \}$ where $\Vector{x} \in \Real^{D_x}$ is an \textit{input} and $\Vector{y} \in \Real^{D_y}$ is a \textit{target} that corresponds to the desired output of our parametric model. To \textit{train} the network, we find the parameters which minimize a \textit{loss function} over this dataset,
+Given a (convolutional) neural network with a set of parameters $\GenericParameters$ (where $\GenericParameters$ may include weight and bias parameters, $\Matrix{W}_\ell, \Matrix{b}_\ell$, as well as convolutional kernel parameters, $\Matrix{K}_{k\ell}$) we can use \textit{supervised training} to obtain an optimal parameter set $\GenericParameters^*$. Supervised training requires a dataset of training pairs $\mathcal{D} \definedtobe \{(\Vector{x}_1, \Vector{y}_1),...,(\Vector{x}_N, \Vector{y}_N) \}$ where $\Vector{x} \in \Real^{D_x}$ is an \textit{input} and $\Vector{y} \in \Real^{D_y}$ is a \textit{target} that corresponds to the desired output of our parametric model. To \textit{train} the network, we find the parameters which minimize a \textit{loss function}, $\mathcal{L}$, over this dataset,
 \begin{equation}
 \label{eq:math_nn_loss}
 \GenericParameters^* = \ArgMin{\GenericParameters} \mathcal{L}\left(\{NN(\Vector{x}_i; \GenericParameters), \Vector{y}_i\right\}_{i=1}^N).
@@ -322,7 +322,7 @@ Given a (convolutional) neural network with a set of parameters $\GenericParamet
 For example, a common loss function for regression problems is \textit{mean squared error},
 \begin{equation}
 \GenericParameters^* = \ArgMin{\GenericParameters} \frac{1}{2N}\sum_{i=1}^N\Norm{NN(\Vector{x}_i; \GenericParameters) - \Vector{y}_i}_2^2.
-\end{equation}.
+\end{equation}
 In this dissertation, we will use supervised training in \Cref{ch:dpc,ch:sun-bcnn,ch:hydranet} and we will explore different forms of loss functions for geometric quantities that do not allow for a simple Euclidian norms. 
 \subsection{Practical Considerations}
 \label{section:math_dl_practical}
@@ -332,15 +332,14 @@ To train a deep network---that is, to solve \Cref{eq:math_nn_loss} for optimal p
 
 \subsubsection{Regularization}
 
-In order to prevent \textit{overfitting} to a dataset (i.e., to obtain a model that generalizes to unseen data), the literature provides a number of methods. An important approach that is used in this dissertation is \textit{dropout} \citep{srivastava_dropout_2014}. Dropout stochastically `zeros-out' inputs of a particular layer with probability $p$, 
+In order to prevent \textit{overfitting} to a dataset (i.e., to obtain a model that generalizes to unseen inputs, $\Vector{x} \notin \mathcal{D}$), the literature provides a number of methods. An important approach that is used in this dissertation is \textit{dropout} \citep{srivastava_dropout_2014}. Dropout stochastically `zeros-out' inputs of a particular layer with probability $p$, 
 
 \begin{equation}
 	\Vector{z}_{\ell+1} = \Vector{f}_\ell(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_\ell\tilde{\Vector{z}}_\ell + \Vector{b}_\ell\right),
 \end{equation}
-where $\tilde{\Vector{z}}_\ell = \Vector{b} \circledcirc \Vector{z}_\ell$, $b_i \sim \text{Bernoulli}(p)$ and $\circledcirc$ refers to element-wise multiplication, also known as the Hadamard product.
-The intuition behind dropout is that it effectively creates an ensemble of smaller-parameter networks that will generally be less prone to overfitting than a commensurately-sized monolithic network. Importantly, dropout has a fundamental connection variational inference, which we exploit in \Cref{ch:sun-bcnn}.
+where $\tilde{\Vector{z}}_\ell = \Vector{b} \circledcirc \Vector{z}_\ell$, $b_i \sim \text{Bernoulli}(p)$ and $\circledcirc$ refers to element-wise multiplication, also known as the Hadamard product. Intuitively, dropout is a stochastic approach to generating an ensemble of smaller-parameter networks. Such ensembles are generally less prone to overfitting than a commensurately-sized monolithic network. Further, this type of stochastic regularization has a fundamental connection variational inference, which we exploit in \Cref{ch:sun-bcnn}.
 \subsubsection{Pooling and Spatial Invariance}
-A common technique in convolutional neural networks is \textit{pooling} \citep{Goodfellow-et-al-2016}. Pooling is a non-parametric operation that summarizes the output of a kernel in a particular region. For example, \textit{max pooling} selects the maximum response of a kernel in demarcated regions of an input channel, thereby downsampling the resulting output. Pooling operations are designed to make convolution operations invariant to the spatial location of a particular kernel response. This is important in many classification tasks (e.g., a tree classifier should be invariant to the location of a particular leaf) but is a detriment to regression tasks where we would like to preserve spatial information. We explore building convolutional neural networks without pooling in \Cref{ch:dpc}.
+A common operation in convolutional neural networks is \textit{pooling} \citep{Goodfellow-et-al-2016}. Pooling is a non-parametric operation that summarizes the output of a kernel in a particular region. For example, \textit{max-pooling} selects the maximum response of a kernel in demarcated regions of an input channel, thereby downsampling the resulting output. Pooling operations are designed to make convolution operations invariant to the spatial location of a particular kernel response. This is important in many classification tasks (e.g., a tree classifier should be invariant to the location of a particular leaf) but may be a detriment to some regression tasks where we would like to preserve spatial information. We explore building convolutional neural networks without pooling in \Cref{ch:dpc}.
 
 
 

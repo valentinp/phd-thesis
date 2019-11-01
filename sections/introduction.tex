@@ -25,7 +25,7 @@ In a similar process, early aviators computed egomotion through magnetic heading
 
 By the late twentieth century, unmanned Lunar and Martian exploration motivated the development of a new approach to egomotion estimation. Although ground vehicles like extra-planetary rovers could infer egomotion through \textit{wheel odometry} (integrating wheel rates and using wheel orientation to drive a kinematic model), this approach was highly inaccurate on surfaces that induce wheel slip (e.g., the rock and sand covered surface of Mars, \Cref{fig:intro_endeavour_crater}). 
 
-To address this, a number of researchers in the 1980s developed the technique of \textit{visual} odometry \citep{Scaramuzza2011-qr} (or VO), as a way to infer egomotion from sequentially-collected images. The mathematical basis of VO is closely tied to the technique of photogrammetric \textit{bundle adjustment} \citep{triggs_bundle_2000} which originates from 19th century photogrammetry \citep{albertz_look_2007}.
+To address this, a number of researchers in the 1980s developed the technique of \textit{visual} odometry \citep{moravec1980obstacle} (or VO), as a way to infer egomotion from sequentially-collected images. The mathematical basis of VO is closely tied to the technique of photogrammetric \textit{bundle adjustment} \citep{triggs_bundle_2000} which originates from 19th century photogrammetry \citep{albertz_look_2007}.
 
 \begin{wrapfigure}{r}{0.42\textwidth}
 	\centering
@@ -105,13 +105,6 @@ Second, deep parametric regression of egomotion has the potential to more effici
 
 In contrast, deep networks built on basic image operations with modern computationally-efficient implementations have the potential to avoid the pitfalls of both of these approaches while remaining tractable (assuming appropriate hardware). Despite this potential, current end-to-end learning techniques for egomotion estimation have a number of disadvantages (see \Cref{tab:intro_classical_vs_deep}). They often generalize poorly to new environments, come with few analytical guarantees, provide only point estimates of latent parameters, and do not allow for intermediate representations that have been shown to improve generalization performance on visual tasks \citep{Zhou2019-se}. Indeed, according to one benchmark, the most accurate visual egomotion approach at the time of writing\footnote{Based on the KITTI Odometry benchmark leaderboard at \url{http://www.cvlibs.net/datasets/kitti/eval_odometry.php}.} remains a classical pipeline based on carefully selected sparse features.
 
-\begin{figure}
-\begin{center}
-		\includegraphics[width=0.98\textwidth]{introduction/pseudo_sensor.pdf}
-		\caption{A learned \textit{pseudo-sensor} extracts latent information from the same data stream.}
-  	\label{fig:intro_pseudo_sensor}
-\end{center}
-\end{figure}
 
 
 \begin{table}[h!]
@@ -119,14 +112,12 @@ In contrast, deep networks built on basic image operations with modern computati
 	\begin{threeparttable}
 	\begin{tabular}{m{0.18\textwidth}m{0.38\textwidth}m{0.38\textwidth}}
 		\toprule
-		& \textbf{Classical Pipelines} & \textbf{Deep Models} \\ \midrule  
+		\textsc{Criterion} & \textsc{Classical Pipelines} & \textsc{End-to-end Models} \\ \midrule  
 		\textit{Maturity} & Decades of literature \& domain knowledge & Nascent with few uses in mobile autonomy \\
 		& & \\
 		\textit{Interpretability} & Good, each component has interpretable input and output & Poor, often with no interpretable intermediate outputs \\
 		& & \\
 		\textit{Uncertainty} & Foundational to \textit{probabilistic robotics} & Few nascent methods (Monte-carlo Dropout \citep{Gal2016-ny}, Bootstrap \citep{Osband2016})  \\
-		& & \\
-		\textit{Robustness} & Empirically generalizable \citep{Zhou2019-se} & Highly dependant on training data\\
 		& & \\
 		\textit{Flexibility} & Limited by ingenuity of designer & Limited by training data \\
 		\bottomrule
@@ -136,6 +127,14 @@ In contrast, deep networks built on basic image operations with modern computati
 \end{table}
 
 \section{The Pseudo-Sensor}
+
+\begin{figure}
+\begin{center}
+		\includegraphics[width=0.98\textwidth]{introduction/pseudo_sensor.pdf}
+		\caption{A learned \textit{pseudo-sensor} extracts latent information from the same data stream.}
+  	\label{fig:intro_pseudo_sensor}
+\end{center}
+\end{figure}
 
 As mobile autonomy enters the robust-perception age \citep{Cadena2016-ds}, classical pipelines that work in limited contexts will need to be adapted and augmented to ensure they can operate over longer time periods, and through challenging environments. However, replacing these performant pipelines completely with learned approaches, is in our view, unnecessary. Instead, we propose the paradigm of the  \textit{pseudo-sensor} (\Cref{fig:intro_pseudo_sensor}). A \textit{pseudo-sensor} is a machine-learning-based (hyper-)parametric model that extracts latent information from existing sensor data that is difficult to model analytically. Instead of replacing an entire pipeline, pseudo-sensors leverage the representational power of modern data-driven learning techniques to extract useful quantities that make existing classical pipelines more consistent and accurate in a given environment. In this dissertation, we present four such pseudo-sensors. In each case, the output of the pseudo-sensor is fused with a classical visual odometry pipeline to produce better motion estimates. To accomplish this fusion, we rely on two approaches. The first (Predictive Robust Estimation, or PROBE, \Cref{ch:probe}), uses the paradigm of a pseudo-sensor to infer a heteroscedastic noise model based on sensor data. By predicting uncertainty information, PROBE effectively re-scales a robust loss function to better account non-stationary noise models and deleterious visual effects. The second approach (used by Sun-BCNN, DPC-Net, and HydraNet,  \Cref{ch:sun-bcnn,ch:dpc,ch:hydranet} respectively) produces geometric quantities (probabilistic estimates of an illumination source, $\LieGroupSE{3}$ corrections to existing egomotion estimates, and independent probabilistic rotation estimates, respectively), that can be fused with the egomotion estimate produced by the pipeline through pose graph optimization.
 
@@ -154,7 +153,6 @@ As mobile autonomy enters the robust-perception age \citep{Cadena2016-ds}, class
 %
 % To integrate the power of deep networks into state estimation algorithms, the recent literature differs in how to proceed. While some attempt to parametrize geometric transformations in their unconstrained state, and then learn the resulting state within a deep network regression optimization \citep{Costante2016-hb, Kendall2015-kh}, others integrate deep networks within outer estimation loops \citep{Haarnoja2016-ph}. Yet other work has used the neural network as an error correcting mechanism on top on an existing kinematic or dynamic model \citep{Punjani2015-pj}. This integration is made more difficult by the lack of uncertainty estimates associated with many learned measurement models in the computer vision and machine learning literature.
 % 
-\newpage 
 \section{Original Contributions}
 
 \begin{figure}[h!]
