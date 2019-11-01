@@ -60,46 +60,45 @@ Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in richter2017safe
 Warning--empty journal in Sola2018-kg
-Warning--empty journal in Zhou2019-se
 You've used 127 entries,
             1935 wiz_defined-function locations,
-            1245 strings with 28387 characters,
-and the built_in function-call counts, 60727 in all, are:
-= -- 6096
+            1246 strings with 28403 characters,
+and the built_in function-call counts, 60742 in all, are:
+= -- 6099
 > -- 2446
 < -- 114
 + -- 848
 - -- 825
-* -- 4835
-:= -- 9774
-add.period$ -- 391
+* -- 4838
+:= -- 9777
+add.period$ -- 392
 call.type$ -- 127
 change.case$ -- 1032
 chr.to.int$ -- 122
-cite$ -- 139
+cite$ -- 138
 duplicate$ -- 2603
-empty$ -- 4345
+empty$ -- 4346
 format.name$ -- 1022
-if$ -- 12567
+if$ -- 12571
 int.to.chr$ -- 6
 int.to.str$ -- 0
 missing$ -- 128
-newline$ -- 630
+newline$ -- 631
 num.names$ -- 387
-pop$ -- 1202
+pop$ -- 1198
 preamble$ -- 1
 purify$ -- 1038
 quote$ -- 0
-skip$ -- 1991
+skip$ -- 1992
 stack$ -- 0
 substring$ -- 4395
-swap$ -- 690
+swap$ -- 691
 text.length$ -- 67
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 754
-warning$ -- 12
+warning$ -- 11
 while$ -- 498
 width$ -- 0
-write$ -- 1642
+write$ -- 1645
 (There were 7 error messages)
