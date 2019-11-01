@@ -64,9 +64,9 @@ First, we motivate why learning elements of $\LieGroupSO{3}$ is particularly ger
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{so3_learning/kitti/so3_learning_with_flow}
-	\caption{The HydraNet structure. Input data (in this case, pre-processed optical flow images) is passed through a main body and then through a number of heads. Outputs are combined to produce an average and an uncertainty.}
-	\label{fig:kitti_flow_hydranet}
+	\includegraphics[width=0.8\textwidth]{so3_learning/hydranet_1D}
+	\caption{The HydraNet structure. Input data is passed through a main body and then through a number of heads. Outputs are combined to produce an average and an uncertainty.}
+	\label{fig:hydranet_1D}
 \end{figure}
 
 \subsection{Why Rotations?}
@@ -82,14 +82,14 @@ To begin, we will consider a (non-Bayesian) approach to uncertainty quantificati
 \end{equation}
 such that $\sigma^2$ maximizes a likelihood model of our prediction $\Mean{y}$ given that we know $y_t$.
 \subsubsection{HydraNet}
-One possible way to obtain $\Mean{y}$ is to train a deep neural network, $g(x)$. To endow this network with uncertainty, we present a network structure we call HydraNet (see \Cref{fig:nn-uncertainty}). HydraNet is composed of a large, main `body', $b(x; \GenericParameters_b) = NN(x; \GenericParameters_b)$ with $H+1$ heads, $h_i(x; \GenericParameters_{h_i}) = NN(x; \GenericParameters_{h_i})$, attached to the output of the body. Given an input $x$, we get $H+1$ outputs as:
+One possible way to obtain $\Mean{y}$ is to train a deep neural network, $g(x)$. To endow this network with uncertainty, we present a network structure we call HydraNet (see \Cref{fig:hydranet_1D}). HydraNet is composed of a large, main `body', $b(x; \GenericParameters_b) = NN(x; \GenericParameters_b)$ with $H+1$ heads, $h_i(x; \GenericParameters_{h_i}) = NN(x; \GenericParameters_{h_i})$, attached to the output of the body. Given an input $x$, we get $H+1$ outputs as:
 \begin{equation}
 	\{y_1, ..., y_H, \sigma^2_a\} = \{h_1 \circ b (x), h_2 \circ b (x), ..., h_{H+1} \circ b (x)\}
 \end{equation}
 where $\circ$ denotes function composition. To compute  $\Mean{y}$, we compute the arithmetic mean of the outputs,
 \begin{equation}
 \label{eq:hn_1d_mean}
-\Mean{y} = \frac{1}{H}\sum_{i=1}^{H}y_i(x).
+\Mean{y} = \frac{1}{H}\sum_{h=1}^{H}y_h(x).
 \end{equation} 
 The head structure, however, provides several key advantages toward the goal of estimating consistent uncertainty. Namely, it allows us to define the overall uncertainty in terms of two sources, \textit{epistemic} ($\sigmah$) and \textit{aleatoric} ($\sigmad$) \citep{Kendall2017-vs}:
 \begin{equation}
@@ -102,14 +102,14 @@ The head structure, however, provides several key advantages toward the goal of 
 
 To account for aleatoric uncertainty, we follow prior work \citep{Haarnoja2016-ph,Lakshminarayanan2017} and dedicate one head of the network to regressing a variance directly through a negative log likelihood loss under the assumption of Gaussian likelihood. That is, we define a supervised loss,
 \begin{equation}
-\GenericParameters_{h_i}^*, \GenericParameters_b^* = \ArgMin{\GenericParameters_i, \GenericParameters_b} \mathcal{L}(y_i, \sigma_a^2, y_t) = \ArgMin{\GenericParameters} \frac{1}{2\sigma_a^2}(y-y_t)^2 	+ \log(\sigma_a^2),
+\GenericParameters_{h_i}^*, \GenericParameters_b^* = \ArgMin{\GenericParameters_i, \GenericParameters_b} \mathcal{L}(y_h, \sigma_a^2, y_t) = \ArgMin{\GenericParameters} \frac{1}{2\sigma_a^2}(y-y_t)^2 	+ \log(\sigma_a^2),
 \end{equation}
 where $y_t$ is a target output.
 
 
 To capture epistemic uncertainty, we train each head with random weight initializations and apply losses independently during training. During test time, we compute a sample covariance over the different outputs. That is, at test time, we compute:
 \begin{equation}
-\sigma_e^2 = \frac{1}{H-1} (y_i - \bar{y})^2	
+\sigma_e^2 = \frac{1}{H-1} \sum_{h=1}^H (y_h - \bar{y})^2	
 \end{equation}
  This approach is inspired by the method of the statistical bootstrap \citep{Osband2016}, which predicts population statistics by computing statistics over subsets of a sample chosen with replacement. Unlike \cite{Osband2016}, we do not train each head of the network with a bootstrapped sample, but instead rely on the random initializations of their parameters and the method of dropout to introduce sufficient stochasticity into their outputs. Further, unlike \cite{Lakshminarayanan2017}, we do not require numerous trained models that can incur high computational cost for complex regression tasks.
 
@@ -247,7 +247,7 @@ We repeated training 100 times, and recorded the test-time negative log likeliho
 	\label{fig:noise-free-boxplot}
 \end{figure}
 
-\subsection{Deep Probabilistic $\LieGroupSO{3}$ Regression}
+\subsection{Extending HydraNet to $\LieGroupSO{3}$}
 
 In order to extend the ideas of HydraNet to the matrix Lie group SO(3), we
 consider different ways to regress and combine several estimates of rotation.s

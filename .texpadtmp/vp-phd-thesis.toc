@@ -133,14 +133,14 @@
 \contentsline {subsection}{\numberline {7.4.2}Probabilistic Regression and HydraNet}{106}{subsection.7.4.2}% 
 \contentsline {subsubsection}{HydraNet}{106}{section*.118}% 
 \contentsline {subsubsection}{One-dimensional experiment}{108}{section*.120}% 
-\contentsline {subsection}{\numberline {7.4.3}Deep Probabilistic $ \mathrm {SO}(3) $ Regression}{109}{subsection.7.4.3}% 
+\contentsline {subsection}{\numberline {7.4.3}Extending HydraNet to $ \mathrm {SO}(3) $}{109}{subsection.7.4.3}% 
 \contentsline {subsubsection}{Rotation Averaging}{110}{section*.123}% 
-\contentsline {subsubsection}{SO(3) Uncertainty}{110}{section*.124}% 
+\contentsline {subsubsection}{SO(3) Uncertainty}{111}{section*.124}% 
 \contentsline {subsection}{\numberline {7.4.4}Loss Function}{111}{subsection.7.4.4}% 
-\contentsline {section}{\numberline {7.5}Experiments}{112}{section.7.5}% 
-\contentsline {subsection}{\numberline {7.5.1}Uncertainty Evaluation: Synthetic Data}{112}{subsection.7.5.1}% 
+\contentsline {section}{\numberline {7.5}Experiments}{114}{section.7.5}% 
+\contentsline {subsection}{\numberline {7.5.1}Uncertainty Evaluation: Synthetic Data}{114}{subsection.7.5.1}% 
 \contentsline {subsection}{\numberline {7.5.2}Absolute Orientation: 7-Scenes}{114}{subsection.7.5.2}% 
-\contentsline {subsection}{\numberline {7.5.3}Relative Rotation: KITTI Visual Odometry}{114}{subsection.7.5.3}% 
+\contentsline {subsection}{\numberline {7.5.3}Relative Rotation: KITTI Visual Odometry}{118}{subsection.7.5.3}% 
 \contentsline {subsubsection}{Canonical Indirect Stereo Visual Odometry}{119}{section*.138}% 
 \contentsline {subsubsection}{Fusion via Graph Relaxation}{120}{section*.139}% 
 \contentsline {section}{\numberline {7.6}Summary}{121}{section.7.6}% 
