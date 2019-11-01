@@ -12,7 +12,7 @@
 
 
 Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to two seminal papers: \cite{Scaramuzza2011-qr} and \cite{Cadena2016-ds}.
-
+\newpage
 \begin{remark}{VO Taxonomy}
 VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the type of camera used to capture images and (2) the type of data association used to compute motion estimates. 
 
@@ -27,8 +27,6 @@ The second distinction is based on the type of data association used to match se
 
 \section{Canonical VO Pipeline}
 
-In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline}). We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
-
 \begin{figure}[h!]
 \begin{center}
 		\includegraphics[width=0.98\textwidth]{classical-vo/stereo_vo_pipeline.pdf}
@@ -36,6 +34,10 @@ In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indire
   	\label{fig:vo_stereo_vo_pipeline}
 \end{center}
 \end{figure}
+
+In this dissertation, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline}). We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
+
+
 
 \subsection{Preprocessing}
 
@@ -57,22 +59,20 @@ In this thesis, we apply our learned pseudo-sensors to a baseline stereo, indire
     \caption{We pre-process stereo images (left) to simulate an ideal stereo camera (right).}
         \label{fig:vo_preprocessing}
 \end{figure}
-
 During preprocessing, we use a lens model (assumed to be known apriori) to undistort each stereo image. Next, using the camera extrinsic parameters (also assumed to be known), we \textit{rectify} the stereo pair such that the images can be assumed to come from two cameras whose principal axes are parallel (\Cref{fig:vo_preprocessing}). Finally, we also assume that the stereo camera intrinsics are known a priori or compute them through a calibration process \citep{Furgale2013-sl}.
 
 \subsection{Data Association}
 \label{sec:vo_data_extraction}
 \subsubsection{Feature Extraction and Matching}
-
+ 
 \begin{figure}[h!]
 \begin{center}
-		\includegraphics[width=0.88\textwidth]{classical-vo/libviso2_scan}
+		\includegraphics[width=0.99\textwidth]{classical-vo/libviso2_scan}
 		\caption{Feature tracking using \texttt{libviso2}, taken from \cite{Geiger2011-xe}. Colours correspond to depth.}
   	\label{fig:vo_feature_tracking}
 \end{center}
 \end{figure}
-
-In this thesis, we focus on indirect stereo visual odometry for its computational efficiency. Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \texttt{viso2} \citep{Geiger2011-xe} image feature extraction and matching algorithm as it is especially designed for sequential feature matching. In \texttt{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \texttt{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time to ensure that a single feature exists across two consecutive stereo camera poses. 
+Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \textsf{viso2} \citep{Geiger2011-xe} image feature extraction and matching algorithm as it is especially designed for sequential feature matching. In \textsf{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \textsf{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time to ensure that a single feature exists across two consecutive stereo camera poses. 
 
 We refer to the $i$th feature as a point in space expressed in homogeneous coordinates in the camera frame as
 $\HomogeneousPoint{i}{c} \in
