@@ -74,7 +74,7 @@ We focus our attention on learning rotations for three primary reasons.
 %First, unlike the group $\LieGroupSE{3}$, which describes poses, $\LieGroupSO{3}$ is a compact group with constrained elements.
 First, rotations can be learned without reference to scale, using monocular images without the need for metric depth estimation. These images can come from cheap, light-weight imaging sensors that can be found on many ground and aerial vehicles. Furthermore, many depth-equipped sensors like stereo cameras and RGB-D cameras have limited depth range and produce poor depth estimates in large-scale outdoor environments.  Second, many egomotion estimation techniques, like visual odometry or visual SLAM, are particularly sensitive to rotation estimates as small early errors have a large influence on final pose estimates \citep{Olson2003-ax}. Finally, the constrained nature of rotations presents several difficulties for optimization algorithms. Indeed, if rotations are known, the general problem of pose graph relaxation becomes a linear least squares problem that can be solved with no initial guess for translations \citep{Carlone2015-ud}. 
 
-\subsection{Probabilistic Regression}
+\subsection{Probabilistic Regression and HydraNet}
 
 To begin, we will consider a (non-Bayesian) approach to uncertainty quantification. Consider the one dimensional regression task where, given an input $x \in \Real$, with a target output $y_t \in \Real$, we desire a probabilistic estimate
 \begin{equation}
@@ -337,12 +337,31 @@ As with one-dimensional HydraNet, we train a direct regression of covariance thr
 \end{equation}
 \noindent where  $\Vector{\phi} = \MatLog{\quat \otimes {\quat_t}^{-1}}$. Combining the sample covariance, with the learned covariance, we extend \Cref{eq:1d_hydranet_uncertainty} to
 \begin{equation}
-\Matrix{\Sigma}_t = \Covh + \Covd.
+\Matrix{\Sigma} = \Covh + \Covd.
 \end{equation}
-This covariance estimate is designed to grow for out-of-training-distribution errors (and account for \textit{domain shift} \citep{Lakshminarayanan2017}) while still accounting for uncertainty within the training set. We note that unlike Bayesian methods, we do not interpret each head as a \textit{sample} from a posterior distribution\footnote{Notably, this means we do not scale our direct uncertainty when averaging as $\frac{1}{H}\Covd$.}. Indeed, we note that in our 1D experiments, the heads have very small variance within the training distribution. The multi-headed structure and rotating averaging serves simply as a way to model epistemic uncertainty when the model encounters inputs that differ from those seen during training. We summarize our training and test procedures in \Cref{alg:train_hydranet} and \Cref{alg:test_hydranet} respectively. 
+This covariance estimate is designed to grow for out-of-training-distribution errors (and account for \textit{domain shift} \citep{Lakshminarayanan2017}) while still accounting for uncertainty within the training set. We note that unlike Bayesian methods, we do not interpret each head as a \textit{sample} from a posterior distribution\footnote{Notably, this means we do not scale our direct uncertainty when averaging as $\frac{1}{H}\Covd$.}. Indeed, we note that in our 1D experiments, the heads have very small variance within the training distribution. The multi-headed structure and rotating averaging serves simply as a way to model epistemic uncertainty when the model encounters inputs that differ from those seen during training. We summarize our training and test procedures in \Cref{fig:hydranet_so3_train_test} as well as \Cref{alg:train_hydranet} and \Cref{alg:test_hydranet} respectively. 
 \begin{remark}{Combining epistemic and aleatoric uncertainty}
 	The simple addition of the two covariance matrices produces a valid covariance matrix (and follows prior work \cite{Kendall2017-vs} on combining aleatoric and epistemic sources). We leave an investigation of other possible way to combine these sources to future work.
 \end{remark}
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.49\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{so3_learning/train_summary}
+    \caption{Training procedure (\Cref{alg:train_hydranet}).}
+    \label{fig:hydranet_train_summary}
+\end{subfigure}
+~
+\begin{subfigure}{0.49\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{so3_learning/test_summary}
+    \caption{Testing procedure (\Cref{alg:test_hydranet}).}
+    \label{fig:hydranet_test_summary}
+\end{subfigure}
+\caption{The training and testing procedures for HydraNet for unit quaternion targets.}
+\label{fig:hydranet_so3_train_test}
+\end{figure}
 
 
 \begin{algorithm}

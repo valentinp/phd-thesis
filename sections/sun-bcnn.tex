@@ -358,7 +358,7 @@ We resize images from their original size to $[224 \times 224]$ pixels to achiev
 We experimented with preserving the aspect ratio of the original image and padding zeros to the top and bottom of the resized image, but found that preserving the vertical resolution (as done by \citet{Ma2016-at}) results in better test-time accuracy. We do not crop or rotate the images, nor do we augment the dataset in any other way.
 
 \subsubsection{Model Precision}
-We find an empirically optimal model precision $\tau$ (see \Cref{eq:model_precision}) by optimizing the Average Normalized Estimation Error Squared (ANEES) across the entire test set for each dataset. 
+We find an empirically optimal model precision $\tau$ by optimizing the Average Normalized Estimation Error Squared (ANEES) across the entire test set for each dataset. 
 While this hyperparameter should in principle be tuned using a validation set, we omit this step to keep our training procedure consistent with that of \citet{Ma2016-at}. 
 We note that the BCNN uncertainty estimates are affected by two significant factors: 1) variational inference is known to underestimate predictive variance  \citep{Gal2016UncertaintyThesis}; and 2) we assume the observation noise is homoscedastic. 
 As noted by \citet{Gal2016UncertaintyThesis}, the BCNN can be made heteroscedastic by learning the model precision during training, but this extension is outside the scope of this work.

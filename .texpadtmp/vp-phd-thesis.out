@@ -95,7 +95,7 @@
 \BOOKMARK [1][-]{section.7.3}{Related work}{chapter.7}% 95
 \BOOKMARK [1][-]{section.7.4}{Approach}{chapter.7}% 96
 \BOOKMARK [2][-]{subsection.7.4.1}{Why Rotations?}{section.7.4}% 97
-\BOOKMARK [2][-]{subsection.7.4.2}{Probabilistic Regression}{section.7.4}% 98
+\BOOKMARK [2][-]{subsection.7.4.2}{Probabilistic Regression and HydraNet}{section.7.4}% 98
 \BOOKMARK [2][-]{subsection.7.4.3}{Deep Probabilistic \040SO\(3\) \040Regression}{section.7.4}% 99
 \BOOKMARK [2][-]{subsection.7.4.4}{Loss Function}{section.7.4}% 100
 \BOOKMARK [1][-]{section.7.5}{Experiments}{chapter.7}% 101
@@ -111,7 +111,7 @@
 \BOOKMARK [2][-]{subsection.8.1.4}{Deep Probabilistic Inference of \040SO\(3\) \040with HydraNet}{section.8.1}% 111
 \BOOKMARK [1][-]{section.8.2}{Future Work}{chapter.8}% 112
 \BOOKMARK [1][-]{section.8.3}{Coda: In Search of Elegance}{chapter.8}% 113
-\BOOKMARK [0][-]{section*.145}{Appendices}{}% 114
+\BOOKMARK [0][-]{section*.146}{Appendices}{}% 114
 \BOOKMARK [0][-]{Appendix.1.A}{PROBE: Isotropic Covariance Models through K-NN}{}% 115
 \BOOKMARK [1][-]{section.1.A.1}{Introduction}{Appendix.1.A}% 116
 \BOOKMARK [1][-]{section.1.A.2}{Theory}{Appendix.1.A}% 117
