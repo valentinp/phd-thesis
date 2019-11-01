@@ -20,7 +20,7 @@ PROBE was initially published as a simpler non-Bayesian technique that learned i
 \item \bibentry{2015_Peretroukhin_Get}.
 \end{enumerate}
 
-We significantly extended this technique to full anisotropic covariances and GKE in collaboration with William Vega-Brown at MIT. William was primarily responsible for the mathematical formulation of Generalized Kernels for VO and provided code to perform efficient GKE. I was responsible for the VO formulation, the integration of GKE into the VO pipeline, and all of the experimental work.
+We significantly extended this technique to full anisotropic covariances and through GK estimation in collaboration with William Vega-Brown at MIT. William was primarily responsible for the mathematical formulation of Generalized Kernels for VO and provided code to perform efficient GK estimation. I was responsible for the VO formulation, the integration of GK estimation into the VO pipeline, and all of the experimental work.
 \begin{enumerate}[resume]
 \item \bibentry{Peretroukhin2016-om}	.
 \end{enumerate}
@@ -40,20 +40,15 @@ Ideally, we would like to retain some of these observations in our estimator, wh
 \section{Related Work}
 
 
-There is a large and growing body of work on the problem of deriving accurate,
-consistent state estimates from visual data.  Although our approach to noise
-modelling is applicable in other domains, for simplicity we focus our attention
-on the problem of inferring egomotion from features extracted from sequential
-pairs of stereo images. 
+There is a large and growing body of work on the task of deriving consistent uncertainty estimates for state estimation.  It possible, for example, to develop better bespoke covariance estimates for a particular estimator modality by choosing a higher-fidelity covariance propagation schema (e.g., applying the implicit function theorem to propagate uncertainties in a laser-scan registration optimization problem, \cite{censi2007accurate}).  
 
-Apart from simply rejecting outliers, a number of recent approaches attempt to
-select the optimal set of features to produce an accurate localization estimate
-from tracked visual features. For example, \citet{Tsotsos2015} amend Random
-Sample Consensus (RANSAC) with statistical hypothesis testing to ensure that tracked visual features have normally distributed residuals before including them in
-the estimator. Unlike our predictive approach which can adjust covariances from a single observation, their technique requires features to be visible during several consecutive poses. In a different
-approach, \Citet{Zhang2015} choose an optimally observable feature subset for a
-monocular SLAM pipeline by selecting features with the highest \textit{informativeness} - a measure calculated based on the observability of the SLAM subsystem. Observability, however, is governed by the 3D location of the features, and therefore cannot predict systematic feature degradation due to environmental or sensor-based effects. 
+Alternatively, time-varying uncertainties can be formulated using the Adaptive Kalman Filter and related work \citep{gustafsson2000adaptive}. This classical approach adapts measurement and process covariances based on past estimation errors. Since it is adaptive, it cannot cope with fast-changing environments (since it must \textit{adapt} to past measurements, instead of \textit{predicting} the uncertainty of current measurements). Further, these techniques generally do not provide a straight-forward mechanism to leverage rich high dimensional data like images. 
 
+To deal with such high-dimensional sensor data, an alternative set of approaches build predictive uncertainty models by mapping sensor data to a lower dimensional \textit{prediction space}. By carefully choosing the components of this space, it is possible to learn covariances parametrically through weight vectors (e.g., for range/bearing sensors like the work of \cite{Hu2015-uw}) or neural networks (for cameras, like \cite{liu2018deep}) or non-parametrically  through kernel based methods \citep{VegaBrown:ew, VegaBrown:2013fv} or Gaussian Processes (GPs) \citep{ko2009gp}. 
+
+Non-parametric models can also be extended to more general covariance matrix models that infer densities over positive-definite matrices \citep{wilson2011generalised} or apply GP inference for each element of these matrices \citep{melkumyan2011multi}. In both cases, however, inference is often too slow to perform in real-time because they are not designed to handle high-dimensional feature spaces. Conversely, the inspiration for this work showed that is possible to build non-GP-based  kernel-based models that predict covariances efficiently for laser-based scan matching odometry with \citep{VegaBrown:ew} and without \citep{VegaBrown:2013fv} ground-truth pose information .
+
+In the visual domain, estimators often cope with varying uncertainty only indirectly through (static) robust loss functions \citep{kerl2013robust}  or modified RANSAC procedures with statistical hypothesis testing (as a way to ensure that tracked visual features have normally distributed residuals) \citep{Tsotsos2015}. Unlike our predictive approach which can adjust covariances from a single observation, these techniques are not designed to cope with heteroscedastic measurement noise that may occur within a single image. Alternatively, it is also possible to carefully select an optimally observable feature subset based on the highest \textit{informativeness} - a measure calculated based on the observability metrics of the camera motion \citep{Zhang2015}. Observability, however, is governed by the 3D location of the features, and therefore cannot predict systematic feature degradation due to environmental or sensor-based effects that are independent of location (e.g., self-similar textures). Finally, since this work was published, a technique that is very close in spirit was published in the context of robust fundamental matrix estimation \citep{ranftl2018deep}. This approach uses deep learning to predict the weights of an iteratively reweighted least squares routine--effectively mimicking our predictively robust loss but without the information-theoretic basis.
 
 \section{Predictive Robust Estimation for VO}
 
@@ -79,7 +74,7 @@ monocular SLAM pipeline by selecting features with the highest \textit{informati
 
 We present a principled, data-driven way to build a noise model
 for visual odometry. We leverage recent advances in covariance estimation
-\citep{VegaBrown:2013fv} to formulate a predictive robust estimator for a
+\citep{VegaBrown:2013fv, VegaBrown:ew} to formulate a predictive robust estimator for a
 stereo visual odometry pipeline. We frame the traditional non-linear least
 squares optimization problem as a problem of maximum likelihood estimation with
 a Gaussian noise model, and infer a distribution over the covariance matrix of
@@ -142,9 +137,9 @@ The technique of generalized kernels makes the assumption that the parameters $\
 which combined with \Cref{eq:probe_posterior_bayes_rule} results in
 \begin{equation}
 \label{eq:probe_extended_likelihood}
-p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) \propto \prod_{i=1}^N \underbrace{p(\Vector{y}_i | \GenericParameters^*, \Vector{x}_i, \Vector{x}^*)}_{\text{Extended likelihood}} \underbrace{p(\GenericParameters^*|\Vector{x}^*)}_{\text{Prior}}.
+p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) \propto \prod_{i=1}^N \underbrace{p(\Vector{y}_i | \GenericParameters^*, \Vector{x}_i, \Vector{x}^*)}_{\text{extended likelihood}} \underbrace{p(\GenericParameters^*|\Vector{x}^*)}_{\text{Prior}}.
 \end{equation}
-Now, the pièce de résistance of generalized kernels is that the \textit{extended} likelihood can be written as function of the known likelihood $p(\Vector{y}_i | \GenericParameters_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that under these assumptions, the extended likelihood must have the form:
+Now, the pièce de résistance of generalized kernels is that the \textit{extended} likelihood (the first factor above) can be written as function of the known likelihood $p(\Vector{y}_i | \GenericParameters_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that under these assumptions, the extended likelihood must have the form:
 \begin{equation}
 \label{eq:probe_kernel_likelihood}
 p(\Vector{y} | \GenericParameters^*, \Vector{x}, \Vector{x}^*) \propto p(\Vector{y} | \GenericParameters)^{k(\Vector{x}^*, \Vector{x})},

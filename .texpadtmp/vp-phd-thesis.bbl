@@ -76,6 +76,12 @@ Carlone, L., Tron, R., Daniilidis, K., and Dellaert, F. (2015b).
 \newblock In {\em 2015 {IEEE} International Conference on Robotics and
   Automation ({ICRA})}, pages 4597--4604.
 
+\bibitem[Censi, 2007]{censi2007accurate}
+Censi, A. (2007).
+\newblock An accurate closed-form estimate of icp's covariance.
+\newblock In {\em Proceedings 2007 IEEE international conference on robotics
+  and automation}, pages 3167--3172. IEEE.
+
 \bibitem[Cheng et~al., 2006]{Cheng2006-nl}
 Cheng, Y., Maimone, M.~W., and Matthies, L. (2006).
 \newblock Visual odometry on the mars exploration rovers - a tool to ensure
@@ -269,6 +275,11 @@ Grewal, M.~S. and Andrews, A.~P. (2010).
   [historical perspectives].
 \newblock {\em IEEE Control Syst. Mag.}, 30(3):69--78.
 
+\bibitem[Gustafsson and Gustafsson, 2000]{gustafsson2000adaptive}
+Gustafsson, F. and Gustafsson, F. (2000).
+\newblock {\em Adaptive filtering and change detection}, volume~1.
+\newblock Citeseer.
+
 \bibitem[Haarnoja et~al., 2016]{Haarnoja2016-ph}
 Haarnoja, T., Ajay, A., Levine, S., and Abbeel, P. (2016).
 \newblock Backprop {KF}: Learning discriminative deterministic state
@@ -359,6 +370,12 @@ Kingma, D.~P. and Ba, J. (2017).
 \newblock In {\em International {Conference} on {Learning} {Representations}}.
 \newblock arXiv: 1412.6980.
 
+\bibitem[Ko and Fox, 2009]{ko2009gp}
+Ko, J. and Fox, D. (2009).
+\newblock Gp-bayesfilters: Bayesian filtering using gaussian process prediction
+  and observation models.
+\newblock {\em Autonomous Robots}, 27(1):75--90.
+
 \bibitem[Kullback and Leibler, 1951]{kullback1951information}
 Kullback, S. and Leibler, R.~A. (1951).
 \newblock On information and sufficiency.
@@ -424,6 +441,13 @@ Li, R., Wang, S., Long, Z., and Gu, D. (2017b).
 \newblock {UnDeepVO}: Monocular visual odometry through unsupervised deep
   learning.
 
+\bibitem[Liu et~al., 2018]{liu2018deep}
+Liu, K., Ok, K., Vega-Brown, W., and Roy, N. (2018).
+\newblock Deep inference for covariance estimation: Learning gaussian noise
+  models for state estimation.
+\newblock In {\em 2018 IEEE International Conference on Robotics and Automation
+  (ICRA)}, pages 1436--1443. IEEE.
+
 \bibitem[Lucas and Kanade, 1981]{Lucas:1981}
 Lucas, B.~D. and Kanade, T. (1981).
 \newblock An iterative image registration technique with an application to
@@ -467,6 +491,12 @@ Melekhov, I., Ylioinas, J., Kannala, J., and Rahtu, E. (2017).
 \newblock Relative camera pose estimation using convolutional neural networks.
 \newblock In {\em Proc. Int. Conf. on Advanced Concepts for Intel. Vision
   Syst.}, pages 675--687. Springer.
+
+\bibitem[Melkumyan and Ramos, 2011]{melkumyan2011multi}
+Melkumyan, A. and Ramos, F. (2011).
+\newblock Multi-kernel gaussian processes.
+\newblock In {\em Twenty-Second International Joint Conference on Artificial
+  Intelligence}.
 
 \bibitem[Oliveira et~al., 2017]{Oliveira2017-lt}
 Oliveira, G.~L., Radwan, N., Burgard, W., and Brox, T. (2017).
@@ -541,6 +571,12 @@ Punjani, A. and Abbeel, P. (2015).
 \newblock Deep learning helicopter dynamics models.
 \newblock In {\em Proc. {IEEE} Int. Conf. Robot. Automat. ({ICRA})}, pages
   3223--3230.
+
+\bibitem[Ranftl and Koltun, 2018]{ranftl2018deep}
+Ranftl, R. and Koltun, V. (2018).
+\newblock Deep fundamental matrix estimation.
+\newblock In {\em Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pages 284--299.
 
 \bibitem[Rosen et~al., 2019]{Rosen2019-kk}
 Rosen, D.~M., Carlone, L., Bandeira, A.~S., and Leonard, J.~J. (2019).
@@ -623,6 +659,12 @@ Umeyama, S. (1991).
   point patterns.
 \newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 13(4):376--380.
 
+\bibitem[Vega-Brown et~al., 2013]{VegaBrown:ew}
+Vega-Brown, W., Bachrach, A., Bry, A., Kelly, J., and Roy, N. (2013).
+\newblock {{CELLO}}: A fast algorithm for covariance estimation.
+\newblock In {\em Proc. IEEE Int. Conf. Robot. Automat. (ICRA)}, pages
+  3160--3167.
+
 \bibitem[Vega-Brown and Roy, 2013]{VegaBrown:2013fv}
 Vega-Brown, W. and Roy, N. (2013).
 \newblock {{CELLO-EM}}: Adaptive sensor models without ground truth.
@@ -655,6 +697,12 @@ Warren, R. (1976).
 \newblock The perception of egomotion.
 \newblock {\em Journal of Experimental Psychology: Human Perception and
   Performance}, 2(3):448.
+
+\bibitem[Wilson and Ghahramani, 2011]{wilson2011generalised}
+Wilson, A.~G. and Ghahramani, Z. (2011).
+\newblock Generalised wishart processes.
+\newblock In {\em Proceedings of the Twenty-Seventh Conference on Uncertainty
+  in Artificial Intelligence}, pages 736--744. AUAI Press.
 
 \bibitem[Yang et~al., 2016]{yang2016exploit}
 Yang, F., Choi, W., and Lin, Y. (2016).
