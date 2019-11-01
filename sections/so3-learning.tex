@@ -51,16 +51,16 @@ As discussed in the previous chapter, several recent authors  \citep{Clark2017, 
 
 Much recent work in the literature has been devoted to replacing classical localization algorithms with deep network equivalents. Some approaches \citep{Clark2017, Kendall2015-ew, Kendall2017-ud, Melekhov2017-dl} learn poses  directly, while others learn them indirectly as the spatial transforms that result in minimal loss defined over some other domain (e.g., pixel or depth space) \citep{Byravan2017-ik, Handa2016-hm}.
 
-Despite this surge of research in neural-network-based replacements, some authors have nevertheless used deep networks to augment classical state estimation algorithms. Deep networks have been trained as pose correctors whose corrections can be fused with existing estimates through pose graph relaxation \citep{2018_Peretroukhin_Deep} (see \Cref{ch:dpc}), and as  depth prediction networks that can be incorporated into a classical monocular pipelines to provide an initial estimate for metric scale \citep{yang:2018}. The pseudo-sensor we present in this chapter is perhaps closest in spirit to \citep{Haarnoja2016-ph} which fuses deep probabilistic observation functions with classical models using a Kalman Filter, but focuses on unconstrained targets and does not investigate uncertainty quantification.
+Despite this surge of research in neural-network-based replacements, some authors have nevertheless used deep networks to augment classical state estimation algorithms. Deep networks have been trained as pose correctors whose corrections can be fused with existing estimates through pose graph relaxation \citep{2018_Peretroukhin_Deep} (see \Cref{ch:dpc}), and as  depth prediction networks that can be incorporated into a classical monocular pipelines to provide an initial estimate for metric scale \citep{yang:2018}. The pseudo-sensor we present in this chapter is perhaps closest in spirit to \citep{Haarnoja2016-ph} which fuses deep probabilistic observation functions with classical models using a Kalman Filter, but focuses on unconstrained targets and does not investigate uncertainty quantification on manifolds.
 
 In the robotics community, there has been significant effort to leverage the tools of matrix Lie groups to handle poses and associated uncertainty \citep{Sola2018-kg, Barfoot2014-ac}. In parallel, the computer vision community has developed a rich literature of rotation averaging \citep{Hartley2013-rc} which focuses on principled ways to combine elements of $\LieGroupSO{3}$ based on different metrics defined over the group.
 
-Finally, ensembles of networks have been shown to be a scalable way to extract uncertainty for deep regression and classification  \citep{Lakshminarayanan2017}, while multi-headed networks have been proposed in the context of ensemble learning \citep{Lee2015-af} and for bootstrapped uncertainty in reinforcement learning \citep{Osband2016}. 
+Finally, uncertainty in the context of deep learning has been investigated through the technique of MC Dropout (\Cref{ch:sun-bcnn}, \cite{Gal2016UncertaintyThesis}, \cite{Kendall2017-vs}). Concurrently, \textit{ensembles of networks} have been shown to be a scalable way to extract uncertainty for deep regression and classification  \citep{Lakshminarayanan2017}, while multi-headed networks have been proposed in the context of ensemble learning \citep{Lee2015-af} and for bootstrapped uncertainty in reinforcement learning \citep{Osband2016}. Finally, an an alternate binary approach \citep{richter2017safe} to dealing with uncertainty is to classify test samples as either \textit{in training distribution} (i.e., cases where our model should have high accuracy) and \textit{out of training distribution} (i.e., indeterminate cases where we may revert to an alternate prediction schema). This latter binary classification can be thought of as a thresholded epistemic uncertainty, and we believe, can be obviated through good uncertainty quantification. 
 
 \section{Approach}
 
 We develop our method for probabilistic $\LieGroupSO{3}$ regression in three steps. 
-First, we motivate why learning elements of $\LieGroupSO{3}$ is particularly germane to field of egomotion estimation. Second, we present a multi-headed network that can regress unconstrained targets and produce consistent uncertainty estimates. Toward this end, we present a one-dimensional regression experiment, validating prior works \citep{Lakshminarayanan2017,Osband2016} that suggest a bootstrap-inspired approach provides better calibrated uncertainties than one based on stochastic sampling. Finally, we extend these results to targets that belong to $\LieGroupSO{3}$ by defining a rotation average using the quaternionic metric, and show how we can compute anisotropic uncertainty on four-dimensional unit quaternions.
+First, we motivate why learning elements of $\LieGroupSO{3}$ is particularly germane to field of egomotion estimation. Second, we present a multi-headed network that can regress unconstrained targets and produce consistent uncertainty estimates. Toward this end, we present a one-dimensional regression experiment, validating prior works \citep{Lakshminarayanan2017,Osband2016} that suggest a bootstrap-inspired approach provides better calibrated uncertainties than one based on stochastic sampling through MC dropout and can be straightforwardly extended to incorporate both aleatoric and epistemic uncertainty. Finally, we generalize these results to targets that belong to $\LieGroupSO{3}$ by defining a rotation average using the quaternionic metric, and show how we can compute anisotropic uncertainty on four-dimensional unit quaternions.
 
 \begin{figure}
 	\centering
@@ -76,15 +76,11 @@ First, rotations can be learned without reference to scale, using monocular imag
 
 \subsection{Probabilistic Regression}
 
-In one dimension, given an input $x$, with a target output $y_t$, we desire a probabilistic estimate
-
+To begin, we will consider a (non-Bayesian) approach to uncertainty quantification. Consider the one dimensional regression task where, given an input $x \in \Real$, with a target output $y_t \in \Real$, we desire a probabilistic estimate
 \begin{equation}
 \Mean{y}, \sigma^2,
 \end{equation}
-where $\sigma^2$ captures some notion of model uncertainty.
-
-
-
+such that $\sigma^2$ maximizes a likelihood model of our prediction $\Mean{y}$ given that we know $y_t$.
 \subsubsection{HydraNet}
 One possible way to obtain $\Mean{y}$ is to train a deep neural network, $g(x)$. To endow this network with uncertainty, we present a network structure we call HydraNet (see \Cref{fig:nn-uncertainty}). HydraNet is composed of a large, main `body', $b(x; \GenericParameters_b) = NN(x; \GenericParameters_b)$ with $H+1$ heads, $h_i(x; \GenericParameters_{h_i}) = NN(x; \GenericParameters_{h_i})$, attached to the output of the body. Given an input $x$, we get $H+1$ outputs as:
 \begin{equation}
@@ -98,7 +94,7 @@ where $\circ$ denotes function composition. To compute  $\Mean{y}$, we compute t
 The head structure, however, provides several key advantages toward the goal of estimating consistent uncertainty. Namely, it allows us to define the overall uncertainty in terms of two sources, \textit{epistemic} ($\sigmah$) and \textit{aleatoric} ($\sigmad$) \citep{Kendall2017-vs}:
 \begin{equation}
 \label{eq:1d_hydranet_uncertainty}
-\sigma^2 = \sigma^2_{\text{e}} + \sigma^2_{\text{a}}.
+\sigma^2 = \underbrace{\sigma^2_{\text{e}}}_{\text{epistemic}} + \underbrace{\sigma^2_{\text{a}}}_{\text{aleatoric}}.
 \end{equation} 
 \begin{remark}{Epistemic and Aleatoric Uncertainty}
 	The former, $\sigmah$, is also sometimes referred to as model uncertainty; it is a measure of how close a particular test sample is to known training samples. The latter, $\sigmad$, is inherent to the observation of the target itself.  Even if the model can localize a test sample exactly in some salient input space, the aleatoric uncertainty will prevent exact regression due to physical processes like sensor noise.
@@ -343,7 +339,11 @@ As with one-dimensional HydraNet, we train a direct regression of covariance thr
 \begin{equation}
 \Matrix{\Sigma}_t = \Covh + \Covd.
 \end{equation}
-This covariance estimate is designed to grow for out-of-training-distribution errors (and account for \textit{domain shift} \citep{Lakshminarayanan2017}) while still accounting for uncertainty within the training set. We note that unlike Bayesian methods, we do not interpret each head as a \textit{sample} from a posterior distribution\footnote{Notably, this means we do not scale our direct uncertainty when averaging as $\frac{1}{H}\Covd$.}. Indeed, we note that in our 1D experiments, the heads have very small variance within the training distribution. The multi-headed structure and rotating averaging serves simply as a way to model epistemic uncertainty when the model encounters inputs that differ from those seen during training. We summarize our training and test procedures in \Cref{alg:train_hydranet} and \Cref{alg:test_hydranet} respectively.
+This covariance estimate is designed to grow for out-of-training-distribution errors (and account for \textit{domain shift} \citep{Lakshminarayanan2017}) while still accounting for uncertainty within the training set. We note that unlike Bayesian methods, we do not interpret each head as a \textit{sample} from a posterior distribution\footnote{Notably, this means we do not scale our direct uncertainty when averaging as $\frac{1}{H}\Covd$.}. Indeed, we note that in our 1D experiments, the heads have very small variance within the training distribution. The multi-headed structure and rotating averaging serves simply as a way to model epistemic uncertainty when the model encounters inputs that differ from those seen during training. We summarize our training and test procedures in \Cref{alg:train_hydranet} and \Cref{alg:test_hydranet} respectively. 
+\begin{remark}{Combining epistemic and aleatoric uncertainty}
+	The simple addition of the two covariance matrices produces a valid covariance matrix (and follows prior work \cite{Kendall2017-vs} on combining aleatoric and epistemic sources). We leave an investigation of other possible way to combine these sources to future work.
+\end{remark}
+
 
 \begin{algorithm}
   \caption{Supervised training for $\LieGroupSO{3}$ regression}
@@ -631,6 +631,17 @@ $\delta\Vector{\phi}_\text{1,2} =  \MatLog{\left(\Rotation_{2,w} \Rotation_{1,w}
 The estimates $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\Estimate{\Rotation}_{2,1}$, $\Matrix{\Sigma}_{\text{hn}}$ are provided by our classical estimator and the HydraNet network respectively.  
 
 \Cref{tab:kitti_fusion_stats} summarizes the results when we perform this fusion - and \Cref{fig:hydranet_kitti_topdown} shows the final effect on the trajectory for sequence \texttt{00}. We found that fusing deep rotation regression with classical methods results in motion estimates that significantly out-perform other methods that rely on deep regression alone. However, we note that even with consistent estimates, a small bias can affect the final fused estimates (e.g., sequence \texttt{05}) and removing bias is an important avenue for future work. Further, the KITTI dataset contains few deleterious effects that negatively affect classical algorithms, and therefore we expect that this fusion would produce even more pronounced improvements on more varied visual data.
+
+\begin{remark}{Improving Uncertainty Estimates}
+	There are several salient extensions to the work presented here. 
+	\begin{enumerate}
+	\item 	In order to ensure that the output of HydraNet and the output of the canonical VO pipeline are fused optimally, we can apply the method of \textit{covariance intersection} (CI) \citep{julier2007using}. CI is a technique to fuse measurements when the correlation between them is unknown and provides provably consistent estimates.
+	\item To improve epistemic uncertainty, we can investigate the application of a \textit{gradient blockade} between the heads and body of HydraNet. A gradient blockade would ensure that each head learns independently. At present, the $H+1$th head (which outputs \textit{aleatoric} covariance) indirectly connects the gradients of the remaining heads by weighting the likelihood loss \citep{brachmann2019ngransac} for each.
+	\item To further improve epistemic uncertainty, it is possible (as in \cite{Osband2016}) to train each head with a subset of training examples (mimicking the method of the statistical bootstrap, instead of relying solely on random initializations).
+	\end{enumerate}
+ \end{remark}
+
+
 
 \section{Summary}
 In this chapter, we described a method (our final \textit{pseudo-sensor}) to regress probabilistic estimates of rotation using a deep multi-headed network structure. We used the quaternionic metric on $\LieGroupSO{3}$ to define a rotation average, and extracted anisotropic covariances by modelling uncertainty through noise injection on the manifold. 

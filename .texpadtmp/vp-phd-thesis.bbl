@@ -43,6 +43,12 @@ Brachmann, E. and Rother, C. (2018).
   regression.
 \newblock In {\em Proc. {CVPR}}, volume~8.
 
+\bibitem[Brachmann and Rother, 2019]{brachmann2019ngransac}
+Brachmann, E. and Rother, C. (2019).
+\newblock {N}eural- {G}uided {RANSAC}: {L}earning where to sample model
+  hypotheses.
+\newblock In {\em ICCV}.
+
 \bibitem[Bruss and Horn, 1983]{bruss_passive_1983}
 Bruss, A.~R. and Horn, B.~K. (1983).
 \newblock Passive {Navigation}.
@@ -327,6 +333,11 @@ Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick, R.,
 \newblock Caffe: Convolutional architecture for fast feature embedding.
 \newblock In {\em Proc. ACM Int. Conf. Multimedia ({MM})}, pages 675--678.
 
+\bibitem[Julier and Uhlmann, 2007]{julier2007using}
+Julier, S.~J. and Uhlmann, J.~K. (2007).
+\newblock Using covariance intersection for slam.
+\newblock {\em Robotics and Autonomous Systems}, 55(1):3--20.
+
 \bibitem[Kelly et~al., 2008]{Kelly2008-mh}
 Kelly, J., Saripalli, S., and Sukhatme, G.~S. (2008).
 \newblock Combined visual and inertial navigation for an unmanned aerial
@@ -577,6 +588,10 @@ Ranftl, R. and Koltun, V. (2018).
 \newblock Deep fundamental matrix estimation.
 \newblock In {\em Proceedings of the European Conference on Computer Vision
   (ECCV)}, pages 284--299.
+
+\bibitem[Richter and Roy, 2017]{richter2017safe}
+Richter, C. and Roy, N. (2017).
+\newblock Safe visual navigation via deep learning and novelty detection.
 
 \bibitem[Rosen et~al., 2019]{Rosen2019-kk}
 Rosen, D.~M., Carlone, L., Bandeira, A.~S., and Leonard, J.~J. (2019).
