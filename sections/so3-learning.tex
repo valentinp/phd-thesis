@@ -295,6 +295,9 @@ This expression is simple to evaluate numerically, and if necessary, can be easi
 
 \subsubsection{SO(3) Uncertainty}
 
+
+There are several ways to approach uncertainty on $\LieGroupSO{3}$. One method \citep{Carlone2015-aq} is to define a probability density directly on the group via the isotropic von Mises-Fisher density. This approach has two downsides: (1) it is isotropic and cannot account for dominant  degrees of freedom (e.g., vehicle yaw during driving), and (2) estimating the concentration parameter requires approximations or iterative solvers.
+
 \begin{wrapfigure}{r}{0.35\textwidth}
   \vspace{-20pt}
   \begin{center}
@@ -304,9 +307,6 @@ This expression is simple to evaluate numerically, and if necessary, can be easi
 	\label{fig:math_quat_uncertainty}
 	\caption{We can define uncertainty in the left tangent space of a mean element.}
 \end{wrapfigure} 
-
-There are several ways to approach uncertainty on $\LieGroupSO{3}$. One method \citep{Carlone2015-aq} is to define a probability density directly on the group via the isotropic von Mises-Fisher density. This approach has two downsides: (1) it is isotropic and cannot account for dominant  degrees of freedom (e.g., vehicle yaw during driving), and (2) estimating the concentration parameter requires approximations or iterative solvers.
-
 Instead, we opt to parametrize uncertainty over $\LieGroupSO{3}$ by injecting uncertainty onto the manifold \citep{Forster2015-af,Barfoot2014-ac,Barfoot2017-ri} from a local tangent space about some mean element, $\Mean{\quat}$,
 \begin{equation}
 \label{eq:quat_inject_density}

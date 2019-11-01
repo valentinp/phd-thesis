@@ -109,7 +109,6 @@ where $\phi = \arccos{\left(\frac{\Trace{\Rotation} - 1}{2}\right)}$ and the \te
 \begin{equation}
 	\MatLog{\Rotation} \approx (\Rotation - \IdentityMatrix)^\vee ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
-
 The latter case (when $\phi = \pi$) defines the \textit{cut locus} of the space where $\MatExp{\cdot}$ is not a covering map and both $+\RotationVector$ and $-\RotationVector$ map to the same $\Rotation$. This is a fundamental drawback of using three parameters to represent rotation.
 
 \subsection{Unit Quaternions}
@@ -118,7 +117,6 @@ We can also represent a rotation with unit quaternion, $\quat$. A unit quaternio
 \begin{equation}
 	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
-
 Unit quaternions also form a Lie group \citep{Sola2018-kg} (but not a matrix Lie group) and and lie on a three-dimensional unit sphere within $\Real{}^4$. We will overload our exponential map operator to use the same notation to define a surjective map from three parameters to unit quaternions,
 \begin{equation}
 \quat = \MatExp{\RotationVector} = \bbm \cos{(\phi/2)} \\ \RotationAxisVector \sin{(\phi/2)} \ebm.	
@@ -135,10 +133,9 @@ In particular, when computing the (also overloaded) logarithmic map,
 \begin{equation}
 	\MatLog{\quat} \approx \frac{\quat_v}{q_\omega} \left( 1 - \frac{\Norm{\quat_v}^2}{3 q_\omega^2}\right) ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
-
 A fantastic summary of the history of rotation parameterizations, unit quaternions and the story of Hamilton and Rodriguez can be found in \cite{Altmann1989-ru}.
 
-\subsection{Rotation Parametrizations}
+\subsection{Topology and Parameterizations}
 Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$ \citep{Hartley2013-rc}. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parameterizations with $n=3$ (like axis-angle parameters or Euler angles) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parameterizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
  
 \begin{remark}{SO(3) Topology}
@@ -192,7 +189,6 @@ which is numerically equivalent to
 \section{Perturbations and Tangent Spaces}
 
 When solving optimization problems that involve rotations or rigid-body transforms, it is often useful to consider a small \textit{perturbation} about an operating point. By leveraging a core property of Lie groups (that they are locally `Euclidian'), we can construct an iterative algorithm that successively updates an operating point through optimal perturbations in some unconstrained tangent space.
-
 Using rotations as an example, we can perturb an operating point, $\Mean{\Rotation} \definedtobe \MatExp{\Mean{\RotationVector}}$, in three different ways:
 \begin{align}
 \Rotation &\leftarrow \left\{  	\begin{array}{ll}

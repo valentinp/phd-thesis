@@ -9,6 +9,7 @@ Mobile \textit{automata} have been a part of human culture since antiquity. In a
 
 In the millennia since, mobile automata were relegated to isolated demonstrations (e.g., the programmable cart of Hero of Alexandria or the `autonomous' knight of Leonardo da Vinci) or to imagined forms in cautionary tales (e.g., Mary Shelley's \textit{Frankenstein}). Although the secrets of the yantakara may never be rediscovered, the ancient pursuit of helpful automata has found new life towards the turn of the twenty-first century and yielded machinery and algorithms that show great promise in aiding humanity.
 \end{remark}
+\newpage
  
  \begin{wrapfigure}{r}{0.48\textwidth}
 	\centering
@@ -24,16 +25,15 @@ In a similar process, early aviators computed egomotion through magnetic heading
 
 By the late twentieth century, unmanned Lunar and Martian exploration motivated the development of a new approach to egomotion estimation. Although ground vehicles like extra-planetary rovers could infer egomotion through \textit{wheel odometry} (integrating wheel rates and using wheel orientation to drive a kinematic model), this approach was highly inaccurate on surfaces that induce wheel slip (e.g., the rock and sand covered surface of Mars, \Cref{fig:intro_endeavour_crater}). 
 
-\begin{wrapfigure}{r}{0.45\textwidth}
-	\centering
-	\includegraphics[width=0.45\textwidth]{introduction/venn_perception}
-	\caption{Visual egomotion estimation can be useful to create maps and to detect and track other objects.}
-	\vspace{1.2em}
-	\label{fig:intro_state_venn}
-\end{wrapfigure}
-
 To address this, a number of researchers in the 1980s developed the technique of \textit{visual} odometry \citep{Scaramuzza2011-qr} (or VO), as a way to infer egomotion from sequentially-collected images. The mathematical basis of VO is closely tied to the technique of photogrammetric \textit{bundle adjustment} \citep{triggs_bundle_2000} which originates from 19th century photogrammetry \citep{albertz_look_2007}.
 
+\begin{wrapfigure}{r}{0.42\textwidth}
+	\centering
+	\includegraphics[width=0.4\textwidth]{introduction/venn_perception}
+	\caption{Visual egomotion estimation can be useful to create maps and to detect and track other objects.}
+	\label{fig:intro_state_venn}
+	\vspace{-3em}
+\end{wrapfigure}
 
 
 % Modern mobile autonomy was largely born out of  .
@@ -43,6 +43,7 @@ To address this, a number of researchers in the 1980s developed the technique of
   \begin{center}
     \includegraphics[width=\textwidth]{introduction/pancam-panorama-opportunity}
   \end{center}
+  \vspace{-1em}
   \caption{The last 360 degree panorama of the rocky Martian surface taken by the Pancam apparatus of the Mars Exploration Rover, \textit{Opportunity}, at its final resting place, the western rim of the Endeavour Crater (\textit{credit: NASA/JPL-Caltech/Cornell/ASU}).}
     \label{fig:intro_endeavour_crater}
 \end{figure}
@@ -80,6 +81,11 @@ In the nearly four decades since the first development of VO, the proliferation 
 
 \section{A Visual \textit{Pipeline}}
 
+
+Central to \textit{classical} visual odometry algorithms (which, in this context, refers to the bulk of VO research published during what \cite{Cadena2016-ds} call the \textit{classical} and \textit{algorithmic-analysis} ages of VO and SLAM research between 1986 and 2015) is the idea of a processing pipeline. A  pipeline consists of several connected computational `blocks' or 'stages' that have interpretable inputs and outputs.  By carefully processing information contained within raw sensor data, pipelines facilitate the construction of complex state estimation architectures that can fuse visual observations with other sensors of varied modality to create maps and models of the external world and infer the egomotion of a mobile platform within it. In this dissertation, we will largely deal with the improvement of a canonical visual odometry pipeline-- we illustrate its major components in \Cref{fig:intro_vo_pipeline}. 
+
+Broadly, VO solutions based on the idea of hand-crafted pipelines \citep{Leutenegger2015-fk, Cvisic2015-mt, Tsotsos2015, Alcantarilla2016-kv, forster2014svo, wang_stereo_2017, engel_direct_2018} have achieved impressive localization accuracy within a variety of settings. They have been used to compute the egomotion of self-driving cars through urban roads, and track autonomous drones through aggressive flying maneuvers. 
+
 \begin{figure}
 \begin{center}
 		\includegraphics[width=0.98\textwidth]{introduction/vo_pipeline.pdf}
@@ -88,10 +94,6 @@ In the nearly four decades since the first development of VO, the proliferation 
 \end{center}
 \end{figure}
 
-
-Central to \textit{classical} visual odometry algorithms (which, in this context, refers to the bulk of VO research published during what \cite{Cadena2016-ds} call the \textit{classical} and \textit{algorithmic-analysis} ages of VO and SLAM research between 1986 and 2015) is the idea of a processing pipeline. A  pipeline consists of several connected computational `blocks' or 'stages' that have interpretable inputs and outputs.  By carefully processing information contained within raw sensor data, pipelines facilitate the construction of complex state estimation architectures that can fuse visual observations with other sensors of varied modality to create maps and models of the external world and infer the egomotion of a mobile platform within it. In this dissertation, we will largely deal with the improvement of a canonical visual odometry pipeline-- we illustrate its major components in \Cref{fig:intro_vo_pipeline}. 
-
-Broadly, VO solutions based on the idea of hand-crafted pipelines \citep{Leutenegger2015-fk, Cvisic2015-mt, Tsotsos2015, Alcantarilla2016-kv, forster2014svo, wang_stereo_2017, engel_direct_2018} have achieved impressive localization accuracy within a variety of settings. They have been used to compute the egomotion of self-driving cars through urban roads, and track autonomous drones through aggressive flying maneuvers. 
 
 Building on momentum from the computer vision community, a significant part of the visual state estimation literature has also considered replacing classical pipelines with parametric modelling through deep convolutional neural networks (CNNs) and data-driven learning. Although initially developed for image classification \citep{LeCun2015-qf}, CNN-based measurement models have been applied to numerous problems in visual state estimation including homography estimation \citep{DeTone2016-ue}, single image depth reconstruction \citep{Garg2016-ip},  camera re-localization \citep{Kendall2016-zf}, and place recognition \citep{Sunderhauf2015-is}. A number of recent CNN-based approaches have also tackled the problem of visual egomotion estimation, often purporting to obviate the need for classical visual localization pipelines by learning pose changes \textit{end-to-end}, without requiring intermediate outputs \citep{Melekhov2017-dl, Handa2016-hm, Oliveira2017-lt}.
 
@@ -164,7 +166,7 @@ As mobile autonomy enters the robust-perception age \citep{Cadena2016-ds}, class
 \end{figure}
 
 
-This dissertation consists of several published contributions under the umbrella of \textit{learned pseudo-sensors} that improve a canonical visual egomotion pipeline. Before detailing each pseudo-sensor, we present some mathematical foundations (\Cref{ch:math}) and a common baseline for a feature-based stereo visual odometry pipeline (\Cref{ch:vo}) which all four methods build upon. In total, there are two journal papers and five conference papers associated with our work. Below, we briefly summarize each of the pseudo-sensors and list the publications that are associated with each.
+This dissertation consists of several published contributions under the umbrella of \textit{learned pseudo-sensors} that improve a canonical visual egomotion pipeline (\Cref{fig:intro_pseudo_sensors}). Before detailing each pseudo-sensor, we present some mathematical foundations (\Cref{ch:math}) and a common baseline for a feature-based stereo visual odometry pipeline (\Cref{ch:vo}) which all four methods build upon. In total, there are two journal papers and five conference papers associated with our work. Below, we briefly summarize each of the pseudo-sensors and list the publications that are associated with each.
 \begin{enumerate}
 \item \textbf{PROBE: Predictive Robust Estimation},  \\
 Predictive Robust Estimation (\Cref{ch:probe}, Appendix \ref{app:appendix_probe_knn}) builds a predictive model for observation uncertainty from training data. To do this, we collaborate with William Vega-Brown at MIT to adapt the technique of Generalized Kernel (GK) estimation \citep{Vega-Brown2014-sb} to visual odometry. Generalized Kernel estimation allows us to build an efficient Bayesian model for stereo tracking uncertainty. By setting a prior on covariance, we derive a `robust' objective that can be \textit{predictively} scaled to improve the accuracy and consistency of a feature-based stereo visual odometry pipeline. PROBE is associated with three publications: \cite{2015_Peretroukhin_PROBE,2015_Peretroukhin_Get,Peretroukhin2016-om}. The first two publications explore useful predictors for uncertainty and build a non-Bayesian isotropic covariance model. The latter publication presents the Bayesian GK approach.

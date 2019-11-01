@@ -1,4 +1,4 @@
-\chapter{PROBE: Isotropic Covariance Models through K-NN}
+\chapter{PROBE: Isotropic Covariance Models through k-Nearest Neighbours}
 \label{app:appendix_probe_knn}
 
 \section{Introduction}
@@ -7,11 +7,12 @@ This appendix presents our initial exploratory work on isotropic covariance mode
 Unlike the work we presented in \Cref{ch:probe}, here we opt to learn a scalar weight, $\beta_i$, that represents the \textit{quality} of image features. We use $\beta_i$ to scale the covariance of each feature during non-linear optimization. 
 We learn this quality ($\beta_i$) \textit{indirectly} by computing an egomotion estimate with a small subset of visual features and then storing the resulting position error in a prediction space. We repeat this for a fixed amount of iterations. During testing, we map features into this prediction space and compute a $\beta_i$ based on the $K$ nearest errors in this prediction space. Our framework is flexible enough that we do not require ground truth at every image and we can, potentially, learn the model based on a single loop closure error. 
 
+\begin{remark}{Associated Publication}
 This initial work is associated with the following publication:
 \begin{itemize}
 \item \bibentry{2015_Peretroukhin_PROBE}.	
 \end{itemize}
-
+\end{remark}
 
 \section{Theory}
 
