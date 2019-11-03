@@ -27,11 +27,11 @@ This chapter is largely a reproduction of that publication.
 
 
 \section{Motivation}
-As we saw noted in the previous chapter, convolutional neural networks (CNNs) are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\citep{LeCun2015-qf}. 
+As we noted in the previous chapter, convolutional neural networks are at the core of many state-of-the-art classification and segmentation algorithms in computer vision~\citep{LeCun2015-qf}. 
 These CNN-based techniques achieve accuracies previously
 unattainable by classical methods. In mobile robotics and state estimation, however, it remains unclear to what extent these deep architectures can obviate the need for classical geometric modelling. 
 Visual localization algorithms like VO can suffer from several systematic error sources
-that include estimator biases \citep{Peretroukhin2014-db}, poor calibration, and environmental factors (e.g., a lack of scene texture). While machine learning approaches can be used to better model specific subsystems of a localization pipeline (e.g., the heteroscedastic feature track error covariance modelling of \cite{Peretroukhin2016-om, 2015_Peretroukhin_PROBE}), much recent work \citep{Costante2016-hb, Clark2017, Kendall2015-ew, Melekhov2017-dl, Oliveira2017-lt} has been devoted to completely replacing the estimator with a CNN-based system.
+that include estimator biases, poor calibration, and environmental factors (e.g., a lack of scene texture). While machine learning approaches can be used to better model specific subsystems of a localization pipeline (e.g., the heteroscedastic feature track error covariance modelling of PROBE), much of the recent literature \citep{Costante2016-hb, Clark2017, Kendall2015-ew, Melekhov2017-dl, Oliveira2017-lt} has been devoted to completely replacing the estimator with a CNN-based system.
 
 \begin{figure*}[h!]
 	\centering
@@ -43,10 +43,10 @@ that include estimator biases \citep{Peretroukhin2014-db}, poor calibration, and
 
 
 We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from Sun-BCNN that demonstrates that CNNs can infer difficult-to-model geometric quantities to improve an existing localization estimate.  
-In a similar vein, we propose a system (\Cref{fig:dpc_system_overview}) that takes as its starting point an efficient, classical localization algorithm that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
+In a similar vein, we propose a system (\Cref{fig:dpc_system_overview}) that takes as its starting point an efficient, classical localization algorithm (like our canonical indirect VO pipeline) that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
 
 % By applying the correction to the final $\LieGroupSE{3}$ pose, we design DPC-Net to learn effects that are often difficult to model by hand: estimator bias, environmental factors, and sensor mis-calibrations.
-Although in this chapter we focus on visual data, the DPC-Net architecture can be readily modified to learn $\LieGroupSE{3}$ corrections for estimators that operate with other sensor modalities (e.g., lidar). For this general task, we derive a pose regression loss function and a closed-form analytic expression for its Jacobian. Our loss permits a network to learn an unconstrained Lie algebra coordinate vector, but derives its Jacobian with respect to $\LieGroupSE{3}$ geodesic distance. 
+Although in this work we focus on visual data, the DPC-Net architecture can be readily modified to learn $\LieGroupSE{3}$ corrections for estimators that operate with other sensor modalities (e.g., lidar). For this general task, we derive a pose regression loss function and a closed-form analytic expression for its Jacobian. Our loss naturally balances rotational and translational terms and permits a network to learn corrections through unconstrained exponential coordinates, while deriving its Jacobian with respect to $\LieGroupSE{3}$ geodesic distance. 
 
 
 
@@ -77,7 +77,7 @@ Taking inspiration from Sun-BCNN (\Cref{ch:sun-bcnn}) that shows that CNNs can b
 
 \section{System Overview: Deep Pose Correction}
 
-We base our network structure on that of \citep{Handa2016-hm} but learn $\LieGroupSE{3}$ \textit{corrections} from stereo images and require no pre-training. Similar to \citep{Handa2016-hm}, we use primarily \texttt{3x3} convolutions and avoid the use of max pooling to preserve spatial information. We achieve downsampling by setting the stride to 2 where appropriate (see \Cref{fig:dpc_net} for a full description of the network structure). We derive a novel loss function, unlike that used in \cite{Kendall2017-ud, Melekhov2017-dl, Oliveira2017-lt}, based on $\LieGroupSE{3}$ geodesic distance. Our loss naturally balances translation and rotation error without requiring a hand-tuned scalar hyper-parameter. Similar to \cite{Costante2016-hb}, we test our final system on the KITTI odometry benchmark, and evaluate how it copes with degraded visual data. 
+We base our network structure on that of \citep{Handa2016-hm} but learn $\LieGroupSE{3}$ \textit{corrections} from stereo images and require no pre-training. Similar to \citep{Handa2016-hm}, we use primarily convolutions with kernels of size $3 \times 3$ and avoid the use of max pooling to preserve spatial information. We achieve downsampling by setting the stride to 2 where appropriate (see \Cref{fig:dpc_net} for a full description of the network structure). We derive a novel loss function, unlike that used in \cite{Kendall2017-ud, Melekhov2017-dl, Oliveira2017-lt}, based on $\LieGroupSE{3}$ geodesic distance. Our loss naturally balances translation and rotation error without requiring a hand-tuned scalar hyper-parameter. Similar to \cite{Costante2016-hb}, we test our final system on the KITTI odometry benchmark, and evaluate how it copes with degraded visual data. 
 
 Given two coordinate frames $\CoordinateFrame{i}$, $\CoordinateFrame{i+\deltap}$ that represent a camera's pose at time $t_{i}$ and $t_{i+\deltap}$ (where $\deltap$ is an integer hyper-parameter that allows DPC-Net to learn corrections across multiple temporally consecutive poses), we assume that our visual localizer gives us an estimate, $\EstimatedVOTransform$, of the true transform $\TargetVOTransform \in \LieGroupSE{3}$ between the two frames. We aim to learn a target correction,
 \begin{equation}
@@ -121,11 +121,10 @@ Importantly, since we are learning small estimator \textit{corrections}, we can 
 \end{equation}
 where 
 \begin{equation}
-	\TargetCorrectionVectorIndex \definedtobe \Matlog{\TargetCorrectionIndex}, \quad \Mean{\TargetCorrectionVector} \definedtobe \frac{1}{N} \sum_{i=1}^N \TargetCorrectionVectorIndex.
+	\TargetCorrectionVectorIndex \definedtobe \Matlog{\TargetCorrectionIndex} = \Matlog{\TargetVOTransform \Inv{\EstimatedVOTransform}}, \quad \Mean{\TargetCorrectionVector} \definedtobe \frac{1}{N} \sum_{i=1}^N \TargetCorrectionVectorIndex.
 \end{equation}
 
-The term $\TransformCovariance$ balances the rotational and translation loss terms based on their magnitudes in the training set, and accounts for potential correlations. We stress that if we were learning poses directly, the pose targets and their associated mean would be trajectory dependent and would render this type of covariance estimation meaningless. Further, we find that, in our experiments, $\TransformCovariance$ weights translational and rotational errors similarly to that presented in \cite{Kendall2017-u} %\footnote{Kendall et al. assign an optimal relative weight of 250 to 2000 to the rotational (quaternionic) error for outdoor scenes, whereas we consistently see relative magnitudes of approximately 1000.} 
- based on the diagonal components, but contains relatively large off-diagonal terms.
+The term $\TransformCovariance$ balances the rotational and translation loss terms based on their magnitudes in the training set, and accounts for potential correlations. We stress that if we were learning poses directly, the pose targets and their associated mean would be trajectory dependent and would render this type of covariance estimation meaningless. Further, we find that, in our experiments, $\TransformCovariance$ weights translational and rotational errors similarly to that presented in \cite{Kendall2015-ew}\footnote{Kendall et al. assign an optimal relative weight of 250 to 2000 to the rotational (quaternionic) error for outdoor scenes, whereas we consistently see relative magnitudes of approximately 1000.} based on the diagonal components, but contains relatively large off-diagonal terms.
 
 \subsection{Loss Function: $\LieGroupSE{3}$ Jacobians}
 In order to use \Cref{eq:se3loss_fn} to train DPC-Net with back-propagation, we need to compute its Jacobian with respect to our network output, $\PredictionVector$. Applying the chain rule, we begin with the expression
@@ -277,7 +276,7 @@ To further simplify the corrections, we extracted a single-degree-of-freedom yaw
 
 \subsection{Estimators}
 \subsubsection{Sparse Visual Odometry}
-Our baseline estimator is based on the reprojection-error based maximum likelihood approach detailed in \Cref{ch:vo}. As before, we rely on the open-source \texttt{viso2} package~\cite{Geiger2011-xe}, to detect and track sparse stereo image key-points, $\ImageLandmark{i}{c_1}$ and $\ImageLandmark{i}{c_0}$, between stereo image pairs (assumed to be undistorted and rectified). We model reprojection errors (due to sensor noise and quantization) as zero-mean Gaussians with a known covariance, $\Covariance$:
+Our baseline estimator is based on the reprojection-error based maximum likelihood approach detailed in \Cref{ch:vo}. As before, we rely on the open-source \textsf{viso2} package~\cite{Geiger2011-xe}, to detect and track sparse stereo image key-points, $\ImageLandmark{i}{c_1}$ and $\ImageLandmark{i}{c_0}$, between stereo image pairs (assumed to be undistorted and rectified). We model reprojection errors (due to sensor noise and quantization) as zero-mean Gaussians with a known covariance, $\Covariance$:
 \begin{align}
  \Vector{e}_{i,t} &= \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
     \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) ) \\ &\sim \NormalDistribution{}(\Vector{0},\Covariance),
@@ -517,7 +516,7 @@ In summary, we presented DPC-Net, an approach to learn six degree-of-freedom cor
 \begin{enumerate}
 	\item the formulation of a novel deep corrective approach to egomotion estimation,
 	\item a novel cost function for deep $\LieGroupSE{3}$ regression that naturally balances translation and rotation errors, and
-	\item an open-source implementation of DPC-Net in \texttt{PyTorch}\footnote{See \url{https://github.com/utiasSTARS/dpc-net}.}.
+	\item an open-source implementation of DPC-Net in \textsf{PyTorch}\footnote{See \url{https://github.com/utiasSTARS/dpc-net}.}.
 \end{enumerate}
 
 

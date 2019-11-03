@@ -459,6 +459,12 @@ Liu, K., Ok, K., Vega-Brown, W., and Roy, N. (2018).
 \newblock In {\em 2018 IEEE International Conference on Robotics and Automation
   (ICRA)}, pages 1436--1443. IEEE.
 
+\bibitem[Lowe, 1999]{lowe_object_1999}
+Lowe, D. (1999).
+\newblock Object recognition from local scale-invariant features.
+\newblock In {\em Proceedings of the {{Seventh IEEE International Conference}}
+  on {{Computer Vision}}}, volume~2, pages 1150--1157 vol.2.
+
 \bibitem[Lucas and Kanade, 1981]{Lucas:1981}
 Lucas, B.~D. and Kanade, T. (1981).
 \newblock An iterative image registration technique with an application to
@@ -564,11 +570,6 @@ Peretroukhin, V. and Kelly, J. (2018).
 \newblock {DPC-Net}: Deep pose correction for visual localization.
 \newblock {\em {IEEE} Robotics and Automation Letters}, 3(3):2424--2431.
 
-\bibitem[Peretroukhin et~al., 2014]{Peretroukhin2014-db}
-Peretroukhin, V., Kelly, J., and Barfoot, T.~D. (2014).
-\newblock Optimizing camera perspective for stereo visual odometry.
-\newblock In {\em Canadian Conference on Comp. and Robot Vision}, pages 1--7.
-
 \bibitem[Peretroukhin et~al., 2016]{Peretroukhin2016-om}
 Peretroukhin, V., Vega-Brown, W., Roy, N., and Kelly, J. (2016).
 \newblock {PROBE-GK}: Predictive robust estimation using generalized kernels.
@@ -604,6 +605,11 @@ Rosen, D.~M., Carlone, L., Bandeira, A.~S., and Leonard, J.~J. (2019).
 \newblock {SE-Sync}: A certifiably correct algorithm for synchronization over
   the special euclidean group.
 \newblock {\em Int. J. Rob. Res.}, 38(2-3):95--125.
+
+\bibitem[Rublee et~al., 2011]{rublee2011orb}
+Rublee, E., Rabaud, V., Konolige, K., and Bradski, G.~R. (2011).
+\newblock Orb: An efficient alternative to sift or surf.
+\newblock In {\em ICCV}, volume~11, page~2. Citeseer.
 
 \bibitem[Scaramuzza and Fraundorfer, 2011]{Scaramuzza2011-qr}
 Scaramuzza, D. and Fraundorfer, F. (2011).

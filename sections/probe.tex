@@ -11,7 +11,7 @@
  \label{fig:probe_intro_fig}
 \end{figure*}
 
-The first pseudo-sensor we present is a technique we call PRedictive ROBust Estimation, or PROBE. This approach uses non-parametric learning to build a model for anisotropic observation covariances for a stereo visual odometry pipeline. Namely, we apply the method of Generalized Kernel (GK) estimation to a Bayesian treatment of covariance estimation. We show that by assuming a particular covariance prior over re-projection errors, we can then naturally derive a robust least squares objective that resembles the widely-used Cauchy loss. The parameters of this robust loss are predicted (hence \textit{predictive} robust estimation) for each error term as a function of a prediction space that we define.
+The first pseudo-sensor we present is a technique we call predictive robust estimation, or PROBE. This approach uses non-parametric learning to build a model for anisotropic measurement covariances within a stereo visual odometry pipeline. Namely, we apply the method of Generalized Kernel (GK) estimation to a Bayesian treatment of covariance estimation. We show that by assuming a particular covariance prior over re-projection errors, we can naturally derive a robust least squares objective that resembles the widely-used Cauchy loss. The parameters of this robust loss are predicted (hence \textit{predictive} robust estimation) for each error term as a function of a prediction space that we define.
 
 \begin{remark}{Associated Publications}
 PROBE was initially published as a simpler non-Bayesian technique that learned isotropic covariances through a k-nearest-neighbours approach (see Appendix \ref{app:appendix_probe_knn} for more details).  The following two publications summarize this initial technique:
@@ -44,9 +44,9 @@ There is a large and growing body of work on the task of deriving consistent unc
 
 Alternatively, time-varying uncertainties can be formulated using the Adaptive Kalman Filter and related work \citep{gustafsson2000adaptive}. This classical approach adapts measurement and process covariances based on past estimation errors. Since it is adaptive, it cannot cope with fast-changing environments (since it must \textit{adapt} to past measurements, instead of \textit{predicting} the uncertainty of current measurements). Further, these techniques generally do not provide a straight-forward mechanism to leverage rich high dimensional data like images. 
 
-To deal with such high-dimensional sensor data, an alternative set of approaches build predictive uncertainty models by mapping sensor data to a lower dimensional \textit{prediction space}. By carefully choosing the components of this space, it is possible to learn covariances parametrically through weight vectors (e.g., for range/bearing sensors like the work of \cite{Hu2015-uw}) or neural networks (for cameras, like \cite{liu2018deep}) or non-parametrically  through kernel based methods \citep{VegaBrown:ew, VegaBrown:2013fv} or Gaussian Processes (GPs) \citep{ko2009gp}. 
+To deal with such high-dimensional sensor data, an alternative set of approaches build predictive uncertainty models by mapping sensor data to a lower dimensional \textit{prediction space}. By carefully choosing the components of this space, it is possible to learn covariances parametrically through weight vectors (e.g., for range/bearing sensors like the work of \cite{Hu2015-uw}) or non parametrically through kernel-based methods \citep{VegaBrown:ew, VegaBrown:2013fv} or Gaussian Processes (GPs) \citep{ko2009gp}. Recent work has also shown it is possible to learn this prediction space directly from data using neural networks \citep{liu2018deep}.
 
-Non-parametric models can also be extended to more general covariance matrix models that infer densities over positive-definite matrices \citep{wilson2011generalised} or apply GP inference for each element of these matrices \citep{melkumyan2011multi}. In both cases, however, inference is often too slow to perform in real-time because they are not designed to handle high-dimensional feature spaces. Conversely, the inspiration for this work showed that is possible to build non-GP-based  kernel-based models that predict covariances efficiently for laser-based scan matching odometry with \citep{VegaBrown:ew} and without \citep{VegaBrown:2013fv} ground-truth pose information .
+Non-parametric models can also be extended to more general covariance matrix models that infer densities over positive-definite matrices \citep{wilson2011generalised} or apply GP inference for each element of these matrices \citep{melkumyan2011multi}. In both cases, however, inference is often too slow to perform in real-time with high-dimensional feature spaces. Conversely, the inspiration for this work showed that is possible to build kernel-based models that predict covariances efficiently for laser-based scan matching odometry with \citep{VegaBrown:ew} and without \citep{VegaBrown:2013fv} ground-truth pose information .
 
 In the visual domain, estimators often cope with varying uncertainty only indirectly through (static) robust loss functions \citep{kerl2013robust}  or modified RANSAC procedures with statistical hypothesis testing (as a way to ensure that tracked visual features have normally distributed residuals) \citep{Tsotsos2015}. Unlike our predictive approach which can adjust covariances from a single observation, these techniques are not designed to cope with heteroscedastic measurement noise that may occur within a single image. Alternatively, it is also possible to carefully select an optimally observable feature subset based on the highest \textit{informativeness} - a measure calculated based on the observability metrics of the camera motion \citep{Zhang2015}. Observability, however, is governed by the 3D location of the features, and therefore cannot predict systematic feature degradation due to environmental or sensor-based effects that are independent of location (e.g., self-similar textures). Finally, since this work was published, a technique that is very close in spirit was published in the context of robust fundamental matrix estimation \citep{ranftl2018deep}. This approach uses deep learning to predict the weights of an iteratively reweighted least squares routine--effectively mimicking our predictively robust loss but without the information-theoretic basis.
 
@@ -85,9 +85,10 @@ in a principled manner, how informative each visual feature is with respect to t
 estimate, which allows our approach to intelligently weight observations to
 produce more accurate odometry estimates.  
 \subsection{Bayesian Noise Model for Visual Odometry}
-We adopt the motion solution for visual odometry based on reprojection errors presented in \Cref{sec:vo_reprojection}. In brief, this technique assumes independent Gaussian errors on stereo reprojections of a landmark from one frame, $\CoordinateFrame{c_0}$ into a subsequent frame, $\CoordinateFrame{c_1}$: 
+We adopt the motion solution for visual odometry based on reprojection errors presented in \Cref{sec:vo_reprojection}. In brief, this approach assumes independent Gaussian errors on stereo reprojections of a landmark from one frame, $\CoordinateFrame{c_0}$ into a subsequent frame, $\CoordinateFrame{c_1}$: 
  \begin{equation}
-  \Vector{e}_{i}(\Transform_t) = \Vector{e}_{i,t} = \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
+ \label{eq:probe_reproj_errors}
+   \Vector{e}_{i}(\Transform_t) = \Vector{e}_{i,t} = \ImageLandmark{i}{c_1} - \ProjectionFunction( \Transform_t 
     \ProjectionFunction^{-1}( \ImageLandmark{i}{c_0} ) ) \sim 
  \NormalDistribution\left(\Vector 0,  \ImageLandmarkCovariance{i}{t}\right). 
 \end{equation}
@@ -98,7 +99,7 @@ Maximizing the likelihood of these errors is then equivalent to solving the foll
   &= \ArgMin{\Transform\in\text{SE}(3)}\frac{1}{2} \sum_{i=1}^{N_t} 
   \Transpose{\Vector{e}_{i,t}} \ImageLandmarkCovariance{i}{t}^{-1} \Vector{e}_{i,t}.
 \end{align}
-With PROBE, instead of treating $\ImageLandmarkCovariance{i}{t}$ as fixed, we build a model for it as a function of some useful \textit{predictor}, $\Predictor{i}{t}$, 
+With PROBE we build a model for $\ImageLandmarkCovariance{i}{t}$ as a function of some useful \textit{predictor}, $\Predictor{i}{t}$, 
 \begin{equation}
 \ImageLandmarkCovariance{i}{t} = \Covariance(\Predictor{i}{t}).	
 \end{equation}
@@ -115,7 +116,7 @@ We will seek the transform that then maximizes the posterior predictive distribu
 Although at first this may seem unwieldy, we present an efficient method for computing the posterior and show that a particular formulation allows it to be marginalized out analytically to arrive at a simple posterior predictive distribution with a straight-forward objective for achieving a maximum likelihood egomotion transform.
 \subsection{Generalized Kernels}
 To do this, we leverage Generalized Kernel (GK) estimation \citep{Vega-Brown2014-sb}. GK estimation combines the benefits of kernel density estimation with Bayesian inference. The basic idea is as follows. 
-Consider a dataset of inputs, $\Vector{x}$, outputs, $\Vector{y}$,  and a dataset of independent observations $\mathcal{D} = \{(\Vector{x}_1, \Vector{y}_1), ..., (\Vector{x}_N, \Vector{y}_N) \}$. We are given a new `test' input $\Vector{x}^*$, and are asked to infer the likelihood of a observing a given output at this input:
+Consider a dataset of inputs, $\Vector{x}$, targets, $\Vector{y}$, $\mathcal{D} = \{(\Vector{x}_1, \Vector{y}_1), ..., (\Vector{x}_N, \Vector{y}_N) \}$. We are given a new `test' input $\Vector{x}^*$, and are asked to infer the likelihood of a observing a given output at this input:
 \begin{equation}
 p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}).
 \end{equation}
@@ -127,19 +128,19 @@ p(\Vector{y} | 	\Vector{x}^*, \mathcal{D}) = \int_{\GenericParameters} \underbra
 This is called the posterior predictive distribution. Using Bayes rule, we can write
 \begin{equation}
 \label{eq:probe_posterior_bayes_rule}
-p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) \propto \int \left( \prod_{i=1}^N p(\Vector{y}_i | \GenericParameters_i)d\GenericParameters_i \right) p(\GenericParameters_{1:N}, \GenericParameters^*| \Vector{x}^*, \Vector{x}_{1:N})
+p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) \propto \int \left( \prod_{i=1}^N p(\Vector{y}_i | \GenericParameters_i)\right) p(\GenericParameters_{1:N}, \GenericParameters^*| \Vector{x}^*, \Vector{x}_{1:N}) d\GenericParameters
 \end{equation}
 The technique of generalized kernels makes the assumption that the parameters $\GenericParameters_{1:N}$ are conditionally independent given the target parameters, $\GenericParameters^*$. This gives the distribution:
-
-\begin{equation}
- p(\GenericParameters_{1:N}, \GenericParameters^*| \Vector{x}^*, \Vector{x}_{1:N}) = \left( \prod_{i=1}^N  p(\GenericParameters_i | \GenericParameters^* \Vector{x}^*, \Vector{x}_i)  \right) p(\GenericParameters^* | \Vector{x}^*), 
-\end{equation}
+\begin{align}
+ p(\GenericParameters_{1:N}, \GenericParameters^*| \Vector{x}^*, \Vector{x}_{1:N}) &= \left( \prod_{i=1}^N  p(\GenericParameters_i | \GenericParameters^* \Vector{x}^*, \Vector{x}_i)  \right) p(\GenericParameters^* | \Vector{x}^*), 
+\end{align}
 which combined with \Cref{eq:probe_posterior_bayes_rule} results in
-\begin{equation}
+\begin{align}
 \label{eq:probe_extended_likelihood}
-p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) \propto \prod_{i=1}^N \underbrace{p(\Vector{y}_i | \GenericParameters^*, \Vector{x}_i, \Vector{x}^*)}_{\text{extended likelihood}} \underbrace{p(\GenericParameters^*|\Vector{x}^*)}_{\text{Prior}}.
-\end{equation}
-Now, the pièce de résistance of generalized kernels is that the \textit{extended} likelihood (the first factor above) can be written as function of the known likelihood $p(\Vector{y}_i | \GenericParameters_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that under these assumptions, the extended likelihood must have the form:
+p(\GenericParameters^* | \Vector{x}^*, \mathcal{D}) &=  \left( \prod_{i=1}^N \int  p(\Vector{y}_i | \GenericParameters_i)   p(\GenericParameters_i | \GenericParameters^* \Vector{x}^*, \Vector{x}_i)  d\GenericParameters_i\right) p(\GenericParameters^* | \Vector{x}^*)  \\
+&\propto \prod_{i=1}^N \underbrace{p(\Vector{y}_i | \GenericParameters^*, \Vector{x}_i, \Vector{x}^*)}_{\text{extended likelihood}} \underbrace{p(\GenericParameters^*|\Vector{x}^*)}_{\text{Prior}},
+\end{align}
+where \cite{Vega-Brown2014-sb} define the \textit{extended} likelihood as above. The pièce de résistance of generalized kernels is that this extended likelihood can be written as function of the known likelihood $p(\Vector{y}_i | \GenericParameters_i)$ if we assume it is the maximum entropy distribution whose information divergence from the likelihood is bounded by the metric $\rho(\Vector{x}^*, \Vector{x}_i)$. Specifically, in \cite{Vega-Brown2014-sb}, it is shown that under these assumptions, the extended likelihood must have the form:
 \begin{equation}
 \label{eq:probe_kernel_likelihood}
 p(\Vector{y} | \GenericParameters^*, \Vector{x}, \Vector{x}^*) \propto p(\Vector{y} | \GenericParameters)^{k(\Vector{x}^*, \Vector{x})},
@@ -150,7 +151,9 @@ Combining \Cref{eq:probe_extended_likelihood} with \Cref{eq:probe_kernel_likelih
 \label{eq:probe_posterior}
 p(\GenericParameters | \Vector{x}, \mathcal{D}) \propto \prod_{i=1}^N p(\Vector{y} | \GenericParameters)^{k(\Vector{x}, \Vector{x}_i)} p(\GenericParameters |\Vector{x}),
 \end{equation}
-which can be evaluated in closed form for appropriate an appropriate likelihood and prior. Namely, for PROBE, we will assume Gaussian likelihoods for the reprojection errors (and therefore the observations $\ImageLandmark{i}{c_1}$), and inverse Wishart priors for covariance matrices (this will result in inverse Wishart posteriors due to conjugacy). The input, $\Vector{x}$, will be the vector of predictors $\Vector{\phi}$.
+which can be evaluated in closed form for appropriate an appropriate likelihood and prior. 
+
+For PROBE, we will take our parameters to be covariance matrices, $\ImageLandmarkCovariance{i}{t}$, and assume Gaussian likelihoods based on our formulation in \Cref{eq:probe_reproj_errors}. We will then use an inverse Wishart prior for $\ImageLandmarkCovariance{i}{t}$ as this will result in an  inverse Wishart posterior due to conjugacy. The input, $\Vector{x}$, will be the vector of predictors $\Vector{\phi}$.
 
 
 
@@ -163,9 +166,7 @@ which can be evaluated in closed form for appropriate an appropriate likelihood 
 
 
 \subsection{Generalized Kernels for Visual Odometry}
-In
-order to exploit conjugacy to a Gaussian noise model, we formulate our prior knowledge
-about this function using an inverse Wishart (IW) distribution over positive
+We now present the formulation of GK estimation for VO. In order to exploit conjugacy to a Gaussian noise model, we assume an inverse Wishart (IW) prior over positive
 definite $d \times d$ matrices (the IW distribution has been used as a prior on covariance matrices in other robotics and computer vision contexts, see for example, \citep{fitzgibbon2007learning}). This distribution is defined by a scale matrix
 $\Matrix{\Psi} \in \RealNumbers[d][d]\succ0$ and a scalar quantity called the
 degrees of freedom $\nu\in\RealNumbers>d-1$:
@@ -234,7 +235,7 @@ p(\ImageLandmark{i}{c_1}&|  \Transform_t,\ImageLandmark{i}{c_0}, \mathcal{D},
   \right)^{-\frac{\nu_*+1}{2}}. 
 \end{align}
 Given a new landmark and predictor vector, we can infer a noise model by
-evaluating \cref{eq:compute-psi,eq:compute-nu}.  In order to accelerate this
+evaluating \Cref{eq:compute-psi,eq:compute-nu}.  In order to accelerate this
 computation, it is helpful to choose a kernel function with finite support:
 that is, $k(\Vector{\phi},\Vector{\phi}')=0$ if $\Vert\Vector{\phi} -
 \Vector{\phi}'\Vert_2 > \gamma$ for some $\gamma$. Then, by indexing our training data in a spatial
@@ -275,7 +276,7 @@ The final optimization problem thus emerges as a nonlinear least squares problem
 function, with error term $\Transpose{\Vector{e}_{i,t}}
 (\frac{1}{\nu_{i,t}+1}\Matrix{\Psi}_{i,t})^{-1} \Vector{e}_{i,t}$ and outlier
 scale $\nu_{i,t}+1$.  This is a common robust loss function which is
-approximately quadratic in the reprojection error for
+approximately quadratic in the error for
 $\Transpose{\Vector{e}_{i,t}} \Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \ll
 \nu_{i,t}+1$, but grows only logarithmically for $\Transpose{\Vector{e}_{i,t}}
 \Matrix{\Psi}_{i,t}^{-1} \Vector{e}_{i,t} \gg \nu_{i,t}+1$.  It follows that in
@@ -445,13 +446,13 @@ In practice, feature tracking quality is often degraded by a variety of effects 
 % Conversely, we would like to place more trust in features that do not suffer from such effects.
 The challenge is in determining predictors that account for such effects without requiring excessive computation.
 In our implementation, we use the following predictors, but stress that the choice of predictors can be tailored to suit particular applications and environments:
-\begin{itemize}
+\begin{enumerate}
     \item Angular velocity and linear acceleration magnitudes
     \item Local image entropy
     \item Blur (quantified by the blur metric of \cite{crete2007blur})
     \item Optical flow variance score
     \item Image frequency composition
-\end{itemize}
+\end{enumerate}
 We discuss each of these predictors in turn.
 
 
@@ -511,7 +512,7 @@ The apparatus underwent both slow and fast translational and rotational motion, 
 We detected checkerboard corners in each camera at synchronized time steps, computed their 3D coordinates in the VI-Sensor frame, then reprojected these 3D coordinates into the Flea3 frame.
 We then computed the reprojection error as the distance between the reprojected image coordinates and the true image coordinates in the Flea3 frame.
 Since the Flea3 operated at a much higher frame rate than the VI-Sensor, it was less susceptible to motion blur and so we treated its observations as ground truth.
-We also computed a tracking error by comparing the image coordinates of checkerboard corners in the left camera of the VI-Sensor computed from both KLT tracking \cite{Lucas:1981} and re-detection.
+We also computed a tracking error by comparing the image coordinates of checkerboard corners in the left camera of the VI-Sensor computed from both KLT tracking \citep{Lucas:1981} and re-detection.
 
 \Cref{fig:probe_visensor_histograms} shows histograms and fitted normal distributions for both reprojection error and tracking error.
 From these distributions we can see that the errors remain approximately zero-mean, but that their variance increases with blur.
@@ -519,7 +520,7 @@ This result is compelling evidence that the effect of blur on feature tracking q
 
 
 \subsection{Optical flow variance}
-To detect moving objects, we compute a score for each feature based on the ratio of the variance in optical flow vectors in a small region around the feature to the variance in flow vectors of a larger region.
+As an efficient way to detect areas with potentially moving objects, we compute a score for each feature based on the ratio of two variances: (1) the variance in optical flow vectors in a small region around the feature and (2) the variance in flow vectors of a larger region.
 Intuitively, if the flow variance in the small region differs significantly from that in the larger region, we might expect the feature in question to belong to a moving object, and we would therefore like to trust the feature less.
 Since we consider only the variance in optical flow vectors, we expect this predictor to be reasonably invariant to scene geometry.
 
@@ -529,7 +530,7 @@ We compute this optical flow variance score according to
 \end{equation}
 where $\bar{\sigma}^2_s, \bar{\sigma}^2_l$ are the means of the variance of the vertical and horizontal optical flow vector components in the small and large regions respectively.
 \Cref{fig:probe_flow_variance} shows sample results of this scoring procedure for two images in the KITTI dataset.
-Our optical flow variance score generally picks out moving objects such as vehicles and cyclists in diverse scenes.
+Our optical flow variance score aids in identifying moving objects such as vehicles and cyclists in diverse scenes.
 
 \begin{figure}
     \centering
@@ -541,7 +542,7 @@ Our optical flow variance score generally picks out moving objects such as vehic
 \subsection{Image frequency composition}
 Reliable feature tracking is often difficult in textureless or self-similar environments due to low feature counts and false matches.
 We detect textureless and self-similar image regions by computing the Fast Fourier Transform (FFT) of each image and analyzing its frequency composition.
-For each feature, we compute a coefficient for the low- and high-frequency regimes of the FFT.
+For each feature location, we compute a coefficient for the low- and high-frequency regimes of the FFT.
 \Cref{fig:probe_high_frequency} shows the result of the high-frequency version of this predictor on a sample image from the KITTI dataset.
 Our high-frequency predictor effectively distinguishes between textureless regions (e.g., shadows and roads) and texture-rich regions (e.g., foliage).
 
@@ -552,32 +553,32 @@ Our high-frequency predictor effectively distinguishes between textureless regio
     \caption{A high-frequency predictor can distinguish between regions of high and low texture such as foliage and shadows. Green indicates higher values.}
     \label{fig:probe_high_frequency}
 \end{figure}
-
+\vspace{-1em}
 
 \section{Experiments}
 To validate PROBE-GK, we used three types of data: synthetic simulations, the
 KITTI dataset, and our own experimental data collected at the University of
 Toronto. 
 
-\subsection{Simulation}
-\subsubsection{Monte-Carlo Verification}
-To begin, we verified that PROBE-GK can predict increasingly accurate estimates of the true error covariance as more training data is added. We developed a basic simulation environment consisting of a large amount of point landmarks being observed by a stereo camera. In our simulation, the camera traversed a single step in one direction, and recorded  empirical reprojection errors based on ground truth poses. We simulated additive Gaussian noise on image coordinates, and used Monte Carlo simulations to estimate the true covariances. \Cref{fig:probe_frobNorm} shows the mean Frobenius norm (as defined in \cite{Barfoot2014-ac}) between the covariances estimated by PROBE-GK and the true covariances for a test trial. The mean norm tends to zero as more landmarks are added, indicating that PROBE-GK does learn the correct covariances.
+\subsection{Synthetic}
+%\subsubsection{Monte-Carlo Verification}
+%To begin, we verified that PROBE-GK can predict increasingly accurate estimates of the true error covariance as more training data is added. We developed a basic simulation environment consisting of a large amount of point landmarks being observed by a stereo camera. In our simulation, the camera traversed a single translation step in one direction, and recorded  empirical reprojection errors based on ground truth poses. We simulated additive Gaussian noise on image coordinates, and used Monte Carlo simulations to estimate the true covariances. \Cref{fig:probe_frobNorm} shows the mean Frobenius norm (as defined in \cite{Barfoot2014-ac}) between the covariances estimated by PROBE-GK and the true covariances for a test trial. The mean norm tends to zero as more landmarks are added, indicating that PROBE-GK does learn the more consistent uncertainty with more data.
+%
+%
+%\begin{figure}
+%    \centering
+%      \includegraphics[width=0.45\textwidth]{probe-gk/frobNorm.eps}
+%     \caption{Mean Frobenius norm of the error between the estimated and true
+%       noise covariance as a function of training data size. The norm tends to
+%       zero as training data is added which indicates that PROBE-GK is learning
+%       the correct covariances.}
+%    \label{fig:probe_frobNorm}
+%\end{figure}
 
 
-\begin{figure}
-    \centering
-      \includegraphics[width=0.45\textwidth]{probe-gk/frobNorm.eps}
-     \caption{Mean Frobenius norm of the error between the estimated and true
-       noise covariance as a function of training data size. The norm tends to
-       zero as training data is added which indicates that PROBE-GK is learning
-       the correct covariances.}
-    \label{fig:probe_frobNorm}
-\end{figure}
+%\subsubsection{Synthetic}
 
-
-\subsubsection{Synthetic}
-
-Next, we formulated a synthetic dataset wherein a stereo camera traverses a circular path observing 2000 randomly distributed point features.
+First, we formulated a synthetic dataset wherein a stereo camera traverses a circular path observing 2000 randomly distributed point features.
 We added Gaussian noise to each of the ideal projected
 pixel co-ordinates for visible landmarks at every step. We varied the noise variance as a function of the vertical pixel coordinate of
 the feature in image space. In addition, a small subset of the landmarks received an error term drawn from a uniform distribution to simulate the presence of outliers. The prediction space was composed of
@@ -585,7 +586,7 @@ the vertical and horizontal pixel locations in each of the stereo cameras.
 
 \begin{figure}
 \centering
-   \includegraphics[width=0.5\textwidth]{probe-gk/sim_world.pdf}
+   \includegraphics[width=0.55\textwidth]{probe-gk/sim_world.pdf}
    \label{fig:probe_SimWorld} 
 \caption{Our synthetic world. A stereo camera rig moves through a world with 2000 point features.}
 \end{figure}
@@ -750,7 +751,7 @@ The EM approach indeed produced significant error reductions on the training dat
 
 \section{Summary}
 
-Predictive Robust Estimation (PROBE) applied Generalized Kernel estimation to improve on the uncorrelated and static Gaussian error models typically employed in stereo odometry. By building a non-parametric predictive model for the density of reprojection errors, we derived a robust least squares objective whose parameters were predicted based on training data. In summary, this chapter contributed
+This chapter presented Predictive Robust Estimation (PROBE) which applied Generalized Kernel estimation to create a pseudo-sensor to improve uncorrelated and static Gaussian error models typically employed in stereo odometry. By building a non-parametric predictive model for the density of reprojection errors, we derived a robust least squares objective whose parameters were predicted based on training data. In summary, this chapter contributed
 \begin{enumerate}
 \item a probabilistic model for indirect stereo visual odometry, leading to a predictive robust algorithm for inference on that model,
 \item an efficient approach to constructing the robust algorithm based on Generalized Kernel (GK) estimation,

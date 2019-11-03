@@ -48,7 +48,6 @@ Repeated entry---line 241 of file ../pubs-sun_bcnn.bib
  :                              ,
 I'm skipping whatever remains of this entry
 Database file #5: ../pubs-so3_learning.bib
-Warning--I didn't find a database entry for "Kendall2017-u"
 Warning--empty journal in Alcantarilla2016-kv
 Warning--empty booktitle in Clark2017
 Warning--empty journal in DeTone2016-ue
@@ -59,46 +58,47 @@ Warning--empty journal in Lee2015-af
 Warning--empty journal in Li:2017
 Warning--empty journal in Ma2016-at
 Warning--empty journal in richter2017safe
+Warning--can't use both volume and number fields in rublee2011orb
 Warning--empty journal in Sola2018-kg
-You've used 128 entries,
+You've used 129 entries,
             1935 wiz_defined-function locations,
-            1251 strings with 28558 characters,
-and the built_in function-call counts, 61004 in all, are:
-= -- 6126
-> -- 2453
-< -- 115
-+ -- 850
-- -- 827
-* -- 4854
-:= -- 9830
-add.period$ -- 395
-call.type$ -- 128
-change.case$ -- 1039
-chr.to.int$ -- 123
-cite$ -- 139
-duplicate$ -- 2614
-empty$ -- 4364
-format.name$ -- 1025
-if$ -- 12620
+            1252 strings with 28657 characters,
+and the built_in function-call counts, 61572 in all, are:
+= -- 6183
+> -- 2465
+< -- 119
++ -- 854
+- -- 831
+* -- 4900
+:= -- 9911
+add.period$ -- 399
+call.type$ -- 129
+change.case$ -- 1046
+chr.to.int$ -- 124
+cite$ -- 141
+duplicate$ -- 2641
+empty$ -- 4410
+format.name$ -- 1030
+if$ -- 12748
 int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 128
-newline$ -- 636
-num.names$ -- 390
-pop$ -- 1202
+missing$ -- 129
+newline$ -- 641
+num.names$ -- 393
+pop$ -- 1209
 preamble$ -- 1
-purify$ -- 1044
+purify$ -- 1051
 quote$ -- 0
-skip$ -- 2001
+skip$ -- 2024
 stack$ -- 0
-substring$ -- 4407
-swap$ -- 691
-text.length$ -- 67
+substring$ -- 4459
+swap$ -- 704
+text.length$ -- 70
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 760
-warning$ -- 11
-while$ -- 500
+type$ -- 766
+warning$ -- 12
+while$ -- 502
 width$ -- 0
-write$ -- 1658
+write$ -- 1674
 (There were 7 error messages)

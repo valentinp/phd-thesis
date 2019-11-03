@@ -7,7 +7,7 @@ This appendix presents further implementation details for a standard VO pipeline
 In brief, the VO pipeline consists of the following steps.
 \begin{enumerate}
 \item Define an initial camera pose, $\Transform_{cw}$, that relates the first camera frame, $\CoordinateFrame{c_0}$, to a world frame $\CoordinateFrame{w}$.
-\item Given an ideal calibrated stereo camera, stereo match and track a set of $N_t$ landmarks, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, between the initial stereo camera pose, $\CoordinateFrame{c_0}$, and a subsequent frame $\CoordinateFrame{c_1}$. This step is non-trivial in general, but for our work, we rely on the framework $\texttt{viso2}$ to provide these putative correspondences.
+\item Given an ideal calibrated stereo camera, stereo match and track a set of $N_t$ landmarks, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, between the initial stereo camera pose, $\CoordinateFrame{c_0}$, and a subsequent frame $\CoordinateFrame{c_1}$. This step is non-trivial in general, but for our work, we rely on the framework \textsf{viso2} to provide these putative correspondences.
 \item Perform RANSAC to reject outlier tracks. Compute candidate transforms $\Transform_{c_1c_0}$ using the method of \cite{Umeyama1991-ws} (further elaborated in \cite{Barfoot2017-ri}) to reject outlying tracks.
 \item Select initial guess of the relative transform, $\Transform_{c_1c_0}^{(0)} =  \Transform_t^{(0)}$. This can either be set to $\IdentityMatrix$ or given by the model with the highest amount of inliers from the previous step. Starting at this initial operating point, use iterated reweighted least squares (IRLS) to solve the M-estimation problem,  
 \begin{equation}

@@ -117,7 +117,7 @@ If we take $\Keypoint_0^j$ to be the homogeneous 3D coordinates of keypoint $j$,
 where $\left(u,v\right)$ are the keypoint coordinates in the left image and $d$ is the disparity in pixels.
 
 \subsection{Sliding Window Bundle Adjustment}
-Like with PROBE, we use the open-source \texttt{viso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
+Like with PROBE, we use the open-source \textsf{viso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
 Based on these keypoint tracks, a three-point Random Sample Consensus (RANSAC) algorithm \citep{fischler1981random} generates an initial guess of the interframe motion and rejects outlier keypoint tracks by thresholding their reprojection error.
 We compound these pose-to-pose transformation estimates through our chosen window and refine them using a local bundle adjustment, which we solve using the nonlinear least-squares solver Ceres \citep{ceres-solver}.
 The objective function to be minimized can be written as
@@ -673,7 +673,7 @@ This procedure is consistent with that of \citet{Ma2016-at}, against whose Sun-C
 \end{tabular}
 \begin{tablenotes}
 	\item[1] Because we rely on the timestamps and first pose reported by the GPS/INS system, we use the raw (rectified and synchronized) sequences corresponding to each odometry sequence. However, the raw sequence \texttt{2011\_09\_26\_drive\_0067} corresponding to odometry sequence \texttt{03} was not available on the KITTI website at the time of writing, so we omit sequence \texttt{03} from our analysis.
-    \item[2] Sequence \texttt{01} consists largely of self-similar, corridor-like highway driving which causes difficulties when detecting and matching features using \texttt{libviso2}. The base VO result is of low quality, although we note that including global orientation from the sun nevertheless improves the VO result.
+    \item[2] Sequence \texttt{01} consists largely of self-similar, corridor-like highway driving which causes difficulties when detecting and matching features using \textsf{viso2}. The base VO result is of low quality, although we note that including global orientation from the sun nevertheless improves the VO result.
 \end{tablenotes}
 \end{threeparttable}
 }

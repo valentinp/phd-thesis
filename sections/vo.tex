@@ -59,7 +59,7 @@ In this dissertation, we apply our learned pseudo-sensors to a baseline stereo, 
     \caption{We pre-process stereo images (left) to simulate an ideal stereo camera (right).}
         \label{fig:vo_preprocessing}
 \end{figure}
-During preprocessing, we use a lens model to undistort each stereo image. Next, using known camera parameters (i.e., the intrinsic parameters of each camera and the extrinsic parameters defining the transform $\Transform \in \LieGroupSE{3}$ between the two camera reference frames), we \textit{rectify, interpolate and crop} the images from the stereo pair such that we can assume a \textit{ideal frontoparallel stereo camera} model with a single focal length (\Cref{fig:vo_preprocessing}). That is, a stereo camera in which we can assume that any feature in one camera can be found in the same vertical location in the other (i.e., the epipolar line is horizontal). We assume the lens model, intrinsic and extrinsic parameters are constant and given by the dataset, or defined by a calibration process prior to data collection (e.g., given by the calibration tool detailed in \cite{Furgale2013-sl}).
+The preprocessing stage consists of two major steps. First, we use a lens model to undistort each stereo image. Second, we use the stereo camera calibration (i.e., the intrinsic parameters of each camera and the extrinsic parameters defining the transform $\Transform \in \LieGroupSE{3}$ between the two camera reference frames), to \textit{rectify, interpolate and crop} the pair of images such that we can assume a \textit{ideal frontoparallel stereo camera} model with a single focal length (\Cref{fig:vo_preprocessing}). That is, a stereo camera in which we can assume that any feature in one camera can be found in the same vertical location in the other (i.e., the epipolar line is horizontal). We assume the lens model, intrinsic and extrinsic parameters are constant and given by the dataset, or defined by a calibration process prior to data collection (e.g., given by the calibration tool detailed in \cite{Furgale2013-sl}).
 
 \subsection{Data Association}
 \label{sec:vo_data_extraction}
@@ -72,14 +72,12 @@ During preprocessing, we use a lens model to undistort each stereo image. Next, 
   	\label{fig:vo_feature_tracking}
 \end{center}
 \end{figure}
-Although a number of different types of indirect feature extraction and matching methods can be used towards this end, we choose to use the \textsf{viso2} \citep{Geiger2011-xe} image feature extraction and matching algorithm as it is especially designed for sequential feature matching. In \textsf{viso2}, features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \textsf{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time to ensure that a single feature exists across two consecutive stereo camera poses. 
-
-We refer to the $i$th feature as a point in space expressed in homogeneous coordinates in the camera frame as
+Although a number of different types of indirect feature extraction and matching methods have been presented in the literature (e.g., \textsf{SIFT}, \cite{lowe_object_1999} or \textsf{ORB}, \cite{rublee2011orb}), we choose to use the \textsf{viso2} \citep{Geiger2011-xe} algorithm due to its computationally efficiency (it can extract thousands of matches in milliseconds on modern hardware) and its use of a motion model that facilitates matching with sequential images. Briefly, \textsf{viso2} features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \textsf{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time with a consistency check to ensure that a single feature exists all four images in two stereo camera poses. 
+\subsubsection{Ideal Stereo Camera Model}
+We model each feature extracted by \textsf{viso2} as a three-dimensional point landmark that can be expressed (in homogeneous coordinates) in the camera frame, $\CoordinateFrame{c}$, as
 $\HomogeneousPoint{i}{c} \in
-\HomogeneousNumbers[3]$.  Given our intrinsics and extrinsic calibration parameters, our idealized stereo-camera model, $\ProjectionFunction$,
-projects a landmark expressed in homogeneous coordinates into image space, so
-that $\ImageLandmark{i}{c}$, the stereo pixel coordinates of landmark $i$ in the camera frame, are given
-by 
+\HomogeneousNumbers[3]$.  Our ideal stereo camera model, $\ProjectionFunction(\cdot)$,
+projects $\HomogeneousPoint{i}{c}$ into image space coordinates as
  \begin{equation}
 	\ImageLandmark{i}{c} = \bbm u_l \\ v_l \\ d  \ebm  
   =\ProjectionFunction(\HomogeneousPoint{i}{c}) =  \ProjectionFunction(\bbm x \\ y \\ z \\ 1 \ebm) = 
@@ -90,8 +88,8 @@ where
 \Matrix{M} = \bbm f & 0 & c_u & 0 \\ 0 & f & c_v & 0 \\ 0 & 0 & 0 & fb \ebm.
 \end{equation}
 Here, $\{c_u, c_v\}$, $f$, and $b$ are the principal points, focal
-length and baseline of the stereo camera respectively (computed through intrinsic calibration) and $d \definedtobe u_l - u_r$ is the \textit{disparity} of the feature. Note that in this
-formulation, the stereo camera frame is in the left optical centre. We can also define the inverse operation, $\ProjectionFunction^{-1}$ (triangulation) as:
+length and baseline of the stereo camera respectively (computed through intrinsic and extrinsic calibration) and $d \definedtobe u_l - u_r$ is the \textit{disparity} of the feature. Note that in this
+formulation, the stereo camera frame is in the left optical centre. Given $\ImageLandmark{i}{c}$, we also define the inverse operation, $\ProjectionFunction^{-1}(\cdot)$ (triangulation) as:
  \begin{equation}
 	\HomogeneousPoint{i}{c} = \bbm x \\ y \\ z \\ 1 \ebm =  \ProjectionFunction^{-1}\left( \bbm u_l \\ v_l \\ d \ebm \right) =  \bbm  \frac{b}{d}(u_l - c_u) \\ \frac{b}{d}(v_l - c_v) \\ \frac{b}{d} f \\ 1 \ebm.
 \end{equation}
@@ -99,8 +97,7 @@ formulation, the stereo camera frame is in the left optical centre. We can also 
 
 
 \subsubsection{Outlier Rejection}
-
-To filter out any stereo tracks that are \textit{outliers}, we use a three-point random sample consensus algorithm (RANSAC, \cite{fischler1981random}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws} (refer to Appendix \ref{app:appendix_vo} for more details).
+Given $N_t$ feature \textit{tracks} (i.e., the image locations of matching features across time), $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, we filter out any \textit{outliers} by applying three-point random sample consensus algorithm (RANSAC, \cite{fischler1981random}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws} (refer to Appendix \ref{app:appendix_vo} for more details).
   
 \subsection{Maximum Likelihood Motion Solution}
 Finally, we compute the rigid-body transform between to stereo camera frames using maximum likelihood estimation. We define the rigid-body transform, $\Transform_t \in\text{SE}(3)$, to be the rigid-body transform between two subsequent stereo camera poses, 
@@ -108,8 +105,7 @@ $\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$,
 \begin{equation}
 	\Transform_t = \Transform_{c_1w} \Transform^{-1}_{c_0w},
 \end{equation}
-where $\CoordinateFrame{w}$ is a predefined world frame. After data association, we assume we have a set
-of $N_t$ matches, $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, between visual landmarks in the two camera frames. For each match, we define an error function, $\Vector{e}_{i}(\Transform_t)$, that relates the rigid transform to these stereo feature matches. Throughout this dissertation, we assume that these errors are corrupted by zero-mean independent Gaussian noise with the (potentially heteroscedastic) covariance, $\Matrix{\Sigma}_{i,t}$;
+where $\CoordinateFrame{w}$ is a predefined world frame. For each track, $(\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1})$, we define an error function, $\Vector{e}_{i,t}(\Transform_t, \ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1})$, that relates the rigid transform to these stereo feature matches. For notational clarity, we will refer to this term as simply $\Vector{e}_{i}(\Transform_t)$ with the dependence on the track implied. Next, we assume that these errors are corrupted by zero-mean independent Gaussian noise with the covariance, $\Matrix{\Sigma}_{i,t}$;
  \begin{equation}
   \Vector{e}_{i}(\Transform_t) \sim
  \NormalDistribution\left(\Vector 0, \GeneralCovariance_{i,t}\right). 
@@ -160,21 +156,20 @@ Alternatively, we can represent reprojection errors in the second frame directly
   \Vector{e}_{i}(\Transform_t) \sim \NormalDistribution\left(\Vector 0, \GeneralCovariance_{i,t} \right) = 
  \NormalDistribution\left(\Vector 0,  \ImageLandmarkCovariance{i}{t}\right), 
 \end{equation}
-where we abuse notation (slightly) and replace the index for the camera frames $c_0$ or $c_1$ with $t$ to indicate that this covariance refers to the reprojection error that involves both sets of features. 
+where the subscript $t$ in $\ImageLandmarkCovariance{i}{t}$ indicates that this measurement covariance refers to the reprojection error that involves a temporal track.
 
-Importantly, \cite{Sibley2007} show that using reprojection error (as compared to 3D point cloud error) results in less biased estimates for long-range stereo triangulation. Consequently, we favour this latter formulation in the large majority of our work (the one exception being the initial work on isotropic PROBE described in Appendix \ref{app:appendix_probe_knn}).
+Importantly, \cite{Sibley2007} show that using reprojection error results in less biased estimates for long-range stereo triangulation (when compared to point cloud error). Consequently, we favour this latter formulation in the large majority of our work (the one exception being the initial work on isotropic PROBE described in Appendix \ref{app:appendix_probe_knn}).
 
 \subsubsection{Solution via Gauss-Newton Optimization}
 \label{sec:vo_gauss_newton}
  In either case, we have now defined a weighted nonlinear least squares problem which can be solved iteratively using
 standard techniques. For our purposes, we opt to use Gauss-Newton optimization and follow \cite{Barfoot2017-ri} to optimize constrained poses.
 
-Namely, at a given iteration $n$, we linearize the error function $\Vector{e}_{i}(\Transform_t)$, about an operating point $\Transform_t^{(n)} \in \LieGroupSE{3}$, which results in a quadratic approximation to \Cref{eq:vo_objective}. To linearize, we consider the left perturbations $\delta\Vector{\xi}\in\RealNumbers[6]$ represented in exponential
-coordinates:
+Namely, at a given iteration $n$, we linearize the error function $\Vector{e}_{i}(\Transform_t)$, about an operating point $\Transform_t^{(n)} \in \LieGroupSE{3}$, which results in a quadratic approximation to \Cref{eq:vo_objective}. We follow \Cref{sec:math_perturbations} and use the left perturbations $\delta\Vector{\xi}^\ell \in\RealNumbers[6]$:
 \begin{equation}
-  \Transform_t = \MatExp{\delta\Vector{\xi}} \Transform_t^{(n)} \approx (\IdentityMatrix + \delta\Vector{\xi}^{\wedge}) \Transform_t^{(n)}.
+  \Transform_t = \MatExp{\delta\Vector{\xi}^\ell} \Transform_t^{(n)} \approx (\IdentityMatrix + \delta\Vector{\xi}^{\wedge}) \Transform_t^{(n)}.
 \end{equation}
-This allows us to transform \Cref{eq:vo_objective} into a linear least squares objective in $\delta\Vector{\xi}$:
+where we have dropped the perturbation superscript for brevity. This allows us to transform \Cref{eq:vo_objective} into a linear least squares objective in $\delta\Vector{\xi}$:
 \begin{equation}
 \label{eq:vo_linleastsquares}
   \mathcal{L}(\delta \Vector{\xi}) = \frac{1}{2}\sum_{i=1}^{N_t} 
@@ -196,12 +191,12 @@ The minimum to this objective can be solved for analytically by solving the norm
 \end{equation}
 Given $\delta\Vector{\xi}^{\star}$, we can update the operating point using the constraint-sensitive update
 \begin{equation}
-  \Transform^{(n+1)} = \MatExp{\delta\Vector{\xi}^{\star}} \Transform^{(n)}, \label{eq:vo_se3_update}
+  \Transform_t^{(n+1)} = \MatExp{\delta\Vector{\xi}^{\star}} \Transform_t^{(n)}, \label{eq:vo_se3_update}
 \end{equation}
 and iterate until convergence. See Appendix \ref{app:appendix_vo}
 for more details and an analytic expression for $\Matrix J_{i}$. 
 There are many reasonable choices for both the initial transform
-$\Transform^{(0)}$ and for the conditions under which we terminate
+$\Transform_t^{(0)}$ and for the conditions under which we terminate
 iteration. For most visual odometry applications, it suffices to initialize the estimated transform to identity, and iteratively
 perform the update given by \Cref{eq:vo_se3_update} until we see a relative change in
 the squared error of less than one percent after an update. 
@@ -239,8 +234,7 @@ the squared error of less than one percent after an update.
 \section{Robust Estimation}
 Since \Cref{eq:vo_linleastsquares} assigns cost values that grow quadratically with measurement error, it is very sensitive to outlier measurements that may persist through RANSAC.
 A common solution to this problem is to replace the quadratic loss function with one that is less sensitive to large measurement errors \citep{MacTavish2015-wt}.
-These robust cost functions are collectively known as M-estimators\footnote{M, for \textit{maximum-likelihood-type} since they generalize the basic maximum likelihood solution \citep{Barfoot2017-ri}.}, and many variants exist. Each uses a re-weighting function, $\rho(\cdot)$, to define a new optimization problem,
-
+These robust cost functions are collectively known as M-estimators\footnote{M, for \textit{maximum-likelihood-type} since they generalize the basic maximum likelihood solution \citep{Barfoot2017-ri}.}, and many variants exist. Each uses a re-weighting function, $\rho(\cdot)$, to define robust least squares (RLS) objective,
 \begin{equation}
 	\label{eq:vo_robust_loss_problem}
   \Transform^*_{\text{RLS}} = \ArgMin{\Transform\in\text{SE}(3)}\sum_{i=1}^{N} 
@@ -266,7 +260,7 @@ where the constant $c$ can be set with reference to asymptotic efficiency relati
 \end{equation}
 where we define these new weights, $\Matrix{M}_{i}$, based on an \textit{influence function}, $\psi(\cdot)$ as
 \begin{equation}
-	\Matrix{M}_i = \frac{1}{\epsilon_i} \underbrace{\at{\PartialDerivative{\rho}{\epsilon}}{\epsilon_i}}_{\psi(\cdot)} \GeneralCovariance_{i}^{-1},
+	\Matrix{M}_i = \frac{1}{\epsilon_i} \underbrace{\at{\PartialDerivative{\rho}{\epsilon}}{\epsilon_i}}_{\psi(\epsilon_i)} \GeneralCovariance_{i}^{-1},
 \end{equation}
 and solve it using the Gauss-Newton approach presented in \Cref{sec:vo_gauss_newton}. We claim that upon convergence, $\Transform^*_{\text{IRLS}}$ will also minimize \Cref{eq:vo_robust_loss_problem}. To see why, consider that
 \begin{equation}
@@ -286,7 +280,7 @@ Furthermore, upon convergence, our solution to the iteratively re-weighted probl
 
 \newpage
 \section{Outstanding Issues}
-Finally, we summarize (\Cref{tab:vo_outstanding_issues}) several limitations of such a canonical visual odometry pipeline: efficiency, systematic bias and homoscedastic uncertainty. For each limitation, we build a pseudo-sensor that improves the pipeline within a given environment (defined by the training data) without replacing the interpretability and generalizability of the pipeline itself.
+Finally, we summarize (\Cref{tab:vo_outstanding_issues}) several limitations of the canonical visual odometry pipeline we have presented in this chapter. Namely, the issues of efficiency, systematic bias and homoscedastic uncertainty. For each limitation, we will show in this dissertation that we can build a pseudo-sensor that addresses it for a particular environment (defined by the training data).
 
 \begin{table}[h!]
 	\caption{Issues that can be addressed by pseudo-sensors.}	\begin{threeparttable}
