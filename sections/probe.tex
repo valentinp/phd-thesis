@@ -368,7 +368,7 @@ This has the effect of rendering the likelihood of each transform to be
 estimated independently.  Moreover, the expected log-likelihood can be
 evaluated in closed form:
 \begin{align}
-  Q(\Transform_{1:T} | \Transform_{1:T}^{(n)}) \cong -\frac{1}{2}\sum_{t=1}^T
+  Q(\Transform_{1:T} | \Transform_{1:T}^{(n)}) \cong -\frac{1}{2}\sum_{t=1}^\Tr
   \sum_{i=1}^{N_t} \Transpose{\Vector{e}_{i,t}}
   \left(\frac{1}{\nu_{i,t}^{(n)}}\Matrix{\Psi}_{i,t}^{(n)}\right)^{-1}
   \Vector{e}_{i,t}.
@@ -377,7 +377,7 @@ The symbol $\cong$ is used to indicate equality up to an additive constant. We c
 log-likelihood
 \begin{equation}
   \Transform_{1:T}^{(n+1)} = 
-    \ArgMax {\Transform_{1:T}\in\text{SE}(3)^T}
+    \ArgMax {\Transform_{1:T}\in\text{SE}(3)^\Tr}
     Q(\Transform_{1:T} \vert \Transform_{1:T}^{(n)}).
 \end{equation}
 Due to the additive structure of $Q(\Transform_{1:T} \vert

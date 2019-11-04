@@ -268,12 +268,12 @@ holds. Finally, if we interpret $-\log p(\Vector{y}_i | \Vector{x}_i, \tilde{\Ge
 The results above indicate that, once trained, a neural network with dropout gives us access to a predictive distribution over outputs $\Vector{y}$. An unbiased estimator for its mean and covariance are given by applying dropout at test time and computing statistics over $T$ samples:
 \begin{equation}
 \label{eq:sun_bcnn_mc_dropout_mean}
-	\Expectation{\Vector{y}^*} = \frac{1}{T} \sum_{t=1}^T \tilde{\Vector{y}}^*_t,
+	\Expectation{\Vector{y}^*} = \frac{1}{T} \sum_{t=1}^\Tr \tilde{\Vector{y}}^*_t,
 \end{equation}
 where $\tilde{\Vector{y}}^*_t = NN(\Vector{x}^*; \tilde{\GenericParameters}_t)$ and
 \begin{equation}
 \label{eq:sun_bcnn_mc_dropout_variance}
-	\text{Var}(\Vector{y}^*) = \tau^{-1} \IdentityMatrix +  \frac{1}{T} \sum_{t=1}^T \tilde{\Vector{y}}^*_t (\tilde{\Vector{y}}^*_t)^T - \Expectation{\Vector{y}^*} \Expectation{\Vector{y}^*}^T,
+	\text{Var}(\Vector{y}^*) = \tau^{-1} \IdentityMatrix +  \frac{1}{T} \sum_{t=1}^\Tr \tilde{\Vector{y}}^*_t (\tilde{\Vector{y}}^*_t)^\Tr - \Expectation{\Vector{y}^*} \Expectation{\Vector{y}^*}^\Tr,
 \end{equation}
 where the precision $\tau$ defines the likelihood 
 \begin{equation}

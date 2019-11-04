@@ -278,7 +278,7 @@ To produce a mean of several $\LieGroupSO{3}$ elements (i.e., to evaluate \Cref{
 
 There are three common choices for a bijective metric \citep{Hartley2013-rc,Carlone2015-ud} on $\LieGroupSO{3}$. The angular, chordal and quaternionic:
 \begin{align}
-\RotDist{ang}(\Matrix{R}_a, \Matrix{R}_b) &= \Norm{\MatLog{\Matrix{R}_a \Matrix{R}_b^T}}_2, \\
+\RotDist{ang}(\Matrix{R}_a, \Matrix{R}_b) &= \Norm{\MatLog{\Matrix{R}_a \Matrix{R}_b^\Tr}}_2, \\
  \RotDist{chord}(\Matrix{R}_a, \Matrix{R}_b) &= \Norm{\Matrix{R}_a - \Matrix{R}_b}_\mathrm{F}, \\
  \RotDist{quat}(\quat_a, \quat_b) &= \min\left( \Norm{\quat_a - \quat_b}_2, \Norm{\quat_a + \quat_b}_2 \right),
 \end{align}
@@ -314,7 +314,7 @@ Instead, we opt to parametrize uncertainty over $\LieGroupSO{3}$ by injecting un
 \end{equation}
  \noindent where $\otimes$ represents quaternion multiplication. In this formulation, $\Matrix{\Sigma}$ provides a $3\times 3$ covariance matrix that can express uncertainty in different directions. Further, given a mean rotation, $\Mean{\quat}$, and samples, $\quat_i$, we use the logarithmic map to compute a sample covariance matrix,\begin{equation}
 \label{eq:head_covariance}
-\Covh = \frac{1}{H-1} \sum_{i=1}^H  \Vector{\phi}_i \Vector{\phi}_i^T, ~~ \Vector{\phi}_i = \MatLog{\quat_i \otimes \Mean{\quat}^{-1}}.
+\Covh = \frac{1}{H-1} \sum_{i=1}^H  \Vector{\phi}_i \Vector{\phi}_i^\Tr, ~~ \Vector{\phi}_i = \MatLog{\quat_i \otimes \Mean{\quat}^{-1}}.
 \end{equation}
 
 
@@ -333,7 +333,7 @@ Instead, we opt to parametrize uncertainty over $\LieGroupSO{3}$ by injecting un
 As with one-dimensional HydraNet, we train a direct regression of covariance through a parametrization of positive semi-definite matrices using a Cholesky decomposition\footnote{Note that in all the experiments presented in this paper, we omit the off-diagonal components of this covariance and only learn a diagonal matrix with non-negative components.} \citep{Hu2015-uw,Haarnoja2016-ph}). Given the network outputs of a unit quaternion $\quat$, and a positive semi-definite matrix $\Sigma$, we define a loss function as the negative log likelihood of a given rotation under \Cref{eq:quat_inject_density} (see \citep{Forster2015-af}) for a given target rotation, $\quat_t$, as
 \begin{equation}
 \label{eq:nll_loss}
-\mathcal{L}_\mathrm{NLL}(\quat, \quat_t, \Covd) = \frac{1}{2}\Vector{\phi}^T \Covd^{-1}\Vector{\phi} + \frac{1}{2} \log{\Determinant{\Covd}},
+\mathcal{L}_\mathrm{NLL}(\quat, \quat_t, \Covd) = \frac{1}{2}\Vector{\phi}^\Tr \Covd^{-1}\Vector{\phi} + \frac{1}{2} \log{\Determinant{\Covd}},
 \end{equation}
 \noindent where  $\Vector{\phi} = \MatLog{\quat \otimes {\quat_t}^{-1}}$. Combining the sample covariance, with the learned covariance, we extend \Cref{eq:1d_hydranet_uncertainty} to
 \begin{equation}
@@ -643,7 +643,7 @@ where $\Matrix{J}_{\Vector{e}_i}$ refers to the Jacobian of each reprojection er
 
 To fuse the output of our HydraNet pseudo-sensor with our canonical VO pipeline, we used pose graph relaxation. We describe our method briefly and refer the reader to \citep{Barfoot2017-ri} for a more detailed treatment. For every two poses, we defined a loss function based on a contribution from the estimator and from the network, weighed by their respective covariances:
 \begin{align}
-	\Transform_{1,w}^*, \Transform_{2,w}^* &= \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)}\mathcal{L}(\Estimate{\Transform}_{2,1}, \Estimate{\Rotation}_{2,1}) \\ & = \delta\Vector{\xi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_\text{vo} \delta\Vector{\xi}_\text{1,2} + \delta\Vector{\phi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_{\text{hn}} \delta\Vector{\phi}_\text{1,2} 
+	\Transform_{1,w}^*, \Transform_{2,w}^* &= \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)}\mathcal{L}(\Estimate{\Transform}_{2,1}, \Estimate{\Rotation}_{2,1}) \\ & = \delta\Vector{\xi}_\text{1,2}^\Tr \Matrix{\Sigma}^{-1}_\text{vo} \delta\Vector{\xi}_\text{1,2} + \delta\Vector{\phi}_\text{1,2}^\Tr \Matrix{\Sigma}^{-1}_{\text{hn}} \delta\Vector{\phi}_\text{1,2} 
 \end{align}
 where $\delta\Vector{\xi}_\text{1,2} =  \MatLog{\left(\Transform_{2,w} \Transform_{1,w}^{-1} \right)\Estimate{\Transform}_{2,1}^{-1}}$ and
 $\delta\Vector{\phi}_\text{1,2} =  \MatLog{\left(\Rotation_{2,w} \Rotation_{1,w}^{T} \right)\Estimate{\Rotation}_{2,1}^{T}}$.

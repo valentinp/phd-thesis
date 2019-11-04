@@ -91,7 +91,7 @@ from two pairs of stereo images (collectively referred to as $\ImageQuad_{t_{i},
 In this work, we choose to parametrize our correction prediction as $\Transform = \Matexp{\PredictionVector}$, where $\PredictionVector \in \Real^6$, a vector of Lie algebra coordinates, is the output of our network (similar to \cite{Handa2016-hm}). We define a loss for $\PredictionVector$ as 
 \begin{equation}
 	\label{eq:se3loss_fn}
-\CostFunction (\Transform, \TargetCorrection) = \CostFunction (\PredictionVector, \TargetCorrection) = \frac{1}{2} \LogMapFunction{\PredictionVector}^T \Inv{\TransformCovariance} \LogMapFunction{\PredictionVector},
+\CostFunction (\Transform, \TargetCorrection) = \CostFunction (\PredictionVector, \TargetCorrection) = \frac{1}{2} \LogMapFunction{\PredictionVector}^\Tr \Inv{\TransformCovariance} \LogMapFunction{\PredictionVector},
 \end{equation} where 
 \begin{equation}
 	\label{eq:se3logmap_fn}
@@ -117,7 +117,7 @@ Importantly, since we are learning small estimator \textit{corrections}, we can 
 %\footnote{This calculation assumes a zero mean for $\TargetCorrectionVector$, though this is not necessary.}
 
 \begin{equation}
-\TransformCovariance = \frac{1}{N-1} \sum_{i=1}^{N} \left( \TargetCorrectionVectorIndex -\Mean{\TargetCorrectionVector} \right) \left( \TargetCorrectionVectorIndex -\Mean{\TargetCorrectionVector} \right)^T,
+\TransformCovariance = \frac{1}{N-1} \sum_{i=1}^{N} \left( \TargetCorrectionVectorIndex -\Mean{\TargetCorrectionVector} \right) \left( \TargetCorrectionVectorIndex -\Mean{\TargetCorrectionVector} \right)^\Tr,
 \end{equation}
 where 
 \begin{equation}
@@ -130,7 +130,7 @@ The term $\TransformCovariance$ balances the rotational and translation loss ter
 In order to use \Cref{eq:se3loss_fn} to train DPC-Net with back-propagation, we need to compute its Jacobian with respect to our network output, $\PredictionVector$. Applying the chain rule, we begin with the expression
 \begin{equation}
 	\label{eq:se3_jacobchainrule}
-	\PartialDerivative{\CostFunction (\PredictionVector) }{ \PredictionVector} =  \LogMapFunction{\PredictionVector}^T \Inv{\TransformCovariance} \PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}.
+	\PartialDerivative{\CostFunction (\PredictionVector) }{ \PredictionVector} =  \LogMapFunction{\PredictionVector}^\Tr \Inv{\TransformCovariance} \PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}.
 \end{equation}
 The term $\PartialDerivative{\LogMapFunction{\PredictionVector}}{\PredictionVector}$ is of importance. We can derive it in two ways. To start, note two important identities \cite{Barfoot2017-ri}. First, recalling the identity introduced in \Cref{ch:math},
 \begin{equation}
@@ -184,17 +184,17 @@ and \Cref{eq:logjacob_method2} becomes
 % In practice, we amend our loss function, without altering its Jacobians, to indicate when DPC-Net learns corrections that are `closer' (in the sense of \Cref{eq:se3loss_fn}) to our targets than the original estimator (when $\PredictionVector = \Vector{0}$):
 % \begin{align}
 % 	\label{eq:modified_loss}
-% \CostFunction^t (\PredictionVector) &= \CostFunction (\PredictionVector) - \CostFunction (\Vector{0})  \\
-% &= \frac{1}{2} \LogMapFunction{\PredictionVector}^T \Inv{\TransformCovariance} \LogMapFunction{\PredictionVector} - 
-%  \frac{1}{2} {\TargetCorrectionVector}^T \Inv{\TransformCovariance} \TargetCorrectionVector.
+% \CostFunction^\Tr (\PredictionVector) &= \CostFunction (\PredictionVector) - \CostFunction (\Vector{0})  \\
+% &= \frac{1}{2} \LogMapFunction{\PredictionVector}^\Tr \Inv{\TransformCovariance} \LogMapFunction{\PredictionVector} - 
+%  \frac{1}{2} {\TargetCorrectionVector}^\Tr \Inv{\TransformCovariance} \TargetCorrectionVector.
 % \end{align}
-% When $\CostFunction^t < 0$, DPC-Net improves our estimator. 
+% When $\CostFunction^\Tr < 0$, DPC-Net improves our estimator. 
 
 \subsection{Loss Function: Correcting $\LieGroupSO{3}$ Estimates}
 Our framework can be easily modified to learn $\LieGroupSO{3}$ corrections only. We can parametrize a similar objective for $\RotationVector \in \Real^3$,
 \begin{equation}
 	\label{eq:so3loss_fn}
-\CostFunction (\RotationVector, \TargetCorrectionRotation) = \frac{1}{2} \LogMapFunctionSO{\RotationVector}^T \Inv{\TransformCovariance} \LogMapFunctionSO{\RotationVector},
+\CostFunction (\RotationVector, \TargetCorrectionRotation) = \frac{1}{2} \LogMapFunctionSO{\RotationVector}^\Tr \Inv{\TransformCovariance} \LogMapFunctionSO{\RotationVector},
 \end{equation}
 where 
 \begin{equation}

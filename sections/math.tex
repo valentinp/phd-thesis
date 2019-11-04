@@ -76,7 +76,7 @@ We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one 
 The rotation matrix $\Rotation$ is a member of the matrix Lie group $\LieGroupSO{3}$ (the Special Orthogonal group). We can define it as follows:
 \begin{equation}
 \label{eq:math_so3_defn}
-\LieGroupSO{3} = \{ \Rotation \in \Real{}^{3 \times 3} | ~ \Rotation^T\Rotation = \Matrix{1}, \det{\Rotation} = 1  \}.	
+\LieGroupSO{3} = \{ \Rotation \in \Real{}^{3 \times 3} | ~ \Rotation^\Tr\Rotation = \Matrix{1}, \det{\Rotation} = 1  \}.	
 \end{equation}
 %
 \begin{remark}{Matrix Lie Groups}
@@ -93,7 +93,7 @@ Any rotation can be represented (non-uniquely) as a rotation of angle $\phi$ abo
 \label{eq:so3_exp}
 \Rotation = \MatExp{\Vector{\phi}} = \Matexp{\Vector{\phi}} &= \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\phi}^\wedge)}^n\\
 \label{eq:euler_rodriguez}
-&= \cos{\phi} \IdentityMatrix + (1 - \cos{\phi}) \RotationAxisVector\RotationAxisVector^T + \sin{\phi} \RotationAxisVector^\wedge,
+&= \cos{\phi} \IdentityMatrix + (1 - \cos{\phi}) \RotationAxisVector\RotationAxisVector^\Tr + \sin{\phi} \RotationAxisVector^\wedge,
 \end{align}
 where the wedge operator $(\cdot)^\wedge$\footnote{This operator is sometimes also expressed as $(\cdot)^\times$ or $[\cdot]_\times$ and is known as the skew-symmetric operator.} is defined as
 \begin{equation}
@@ -102,7 +102,7 @@ where the wedge operator $(\cdot)^\wedge$\footnote{This operator is sometimes al
 The vector $\RotationVector$ is sometimes called the \textit{rotation vector} \citep{Barfoot2017-ri} or referred to as the \textit{exponential coordinates} \citep{Gallego2015} of rotation. \Cref{eq:euler_rodriguez} is often referred to as the Euler-Rodriguez formula. Although the map in \Cref{eq:so3_exp} is surjective, we can define an inverse map if we restrict its domain to $0 \leq \phi < \pi$:
 \begin{align}
 \label{eq:so3_log}
-\RotationVector =  \MatLog{\Rotation} = \Matlog{\Rotation} &= \frac{\phi (\Rotation - \Rotation^T)^\vee}{2 \sin{\phi}}, 
+\RotationVector =  \MatLog{\Rotation} = \Matlog{\Rotation} &= \frac{\phi (\Rotation - \Rotation^\Tr)^\vee}{2 \sin{\phi}}, 
 \end{align}
 where $\phi = \arccos{\left(\frac{\Trace{\Rotation} - 1}{2}\right)}$ and the \textit{vee} operator, $(\cdot)^\vee : \Real{}^{3 \times 3} \rightarrow \Real{}^3$, is defined as the unique inverse of the wedge operator $(\cdot)^\wedge$. Note \Cref{eq:so3_log} is undefined at both $\phi = 0$ and at $\phi = \pi$. In the former case, we can use a small-angle approximation and define
 
@@ -148,13 +148,13 @@ Accordingly, in this dissertation, we parametrize rotations as the constrained q
 The rigid body transform $\Transform$ is a also a member of the matrix Lie group, the Special Euclidian group $\LieGroupSE{3}$ and can be defined as a $4 \times 4$ matrix as follows:
 
 \begin{equation}
-\LieGroupSE{3} = \{ \Transform = \bbm \Rotation & \Vector{t} \\ \Vector{0}^T & 1 \ebm \in \Real{}^{4 \times 4} | ~  \Rotation \in \LieGroupSO{3},  \Vector{t} \in \Real{}^3  \}.
+\LieGroupSE{3} = \{ \Transform = \bbm \Rotation & \Vector{t} \\ \Vector{0}^\Tr & 1 \ebm \in \Real{}^{4 \times 4} | ~  \Rotation \in \LieGroupSO{3},  \Vector{t} \in \Real{}^3  \}.
 \end{equation}
 As a member of a matrix Lie group, it also admits a surjective exponential map,
 \begin{equation}
 \Transform = \MatExp{\Vector{\xi}} = \Matexp{\Vector{\xi}} = \sum_{n=0}^{\infty}  \frac{1}{n!} {(\Vector{\xi}^\wedge)}^n	
 \end{equation}
-where $\TransformVector = \bbm \Vector{\rho}^T & \Vector{\phi}^T \ebm^T \in \Real{}^6$ are the exponential coordinates of rigid-body transforms and the wedge operator is overloaded (following \cite{Barfoot2017-ri}) as follows:
+where $\TransformVector = \bbm \Vector{\rho}^\Tr & \Vector{\phi}^\Tr \ebm^\Tr \in \Real{}^6$ are the exponential coordinates of rigid-body transforms and the wedge operator is overloaded (following \cite{Barfoot2017-ri}) as follows:
 \begin{equation}
   \Vector \xi^\wedge \triangleq \bbm \Vector \rho \\ \Vector \phi \ebm ^\wedge = \bbm
   \Vector \phi^\wedge & \Vector \rho \\ \Transpose{\Vector{0}} &  0 \ebm.	
@@ -162,11 +162,11 @@ where $\TransformVector = \bbm \Vector{\rho}^T & \Vector{\phi}^T \ebm^T \in \Rea
 In practice, we can evaluate the exponential map through the Euler-Rodriguez formula (\Cref{eq:euler_rodriguez}) and by computing the left-Jacobian of $\LieGroupSO{3}$,  $\LeftJacobianSO$, 
 
 \begin{equation}
-\Transform = \MatExp{\bbm \Vector \rho \\ \Vector \phi \ebm} = \bbm \Rotation(\RotationVector) & \LeftJacobianSO(\RotationVector) \Vector{\rho} \\ \Vector{0}^T & 1 \ebm,
+\Transform = \MatExp{\bbm \Vector \rho \\ \Vector \phi \ebm} = \bbm \Rotation(\RotationVector) & \LeftJacobianSO(\RotationVector) \Vector{\rho} \\ \Vector{0}^\Tr & 1 \ebm,
 \end{equation}
 where
 \begin{equation}
-\LeftJacobianSO(\RotationVector) = \frac{\sin{\phi}}{\phi} \IdentityMatrix + (1 - \frac{\sin{\phi}}{\phi}) \RotationAxisVector\RotationAxisVector^T + \frac{1 - \cos{\phi}}{\phi} \RotationAxisVector^\wedge.
+\LeftJacobianSO(\RotationVector) = \frac{\sin{\phi}}{\phi} \IdentityMatrix + (1 - \frac{\sin{\phi}}{\phi}) \RotationAxisVector\RotationAxisVector^\Tr + \frac{1 - \cos{\phi}}{\phi} \RotationAxisVector^\wedge.
 \end{equation}
 
 
@@ -175,11 +175,11 @@ where
 \subsection{Applying Transforms}
 Applying our notation for coordinate frames (and referring back to \Cref{fig:math_two_ref_frames}), a transform, $\Transform_{vi}$ can be expressed as 
 \begin{equation}
-\Transform_{vi} = \bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm.
+\Transform_{vi} = \bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^\Tr & 1 \ebm.
 \end{equation}
 This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i$ and express the relation $\boldsymbol{r}^{pv}_v = \Transform_{vi} \boldsymbol{r}^{pi}_i$, or
 \begin{equation}
-	\bbm \Vector{r}^{pv}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^T & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm,
+	\bbm \Vector{r}^{pv}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^\Tr & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm,
 \end{equation}
 which is numerically equivalent to  
 \begin{equation}

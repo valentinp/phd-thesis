@@ -45,7 +45,7 @@ To minimize this, we linearize about an operating point $\Transform_t^{(n)}$ and
 where we note that all subscripted elements are functions of the operating point (i.e., $\Vector{e}_{i} = \Vector{e}_{i}(\Transform_t^{(n)})$, $\Vector{J}_{i} = \Vector{J}_{i}(\Transform_t^{(n)})$ and $\Matrix{M}_{i} = \Matrix{M}_{i}(\Transform_t^{(n)})$). This is solved by the normal equations,
 \begin{align}
 \label{eq:vo_appendix_irls_normal}
-\delta\Vector{\xi}^* &= \left( \sum_{i=1}^{N_t} \Matrix{J}_{i}^T \Matrix{M}_i \Matrix{J}_{i} \right)^{-1} \left( \sum_{i=1}^{N_t} \Matrix{J}_{i}^T\Matrix{M}_i \Vector{e}_i \right).
+\delta\Vector{\xi}^* &= \left( \sum_{i=1}^{N_t} \Matrix{J}_{i}^\Tr \Matrix{M}_i \Matrix{J}_{i} \right)^{-1} \left( \sum_{i=1}^{N_t} \Matrix{J}_{i}^\Tr\Matrix{M}_i \Vector{e}_i \right).
 \end{align}
 Given $\delta\Vector{\xi}^*$, we update the operating point as
 \begin{equation}
@@ -73,7 +73,7 @@ where $\Matrix{J}_p(\boldsymbol{p}_i^{(n)}) = \at{\PartialDerivative{\Vector{f}}
 \end{align}
 which allows us to write $\delta \boldsymbol{p} = (\boldsymbol{p}_i^{(n)})^\odot \delta\Vector{\xi}$. Here we have used the notation from \cite{Barfoot2017-ri}, where the $(\cdot)^\odot$ operator is defined on homogeneous points as follows:
 \begin{equation}
-\boldsymbol{p}^\odot = \bbm \Vector{p} \\ 1 \ebm^\odot = \bbm \IdentityMatrix & -\Vector{p}^\wedge \\ \Vector{0}^T & \Vector{0}^T\ebm.
+\boldsymbol{p}^\odot = \bbm \Vector{p} \\ 1 \ebm^\odot = \bbm \IdentityMatrix & -\Vector{p}^\wedge \\ \Vector{0}^\Tr & \Vector{0}^\Tr\ebm.
 \end{equation}
 This leads to the convenient expression, $\Vector{\xi}^\wedge \boldsymbol{p} = \boldsymbol{p}^\odot \Vector{\xi}$, that we use above.
 Combining everything, we have:

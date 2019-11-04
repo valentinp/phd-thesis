@@ -137,8 +137,8 @@ and compute a density on the error function itself through first order noise pro
 \end{equation}
 where
 \begin{equation}
-	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \ImageLandmarkCovariance{i}{c_1}  \Matrix{G}_{i,c_1}^T \Matrix{D}^T + 
- \Matrix{D}\Transform_t \Matrix{G}_{i,c_0}  \ImageLandmarkCovariance{i}{c_0} \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T,
+	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \ImageLandmarkCovariance{i}{c_1}  \Matrix{G}_{i,c_1}^\Tr \Matrix{D}^\Tr + 
+ \Matrix{D}\Transform_t \Matrix{G}_{i,c_0}  \ImageLandmarkCovariance{i}{c_0} \Matrix{G}_{i,c_0}^\Tr  \Transform_t^\Tr \Matrix{D}^\Tr,
 \end{equation}
 with
 $\Matrix{G}_{i,c} = \at{\PartialDerivative{\ProjectionFunction^{-1}}{\Vector{y}}}{\ImageLandmark{i}{c}}$.
@@ -217,7 +217,7 @@ the squared error of less than one percent after an update.
 %
 %we fused our probabilistic rotation regression with classical stereo visual odometry using pose graph relaxation implemented with the help of a Python-based factor graph library which we will publicize after the review process. Using that framework, we solved
 %\begin{align}
-%	\Transform_{1,w}^*, \Transform_{2,w}^* &= \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)}\mathcal{L}(\Estimate{\Transform}_{2,1}, \Estimate{\Rotation}_{2,1}) \\ & = \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)} \Vector{\xi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_\text{vo} \Vector{\xi}_\text{1,2} + \Vector{\phi}_\text{1,2}^T \Matrix{\Sigma}^{-1}_{\text{hn}} \Vector{\phi}_\text{1,2} 
+%	\Transform_{1,w}^*, \Transform_{2,w}^* &= \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)}\mathcal{L}(\Estimate{\Transform}_{2,1}, \Estimate{\Rotation}_{2,1}) \\ & = \ArgMin{\Transform_{1,w}, \Transform_{2,w}\in\text{SE}(3)} \Vector{\xi}_\text{1,2}^\Tr \Matrix{\Sigma}^{-1}_\text{vo} \Vector{\xi}_\text{1,2} + \Vector{\phi}_\text{1,2}^\Tr \Matrix{\Sigma}^{-1}_{\text{hn}} \Vector{\phi}_\text{1,2} 
 %\end{align}
 %where
 %\begin{equation}

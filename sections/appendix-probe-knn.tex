@@ -30,8 +30,8 @@ This then builds the following weighted least squares objective,
 \end{equation}
 where $\GeneralCovariance_{i,t}$ is now given by,
 \begin{equation}
-	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \Covariance( \Predictor{i}{t})  \Matrix{G}_{i,c_1}^T \Matrix{D}^T + 
- \Matrix{D}\Transform_t \Matrix{G}_{i,c_0} \Covariance( \Predictor{i}{t}) \Matrix{G}_{i,c_0}^T  \Transform_t^T \Matrix{D}^T
+	\GeneralCovariance_{i,t} = \Matrix{D}\Matrix{G}_{i,c_1} \Covariance( \Predictor{i}{t})  \Matrix{G}_{i,c_1}^\Tr \Matrix{D}^\Tr + 
+ \Matrix{D}\Transform_t \Matrix{G}_{i,c_0} \Covariance( \Predictor{i}{t}) \Matrix{G}_{i,c_0}^\Tr  \Transform_t^\Tr \Matrix{D}^\Tr
 \end{equation}
 We build a model for $\Covariance( \Predictor{i}{t})$ as,
 \begin{equation}
