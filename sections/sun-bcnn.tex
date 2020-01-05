@@ -15,7 +15,7 @@ Building on the results of PROBE, wherein we showed that it is possible to extra
 \end{figure*}
 
 \begin{remark}{Associated Publications}
-This project was a collaboration with Lee Clement. Broadly, Lee lead the integration of sun information into a visual odometry pipeline, while I lead the design and implementation of the learning architecture. It is associated with three publications. The first publication was exploratory work on (non-probabilistic) virtual sun sensors lead by Lee,
+This project was a collaboration with Lee Clement. Lee lead the integration of sun information into a visual odometry pipeline, while I lead the design and implementation of the learning architecture. It is associated with three publications. The first publication was exploratory work on (non-probabilistic) virtual sun sensors lead by Lee,
 \begin{enumerate}
 \item \bibentry{2017_Clement_Improving},
 \end{enumerate}
@@ -36,7 +36,7 @@ This chapter is largely a reproduction of the latter journal publication which s
 %    \label{fig:sun-bcnn_system}
 %\end{wrapfigure}
 
-This accumulated error, or drift, of egomotion estimation can be limited by incorporating external global information such as observations of known landmarks, loop closures, or position updates from the global navigation satellite system (GNSS).
+The accumulated error, or drift, of visual egomotion estimation can be limited by incorporating external global information such as observations of known landmarks, loop closures, or position updates from the global navigation satellite system (GNSS).
 In many situations, however, a globally consistent map may be unavailable or prohibitively expensive to compute, loop closures may not occur, or GNSS information may be unavailable or inaccurate (e.g., on the surface of Mars).
 In such cases, outdoor navigation can still extract external information from measurements of celestial objects (c.f. early maritime navigation described in \Cref{ch:intro}). During the day, for example, observations of the sun can provide global orientation information since the sun's apparent motion in the sky is well-described by ephemeris models.
 
@@ -82,10 +82,10 @@ Convolutional Neural Networks (CNNs) have been applied to a wide range of classi
 Recent work has shown that CNNs can learn orientation information directly from images by modifying the loss functions of existing discrete classification-based CNN architectures into continuous regression losses \citep{Ma2016-at, Kendall2015-ew, Kendall2016-zf}. 
 Despite their success in improving prediction accuracy, most existing CNN-based models do not report uncertainty estimates, which are important in the context of data fusion.
 
-For classification, it is possible to restrict CNN model outputs to a certain range (e.g., using a softmax function) and interpret these values as the model's confidence in its output. As \citet{Gal2016UncertaintyThesis} noted, however, this can be misleading because these  values can be unjustifiably large for test points far away from training data.  To address this, \citet{Gal2016-ny} showed that it is possible to achieve covariance outputs that better quantify model uncertainty for classification and regression tasks, with only minor modifications to existing CNN architectures. 
+For classification, it is possible to restrict CNN model outputs to a certain range (e.g., using a softmax function) and interpret these values as the model's confidence in its output. As \citet{Gal2016UncertaintyThesis} noted, however, this can be misleading because these  values can be unjustifiably large for test points far away from training data.  To address this, \citet{Gal2016-ny} showed that it is possible to compute a better estimate of model uncertainty for classification and regression tasks, with only minor modifications to existing CNN architectures. 
 An early application of this uncertainty quantification was presented by \citet{Kendall2016-zf} who used it to improve their prior work \citep{Kendall2015-ew} on camera pose regression.
 
-We build on on previous work by \citet{2017_Clement_Improving}, who demonstrated empirically that techniques for single-image sun estimation based on hand-crafted models \citep{Lalonde2011-jw} and Convolutional Neural Networks (CNNs) \citep{Ma2016-at} could be incorporated into a stereo visual odometry pipeline to reduce estimation error in the manner of \citet{Lambert2012-sn}.
+We build on previous work by \citet{2017_Clement_Improving}, who demonstrated empirically that techniques for single-image sun estimation based on hand-crafted models \citep{Lalonde2011-jw} and Convolutional Neural Networks (CNNs) \citep{Ma2016-at} could be incorporated into a stereo visual odometry pipeline to reduce estimation error in the manner of \citet{Lambert2012-sn}.
 We also build on the work of \citet{2017_Peretroukhin_Reducing}, who presented preliminary experimental results comparing Sun-BCNN against the method of \citet{Lalonde2011-jw} and its VO-informed variant \citep{2017_Clement_Improving} as well as the Sun-CNN of \citet{Ma2016-at} on the KITTI odometry benchmark \citep{Geiger2013-ky}, both in terms of raw measurement accuracy and in terms of their impact on VO accuracy.
 
 While our method is similar in spirit to the work of \citet{Ma2016-at}, who built a CNN-based sun sensor as part of a relocalization pipeline, our model makes three important improvements: 1) in addition to a point estimate of the sun direction, we output a principled covariance estimate that is incorporated into our estimator; 2) we produce a full 3D sun direction estimate with azimuth and zenith angles that is better suited to 6-DOF robot pose estimation problems (as opposed to only the azimuth angle and 3-DOF estimator used by \citet{Ma2016-at}); and 3) we incorporate the sun direction covariance into a VO estimator that accounts for growth in pose uncertainty over time (unlike \citet{2017_Clement_Improving}). 
@@ -98,7 +98,7 @@ For this work, we adopt a sliding window sparse stereo VO technique (derived fro
 Our task is to estimate a window of $\LieGroupSE{3}$ poses $\Set{\Transform_{k_1,0}, \Transform_{k_1+1,0}, \dots, \Transform_{k_2-1, 0}, \Transform_{k_2, 0}}$ expressed in a base coordinate frame $\CoordinateFrame{0}$, given a prior estimate of the transformation $\Transform_{k_1,0}$.
 We accomplish this by tracking keypoints across pairs of stereo images and computing an initial guess for each pose in the window using frame-to-frame point cloud alignment, which we then refine by solving a local bundle adjustment problem over the window.
 In our experiments we choose a window size of two, which we observed to provide good VO accuracy at low computational cost. 
-We select the initial pose $\Transform_{1,0}$ to be the first GPS ground truth pose such that $\CoordinateFrame{0}$ is a local East-North-Up (ENU) coordinate system with its origin at the first GPS position.
+We select the initial pose $\Transform_{1,0}$ to be the first ground truth pose such that $\CoordinateFrame{0}$ is a local East-North-Up (ENU) coordinate system with its origin at the first GPS position. We note that this requires some source of initial orientation information---e.g., a measurement of the local gravity vector and a magnetic heading.
 
 \subsection{Observation Model}
 We assume that incoming stereo images have been undistorted and rectified in a pre-processing step, and model the stereo camera as a pair of perfect pinhole cameras with focal lengths $f_u, f_v$ and principal points $\left(c_u,c_v\right)$, separated by a fixed and known baseline $b$ (see \Cref{sec:vo_data_extraction}).
@@ -117,7 +117,7 @@ If we take $\Keypoint_0^j$ to be the homogeneous 3D coordinates of keypoint $j$,
 where $\left(u,v\right)$ are the keypoint coordinates in the left image and $d$ is the disparity in pixels.
 
 \subsection{Sliding Window Bundle Adjustment}
-Like with PROBE, we use the open-source \textsf{viso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
+Similar to PROBE, we use the open-source \textsf{viso2} package \citep{Geiger2011-xe} to detect and track keypoints between stereo image pairs.
 Based on these keypoint tracks, a three-point Random Sample Consensus (RANSAC) algorithm \citep{fischler1981random} generates an initial guess of the interframe motion and rejects outlier keypoint tracks by thresholding their reprojection error.
 We compound these pose-to-pose transformation estimates through our chosen window and refine them using a local bundle adjustment, which we solve using the nonlinear least-squares solver Ceres \citep{ceres-solver}.
 The objective function to be minimized can be written as
@@ -137,13 +137,13 @@ The quantity $\Error_{\CameraObservation_{k,j}} = \Estimate{\CameraObservation}_
 The predicted measurements are given by $\Estimate{\CameraObservation}_{k,j} = \CameraModel{\Estimate{\Transform}_{k,0} \Estimate{\Keypoint}^j_{0}}$, where $\Estimate{\Transform}_{k,0}$ and $\Estimate{\Keypoint}^j_{0}$ are the estimated poses and keypoint positions in base frame $\CoordinateFrame{0}$.
 
 The cost term $\BACost_\text{prior}$ imposes a normally distributed prior $\Prior{\Transform}_{k_1,0}$ on the first pose in the current window, based on the estimate of this pose in the previous window.
-The error in the current estimate $\Estimate{\Transform}_{k_1,0}$ of this pose compared to the prior can be computed via the $\LieGroupSE{3}$ matrix logarithm as $\Error_{\Prior{\Transform}_{k_1,0}} = \log \left( \Prior{\Transform}_{k_1,0}^{-1} \Estimate{\Transform}_{k_1,0} \right)^\vee \in \mathbb{R}^6$.
+The error in the current estimate $\Estimate{\Transform}_{k_1,0}$ of this pose compared to the prior can be computed via the $\LieGroupSE{3}$ matrix logarithm as $\Error_{\Prior{\Transform}_{k_1,0}} = \MatLog{\Prior{\Transform}_{k_1,0}^{-1} \Estimate{\Transform}_{k_1,0}} \in \mathbb{R}^6$.
 The $6 \times 6$ matrix $\Covariance_{\Prior{\Transform}_{k_1,0}}$ is the covariance associated with $\Prior{\Transform}_{k_1,0}$ in its local tangent space, and is obtained as part of the previous window's bundle adjustment solution.
 This prior term allows consecutive windows of pose estimates to be combined in a principled way that appropriately propagates global pose uncertainty from window to window, which is essential in the context of optimal data fusion.
 
 \section{Orientation Correction}
 In order to combat drift in the VO estimate produced by accumulated orientation error, we adopt the technique of \citet{Lambert2012-sn} to incorporate absolute orientation information from the sun directly into the estimation problem.
-We assume the initial camera pose and its timestamp are available from GPS and use them to determine the global direction of the sun $\Vector{s}_0$, expressed as a 3D unit vector, from ephemeris data.
+We assume the initial camera pose and its timestamp are available from GPS-INS  and use them to determine the global direction of the sun $\Vector{s}_0$, expressed as a 3D unit vector, from ephemeris data.
 We define the world frame $\CoordinateFrame{0}$ to be a local ENU coordinate system with the initial GPS position as its origin.
 At each timestep we update $\SunDirection_0$ by querying the ephemeris model using the current timestamp and the initial camera pose, allowing our model to account for the apparent motion of the sun over long trajectories.
 
@@ -166,7 +166,7 @@ We therefore define $\Vector{f}\left(\cdot\right)$ to be a function that transfo
     = \Vector{f} \left( \SunDirection_k \right)
     = \bbm \text{acos}\left( -\SunDirectionComponent_{k,y} \right) \\ \text{atan2}\left(\SunDirectionComponent_{k,x}, \SunDirectionComponent_{k,z} \right) \ebm
 \end{equation}
-where $\SunDirection_k = \Transpose{\bbm \SunDirectionComponent_{k,x} & \SunDirectionComponent_{k,y} & \SunDirectionComponent_{k,z} \ebm}$.
+where $\SunDirection_k = \Transpose{\begin{bsmallmatrix} \SunDirectionComponent_{k,x} & \SunDirectionComponent_{k,y} & \SunDirectionComponent_{k,z} \end{bsmallmatrix}}$.
 We can then define the term $\Error_{\SunDirection_k} = \Vector{f}\left(\Estimate{\SunDirection}_k\right) - \Vector{f}\left(\SunDirection_k\right)$ to be the error in the predicted sun direction, expressed in azimuth-zenith coordinates, and $\Covariance_{\SunDirection_k}$ to be the covariance of these errors.
 While $\Covariance_{\SunDirection_k}$ would generally be treated as an empirically determined static covariance, in our approach we use the per-observation covariance computed using \Cref{eq:bcnn_covar}, which allows us to weight each observation individually according to a measure of its intrinsic quality.
 In practice, we also attempt to mitigate the effect of outlier sun predictions by applying a robust Huber loss to the sun measurements in our optimizer.
@@ -205,7 +205,7 @@ where $\tau$ is a model \textit{precision}. Given a dataset $\mathcal{D} = \{\Ma
 \label{eq:sun_bcnn_param_posterior}
 	p(\GenericParameters | \mathcal{D}) = \frac{p(\Matrix{Y}|\Matrix{X}, \GenericParameters) p(\GenericParameters)}{p(\Matrix{Y} | \Matrix{X})}
 \end{equation}
-where we may think of this posterior as evaluating the sentence `the likelihood of the observed outputs given a particular set of parameters (weighted by a prior) compared to how likely they are in general'. This latter `in general' quantity is the marginal likelihood (also known as the model \textit{evidence}) over the space of parameters,
+where we may think of this posterior as evaluating the sentence ``the likelihood of the observed outputs given a particular set of parameters (weighted by a prior) compared to how likely they are in general." This latter `in general' quantity is the marginal likelihood (also known as the model \textit{evidence}) over the space of parameters,
 \begin{equation}
 	p(\Matrix{Y} | \Matrix{X}) = \int_{\GenericParameters}  p(\Matrix{Y} | \Matrix{X}, \GenericParameters) p(\GenericParameters) d\GenericParameters.
 \end{equation}
@@ -225,7 +225,7 @@ which then allows us to compute the approximate predictive distribution as
 \begin{equation}
 	p(\Vector{y}^* | \Vector{x}^*, \mathcal{D}) \approx \int_{\GenericParameters}  p(\Vector{y}^* | \Vector{x}^*, \GenericParameters) q(\GenericParameters; \Vector{\theta}^*) d\GenericParameters.
 \end{equation}
-One can show (see, for example, \cite{Gal2016UncertaintyThesis}) that minimizing KL divergence (\Cref{eq:sun_bcnn_KL}) is the same as maximizing the evidence lower bound (ELBO)\footnote{KL divergence and the ELBO differ by a constant that is not dependent on the auxiliary variables.} 
+One can show that minimizing KL divergence (\Cref{eq:sun_bcnn_KL}) is the same as maximizing the evidence lower bound (ELBO)\footnote{KL divergence and the ELBO differ by a constant that is not dependent on the auxiliary variables.} 
 \begin{equation}
 \label{eq:sun_bcnn_ELBO}
 	\Vector{\theta}^* = \ArgMax{\Vector{\theta}} -\mathcal{L}_{\text{ELBO}} = \ArgMax{\Vector{\theta}} \int_{\GenericParameters}  \log p(\Matrix{Y} | \Matrix{X}, \GenericParameters)  q(\GenericParameters; \Vector{\theta}) d\GenericParameters -  \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters)).
@@ -247,7 +247,7 @@ where $\Vector{y}_i$ is the target output, $\lambda$ is a scalar weight decay hy
 	q(\GenericParameters; \Vector{\theta}) &= \{\text{diag} (\{ \epsilon_{i\ell} \}) \Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L \\
 	\epsilon_{i\ell} &\sim \text{Bernoulli}(p) 
 \end{align}
-where the auxiliary variables become the network parameters themselves, $\Vector{\theta} = \{\Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L$. We can show an equivalence between optimizing the variational inference ELBO loss function,
+where the auxiliary variables become the network parameters themselves, $\Vector{\theta} = \{\Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L$, then we can show an equivalence between optimizing the variational inference ELBO loss function,
 \begin{align}
 \mathcal{L}_{\text{ELBO}}(\Vector{\theta}) &= -\int_{\GenericParameters}  \log p(\Matrix{Y} | \Matrix{X}, \GenericParameters)  q(\GenericParameters; \Vector{\theta}) d\GenericParameters +  \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters))\\
 &= - \sum_{i=1}^N \int_{\GenericParameters}  \log p(\Vector{y}_i | \Vector{x}_i, \GenericParameters)  q(\GenericParameters; \Vector{\theta}) d\GenericParameters + \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters))
@@ -256,14 +256,14 @@ and optimizing \Cref{eq:sun_bcnn_dropout_obj} above as follows. First, the first
 \begin{align}
 	&= - \sum_{i=1}^N \log p(\Vector{y}_i | \Vector{x}_i, \tilde{\GenericParameters})  + \text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters)).
 \end{align}
-Second, it is possible to show that there exist a Gaussian prior $p(\GenericParameters)$ such that the condition (Eq. 3.12, \cite{Gal2016UncertaintyThesis})
+Second, it is possible to show that there exists a Gaussian prior $p(\GenericParameters)$ such that the condition (Eq. 3.12, \cite{Gal2016UncertaintyThesis})
 \begin{align}
 \PartialDerivative{\text{KL}(q(\GenericParameters; \Vector{\theta}) ~ || ~ p(\GenericParameters))}{\Vector{\theta}} \approx \PartialDerivative{\lambda \sum_{\ell=1}^L	\left( \Norm{\Matrix{W}_\ell}_2^2 +  \Norm{\Vector{b}_\ell}_2^2\right)}{\Vector{\theta}}	
 \end{align}
 holds. Finally, if we interpret $-\log p(\Vector{y}_i | \Vector{x}_i, \tilde{\GenericParameters})$ as $\mathcal{E}(\Vector{y}_i, \tilde{\Vector{y}}_i)$ then it follows that
 \begin{align}
 \PartialDerivative{\mathcal{L}_{\text{ELBO}}}{\Vector{\theta}} \propto \PartialDerivative{\mathcal{L}_{\text{Dropout}}}{\Vector{\theta}}
-\end{align} where the proportional constant can be written down analytically \citep{Gal2016UncertaintyThesis}. Thus the two objectives result in the same optimal parameters!
+\end{align} where the proportional constant can be written down analytically \citep{Gal2016UncertaintyThesis}. Thus the two objectives result in the same optimal parameters.
 \subsubsection{Computing Moments}
 The results above indicate that, once trained, a neural network with dropout gives us access to a predictive distribution over outputs $\Vector{y}$. An unbiased estimator for its mean and covariance are given by applying dropout at test time and computing statistics over $T$ samples:
 \begin{equation}
@@ -351,7 +351,7 @@ Training requires approximately 2.5 hours on an NVIDIA Titan X GPU.
 Interestingly, \Cref{fig:sun-bcnn_kitti_cnn_activations} shows that some convolutional filters learned by Sun-BCNN on the KITTI dataset appear to correspond to illumination variations reminiscent of the visual cues designed by \citet{Lalonde2011-jw}.
 
 \subsubsection{Data Preparation \& Transfer Learning}
-We resize images from their original size to $[224 \times 224]$ pixels to achieve the image size expected by GoogleLeNet. 
+We resize images from their original size to $[224 \times 224]$ pixels to achieve the size expected by GoogleLeNet. 
 We experimented with preserving the aspect ratio of the original image and padding zeros to the top and bottom of the resized image, but found that preserving the vertical resolution (as done by \citet{Ma2016-at}) results in better test-time accuracy. We do not crop or rotate the images, nor do we augment the dataset in any other way.
 
 \subsubsection{Model Precision}
@@ -697,13 +697,6 @@ Note that the error distribution in zenith is slightly biased towards negative v
 This is an artifact of the azimuth-zenith parameterization when the sun zenith is small (i.e., when the sun is high in the sky), since zenith angles are defined on $[0,\pi]$.
 In practice, we attempt to reduce the influence of the long negative tail by imposing a robust Huber loss on the sun measurement errors in our optimization problem.
 
-\begin{figure*}[ht!]
-	\centering
-	\includegraphics[width=0.99\textwidth]{sun-bcnn/devon/devon_collage.pdf}	
-	\caption{GPS track and sample images from the Devon Island traverse, with the start of each sequence highlighted. The Devon Island dataset is conducive to visual sun sensing due to the presence of strong environmental shadows, reflective surfaces such as mud and water, occasionally visible sun, and self-shadowing by the sensor platform. (Map data: Google, DigitalGlobe)}
-	\label{fig:devon_collage}
-\end{figure*}
-
 \Cref{tab:kitti_test_cnn} summarizes the Sun-BCNN test errors numerically.
 Sun-BCNN achieved median vector angle errors of less than 15 degrees on every sequence except sequence \texttt{01} and \texttt{06}, which were particularly difficult in places due to challenging lighting conditions.
 It is interesting to note that sequences \texttt{00} and \texttt{06} also have higher than average ANEES values, which indicates that the estimator is overconfident in its estimates despite their low quality.
@@ -726,7 +719,7 @@ As shown in \Cref{tab:sun-bcnn_kitti_armse}, which summarizes our VO results for
 While the VO solutions for sequences such as \texttt{00} do not improve in terms of translational ARMSE, \Cref{tab:sun-bcnn_kitti_armse} shows that rotational ARMSE nevertheless improves on all ten sequences when low-noise simulated sun measurements are included.
 This implies that the estimation errors of the basic VO solutions for certain sequences are dominated by non-rotational effects, and that the apparent benefit of the Lalonde method on translational ARMSE in sequence \texttt{00} is likely coincidental.
 
-\subsubsection{Vision-based Sun Sensing} \label{sec:kitti_vo_sim_sun}
+\subsubsection{Vision-Based Sun Sensing} \label{sec:kitti_vo_sim_sun}
 \Cref{fig:kitti_arrows} illustrates the behaviour of Sun-BCNN on four characteristic images from test sequence \texttt{05} by overlaying the Sun-BCNN predictions and associated ground truth sun directions for each image.
 The two frames in the top row both contain strong shadows which typically result in very accurate sun predictions. 
 Conversely, the bottom row highlights two examples of rare situations where ambiguous shadows lead to very inaccurate predictions.
@@ -769,6 +762,14 @@ Nevertheless, these results indicate that CNN-based sun sensing is a valuable to
 
 \section{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}
 In addition to urban driving, we further investigate the usefulness of Sun-BCNN in the context of planetary exploration using the Devon Island Rover Navigation Dataset \citep{Furgale2012-kk}, which consists of various sensor data collected using a mobile sensor platform traversing a 10~km loop on Devon Island in the Canadian High Arctic (\Cref{fig:devon_collage}).
+
+\begin{figure*}[ht!]
+	\centering
+	\includegraphics[width=0.99\textwidth]{sun-bcnn/devon/devon_collage.pdf}	
+	\caption{GPS track and sample images from the Devon Island traverse, with the start of each sequence highlighted. The Devon Island dataset is conducive to visual sun sensing due to the presence of strong environmental shadows, reflective surfaces such as mud and water, occasionally visible sun, and self-shadowing by the sensor platform. (Map data: Google, DigitalGlobe)}
+	\label{fig:devon_collage}
+\end{figure*}
+
 The rugged landscape of Devon Island (\Cref{fig:devon_collage}) is a significant departure from the structured urban environment of Karlsruhe.
 Unlike the KITTI odometry benchmark, the Devon Island dataset provides ground truth vehicle orientations for only a small number of images, which means that our previous method of generating ground truth sun vectors using ground truth poses is not applicable.
 However, the sensor platform used to collect the dataset was equipped with a hardware sun sensor and inclinometer, both of which were used by \citet{Lambert2012-sn} to correct VO drift.
@@ -1152,13 +1153,15 @@ We then compared the consistency of the cross-correlations of each method (i.e.,
 
 \section{Summary}
 
-In summary, with Sun-BCNN, we applied learned \textit{pseudo-sensors} to the problem of illumination direction in outdoor environments. Sun-BCNN presented
+In this chapter, we detailed an approach to improving the visual egomotion pipeline by learning to extract a latent quantity within an existing image stream. Namely, we presented a deep-learning-based model that could infer the direction of the sun from a single RGB image where the sun may not be directly observable. We leveraged the technique of Monte Carlo dropout to produce a consistent uncertainty estimate for each prediction. 
+
+The prediction paired with the uncertainty estimate allowed us to treat our model, named Sun-BCNN, as a `pseudo-sensor' of sun direction whose output could be fused with existing motion estimates much like those from a hardware-based sun sensor. In sum, our contributions with Sun-BCNN were,
 \begin{enumerate}
 \item the application of a Bayesian CNN to the problem of sun direction estimation, incorporating the resulting covariance estimates into a visual odometry pipeline; 
 \item an empirical demonstration that a Bayesian CNN with dropout layers after each convolutional and fully-connected layer can achieve state-of-the-art accuracy at test time;
 \item a loss function that incorporated a 3D unit-length sun direction vector, appropriate for full 6-DOF pose estimation;
 \item experimental results on over 30~km of visual navigation data in urban \citep{Geiger2013-ky} and planetary analogue \citep{Furgale2012-kk} environments; 
 \item an investigation into the sensitivity of the Bayesian CNN-based sun estimate to cloud cover, camera and environment changes, and measurement parameterization; and
-\item open-source software\footnote{\url{https://github.com/utiasSTARS/sun-bcnn-vo}.}.
+\item an open-source implementation of Sun-BCNN in the Caffe framework\footnote{\url{https://github.com/utiasSTARS/sun-bcnn-vo}.}.
 \end{enumerate}
 

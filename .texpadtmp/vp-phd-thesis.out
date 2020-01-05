@@ -1,6 +1,14 @@
-\BOOKMARK [0][-]{chapter.3}{Classical Visual Odometry}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Canonical VO Pipeline}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{Robust Estimation}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{Outstanding Issues}{chapter.3}% 15
-\BOOKMARK [0][-]{section*.18}{Appendices}{}% 55
-\BOOKMARK [0][-]{section*.18}{Bibliography}{}% 66
+\BOOKMARK [0][-]{chapter.5}{Learned Probabilistic Sun Sensor}{}% 23
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 24
+\BOOKMARK [1][-]{section.5.2}{Motivation}{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.3}{Related Work}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.4}{Sun-Aided Stereo Visual Odometry}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.5}{Orientation Correction}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.6}{Bayesian Convolutional Neural Networks}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.7}{Indirect Sun Detection using a Bayesian Convolutional Neural Network}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.8}{Urban Driving Experiments: The KITTI Odometry Benchmark}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.9}{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.10}{Sensitivity Analysis}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.11}{Summary}{chapter.5}% 34
+\BOOKMARK [0][-]{section*.53}{Appendices}{}% 55
+\BOOKMARK [0][-]{section*.53}{Bibliography}{}% 66
