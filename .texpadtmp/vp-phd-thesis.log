@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  4 JAN 2020 19:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.25)  4 JAN 2020 19:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1297,51 +1297,115 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 
 
 ]
-\openout2 = `sections/math.aux'.
+\openout2 = `sections/vo.aux'.
 
- (./sections/math.tex
-Chapter 2.
+ (./sections/vo.tex
+Chapter 3.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 20.74pt on input line 1.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 20.74pt on input line 1.
+<figures/classical-vo/vo_taxonomy.pdf, id=223, 797.7925pt x 355.65161pt>
+File: figures/classical-vo/vo_taxonomy.pdf Graphic file (type pdf)
+<use figures/classical-vo/vo_taxonomy.pdf>
+Package pdftex.def Info: figures/classical-vo/vo_taxonomy.pdf  used on input line 9.
+(pdftex.def)             Requested size: 429.10176pt x 191.28925pt.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 30.
-[10
+(Font)              scaled to size 10.0pt on input line 10.
+[21
 
 
 
-]
+
+ <./figures/classical-vo/vo_taxonomy.pdf>]
+<figures/classical-vo/stereo_vo_pipeline.pdf, id=293, 1013.37483pt x 260.76343pt>
+File: figures/classical-vo/stereo_vo_pipeline.pdf Graphic file (type pdf)
+<use figures/classical-vo/stereo_vo_pipeline.pdf>
+Package pdftex.def Info: figures/classical-vo/stereo_vo_pipeline.pdf  used on input line 32.
+(pdftex.def)             Requested size: 442.65182pt x 113.90465pt.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 89.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sl' in size <10.95> not available
-(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/it' tried instead on input line 101.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 101.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scsl' in size <10.95> not available
-(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/scit' tried instead on input line 101.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scit' will be
-(Font)              scaled to size 10.95pt on input line 101.
- [11]
+(Font)              scaled to size 12.0pt on input line 42.
+<figures/classical-vo/stereo_rectification.pdf, id=295, 614.295pt x 794.97pt>
+File: figures/classical-vo/stereo_rectification.pdf Graphic file (type pdf)
+<use figures/classical-vo/stereo_rectification.pdf>
+Package pdftex.def Info: figures/classical-vo/stereo_rectification.pdf  used on input line 49.
+(pdftex.def)             Requested size: 162.60605pt x 210.42343pt.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 9.0pt on input line 50.
+<figures/classical-vo/stereo_camera.pdf, id=300, 728.7225pt x 640.3925pt>
+File: figures/classical-vo/stereo_camera.pdf Graphic file (type pdf)
+<use figures/classical-vo/stereo_camera.pdf>
+Package pdftex.def Info: figures/classical-vo/stereo_camera.pdf  used on input line 55.
+(pdftex.def)             Requested size: 212.47098pt x 186.71553pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12] [13]
-Underfull \vbox (badness 1789) has occurred while \output is active []
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sl' in size <10.95> not available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/it' tried instead on input line 63.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 63.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scsl' in size <10.95> not available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/m/scit' tried instead on input line 63.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/scit' will be
+(Font)              scaled to size 10.95pt on input line 63.
+ [22 <./figures/classical-vo/stereo_vo_pipeline.pdf>]
+<figures/classical-vo/libviso2_scan.png, id=403, 713.66624pt x 221.82875pt>
+File: figures/classical-vo/libviso2_scan.png Graphic file (type png)
+<use figures/classical-vo/libviso2_scan.png>
+Package pdftex.def Info: figures/classical-vo/libviso2_scan.png  used on input line 70.
+(pdftex.def)             Requested size: 447.17311pt x 138.99463pt.
 
- [14]
-Underfull \vbox (badness 2142) has occurred while \output is active []
 
- [15] [16] [17] [18]
-<figures/math/cnn.png, id=400, 630.355pt x 274.02374pt>
-File: figures/math/cnn.png Graphic file (type png)
-<use figures/math/cnn.png>
-Package pdftex.def Info: figures/math/cnn.png  used on input line 311.
-(pdftex.def)             Requested size: 429.10176pt x 186.53856pt.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Underfull \vbox (badness 4569) has occurred while \output is active []
+LaTeX Font Info:    Try loading font information for OT1+LinuxBiolinumT-TLF on input line 75.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
+File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/LinuxBiolinumT-TLF.
+)
+LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 75.
+ [23 <./figures/classical-vo/stereo_rectification.pdf> <./figures/classical-vo/stereo_camera.pdf>]
+Underfull \vbox (badness 7308) has occurred while \output is active []
 
- [19 <./figures/math/cnn.png>]) [20] [129
+ [24 <./figures/classical-vo/libviso2_scan.png>] [25] [26]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 237.
 
+Underfull \vbox (badness 1509) has occurred while \output is active []
+
+ [27] [28]
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/sc' will be
+(Font)              scaled to size 10.95pt on input line 289.
+
+Underfull \hbox (badness 7397) in paragraph at lines 290--291
+\OT1/LinuxLibertineT-TLF/m/n/10.95 (Chap-ter [][]6[][]) , Sun-BCNN
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
+\OT1/LinuxLibertineT-TLF/m/n/10.95 (Chap-ter [][]5[][]), Hy-draNet
+ []
+
+
+Underfull \hbox (badness 7099) in paragraph at lines 294--295
+[]|\OT1/LinuxLibertineT-TLF/m/n/10.95 DPC (Chap-ter [][]6[][]) , Sun-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--295
+\OT1/LinuxLibertineT-TLF/m/n/10.95 BCNN (Chap-ter [][]5[][]), Hy-
+ []
+
+
+Overfull \hbox (5.92862pt too wide) in paragraph at lines 287--300
+[] 
+ []
+
+) [29] [129
 
 
 
@@ -1378,22 +1442,14 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
  ) 
 Here is how much of TeX's memory you used:
- 38610 strings out of 492616
- 735858 string characters out of 6128982
- 849978 words of memory out of 5000000
- 41613 multiletter control sequences out of 15000+600000
- 578523 words of font info for 120 fonts, out of 8000000 for 9000
+ 38429 strings out of 492616
+ 733670 string characters out of 6128982
+ 846969 words of memory out of 5000000
+ 41447 multiletter control sequences out of 15000+600000
+ 582291 words of font info for 117 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,23n,79p,1219b,988s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist, replaced by a fixed one
+ 57i,23n,79p,1156b,686s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{section.1.B.3} has been referenced but does not exist, replaced by a fixed one
 
@@ -1493,13 +1549,19 @@ pdfTeX warning (dest): name{section.4.1} has been referenced but does not exist,
 
 pdfTeX warning (dest): name{chapter.4} has been referenced but does not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{section.3.3} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.2.6} has been referenced but does not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{section.3.2} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.2.5} has been referenced but does not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{section.3.1} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.2.4} has been referenced but does not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{chapter.3} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.2.3} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.2.2} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.2.1} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.2} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{section.1.3} has been referenced but does not exist, replaced by a fixed one
 
@@ -1515,12 +1577,12 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (30 pages, 651348 bytes).
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_hmhe76.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_n3gv2c.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/valentinp/Dropbox/PhD/Thesis/.texpadtmp/vp-phd-thesis.pdf (28 pages, 6076750 bytes).
 PDF statistics:
- 765 PDF objects out of 1000 (max. 8388607)
- 695 compressed objects within 7 object streams
- 291 named destinations out of 1000 (max. 500000)
- 90 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 968 PDF objects out of 1000 (max. 8388607)
+ 838 compressed objects within 9 object streams
+ 272 named destinations out of 1000 (max. 500000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

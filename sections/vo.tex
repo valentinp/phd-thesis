@@ -2,6 +2,8 @@
 \label{ch:vo}
 \epigraph{Eventually, my eyes were opened, and I really understood nature.}{\textsc{Claude Monet}}
 
+Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For two seminal tutorials on visual odometry and its more general cousin, visual SLAM, we refer the reader to \cite{Scaramuzza2011-qr,Cadena2016-ds}.
+
 \begin{figure}[h!]
 \begin{center}
 		\includegraphics[width=0.95\textwidth]{classical-vo/vo_taxonomy.pdf}
@@ -10,8 +12,6 @@
 \end{center}
 \end{figure}
 
-
-Visual odometry (VO) has a rich history in mobile robotics and computer vision. As this dissertation largely deals with the improvement of a baseline visual odometry pipeline, we first outline the components of what we have chosen to be a canonical VO system. For a seminal tutorial on visual odometry and its more general cousin, visual SLAM, we refer the reader to \cite{Scaramuzza2011-qr,Cadena2016-ds}.
 \newpage
 \begin{remark}{VO Taxonomy}
 VO can be largely divided along two dimensions (\Cref{fig:vo_taxonomy}): (1) the type of camera used to capture images and (2) the type of data association used to compute motion estimates. 
@@ -35,7 +35,7 @@ The second distinction is based on the type of data association used to match se
 \end{center}
 \end{figure}
 
-In this dissertation, we apply our learned pseudo-sensors to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline}). We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
+In this dissertation, we apply our learned models to a baseline stereo, indirect visual odometry pipeline (\Cref{fig:vo_stereo_vo_pipeline}). We choose this baseline system for its computational efficiency and robustness. We briefly summarize the main components of the pipeline here.
 
 
 
@@ -72,7 +72,7 @@ The preprocessing stage consists of two major steps. First, we use a lens model 
   	\label{fig:vo_feature_tracking}
 \end{center}
 \end{figure}
-Although a number of different types of indirect feature extraction and matching methods have been presented in the literature (e.g., \textsf{SIFT}, \cite{lowe_object_1999} or \textsf{ORB}, \cite{rublee2011orb}), we choose to use the \textsf{viso2} \citep{Geiger2011-xe} algorithm due to its computationally efficiency (it can extract thousands of matches in milliseconds on modern hardware) and its use of a motion model that facilitates matching with sequential images. Briefly, \textsf{viso2} features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \textsf{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time with a consistency check to ensure that a single feature exists all four images in two stereo camera poses. 
+Although a number of different types of indirect feature extraction and matching methods have been presented in the literature (e.g., \textsf{SIFT}, \cite{lowe_object_1999} or \textsf{ORB}, \cite{rublee2011orb}), we choose to use the \textsf{viso2} \citep{Geiger2011-xe} algorithm due to its computationally efficiency (it can extract thousands of matches in milliseconds on modern hardware) and its use of a motion model that facilitates matching with sequential images. Briefly, \textsf{viso2} features are extracted using blob and corner masks with non-minimum and non-maximum suppression. Unlike other features detectors that do not assume a particular camera motion, \textsf{viso2} assumes a smooth camera trajectory that permits fast matching through a simple sum-of-absolute-difference error metric based on Sobel filter responses. Features are matched across a stereo-pair and forward in time with a consistency check to ensure that a single feature exists in all four images in two stereo camera poses. 
 \subsubsection{Ideal Stereo Camera Model}
 We model each feature extracted by \textsf{viso2} as a three-dimensional point landmark that can be expressed (in homogeneous coordinates) in the camera frame, $\CoordinateFrame{c}$, as
 $\HomogeneousPoint{i}{c} \in
@@ -100,7 +100,7 @@ formulation, the stereo camera frame is in the left optical centre. Given $\Imag
 Given $N_t$ feature \textit{tracks} (i.e., the image locations of matching features across time), $\{\ImageLandmark{i}{c_0}, \ImageLandmark{i}{c_1}\}_{i=1}^{N_t}$, we filter out any \textit{outliers} by applying three-point random sample consensus algorithm (RANSAC, \cite{fischler1981random}) based on an analytic solution to the six degree-of-freedom motion \citep{Umeyama1991-ws} (refer to Appendix \ref{app:appendix_vo} for more details).
   
 \subsection{Maximum Likelihood Motion Solution}
-Finally, we compute the rigid-body transform between to stereo camera frames using maximum likelihood estimation. We define the rigid-body transform, $\Transform_t \in\text{SE}(3)$, to be the rigid-body transform between two subsequent stereo camera poses, 
+Finally, we compute the rigid-body transform between two stereo camera frames using maximum likelihood estimation. We define the rigid-body transform, $\Transform_t \in\text{SE}(3)$, to be the rigid-body transform between two subsequent stereo camera poses, 
 $\CoordinateFrame{c_0}$ and  $\CoordinateFrame{c_1}$, 
 \begin{equation}
 	\Transform_t = \Transform_{c_1w} \Transform^{-1}_{c_0w},
@@ -124,7 +124,7 @@ First, we can follow classical approach \citep{Maimone2007-tc} and define $ \Vec
 \begin{align}
 	 \Vector{e}_{i}(\Transform_t) = \Matrix{D}(\HomogeneousPoint{i}{c_1} - \Transform_t \HomogeneousPoint{i}{c_0}) \in \Real{}^3,
 \end{align}
-where $\Matrix{D} = \bbm \IdentityMatrix_{3\times3} & \Vector{0} \ebm \in \Real{}^{3\times4}$ converts homogenous coordinates into Euclidian coordinates.
+where $\Matrix{D} = \bbm \IdentityMatrix_{3\times3} & \Vector{0} \ebm \in \Real{}^{3\times4}$ converts homogenous coordinates into Euclidean coordinates.
 
 \noindent We can then follow \cite{Maimone2007-tc} and assume each stereo projection is corrupted by additive Gaussian noise,
 \begin{equation}
@@ -280,10 +280,10 @@ Furthermore, upon convergence, our solution to the iteratively re-weighted probl
 
 \newpage
 \section{Outstanding Issues}
-Finally, we summarize (\Cref{tab:vo_outstanding_issues}) several limitations of the canonical visual odometry pipeline we have presented in this chapter. Namely, the issues of efficiency, systematic bias and homoscedastic uncertainty. For each limitation, we will show in this dissertation that we can build a pseudo-sensor that addresses it for a particular environment (defined by the training data).
+Finally, we summarize (\Cref{tab:vo_outstanding_issues}) several limitations of the canonical visual odometry pipeline we have presented in this chapter. Namely, the issues of efficiency, systematic bias and homoscedastic uncertainty. For each limitation, we will show in this dissertation that we can build a learned model that addresses it for a particular environment (defined by the training data).
 
 \begin{table}[h!]
-	\caption{Issues that can be addressed by pseudo-sensors.}	\begin{threeparttable}
+	\caption{Issues that can be addressed by learned models.}	\begin{threeparttable}
 	\begin{tabular}{m{0.68\textwidth}m{0.28\textwidth}}
 		\toprule
 		\textsc{Synopsis} & \textsc{Addressed by} \\ \midrule  
