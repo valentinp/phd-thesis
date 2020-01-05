@@ -23,14 +23,14 @@ Before we can present the main contributions of this dissertation, it will be us
 \tdplotsetrotatedcoordsorigin{(V)}
 
 \draw [fill, tdplot_rotated_coords] (.3,.3,.3) circle [radius=0.01] node[anchor=north west]{$p$};
-\draw[-stealth,tdplot_rotated_coords, black] (O) -- (.31,.31,.31) node[midway,below] {$\VectorArrow{r}^{po}$} ;
+\draw[-stealth,tdplot_rotated_coords, black] (O) -- (.29,.29,.29) node[midway,below] {$\VectorArrow{r}^{po}$} ;
 
 
 \end{tikzpicture}
 \caption{A position vector expressed in a coordinate frame.}
 \end{figure}
 
-We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one that originates at the origin of a coordinate reference frame, $\CoordinateFrame{o}$, and terminates at the point $p$. This geometric quantity has the numerical coordinates $\Vector{r}^{po}_o$ when expressed in $\CoordinateFrame{o}$. Often, we will refer to two reference frames such as a world or \textit{inertial} frame,  $\CoordinateFrame{i}$, and a vehicle frame, $\CoordinateFrame{v}$. Rotation matrices or rigid-body transformations that convert coordinates from $\CoordinateFrame{i}$ to $\CoordinateFrame{v}$ will be represented as $\Transform_{vi}$, and $\Rotation_{vi}$\footnote{We use $\Rotation$ and not $\Matrix{R}$ for rotation matrices to avoid confusion with common notation for measurement model covariance.}, respectively. 
+We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one that originates at the origin of a coordinate reference frame, $\CoordinateFrame{o}$, and terminates at the point $p$. This geometric quantity has the numerical coordinates $\Vector{r}^{po}_o$ when expressed in $\CoordinateFrame{o}$. Often, we will refer to two reference frames such as a world or \textit{inertial} frame,  $\CoordinateFrame{i}$, and a vehicle frame, $\CoordinateFrame{v}$. Rotation matrices and rigid-body transformations that convert coordinates from $\CoordinateFrame{i}$ to $\CoordinateFrame{v}$ will be represented as $\Rotation_{vi}$\footnote{We use $\Rotation$ and not $\Matrix{R}$ for rotation matrices to avoid confusion with common notation for measurement model covariance.} and $\Transform_{vi}$, respectively. 
 
 
 \begin{figure}[h!]
@@ -47,7 +47,7 @@ We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one 
 \draw[very thick,->, green] (0,0,0) -- (0,0.7,0);
 \draw[very thick,->, blue] (0,0,0) -- (0,0,0.7);
 \tdplotsetcoord{V}{\rvec}{\thetavec}{\phivec}
-\draw[-stealth] (O) -- (V) node[midway,above] {$\VectorArrow{t}^{vi}$} ;
+\draw[-stealth] (O) -- ($(V) - (0.01,0.01,0.01)$) node[midway,above] {$\VectorArrow{t}^{vi}$} ;
 
 \tdplotsetrotatedcoords{\phivec}{\thetavec}{0} 
 \tdplotsetrotatedcoordsorigin{(V)}
@@ -60,9 +60,9 @@ We refer to a three-dimensional position vector, $\VectorArrow{r}^{po}$, as one 
 \draw[tdplot_rotated_coords] (0,0,0) node[anchor=south east] {$\CoordinateFrame{v}$};
 
 %Local vector
-\draw [fill, tdplot_rotated_coords] (.31,.31,.31) circle [radius=0.01] node[anchor=north west]{$p$};
-\draw[-stealth,tdplot_rotated_coords, purple] (0,0,0) -- (.3,.3,.3) node[midway,above] {\footnotesize $\VectorArrow{r}^{pv}$};
-\draw[-stealth,tdplot_rotated_coords, black] (O) -- (.3,.3,.3) node[midway,below] {$\VectorArrow{r}^{pi}$} ;
+\draw [fill, tdplot_rotated_coords] (.305,.305,.305) circle [radius=0.01] node[anchor=north west]{$p$};
+\draw[-stealth,tdplot_rotated_coords, purple] (0,0,0) -- (.29,.29,.29) node[midway,above] {\footnotesize $\VectorArrow{r}^{pv}$};
+\draw[-stealth,tdplot_rotated_coords, black] (O) -- (.30,.28,.29) node[midway,below] {$\VectorArrow{r}^{pi}$} ;
 
 \end{tikzpicture}
 \label{fig:math_two_ref_frames}
@@ -117,7 +117,7 @@ We can also represent a rotation with unit quaternion, $\quat$. A unit quaternio
 \begin{equation}
 	\quat = \bbm q_\omega \\ \quat_v \ebm \in S^3, ~~ (\Norm{\quat} = 1).
 \end{equation}
-Unit quaternions also form a Lie group \citep{Sola2018-kg} (but not a matrix Lie group) and and lie on a three-dimensional unit sphere within $\Real{}^4$. We will overload our exponential map operator to use the same notation to define a surjective map from three parameters to unit quaternions,
+Unit quaternions also form a Lie group \citep{Sola2018-kg} (but not a matrix Lie group) and compose the three-dimensional unit sphere within $\Real{}^4$, $S^3$. In a minor abuse of notation, we will use the same notation to refer to the surjective exponential map that maps three parameters to unit quaternions,
 \begin{equation}
 \quat = \MatExp{\RotationVector} = \bbm \cos{(\phi/2)} \\ \RotationAxisVector \sin{(\phi/2)} \ebm.	
 \end{equation}
@@ -133,10 +133,10 @@ In particular, when computing the (also overloaded) logarithmic map,
 \begin{equation}
 	\MatLog{\quat} \approx \frac{\quat_v}{q_\omega} \left( 1 - \frac{\Norm{\quat_v}^2}{3 q_\omega^2}\right) ~~ \textrm{when} ~~ \phi \approx 0. 
 \end{equation}
-A fantastic summary of the origins of rotation parameterizations and quaternion algebra can be found in \cite{Altmann1989-ru}.
+A summary of the origins of rotation parameterizations and quaternion algebra can be found in \cite{Altmann1989-ru}.
 
 \subsection{Topology and Parameterizations}
-Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$ \citep{Hartley2013-rc}. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parameterizations with $n=3$ (like axis-angle parameters or Euler angles) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parameterizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, it is not possible to uniquely represent rotations whose angle is $\pi$. 
+Topologically, $\LieGroupSO{3}$ is \textit{diffeomorphic}\footnote{A diffeomorphism is a smooth invertible function that maps one differentiable manifold to another.} to the real projective space, $\mathbb{RP}^3$, the space of all lines passing through the origin in $\RealNumbers^4$ \citep{Hartley2013-rc}. As a result, any global $n$-parametrization of $\LieGroupSO{3}$ will incur some cost. If we use rotation matrices ($n = 9$), we need to ensure orthonormality and that $\det \Rotation = 1$. With unit quaternions ($n = 4$), we need to account for the unit-norm constraint and take note of the double cover. Parameterizations with $n=3$ (like axis-angle parameters or Euler angles) will be bounded, but unconstrained. However, due to the topological structure of $\LieGroupSO{3}$ all three-parameter parameterizations will not be invertible for certain rotations. With Euler angles, one has to be wary of \textit{gimbal lock}, wherein two angles become indeterminate from each other. For axis-angle parameters, even if we apply the bounds $0 \leq \phi \leq \pi$, it is not possible to uniquely represent rotations whose angle is $\pi$. 
  
 \begin{remark}{SO(3) Topology}
 Since we can represent any element in $\LieGroupSO{3}$ by a (non-unique) axis-angle pair $\{\Vector{a}, \phi\}$, $\Vector{a} \in S^2$, and $0 \leq \phi \leq \pi$, this space can be visualized as the closed ball of radius $\pi$ in $\RealNumbers{}^3$ using the combined axis-angle coordinates $\RotationVector = \phi \RotationAxisVector$. However, at the boundary ($\phi = \pi$), we must account for the fact that rotations represented by $\{\Vector{a}, \pi\}$ are identical to those represented by $\{-\Vector{a}, \pi\}$. In other words, we must \textit{identify} all antipodal points, $\RotationVector$ and $-\RotationVector$ when $\Norm{\RotationVector} = \pi$. This closed 3-ball with identified antipodal points on its boundary is topologically equivalent to the 3-sphere ($S^3$) with its antipodal points identified. In turn, this space is equivalent to $\mathbb{RP}^3$ since any line passing through the origin in $\RealNumbers^4$ can be mapped to two unit normals, $\pm \Vector{n} \in S^3$.
@@ -145,7 +145,7 @@ This \textit{identification} makes rotation representation particularly tricky i
 Accordingly, in this dissertation, we parametrize rotations as the constrained quantities, $\quat$ or $\Rotation$. When dealing with perturbations about a given rotation (e.g., to compute updates to a state, or to propagate uncertainty), we use \textit{small} rotations, $\delta \Rotation$ or $\delta \quat$, parametrized using three unconstrained parameters that we can assume are a one-to-one mapping to elements in $\LieGroupSO{3}$  (since, for small rotations, $\Norm{\RotationVector} << \pi$).
 
 \section{Spatial Transforms}
-The rigid body transform $\Transform$ is a also a member of the matrix Lie group, the Special Euclidian group $\LieGroupSE{3}$ and can be defined as a $4 \times 4$ matrix as follows:
+The rigid body transform $\Transform$ is a also a member of the matrix Lie group, the Special Euclidean group $\LieGroupSE{3}$ and can be defined as a $4 \times 4$ matrix as follows:
 
 \begin{equation}
 \LieGroupSE{3} = \{ \Transform = \bbm \Rotation & \Vector{t} \\ \Vector{0}^\Tr & 1 \ebm \in \Real{}^{4 \times 4} | ~  \Rotation \in \LieGroupSO{3},  \Vector{t} \in \Real{}^3  \}.
@@ -166,7 +166,7 @@ In practice, we can evaluate the exponential map through the Euler-Rodriguez for
 \end{equation}
 where
 \begin{equation}
-\LeftJacobianSO(\RotationVector) = \frac{\sin{\phi}}{\phi} \IdentityMatrix + (1 - \frac{\sin{\phi}}{\phi}) \RotationAxisVector\RotationAxisVector^\Tr + \frac{1 - \cos{\phi}}{\phi} \RotationAxisVector^\wedge.
+\LeftJacobianSO(\RotationVector) = \frac{\sin{\phi}}{\phi} \IdentityMatrix + \left(1 - \frac{\sin{\phi}}{\phi}\right) \RotationAxisVector\RotationAxisVector^\Tr + \frac{1 - \cos{\phi}}{\phi} \RotationAxisVector^\wedge.
 \end{equation}
 
 
@@ -181,7 +181,7 @@ This allows us to use the homogenous point representation for $\Vector{r}^{pi}_i
 \begin{equation}
 	\bbm \Vector{r}^{pv}_v \\ 1 \ebm = \underbrace{\bbm \Rotation_{vi} & \Vector{t}_v^{iv} \\ \Vector{0}^\Tr & 1 \ebm}_{\Transform_{vi}} \bbm \Vector{r}^{pi}_i \\ 1 \ebm,
 \end{equation}
-which is numerically equivalent to  
+which is algebraically equivalent to  
 \begin{equation}
  \Vector{r}^{pv}_v =  \Rotation_{vi} \Vector{r}^{pi}_i + \Vector{t}_v^{iv}.  
  \end{equation}
@@ -189,7 +189,7 @@ which is numerically equivalent to
 \section{Perturbations and Tangent Spaces}
 \label{sec:math_perturbations}
 
-When solving optimization problems that involve rotations or rigid-body transforms, it is often useful to consider a small \textit{perturbation} about an operating point. By leveraging a core property of Lie groups (that the admit a local, or `tangent', Euclidian parameterization), we can construct an iterative algorithm that successively updates an operating point through optimal perturbations in an unconstrained tangent space.
+When solving optimization problems that involve rotations or rigid-body transforms, it is often useful to consider a small \textit{perturbation} about an operating point. By leveraging a core property of Lie groups (that the admit a local, or `tangent', Euclidean parameterization), we can construct an iterative algorithm that successively updates an operating point through optimal perturbations in an unconstrained tangent space.
 Using rotations as an example, we can decompose a rotation into a mean, $\Mean{\Rotation} \definedtobe \MatExp{\Mean{\RotationVector}}$, and a small perturbation $\delta \RotationVector$ in three different ways \citep{Barfoot2017-ri}:
 \begin{align}
 \Rotation &\leftarrow \left\{  	\begin{array}{ll}
@@ -235,7 +235,7 @@ where $\LeftJacobianSE$, the left Jacobian of $\LieGroupSE{3}$, is defined as
 with $\Matrix{Q}(\TransformVector)$ having an analytic expression (see \cite{Barfoot2017-ri}).
 \end{remark}
 
-\section{Uncertainty Through Injection}
+\section{Uncertainty on Lie Groups}
 
 We can also use perturbation theory to implicitly define uncertainty on constrained manifolds (see \cite{Barfoot2014-ac} for a thorough discussion). Given a concentrated\footnote{In this context, concentrated means that the chances of sampling $\tilde{\delta \TransformVector}$ such that $\delta \phi \geq \pi$ is near $0$ to avoid issues with singularities.} normal density, $\delta \TransformVector \sim \NormalDistribution{}(\Matrix{0}, \Matrix{\Sigma}_{6 \times 6})$, we can \textit{inject} this unconstrained density onto the Lie group through left perturbations about some mean using
 \begin{align}
@@ -257,9 +257,9 @@ where $\otimes$ refers to the standard quaternion product operator \citep{Sola20
 \section{Deep Learning}
 Three of the four pseudo-sensors (Sun-BCNN, DPC, and HydraNet---\Cref{ch:dpc,ch:sun-bcnn,ch:hydranet}) in this dissertation are built using neural networks and the tools of \textit{deep learning} \citep{LeCun2015-qf}. We briefly summarize these concepts here and refer the reader to \cite{Goodfellow-et-al-2016} for a more thorough treatment.
 \subsection{Feed-forward Neural Networks} 
-The basic premise of deep learning is that certain kinds of data are naturally decomposed into hierarchical structure. For instance, images may have local textures (e.g. edges), which compose basic primitives (e.g., leaves), which then combine to form semantic objects (e.g, a tree). Consequently, for this type of data, latent information may be efficiently extracted through an analogous hierarchical model.  Typically, this is done through a neural network composed of multiple \textit{layers} (the term \textit{neural} comes from the loose biological basis for each layer, and \textit{deep} refers to the amount of layers contained in state-of-the-art models). A standard neural layer computes a non-linear transformation from an input $\Vector{z}_\ell$ to an output $\Vector{z}_{\ell+1}$ as  
+The basic premise of deep learning is that certain kinds of data are naturally decomposed into hierarchical structure. For instance, images may have local textures (e.g., edges), which compose basic primitives (e.g., leaves), which then combine to form semantic objects (e.g., a tree). Consequently, for this type of data, latent information may be efficiently extracted through an analogous hierarchical model.  Typically, this is done through a neural network composed of multiple \textit{layers} (the term \textit{neural} comes from the loose biological basis for each layer, and \textit{deep} refers to the amount of layers contained in state-of-the-art models). A standard neural layer computes a non-linear transformation from an input $\Vector{z}_\ell$ to an output $\Vector{z}_{\ell+1}$ as  
 \begin{equation}
-\Vector{z}_{\ell+1} = \Vector{f}_\ell(\Vector{z}) = \Vector{\sigma}\left(\Matrix{W}_\ell\Vector{z}_\ell + \Vector{b}_\ell\right),
+\Vector{z}_{\ell+1} = \Vector{f}_\ell(\Vector{z}_\ell) = \Vector{\sigma}\left(\Matrix{W}_\ell\Vector{z}_\ell + \Vector{b}_\ell\right),
 \end{equation}
 where $\Matrix{W}_\ell \in \Real^{D_{\ell_{out}} \times D_{\ell_{in}}}$ and $\Vector{b}_\ell \in \Real^{D_{\ell_{out}}}$ are the parameters of the layer (often referred to as the \textit{weight matrix} and \textit{bias}, respectively) and $\Vector{\sigma}(\cdot)$ is an element-wise \textit{non-linearity} function.
 
@@ -277,7 +277,7 @@ where $\Matrix{W}_\ell \in \Real^{D_{\ell_{out}} \times D_{\ell_{in}}}$ and $\Ve
 \end{remark}
 To produce a \textit{feed-forward neural network}, $L$ layers are composed in a hierarchy to create a single parametric function,
 \begin{equation}
- NN(\Vector{x}; \GenericParameters) = \Vector{f}_L \circ \Vector{f}_{L-1} \circ \cdots \circ \Vector{f}_{1}(\Vector{x}),
+ \NeuralNetwork(\Vector{x}; \GenericParameters) = \Vector{f}_L \circ \Vector{f}_{L-1} \circ \cdots \circ \Vector{f}_{1}(\Vector{x}),
 \end{equation}
 where $f \circ g$ refers to function composition, $f \circ g \triangleq f (g(\cdot))$, and $\GenericParameters = \{\Matrix{W}_\ell, \Vector{b}_\ell\}_{\ell=1}^L$ are the parameters of the network.
 
@@ -302,7 +302,7 @@ which is convolution with the kernel `flipped.' Unlike convolution, cross-correl
 \end{remark}
 In this discrete case, a kernel can be represented by a kernel matrix, $\Matrix{K}$, which can have different \textit{size} (e.g., $\Matrix{K} \in \Real^{3\times3}$), and we may  compute \Cref{eq:math_convolution} at different spatial intervals called \textit{strides}. To ensure that the convolution is defined at the boundaries of the signal, one can also use different \textit{padding} strategies. Please refer to \cite{Goodfellow-et-al-2016} for further information about these hyper-parameters. 
 
- By limiting the size of a kernel, we can use convolutional layers (parametrized by $\Matrix{K}$) to efficiently process high-dimensional signals. For images, a standard feed-forward layer would require a scalar weight for every pixel. In contrast, a convolutional layer can rely on a single kernel (with significantly less parameters than a weight matrix) to process an entire image with \textit{shared weights}. This reduces the number of parameters of our network, but limits the type of spatial correlations we can model (since kernels can only capture local relations). To increase the potential modelling capacity of our network, we can use several independent kernels to process and output multiple \textit{channels} (\Cref{fig:math_cnn}). Finally, it is important to note that the convolution operator is particularly suited to visual data, as kernels can act as \textit{filters} that pick out salient visual features like corners and edges.
+ By limiting the size of a kernel, we can use convolutional layers (parametrized by $\Matrix{K}$) to efficiently process high-dimensional signals. For images, a standard feed-forward layer would require a scalar weight for every pixel. In contrast, a convolutional layer can rely on a single kernel (with significantly fewer parameters than a weight matrix) to process an entire image with \textit{shared weights}. This reduces the number of parameters of our network, but limits the type of spatial correlations we can model (since kernels can only capture local relations). To increase the potential modelling capacity of our network, we can use several independent kernels to process and output multiple \textit{channels} (\Cref{fig:math_cnn}). Finally, it is important to note that the convolution operator is particularly suited to visual data, as kernels can act as \textit{filters} that pick out salient visual features like corners and edges.
 
 % For example, given a grayscale square image of size $200 \times 200$ pixels, a standard feed forward formulation would require a weight matrix with $40 000$ parameters. Instead, a typical convolutional neural network will apply kernels of size $5 \times 5$. 
 
@@ -318,13 +318,13 @@ In this discrete case, a kernel can be represented by a kernel matrix, $\Matrix{
 Given a (convolutional) neural network with a set of parameters $\GenericParameters$ (where $\GenericParameters$ may include weight and bias parameters, $\Matrix{W}_\ell, \Matrix{b}_\ell$, as well as convolutional kernel parameters, $\Matrix{K}_{k\ell}$) we can use \textit{supervised training} to obtain an optimal parameter set $\GenericParameters^*$. Supervised training requires a dataset of training pairs $\mathcal{D} \definedtobe \{(\Vector{x}_1, \Vector{y}_1),...,(\Vector{x}_N, \Vector{y}_N) \}$ where $\Vector{x} \in \Real^{D_x}$ is an \textit{input} and $\Vector{y} \in \Real^{D_y}$ is a \textit{target} that corresponds to the desired output of our parametric model. To \textit{train} the network, we find the parameters which minimize a \textit{loss function}, $\mathcal{L}$, over this dataset,
 \begin{equation}
 \label{eq:math_nn_loss}
-\GenericParameters^* = \ArgMin{\GenericParameters} \mathcal{L}\left(\{NN(\Vector{x}_i; \GenericParameters), \Vector{y}_i\right\}_{i=1}^N).
+\GenericParameters^* = \ArgMin{\GenericParameters} \mathcal{L}\left(\{\NeuralNetwork(\Vector{x}_i; \GenericParameters), \Vector{y}_i\right\}_{i=1}^N).
 \end{equation}
 For example, a common loss function for regression problems is \textit{mean squared error},
 \begin{equation}
-\GenericParameters^* = \ArgMin{\GenericParameters} \frac{1}{2N}\sum_{i=1}^N\Norm{NN(\Vector{x}_i; \GenericParameters) - \Vector{y}_i}_2^2.
+\GenericParameters^* = \ArgMin{\GenericParameters} \frac{1}{2N}\sum_{i=1}^N\Norm{\NeuralNetwork(\Vector{x}_i; \GenericParameters) - \Vector{y}_i}_2^2.
 \end{equation}
-In this dissertation, we will use supervised training in \Cref{ch:dpc,ch:sun-bcnn,ch:hydranet} and we will explore different forms of loss functions for geometric quantities that do not allow for a simple Euclidian norms. 
+In this dissertation, we will use supervised training in \Cref{ch:dpc,ch:sun-bcnn,ch:hydranet} and we will explore different forms of loss functions for geometric quantities that do not allow for a simple Euclidean norms. 
 \subsection{Practical Considerations}
 \label{section:math_dl_practical}
 \subsubsection{Optimization}

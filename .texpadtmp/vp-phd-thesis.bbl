@@ -149,6 +149,11 @@ Duan, Y., Chen, X., Houthooft, R., Schulman, J., and Abbeel, P. (2016).
 \newblock In {\em Proc. Int. Conf. on Machine Learning}, ICML'16, pages
   1329--1338.
 
+\bibitem[Durrant-Whyte et~al., 1996]{durrant1996SLAM}
+Durrant-Whyte, H., Rye, D., and Nebot, E. (1996).
+\newblock Localization of autonomous guided vehicles.
+\newblock In {\em Robotics Research}, pages 613--625. Springer.
+
 \bibitem[Eisenman et~al., 2002]{Eisenman2002-cg}
 Eisenman, A.~R., Liebe, C.~C., and Perez, R. (2002).
 \newblock Sun sensing on the mars exploration rovers.
@@ -629,6 +634,12 @@ Sibley, G., Matthies, L., and Sukhatme, G. (2007).
 \newblock In {\em Robotics Research}, pages 285--294. Springer Berlin
   Heidelberg.
 
+\bibitem[Sobel, 2005]{sobel2005longitude}
+Sobel, D. (2005).
+\newblock {\em Longitude: The true story of a lone genius who solved the
+  greatest scientific problem of his time}.
+\newblock Macmillan.
+
 \bibitem[Sola, 2017]{Sola2017quaternion}
 Sola, J. (2017).
 \newblock Quaternion kinematics for the error-state kalman filter.
@@ -665,14 +676,6 @@ Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D., Erhan, D.,
 \newblock Going deeper with convolutions.
 \newblock In {\em Proc. {IEEE} Conf. Comput. Vision and Pattern Recognition,
   ({CVPR})}, pages 1--9.
-
-\bibitem[Triggs et~al., 2000]{triggs_bundle_2000}
-Triggs, B., McLauchlan, P.~F., Hartley, R.~I., and Fitzgibbon, A.~W. (2000).
-\newblock Bundle {Adjustment} — {A} {Modern} {Synthesis}.
-\newblock In Goos, G., Hartmanis, J., van Leeuwen, J., Triggs, B., Zisserman,
-  A., and Szeliski, R., editors, {\em Vision {Algorithms}: {Theory} and
-  {Practice}}, volume 1883, pages 298--372. Springer Berlin Heidelberg, Berlin,
-  Heidelberg.
 
 \bibitem[Tsotsos et~al., 2015]{Tsotsos2015}
 Tsotsos, K., Chiuso, A., and Soatto, S. (2015).
