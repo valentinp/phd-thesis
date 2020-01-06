@@ -1,10 +1,10 @@
-\chapter{Learned Pose Corrections}
+\chapter{Learning Estimator Bias}
 \label{ch:dpc}
 \epigraph{Life can only be understood backwards; but it must be lived forwards.}{Søren Kierkegaard}
 
 \section{Introduction}
 
-If a pseudo-sensor like Sun-BCNN can extract useful orientation information directly from images, is it possible to create a more general approach that can learn full $\LieGroupSE{3}$ corrections to an existing egomotion estimate? In this chapter, we show that this is possible through what we call a \textit{deep pose correction} (DPC) network. 
+If a learned model like Sun-BCNN can extract useful orientation information directly from images, is it possible to create a more general approach that can learn full $\LieGroupSE{3}$ corrections to an existing egomotion estimate? In this chapter, we show that this is possible through what we call a \textit{deep pose correction} (DPC) network. 
 
 \begin{remark}{Associated Publications}
 DPC is associated with the journal publication:
@@ -42,7 +42,7 @@ that include estimator biases, poor calibration, and environmental factors (e.g.
 
 
 
-We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment, and account for sensor calibration and noise.  Instead, we take inspiration from Sun-BCNN that demonstrates that CNNs can infer difficult-to-model geometric quantities to improve an existing localization estimate.  
+We contend that this type of complete replacement places an unnecessary burden on the CNN. Not only must it learn projective geometry, but it must also understand the environment and account for sensor calibration and noise.  Instead, we take inspiration from Sun-BCNN that demonstrates that CNNs can infer difficult-to-model geometric quantities to improve an existing localization estimate.  
 In a similar vein, we propose a system (\Cref{fig:dpc_system_overview}) that takes as its starting point an efficient, classical localization algorithm (like our canonical indirect VO pipeline) that computes high-rate pose estimates. To it, we add a Deep Pose Correction Network (DPC-Net) that learns low-rate, `small' \textit{corrections} from training data that we then fuse with the original estimates. DPC-Net does not require any modification to an existing localization pipeline, and can learn to correct multi-faceted errors from estimator bias, sensor mis-calibration or environmental effects.  
 
 % By applying the correction to the final $\LieGroupSE{3}$ pose, we design DPC-Net to learn effects that are often difficult to model by hand: estimator bias, environmental factors, and sensor mis-calibrations.
@@ -267,7 +267,7 @@ Our training datasets contained between 35,000 and 52,000 training samples\footn
 
 
 \subsubsection{Rotation}
-To train rotation-only corrections, we extracted the $\LieGroupSO{3}$ component of  $\TargetCorrectionIndex$ and trained our network using \Cref{eq:so3loss_fn}. Further, owing to the fact that rotation information can be extracted from monocular images, we replaced the input stereo pairs in DPC-Net with monocular images from the left camera\footnote{The \textit{stereo} VO estimator remained unchanged.}.
+To train rotation-only corrections, we extracted the $\LieGroupSO{3}$ component of  $\TargetCorrectionIndex$ and trained our network using \Cref{eq:so3loss_fn}. Further, owing to the fact that rotation information can be extracted from monocular images, we replaced the input stereo pairs in DPC-Net with monocular images from the left camera.\footnote{The \textit{stereo} VO estimator remained unchanged.}
 
 \subsubsection{Yaw}
 To further simplify the corrections, we extracted a single-degree-of-freedom yaw rotation correction angle\footnote{We define yaw in the camera frame as the rotation about the camera's vertical $y$ axis.} from $\TargetCorrectionIndex$, and trained DPC-Net with monocular images and a mean squared loss.
@@ -431,7 +431,7 @@ where $N_s$ and $s_p$ (the number of segments of a given length, and the number 
   \label{fig:cum-seg-errs-distorted} 
 \end{figure}
 
-\subsection{Correcting Sparse Visual Odometry}
+%\subsection{Correcting Sparse Visual Odometry}
 \Cref{fig:dpc-cum-errs,fig:dpc-seg-errs} plot c-ATE and mean segment errors for test sequences \texttt{00},  \texttt{02} and  \texttt{05} for three different DPC-Net models paired with our S-VO pipeline. \Cref{tab:nondistorted_stats} summarize the results quantitatively, while \Cref{fig:top-downs} plots the North-East projection of each trajectory.  On average, DPC-Net trained with the full $\LieGroupSE{3}$ loss reduced translational m-ATE by 72\%, rotational m-ATE by 75\%, translational mean segment errors by 40\% and rotational mean segment errors by 44\% (relative to the uncorrected estimator). Mean segment errors of the sparse estimator with DPC approached those observed from the dense estimator on sequence \texttt{00}, and outperformed the dense estimator on \texttt{02}. Sequence \texttt{05} produced two notable results: (1) although DPC-Net significantly reduced S-VO errors, the dense estimator still outperformed it in all statistics and (2) the full $\LieGroupSE{3}$ corrections performed slightly worse than their $\LieGroupSO{3}$ counterparts. We suspect the latter effect is a result of motion estimates with predominantly rotational errors which are easier to learn with an $\LieGroupSO{3}$ loss.
 
 In general, coupling DPC-Net with a simple frame-to-frame sparse visual localizer yielded a final localization pipeline with accuracy similar to that of a dense pipeline while requiring significantly less visual data (recall that DPC-Net uses resized images).

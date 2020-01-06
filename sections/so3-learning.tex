@@ -1,8 +1,8 @@
-\chapter{Learned Probabilistic Rotations}
+\chapter{Learning Rotation with Uncertainty}
 \label{ch:hydranet}
 \epigraph{Anyone who has ever used any other parametrization of the rotation group will, within hours of taking up the quaternion parametrization, lament his or her misspent youth.}{Simon Altmann}
 
-\section{Introduction}
+%\section{Introduction}
 % \begin{figure*}[h!]
 %\centering
 %\includegraphics[width=0.8\textwidth]{hydranet.pdf}
@@ -10,7 +10,7 @@
 % \label{fig:dpc_intro_fig}
 %\end{figure*}
 
-Finally, we take the lessons of Sun-BCNN (\Cref{ch:sun-bcnn}) and DPC-Net (\Cref{ch:dpc}) and present a method to learn probabilistic estimates of rotation. We show that this pseudo-sensor can extract relative rotation estimates which can be fused with full pose estimates from a canonical VO pipeline estimates through pose graph optimization. To do this, we develop a network structure we call \textit{HydraNet} that can account for both \textbf{epistemic and aleatoric} sources of uncertainty and adapt it to the problem of estimating elements of $\LieGroupSO{3}$. 
+Finally, building on the lessons of Sun-BCNN (\Cref{ch:sun-bcnn}) and DPC-Net (\Cref{ch:dpc}), we focus on extracting estimates of camera rotation from visual data. To facilitate fusion with motion estimates from an existing egomotion pipeline, we develop a network structure and loss to extract consistent estimates of three degree-of-freedom uncertainty alongside rotation predictions. To do this, we develop a network structure we call \textit{HydraNet} that can account for both \textbf{epistemic and aleatoric} sources of uncertainty and adapt it to the problem of estimating elements of $\LieGroupSO{3}$. 
 
 \begin{remark}{Associated Publications}
 This work is associated with the publication
@@ -32,7 +32,7 @@ In this chapter we elaborate on the formulation and experimental validation pres
 Accounting for position and orientation, or pose, is at the heart of computer vision. Many algorithms in image classification and feature tracking, for example, are explicitly concerned with output that is robust to camera orientation. Conversely, visual odometry, structure from motion, and SLAM use visual sensors to estimate and track the pose of a camera as it moves through some environment. 
 
  
-As discussed in the previous chapter, several recent authors  \citep{Clark2017, Melekhov2017-dl, Kendall2015-ew} has attempted to  transfer the success of deep neural networks in many areas of computer vision to the task of camera pose estimation. These approaches, however, can produce arbitrarily poor pose estimates if sensor data differs from what is observed during training (i.e., it is `out of training distribution') and their monolithic nature makes them difficult to debug. Further, as we have pointed out in previous chapters, despite much research effort, classical motion estimation algorithms, like indirect stereo visual odometry, still achieve state-of-the-art performance in nominal conditions. Nevertheless, the representational power of deep regression algorithms makes them an attractive option to complement classical motion estimation when these latter methods perform poorly (e.g., under diverse lighting conditions or low scene texture). By endowing deep regression models with a useful notion of uncertainty, we can account for out-of-training-distribution errors and fuse these models with classical methods using probabilistic factor graphs. In this work, we choose to focus on rotation regression, since many motion algorithms are sensitive to rotation errors \citep{2018_Peretroukhin_Inferring,Olson2003-ax}, and good rotation initializations can be critical to robust optimization. 
+As discussed in the previous chapter, several recent authors  \citep{Clark2017, Melekhov2017-dl, Kendall2015-ew} have attempted to  transfer the success of deep neural networks in many areas of computer vision to the task of camera pose estimation. These approaches, however, can produce arbitrarily poor pose estimates if sensor data differs from what is observed during training (i.e., it is `out of training distribution') and their monolithic nature makes them difficult to debug. Further, as we have pointed out in previous chapters, despite much research effort, classical motion estimation algorithms, like indirect stereo visual odometry, still achieve state-of-the-art performance in nominal conditions. Nevertheless, the representational power of deep regression algorithms makes them an attractive option to complement classical motion estimation when these latter methods perform poorly (e.g., under diverse lighting conditions or low scene texture). By endowing deep regression models with a useful notion of uncertainty, we can account for out-of-training-distribution errors and fuse these models with classical methods using probabilistic factor graphs. In this work, we choose to focus on rotation regression, since many motion algorithms are sensitive to rotation errors \citep{2018_Peretroukhin_Inferring,Olson2003-ax}, and good rotation initializations can be critical to robust optimization. 
 
 
 
@@ -51,7 +51,7 @@ As discussed in the previous chapter, several recent authors  \citep{Clark2017, 
 
 Much recent work in the literature has been devoted to replacing classical localization algorithms with deep network equivalents. Some approaches \citep{Clark2017, Kendall2015-ew, Kendall2017-ud, Melekhov2017-dl} learn poses  directly, while others learn them indirectly as the spatial transforms that result in minimal loss defined over some other domain (e.g., pixel or depth space) \citep{Byravan2017-ik, Handa2016-hm}.
 
-Despite this surge of research in neural-network-based replacements, some authors have nevertheless used deep networks to augment classical state estimation algorithms. Deep networks have been trained as pose correctors whose corrections can be fused with existing estimates through pose graph relaxation \citep{2018_Peretroukhin_Deep} (see \Cref{ch:dpc}), and as  depth prediction networks that can be incorporated into a classical monocular pipelines to provide an initial estimate for metric scale \citep{yang:2018}. The pseudo-sensor we present in this chapter is perhaps closest in spirit to \citep{Haarnoja2016-ph} which fuses deep probabilistic observation functions with classical models using a Kalman Filter, but focuses on unconstrained targets and does not investigate uncertainty quantification on manifolds.
+Despite this surge of research in neural-network-based replacements, some authors have nevertheless used deep networks to augment classical state estimation algorithms. Deep networks have been trained as pose correctors whose corrections can be fused with existing estimates through pose graph relaxation (\Cref{ch:dpc}), and as  depth prediction networks that can be incorporated into a classical monocular pipelines to provide an initial estimate for metric scale \citep{yang:2018}. The pseudo-sensor we present in this chapter is perhaps closest in spirit to \citep{Haarnoja2016-ph} which fuses deep probabilistic observation functions with classical models using a Kalman Filter, but focuses on unconstrained targets and does not investigate uncertainty quantification on manifolds.
 
 In the robotics community, there has been significant effort to leverage the tools of matrix Lie groups to handle poses and associated uncertainty \citep{Sola2018-kg, Barfoot2014-ac}. In parallel, the computer vision community has developed a rich literature of rotation averaging \citep{Hartley2013-rc} which focuses on principled ways to combine elements of $\LieGroupSO{3}$ based on different metrics defined over the group.
 
@@ -60,7 +60,7 @@ Finally, uncertainty in the context of deep learning has been investigated throu
 \section{Approach}
 
 We develop our method for probabilistic $\LieGroupSO{3}$ regression in three steps. 
-First, we motivate why learning elements of $\LieGroupSO{3}$ is particularly germane to field of egomotion estimation. Second, we present a multi-headed network that can regress unconstrained targets and produce consistent uncertainty estimates. Toward this end, we present a one-dimensional regression experiment, validating prior works \citep{Lakshminarayanan2017,Osband2016} that suggest a bootstrap-inspired approach provides better calibrated uncertainties than one based on stochastic sampling through MC dropout and can be straightforwardly extended to incorporate both aleatoric and epistemic uncertainty. Finally, we generalize these results to targets that belong to $\LieGroupSO{3}$ by defining a rotation average using the quaternionic metric, and show how we can compute anisotropic uncertainty on four-dimensional unit quaternions.
+First, we motivate why learning elements of $\LieGroupSO{3}$ is particularly germane to the task of egomotion estimation. Second, we present a multi-headed network that can regress unconstrained targets and produce consistent uncertainty estimates. Toward this end, we present a one-dimensional regression experiment, validating prior works \citep{Lakshminarayanan2017,Osband2016} that suggest a bootstrap-inspired approach provides better calibrated uncertainties than one based on stochastic sampling through MC dropout and can be straightforwardly extended to incorporate both aleatoric and epistemic uncertainty. Finally, we generalize these results to targets that belong to $\LieGroupSO{3}$ by defining a rotation average using the quaternionic metric, and show how we can compute anisotropic uncertainty on four-dimensional unit quaternions.
 
 \begin{figure}
 	\centering
@@ -76,10 +76,7 @@ First, rotations can be learned without reference to scale, using monocular imag
 
 \subsection{Probabilistic Regression and HydraNet}
 
-To begin, we will consider a (non-Bayesian) approach to uncertainty quantification. Consider the one dimensional regression task where, given an input $x \in \Real$, with a target output $y_t \in \Real$, we desire a probabilistic estimate
-\begin{equation}
-\Mean{y}, \sigma^2,
-\end{equation}
+To begin, we will consider a (non-Bayesian) approach to uncertainty quantification. Consider the one dimensional regression task where, given an input $x \in \Real$, with a target output $y_t \in \Real$, we desire a probabilistic estimate $\{\Mean{y}, \sigma^2\}$
 such that $\sigma^2$ maximizes a likelihood model of our prediction $\Mean{y}$ given that we know $y_t$.
 \subsubsection{HydraNet}
 One possible way to obtain $\Mean{y}$ is to train a deep neural network, $g(x)$. To endow this network with uncertainty, we present a network structure we call HydraNet (see \Cref{fig:hydranet_1D}). HydraNet is composed of a large, main `body', $b(x; \GenericParameters_b) = NN(x; \GenericParameters_b)$ with $H+1$ heads, $h_i(x; \GenericParameters_{h_i}) = NN(x; \GenericParameters_{h_i})$, attached to the output of the body. Given an input $x$, we get $H+1$ outputs as:
@@ -250,7 +247,7 @@ We repeated training 100 times, and recorded the test-time negative log likeliho
 \subsection{Extending HydraNet to $\LieGroupSO{3}$}
 
 In order to extend the ideas of HydraNet to the matrix Lie group SO(3), we
-consider different ways to regress and combine several estimates of rotation.s
+consider different ways to regress and combine several estimates of rotation.
 Given a network, $g(\cdot)$, and an input $\mathcal{I}$, we consider how to extend the ideas of HydraNet to process several outputs, $g_i(\mathcal{I})$, and combine them into an estimate of a `mean' rotation, $\Mean{\Matrix{R}}$, and an associated $3\times3$ covariance matrix, $\Matrix{\Sigma}$.  To produce estimates of rotation for a given HydraNet head, we consider two options. First if $g(\mathcal{I}) \in \Real^3$, then we can use the matrix exponential to produce a rotation matrix,
 \begin{equation}
 	\Matrix{R} = \MatExp{g(\mathcal{I})}.
@@ -288,16 +285,6 @@ where $\MatLog{\cdot}$, represents the capitalized matrix logarithm \citep{Sola2
 \Mean{\quat} = \ArgMin{\Matrix{R}(\quat) \in \LieGroupSO{3}} \sum_{i=1}^H \RotDist{quat}(\Matrix{q}_i, \Matrix{q})^2 = \frac{\sum_{i=1}^H \quat_i}{\Norm{\sum_{i=1}^H \quat_i}}.
 \end{equation}
 
-This expression is simple to evaluate numerically, and if necessary, can be easily differentiated with respect to its constituent parts. For these reasons, we opt to construct our $\LieGroupSO{3}$ HydraNet using unit quaternion outputs, and evaluate the rotation average using the quaternionic metric.
-%The angular (also called the geodesic) metric is useful for uncertainty injection, which we describe next.
-
-
-
-\subsubsection{SO(3) Uncertainty}
-
-
-There are several ways to approach uncertainty on $\LieGroupSO{3}$. One method \citep{Carlone2015-aq} is to define a probability density directly on the group via the isotropic von Mises-Fisher density. This approach has two downsides: (1) it is isotropic and cannot account for dominant  degrees of freedom (e.g., vehicle yaw during driving), and (2) estimating the concentration parameter requires approximations or iterative solvers.
-
 \begin{wrapfigure}{r}{0.35\textwidth}
   \vspace{-20pt}
   \begin{center}
@@ -307,6 +294,16 @@ There are several ways to approach uncertainty on $\LieGroupSO{3}$. One method \
 	\label{fig:math_quat_uncertainty}
 	\caption{We can define uncertainty in the left tangent space of a mean element.}
 \end{wrapfigure} 
+
+This expression is simple to evaluate numerically, and if necessary, can be easily differentiated with respect to its constituent parts. For these reasons, we opt to construct our $\LieGroupSO{3}$ HydraNet using unit quaternion outputs, and evaluate the rotation average using the quaternionic metric.
+%The angular (also called the geodesic) metric is useful for uncertainty injection, which we describe next.
+
+
+
+\subsubsection{SO(3) Uncertainty}
+
+There are several ways to approach uncertainty on $\LieGroupSO{3}$. One method \citep{Carlone2015-aq} is to define a probability density directly on the group via the isotropic von Mises-Fisher density. This approach has two downsides: (1) it is isotropic and cannot account for dominant  degrees of freedom (e.g., vehicle yaw during driving), and (2) estimating the concentration parameter requires approximations or iterative solvers.
+
 Instead, we opt to parametrize uncertainty over $\LieGroupSO{3}$ by injecting uncertainty onto the manifold \citep{Forster2015-af,Barfoot2014-ac,Barfoot2017-ri} from a local tangent space about some mean element, $\Mean{\quat}$,
 \begin{equation}
 \label{eq:quat_inject_density}
@@ -428,7 +425,7 @@ Before we embarked on training with real data, we analyzed our proposed HydraNet
 
 To regress the camera orientation, we constructed a five layer residual network and attached 26 heads (25 + 1 for direct uncertainty learning) to regress a probabilistic estimate of $\quat_{c,w}$, the orientation of the camera with respect to the world frame.
 
-\Cref{fig:sim_errors} plots rotational errors $\Vector{\phi} = \MatLog{\quat \otimes \quat_t^{-1}}$  along with 3 sigma bounds based on both the total covariance, $\Matrix{\Sigma}_t$, and the direct covariance $\Covd$. The final regression estimates have consistent uncertainty, composed of a static aleatoric uncertainty  and an epistemic uncertainty (\Cref{eq:head_covariance}) that grows when the test samples come from unfamiliar input data.
+\Cref{fig:sim_errors} plots rotational errors $\Vector{\phi} = \MatLog{\quat \otimes \quat_t^{-1}}$  along with 3 sigma bounds based on both the total covariance, $\Matrix{\Sigma}_t$, and the direct covariance $\Covd$. The final regression estimates have empirically consistent uncertainty, composed of a static aleatoric uncertainty  and an epistemic uncertainty (\Cref{eq:head_covariance}) that grows when the test samples come from unfamiliar input data.
 
 \subsection{Absolute Orientation: 7-Scenes}
 Next, we used HydraNet to regress absolute orientations from RGB images from the 7-Scenes dataset \citep{Glocker7scenes}. Our goal was to achieve similar errors to other regression techniques \citep{Kendall2017-ud} but augment them with consistent covariance estimates. For this experiment, we used \textsf{resnet34} \citep{he2016deep} (pre-trained on the ImageNet dataset) for the body of HydraNet and attached 25 HydraNet heads, each consisting of two fully connected layers. We cropped and resized all RGB images to match the expected ImageNet size and omitted the depth channel.
@@ -573,7 +570,7 @@ Next, we used HydraNet to regress absolute orientations from RGB images from the
 		\includegraphics[width=\textwidth]{so3_learning/supplementary/kitti_05_topdown}
 		\caption{\texttt{05}}
 	\end{subfigure}
-	\caption{KITTI frame-to-frame rotation probabilistic regression for sequences \texttt{00}, \texttt{02} and \texttt{05}. Top-down trajectory plots show localization improvements after fusion with a classical stereo visual odometry pipeline.}
+	\caption{Results for KITTI sequences \texttt{00}, \texttt{02} and \texttt{05}. Top-down trajectory plots show localization improvements after fusion with a classical stereo visual odometry pipeline.}
 	\label{fig:hydranet_kitti_topdown}
 \end{figure*}
 
@@ -624,7 +621,7 @@ Next, we used HydraNet to regress absolute orientations from RGB images from the
 	\vspace{-.5em}
 \end{figure}
 
-Finally, to show the benefit of fusing deep probabilistic estimates with classical estimators, we trained a HydraNet network to estimate relative frame-to-frame rotations on the KITTI visual odometry (VO) benchmark. For each pair of poses, we process two RGB images (taken from the left RGB camera) into a two channel dense optical flow image using a fast classical algorithm \citep{farneback2003}. Compared to using raw images, we found that using the optical flow pre-processing greatly improved training robustness and rotation accuracy. Since we use two-channel flow images, the body of the network is not pre-trained and instead contains an eight layer convolutional network (see supplemental materials for additional details). We maintained the same head structure as the 7-Scenes experiment. \Cref{tab:kitti_hydranet_stats} and \Cref{fig:kitti_hists} detail the mean test error and negative log likelihood for KITTI odometry sequences \texttt{00}, \texttt{02} and \texttt{05} (chosen for their complexity and length). For each sequence, we trained the model on the remaining sequences in the benchmark. We found our model produced mean errors of approximately 0.1 degrees on all three test sequences. The covariance produced by HydraNet was consistent, spiking during yawing motions when the largest errors occurred (see \Cref{fig:hydranet_kitti_topdown}). Despite its consistency, the network covariance was dominated by $\Covd$. We suspect that unlike the synthetic data, $\Covh$ remained small throughout the tests sets due to a more constrained input space (RGB or flow images, compared to pixel locations), but leave a thorough investigation to future work. 
+Finally, to show the benefit of fusing deep probabilistic estimates with classical estimators, we trained a HydraNet network to estimate relative frame-to-frame rotations on the KITTI visual odometry (VO) benchmark. For each pair of poses, we process two RGB images (taken from the left RGB camera) into a two channel dense optical flow image using a fast classical algorithm \citep{farneback2003}. Compared to using raw images, we found that using the optical flow pre-processing greatly improved training robustness and rotation accuracy. Since we use two-channel flow images, the body of the network is not pre-trained and instead contains an eight layer convolutional network. We maintained the same head structure as the 7-Scenes experiment. \Cref{tab:kitti_hydranet_stats} and \Cref{fig:kitti_hists} detail the mean test error and negative log likelihood for KITTI odometry sequences \texttt{00}, \texttt{02} and \texttt{05} (chosen for their complexity and length). For each sequence, we trained the model on the remaining sequences in the benchmark. We found our model produced mean errors of approximately 0.1 degrees on all three test sequences. The covariance produced by HydraNet was consistent, spiking during yawing motions when the largest errors occurred (see \Cref{fig:hydranet_kitti_topdown}). Despite its consistency, the network covariance was dominated by $\Covd$. We suspect that unlike the synthetic data, $\Covh$ remained small throughout the tests sets due to a more constrained input space (RGB or flow images, compared to pixel locations), but leave a thorough investigation to future work. 
  
 \subsubsection{Canonical Indirect Stereo Visual Odometry}
 For the classical visual odometry estimator, we use a similar pipeline to that used in the prior two chapters based on the open-source \textsf{viso2} package~\citep{Geiger2011-xe} to detect and track sparse stereo image key-points. In brief, our pipeline modelled stereo re-projection errors, $ \Vector{e}_{l,t_i}$, as zero-mean Gaussians with a known static covariance, $\Covariance$. To generate an initial guess and to reject outliers, we used three point Random Sample Consensus (RANSAC) based on stereo re-projection error.
@@ -634,7 +631,7 @@ Finally, we solved for the maximum likelihood transform, $\Transform_t^*$, throu
 \end{equation}
 \noindent After convergence, we approximate the frame-to-frame transformation uncertainty as \citep{Barfoot2017-ri}:
 \begin{equation}
-	\Matrix{\Sigma}_\text{vo} \approx  \left( \sum_{l=1}^{N_t} \Transpose{\Matrix{J}}_{\Vector{e}_i} \Covariance^{-1} \Matrix{J}_{\Vector{e}_i} \right)^{-1},
+	\Matrix{\Sigma}_\text{vo} \approx  \left( \sum_{i=1}^{N_t} \Transpose{\Matrix{J}}_{\Vector{e}_i} \Covariance^{-1} \Matrix{J}_{\Vector{e}_i} \right)^{-1},
     \label{eq:svo_uncertainty}
 \end{equation}
 where $\Matrix{J}_{\Vector{e}_i}$ refers to the Jacobian of each reprojection error.
@@ -663,13 +660,13 @@ The estimates $\Estimate{\Transform}_{2,1}$, $\Matrix{\Sigma}_\text{vo}$ and $\E
 
 
 \section{Summary}
-In this chapter, we described a method (our final \textit{pseudo-sensor}) to regress probabilistic estimates of rotation using a deep multi-headed network structure. We used the quaternionic metric on $\LieGroupSO{3}$ to define a rotation average, and extracted anisotropic covariances by modelling uncertainty through noise injection on the manifold. 
+In this chapter, we described a method to regress probabilistic estimates of rotation using a deep multi-headed network structure. We used the quaternionic metric on $\LieGroupSO{3}$ to define a rotation average, and extracted anisotropic covariances by modelling uncertainty through noise injection on the manifold. 
 
 Our novel contributions were
 \begin{enumerate}
 \item a deep network structure we call \textit{HydraNet} that builds on prior work \citep{Lakshminarayanan2017,Osband2016} to produce meaningful uncertainties over unconstrained targets,
 \item a loss formulation and mathematical framework that extends HydraNet to means and covariances of the rotation group $\LieGroupSO{3}$,
-\item and open source code for $\LieGroupSO{3}$ regression\footnote{\url{https://github.com/utiasSTARS/so3_learning}}.
+\item and open source code for $\LieGroupSO{3}$ regression.\footnote{\url{https://github.com/utiasSTARS/so3_learning}}
 \end{enumerate}
 
 %Further avenues for future work include obviating the need for supervised training by embedding the HydraNet structure within a Bayesian filter (see for example, \citep{Haarnoja2016-ph}), applying a HydraNet $\LieGroupSO{3}$ regression to improve convergence in non-convex pose graphs, and using HydraNet outputs to improve direct keyframe-based visual localization within a tight optimization loop.

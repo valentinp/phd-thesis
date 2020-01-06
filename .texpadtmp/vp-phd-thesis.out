@@ -1,4 +1,26 @@
-\BOOKMARK [0][-]{chapter.5}{Learned Probabilistic Sun Sensor}{}% 23
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{A Visual Pipeline}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Combining Learning with Classical Pipelines}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Original Contributions}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Mathematical Foundations}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Coordinate Frames}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Rotations}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Spatial Transforms}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{Perturbations and Tangent Spaces}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.5}{Uncertainty on Lie Groups}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.6}{Deep Learning}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Classical Visual Odometry}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Canonical VO Pipeline}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Robust Estimation}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.3}{Outstanding Issues}{chapter.3}% 15
+\BOOKMARK [0][-]{chapter.4}{Predictive Robust Estimation}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.2}{Related Work}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.3}{Predictive Robust Estimation for VO}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.4}{Prediction Space}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.5}{Experiments}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.6}{Summary}{chapter.4}% 22
+\BOOKMARK [0][-]{chapter.5}{Learning Sun Direction with Uncertainty}{}% 23
 \BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 24
 \BOOKMARK [1][-]{section.5.2}{Motivation}{chapter.5}% 25
 \BOOKMARK [1][-]{section.5.3}{Related Work}{chapter.5}% 26
@@ -10,5 +32,33 @@
 \BOOKMARK [1][-]{section.5.9}{Planetary Analogue Experiments: The Devon Island Rover Navigation Dataset}{chapter.5}% 32
 \BOOKMARK [1][-]{section.5.10}{Sensitivity Analysis}{chapter.5}% 33
 \BOOKMARK [1][-]{section.5.11}{Summary}{chapter.5}% 34
-\BOOKMARK [0][-]{section*.53}{Appendices}{}% 55
-\BOOKMARK [0][-]{section*.53}{Bibliography}{}% 66
+\BOOKMARK [0][-]{chapter.6}{Learning Estimator Bias}{}% 35
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.2}{Motivation}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.3}{Related Work}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.4}{System Overview: Deep Pose Correction}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.5}{Experiments}{chapter.6}% 40
+\BOOKMARK [1][-]{section.6.6}{Results \046 Discussion}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.7}{Summary}{chapter.6}% 42
+\BOOKMARK [0][-]{chapter.7}{Learning Rotation with Uncertainty}{}% 43
+\BOOKMARK [1][-]{section.7.1}{Motivation}{chapter.7}% 44
+\BOOKMARK [1][-]{section.7.2}{Related work}{chapter.7}% 45
+\BOOKMARK [1][-]{section.7.3}{Approach}{chapter.7}% 46
+\BOOKMARK [1][-]{section.7.4}{Experiments}{chapter.7}% 47
+\BOOKMARK [1][-]{section.7.5}{Summary}{chapter.7}% 48
+\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 49
+\BOOKMARK [1][-]{section.8.1}{Summary of Contributions}{chapter.8}% 50
+\BOOKMARK [1][-]{section.8.2}{Future Work}{chapter.8}% 51
+\BOOKMARK [1][-]{section.8.3}{Coda: In Search of the Right Ends}{chapter.8}% 52
+\BOOKMARK [0][-]{section*.140}{Appendices}{}% 53
+\BOOKMARK [0][-]{Appendix.1.A}{PROBE: Isotropic Covariance Models through k-Nearest Neighbours}{}% 54
+\BOOKMARK [1][-]{section.1.A.1}{Introduction}{Appendix.1.A}% 55
+\BOOKMARK [1][-]{section.1.A.2}{Theory}{Appendix.1.A}% 56
+\BOOKMARK [1][-]{section.1.A.3}{Training}{Appendix.1.A}% 57
+\BOOKMARK [1][-]{section.1.A.4}{Testing}{Appendix.1.A}% 58
+\BOOKMARK [1][-]{section.1.A.5}{Experiments}{Appendix.1.A}% 59
+\BOOKMARK [0][-]{Appendix.1.B}{Visual Odometry Implementation Details}{}% 60
+\BOOKMARK [1][-]{section.1.B.1}{Overview}{Appendix.1.B}% 61
+\BOOKMARK [1][-]{section.1.B.2}{Solution with Robust Loss}{Appendix.1.B}% 62
+\BOOKMARK [1][-]{section.1.B.3}{Deriving the Necessary Jacobians}{Appendix.1.B}% 63
+\BOOKMARK [0][-]{equation.1.B.3.19}{Bibliography}{}% 64
