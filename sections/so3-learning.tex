@@ -42,7 +42,7 @@ As discussed in the previous chapter, several recent authors  \citep{Clark2017, 
 
 
 
-\section{Related work}
+\section{Related Work}
 
 %PNP problems
 %
@@ -118,7 +118,7 @@ To capture epistemic uncertainty, we train each head with random weight initiali
 	\label{fig:nn-uncertainty}
 \end{figure*}
 
-\subsubsection{One-dimensional experiment}
+\subsubsection{One-Dimensional Experiment}
 %Mention noise on targets
 
 To build intuition for the advantages of HydraNet over other methods of extracting uncertainty (e.g., uncertainty through MC dropout \citep{Gal2016-ny}), we constructed an experiment similar to that presented in \citep{Osband2016}. We compared HydraNet to four other approaches: (1) direct aleatoric variance regression where the network outputs a second variance parameter that is constrained to be positive, (2) uncertainty through dropout at test time \citep{Gal2016-ny}, (3) bootstrap aggregation (or bagging) of multiple independent models, and (4) HydraNet with no aleatoric uncertainty output.  

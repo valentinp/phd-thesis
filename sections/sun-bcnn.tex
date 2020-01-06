@@ -2,7 +2,6 @@
 \epigraph{He stepped down, avoiding any long look at her as one avoids long looks at the sun, but seeing her as one sees the sun, without looking.}{Leo Tolstoy, \textit{Anna Karenina}}
 \label{ch:sun-bcnn}
 
-\section{Introduction}
 
 Building on the results of PROBE, wherein we showed that it is possible to extract useful uncertainty information from images, we turn to the problem of constructing a pseudo-sensor that can infer a concrete geometric quantity that could be used to improve egomotion estimates. Specifically, in this chapter, we address the problem of replacing a costly dedicated hardware-based sun-sensor with a \textit{sun pseudo-sensor}. We show, through extensive experiments, that it is possible to train a deep parametric model (a Bayesian Convolutional Neural Network, or BCNN) to act as a virtual sun sensor that can predict the direction of the sun from a single RGB image where the sun is not directly observed. Further, we leverage recent advances in the theory of approximate variational inference of deep networks to extract uncertainty estimates for each prediction.
 

@@ -616,6 +616,13 @@ Rublee, E., Rabaud, V., Konolige, K., and Bradski, G.~R. (2011).
 \newblock Orb: An efficient alternative to sift or surf.
 \newblock In {\em ICCV}, volume~11, page~2. Citeseer.
 
+\bibitem[Sattler et~al., 2019]{sattler_understanding_2019}
+Sattler, T., Zhou, Q., Pollefeys, M., and {Leal-Taixe}, L. (2019).
+\newblock Understanding the {{Limitations}} of {{CNN}}-{{Based Absolute Camera
+  Pose Regression}}.
+\newblock In {\em Proceedings of the {{IEEE Conference}} on {{Computer Vision}}
+  and {{Pattern Recognition}}}, pages 3302--3312.
+
 \bibitem[Scaramuzza and Fraundorfer, 2011]{Scaramuzza2011-qr}
 Scaramuzza, D. and Fraundorfer, F. (2011).
 \newblock Visual odometry [tutorial].

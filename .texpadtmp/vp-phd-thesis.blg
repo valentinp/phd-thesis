@@ -61,45 +61,45 @@ Warning--empty journal in Ma2016-at
 Warning--empty journal in richter2017safe
 Warning--can't use both volume and number fields in rublee2011orb
 Warning--empty journal in Sola2018-kg
-You've used 130 entries,
+You've used 131 entries,
             1935 wiz_defined-function locations,
-            1256 strings with 28600 characters,
-and the built_in function-call counts, 61707 in all, are:
-= -- 6203
-> -- 2447
-< -- 119
-+ -- 848
-- -- 825
-* -- 4895
-:= -- 9932
-add.period$ -- 402
-call.type$ -- 130
-change.case$ -- 1050
-chr.to.int$ -- 125
-cite$ -- 142
-duplicate$ -- 2655
-empty$ -- 4432
-format.name$ -- 1025
-if$ -- 12779
+            1261 strings with 28887 characters,
+and the built_in function-call counts, 62313 in all, are:
+= -- 6264
+> -- 2470
+< -- 120
++ -- 856
+- -- 833
+* -- 4939
+:= -- 10021
+add.period$ -- 405
+call.type$ -- 131
+change.case$ -- 1059
+chr.to.int$ -- 126
+cite$ -- 143
+duplicate$ -- 2684
+empty$ -- 4477
+format.name$ -- 1034
+if$ -- 12914
 int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 131
-newline$ -- 646
-num.names$ -- 394
-pop$ -- 1218
+missing$ -- 132
+newline$ -- 651
+num.names$ -- 397
+pop$ -- 1231
 preamble$ -- 1
-purify$ -- 1056
+purify$ -- 1065
 quote$ -- 0
-skip$ -- 2033
+skip$ -- 2057
 stack$ -- 0
-substring$ -- 4471
-swap$ -- 704
-text.length$ -- 69
+substring$ -- 4519
+swap$ -- 716
+text.length$ -- 70
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 770
+type$ -- 776
 warning$ -- 12
-while$ -- 503
+while$ -- 507
 width$ -- 0
-write$ -- 1684
+write$ -- 1697
 (There were 7 error messages)

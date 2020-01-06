@@ -17,16 +17,16 @@
     \includegraphics[width=\textwidth]{conclusion/hydranet}
   \caption{HydraNet \\ (\Cref{ch:hydranet}).}
 \end{subfigure}
-\caption{Four pseudo-sensors presented in this dissertation.}
+\caption{Four approaches presented in this dissertation.}
 \end{figure}
 
-This dissertation has dealt with the development of a general framework for improving the performance of model-based visual odometry pipelines through learned probabilistic pseudo-sensors that extract difficult-to-model latent information.  We presented four examples of such \textit{pseudo-sensors}. We close with a final summary of novel contributions associated with each chapter, a discussion of potential future work, and some concluding remarks.
+This dissertation has presented several ways to improve the performance of visual egomotion pipelines through data-driven probabilistic models that extract latent information in existing sensor data.  We presented four examples of such learned models, grouping them into those quantify uncertainty, those that correct bias, and those that augment the pipeline by predicting complementary information. We close with a final summary of novel contributions associated with each chapter, a discussion of potential future work, and some concluding remarks.
 
 \section{Summary of Contributions}
 
 \subsection{Predictive Robust Estimation}
 
-We began with a pseudo-sensor that used a heteroscedastic noise model to enable predictively robust estimation. PROBE contributed
+We began with an approach that constructed a heteroscedastic noise model to facilitate what we called predictively robust estimation or PROBE. With PROBE, we contributed
 \begin{enumerate}
 \item a probabilistic model for indirect stereo visual odometry, leading to a predictive robust algorithm for inference on that model,
 \item two different approaches to constructing the robust algorithm: one baseds on k-nearest neighbours (Appendix \ref{app:appendix_probe_knn}), and one based on Generalized Kernel (GK) estimation (\Cref{ch:probe}),
@@ -42,19 +42,17 @@ We began with a pseudo-sensor that used a heteroscedastic noise model to enable 
 %\end{itemize}
 
 
-\subsection{Sun BCNN}
+\subsection{Sun-BCNN}
 
 
-
-
-With Sun-BCNN, we applied learned \textit{pseudo-sensors} to the problem of illumination direction in outdoor environments. In sum, the novel contributions were:
+With Sun-BCNN, we applied modern deep learning to the problem of illumination direction in outdoor environments. In sum, the novel contributions were:
 \begin{enumerate}
 \item the application of a Bayesian CNN to the problem of sun direction estimation, incorporating the resulting covariance estimates into a visual odometry pipeline; 
 \item an empirical demonstration that a Bayesian CNN with dropout layers after each convolutional and fully-connected layer can achieve state-of-the-art accuracy at test time;
 \item a loss function that incorporated a 3D unit-length sun direction vector, appropriate for full 6-DOF pose estimation;
 \item experimental results on over 30~km of visual navigation data in urban \citep{Geiger2013-ky} and planetary analogue \citep{Furgale2012-kk} environments; 
 \item an investigation into the sensitivity of the Bayesian CNN-based sun estimate to cloud cover, camera and environment changes, and measurement parameterization; and
-\item open-source software\footnote{\url{https://github.com/utiasSTARS/sun-bcnn-vo}.}.
+\item open-source software.
 \end{enumerate}
 
 %\noindent Sun-BCNN and its origin in learned sun sensors have three associated publications,
@@ -72,7 +70,7 @@ Next, we generalized the results of Sun-BCNN to learn full six degree-of-freedom
 \begin{enumerate}
 	\item the formulation of a novel deep corrective approach to egomotion estimation,
 	\item a novel cost function for deep $\LieGroupSE{3}$ regression that naturally balances translation and rotation errors, and
-	\item an open-source implementation of DPC-Net in \texttt{PyTorch}\footnote{See \url{https://github.com/utiasSTARS/dpc-net}.}.
+	\item an open-source implementation of DPC-Net in \texttt{PyTorch}.
 \end{enumerate}
 
 %\noindent DPC-Net was published in a journal publication,
@@ -84,41 +82,43 @@ Next, we generalized the results of Sun-BCNN to learn full six degree-of-freedom
 \subsection{Deep Probabilistic Inference of $\LieGroupSO{3}$ with HydraNet}
 
 
-Finally, we applied the lessons of DPC-Net and Sun-BCNN to learning only rotation estimates through a network structure that incorporated both aleatoric and epistemic uncertainty which can be fused with classical pipelines through pose graph optimization. With this work, we contributed
+Finally, we applied the lessons of DPC-Net and Sun-BCNN to focus on learning rotation estimates through a network structure that incorporated both aleatoric and epistemic uncertainty. We fused these rotation estimates with the motion estimates of a classical pipeline through pose graph optimization. With this work, we contributed
 \begin{enumerate}
 \item a deep network structure we called \textit{HydraNet} that builds on prior work to produce meaningful uncertainties (including both aleatoric and epistemic components) over unconstrained targets,
 \item a loss formulation and mathematical framework that extends HydraNet to means and covariances of the rotation group $\LieGroupSO{3}$,
-\item and open source code for $\LieGroupSO{3}$ regression\footnote{\url{https://github.com/utiasSTARS/so3_learning}.}.
+\item and open source code for $\LieGroupSO{3}$ regression with uncertainty.
 \end{enumerate}
 
 %\noindent HydraNet was published in a refereed workshop paper,
 %\begin{itemize}
 %\item \bibentry{2019_Peretroukhin_Deep}.
 %\end{itemize}
-
-
 \section{Future Work}
 
-\begin{figure}
+\begin{figure}[h!]
 \begin{center}
-		\includegraphics[width=0.98\textwidth]{conclusion/learning_as_prior.pdf}
-		\caption{Two different ways to incorporate learning with classical pipelines. The first is by using pipelines as a \textit{prior} which can then be corrected by learned approaches, while the second is use learning as an initialization which can then be \textit{refined} by classical techniques.}
-  	\label{fig:conc_learning_as_prior}
+		\includegraphics[width=0.9\textwidth]{conclusion/learning_fusion.pdf}
+		\caption{Three ways to combine learning with classical pipelines. This dissertation presented four examples that fall into the first two categories: correction and augmentation. We believe there is ample opportunity to explore the third category, initialization, in future work.}
+  	\label{fig:conc_learning_fusion}
 \end{center}
 \end{figure}
 
 
-There are many potential avenues for future work. For instance, although the fusion of pipelines with pseudo-sensors can significantly improve localization performance in a given environment, there are few guarantees that the final estimates are accurate and consistent.
+There are many avenues for future work. The fusion of classical methods with learned models has the potential to improve many types of estimators within mobile robotics and computer vision. In this dissertation, we focused on improving a canonical visual odometry pipeline based on Gauss-Newton optimization. For more general tasks like SLAM, Gauss-Newton-based optimization methods can often produce sub-optimal results due to local minima in highly-non-convex loss surfaces; indeed, their use is often predicated on having access to accurate initializations of state variables. To address this deficiency, a number of recent publications (e.g., \cite{Rosen2019-kk}) have applied methods from the field of convex optimization to SLAM and pose-graph optimization. Their efforts have produced global solvers with certifiably-optimal solutions. 
 
-One promising thread of future work addresses this deficiency by developing more tightly-coupled perception systems that can be ‘certified’ to produce globally-optimal solutions while still being robust to adverse environmental effects. To do this, we propose a second way to fuse learned models with classical optimization techniques. Instead of treating the learning component as a way to reduce error of an extant classical technique (like \Cref{ch:sun-bcnn,ch:dpc,ch:hydranet}), we propose that we use modern deep learning approaches as initializations, or priors, that are more invariant to effects like large view-point changes and have the ability to generalize to large-scale environments (\Cref{fig:conc_learning_as_prior}). This is inline with the way our earlier work, PROBE (\Cref{ch:probe}), uses non-parametric learning. Namely, we believe there are many potential fruitful applications where deep networks are used as input to parametrized loss functions that are then solved through convex optimization (e.g., \cite{amos2017optnet}). In this way, we can leverage recently-developed theory on convex relaxations (e.g., that presented in \cite{Rosen2019-kk}) to ensure that the final localization and mapping results are ‘optimal’, in the sense that they are the global minima of a maximum-likelihood-based loss, and ‘robust’, in the sense that they provide consistent estimates in the presence of adverse conditions. 
+We see two potential ways learning can further this thread of research: (1) by using learned models as parametric inputs into certifiable global solvers to better model uncertainty and data association, and (2) by applying learning to the problem of initialization in highly non-convex optimization problems.
 
+The first approach would leverage deep networks to parameterize some part of a loss function that would then be optimized through global convex-optimization-based solvers (e.g., similar to \cite{amos2017optnet}). In this way, the final localization and mapping results would be ‘optimal’, in the sense that they are the global minima of a given loss function, and ‘robust’, in the sense that they adapt the loss function parameters for a given environment.
+
+The second approach would apply learning to the problem of initializing state variables in the basin of convergence of their global optima.  In this dissertation, we used learning to either correct or augment a classical pipeline, yet it may often be beneficial to use these learned models as priors built on semantic information. Such a prior would act as an initialization which would then be refined by classical optimization techniques (\Cref{fig:conc_learning_fusion}). The motivation for this approach is two-fold. First, if high metric accuracy is not desired, learned methods can encode large-scale regions in a similar way to classical image retrieval techniques---in fact, recent work \citep{sattler_understanding_2019} on absolute pose regression with CNNs suggests that techniques like PoseNet are more akin to image retrieval techniques than metric re-localization---while better leveraging, or being robust to, place-specific landmarks, seasonal appearance changes, and sensor deficiencies. Second, by applying a \textit{certifiable} global solver to the refinement step, the method can be robust to poor initializations by simply rejecting certain solutions and querying the model for another initial guess. This would obviate the need to certify the learning method directly, and only require that the model eventually produce some reasonable initialization which can be refined to a certifiably globally-optimal state.
+  
 \begin{remark}{Dissertation as Dialectic}
-The German Philosopher Georg Hegel's dialectic method involves a triad: a thesis, antithesis and synthesis.
-Somewhat curiously, this \textit{thesis} has been an attempt at a \textit{synthesis} of the thesis posed by classical visual egomotion, and the antithesis posed by data-driven end-to-end learning techniques.
-My hope is that the synthesis proposed by the paradigm of learned \textit{pseudo-sensors} will prove to be a fruitful one within the field of state-estimation, and for the broader robotics community. 
+The dialectic method of the Georg Hegel involves a triad: a thesis, antithesis and synthesis.
+This dissertation has been an attempt at a cogent synthesis of the thesis posed by the classical visual egomotion pipeline with the antithesis posed by data-driven end-to-end learning techniques.
+My hope is that the synthesizing methods proposed herein will prove to be useful within the field of visual state estimation, and for the broader robotics community. 
 \end{remark}
 \newpage
-\section{Coda: In Search of the Right Ends}
+\section{Coda: In Search of Elegance}
 \epigraph{The phenomena of the world which have to be explained present countless ends to us, of which one only can be the right one; they resemble an intricate tangle of thread, with many false end-threads hanging from it. He who finds out the right one can disentangle the whole.}{\textsc{Arthur Schopenhauer}, \textit{Parerga and Paralipomena}}
 
 %A fascination on machines to a fascination with people

@@ -2,8 +2,6 @@
 \label{ch:probe}
 \epigraph{Information is the resolution of uncertainty.}{Claude Shannon}
 
-\section{Introduction}
-
 Robot navigation relies on an accurate quantification of sensor noise or uncertainty in order to produce reliable state estimates.
 In practice, this uncertainty is often fixed for a given sensor and experiment, whether by automatic calibration or by manual tuning.
 Although a fixed measure of uncertainty may be reasonable in certain static environments, dynamic scenes frequently exhibit many effects that corrupt a portion of the available observations.
@@ -35,7 +33,7 @@ We will present this latter technique in this chapter.
  \label{fig:probe_intro_fig}
 \end{figure*}
 
-\section{Related Work}
+\section{Motivation and Related Work}
 
 
 There is a large and growing body of work on the task of deriving consistent uncertainty estimates for state estimation.  It is possible, for example, to develop better bespoke covariance estimates for a particular estimator modality by choosing a higher-fidelity covariance propagation schema (e.g., applying the implicit function theorem to propagate uncertainties in a laser-scan registration optimization problem, \cite{censi2007accurate}).  
